@@ -25,6 +25,12 @@ class Lotto(private val numbers: List<Int>) {
 
     companion object{
         val lottoes = mutableListOf<List<Int>>()
+
+        fun printAll(){
+            for( lotto in lottoes){
+                println(lotto)
+            }
+        }
     }
 }
 
