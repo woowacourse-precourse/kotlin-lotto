@@ -50,7 +50,7 @@ class LottoTest : NsTest(){
     fun `로또 목록 출력`() {
         Lotto(listOf(1, 2, 3, 4, 5, 6))
         Lotto(listOf(1, 2, 3, 4, 5, 7))
-        Lotto.printAll()
+        Lotto.printCount()
         assertThat(output()).contains(
             "2개를 구매했습니다.",
             "[1, 2, 3, 4, 5, 6]",
@@ -63,7 +63,7 @@ class LottoTest : NsTest(){
         Assertions.assertRandomUniqueNumbersInRangeTest(
             {
                 Lotto.publish(3)
-                Lotto.printAll()
+                Lotto.printCount()
                 assertThat(output()).contains(
                     "3개를 구매했습니다.",
                     "[8, 21, 23, 41, 42, 43]",
