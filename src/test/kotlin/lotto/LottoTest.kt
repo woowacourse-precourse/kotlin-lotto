@@ -51,6 +51,7 @@ class LottoTest : NsTest(){
         Lotto(listOf(1, 2, 3, 4, 5, 7))
         Lotto.printAll()
         assertThat(output()).contains(
+            "2개를 구매했습니다.",
             "[1, 2, 3, 4, 5, 6]",
             "[1, 2, 3, 4, 5, 7]"
         )
