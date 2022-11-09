@@ -11,3 +11,11 @@ fun makeLotto(): Lotto = try {
 } catch (e: IllegalArgumentException) {
     makeLotto()
 }
+
+fun getLottoList(money: Int): List<Lotto> {
+    val lottoList = mutableListOf<Lotto>()
+    for (i in 0 until (money/1000)) {
+        lottoList.add(makeLotto())
+    }
+    return lottoList
+}
