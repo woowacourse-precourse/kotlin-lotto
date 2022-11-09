@@ -5,6 +5,7 @@ import lotto.Constant.Companion.printBuyMessage
 
 fun main() {
     addLotto()
+    WinningNumber().inputWinningNumber()
 }
 
 
@@ -15,7 +16,7 @@ fun toIntArray(lottoWallet: IntArray, lotto: MutableList<Int>) {
 }
 
 fun addLotto() {
-    val lottoPrice = InputBuyAmount().inputAmount()
+    val lottoPrice = BuyAmount().inputAmount()
     val lottoWallet = Array(lottoPrice) { IntArray(lottoSize) }
 
     println("\n$lottoPrice$printBuyMessage")

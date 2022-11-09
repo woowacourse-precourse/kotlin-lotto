@@ -3,15 +3,15 @@ package lotto
 import camp.nextstep.edu.missionutils.Console.readLine
 import lotto.Constant.Companion.costNotIntErrorMessage
 import lotto.Constant.Companion.costNotRegularErrorMessage
+import lotto.Constant.Companion.inputAmountMessage
 import lotto.Constant.Companion.lottoCost
-import lotto.Constant.Companion.printInputAmountMessage
 import lotto.Constant.Companion.regularMax
 import lotto.Constant.Companion.regularMin
 
-class InputBuyAmount {
+class BuyAmount {
 
     init {
-        println(printInputAmountMessage)
+        println(inputAmountMessage)
     }
     fun inputAmount(): Int {
         val inputAmount = readLine()

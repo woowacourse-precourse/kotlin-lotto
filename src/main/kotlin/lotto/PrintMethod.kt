@@ -1,7 +1,6 @@
 package lotto
 
 import lotto.Constant.Companion.lottoCost
-import lotto.Constant.Companion.lottoSize
 import lotto.Constant.Companion.printBuyMessage
 
 class PrintMethod {
