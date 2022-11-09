@@ -3,7 +3,7 @@ package lotto
 import camp.nextstep.edu.missionutils.Randoms
 
 fun randomLotto(): Lotto {       //사용자가 로또를 사면 구매한 로또 번호를 반환하는 함수
-    var numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+    val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
     numbers.sort()
 
     println(numbers)
@@ -92,7 +92,7 @@ fun myLottoScore(
 }
 
 fun calculScore(my: List<Int>): List<Int> {
-    var score = mutableListOf(0, 0, 0, 0, 0)
+    val score = mutableListOf(0, 0, 0, 0, 0)
 
     for (i in my) {
         when (i) {
@@ -106,6 +106,25 @@ fun calculScore(my: List<Int>): List<Int> {
     return score
 }
 
+fun printScore(my: List<Int>){
+    var idx = 0
+    var check = 0
+    var count = 3
+    val prize = listOf("5,000","50,000","1,500,000","30,000,000","2,000,000,000")
+
+    for(n in my){
+        if(check == 0)
+            println("${count}개 일치 (${prize.get(idx)}원) - ${n}개 ")
+        else{
+            println("${count}개 일치, 보너스 볼 일치 (${prize.get(idx)}원) - ${n}개 ")
+        }
+        if(count != 5)
+            count++
+        else
+            check = 1
+        idx++
+    }
+}
 fun main() {
     println("구입금액을 입력해 주세요.")
     val myLotto = mutableListOf<Lotto>()
@@ -123,4 +142,9 @@ fun main() {
     val bounsNum = getBouns()
 
     val matchLotto = calculScore(myLottoScore(myLotto, answerLotto, bounsNum))
+
+
+    println("당첨통계")
+    println("---")
+    printScore(matchLotto)
 }
