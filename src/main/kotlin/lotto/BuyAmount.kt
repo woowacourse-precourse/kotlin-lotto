@@ -14,7 +14,7 @@ class BuyAmount {
         return inputAmount.toInt()
     }
 
-    private fun exception(inputAmount: String) {
+    fun exception(inputAmount: String) {
         if (!inputAmount.all { it in regularMin..regularMax}) {
             println(costNotIntErrorMessage)
             throw IllegalArgumentException(costNotIntErrorMessage)

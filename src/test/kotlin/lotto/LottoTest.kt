@@ -20,5 +20,19 @@ class LottoTest {
         }
     }
 
+    @Test
+    fun `구입 금액에 숫자가 아닌 다른 문자가 들어갈 경우 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            BuyAmount().exception("abcd1234")
+        }
+    }
+
+    @Test
+    fun `구입 금액에 숫자가 1000으로 나누어 떨어지지 않을 경우 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            BuyAmount().exception(1500.toString())
+        }
+    }
+
     // 아래에 추가 테스트 작성 가능
 }
