@@ -8,7 +8,9 @@ class Lotto(private val numbers: List<Int>) {
         require(notDuplicate(numbers)){
             throw IllegalArgumentException("[ERROR] 로또 번호는 서로 중복돼서는 안됩니다.")
         }
-        require(inRange(numbers))
+        require(inRange(numbers)){
+            throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+        }
     }
 
     private fun notDuplicate(numbers : List<Int>) : Boolean{
