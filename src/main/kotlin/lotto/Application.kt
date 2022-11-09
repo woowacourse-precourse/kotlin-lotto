@@ -66,6 +66,15 @@ fun compareLotto(my:Lotto, ans:Lotto):Int{
 
     return count
 }
+fun myLottoScore(my:List<Lotto>, ans:Lotto):List<Int>{
+    val scoreList = mutableListOf<Int>()
+
+    for(l in my){
+        scoreList.add(compareLotto(l,ans))
+    }
+
+    return scoreList
+}
 fun main() {
     println("구입금액을 입력해 주세요.")
     val myLotto = mutableListOf<Lotto>()
