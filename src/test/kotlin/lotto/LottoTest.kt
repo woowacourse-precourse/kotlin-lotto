@@ -1,12 +1,13 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 
 
-class LottoTest {
+class LottoTest : NsTest(){
     @Test
     fun `로또 번호의 개수가 6개가 넘어가면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
@@ -42,5 +43,24 @@ class LottoTest {
         Lotto(listOf(1, 2, 3, 4, 5, 6))
         val result = listOf(1,2,3,4,5,6)
         assertThat(Lotto.lottoes[0]).isEqualTo(result)
+    }
+
+    @Test
+    fun `로또 목록 출력`() {
+        Lotto(listOf(1, 2, 3, 4, 5, 6))
+        Lotto(listOf(1, 2, 3, 4, 5, 7))
+        Lotto.printAll()
+        assertThat(output()).contains(
+            "[1, 2, 3, 4, 5, 6]",
+            "[1, 2, 3, 4, 5, 7]"
+        )
+    }
+
+    override fun runMain() {
+        main()
+    }
+
+    companion object {
+        private const val ERROR_MESSAGE = "[ERROR]"
     }
 }
