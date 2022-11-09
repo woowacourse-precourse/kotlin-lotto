@@ -11,15 +11,20 @@ class Lotto(private val numbers: List<Int>) {
         require(inRange(numbers)){
             throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
         }
+        numbers.sorted()
+        lottoes.add(numbers);
     }
 
     private fun notDuplicate(numbers : List<Int>) : Boolean{
         return numbers.size == numbers.distinct().count()
     }
     private fun inRange(numbers : List<Int>) : Boolean{
-        return !numbers.any { (it)< MIN|| (it)>MAX }
+        return numbers.all { it in MIN until MAX+1 }
     }
 
-    // TODO: 추가 기능 구현
+
+    companion object{
+        val lottoes = mutableListOf<List<Int>>()
+    }
 }
 
