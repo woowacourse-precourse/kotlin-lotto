@@ -8,9 +8,7 @@ import lotto.Constant.Companion.regularMax
 import lotto.Constant.Companion.regularMin
 
 class BuyAmount {
-    val cost = inputAmount()
-
-    private fun inputAmount(): Int {
+    fun inputAmount(): Int {
         val inputAmount = readLine()
         exception(inputAmount)
         return inputAmount.toInt()

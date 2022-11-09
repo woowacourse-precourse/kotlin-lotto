@@ -1,6 +1,6 @@
 package lotto
 
 fun main() {
-    val cost = BuyAmount().cost
+    val cost = BuyAmount().inputAmount()
     println(cost)
 }
