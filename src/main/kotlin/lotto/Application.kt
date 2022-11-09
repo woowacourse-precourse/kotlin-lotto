@@ -31,16 +31,28 @@ fun makeLotto(): Int {
     return manyLotto
 }
 
-fun getLottoNum(){
+fun getLottoNum(): Lotto {          //입력받은 정답 로또를 반환하는 함수
+    val LottoNum = readLine()!!
+    val numlist = LottoNum.split(',')
+    var answerlist = mutableListOf<Int>()
 
+    for(n in numlist){
+        if(n.toInt() !in 0 .. 45){
+            throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+        }
+
+        answerlist.add(n.toInt())
+    }
+    return Lotto(answerlist)
 }
+
 fun main() {
     println("구입금액을 입력해 주세요.")
     val myLotto = mutableListOf<Lotto>()
     val numLotto = makeLotto()
 
 
-    for(i: Int in 1 .. numLotto){
+    for (i: Int in 1..numLotto) {
         myLotto.add(randomLotto())
     }
 
