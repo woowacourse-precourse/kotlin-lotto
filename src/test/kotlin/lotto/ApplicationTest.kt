@@ -83,15 +83,6 @@ class ApplicationTest : NsTest() {
         }
 
         @Test
-        fun `구입금액 미입력 예외 테스트2`() {
-
-            assertSimpleTest {
-                runException("")
-                assertThat(output()).contains(ERROR_MESSAGE)
-            }
-        }
-
-        @Test
         fun `구입금액 미입력 예외 테스트`() {
             assertThrows<IllegalArgumentException> {
                 runException("")
