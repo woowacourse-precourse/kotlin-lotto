@@ -24,7 +24,7 @@ fun printAndThrowIllegalException(errorMessage: String) {
     throw IllegalArgumentException(errorMessage)
 }
 
-fun String.checkMoneyCheck(): Int {
+fun String.checkMoneyException(): Int {
     try {
         if (this.toInt() % 1000 != 0) {
             printAndThrowIllegalException("[ERROR] 구입 금액을 잘못입력하셨습니다.")
