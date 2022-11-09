@@ -20,8 +20,7 @@ class Lotto(private val numbers: List<Int>) {
             println(ERROR_OUT_RANGE)
             throw IllegalArgumentException(ERROR_OUT_RANGE)
         }
-        numbers.sorted()
-        lottoes.add(numbers);
+        lottoes.add(numbers.sorted());
     }
 
     private fun notDuplicate(numbers: List<Int>): Boolean {
