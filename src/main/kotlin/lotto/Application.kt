@@ -19,17 +19,19 @@ fun getLottoList(money: Int): List<Lotto> {
     }
     return lottoList
 }
+fun printAndThrowIllegalException(errorMessage: String) {
+    print(errorMessage)
+    throw IllegalArgumentException(errorMessage)
+}
 
 fun String.checkMoneyCheck(): Int {
     try {
         val result = this.toInt()
         if (result % 1000 != 0) {
-            print("[ERROR] 구입 금액을 잘못입력하셨습니다.")
-            throw IllegalArgumentException("[ERROR] 구입 금액을 잘못입력하셨습니다.")
+            printAndThrowIllegalException("[ERROR] 구입 금액을 잘못입력하셨습니다.")
         }
         return result
     } catch (e: NumberFormatException) {
-        print("[ERROR] 구입 금액을 잘못입력하셨습니다.")
-        throw IllegalArgumentException("[ERROR] 구입 금액을 잘못입력하셨습니다.")
+        printAndThrowIllegalException("[ERROR] 구입 금액을 잘못입력하셨습니다.")
     }
 }
