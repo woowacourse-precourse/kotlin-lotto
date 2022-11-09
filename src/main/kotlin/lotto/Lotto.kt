@@ -2,16 +2,23 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 
+const val ERROR_LENGTH = "[ERROR] 로또 번호는 6개의 숫자로 이루어져야합니다."
+const val ERROR_DUPLICATE = "[ERROR] 로또 번호는 서로 중복돼서는 안됩니다."
+const val ERROR_OUTRANGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."
+
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6) {
-            throw IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자로 이루어져야합니다.")
+            println(ERROR_LENGTH)
+            throw IllegalArgumentException(ERROR_LENGTH)
         }
         require(notDuplicate(numbers)) {
-            throw IllegalArgumentException("[ERROR] 로또 번호는 서로 중복돼서는 안됩니다.")
+            println(ERROR_DUPLICATE)
+            throw IllegalArgumentException(ERROR_DUPLICATE)
         }
         require(inRange(numbers)) {
-            throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+            println(ERROR_OUTRANGE)
+            throw IllegalArgumentException(ERROR_OUTRANGE)
         }
         numbers.sorted()
         lottoes.add(numbers);
