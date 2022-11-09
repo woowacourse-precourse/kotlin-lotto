@@ -23,13 +23,25 @@ fun makeLotto(): Int {
 
     if (number % 1000 != 0)
         throw IllegalArgumentException("[ERROR] 1000단위의 금액을 입력해주세요")
-    else
+    else {
         manyLotto = number / 1000
+        println("${manyLotto}개를 구매했습니다.")
+    }
 
     return manyLotto
 }
 
+fun getLottoNum(){
+
+}
 fun main() {
     println("구입금액을 입력해 주세요.")
-    makeLotto()
+    val myLotto = mutableListOf<Lotto>()
+    val numLotto = makeLotto()
+
+
+    for(i: Int in 1 .. numLotto){
+        myLotto.add(randomLotto())
+    }
+
 }
