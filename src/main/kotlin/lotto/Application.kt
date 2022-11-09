@@ -34,3 +34,27 @@ fun String.checkMoneyException(): Int {
     }
     return this.toInt()
 }
+
+fun String.checkLottoNumberException(): Int {
+    try {
+        if (this.toInt() <= 0 || this.toInt() > 45) {
+            printAndThrowIllegalException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+        }
+    } catch (e: NumberFormatException) {
+        printAndThrowIllegalException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+    }
+    return this.toInt()
+}
+
+fun checkWinningNumberException(winningNumber: List<String>): List<Int> {
+    try {
+        Lotto(winningNumber.map { it.checkLottoNumberException() })
+    } catch (e: IllegalArgumentException) {
+        printAndThrowIllegalException("[ERROR] 당첨 번호의 개수가 잘못 입력되었거나 중복되었습니다.")
+    }
+    return winningNumber.map { it.checkLottoNumberException() }
+}
+
+fun checkWinningAndBonusNumberException(winningNumber: List<Int>, bonusNumber: Int) {
+    if (winningNumber.contains(bonusNumber)) printAndThrowIllegalException("[ERROR] 보너스 번호가 당첨 번호와 중복되었습니다.")
+}
