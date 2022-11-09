@@ -10,6 +10,7 @@ fun randomLotto(): Lotto {       //사용자가 로또를 사면 구매한 로�
 
     return Lotto(numbers)
 }
+
 fun makeLotto(): Int {
     var number = 0
     var manyLotto = 0
@@ -29,13 +30,14 @@ fun makeLotto(): Int {
 
     return manyLotto
 }
+
 fun getLottoNum(): Lotto {          //입력받은 정답 로또를 반환하는 함수
     val LottoNum = readLine()!!
     val numlist = LottoNum.split(',')
     val answerlist = mutableListOf<Int>()
 
-    for(n in numlist){
-        if(n.toInt() !in 1 .. 45){
+    for (n in numlist) {
+        if (n.toInt() !in 1..45) {
             throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
         }
 
@@ -43,38 +45,67 @@ fun getLottoNum(): Lotto {          //입력받은 정답 로또를 반환하는
     }
     return Lotto(answerlist)
 }
-fun getBouns():Int{
+
+fun getBouns(): Int {
     var bouns = 0
 
     try {
         bouns = readLine()!!.toInt()
-    }catch (e : IllegalArgumentException){
-        println("[ERROR] 숫자를 입력해주세요.")}
+    } catch (e: IllegalArgumentException) {
+        println("[ERROR] 숫자를 입력해주세요.")
+    }
 
-    if(bouns !in 1 .. 45)
+    if (bouns !in 1..45)
         throw IllegalArgumentException("[ERROR] 보너스 숫자는 1에서 45 사이의 숫자입니.")
 
     return bouns
 }
-fun compareLotto(my:Lotto, ans:Lotto):Int{
+
+fun compareLotto(my: Lotto, ans: Lotto, bouns: Int): Int {
     var count = 0
 
-    for(n in my.lottoNumber){
-        if(ans.lottoNumber.contains(n))
+    for (n in my.lottoNumber) {
+        if (ans.lottoNumber.contains(n))
             count++
+    }
+
+    if (count == 5) {
+        if (my.lottoNumber.contains(bouns))
+            count = 7
     }
 
     return count
 }
-fun myLottoScore(my:List<Lotto>, ans:Lotto):List<Int>{
+
+fun myLottoScore(
+    my: List<Lotto>,
+    ans: Lotto,
+    bouns: Int
+): List<Int> {       //scorelist 의 숫자는 일치한 숫자 갯수, 단 7은 2등! -> 5개 + 보너스
     val scoreList = mutableListOf<Int>()
 
-    for(l in my){
-        scoreList.add(compareLotto(l,ans))
+    for (l in my) {
+        scoreList.add(compareLotto(l, ans, bouns))
     }
 
     return scoreList
 }
+
+fun calculScore(my: List<Int>): List<Int> {
+    var score = mutableListOf(0, 0, 0, 0, 0)
+
+    for (i in my) {
+        when (i) {
+            3 -> score[0]++
+            4 -> score[1]++
+            5 -> score[2]++
+            7 -> score[3]++
+            6 -> score[4]++
+        }
+    }
+    return score
+}
+
 fun main() {
     println("구입금액을 입력해 주세요.")
     val myLotto = mutableListOf<Lotto>()
@@ -90,4 +121,6 @@ fun main() {
 
     println("보너스 번호를 입력해 주세요.")
     val bounsNum = getBouns()
+
+    val matchLotto = calculScore(myLottoScore(myLotto, answerLotto, bounsNum))
 }
