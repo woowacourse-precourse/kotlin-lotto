@@ -1,5 +1,6 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.test.Assertions
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -57,6 +58,20 @@ class LottoTest : NsTest(){
         )
     }
 
+    @Test
+    fun `랜덤 발행`() {
+        Assertions.assertRandomUniqueNumbersInRangeTest(
+            {
+                Lotto.publish()
+                Lotto.printAll()
+                assertThat(output()).contains(
+                    "1개를 구매했습니다.",
+                    "[8, 21, 23, 41, 42, 43]"
+                )
+            },
+            listOf(8, 21, 23, 41, 42, 43)
+        )
+    }
     override fun runMain() {
         main()
     }
