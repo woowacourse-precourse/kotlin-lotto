@@ -10,7 +10,6 @@ fun randomLotto(): Lotto {       //사용자가 로또를 사면 구매한 로�
 
     return Lotto(numbers)
 }
-
 fun makeLotto(): Int {
     var number = 0
     var manyLotto = 0
@@ -30,7 +29,6 @@ fun makeLotto(): Int {
 
     return manyLotto
 }
-
 fun getLottoNum(): Lotto {          //입력받은 정답 로또를 반환하는 함수
     val LottoNum = readLine()!!
     val numlist = LottoNum.split(',')
@@ -45,7 +43,6 @@ fun getLottoNum(): Lotto {          //입력받은 정답 로또를 반환하는
     }
     return Lotto(answerlist)
 }
-
 fun getBouns():Int{
     var bouns = 0
 
@@ -58,6 +55,16 @@ fun getBouns():Int{
         throw IllegalArgumentException("[ERROR] 보너스 숫자는 1에서 45 사이의 숫자입니.")
 
     return bouns
+}
+fun compareLotto(my:Lotto, ans:Lotto):Int{
+    var count = 0
+
+    for(n in my.lottoNumber){
+        if(ans.lottoNumber.contains(n))
+            count++
+    }
+
+    return count
 }
 fun main() {
     println("구입금액을 입력해 주세요.")
