@@ -14,11 +14,12 @@ class Ticket {
         }
     }
 
-    private fun makeLotto(): MutableList<Int> {
+    fun makeLotto(): MutableList<Int> {
         val lottoNumbers = mutableListOf<Int>()
         while (lottoNumbers.size < lottoSize) {
             appendNumber(randomNumber(), lottoNumbers)
         }
+        lottoNumbers.sort()
         return lottoNumbers
     }
 }

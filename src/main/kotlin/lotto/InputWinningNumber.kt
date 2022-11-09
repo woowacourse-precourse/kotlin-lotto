@@ -1,7 +1,7 @@
 package lotto
 import camp.nextstep.edu.missionutils.Console.readLine
 
-class WinningNumber {
+class InputWinningNumber {
 
 
     fun inputNumber() {

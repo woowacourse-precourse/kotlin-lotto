@@ -4,14 +4,19 @@ import camp.nextstep.edu.missionutils.Console.readLine
 import lotto.Constant.Companion.costNotIntErrorMessage
 import lotto.Constant.Companion.costNotRegularErrorMessage
 import lotto.Constant.Companion.lottoCost
+import lotto.Constant.Companion.printInputAmountMessage
 import lotto.Constant.Companion.regularMax
 import lotto.Constant.Companion.regularMin
 
-class BuyAmount {
+class InputBuyAmount {
+
+    init {
+        println(printInputAmountMessage)
+    }
     fun inputAmount(): Int {
         val inputAmount = readLine()
         exception(inputAmount)
-        return inputAmount.toInt()
+        return inputAmount.toInt() / lottoCost
     }
 
     fun exception(inputAmount: String) {

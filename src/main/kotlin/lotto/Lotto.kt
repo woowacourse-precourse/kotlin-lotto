@@ -1,8 +1,10 @@
 package lotto
 
+import lotto.Constant.Companion.lottoSize
+
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6)
+        require(numbers.size == lottoSize)
     }
 
 
