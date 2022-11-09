@@ -41,7 +41,7 @@ class LottoTest : NsTest(){
 
     @Test
     fun `로또 번호 오름차순`() {
-        Lotto(listOf(1, 2, 3, 4, 5, 6))
+        Lotto(listOf(1, 2, 3, 6, 5, 4))
         val result = listOf(1,2,3,4,5,6)
         assertThat(Lotto.lottoes[0]).isEqualTo(result)
     }
