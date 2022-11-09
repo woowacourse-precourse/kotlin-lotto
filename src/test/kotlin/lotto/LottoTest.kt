@@ -1,5 +1,6 @@
 package lotto
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
@@ -34,5 +35,12 @@ class LottoTest {
         assertDoesNotThrow {
             Lotto(listOf(1, 2, 3, 4, 5, 6))
         }
+    }
+
+    @Test
+    fun `로또 번호 오름차순`() {
+        Lotto(listOf(1, 2, 3, 4, 5, 6))
+        val result = listOf(1,2,3,4,5,6)
+        assertThat(Lotto.lottoes[0]).isEqualTo(result)
     }
 }
