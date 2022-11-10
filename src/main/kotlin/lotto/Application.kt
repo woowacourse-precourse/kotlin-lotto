@@ -75,11 +75,21 @@ fun checkWinningAndBonusNumberException(winningNumber: List<Int>, bonusNumber: I
 }
 
 fun totalLottoResult(lottoList: List<Lotto>, winningNumber: List<Int>, bonusNumber: Int): Map<LottoResult, Int> {
-    val resultMap = HashMap<LottoResult, Int>()
+    val resultMap = getLottoResultMapInit().toMutableMap()
     lottoList.forEach { lotto ->
         val result = lotto.getResult(winningNumber, bonusNumber)
         resultMap[result] = (resultMap[result] ?: 0) + 1
     }
+    return resultMap
+}
+
+fun getLottoResultMapInit(): Map<LottoResult, Int> {
+    val resultMap = HashMap<LottoResult, Int>()
+    resultMap[LottoResult.First] = 0
+    resultMap[LottoResult.Second] = 0
+    resultMap[LottoResult.Third] = 0
+    resultMap[LottoResult.Fourth] = 0
+    resultMap[LottoResult.Fifth] = 0
     return resultMap
 }
 
@@ -100,5 +110,5 @@ fun Map<LottoResult, Int>.totalPrice(): Long {
 }
 
 fun calculateRevenue(money: Int, price: Long) {
-    println("총 수익률은 ${round(price.toDouble() * 1000 / money) / 10}% 입니다.")
+    println("총 수익률은 ${round(price.toDouble() * 1000 / money) / 10}%입니다.")
 }
