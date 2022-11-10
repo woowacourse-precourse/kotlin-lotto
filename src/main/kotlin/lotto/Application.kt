@@ -1,5 +1,15 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Console
+
+lateinit var consumer: Consumer
 fun main() {
-    TODO("프로그램 구현")
+    orderLotto()
 }
+
+private fun orderLotto() {
+    val money = Console.readLine()
+    consumer = Consumer(money.toInt())
+    consumer.buyLotto()
+}
+
