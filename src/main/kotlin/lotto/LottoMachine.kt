@@ -1,6 +1,6 @@
 package lotto
 
-class User {
+class LottoMachine {
     fun validateTypeAmount(amount: String): Boolean {
         val typeCount = amount.filter { number ->
             number in '0'..'9'
