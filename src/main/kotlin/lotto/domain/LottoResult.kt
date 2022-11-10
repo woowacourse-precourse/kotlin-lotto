@@ -3,7 +3,13 @@ package lotto.domain
 import kotlin.math.round
 
 class LottoResult(lottos: List<Lotto>, winningNumber: WinningNumber) {
-    private val rankToCnt = mutableMapOf<LottoRank, Int>()
+    private val rankToCnt = mutableMapOf(
+        LottoRank.FIFTH to 0,
+        LottoRank.FOURTH to 0,
+        LottoRank.THIRD to 0,
+        LottoRank.SECOND to 0,
+        LottoRank.FIRST to 0,
+    )
 
     init {
         for (lotto in lottos) {
