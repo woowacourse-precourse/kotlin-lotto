@@ -12,5 +12,8 @@ class Lotto(private val numbers: List<Int>) {
         Exceptions.isValidLottoSize(numbers)
     }
 
-    // TODO: 추가 기능 구현
+    // 로또번호를 오름차순 정렬
+    fun getOrderedNumbers(): List<Int> {
+        return numbers.sorted()
+    }
 }
