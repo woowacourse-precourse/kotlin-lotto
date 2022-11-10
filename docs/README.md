@@ -1,6 +1,7 @@
 # 로또 게임
 
 ## 기능 목록
+- [ ] 로또 구입 금액을 잘못 입력한 경우 예외 처리한다. - LottoShop#inputTypeException()
 - [ ] 로또 구입 금액을 잘못 입력하거나 1,000원으로 나누어 떨어지지 않는 경우 예외 처리한다. - LottoShop#inputMoneyException()
 - [ ] 로또 구입 금액을 입력하면 1000원당 1장, 구입 금액에 해당하는 만큼 로또를 생성한다. - LottoShop#buyLotto()
 - [ ] 구입 금액에 만큼 살 수 있는 로또의 개수를 확인하다.- LottoShop#cntLotto()
