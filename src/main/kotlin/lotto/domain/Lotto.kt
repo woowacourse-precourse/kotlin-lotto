@@ -21,4 +21,8 @@ class Lotto(private val numbers: List<Int>) {
         6 -> LottoRank.FIRST
         else -> LottoRank.FAIL
     }
+
+    override fun toString(): String {
+        return numbers.toString()
+    }
 }
