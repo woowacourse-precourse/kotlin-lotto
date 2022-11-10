@@ -18,8 +18,8 @@
         - [] 그 개수만큼 발급해줘야 한다. - LottoSeller#sellLotto()
 - [] 로또 당첨 결과에 대해 통계 내주는 역할을 클래스로 의인화 한다 - LottoStatistics
   - [] 로또 당첨 결과를 통계 내줘야 한다 -  LottoStatistics#statisticsLotto()
-    - [] 한 개의 로또에 대해 일치 개수를 구해줘야 한다 - LottoStatistics#matchResult()
-    - [] 5개 일치한 경우, 보너스 번호가 일치했는지까지 확인해줘야 한다 - LottoStatistics#isMatchBonus()
   - [] 로또 결과에 대해 수익률을 구해줘야 한다 - LottoStatistics#yield()
 - [] 로또 진행을 위해 메시지 출력을 해주는 역할을 클래스로 의인화 한다 - MessageMaker()
   - [] 로또 진행을 위해 메시지를 출력해준다 - MessageMake()#printMessage()
+- [] 로또 객체는 결과와 자신을 비교해서 결과를 리턴 해줘야 한다  - Lotto#matchResult()
+- [] 로또 객체는 자신이 보너스에 당첨됐는지 확인해줘야 한다 - Lotto#isMatchBonus()
