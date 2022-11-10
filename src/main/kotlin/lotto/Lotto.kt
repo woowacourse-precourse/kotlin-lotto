@@ -3,7 +3,9 @@ package lotto
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6)
+        require(hasNotDuplicateNumber())
     }
 
-    // TODO: 추가 기능 구현
+    private fun hasNotDuplicateNumber(): Boolean =
+        numbers.size == numbers.distinct().size
 }
