@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test
 
 @Suppress("NonASCIICharacters")
 class ApplicationTest : NsTest() {
-
     @Test
     fun `기능 테스트`() {
         assertRandomUniqueNumbersInRangeTest(
@@ -46,7 +45,11 @@ class ApplicationTest : NsTest() {
     @Test
     fun `예외 테스트`() {
         assertSimpleTest {
-            runException("1000j")
+            try {
+                runException("1000j")
+            } catch (_: IllegalArgumentException) {
+            }
+
             assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
