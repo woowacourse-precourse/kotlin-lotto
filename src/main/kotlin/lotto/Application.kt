@@ -31,23 +31,23 @@ enum class State(val message: String){
 
 }
 
-fun pickLottoNumbers() : MutableList<Int> {
-    val lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6)
-    lottoNumber.sort()
-    return lottoNumber
-}
+//fun pickLottoNumbers() : MutableList<Int> {
+//    val lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+//    lottoNumber.sort()
+//    return lottoNumber
+//}
 
-fun pickBonusNumber(lottoNumber: MutableList<Int>) : MutableList<Int> {
-    var answer = mutableListOf<Int>()
-    var num = 0
-    while (answer.size!=1){
-        num=Randoms.pickNumberInRange(1, 45)
-        if (!lottoNumber.contains(num)){
-            answer.add(num)
-        }
-    }
-    return answer
-}
+//fun pickBonusNumber(lottoNumber: MutableList<Int>) : MutableList<Int> {
+//    var answer = mutableListOf<Int>()
+//    var num = 0
+//    while (answer.size!=1){
+//        num=Randoms.pickNumberInRange(1, 45)
+//        if (!lottoNumber.contains(num)){
+//            answer.add(num)
+//        }
+//    }
+//    return answer
+//}
 
 fun howMany() : Int{
     var money = readLine().toInt()
@@ -80,7 +80,6 @@ fun enterBonusNumber(winningNumbers : List<Int>) : Int {
 }
 
 
-
 fun main() {
     var cnt = 0
     var lottoNumberCollect = mutableListOf<Int>()
@@ -89,10 +88,10 @@ fun main() {
     var winningNumber = listOf<Int>()
     var bonusNumber = 0
 
-    lottoNumberCollect = pickLottoNumbers()
-    bonusNumberCollect = pickBonusNumber(lottoNumberCollect)
-//    println(lottoNumberCollect)
-//    println(bonusNumberCollect)
+    lottoNumberCollect = obj.pickLottoNumbers()
+    bonusNumberCollect = obj.pickBonusNumber(lottoNumberCollect)
+    println(lottoNumberCollect)
+    println(bonusNumberCollect)
 
     //시작
     println(State.start.message)
@@ -102,18 +101,21 @@ fun main() {
     println()
     println(cnt.toString()+State.many.message)
     for (round in 0 until cnt){
-        LottoGames(lottoNumberCollect)
+        //Lotto 클래스 활용해야함!!!
+        println(Lotto(lottoNumberCollect))
     }
     println()
 
     //당첨 번호
     println(State.enterLottoNumber.message)
     winningNumber=enterWinningNumber()
-    println(winningNumber)
+    println()
+//    println(winningNumber) // 확인용
 
     //보너스 번호
     println(State.enterBonusNumber.message)
     bonusNumber=enterBonusNumber(winningNumber)
+    println()
 
     //당첨 통계
     println(State.end.message)
