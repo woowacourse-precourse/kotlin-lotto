@@ -20,10 +20,10 @@ enum class LottoWin(var number : Int) {
         private val regex="[0-9]{1,2}".toRegex()
 
         fun input(){
-            println("당첨 번호를 입력해 주세요.")
+            println("\n당첨 번호를 입력해 주세요.")
             val numbers = readLine()?:""
             inputNumbers(numbers)
-            println("보너스 번호를 입력해 주세요.")
+            println("\n보너스 번호를 입력해 주세요.")
             val bonus= readLine()?:""
             inputBonus(bonus)
         }
