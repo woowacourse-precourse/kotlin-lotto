@@ -1,5 +1,7 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Randoms
+
 /*
 2주차 피드백
 1. 변수 이름에 자료형, 자료 구조 사용 X
@@ -29,6 +31,13 @@ enum class State(val message: String){
 
 }
 
+fun pickLottoNumbers() : MutableList<Int> {
+    val lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+    lottoNumber.sort()
+    return lottoNumber
+}
+
+
 fun main() {
     var start = State.Start
     var many = State.Many
@@ -51,4 +60,5 @@ fun main() {
     //당첨 통계
     println(end.message)
 
+    println(pickLottoNumbers())
 }
