@@ -1,13 +1,13 @@
 package lotto
 
-import lotto.domain.LottoProvider
+import lotto.domain.LottoPurchaser
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 @Suppress("NonASCIICharacters")
-class LottoProviderTest {
+class LottoPurchaserTest {
 
-    private val lottoProvider = LottoProvider()
+    private val lottoPurchaser = LottoPurchaser()
 
     @Test
     fun `특정 금액을 로또 가격으로 나눈 수 만큼 로또를 구입한다`() {
@@ -27,7 +27,7 @@ class LottoProviderTest {
         )
 
         for ((idx, cost) in inputs.withIndex()) {
-            val lottos = lottoProvider.provideLottos(cost)
+            val lottos = lottoPurchaser.purchaseLottos(cost)
             assert(lottos.size == expects[idx])
         }
     }
@@ -35,14 +35,14 @@ class LottoProviderTest {
     @Test
     fun `로또를 1개도 구매할 수 없는 경우 예외를 발생시킨다`() {
         assertThrows<IllegalArgumentException> {
-            lottoProvider.provideLottos(999)
+            lottoPurchaser.purchaseLottos(999)
         }
     }
 
     @Test
     fun `로또 가격으로 나누어 떨어지지 않는 경우 예외를 발생시킨다`() {
         assertThrows<IllegalArgumentException> {
-            lottoProvider.provideLottos(5500)
+            lottoPurchaser.purchaseLottos(5500)
         }
     }
 }
