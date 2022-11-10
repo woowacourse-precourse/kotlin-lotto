@@ -21,7 +21,7 @@ enum class WinningStatistics(
     companion object {
         var roundUnit = 10
         fun print(allPrice: Int) {
-            println("당첨 통계")
+            println("\n당첨 통계")
             println("---")
             val dec = DecimalFormat("#,###")
             enumValues<WinningStatistics>()
