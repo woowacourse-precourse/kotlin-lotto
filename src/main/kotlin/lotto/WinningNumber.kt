@@ -14,10 +14,18 @@ class WinningNumber {
     init {
         println(inputWinningMessage)
     }
-    fun inputWinningNumber(): List<String> {
+    fun inputWinningNumber(): List<Int> {
         val inputWinningNumber: List<String> = readLine().trim().split(',')
+
         exception(inputWinningNumber)
-        return inputWinningNumber
+        return changeType(inputWinningNumber, mutableListOf())
+    }
+
+    fun changeType(inputWinningNumber: List<String>, numberList: MutableList<Int>): List<Int> {
+        for (data in inputWinningNumber) {
+            numberList.add(data.toInt())
+        }
+        return numberList
     }
 
     fun exception(inputWinningNumber: List<String>) {
@@ -40,6 +48,10 @@ class WinningNumber {
             }
         }
     }
+
+
+
+
     private fun checkDuple(inputList: List<String>): Boolean {
         return inputList.size != inputList.distinct().count()
     }
