@@ -19,8 +19,8 @@ enum class WinningStatistics(
     WIN6("6개 일치", 2000000000, 0);
 
     companion object {
-        var roundUnit=10
-        fun print(allPrice : Int) {
+        var roundUnit = 10
+        fun print(allPrice: Int) {
             println("당첨 통계")
             println("---")
             val dec = DecimalFormat("#,###")
@@ -31,28 +31,62 @@ enum class WinningStatistics(
             println("총 수익률은 ${returnRate}%입니다.")
         }
 
-        private fun calculateReturn(allPrice: Int):Double{
-            var returnRate : Double = 0.0
+        private fun calculateReturn(allPrice: Int): Double {
+            var returnRate: Double = 0.0
             for (win in enumValues<WinningStatistics>()) {
                 returnRate += win.price * win.count
             }
             returnRate = (returnRate) / (allPrice) * 100
-            returnRate =round(returnRate* roundUnit)/roundUnit
+            returnRate = round(returnRate * roundUnit) / roundUnit
             returnRateException(returnRate)
             return returnRate
         }
 
-        fun returnRateException(returnRate : Double){
-           require(returnRate>=0){
-               println(ERROR_NEGATIVE)
-               throw IllegalArgumentException(ERROR_NEGATIVE)
-           }
+        fun returnRateException(returnRate: Double) {
+            require(returnRate >= 0) {
+                println(ERROR_NEGATIVE)
+                throw IllegalArgumentException(ERROR_NEGATIVE)
+            }
             val regex = "[0-9]+\\.[0-9]".toRegex()
-            val returnRate =returnRate.toString()
-            require(returnRate.matches(regex)){
+            val returnRate = returnRate.toString()
+            require(returnRate.matches(regex)) {
                 println(ERROR_ROUND_UNIT)
                 throw IllegalArgumentException(ERROR_ROUND_UNIT)
             }
+        }
+
+        fun calculateWin(lottoes: List<List<Int>>) {
+            val winNumbers = makeWinNumbers()
+            for (lotto in lottoes) {
+                when (countEqual(lotto, winNumbers)) {
+                    listOf(3, 0) -> WIN3.count++
+                    listOf(4, 0) -> WIN4.count++
+                    listOf(5, 0) -> WIN5.count++
+                    listOf(5, 1) -> WIN5Bonus.count++
+                    listOf(6, 0) -> WIN6.count++
+                }
+            }
+        }
+
+        private fun countEqual(lotto: List<Int>, winNumbers: List<Int>): List<Int> {
+            var count = mutableListOf(0, 0)
+            for (order in 0 until winNumbers.size - 1) {
+                if (lotto.contains(winNumbers[order])) {
+                    count[0]++
+                }
+            }
+            if (count[0] == 5 && lotto.contains(winNumbers.last())) {
+                count[1]++
+            }
+            return count
+        }
+
+        fun makeWinNumbers(): List<Int> {
+            val winNumbers = mutableListOf<Int>()
+            for (winNumber in LottoWin.values()) {
+                winNumbers.add(winNumber.number)
+            }
+            return winNumbers
         }
     }
 }
