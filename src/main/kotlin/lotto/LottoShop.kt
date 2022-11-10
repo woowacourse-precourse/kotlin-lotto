@@ -9,6 +9,7 @@ class LottoShop {
         val buyAmount = readLine()!!
         if (!buyAmount.inputTypeException()) return
         val buyCntLotto = cntLotto(buyAmount.inputMoneyException())
+        createRandomLotto(buyCntLotto)
     }
 
     fun cntLotto(purchaseAmount: Int): Int {
@@ -33,6 +34,13 @@ class LottoShop {
         }
     }
 
-    fun createRandomLotto() {
+    fun createRandomLotto(purchaseCnt : Int): List<Lotto> {
+        val myLottoNumber = mutableListOf<Lotto>()
+        for (i in 0 until purchaseCnt) {
+            val randomLotto = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+            println(randomLotto)
+            myLottoNumber.add(Lotto(randomLotto))
+        }
+        return myLottoNumber
     }
 }
