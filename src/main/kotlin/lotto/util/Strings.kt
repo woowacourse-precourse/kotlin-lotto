@@ -1,7 +1,5 @@
 package lotto.util
 
-import java.text.DecimalFormat
-
 
 fun String.divideToNumsOrNull(delimiters: String): List<Int>? {
     val parsed = this.split(delimiters)
@@ -12,6 +10,3 @@ fun String.divideToNumsOrNull(delimiters: String): List<Int>? {
     }
     return nums
 }
-
-fun Int.toPriceFormatted() = DecimalFormat("#,###")
-    .format(this)
