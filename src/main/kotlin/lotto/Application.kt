@@ -9,26 +9,25 @@ fun main() {
     val winningNumber = WinningNumber().inputWinningNumber()
     val bonusNumber = BonusNumber().inputBonusNumber()
 
-    asdf(lottery, winningNumber, bonusNumber)
-
     dupleException(winningNumber, bonusNumber)
+
+    val rank = sumRanking(lottery, winningNumber, bonusNumber)
+    PrintMethod().printRanking(rank)
 }
 
-fun asdf(lottery: MutableList<Lotto>, winningNumber: List<Int>, bonusNumber: Int) {
+fun sumRanking(lottery: MutableList<Lotto>, winningNumber: List<Int>, bonusNumber: Int): MutableList<Int> {
     val ranking = mutableListOf<Int>(0, 0, 0, 0, 0)
 
     for (lotto in lottery) {
         when (lotto.findWinning(lotto.getNumbers(), winningNumber, bonusNumber)) {
             Reward.FIRST -> ranking[0] += 1
             Reward.SECOND -> ranking[1] += 1
-            Reward.THIRD -> ranking[1] += 1
-            Reward.FOURTH -> ranking[1] += 1
-            Reward.FIFTH -> ranking[1] += 1
+            Reward.THIRD -> ranking[2] += 1
+            Reward.FOURTH -> ranking[3] += 1
+            Reward.FIFTH -> ranking[4] += 1
         }
-
-        println(lotto.findWinning(lotto.getNumbers(), winningNumber, bonusNumber))
     }
-    println(ranking)
+    return ranking
 
 }
 

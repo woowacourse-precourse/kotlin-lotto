@@ -13,7 +13,6 @@ class Lotto(private val numbers: List<Int>) {
     fun findWinning(numbers: List<Int>, winningNumber: List<Int>, bonusNumber: Int): Reward {
         var bonus: Boolean = false
         var winningCount = 0
-        val winningReward = listOf<Int>(0, 0, 0, 0, 0)
 
         for (number in numbers) {
             if (winningNumber.contains(number)) winningCount += 1
@@ -29,7 +28,7 @@ class Lotto(private val numbers: List<Int>) {
             Reward.FIFTH.winningCount -> return Reward.FIFTH
         }
         if (winningCount == Reward.THIRD.winningCount && !bonus) return Reward.THIRD
-        if (winningCount == Reward.THIRD.winningCount && bonus) Reward.SECOND
+        if (winningCount == Reward.SECOND.winningCount && bonus) return Reward.SECOND
         return Reward.MISS
     }
 

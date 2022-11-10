@@ -89,5 +89,4 @@ class LottoTest {
             BonusNumber().exception(100.toString())
         }
     }
-
 }
