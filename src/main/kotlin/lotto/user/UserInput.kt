@@ -11,10 +11,15 @@ fun inputUser(): String {
 
 fun inputUserNumber(): String {
     val userInputNumber=inputUser()
-    println(userInputNumber.replace("000", ""))
+    checkMoneyStandard(userInputNumber)
     return userInputNumber.replace("000", "")
 }
-
+fun checkMoneyStandard(userInputNumber: String?) {
+    userInputNumber ?: throw IllegalArgumentException()
+    val checkMoney= userInputNumber.split(",").toList() as MutableList<String>
+    checkInputMessagePatten(checkMoney)
+    if(userInputNumber.toInt()%1000 !=0) throw IllegalArgumentException()
+}
 fun checkInputMessagePatten( checkOverlap: MutableList<String>) {
     val regax="^[0-9]*$"
     val pattern: Pattern = Pattern.compile(regax)
