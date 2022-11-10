@@ -1,6 +1,7 @@
 package lotto
 
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class LottoProviderTest {
 
@@ -26,6 +27,13 @@ class LottoProviderTest {
         for ((idx, cost) in inputs.withIndex()) {
             val lottos = lottoProvider.provideLottos(cost)
             assert(lottos.size == expects[idx])
+        }
+    }
+
+    @Test
+    fun `로또를 1개도 구매할 수 없는 경우 예외를 발생시킨다`() {
+        assertThrows<IllegalArgumentException> {
+            lottoProvider.provideLottos(999)
         }
     }
 }
