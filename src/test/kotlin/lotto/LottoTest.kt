@@ -2,7 +2,7 @@ package lotto
 
 import lotto.domain.Lotto
 import lotto.domain.LottoFactory
-import lotto.domain.LottoResult
+import lotto.domain.LottoRank
 import lotto.domain.WinningNumber
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
@@ -67,14 +67,14 @@ class LottoTest {
             listOf(1, 3, 5, 14, 22, 45)
         )
         val expects = listOf(
-            LottoResult.FIRST,
-            LottoResult.SECOND,
-            LottoResult.THIRD,
-            LottoResult.FOURTH,
-            LottoResult.FAIL,
-            LottoResult.FAIL,
-            LottoResult.FAIL,
-            LottoResult.FIFTH
+            LottoRank.FIRST,
+            LottoRank.SECOND,
+            LottoRank.THIRD,
+            LottoRank.FOURTH,
+            LottoRank.FAIL,
+            LottoRank.FAIL,
+            LottoRank.FAIL,
+            LottoRank.FIFTH
         )
 
         for ((idx, lottoNum) in lottoNums.withIndex()) {
