@@ -2,6 +2,7 @@ package lotto
 
 import org.junit.jupiter.api.Test
 import org.assertj.core.api.Assertions.assertThat
+import kotlin.math.*
 
 class LottoStatisticsTest {
     private val winning = listOf(1, 2, 3, 4, 5, 6)
@@ -23,6 +24,26 @@ class LottoStatisticsTest {
         lottos.forEach { result[it.matchResult(winning, bonus).index]++ }
         val expected = listOf(1, 0, 0, 0, 0)
         assertThat(result.subList(0, 5)).isEqualTo(expected)
+    }
+
+    @Test
+    fun `수익률 62_5%를 구하는 경우`() {
+        val expected = 62.5
+        var sum = 0.0
+        val lottoStatistics = LottoStatistics()
+        val statistics = lottoStatistics.statisticsLotto(lottos, winning, bonus)
+        for (i in statistics.indices) {
+            sum += when (i) {
+                MatchResult.THREE.index -> MatchResult.THREE.money * statistics[i]
+                MatchResult.FOUR.index -> MatchResult.FOUR.money * statistics[i]
+                MatchResult.FIVE.index -> MatchResult.FIVE.money * statistics[i]
+                MatchResult.BONUS.index -> MatchResult.BONUS.money * statistics[i]
+                else -> MatchResult.SIX.money * statistics[i]
+            }
+        }
+        val tmp: Double = sum / (lottos.size * 1000) * 100
+        val result = round(tmp * 10) / 10
+        assertThat(result).isEqualTo(expected)
     }
 
 }
