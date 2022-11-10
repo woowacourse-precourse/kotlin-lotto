@@ -1,8 +1,10 @@
 package lotto
 
+import lotto.domain.LottoProvider
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
+@Suppress("NonASCIICharacters")
 class LottoProviderTest {
 
     private val lottoProvider = LottoProvider()

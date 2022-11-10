@@ -1,5 +1,6 @@
-package lotto
+package lotto.domain
 
+import lotto.LOTTO_COST
 import lotto.util.requireWithPrefix
 
 class LottoProvider {

@@ -1,10 +1,13 @@
-package lotto
+package lotto.domain
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.LOTTO_LENGTH
+import lotto.LOTTO_MAX_NUM
+import lotto.LOTTO_MIN_NUM
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        Validator().validateLottoNumber(numbers)
+        LottoValidator().validateLottoNumber(numbers)
     }
 
     private fun getOverlapNumber(numbers: List<Int>) =
@@ -18,9 +21,9 @@ class Lotto(private val numbers: List<Int>) {
         else -> LottoResult.FAIL
     }
 
-    fun getLottoResult(winningNumbers: WinningNumbers): LottoResult {
-        val overlapNumber = getOverlapNumber(winningNumbers.numbers)
-        val bonusMatched = winningNumbers.bonus in numbers
+    fun getLottoResult(winningNumber: WinningNumber): LottoResult {
+        val overlapNumber = getOverlapNumber(winningNumber.numbers)
+        val bonusMatched = winningNumber.bonus in numbers
         return getLottoResult(overlapNumber, bonusMatched)
     }
 

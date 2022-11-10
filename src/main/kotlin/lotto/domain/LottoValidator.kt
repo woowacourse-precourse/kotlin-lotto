@@ -1,8 +1,11 @@
-package lotto
+package lotto.domain
 
+import lotto.LOTTO_LENGTH
+import lotto.LOTTO_MAX_NUM
+import lotto.LOTTO_MIN_NUM
 import lotto.util.requireWithPrefix
 
-class Validator {
+class LottoValidator {
     fun validateLottoNumber(numbers: List<Int>) {
         requireWithPrefix(
             numbers.size == LOTTO_LENGTH,
@@ -10,7 +13,7 @@ class Validator {
         )
         requireWithPrefix(
             numbers.all { it in LOTTO_MIN_NUM..LOTTO_MAX_NUM },
-            "로또 번호는 ${LOTTO_MIN_NUM}부터 ${LOTTO_MAX_NUM} 사이의 숫자여야 합니다."
+            "로또 번호는 ${LOTTO_MIN_NUM}부터 $LOTTO_MAX_NUM 사이의 숫자여야 합니다."
         )
         requireWithPrefix(
             numbers == numbers.distinct(),
@@ -21,7 +24,7 @@ class Validator {
     fun validateBonusNumber(numbers: List<Int>, bonus: Int) {
         requireWithPrefix(
             bonus in LOTTO_MIN_NUM..LOTTO_MAX_NUM,
-            "보너스 번호는 ${LOTTO_MIN_NUM}부터 ${LOTTO_MAX_NUM} 사이의 숫자여야 합니다."
+            "보너스 번호는 ${LOTTO_MIN_NUM}부터 $LOTTO_MAX_NUM 사이의 숫자여야 합니다."
         )
         requireWithPrefix(
             bonus !in numbers,

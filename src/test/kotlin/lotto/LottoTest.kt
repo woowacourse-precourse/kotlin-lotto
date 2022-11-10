@@ -1,11 +1,15 @@
 package lotto
 
+import lotto.domain.Lotto
+import lotto.domain.LottoResult
+import lotto.domain.WinningNumber
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 
 
 // TODO: 에러 메시지 프리픽스 검사
+@Suppress("NonASCIICharacters")
 class LottoTest {
     @Test
     fun `로또 번호의 개수가 6개가 넘어가면 예외가 발생한다`() {
@@ -47,7 +51,7 @@ class LottoTest {
 
     @Test
     fun `당첨 등수 검사`() {
-        val winningNumbers = WinningNumbers(
+        val winningNumber = WinningNumber(
             listOf(1, 2, 3, 4, 5, 6),
             7
         )
@@ -75,7 +79,7 @@ class LottoTest {
         for ((idx, lottoNum) in lottoNums.withIndex()) {
             val lotto = Lotto(lottoNum)
             assert(
-                lotto.getLottoResult(winningNumbers) == expects[idx]
+                lotto.getLottoResult(winningNumber) == expects[idx]
             )
         }
     }
