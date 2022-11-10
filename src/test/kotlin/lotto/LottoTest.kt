@@ -44,7 +44,7 @@ class LottoTest {
                 MatchResult.FIVE
             }
             6 -> MatchResult.SIX
-            else -> MatchResult.UNKNOWN
+            else -> MatchResult.FAILED
         }
         val expected = MatchResult.THREE
         assertThat(result).isEqualTo(expected)
@@ -63,7 +63,7 @@ class LottoTest {
                 MatchResult.FIVE
             }
             6 -> MatchResult.SIX
-            else -> MatchResult.UNKNOWN
+            else -> MatchResult.FAILED
         }
         val expected = MatchResult.FOUR
         assertThat(result).isEqualTo(expected)
@@ -82,7 +82,7 @@ class LottoTest {
                 MatchResult.FIVE
             }
             6 -> MatchResult.SIX
-            else -> MatchResult.UNKNOWN
+            else -> MatchResult.FAILED
         }
         val expected = MatchResult.FIVE
         assertThat(result).isEqualTo(expected)
@@ -101,7 +101,7 @@ class LottoTest {
                 MatchResult.FIVE
             }
             6 -> MatchResult.SIX
-            else -> MatchResult.UNKNOWN
+            else -> MatchResult.FAILED
         }
         val expected = MatchResult.BONUS
         assertThat(result).isEqualTo(expected)
@@ -120,7 +120,7 @@ class LottoTest {
                 MatchResult.FIVE
             }
             6 -> MatchResult.SIX
-            else -> MatchResult.UNKNOWN
+            else -> MatchResult.FAILED
         }
         val expected = MatchResult.SIX
         assertThat(result).isEqualTo(expected)

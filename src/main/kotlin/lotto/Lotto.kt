@@ -12,7 +12,8 @@ class Lotto(private val numbers: List<Int>) {
             3 -> MatchResult.THREE
             4 -> MatchResult.FOUR
             5 -> isMatchBonus(bonus)
-            else -> MatchResult.SIX
+            6 -> MatchResult.SIX
+            else -> MatchResult.FAILED
         }
     }
 
@@ -20,6 +21,6 @@ class Lotto(private val numbers: List<Int>) {
         if (numbers.contains(bonus)) MatchResult.BONUS else MatchResult.FIVE
 }
 
-enum class MatchResult {
-    THREE, FOUR, FIVE, BONUS, SIX, UNKNOWN
+enum class MatchResult(val index: Int) {
+    THREE(0), FOUR(1), FIVE(2), BONUS(3), SIX(4), FAILED(5)
 }
