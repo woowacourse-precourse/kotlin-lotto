@@ -66,21 +66,6 @@ fun getBouns(): Int {
     return bouns
 }
 
-fun compareLotto(my: Lotto, ans: Lotto, bouns: Int): Int {
-    var count = 0
-
-    for (n in my.lottoNumber) {
-        if (ans.lottoNumber.contains(n))
-            count++
-    }
-
-    if (count == 5) {
-        if (my.lottoNumber.contains(bouns))
-            count = 7
-    }
-
-    return count
-}
 
 fun myLottoScore(
     my: List<Lotto>,
@@ -90,7 +75,7 @@ fun myLottoScore(
     val scoreList = mutableListOf<Int>()
 
     for (l in my) {
-        scoreList.add(compareLotto(l, ans, bouns))
+        scoreList.add(l.lottoCorrect(ans, bouns))
     }
 
     return scoreList
@@ -123,12 +108,12 @@ fun printScore(my: List<Int>) {
 }
 
 fun calculPrize(my: List<Int>): Int {
-    val prize = listOf(5000, 50000, 1500000, 30000000, 2000000000)
+    val prize = listOf(rank.FIFTH,rank.FOURTH,rank.THIRD,rank.SECOND,rank.FIRST)
     var money = 0
 
     var idx = 0
     for (i in my) {
-        money += prize[idx] * i
+        money += prize[idx].prizeInt * i
         idx++
     }
 
