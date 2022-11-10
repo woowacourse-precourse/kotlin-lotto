@@ -1,6 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import camp.nextstep.edu.missionutils.Console.readLine
 
 /*
 2주차 피드백
@@ -21,8 +22,8 @@ ex)
 
 // Enum 클래스 적용해 프로그래밍을 구현한다.
 enum class State(val message: String){
-    Start("구입금액을 입력해 주세요."),
-    Many("개를 구매했습니다."),
+    start("구입금액을 입력해 주세요."),
+    many("개를 구매했습니다."),
     enterLottoNumber("당첨 번호를 입력해 주세요."),
     enterBonusNumber("보너스 번호를 입력해 주세요."),
     end("당첨 통계");
@@ -37,7 +38,20 @@ fun pickLottoNumbers() : MutableList<Int> {
     return lottoNumber
 }
 
-fun howmany(money : Int) : Int{
+fun pickBonusNumber(lottoNumber: MutableList<Int>) : MutableList<Int> {
+    var answer = mutableListOf<Int>()
+    var num = 0
+    while (answer.size!=1){
+        num=Randoms.pickNumberInRange(1, 45)
+        if (!lottoNumber.contains(num)){
+            answer.add(num)
+        }
+    }
+    return answer
+}
+
+fun howMany() : Int{
+    var money = readLine().toInt()
     var answer=money/1000
     return answer
 }
@@ -46,26 +60,30 @@ fun howmany(money : Int) : Int{
 
 
 fun main() {
-    var start = State.Start
-    var many = State.Many
-    var enterLottoNumber = State.enterLottoNumber
-    var enterBonusNumber = State.enterBonusNumber
-    var end = State.end
+    var cnt = 0
+    var lottoNumberCollect = mutableListOf<Int>()
+    var bonusNumberCollect = mutableListOf<Int>()
+    lottoNumberCollect = pickLottoNumbers()
+    bonusNumberCollect = pickBonusNumber(lottoNumberCollect)
+//    println(lottoNumberCollect)
+//    println(bonusNumberCollect)
 
     //시작
-    println(start.message)
+    println(State.start.message)
 
     //구매 개수
-    println(howmany(8000).toString()+many.message)
+    cnt=howMany()
+    println()
+    println(cnt.toString()+State.many.message)
 
     //당첨 번호
-    println(enterLottoNumber.message)
+    println(State.enterLottoNumber.message)
 
     //보너스 번호
-    println(enterBonusNumber.message)
+    println(State.enterBonusNumber.message)
 
     //당첨 통계
-    println(end.message)
+    println(State.end.message)
 
-    println(pickLottoNumbers())
+
 }
