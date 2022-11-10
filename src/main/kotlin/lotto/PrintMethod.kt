@@ -52,6 +52,6 @@ class PrintMethod {
                 4 -> `yield` += fifthReward * rank[idx]
             }
         }
-        println(yieldMessage + "%.1f".format(`yield`.toFloat() / lottoPrice * percent) +yieldEndMessage)
+        println(yieldMessage + "%.1f".format(`yield`.toFloat() / lottoPrice * percent) + yieldEndMessage)
     }
 }

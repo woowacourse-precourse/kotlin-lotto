@@ -36,7 +36,7 @@ class LottoTest {
     }
 
     @Test
-    fun `구입 금액에 숫자가 1000으로 나누어 떨어지지 않을 경우 예외가 발생한다`() {
+    fun `구입 금액이 숫자가 1000으로 나누어 떨어지지 않을 경우 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
             BuyAmount().exception(1500.toString())
         }

@@ -10,7 +10,6 @@ import lotto.Constant.Companion.regularMax
 import lotto.Constant.Companion.regularMin
 
 class BuyAmount {
-
     init {
         println(inputAmountMessage)
     }
@@ -26,12 +25,10 @@ class BuyAmount {
             println(emptyErrorMessage)
             throw IllegalArgumentException(emptyErrorMessage)
         }
-
-        if (!inputAmount.all { it in regularMin..regularMax}) {
+        if (!inputAmount.all { it in regularMin..regularMax }) {
             println(notIntErrorMessage)
             throw IllegalArgumentException(notIntErrorMessage)
         }
-
         if (inputAmount.toInt() % lottoCost != 0) {
             println(costNotRegularErrorMessage)
             throw IllegalArgumentException(costNotRegularErrorMessage)

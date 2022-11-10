@@ -1,6 +1,5 @@
 package lotto
 
-
 enum class Reward(val winningCount: Int) {
     FIRST(6),
     SECOND(5),

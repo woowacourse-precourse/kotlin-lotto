@@ -6,6 +6,7 @@ class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == lottoSize)
     }
+
     fun getNumbers(): List<Int> {
         return numbers
     }
@@ -31,5 +32,4 @@ class Lotto(private val numbers: List<Int>) {
         if (winningCount == Reward.SECOND.winningCount && bonus) return Reward.SECOND
         return Reward.MISS
     }
-
 }

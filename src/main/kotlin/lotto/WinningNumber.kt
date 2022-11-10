@@ -11,7 +11,6 @@ import lotto.Constant.Companion.winningRangeErrorMessage
 import lotto.Constant.Companion.winningRegularErrorMessage
 
 class WinningNumber {
-
     init {
         println(inputWinningMessage)
     }

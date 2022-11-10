@@ -7,7 +7,6 @@ import lotto.Constant.Companion.maxLottoNumber
 import lotto.Constant.Companion.minLottoNumber
 import lotto.Constant.Companion.notIntErrorMessage
 import lotto.Constant.Companion.winningRangeErrorMessage
-import kotlin.math.max
 
 class BonusNumber {
     init {
@@ -25,12 +24,10 @@ class BonusNumber {
             println(emptyErrorMessage)
             throw IllegalArgumentException(emptyErrorMessage)
         }
-
         if (!isNumeric(inputBonus)) {
             println(notIntErrorMessage)
             throw IllegalArgumentException(notIntErrorMessage)
         }
-
         if (inputBonus.toInt() !in minLottoNumber..maxLottoNumber) {
             println(winningRangeErrorMessage)
             throw IllegalArgumentException(winningRangeErrorMessage)

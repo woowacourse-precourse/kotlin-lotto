@@ -1,7 +1,6 @@
 package lotto
 
 class Constant {
-
     companion object {
         const val lottoCost = 1000
         const val regularMin = '0'

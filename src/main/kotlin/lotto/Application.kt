@@ -13,6 +13,7 @@ fun main() {
     dupleException(winningNumber, bonusNumber)
 
     val rank = sumRanking(lottery, winningNumber, bonusNumber)
+
     PrintMethod().printRanking(rank)
     PrintMethod().printYield(rank, lottoPrice * lottoCost)
 }
@@ -27,10 +28,10 @@ fun sumRanking(lottery: MutableList<Lotto>, winningNumber: List<Int>, bonusNumbe
             Reward.THIRD -> ranking[2] += 1
             Reward.FOURTH -> ranking[3] += 1
             Reward.FIFTH -> ranking[4] += 1
+            else -> {}
         }
     }
     return ranking
-
 }
 
 
