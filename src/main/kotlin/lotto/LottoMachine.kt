@@ -1,7 +1,10 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Randoms
+
 class LottoMachine(lottoAmount: String) {
     private var lottoCount = 0
+    private val lottery = mutableListOf<Lotto>()
 
     init {
         validateTypeAmount(lottoAmount)
@@ -10,6 +13,13 @@ class LottoMachine(lottoAmount: String) {
     }
 
     fun getLottoCount() = lottoCount
+
+    fun pickNewLotto(count: Int) {
+        for (index in 0 until count) {
+            val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+            lottery.add(Lotto(numbers))
+        }
+    }
 
     fun validateTypeAmount(amount: String): Boolean {
         val typeCount = amount.filter { number ->
