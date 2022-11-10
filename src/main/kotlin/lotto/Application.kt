@@ -2,12 +2,17 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 
-fun checkInt(str: String){
-    for(elem in str){
-        if(elem !in '0' .. '9')
-            throw IllegalArgumentException("[ERROR] 숫자를 입력해주세요.")
+fun checkInt(str: String):Boolean {
+    for (elem in str) {
+        if (elem !in '0'..'9') {
+            println("[ERROR] 숫자를 입력해주세요.")
+            return false
+        }
     }
+
+    return true
 }
+
 fun randomLotto(): Lotto {       //사용자가 로또를 사면 구매한 로또 번호를 반환하는 함수
     val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
     numbers.sort()
@@ -17,13 +22,8 @@ fun randomLotto(): Lotto {       //사용자가 로또를 사면 구매한 로�
     return Lotto(numbers)
 }
 
-fun makeLotto(): Int {
-    val number = readLine()!!
+fun makeLotto(number:String): Int {
     var manyLotto = 0
-    //구입 금액 입력받고 숫자가 아닌 입력이면 오류처리
-
-    checkInt(number)
-
     val num = number.toInt()
 
     if (num % 1000 != 0)
@@ -66,7 +66,6 @@ fun getBouns(): Int {
     return bouns
 }
 
-
 fun myLottoScore(
     my: List<Lotto>,
     ans: Lotto,
@@ -108,7 +107,7 @@ fun printScore(my: List<Int>) {
 }
 
 fun calculPrize(my: List<Int>): Int {
-    val prize = listOf(rank.FIFTH,rank.FOURTH,rank.THIRD,rank.SECOND,rank.FIRST)
+    val prize = listOf(rank.FIFTH, rank.FOURTH, rank.THIRD, rank.SECOND, rank.FIRST)
     var money = 0
 
     var idx = 0
@@ -143,8 +142,12 @@ enum class rank(val match: String, val prize: String, val prizeInt: Int) {
 fun main() {
     println("구입금액을 입력해 주세요.")
     val myLotto = mutableListOf<Lotto>()
-    val numLotto = makeLotto()
+    val lottoString = readLine()!!
 
+    if(!checkInt(lottoString))
+        return
+
+    val numLotto = makeLotto(lottoString)
 
     for (i: Int in 1..numLotto) {
         myLotto.add(randomLotto())
