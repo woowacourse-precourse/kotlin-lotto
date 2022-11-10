@@ -80,7 +80,7 @@ class LottoTest {
         for ((idx, lottoNum) in lottoNums.withIndex()) {
             val lotto = Lotto(lottoNum)
             assert(
-                lotto.getLottoResult(winningNumber) == expects[idx]
+                lotto.getLottoRank(winningNumber) == expects[idx]
             )
         }
     }
