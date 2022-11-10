@@ -1,7 +1,8 @@
 package lotto.util
 
 fun String.divideToNums(delimiters: String): List<Int> {
-    val parsed = this.split(delimiters)
+    val trimmed = this.replace("\\s".toRegex(), "")
+    val parsed = trimmed.split(delimiters)
     val nums = mutableListOf<Int>()
     for (str in parsed) {
         val num = str.toIntOrNull()
