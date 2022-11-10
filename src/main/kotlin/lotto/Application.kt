@@ -8,7 +8,8 @@ fun main() {
     machine.pickNewLotto(machine.getLottoCount())
     println("\n${machine.getLottoCount()}개를 구매했습니다.")
     machine.getLottoNumbers()
-
-
+    println("\n당첨 번호를 입력해 주세요.")
+    val winning = Winning(Console.readLine())
+    winning.inputBonusNumber(Console.readLine())
 
 }
