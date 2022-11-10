@@ -36,4 +36,11 @@ class LottoProviderTest {
             lottoProvider.provideLottos(999)
         }
     }
+
+    @Test
+    fun `로또 가격으로 나누어 떨어지지 않는 경우 예외를 발생시킨다`() {
+        assertThrows<IllegalArgumentException> {
+            lottoProvider.provideLottos(5500)
+        }
+    }
 }
