@@ -20,11 +20,35 @@ ex)
 // Enum 클래스 적용해 프로그래밍을 구현한다.
 enum class State(val message: String){
     Start("구입금액을 입력해 주세요."),
+    Many("개를 구매했습니다."),
     enterLottoNumber("당첨 번호를 입력해 주세요."),
     enterBonusNumber("보너스 번호를 입력해 주세요."),
     end("당첨 통계");
+
+    //함수 추가 가능함
+
 }
 
 fun main() {
+    var start = State.Start
+    var many = State.Many
+    var enterLottoNumber = State.enterLottoNumber
+    var enterBonusNumber = State.enterBonusNumber
+    var end = State.end
+
+    //시작
+    println(start.message)
+
+    //구매 개수
+    println(many.message)
+
+    //당첨 번호
+    println(enterLottoNumber.message)
+
+    //보너스 번호
+    println(enterBonusNumber.message)
+
+    //당첨 통계
+    println(end.message)
 
 }
