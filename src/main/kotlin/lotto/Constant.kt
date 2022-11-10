@@ -20,5 +20,11 @@ class Constant {
         const val winningRangeErrorMessage = "[ERROR] 1 ~ 45의 숫자만 입력해주세요."
         const val winningDigitErrorMessage = "[ERROR] 공백 없이 숫자로 입력해 주세요."
         const val winningDupleErrorMessage = "[ERROR] 중복 없이 입력해 주세요."
+        const val bonusDupleErrorMessage = "[ERROR] 당첨 번호와 보너스는 중복 될 수 없습니다."
+        const val firstReward = 2000000000
+        const val secondReward = 30000000
+        const val thirdReward = 1500000
+        const val fourthReward = 50000
+        const val fifthReward = 5000
     }
 }

@@ -1,14 +1,34 @@
 package lotto
 
+import lotto.Constant.Companion.bonusDupleErrorMessage
 import lotto.Constant.Companion.lottoSize
 import lotto.Constant.Companion.printBuyMessage
 
 fun main() {
     val lottery = saveLotto()
     val winningNumber = WinningNumber().inputWinningNumber()
-    println(winningNumber)
     val bonusNumber = BonusNumber().inputBonusNumber()
-    println(lottery)
+
+    asdf(lottery, winningNumber, bonusNumber)
+
+    dupleException(winningNumber, bonusNumber)
+}
+
+fun asdf(lottery: MutableList<Lotto>, winningNumber: List<Int>, bonusNumber: Int) {
+    val ranking = mutableListOf<Int>(0, 0, 0, 0, 0)
+
+    for (lotto in lottery) {
+        when (lotto.findWinning(lotto.getNumbers(), winningNumber, bonusNumber)) {
+            Reward.FIRST -> ranking[0] += 1
+            Reward.SECOND -> ranking[1] += 1
+            Reward.THIRD -> ranking[1] += 1
+            Reward.FOURTH -> ranking[1] += 1
+            Reward.FIFTH -> ranking[1] += 1
+        }
+
+        println(lotto.findWinning(lotto.getNumbers(), winningNumber, bonusNumber))
+    }
+    println(ranking)
 
 }
 
@@ -20,13 +40,17 @@ fun saveLotto(): MutableList<Lotto> {
     PrintMethod().printBuyAmount(lottoPrice)
     for (i in 0 until lottoPrice) {
         val makeLotto = Ticket().makeLotto()
+        val lotto = Lotto(makeLotto)
 
-        lottoWallet.add(Lotto(makeLotto))
+        lottoWallet.add(lotto)
         PrintMethod().printWallet(makeLotto)
     }
     return lottoWallet
 }
 
-fun exception(winningNumber: List<String>, bonusNumber: Int) {
-
+fun dupleException(winningNumber: List<Int>, bonusNumber: Int) {
+    if (winningNumber.contains(bonusNumber)) {
+        println(bonusDupleErrorMessage)
+        throw IllegalArgumentException(bonusDupleErrorMessage)
+    }
 }
