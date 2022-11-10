@@ -8,10 +8,10 @@
   - [] 사용자가 금액을 제대로 입력했는지 검사한다
   - [] 사용자가 당첨 번호를 제대로 입력했는지 검사한다
   - [] 사용자가 보너스 번호를 정수로 입력했는지 검사한다
-- [] 로또 발급을 해주는 역할을 클래스로 의인화한다 - LottoSeller()
-    - [] 사용자가 입력한 금액만큼 로또를 발행해야 함
-        - [] 사용자가 입력한 금액을 보고 몇개를 발급해주는지 알아야 한다 - LottoSeller#sellLottoCount()
-        - [] 그 개수만큼 발급해줘야 한다. - LottoSeller#sellLotto()
+- [x] 로또 발급을 해주는 역할을 클래스로 의인화한다 - LottoSeller()
+    - [x] 사용자가 입력한 금액만큼 로또를 발행해야 함
+        - [x] 사용자가 입력한 금액을 보고 몇개를 발급해주는지 알아야 한다 - LottoSeller#sellLottoCount()
+        - [x] 그 개수만큼 발급해줘야 한다. - LottoSeller#sellLotto()
 - [x] 로또 당첨 결과에 대해 통계 내주는 역할을 클래스로 의인화 한다 - LottoStatistics
   - [x] 로또 당첨 결과를 통계 내줘야 한다 -  LottoStatistics#statisticsLotto()
   - [x] 로또 결과에 대해 수익률을 구해줘야 한다 - LottoStatistics#yield()
