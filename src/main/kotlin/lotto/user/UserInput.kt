@@ -1,9 +1,11 @@
 package lotto.user
 
 import camp.nextstep.edu.missionutils.Console
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
-fun inputUserMoney(): String {
-    print("구입금액을 입력해 주세요.")
+fun inputUser(): String {
     val userInputMoney = Console.readLine()
     return userInputMoney.toString()
 }
+
