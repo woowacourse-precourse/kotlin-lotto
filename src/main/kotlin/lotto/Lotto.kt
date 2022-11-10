@@ -18,9 +18,9 @@ class Lotto(private val numbers: List<Int>) {
         else -> LottoResult.FAIL
     }
 
-    fun getLottoResult(winningNumbers: List<Int>, bonus: Int): LottoResult {
-        val overlapNumber = getOverlapNumber(winningNumbers)
-        val bonusMatched = bonus in numbers
+    fun getLottoResult(winningNumbers: WinningNumbers): LottoResult {
+        val overlapNumber = getOverlapNumber(winningNumbers.numbers)
+        val bonusMatched = winningNumbers.bonus in numbers
         return getLottoResult(overlapNumber, bonusMatched)
     }
 
