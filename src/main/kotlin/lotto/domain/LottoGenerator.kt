@@ -2,8 +2,6 @@ package lotto.domain
 
 import camp.nextstep.edu.missionutils.Randoms
 
-import lotto.Lotto
-
 import util.Constants
 import util.Exceptions
 
