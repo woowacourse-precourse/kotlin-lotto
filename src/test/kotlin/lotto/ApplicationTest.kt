@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersI
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
 class ApplicationTest : NsTest() {
@@ -49,6 +50,48 @@ class ApplicationTest : NsTest() {
             assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
+
+    @Nested
+    inner class InputMoney {
+
+        @Test
+        fun `구매 금액 단위 테스트`() {
+
+        }
+    }
+
+    @Nested
+    inner class BuyLotto {
+
+        @Test
+        fun `로또 구매 개수 안내문 출력 테스트`() {
+
+        }
+
+        @Test
+        fun `구매 내역 출력 개수 테스트`() {
+
+        }
+
+        @Test
+        fun `로또에 입력된 수 중복 테스트`() {
+
+        }
+    }
+
+    @Nested
+    inner class LottoStatistics {
+        @Test
+        fun `당첨된 로또 개수 테스트`() {
+
+        }
+
+        @Test
+        fun `총 수익률 검수 테스트`() {
+
+        }
+    }
+
 
     override fun runMain() {
         main()
