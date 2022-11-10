@@ -1,5 +1,7 @@
 package lotto.domain
 
+import kotlin.math.round
+
 class LottoResult(lottos: List<Lotto>, winningNumber: WinningNumber) {
     private val rankToCnt = mutableMapOf<LottoRank, Int>()
 
@@ -15,7 +17,8 @@ class LottoResult(lottos: List<Lotto>, winningNumber: WinningNumber) {
         for ((rank, cnt) in rankToCnt) {
             prizeSum += rank.prize * cnt
         }
-        return prizeSum / origin.toDouble() * 100.0
+        val profit = prizeSum / origin.toDouble() * 100.0
+        return round(profit * 10) / 10.0
     }
 
     override fun toString() =
