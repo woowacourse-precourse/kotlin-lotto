@@ -1,6 +1,5 @@
 package lotto
 
-import org.assertj.core.api.Assertions
 import java.lang.IllegalArgumentException
 
 const val ERROR_WIN_SIZE = "[ERROR] 당첨 로또 번호는 6개의 숫자로 구분지어 입력해야 합니다."
