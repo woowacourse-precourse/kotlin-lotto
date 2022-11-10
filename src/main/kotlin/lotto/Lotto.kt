@@ -7,4 +7,6 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     private fun checkDuplicate(): Int = numbers.distinct().size
+
+    fun printLottoNumber() = println(numbers.sorted())
 }
