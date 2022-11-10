@@ -3,10 +3,13 @@ package lotto
 import camp.nextstep.edu.missionutils.Randoms
 import org.junit.jupiter.api.assertThrows
 import java.lang.Math.round
+import java.lang.NumberFormatException
 
 fun main() {
     println("구입금액을 입력해 주세요.")
-    var charge = readLine()!!.toInt()
+    var input = readLine()!!.toString()
+    if (Find_Num(input)) assertThrows<IllegalArgumentException> {"[ERROR] 숫자가 아닙니다."}
+    var charge = input.toInt()
     if (charge % 1000 != 0) assertThrows<IllegalArgumentException>{"[ERROR] 숫자가 나누어 떨어지지 않습니다."}
     var count = (charge / 1000).toInt()
     println("${count}개를 구매했습니다.")
@@ -31,6 +34,15 @@ fun main() {
         stat[Stat(cor)]++
     }
     Print_Result(stat, charge)
+}
+
+fun Find_Num(charge : String) : Boolean{
+    return try{
+        charge.toInt()
+        false
+    } catch (e : NumberFormatException){
+        true
+    }
 }
 
 fun ToInt(list : List<String>) : List<Int>{
