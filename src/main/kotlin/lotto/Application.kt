@@ -28,7 +28,7 @@ fun main() {
     println("보너스 번호를 입력해 주세요.")
     var bonusnumber = bonusnumber(winningnumber)
     var pointnumber = comparenumber(usernumber,winningnumber,bonusnumber)
-    println(pointnumber)
+    calculater(pointnumber)
 
 
 
@@ -173,7 +173,7 @@ fun calculater (a:IntArray) : Int
             rank1+=1
             money+=2000000000
         }
-        if (a[i] == 5)
+        if (a[i] == 15)
         {
             rank2+=1
             money+=30000000
