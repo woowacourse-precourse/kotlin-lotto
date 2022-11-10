@@ -12,11 +12,12 @@ class LottoMachine(lottoAmount: String) {
         lottoCount = lottoAmount.toInt() / LOTTO_PRICE
     }
 
-    fun getLottoNumbers(){
-        for(index in 0 until lottoCount){
+    fun getLottoNumbers() {
+        for (index in 0 until lottoCount) {
             lottery[index].printLottoNumber()
         }
     }
+
     fun getLottoCount() = lottoCount
 
     fun pickNewLotto(count: Int) {
