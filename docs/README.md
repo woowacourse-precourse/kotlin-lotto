@@ -2,6 +2,7 @@
 
 ## 기능 목록
 - [ ] 로또 구입 금액을 입력하면 1000원당 1장, 구입 금액에 해당하는 만큼 로또를 생성한다. - LottoShop#buyLotto()
+- [ ] 구입 금액에 만큼 살 수 있는 로또의 개수를 확인하다.- LottoShop#cntLotto()
 - [ ] 1부터 45까지 서로 다른 임의의 수 6개의 숫자를 생성한다. - LottoShop#createRandomLotto()
 - [ ] 당첨 번호는 중복되지 않는 숫자 6개와 보너스 번호 1개를 입력 받는다. - LottoWin#inputWinLotto()
 - [ ] 당첨은 1등부터 5등까지 있다. 로또 번호와 당첨 번호를 비교할 수 있다. - LottoCheck#compareLotto()
