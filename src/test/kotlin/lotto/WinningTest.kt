@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class WinningTest {
-    private val win = Winning()
+    private val win = Winning("1,2,3,4,5,6")
 
     @Test
     fun `로또 당첨 번호에 중복된 수가 있으면 예외가 발생한다`() {

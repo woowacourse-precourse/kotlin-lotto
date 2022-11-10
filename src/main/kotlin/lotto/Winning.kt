@@ -10,8 +10,8 @@ class Winning(winningNumber: String) {
     init {
         splitLuckyNumber(winningNumber)
         require(luckyNumber.size == 6) { "[ERROR] 번호를 6개 입력해 주세요" }
-        validateLuckyNumberRange()
-        validateLuckyNumberDuplicate()
+        validateLuckyNumberRange(luckyNumber)
+        validateLuckyNumberDuplicate(luckyNumber)
     }
 
     fun splitLuckyNumber(numbers: String) {
@@ -24,7 +24,7 @@ class Winning(winningNumber: String) {
         }
     }
 
-    fun validateLuckyNumberRange(): Boolean {
+    fun validateLuckyNumberRange(luckyNumber : List<Int>): Boolean {
         val count = luckyNumber.filter { number ->
             number in 1..45
         }.size
@@ -34,20 +34,20 @@ class Winning(winningNumber: String) {
         }
     }
 
-    fun validateLuckyNumberDuplicate(): Boolean {
+    fun validateLuckyNumberDuplicate(luckyNumber : List<Int>): Boolean {
         return when (luckyNumber.distinct().size) {
             6 -> true
             else -> throw IllegalArgumentException("[ERROR] 중복되지 않은 수를 입력해 주세요.")
         }
     }
 
-    fun validateBonusNumberRange() {
+    fun validateBonusNumberRange(bonusNumber: Int) {
         if (bonusNumber !in 1..45) {
             throw IllegalArgumentException("[ERROR] 1~45 사이의 숫자를 입력해 주세요.")
         }
     }
 
-    fun compareBonusWithLuckyNumber() {
+    fun compareBonusWithLuckyNumber(bonusNumber: Int) {
         require(luckyNumber.size == 6) { "[ERROR] 로또 당첨 번호 6개가 필요합니다." }
         if (luckyNumber.contains(bonusNumber)) {
             throw IllegalArgumentException("[ERROR] 로또 당첨 번호와 중복되지 않는 숫자를 입력해 주세요.")
@@ -63,7 +63,7 @@ class Winning(winningNumber: String) {
     }
 
     fun checkBonusNumberException() {
-        validateBonusNumberRange()
-        compareBonusWithLuckyNumber()
+        validateBonusNumberRange(bonusNumber)
+        compareBonusWithLuckyNumber(bonusNumber)
     }
 }
