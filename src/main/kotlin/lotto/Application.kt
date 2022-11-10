@@ -58,3 +58,32 @@ fun checkWinningNumberException(winningNumber: List<String>): List<Int> {
 fun checkWinningAndBonusNumberException(winningNumber: List<Int>, bonusNumber: Int) {
     if (winningNumber.contains(bonusNumber)) printAndThrowIllegalException("[ERROR] 보너스 번호가 당첨 번호와 중복되었습니다.")
 }
+
+fun totalLottoResult(lottoList: List<Lotto>, winningNumber: List<Int>, bonusNumber: Int): Map<LottoResult, Int> {
+    val resultMap = HashMap<LottoResult, Int> ()
+    lottoList.forEach { lotto ->
+        val result = lotto.getResult(winningNumber, bonusNumber)
+        resultMap[result] = (resultMap[result] ?: 0) + 1
+    }
+    resultMap.toList().sortedBy { it.first.price }.forEach {
+        if (it.first != LottoResult.None) {
+            println("${it.first.description} - ${it.second}개")
+        }
+    }
+    return resultMap
+}
+
+fun Map<LottoResult, Int>.printTotalResult() {
+    this.toList().sortedBy { it.first.price }.forEach {
+        if (it.first != LottoResult.None) {
+            println("${it.first.description} - ${it.second}개")
+        }
+    }
+}
+fun Map<LottoResult, Int>.totalPrice(): Int {
+    var totalPrice = 0
+    this.forEach {
+        totalPrice += it.key.price * it.value
+    }
+    return totalPrice
+}
