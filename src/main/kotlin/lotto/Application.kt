@@ -4,24 +4,54 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     //TODO("프로그램 구현")
-    var winningnum = winningnumselect()
-    var bonusnumber = bonusball()
+//    var winningnum = winningnumselect()
+//
+//    var usermoney = moneyinput()
+//    moneycheck(usermoney)
+//    var ticket = usermoney/1000
+//    println("${ticket}개를 구매했습니다.")
+//    var userlottolist = userselectnum(ticket)
+//    println("")
+//    var wincountlist = comparenumber(winningnum,userlottolist,bonusnumber)
+//    var a = calculater(wincountlist)
+//    println(a)
+
+    println("구입금액을 입력해 주세요.")
     var usermoney = moneyinput()
     moneycheck(usermoney)
     var ticket = usermoney/1000
     println("${ticket}개를 구매했습니다.")
-    var userlottolist = userselectnum(ticket)
-    println("")
-    var wincountlist = comparenumber(winningnum,userlottolist,bonusnumber)
-    var a = calculater(wincountlist)
-    println(a)
+    var usernumber = userpicknumber(ticket)
+    printusernumber(usernumber)
+    println("당첨 번호를 입력해 주세요.")
+    var winningnumber = winningselectnum()
+    println("보너스 번호를 입력해 주세요.")
+    var bonusnumber = bonusnumber(winningnumber)
+    var pointnumber = comparenumber(usernumber,winningnumber,bonusnumber)
+    println(pointnumber)
+
+
+
+
+
 
 }
 
+fun printusernumber (a:MutableList<MutableList<Int>>) {
+    for (i in 0 until a.size)
+    {
+        println("${a[i]}")
+    }
+}
 
-fun winningnumselect () : MutableList<Int> {
-    val numbers = Randoms.pickUniqueNumbersInRange(1, 45 ,6)
-    println(numbers)
+
+fun userpicknumber (ticket: Int) : MutableList<MutableList<Int>> {
+    val numbers = mutableListOf<MutableList<Int>>()
+    for (i in 0..ticket-1)
+    {
+        val number = Randoms.pickUniqueNumbersInRange(1, 45 ,6)
+        numbers.add(number)
+    }
     return numbers
 }
 
@@ -36,59 +66,76 @@ fun moneycheck (a : Int){
     }
 }
 
-fun userselectnum (a: Int) : Array<IntArray>
+fun winningselectnum () : IntArray
 {
-    var usernumber = Array(a){IntArray(6)}
-    for (j in 0..a-1)
+    var usernumber = IntArray(6)
+    var strinput = readLine()!!.toString()
+    var inputslit =strinput.split(",")
+
+    for (i in 0..5)
     {
-
-        var strinput = readLine()!!.toString()
-        var inputslit =strinput.split(",")
-
-        for (i in 0..5)
-        {
-            var inputvalue = inputslit[i].toInt()
-            usernumber[j][i]=inputvalue
-        }
+        var inputvalue = inputslit[i].toInt()
+        usernumber[i]=inputvalue
     }
     return usernumber
 }
 
-fun comparenumber(a:MutableList<Int> , b:Array<IntArray> , c:MutableList<Int>) : IntArray {
-    var countunion = IntArray(b.size)
-    for (i in 0..b.size-1)
+fun bonusnumber (a:IntArray) : Int
+{
+    var bonusnumber = readLine()!!.toInt()
+    for (i in 0..5)
+    {
+        if (bonusnumber == a[i])
+        {
+            throw IllegalArgumentException("[ERROR] 기존 번호와 보너스 번호가 같습니다.")
+        }
+    }
+    return bonusnumber
+}
+
+fun comparenumber(a:MutableList<MutableList<Int>> , b:IntArray , c:Int) : IntArray {
+    var countunion = IntArray(a.size)
+    for (i in 0..a.size-1)
     {
         var count = 0
+        var bonuscount = 0
 
         for (j in 0..5)
         {
-            if (a[0] == b[i][j])
+            if (b[0] == a[i][j])
             {
                 count+=1
             }
-            if (a[1] == b[i][j])
+            if (b[1] == a[i][j])
             {
                 count+=1
             }
-            if (a[2] == b[i][j])
+            if (b[2] == a[i][j])
             {
                 count+=1
             }
-            if (a[3] == b[i][j])
+            if (b[3] == a[i][j])
             {
                 count+=1
             }
-            if (a[4] == b[i][j])
+            if (b[4] == a[i][j])
             {
                 count+=1
             }
-            if(a[5] == b[i][j])
+            if( b[5] == a[i][j])
             {
                 count+=1
             }
-
+            if( c==a[i][j])
+            {
+                bonuscount +=1
+            }
         }
         countunion[i]=count
+        if (bonuscount > 0 && countunion[i] == 5)
+        {
+            countunion[i]+=10
+        }
         println("")
     }
     return countunion
