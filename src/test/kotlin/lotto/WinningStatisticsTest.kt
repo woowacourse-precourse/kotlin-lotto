@@ -62,6 +62,38 @@ class WinningStatisticsTest : NsTest(){
         }
     }
 
+    @Test
+    fun `당첨 개수 세기 테스트`(){
+        LottoWin.NUM1.number=1
+        LottoWin.NUM2.number=2
+        LottoWin.NUM3.number=3
+        LottoWin.NUM4.number=4
+        LottoWin.NUM5.number=5
+        LottoWin.NUM6.number=6
+        LottoWin.BONUS.number=7
+        val lottoes = listOf(listOf(1,2,3,4,5,6),listOf(1,2,3,7,8,9),listOf(1,2,3,5,6,7))
+        WinningStatistics.calculateWin(lottoes)
+        assertThat(WinningStatistics.WIN3.count).isEqualTo(1)
+        assertThat(WinningStatistics.WIN5Bonus.count).isEqualTo(1)
+        assertThat(WinningStatistics.WIN6.count).isEqualTo(1)
+    }
+
+    @Test
+    fun `당첨 개수 세기 테스트2`(){
+        LottoWin.NUM1.number=1
+        LottoWin.NUM2.number=2
+        LottoWin.NUM3.number=3
+        LottoWin.NUM4.number=4
+        LottoWin.NUM5.number=5
+        LottoWin.NUM6.number=6
+        LottoWin.BONUS.number=7
+        val lottoes = listOf(listOf(1,2,3,4,5,8),listOf(1,2,3,7,8,9),listOf(1,2,9,10,11,12))
+        WinningStatistics.calculateWin(lottoes)
+        assertThat(WinningStatistics.WIN3.count).isEqualTo(1)
+        assertThat(WinningStatistics.WIN5.count).isEqualTo(1)
+    }
+
+
     override fun runMain() {
         main()
     }
