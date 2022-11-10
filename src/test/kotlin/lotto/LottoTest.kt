@@ -1,6 +1,7 @@
 package lotto
 
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 
 
@@ -33,6 +34,13 @@ class LottoTest {
         }
         assertThrows<IllegalArgumentException> {
             Lotto(listOf(1, 2, 3, 4, 5, 46))
+        }
+    }
+
+    @Test
+    fun `로또 자동 생성 시 예외가 발생하면 안된다`() {
+        assertDoesNotThrow {
+            Lotto.generate()
         }
     }
 }
