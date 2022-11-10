@@ -1,6 +1,7 @@
 package lotto
 
 import lotto.domain.Lotto
+import lotto.domain.LottoFactory
 import lotto.domain.LottoResult
 import lotto.domain.WinningNumber
 import org.junit.jupiter.api.Test
@@ -45,7 +46,7 @@ class LottoTest {
     @Test
     fun `로또 자동 생성 시 예외가 발생하면 안된다`() {
         assertDoesNotThrow {
-            Lotto.generate()
+            LottoFactory.generate()
         }
     }
 
