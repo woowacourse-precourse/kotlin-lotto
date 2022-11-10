@@ -2,6 +2,12 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 
+fun checkInt(str: String){
+    for(elem in str){
+        if(elem !in '0' .. '9')
+            throw IllegalArgumentException("[ERROR] 숫자를 입력해주세요.")
+    }
+}
 fun randomLotto(): Lotto {       //사용자가 로또를 사면 구매한 로또 번호를 반환하는 함수
     val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
     numbers.sort()
@@ -13,15 +19,11 @@ fun randomLotto(): Lotto {       //사용자가 로또를 사면 구매한 로�
 
 fun makeLotto(): Int {
     val number = readLine()!!
-    println(number)
     var manyLotto = 0
     //구입 금액 입력받고 숫자가 아닌 입력이면 오류처리
 
-    for(n in number){
-        if(n !in '0'..'9'){
-            throw IllegalArgumentException("[ERROR] 숫자를 입력해주세요")
-        }
-    }
+    checkInt(number)
+
     val num = number.toInt()
 
     if (num % 1000 != 0)
@@ -109,47 +111,50 @@ fun calculScore(my: List<Int>): List<Int> {
     return score
 }
 
-fun printScore(my: List<Int>){
+fun printScore(my: List<Int>) {
     var idx = 0
-    val prize = listOf<rank>(rank.FIFTH,rank.FOURTH,rank.THIRD,rank.SECOND,rank.FIRST)
+    val prize = listOf<rank>(rank.FIFTH, rank.FOURTH, rank.THIRD, rank.SECOND, rank.FIRST)
 
-    for(n in my){
+    for (n in my) {
         println("${prize[idx].match} (${prize[idx].prize}원) - ${n}개 ")
 
         idx++
     }
 }
-fun calculPrize(my: List<Int>):Int{
-    val prize = listOf(5000,50000,1500000,30000000,2000000000)
+
+fun calculPrize(my: List<Int>): Int {
+    val prize = listOf(5000, 50000, 1500000, 30000000, 2000000000)
     var money = 0
 
     var idx = 0
-    for (i in my){
-        money += prize[idx]*i
+    for (i in my) {
+        money += prize[idx] * i
         idx++
     }
 
     return money
 }
-fun calculrate(my: Int, prize: Int):String{
-    var temp = ((prize*10)/my)/10
 
-    if((prize*1000 / my)%10 >=5)
+fun calculrate(my: Int, prize: Int): String {
+    var temp = ((prize * 10) / my) / 10
+
+    if ((prize * 1000 / my) % 10 >= 5)
         temp++
 
-    val rate = "${temp/10}.${temp%10}%"
+    val rate = "${temp / 10}.${temp % 10}%"
 
     return rate
 }
 
-enum class rank(val match: String, val prize: String, val prizeInt: Int){
-    FIRST("6개 일치","2,000,000,000",2000000000),
-    SECOND("5개 일치, 보너스 볼 일치","30,000,000",30000000),
-    THIRD("5개 일치","1,500,000",1500000),
-    FOURTH("4개 일치","50,000",50000),
-    FIFTH("3개 일치","5,000",5000)
+enum class rank(val match: String, val prize: String, val prizeInt: Int) {
+    FIRST("6개 일치", "2,000,000,000", 2000000000),
+    SECOND("5개 일치, 보너스 볼 일치", "30,000,000", 30000000),
+    THIRD("5개 일치", "1,500,000", 1500000),
+    FOURTH("4개 일치", "50,000", 50000),
+    FIFTH("3개 일치", "5,000", 5000)
 
 }
+
 fun main() {
     println("구입금액을 입력해 주세요.")
     val myLotto = mutableListOf<Lotto>()
