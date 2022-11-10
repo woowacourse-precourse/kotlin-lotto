@@ -1,9 +1,9 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import kotlin.math.round
 
 fun main() {
-    TODO("프로그램 구현")
 }
 
 fun makeLotto(): Lotto = try {
@@ -14,11 +14,12 @@ fun makeLotto(): Lotto = try {
 
 fun getLottoList(money: Int): List<Lotto> {
     val lottoList = mutableListOf<Lotto>()
-    for (i in 0 until (money/1000)) {
+    for (i in 0 until (money / 1000)) {
         lottoList.add(makeLotto())
     }
     return lottoList
 }
+
 fun printAndThrowIllegalException(errorMessage: String) {
     print(errorMessage)
     throw IllegalArgumentException(errorMessage)
@@ -60,7 +61,7 @@ fun checkWinningAndBonusNumberException(winningNumber: List<Int>, bonusNumber: I
 }
 
 fun totalLottoResult(lottoList: List<Lotto>, winningNumber: List<Int>, bonusNumber: Int): Map<LottoResult, Int> {
-    val resultMap = HashMap<LottoResult, Int> ()
+    val resultMap = HashMap<LottoResult, Int>()
     lottoList.forEach { lotto ->
         val result = lotto.getResult(winningNumber, bonusNumber)
         resultMap[result] = (resultMap[result] ?: 0) + 1
@@ -80,10 +81,15 @@ fun Map<LottoResult, Int>.printTotalResult() {
         }
     }
 }
-fun Map<LottoResult, Int>.totalPrice(): Int {
-    var totalPrice = 0
+
+fun Map<LottoResult, Int>.totalPrice(): Long {
+    var totalPrice = 0L
     this.forEach {
         totalPrice += it.key.price * it.value
     }
     return totalPrice
+}
+
+fun calculateRevenue(money: Int, price: Long) {
+    println("총 수익률은 ${round(price.toDouble() * 1000 / money) / 10}% 입니다.")
 }
