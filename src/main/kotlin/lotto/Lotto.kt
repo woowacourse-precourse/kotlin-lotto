@@ -1,10 +1,11 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.util.requireWithPrefix
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6)
+        requireWithPrefix(numbers.size == LOTTO_LENGTH, "로또 번호는 ${LOTTO_LENGTH}개의 숫자여야 합니다.")
     }
 
     companion object {
