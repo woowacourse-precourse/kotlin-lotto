@@ -9,3 +9,8 @@ fun inputUser(): String {
     return userInputMoney.toString()
 }
 
+fun inputUserNumber(): String {
+    val userInputNumber=inputUser()
+    println(userInputNumber.replace("000", ""))
+    return userInputNumber.replace("000", "")
+}
