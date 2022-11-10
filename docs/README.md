@@ -10,3 +10,9 @@
 8. 수익률 계산하는 함수
 
 
+-각 파일
+
+1. Application.kt 메인
+2. LottoGame.kt 로또 게임을 실질적으로 진행
+3. Lotto.kt 로또 계산
+4. LottoErrorCheck.kt 프로그램 에러 체크
