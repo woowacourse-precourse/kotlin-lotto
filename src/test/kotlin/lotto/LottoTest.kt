@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 
-
 // TODO: 에러 메시지 프리픽스 검사
 @Suppress("NonASCIICharacters")
 class LottoTest {

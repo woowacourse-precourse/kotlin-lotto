@@ -44,8 +44,9 @@ class LottoGame {
     private fun printResult(lottoResult: LottoResult, origin: Int) {
         println("당첨 통계\n---")
         println(lottoResult)
+
         val profit = lottoResult.computeProfit(origin)
         val formattedProfit = String.format("%.1f", profit)
-        println("총 수익률은 ${formattedProfit}%입니다.")
+        println("총 수익률은 $formattedProfit%입니다.")
     }
 }
