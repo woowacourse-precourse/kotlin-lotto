@@ -13,4 +13,13 @@ class WinningNumbersTest {
             WinningNumbers(winNums, bonus)
         }
     }
+
+    @Test
+    fun `보너스 번호가 로또 번호에 포함되어 있으면 예외를 발생시킨다`() {
+        val winNums = listOf(1, 2, 3, 4, 5, 6)
+        val bonus = 6
+        assertThrows<IllegalArgumentException> {
+            WinningNumbers(winNums, bonus)
+        }
+    }
 }
