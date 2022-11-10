@@ -1,6 +1,7 @@
 package lotto
 
 class Lotto(private val numbers: List<Int>) {
+
     init {
         require(numbers.size == 6)
         require(numbers.toSet().size == 6)
@@ -10,4 +11,10 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     // TODO: 추가 기능 구현
+    fun countCompareLotto(answer: Lotto): Int {
+        val union = numbers + answer.numbers
+        val intersection = union.groupBy { it }.filter { it.value.size > 1}.flatMap { it.value }.distinct()
+
+        return intersection.size
+    }
 }
