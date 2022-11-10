@@ -14,6 +14,7 @@ class Constant {
         const val thirdReward = 1500000
         const val fourthReward = 50000
         const val fifthReward = 5000
+        const val percent = 100
 
         const val inputAmountMessage = "구입금액을 입력해 주세요."
         const val inputWinningMessage = "\n당첨 번호를 입력해 주세요."
@@ -26,7 +27,8 @@ class Constant {
         const val secondRewardMessage = "5개 일치, 보너스 볼 일치 (30,000,000원) - "
         const val firstRewardMessage = "6개 일치 (2,000,000,000원) - "
         const val count = "개"
-
+        const val yieldMessage = "총 수익률은 "
+        const val yieldEndMessage = "%입니다."
 
         const val emptyErrorMessage = "[ERROR] null이 아닌 숫자를 입력해야 합니다."
         const val notIntErrorMessage = "[ERROR] 문자가 아닌 숫자를 입력해야 합니다."

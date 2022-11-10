@@ -14,6 +14,7 @@ class BuyAmount {
     init {
         println(inputAmountMessage)
     }
+
     fun inputAmount(): Int {
         val inputAmount: String = readLine().trim()
         exception(inputAmount)

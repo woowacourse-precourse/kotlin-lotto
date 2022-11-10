@@ -1,8 +1,9 @@
 package lotto
 
 import lotto.Constant.Companion.bonusDupleErrorMessage
-import lotto.Constant.Companion.lottoSize
-import lotto.Constant.Companion.printBuyMessage
+import lotto.Constant.Companion.lottoCost
+
+var lottoPrice: Int = 0
 
 fun main() {
     val lottery = saveLotto()
@@ -13,6 +14,7 @@ fun main() {
 
     val rank = sumRanking(lottery, winningNumber, bonusNumber)
     PrintMethod().printRanking(rank)
+    PrintMethod().printYield(rank, lottoPrice * lottoCost)
 }
 
 fun sumRanking(lottery: MutableList<Lotto>, winningNumber: List<Int>, bonusNumber: Int): MutableList<Int> {
@@ -33,8 +35,8 @@ fun sumRanking(lottery: MutableList<Lotto>, winningNumber: List<Int>, bonusNumbe
 
 
 fun saveLotto(): MutableList<Lotto> {
-    val lottoPrice = BuyAmount().inputAmount()
     val lottoWallet = mutableListOf<Lotto>()
+    lottoPrice = BuyAmount().inputAmount()
 
     PrintMethod().printBuyAmount(lottoPrice)
     for (i in 0 until lottoPrice) {
