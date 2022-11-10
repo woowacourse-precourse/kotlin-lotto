@@ -18,7 +18,7 @@ class WinningTest {
 
     @Test
     fun `로또 당첨 번호의 개수가 6개가 아니면 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> { (win.splitLuckyNumber("1,2,3,4,5")) }
+        assertThrows<IllegalArgumentException> { Winning("1,2,3,4,5") }
     }
 
     @Test
