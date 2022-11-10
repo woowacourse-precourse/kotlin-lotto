@@ -45,6 +45,7 @@ class LottoGame {
         println("당첨 통계\n---")
         println(lottoResult)
         val profit = lottoResult.computeProfit(origin)
-        println("총 수익률은 ${profit}입니다.")
+        val formattedProfit = String.format("%.1f", profit)
+        println("총 수익률은 ${formattedProfit}%입니다.")
     }
 }
