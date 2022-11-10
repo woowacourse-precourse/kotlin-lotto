@@ -16,7 +16,7 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     fun getResult(winningNumber: List<Int>, bonus: Int): LottoResult {
-        val winningCount = numbers.reduce { acc, i -> if (winningNumber.contains(i)) acc + 1 else acc }
+        val winningCount = numbers.count { winningNumber.contains(it) }
         if (winningCount == 6) return LottoResult.First
         if (winningCount == 5) {
             if (numbers.contains(bonus)) return LottoResult.Second

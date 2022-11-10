@@ -1,9 +1,22 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import kotlin.math.round
 
 fun main() {
+    println("구입금액을 입력해 주세요.")
+    val money = Console.readLine().checkMoneyException()
+    val lottoList = getLottoList(money)
+    lottoList.forEach { it.printLotto() }
+    println("당첨 번호를 입력해 주세요.")
+    val winningNumber = checkWinningNumberException(Console.readLine().split(","))
+    println("보너스 번호를 입력해 주세요.")
+    val bonusNumber = Console.readLine().checkLottoNumberException()
+    checkWinningAndBonusNumberException(winningNumber, bonusNumber)
+    val resultMap = totalLottoResult(lottoList, winningNumber, bonusNumber)
+    resultMap.printTotalResult()
+    calculateRevenue(money, resultMap.totalPrice())
 }
 
 fun makeLotto(): Lotto = try {
@@ -14,6 +27,7 @@ fun makeLotto(): Lotto = try {
 
 fun getLottoList(money: Int): List<Lotto> {
     val lottoList = mutableListOf<Lotto>()
+    println("${money / 1000}개를 구매했습니다.")
     for (i in 0 until (money / 1000)) {
         lottoList.add(makeLotto())
     }
@@ -21,7 +35,7 @@ fun getLottoList(money: Int): List<Lotto> {
 }
 
 fun printAndThrowIllegalException(errorMessage: String) {
-    print(errorMessage)
+    println(errorMessage)
     throw IllegalArgumentException(errorMessage)
 }
 
@@ -65,11 +79,6 @@ fun totalLottoResult(lottoList: List<Lotto>, winningNumber: List<Int>, bonusNumb
     lottoList.forEach { lotto ->
         val result = lotto.getResult(winningNumber, bonusNumber)
         resultMap[result] = (resultMap[result] ?: 0) + 1
-    }
-    resultMap.toList().sortedBy { it.first.price }.forEach {
-        if (it.first != LottoResult.None) {
-            println("${it.first.description} - ${it.second}개")
-        }
     }
     return resultMap
 }
