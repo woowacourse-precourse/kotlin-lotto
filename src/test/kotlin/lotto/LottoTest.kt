@@ -22,6 +22,13 @@ class LottoTest {
     // 아래에 추가 테스트 작성 가능
 
     @Test
+    fun `구입 금액에 null이 들어갈 경우 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            BuyAmount().exception("")
+        }
+    }
+
+    @Test
     fun `구입 금액에 숫자가 아닌 다른 문자가 들어갈 경우 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
             BuyAmount().exception("abcd1234")
@@ -59,6 +66,27 @@ class LottoTest {
     fun `당첨 번호가 중복된 숫자가 있는 경우 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
             WinningNumber().exception(listOf("1", "2", "3", "3", "5", "6"))
+        }
+    }
+
+    @Test
+    fun `보너스 번호에 null이 들어갈 경우 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            BonusNumber().exception("")
+        }
+    }
+
+    @Test
+    fun `보너스 번호에 숫자가 아닌 다른 문자가 들어갈 경우 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            BonusNumber().exception("ab")
+        }
+    }
+
+    @Test
+    fun `보너스 번호가 1 ~ 45가 아닌 경우 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            BonusNumber().exception(100.toString())
         }
     }
 

@@ -15,7 +15,7 @@ class WinningNumber {
         println(inputWinningMessage)
     }
     fun inputWinningNumber(): List<String> {
-        val inputWinningNumber: List<String> = readLine().split(',')
+        val inputWinningNumber: List<String> = readLine().trim().split(',')
         exception(inputWinningNumber)
         return inputWinningNumber
     }
@@ -40,10 +40,10 @@ class WinningNumber {
             }
         }
     }
-    fun checkDuple(inputList: List<String>): Boolean {
+    private fun checkDuple(inputList: List<String>): Boolean {
         return inputList.size != inputList.distinct().count()
     }
-    fun isNumeric(str: String): Boolean {
+    private fun isNumeric(str: String): Boolean {
         return str.chars().allMatch { Character.isDigit(it) }
     }
 }
