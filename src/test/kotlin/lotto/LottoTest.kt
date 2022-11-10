@@ -65,15 +65,16 @@ class LottoTest {
     }
 
     @Test
-    fun `보너스 번호가 당첨 번호에 있는지 확인`() {
+    fun `보너스 번호가 로또 번호에 있는지 확인`() {
+        val user = Lotto(listOf(1, 5, 14, 22, 33, 41))
         var bonus = 14
         var result = true
 
-        assertThat(answer.matchBonus(bonus)).isEqualTo(result)
+        assertThat(user.matchBonus(bonus)).isEqualTo(result)
 
         bonus = 20
         result = false
 
-        assertThat(answer.matchBonus(bonus)).isEqualTo(result)
+        assertThat(user.matchBonus(bonus)).isEqualTo(result)
     }
 }
