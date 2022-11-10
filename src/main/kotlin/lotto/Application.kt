@@ -4,24 +4,19 @@ import lotto.Constant.Companion.lottoSize
 import lotto.Constant.Companion.printBuyMessage
 
 fun main() {
-    addLotto()
+    saveLotto()
     WinningNumber().inputWinningNumber()
 }
 
 
-fun toIntArray(lottoWallet: IntArray, lotto: MutableList<Int>) {
-    for (i in 0 until lottoSize) {
-        lottoWallet[i] = lotto[i]
-    }
-}
-
-fun addLotto() {
+fun saveLotto() {
     val lottoPrice = BuyAmount().inputAmount()
-    val lottoWallet = Array(lottoPrice) { IntArray(lottoSize) }
+    val lottoWallet = mutableListOf<Lotto>()
 
     println("\n$lottoPrice$printBuyMessage")
     for (i in 0 until lottoPrice) {
-        toIntArray(lottoWallet[i], Ticket().makeLotto())
-        PrintMethod().printWallet(lottoWallet[i])
+        val makeLotto = Ticket().makeLotto()
+        lottoWallet.add(Lotto(makeLotto))
+        PrintMethod().printWallet(makeLotto)
     }
 }

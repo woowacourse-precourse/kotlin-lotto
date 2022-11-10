@@ -8,7 +8,7 @@ class PrintMethod {
         println("${amount % lottoCost}" + printBuyMessage)
     }
 
-    fun printWallet(wallet: IntArray) {
-        println(wallet.contentToString())
+    fun printWallet(wallet: MutableList<Int>) {
+        println(wallet)
     }
 }
