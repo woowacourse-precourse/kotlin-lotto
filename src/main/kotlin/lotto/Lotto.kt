@@ -7,6 +7,10 @@ class Lotto(private val numbers: List<Int>) {
         Validator().validateLottoNumber(numbers)
     }
 
+    private fun getOverlapNumber(numbers: List<Int>) =
+        this.numbers.count { it in numbers }
+
+
     // TODO: companion object == field ??
     companion object {
         fun generate() = Lotto(
