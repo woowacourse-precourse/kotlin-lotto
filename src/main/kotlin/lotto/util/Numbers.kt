@@ -8,6 +8,7 @@ fun Int.toPriceFormatted(): String = DecimalFormat("#,###")
 
 fun readInt(): Int {
     val num = Console.readLine()
+        .replace("\\s".toRegex(), "")
         .toIntOrNull()
     requireWithPrint(num != null, "숫자를 입력해주세요.")
     return num!!
