@@ -5,6 +5,7 @@ import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 
 
+// TODO: 에러 메시지 프리픽스 검사
 class LottoTest {
     @Test
     fun `로또 번호의 개수가 6개가 넘어가면 예외가 발생한다`() {
