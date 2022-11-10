@@ -41,24 +41,29 @@ class Winning(winningNumber: String) {
         }
     }
 
-    fun validateBonusNumberRange(number: Int) {
-        if (number !in 1..45) {
+    fun validateBonusNumberRange() {
+        if (bonusNumber !in 1..45) {
             throw IllegalArgumentException("[ERROR] 1~45 사이의 숫자를 입력해 주세요.")
         }
     }
 
-    fun compareBonusWithLuckyNumber(number: Int) {
+    fun compareBonusWithLuckyNumber() {
         require(luckyNumber.size == 6) { "[ERROR] 로또 당첨 번호 6개가 필요합니다." }
-        if (luckyNumber.contains(number)) {
+        if (luckyNumber.contains(bonusNumber)) {
             throw IllegalArgumentException("[ERROR] 로또 당첨 번호와 중복되지 않는 숫자를 입력해 주세요.")
         }
     }
 
-    fun inputBonusNumber(number : String){
+    fun inputBonusNumber(number: String) {
         bonusNumber = try {
             number.toInt()
-        }catch (exception : NumberFormatException){
+        } catch (exception: NumberFormatException) {
             throw IllegalArgumentException("[ERROR] 보너스 번호는 숫자만 입력해 주세요.")
         }
+    }
+
+    fun checkBonusNumberException() {
+        validateBonusNumberRange()
+        compareBonusWithLuckyNumber()
     }
 }
