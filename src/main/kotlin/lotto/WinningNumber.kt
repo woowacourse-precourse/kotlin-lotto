@@ -1,4 +1,5 @@
 package lotto
+
 import camp.nextstep.edu.missionutils.Console.readLine
 import lotto.Constant.Companion.inputWinningMessage
 import lotto.Constant.Companion.lottoSize
@@ -14,6 +15,7 @@ class WinningNumber {
     init {
         println(inputWinningMessage)
     }
+
     fun inputWinningNumber(): List<Int> {
         val inputWinningNumber: List<String> = readLine().trim().split(',')
 
@@ -21,7 +23,7 @@ class WinningNumber {
         return changeType(inputWinningNumber, mutableListOf())
     }
 
-    fun changeType(inputWinningNumber: List<String>, numberList: MutableList<Int>): List<Int> {
+    private fun changeType(inputWinningNumber: List<String>, numberList: MutableList<Int>): List<Int> {
         for (data in inputWinningNumber) {
             numberList.add(data.toInt())
         }
@@ -29,14 +31,26 @@ class WinningNumber {
     }
 
     fun exception(inputWinningNumber: List<String>) {
+        sizeException(inputWinningNumber)
+        dupleException(inputWinningNumber)
+        typeException(inputWinningNumber)
+    }
+
+    private fun sizeException(inputWinningNumber: List<String>) {
         if (inputWinningNumber.size != lottoSize) {
             println(winningRegularErrorMessage)
             throw IllegalArgumentException(winningRegularErrorMessage)
         }
+    }
+
+    private fun dupleException(inputWinningNumber: List<String>) {
         if (checkDuple(inputWinningNumber)) {
             println(winningDupleErrorMessage)
             throw IllegalArgumentException(winningDupleErrorMessage)
         }
+    }
+
+    private fun typeException(inputWinningNumber: List<String>) {
         for (number in inputWinningNumber) {
             if (!isNumeric(number)) {
                 println(winningDigitErrorMessage)
@@ -49,12 +63,10 @@ class WinningNumber {
         }
     }
 
-
-
-
     private fun checkDuple(inputList: List<String>): Boolean {
         return inputList.size != inputList.distinct().count()
     }
+
     private fun isNumeric(str: String): Boolean {
         return str.chars().allMatch { Character.isDigit(it) }
     }
