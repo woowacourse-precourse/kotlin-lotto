@@ -11,5 +11,6 @@ fun main() {
     println("\n당첨 번호를 입력해 주세요.")
     val winning = Winning(Console.readLine())
     winning.inputBonusNumber(Console.readLine())
+    winning.checkBonusNumberException()
 
 }
