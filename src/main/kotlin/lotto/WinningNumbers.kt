@@ -2,8 +2,7 @@ package lotto
 
 import lotto.util.requireWithPrefix
 
-class WinningNumbers(numbers: List<Int>, val bonus: Int) {
-    val winNumbers: Lotto = Lotto(numbers)
+class WinningNumbers(val numbers: List<Int>, val bonus: Int) {
 
     init {
         requireWithPrefix(
