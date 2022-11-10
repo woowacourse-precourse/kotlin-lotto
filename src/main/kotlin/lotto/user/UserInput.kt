@@ -14,9 +14,18 @@ fun inputUserNumber(): String {
     checkMoneyStandard(userInputNumber)
     return userInputNumber.replace("000", "")
 }
-
+fun checkMoneyStandard(userInputNumber: String?) {
+    userInputNumber ?: throw IllegalArgumentException()
+    val checkMoney= userInputNumber.split(",").toList() as MutableList<String>
+    checkInputMessagePatten(checkMoney)
+    if(userInputNumber.toInt()%1000 !=0) throw IllegalArgumentException()
+}
+fun inputUserLotto(): String {
+    val userInputNumber=inputUser()
+    checkLottoStandard(userInputNumber)
+    return userInputNumber
+}
 fun checkLottoStandard(userInputNumber: String?) {
-    val lottoRegax= "^[0-9]*$"
     userInputNumber ?: throw IllegalArgumentException()
     val checkLotto= userInputNumber.split(",").toList() as MutableList<String>
     for (i in checkLotto)
@@ -25,12 +34,6 @@ fun checkLottoStandard(userInputNumber: String?) {
     println(checkLotto.size)
     if(checkLotto.size !=6)throw IllegalArgumentException()
 
-}
-fun checkMoneyStandard(userInputNumber: String?) {
-    userInputNumber ?: throw IllegalArgumentException()
-    val checkMoney= userInputNumber.split(",").toList() as MutableList<String>
-    checkInputMessagePatten(checkMoney)
-    if(userInputNumber.toInt()%1000 !=0) throw IllegalArgumentException()
 }
 fun checkInputMessagePatten( checkOverlap: MutableList<String>) {
     val regax="^[0-9]*$"
