@@ -5,6 +5,7 @@ import kotlin.IllegalArgumentException
 
 class Winning(winningNumber: String) {
     private val luckyNumber = mutableListOf<Int>()
+    private var bonusNumber = 0
 
     init {
         splitLuckyNumber(winningNumber)
@@ -50,6 +51,14 @@ class Winning(winningNumber: String) {
         require(luckyNumber.size == 6) { "[ERROR] 로또 당첨 번호 6개가 필요합니다." }
         if (luckyNumber.contains(number)) {
             throw IllegalArgumentException("[ERROR] 로또 당첨 번호와 중복되지 않는 숫자를 입력해 주세요.")
+        }
+    }
+
+    fun inputBonusNumber(number : String){
+        bonusNumber = try {
+            number.toInt()
+        }catch (exception : NumberFormatException){
+            throw IllegalArgumentException("[ERROR] 보너스 번호는 숫자만 입력해 주세요.")
         }
     }
 }
