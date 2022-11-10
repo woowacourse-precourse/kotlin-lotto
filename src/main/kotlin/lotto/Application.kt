@@ -37,6 +37,13 @@ fun pickLottoNumbers() : MutableList<Int> {
     return lottoNumber
 }
 
+fun howmany(money : Int) : Int{
+    var answer=money/1000
+    return answer
+}
+
+
+
 
 fun main() {
     var start = State.Start
@@ -49,7 +56,7 @@ fun main() {
     println(start.message)
 
     //구매 개수
-    println(many.message)
+    println(howmany(8000).toString()+many.message)
 
     //당첨 번호
     println(enterLottoNumber.message)
