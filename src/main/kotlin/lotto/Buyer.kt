@@ -12,9 +12,10 @@ class Buyer {
         return input.toInt()
     }
 
-    fun enterWinningNumber(): Int {
+    fun enterWinningNumber(): List<Int> {
         val input = readLine()
-        return input.toInt()
+        checkIsRightFormat(input)
+        return input.split(",").map { it.toInt() }
     }
 
     private fun checkIsBlank(input: String) {
@@ -44,4 +45,10 @@ class Buyer {
     }
 
     private fun canDivide1000(num: Int) = num % 1000 == 0
+
+    private fun checkIsRightFormat(input: String) {
+        if (!"[1-45],[1-45],[1-45],[1-45],[1-45],[1-45]".toRegex().matches(input)) {
+            Lottery.printAndThrowException("입력 형식에 맞게 입력해주세요.")
+        }
+    }
 }
