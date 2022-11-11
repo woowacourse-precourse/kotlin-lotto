@@ -29,7 +29,7 @@ class Buyer {
     }
 
     private fun checkCanDivide(input: String){
-        if(input.toInt() % 1000 != 0) {
+        if(!canDivide1000(input.toInt())) {
             Printer.printError("1000원으로 나누어 떨어져야 합니다.")
             throw IllegalArgumentException("1000원으로 나누어 떨어져야 합니다.")
         }
@@ -41,4 +41,6 @@ class Buyer {
             throw IllegalArgumentException("구매 가능 최대 금액은 2147483000원입니다.")
         }
     }
+
+    private fun canDivide1000(num: Int) = num % 1000 == 0
 }
