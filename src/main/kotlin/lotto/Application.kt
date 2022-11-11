@@ -31,24 +31,6 @@ enum class State(val message: String){
 
 }
 
-//fun pickLottoNumbers() : MutableList<Int> {
-//    val lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6)
-//    lottoNumber.sort()
-//    return lottoNumber
-//}
-
-//fun pickBonusNumber(lottoNumber: MutableList<Int>) : MutableList<Int> {
-//    var answer = mutableListOf<Int>()
-//    var num = 0
-//    while (answer.size!=1){
-//        num=Randoms.pickNumberInRange(1, 45)
-//        if (!lottoNumber.contains(num)){
-//            answer.add(num)
-//        }
-//    }
-//    return answer
-//}
-
 fun howMany() : Int{
     var money = readLine().toInt()
     var answer=money/1000
@@ -88,6 +70,17 @@ fun showLottoPaper(cnt : Int) : MutableList<List<Int>> {
     return lottoCollection
 }
 
+fun compareNumbers(lottoCollection : List<Int>, winningNumber: List<Int>) : Int {
+    var count = 0
+    for (i in 0 until winningNumber.size){
+        if (lottoCollection.contains(winningNumber[i])){
+            count+=1
+        }
+    }
+    return count
+}
+
+
 fun main() {
     var cnt = 0
     var lottoNumberCollect = mutableListOf<Int>()
@@ -96,11 +89,6 @@ fun main() {
     var winningNumber = listOf<Int>()
     var bonusNumber = 0
     var lottoCollection = mutableListOf<List<Int>>()
-
-    lottoNumberCollect = obj.pickLottoNumbers()
-    bonusNumberCollect = obj.pickBonusNumber(lottoNumberCollect)
-//    println(lottoNumberCollect)
-//    println(bonusNumberCollect)
 
     //시작
     println(State.start.message)
@@ -129,6 +117,9 @@ fun main() {
 
     //당첨 통계
     println(State.end.message)
+    for (j in 0 until lottoCollection.size){
+        compareNumbers(lottoCollection[j], winningNumber)
+    }
 
 
 }
