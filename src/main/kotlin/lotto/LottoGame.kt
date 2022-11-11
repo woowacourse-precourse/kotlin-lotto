@@ -89,20 +89,24 @@ class LottoGame {
         val checklotto = Lotto(userlotto)
         for(elements in lottos){
             val rank = checklotto.lottocheck(userlotto,elements)
-            prizecheck(rank)
+            if(!prizecheck(rank)&&userlotto.contains(bonusnumber))
+                checkprize[3]+=1
+            else if(!prizecheck(rank))
+                checkprize[2]+=1
+
         }
     }
 
-    private fun prizecheck(rank:Int){
+    private fun prizecheck(rank:Int):Boolean{
         if(rank==3)
             checkprize[0]+=1
         if(rank==4)
             checkprize[1]+=1
-//        if(rank==5)
-//            if(user)
+        if(rank==5)
+            return false
         if(rank==6)
             checkprize[4]+=1
 
-
+        return true
     }
 }
