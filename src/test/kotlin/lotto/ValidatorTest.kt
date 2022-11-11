@@ -56,4 +56,36 @@ class ValidatorTest {
             Arguments.of(listOf("2", "1", "3", "4", "5", "14"))
         )
     }
+
+    @ParameterizedTest
+    @MethodSource("generateInvalidBonusNumber")
+    fun `invalid bonus number check`(bonusNumber: String, winningNumber:List<String>){
+        assertFalse(InputValidator.validateBonusNumber(bonusNumber, winningNumber))
+    }
+
+    @ParameterizedTest
+    @MethodSource("generateValidBonusNumber")
+    fun `valid bonus number check`(bonusNumber: String, winningNumber:List<String>){
+        assertTrue(InputValidator.validateBonusNumber(bonusNumber, winningNumber))
+    }
+
+    private fun generateInvalidBonusNumber(): Stream<Arguments> {
+        return Stream.of(
+            Arguments.of("1", listOf("1", "2", "3", "4", "5", "8")),
+            Arguments.of("r", listOf("1", "2", "3", "4", "5", "8")),
+            Arguments.of("0", listOf("1", "2", "3", "4", "5", "8")),
+            Arguments.of("46", listOf("1", "2", "3", "4", "5", "8")),
+            Arguments.of("8", listOf("1", "2", "3", "4", "5", "8")),
+        )
+    }
+
+    private fun generateValidBonusNumber(): Stream<Arguments> {
+        return Stream.of(
+            Arguments.of("45", listOf("1", "2", "3", "4", "5", "8")),
+            Arguments.of("9", listOf("1", "2", "3", "4", "5", "8")),
+            Arguments.of("6", listOf("1", "2", "3", "4", "5", "8")),
+            Arguments.of("7", listOf("1", "2", "3", "4", "5", "8")),
+            Arguments.of("23", listOf("1", "2", "3", "4", "5", "8")),
+        )
+    }
 }
