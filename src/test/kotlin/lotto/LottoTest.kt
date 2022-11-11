@@ -34,4 +34,12 @@ class LottoTest {
         val result = Lotto(lottNumbers).getMachingLottoNumberCount(winningNumbers)
         assertThat(result).isEqualTo(6)
     }
+
+    @Test
+    fun `당첨 번호에 보너스 번호가 포함되는지 확인하는 테스트`() {
+        val lottoNumbers = listOf(1, 2, 3, 4, 5, 6)
+        val bonusNumber = 2
+        val result = Lotto(lottoNumbers).isMachingBonusNumber(bonusNumber)
+        assertThat(result).isEqualTo(true)
+    }
 }
