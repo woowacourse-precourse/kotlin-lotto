@@ -3,6 +3,10 @@ package lotto
 class Purchase {
     private var expense = NO_MONEY
 
+    fun createExpense() {
+        expense = readLine()!!.toInt()
+    }
+
     fun checkMoney(money: Int) {
         expense = money
         val haveWrongMoney = (expense % LOTTERY_PRICE != 0)
