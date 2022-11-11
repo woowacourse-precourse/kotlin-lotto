@@ -60,7 +60,7 @@ class Buyer {
 
     private fun checkIsNumberInRange(input: String) {
         input.split(",").forEach {
-            if (it[0] == ZERO.toChar() || it.toInt() !in (1..45))
+            if (it[0] == '0' || it.toInt() !in (1..45))
                 Lottery.printAndThrowException(WRONG_RANGE)
         }
     }
