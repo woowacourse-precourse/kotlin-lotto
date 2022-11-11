@@ -13,5 +13,9 @@ class Error {
         fun typeError() {
             println("[ERROR] 숫자를 입력해야 합니다.")
         }
+
+        fun overlapError() {
+            println("[ERROR] 숫자끼리 겹쳐서는 안됩니다.")
+        }
     }
 }
