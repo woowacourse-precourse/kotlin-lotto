@@ -9,4 +9,14 @@ class Lotto(private val numbers: List<Int>) {
     private fun checkDuplicate(): Int = numbers.distinct().size
 
     fun printLottoNumber() = println(numbers.sorted())
+
+    fun confirmWinning(luckyNumber: List<Int>, bonusNumber: Int) : Int{
+        var score = luckyNumber.filter{number ->
+            numbers.contains(number)
+        }.size
+        if(numbers.contains(bonusNumber) && score == 5){
+            score = 7
+        }
+        return score
+    }
 }
