@@ -1,6 +1,6 @@
 ##기능 목록 ( 최현지 )
 * [o] 로또 구입 금액 입력받기 - ui / moneyInput()
-* [] 구입 개수 만큼 로또 발행 - domain / lottoPublish()
+* [o] 구입 개수 만큼 로또 발행 - domain / lottoPublish()
     * 오름차순으로 정렬해 보여줌
 * [] 당첨 번호 입력 받기 - ui / correctNumberInput() 
 * [] 보너스 번호 입력 받기 - ui / bonusNumberInput() 
