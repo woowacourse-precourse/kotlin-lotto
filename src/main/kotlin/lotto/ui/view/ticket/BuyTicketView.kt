@@ -9,12 +9,17 @@ class BuyTicketView {
         return Console.readLine()
     }
 
-    fun printBuyTicketMessage(money: String) {
-        println(OUTPUT_BUY_TICKET_MESSAGE.format(money))
+    fun printTicketCountMessage(ticketCount: Int) {
+        println(OUTPUT_TICKET_COUNT_MESSAGE.format(ticketCount))
+    }
+
+    fun printLottoNumberMessage(lottoNumbers: String) {
+        println(OUTPUT_LOTTO_NUMBER_MESSAGE.format(lottoNumbers))
     }
 
     companion object {
         private const val INPUT_TICKET_MONEY_MESSAGE = "구입금액을 입력해 주세요."
-        private const val OUTPUT_BUY_TICKET_MESSAGE = "%d개를 구매했습니다."
+        private const val OUTPUT_TICKET_COUNT_MESSAGE = "%d개를 구매했습니다."
+        private const val OUTPUT_LOTTO_NUMBER_MESSAGE = "[%s]"
     }
 }
