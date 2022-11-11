@@ -22,8 +22,9 @@ class LottoResult(
     }
 
     private fun countRank(lottos: List<Lotto>, winningNumber: WinningNumber) {
+        val ranker = LottoRanker()
         for (lotto in lottos) {
-            val rank = lotto.rank(winningNumber)
+            val rank = ranker.rank(lotto, winningNumber)
             _rankToCnt.merge(rank, 1, Integer::sum)
         }
     }
