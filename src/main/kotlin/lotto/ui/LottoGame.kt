@@ -1,6 +1,10 @@
-package lotto.domain
+package lotto.ui
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.domain.Lotto
+import lotto.domain.LottoPurchaser
+import lotto.domain.LottoResult
+import lotto.domain.WinningNumber
 import lotto.util.divideToNums
 import lotto.util.readInt
 
@@ -13,9 +17,10 @@ class LottoGame {
             readWinningNumber(),
             readBonusNumber()
         )
+        val lottoResult = LottoResult(lottos, winningNumber, originCost)
+        val lottoResultInfo = LottoResultInfo(lottoResult)
 
-        val lottoResult = LottoResult(lottos, winningNumber)
-        printResult(lottoResult, originCost)
+        printResultInfo(lottoResultInfo)
     }
 
     private fun readCost(): Int {
@@ -32,7 +37,8 @@ class LottoGame {
 
     private fun readWinningNumber(): List<Int> {
         println("당첨 번호를 입력해 주세요.")
-        return Console.readLine()
+        return Console
+            .readLine()
             .divideToNums(",")
     }
 
@@ -41,12 +47,9 @@ class LottoGame {
         return readInt()
     }
 
-    private fun printResult(lottoResult: LottoResult, origin: Int) {
+    private fun printResultInfo(lottoResultInfo: LottoResultInfo) {
         println("당첨 통계\n---")
-        println(lottoResult)
-
-        val profit = lottoResult.computeProfit(origin)
-        val formattedProfit = String.format("%.1f", profit)
-        println("총 수익률은 $formattedProfit%입니다.")
+        println(lottoResultInfo.getStatInfo())
+        println("총 수익률은 ${lottoResultInfo.getProfitInfo()}%입니다.")
     }
 }
