@@ -10,6 +10,9 @@ class Lotto(private val numbers: List<Int>) {
     fun getMachingLottoNumberCount(otherNumbers: List<Int>): Int =
         numbers.intersect(otherNumbers).size
 
+    fun isMachingBonusNumber(bonusNumber: Int): Boolean =
+        numbers.contains(bonusNumber)
+
     private fun hasNotDuplicateNumber(): Boolean =
         numbers.size == numbers.distinct().size
 
