@@ -7,5 +7,10 @@ class Lottery(
     private val printer: Printer
 ) {
     fun start() {
+        purchaseLotto()
+    }
+
+    private fun purchaseLotto(){
+        printer.printAmountMessage()
     }
 }
