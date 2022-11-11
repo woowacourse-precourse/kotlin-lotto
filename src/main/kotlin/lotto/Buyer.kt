@@ -6,6 +6,7 @@ class Buyer {
     fun enterAmount(): Int {
         val input = readln()
         checkIsBlank(input)
+        checkIsNumber(input)
         checkIsInIntRange(input)
         return input.toInt()
     }
@@ -14,6 +15,15 @@ class Buyer {
         if(input.isBlank()) {
             Printer.printError("구입금액을 입력해주세요.")
             throw IllegalArgumentException("구입금액을 입력해주세요.")
+        }
+    }
+
+    private fun checkIsNumber(input: String) {
+        input.forEach {
+            if(!it.isDigit()){
+                Printer.printError("숫자를 입력해주세요.")
+                throw IllegalArgumentException("숫자를 입력해주세요.")
+            }
         }
     }
 
