@@ -27,7 +27,7 @@ fun calcProfitRate(price: Int, winningResult: MutableList<Int>): Double {
     profitPrice += winningResult[3] * 30000000
     profitPrice += winningResult[4] * 2000000000
 
-    return profitPrice / price
+    return (profitPrice / price) * 100
 }
 
 fun printWinningResult(winningResult: MutableList<Int>) {
