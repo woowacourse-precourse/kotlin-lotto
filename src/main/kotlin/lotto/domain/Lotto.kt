@@ -14,13 +14,10 @@ class Lotto(private val numbers: List<Int>) {
     private fun getOverlapNumber(numbers: List<Int>) =
         this.numbers.count { it in numbers }
 
-    private fun getLottoRank(matchedCnt: Int, bonusMatched: Boolean) = when (matchedCnt) {
-        3 -> LottoRank.FIFTH
-        4 -> LottoRank.FOURTH
-        5 -> if (bonusMatched) LottoRank.SECOND else LottoRank.THIRD
-        6 -> LottoRank.FIRST
-        else -> LottoRank.FAIL
-    }
+    private fun getLottoRank(matchedCnt: Int, bonusMatched: Boolean) = LottoRank.values()
+        .filter { it.matchCnt == matchedCnt }
+        .filter { it.bonusMatched == bonusMatched }
+        .getOrElse(0) { LottoRank.FAIL }
 
     override fun toString(): String {
         return numbers.toString()
