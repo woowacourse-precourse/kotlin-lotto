@@ -7,6 +7,9 @@ class Lotto(private val numbers: List<Int>) {
         require(isVaildAscendingOrder())
     }
 
+    fun getMachingLottoNumberCount(otherNumbers: List<Int>): Int =
+        numbers.intersect(otherNumbers).size
+
     private fun hasNotDuplicateNumber(): Boolean =
         numbers.size == numbers.distinct().size
 
