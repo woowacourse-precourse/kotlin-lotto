@@ -5,8 +5,8 @@ import lotto.utils.Constants.INPUT_PURCHASING_AMOUNT
 
 object InputView {
 
-    fun inputPurchasingAmount(): Long {
+    fun inputPurchasingAmount(): String {
         println(INPUT_PURCHASING_AMOUNT)
-        return Console.readLine().toLong()
+        return Console.readLine()
     }
 }
