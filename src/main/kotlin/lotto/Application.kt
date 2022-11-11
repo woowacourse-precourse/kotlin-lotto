@@ -13,5 +13,5 @@ fun main() {
     var lottoPublishment = domain.lottoPublish(lottoNumber)
 
     var lotto = Lotto(ui.correctNumber())
-
+    var bonusNumber = ui.bonusNumber()
 }

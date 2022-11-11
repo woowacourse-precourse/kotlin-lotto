@@ -23,4 +23,9 @@ class ui {
         return correctNumberNew
     }
 
+    fun bonusNumber() : Int {
+        println("보너스 번호를 입력해 주세요.")
+        return Console.readLine().toInt()
+    }
+
 }
