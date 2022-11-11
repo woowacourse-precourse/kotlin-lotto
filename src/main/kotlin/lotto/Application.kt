@@ -7,15 +7,18 @@ var lottoPrice: Int = 0
 
 fun main() {
     val lottery = saveLotto()
-    val winningNumber = WinningNumber().inputWinningNumber()
-    val bonusNumber = BonusNumber().inputBonusNumber()
+    try {
+        val winningNumber = WinningNumber().inputWinningNumber()
+        val bonusNumber = BonusNumber().inputBonusNumber()
 
-    dupleException(winningNumber, bonusNumber)
+        dupleException(winningNumber, bonusNumber)
 
-    val rank = sumRanking(lottery, winningNumber, bonusNumber)
+        val rank = sumRanking(lottery, winningNumber, bonusNumber)
 
-    PrintMethod().printRanking(rank)
-    PrintMethod().printYield(rank, lottoPrice * lottoCost)
+        PrintMethod().printRanking(rank)
+        PrintMethod().printYield(rank, lottoPrice * lottoCost)
+    } catch (_: IllegalArgumentException){
+    }
 }
 
 fun sumRanking(lottery: MutableList<Lotto>, winningNumber: List<Int>, bonusNumber: Int): MutableList<Int> {
@@ -37,8 +40,10 @@ fun sumRanking(lottery: MutableList<Lotto>, winningNumber: List<Int>, bonusNumbe
 
 fun saveLotto(): MutableList<Lotto> {
     val lottoWallet = mutableListOf<Lotto>()
-    lottoPrice = BuyAmount().inputAmount()
-
+    try {
+        lottoPrice = BuyAmount().inputAmount()
+    } catch (_: IllegalArgumentException){
+    }
     PrintMethod().printBuyAmount(lottoPrice)
     for (i in 0 until lottoPrice) {
         val makeLotto = Ticket().makeLotto()
