@@ -15,7 +15,7 @@ class LottoGame {
         printLottoInfo(lottos)
 
         val winningNumber = WinningNumber(
-            readWinningNumber(),
+            readWinLotto(),
             readBonusNumber()
         )
         val lottoResult = LottoResult(lottos, winningNumber, originCost)
@@ -35,10 +35,11 @@ class LottoGame {
         println()
     }
 
-    private fun readWinningNumber(): List<Int> {
+    private fun readWinLotto(): Lotto {
         println(REQUEST_WINNING_NUMBER)
-        return Console.readLine()
+        val winNumbers = Console.readLine()
             .divideToNums(",")
+        return Lotto(winNumbers)
     }
 
     private fun readBonusNumber(): Int {
