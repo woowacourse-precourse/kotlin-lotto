@@ -11,7 +11,9 @@ import lotto.util.readInt
 class LottoGame {
     fun start() {
         val originCost = readCost()
-        val lottos = purchase(originCost)
+        val lottos = purchaseLotto(originCost)
+
+        printLottoInfo(lottos)
 
         val winningNumber = WinningNumber(
             readWinningNumber(),
@@ -28,11 +30,13 @@ class LottoGame {
         return readInt()
     }
 
-    private fun purchase(cost: Int): List<Lotto> {
-        val lottos = LottoPurchaser().purchaseLottos(cost)
+    private fun purchaseLotto(cost: Int): List<Lotto> {
+        return LottoPurchaser().purchaseLottos(cost)
+    }
+
+    private fun printLottoInfo(lottos: List<Lotto>) {
         println("${lottos.size}개를 구매했습니다.")
         lottos.forEach { println(it.toString()) }
-        return lottos
     }
 
     private fun readWinningNumber(): List<Int> {
@@ -48,8 +52,11 @@ class LottoGame {
     }
 
     private fun printResultInfo(lottoResultInfo: LottoResultInfo) {
+        val stats = lottoResultInfo.getStatInfo()
+        val profit = lottoResultInfo.getProfitInfo()
+
         println("당첨 통계\n---")
-        println(lottoResultInfo.getStatInfo())
-        println("총 수익률은 ${lottoResultInfo.getProfitInfo()}%입니다.")
+        println(stats)
+        println("총 수익률은 ${profit}%입니다.")
     }
 }
