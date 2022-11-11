@@ -3,28 +3,32 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 
 class View {
-    fun getPaymentAmount(): String {
-        println("구입금액을 입력해 주세요.")
-        return Console.readLine()
+
+    companion object {
+        fun getPaymentAmount(): String {
+            println("구입금액을 입력해 주세요.")
+            return Console.readLine()
+        }
+
+        fun printNumberOfLottos(number: Int) {
+            println("${number}개를 구매했습니다.")
+        }
+
+        fun printLottos() {
+            TODO()
+        }
+
+        fun getWinningNumber(): String {
+            TODO()
+        }
+
+        fun getBonusNumber(): String {
+            TODO()
+        }
+
+        fun printResultStats() {
+            TODO()
+        }
     }
 
-    fun printNumberOfLottos(number: Int) {
-        println("${number}개를 구매했습니다.")
-    }
-
-    fun printLottos() {
-        TODO()
-    }
-
-    fun getWinningNumber(): String {
-        TODO()
-    }
-
-    fun getBonusNumber(): String {
-        TODO()
-    }
-
-    fun printResultStats() {
-        TODO()
-    }
 }
