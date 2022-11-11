@@ -14,7 +14,7 @@ class Winning(winningNumber: String) {
         validateLuckyNumberDuplicate(luckyNumber)
     }
 
-    fun splitLuckyNumber(numbers: String) {
+    private fun splitLuckyNumber(numbers: String) {
         numbers.split(",").forEach { number ->
             try {
                 luckyNumber.add(number.toInt())
@@ -24,7 +24,11 @@ class Winning(winningNumber: String) {
         }
     }
 
-    fun validateLuckyNumberRange(luckyNumber : List<Int>): Boolean {
+    fun getLuckyNumber() = luckyNumber
+
+    fun getBonusNumber() = bonusNumber
+
+    fun validateLuckyNumberRange(luckyNumber: List<Int>): Boolean {
         val count = luckyNumber.filter { number ->
             number in 1..45
         }.size
@@ -34,7 +38,7 @@ class Winning(winningNumber: String) {
         }
     }
 
-    fun validateLuckyNumberDuplicate(luckyNumber : List<Int>): Boolean {
+    fun validateLuckyNumberDuplicate(luckyNumber: List<Int>): Boolean {
         return when (luckyNumber.distinct().size) {
             6 -> true
             else -> throw IllegalArgumentException("[ERROR] 중복되지 않은 수를 입력해 주세요.")
