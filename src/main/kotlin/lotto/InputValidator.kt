@@ -15,6 +15,17 @@ object InputValidator {
         return isValid
     }
 
+    fun validateBonusNumber(bonusNumber: String, winningNumber: Array<Int>): Boolean {
+        var isValid = true
+
+        when {
+            !bonusNumber.isNumeric() -> isValid = false
+            !bonusNumber.isInRange() -> isValid = false
+            winningNumber.contains(bonusNumber.toInt()) -> isValid = false
+        }
+        return isValid
+    }
+
     private fun List<String>.hasOverLappedNumber(): Boolean {
         val existNumber = mutableSetOf<String>()
 
@@ -39,4 +50,7 @@ object InputValidator {
         }
         return true
     }
+
+    private fun String.isInRange(): Boolean = this.toInt() in MINIMUM_LOTTO_NUMBER..MAXIMUM_LOTTO_NUMBER
+
 }
