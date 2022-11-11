@@ -44,7 +44,14 @@ class Lotto(private val numbers: List<Int>) { //당첨번호 로또를 넣고
             if (i == 7){ fivebonus += 1 }
         }
         ui().printLottoResult(three, four, five, fivebonus, six)
+        profitPercent(three, four, five, fivebonus, six, buyMoney)
+    }
 
+    fun profitPercent(three : Int, four : Int, five : Int, fivebonus : Int, six : Int, buyMoney : Int) {
+        var totalMoney = three * 5000 + four * 50000 + five * 1500000 + fivebonus * 30000000 + six * 2000000000
+        var moneyRatio = totalMoney.toDouble() / buyMoney.toDouble() * 100.0
+        moneyRatio = round(moneyRatio*10)/10
+        println("총 수익률은 $moneyRatio%입니다.")
     }
 
 }

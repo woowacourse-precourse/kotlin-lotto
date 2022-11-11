@@ -7,7 +7,7 @@
 * [o] 발행 로또와 당첨 번호 비교하기 - Lotto / compare()
     *
 * [o] 당첨 통계 보여주기 - Lotto / showLottoResult()
-* [] 수익률 보여주기 - Lotto / profitPercent()  
+* [o] 수익률 보여주기 - Lotto / profitPercent()  
   * 소수점 둘째 자리에서 반올림
 * [] 예외 상황 처리 - Lotto / exception()
   * 
