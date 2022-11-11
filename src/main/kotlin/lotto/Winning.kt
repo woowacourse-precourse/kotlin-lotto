@@ -3,30 +3,31 @@ package lotto
 import java.lang.NumberFormatException
 import kotlin.IllegalArgumentException
 
-class Winning(winningNumber: String) {
-    private val luckyNumber = mutableListOf<Int>()
-    private var bonusNumber = 0
+class Winning(_winningNumber: String) {
+    private val winningNumber = mutableListOf<Int>()
 
     init {
-        validateSplitWinningNumber(winningNumber)
-        require(luckyNumber.size == 6) { ErrorMessage.sizeError(Constant.WINNING_NUMBER) }
-        validateWinningNumberRange(luckyNumber)
-        validateWinningNumberDuplicate(luckyNumber)
+        validateSplitWinningNumber(_winningNumber)
+        validateWinningNumberSize(winningNumber)
+        validateWinningNumberRange(winningNumber)
+        validateWinningNumberDuplicate(winningNumber)
     }
 
     private fun validateSplitWinningNumber(numbers: String) {
         numbers.split(",").forEach { number ->
             try {
-                luckyNumber.add(number.toInt())
+                winningNumber.add(number.toInt())
             } catch (exception: NumberFormatException) {
                 throw IllegalArgumentException(ErrorMessage.intError(Constant.WINNING_NUMBER))
             }
         }
     }
 
-    fun getWinningNumber() = luckyNumber
+    fun validateWinningNumberSize(winningNumber: List<Int>) = require(winningNumber.size == 6) {
+        throw IllegalArgumentException(ErrorMessage.sizeError(Constant.WINNING_NUMBER))
+    }
 
-    fun getBonusNumber() = bonusNumber
+    fun getWinningNumber() = winningNumber
 
     fun validateWinningNumberRange(luckyNumber: List<Int>) {
         val count = luckyNumber.filter { number ->
@@ -41,27 +42,4 @@ class Winning(winningNumber: String) {
         throw IllegalArgumentException(ErrorMessage.duplicateError(Constant.WINNING_NUMBER))
     }
 
-
-    fun validateBonusNumberRange(bonusNumber: Int) = require(bonusNumber in 1..45) {
-        throw IllegalArgumentException(ErrorMessage.rangeError(Constant.BONUS_NUMBER))
-    }
-
-
-    fun validateBonusNumberDuplicate(bonusNumber: Int) = require(luckyNumber.contains(bonusNumber)) {
-        throw IllegalArgumentException(ErrorMessage.duplicateError(Constant.BONUS_NUMBER))
-    }
-
-    fun inputBonusNumber(number: String) {
-        bonusNumber = try {
-            number.toInt()
-        } catch (exception: NumberFormatException) {
-            throw IllegalArgumentException(ErrorMessage.intError(Constant.BONUS_NUMBER))
-        }
-        checkBonusNumberException()
-    }
-
-    private fun checkBonusNumberException() {
-        validateBonusNumberRange(bonusNumber)
-        validateBonusNumberDuplicate(bonusNumber)
-    }
 }
