@@ -34,6 +34,14 @@ class LottoTest : NsTest(){
         }
     }
 
+    @Test
+    fun `입력값이 1000으로 나누어 떨어지지 않을 경우 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            runException("14500")
+            Assertions.assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
     override fun runMain() {
         main()
     }
