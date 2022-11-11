@@ -6,7 +6,7 @@ class Printer {
     }
 
     fun printLottoCountMessage(count: Int) {
-        println("${count}개를 구매했습니다.")
+        println("\n${count}개를 구매했습니다.")
     }
 
     fun printBoughtLottoList(lotteries: List<List<Int>>) {
@@ -16,11 +16,11 @@ class Printer {
     }
 
     fun printWinningNumberMessage() {
-        println("당첨 번호를 입력해 주세요.")
+        println("\n당첨 번호를 입력해 주세요.")
     }
 
     fun printBonusNumberMessage() {
-        println("보너스 번호를 입력해 주세요.")
+        println("\n보너스 번호를 입력해 주세요.")
     }
 
     companion object {
