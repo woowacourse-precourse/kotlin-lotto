@@ -6,7 +6,8 @@
 5. 당첨 번호 입력 받기 (,로 구분)
 - 입력된 번호가 6개 초과되는 경우
 - ,를 기준으로 split했을 때 나온 list가 숫자가 아닌 경우
-- 번호가 1~45 숫자가 아닌 경우 예외처리 (IllegalArgumentException)
+- 번호가 1~45 숫자가 아닌 경우
+- 중복된 숫자가 있는 경우 (IllegalArgumentException)
 6. 보너스 번호 입력 받기
 - 입력된 번호가 숫자가 아닌 경우
 - 번호가 1~45 숫자가 아닌 경우 (IllegalArgumentException)
@@ -64,3 +65,12 @@
 - RangeError
 - sizeError
 - typeError
+- overlapError
+
+## WinningType(reward) -- Enum class
+- FIRST
+- SECOND
+- THIRD
+- FOURTH
+- FIFTH
+- NOTHING
