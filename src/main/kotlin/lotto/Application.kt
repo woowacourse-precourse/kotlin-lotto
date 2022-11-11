@@ -2,6 +2,7 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import java.text.DecimalFormat
 
 enum class CORRECTCNT(val message: String) {
     THREE("3개 일치 (5,000원) - "),
@@ -33,6 +34,8 @@ fun main() {
 
         val win = checkLotto(lottoResult, myLotto, bonusNumber)
         printWin(win)
+
+        profitRate(buyAmount, win)
     }
     catch (e: NumberFormatException) {
         throw IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.")
@@ -93,4 +96,21 @@ fun printWin(win: Array<Int>) {
         }
         println("${win[it]}개")
     }
+}
+
+fun profitRate(buyAmount: Int, win: Array<Int>) {
+    var total = 0.0
+    repeat(win.size - 1) {
+        when(it) {
+            0 -> total += win[it] * 5000
+            1 -> total += win[it] * 50000
+            2 -> total += win[it] * 1500000
+            3 -> total += win[it] * 30000000
+            4 -> total += win[it] * 2000000000
+        }
+    }
+
+    val rate = total / buyAmount * 100
+    val decimalFormat = DecimalFormat("0.##")
+    println("총 수익률은 ${decimalFormat.format(rate)}%입니다.")
 }
