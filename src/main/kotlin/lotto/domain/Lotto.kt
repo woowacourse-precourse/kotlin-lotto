@@ -1,10 +1,10 @@
 package lotto.domain
 
+import lotto.Exceptions
+
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6)
-        require(numbers.distinct().size == 6)
-        require(numbers.all { it in 1..45 })
+        Exceptions().validateLottoNumbers(numbers)
     }
 
     // TODO: 추가 기능 구현
