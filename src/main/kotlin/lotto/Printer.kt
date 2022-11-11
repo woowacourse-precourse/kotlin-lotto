@@ -9,6 +9,12 @@ class Printer {
         println("${count}개를 구매했습니다.")
     }
 
+    fun printBoughtLottoList(lotteries: List<List<Int>>) {
+        lotteries.forEach { list ->
+            println(list)
+        }
+    }
+
     companion object {
         fun printError(errorMessage: String) {
             println("[ERROR] $errorMessage")
