@@ -34,8 +34,8 @@ object LottoErrorCheck {
     }
 
     private fun checklottonumber(checklotto: List<Int>) {
-        for (count: Int in 0 until checklotto.size)
-            checknumberisinlottorange(checklotto[count])
+        for (element in checklotto)
+            checknumberisinlottorange(element)
     }
 
     fun checknumberisinlottorange(number: Int) {

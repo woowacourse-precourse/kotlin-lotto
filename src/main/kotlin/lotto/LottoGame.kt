@@ -8,11 +8,12 @@ const val LOTTO_PRICE = 1000
 class LottoGame() {
 
     var money = ""
-    var lottos = mutableListOf<List<Int>>()
+    val lottos = mutableListOf<List<Int>>()
+    val checkprize = mutableListOf<Int>()
 
     fun gamestart() {
         getusermoney()
-        val count = makelottonumber()
+        makelottonumber()
 
 
     }
@@ -22,13 +23,12 @@ class LottoGame() {
         money = Console.readLine()
     }
 
-    private fun makelottonumber(): Int {
+    private fun makelottonumber() {
         LottoErrorCheck.checkallmoneyerror(money)
         val count = money.toInt() / LOTTO_PRICE
         printcount(count)
         createlottos(count)
         printlottolist()
-        return count
     }
 
     private fun printcount(count: Int) {
@@ -46,6 +46,10 @@ class LottoGame() {
         for (number: Int in 0 until lottos.size) {
             println(lottos[number])
         }
+    }
+
+    private fun checklotto(){
+
     }
 
 }
