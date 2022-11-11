@@ -26,7 +26,7 @@
 - [x] 사용자의 로또 번호가 몇등인지 확인한다. - LottoCheck#rankLotto()
 - [x] 저장한 당첨 번호를 리스트로 변환시킨다. - LottoCheck#lottoWinNumbers()
 - [x] 저장한 보너스 번호를 정수형으로 변환시킨다. - LottoCheck#rankLotto()
-- [ ] 사용자가 구매한 로또 번호와 당첨 번호를 비교하여 당첨 내역 및 수익률을 출력하고 로또 게임을 종료한다. - LottoBank#yieldLotto()
+- [x] 사용자가 구매한 로또 번호와 당첨 번호를 비교하여 당첨 내역 및 수익률을 출력하고 로또 게임을 종료한다. - LottoBank#yieldLotto()
 - [x] 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
 
 ## 기능 요구 사항
