@@ -9,7 +9,7 @@ class PurchaseTest {
     private val purchase = Purchase()
 
     @Test
-    fun `로또 구매 금액이 나머지가 존재하면 예외 반환`() {
+    fun `로또 지불 비용이 나머지가 존재하면 예외 반환`() {
         assertThrows<IllegalArgumentException> {
             val remainder = purchase.checkMoney(TWO_THOUS_FIVE_HUND)
             val hasRemainder = true
@@ -18,7 +18,7 @@ class PurchaseTest {
     }
 
     @Test
-    fun `로또 구매 금액에 맞는 로또 갯수 존재 여부 테스트`() {
+    fun `로또 지불 비용에 맞는 로또 갯수 존재 여부 테스트`() {
         val lottoQuantity = purchase.updateLottoQuantity(TEN_THOUS)
         assertThat(LOTTO_TEN_QUANTITY).isEqualTo(lottoQuantity)
     }
