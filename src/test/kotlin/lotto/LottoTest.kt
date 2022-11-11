@@ -20,5 +20,33 @@ class LottoTest {
         }
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @Test
+    fun `구매액은 숫자여야한다`(){
+        assertThrows<IllegalArgumentException>{
+            LottoErrorCheck.checkinputisnumber("100a")
+        }
+
+    }
+    @Test
+    fun `로또 구매액은 1000이상`(){
+        assertThrows<IllegalArgumentException>{
+            LottoErrorCheck.checkleastvalue(999)
+        }
+
+    }
+    @Test
+    fun `로또 구매액은 1000으로 떨어지게`(){
+        assertThrows<IllegalArgumentException>{
+            LottoErrorCheck.checkitdoesnothavechange(1970)
+        }
+
+    }
+    @Test
+    fun `로또는 항상 1~45사이`(){
+        assertThrows<IllegalArgumentException>{
+            LottoErrorCheck.checknumberisinlottorange(46)
+        }
+
+    }
+
 }
