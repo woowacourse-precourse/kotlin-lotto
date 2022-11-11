@@ -6,7 +6,7 @@ import java.util.regex.Pattern
 
 private const val amount = 1000
 fun main() {
-    getSellLottoCount()
+    setLotto(getSellLottoCount())
 
 }
 private fun getSellLottoCount() : Int{
@@ -24,4 +24,13 @@ private fun getSellLottoCount() : Int{
 
 }
 
+private fun setLotto(count: Int) {
+    var lottos = mutableListOf<Lotto>()
+
+    for(i in 0 until count){
+        val lotto = Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6))
+        lottos.add(lotto)
+    }
+
+}
 
