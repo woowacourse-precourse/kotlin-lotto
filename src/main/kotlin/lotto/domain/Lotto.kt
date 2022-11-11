@@ -20,8 +20,7 @@ class Lotto(private val numbers: List<Int>) {
 
     operator fun contains(num: Int) = num in numbers
 
-    fun compare(other: Lotto) = numbers
-        .count { it in other }
+    fun compare(other: Lotto) = numbers.count { it in other }
 
     override fun toString(): String {
         return numbers.toString()

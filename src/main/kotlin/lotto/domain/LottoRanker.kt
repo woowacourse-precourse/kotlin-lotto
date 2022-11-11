@@ -1,7 +1,6 @@
 package lotto.domain
 
 class LottoRanker {
-
     fun rank(lotto: Lotto, winningNumber: WinningNumber): LottoRank {
         val matchedCnt = lotto.compare(winningNumber.winLotto)
         val bonusMatched = lotto.contains(winningNumber.bonus)
