@@ -21,6 +21,7 @@ fun main() {
 
         println("\n보너스 번호를 입력해 주세요.")
         val bonusNumber = userInput().toInt()
+        bonusNumberException(lottoResult, bonusNumber)
     }
     catch (e: NumberFormatException) {
         throw IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.")
@@ -55,4 +56,8 @@ fun buyAmountException(buyAmount: Int) {
 
 fun lottoException(lottoResult: List<Int>) {
     Lotto(lottoResult).lottoException()
+}
+
+fun bonusNumberException(lottoResult: List<Int>, bonusNumber: Int) {
+    Lotto(lottoResult).bonusNumberException(bonusNumber)
 }
