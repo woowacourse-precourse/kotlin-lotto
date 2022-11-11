@@ -1,19 +1,21 @@
 # 로또 게임
 
 ## 기능 목록
-- [ ] 로또 구입 금액을 잘못 입력한 경우 예외 처리한다. - LottoOrder#inputTypeException()
-- [ ] 로또 구입 금액을 잘못 입력하거나 1,000원으로 나누어 떨어지지 않는 경우 예외 처리한다. - LottoOrder#inputMoneyException()
-- [ ] 로또 구입 금액을 입력하면 1000원당 1장, 구입 금액에 해당하는 만큼 로또를 생성한다. - LottoShop#buyLotto()
-- [ ] 구입 금액에 만큼 살 수 있는 로또의 개수를 확인하다.- LottoShop#cntLotto()
-- [ ] 1부터 45까지 서로 다른 임의의 수 6개의 숫자를 생성한다. - LottoShop#createRandomLotto()
-- [ ] 당첨 번호와 보너스 번호를 구한다. - LottoWin#winLotto()
-- [ ] 당첨 번호와 보너스 번호를 저장한다. - LottoWin#LottoWinBall
-- [ ] 당첨 번호는 중복되지 않는 숫자 6개를 입력 받는다. - LottoWin#inputWinningNumber()
-- [ ] 당첨 번호와 중복되지 않는 보너스 번호 1개를 입력 받는다. - LottoWin#inputBonusLotto()
-- [ ] 당첨 번호를 잘못 입력한 경우 예외 처리한다. - LottoWin#inputLottoNumberTypeException()
-- [ ] 당첨 번호를 잘못 입력하거나 1부터 45 사이에 번호가 아닌 경우 예외 처리한다. - LottoWin#inputLottoNumberException
-- [ ] 당첨 번호의 개수가 잘못 입력되었거나 중복되었을 경우 예외 처리한다. - LottoWin#inputWinningNumberException
-- [ ] 보너스 번호가 당첨 번호와 중복되었을 경우 예외 처리한다. - LottoWin#inputWinningBonusNumberException
+- [x] 로또 구입 금액을 잘못 입력한 경우 예외 처리한다. - LottoOrder#inputTypeException()
+- [x] 로또 구입 금액을 잘못 입력하거나 1,000원으로 나누어 떨어지지 않는 경우 예외 처리한다. - LottoOrder#inputMoneyException()
+- [x] 로또 구입 금액을 입력하면 1000원당 1장, 구입 금액에 해당하는 만큼 로또를 생성한다. - LottoShop#buyLotto()
+- [x] 구입 금액에 만큼 살 수 있는 로또의 개수를 확인하다.- LottoShop#cntLotto()
+- [x] 1부터 45까지 서로 다른 임의의 수 6개의 숫자를 생성한다. - LottoShop#createRandomLotto()
+- [x] 당첨 번호와 보너스 번호를 구한다. - LottoWin#winLotto()
+- [x] 당첨 번호와 보너스 번호를 저장한다. - LottoWin#LottoWinBall
+- [x] 당첨 번호는 중복되지 않는 숫자 6개를 입력 받는다. - LottoWin#inputWinningNumber()
+- [x] 당첨 번호와 중복되지 않는 보너스 번호 1개를 입력 받는다. - LottoWin#inputBonusLotto()
+- [x] 당첨 번호를 잘못 입력한 경우 예외 처리한다. - LottoWin#inputLottoNumberTypeException()
+- [x] 당첨 번호를 잘못 입력하거나 1부터 45 사이에 번호가 아닌 경우 예외 처리한다. - LottoWin#inputLottoNumberException
+- [x] 당첨 번호의 개수가 잘못 입력되었거나 중복되었을 경우 예외 처리한다. - LottoWin#inputWinningNumberException
+- [x] 보너스 번호가 당첨 번호와 중복되었을 경우 예외 처리한다. - LottoWin#inputWinningBonusNumberException
+- [ ] Lotto의 Numbers를 출력한다.  - Lotto#getNumbers()
+- [ ] 당첨금과 당첨을 하기위한 개수를 저장한다. - LottoCheck#LottoReward
 - [ ] 당첨은 1등부터 5등까지 있다. 로또 번호와 당첨 번호를 비교할 수 있다. - LottoCheck#compareLotto()
     - [ ] 몇개의 숫자가 같은지 알 수 있다. - LottoCheck#correctLotto()
     - [ ] 6개의 번호가 일치하면 1등이다.
@@ -21,6 +23,9 @@
     - [ ] 5개의 번호가 일치하면 3등이다.
     - [ ] 4개의 번호가 일치하면 4등이다.
     - [ ] 3개의 번호가 일치하면 5등이다.
+- [ ] 사용자의 로또 번호가 몇등인지 확인한다. - LottoCheck#rankLotto()
+- [ ] 저장한 당첨 번호를 리스트로 변환시킨다. - LottoCheck#lottoWinNumbers()
+- [ ] 저장한 보너스 번호를 정수형으로 변환시킨다. - LottoCheck#rankLotto()
 - [ ] 사용자가 구매한 로또 번호와 당첨 번호를 비교하여 당첨 내역 및 수익률을 출력하고 로또 게임을 종료한다. - LottoBank#yieldLotto()
 - [ ] 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
 
