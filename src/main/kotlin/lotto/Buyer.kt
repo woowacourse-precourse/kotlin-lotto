@@ -5,8 +5,16 @@ import java.lang.IllegalArgumentException
 class Buyer {
     fun enterAmount(): Int {
         val input = readln()
+        checkIsBlank(input)
         checkIsInIntRange(input)
         return input.toInt()
+    }
+
+    private fun checkIsBlank(input: String){
+        if(input.isBlank()) {
+            Printer.printError("구입금액을 입력해주세요.")
+            throw IllegalArgumentException("구입금액을 입력해주세요.")
+        }
     }
 
     private fun checkIsInIntRange(input: String) {
