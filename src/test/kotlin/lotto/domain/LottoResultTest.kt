@@ -27,7 +27,7 @@ class LottoResultTest {
 
     @Test
     fun `로또의 총 수익률은 총 수익 나누기 구입금액 곱하기 100 이다`() {
-        val profit = lottoResult.computeProfit()
+        val profit = lottoResult.profit
         val input = String.format("%.1f", profit)
         val expect = "62.5"
         assert(input == expect)

@@ -22,7 +22,7 @@ class LottoResultFormatter(private val lottoResult: LottoResult) {
     }
 
     fun getProfitInfo(): String {
-        val profit = lottoResult.computeProfit()
+        val profit = lottoResult.profit
         return PROFIT_INFO_FORMAT.format(profit)
     }
 

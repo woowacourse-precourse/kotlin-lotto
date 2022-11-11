@@ -32,7 +32,7 @@ class LottoResult(
         }
     }
 
-    fun computeProfit(originCost: Int): Double {
+    private fun computeProfit(originCost: Int): Double {
         var prizeSum = 0
         for ((rank, cnt) in rankToCnt) {
             prizeSum += rank.prize * cnt
