@@ -1,4 +1,5 @@
 package lotto
+
 import camp.nextstep.edu.missionutils.Console.readLine
 
 class Buyer {
@@ -8,6 +9,11 @@ class Buyer {
         checkIsNumber(input)
         checkCanDivide(input)
         checkIsInIntRange(input)
+        return input.toInt()
+    }
+
+    fun enterWinningNumber(): Int {
+        val input = readLine()
         return input.toInt()
     }
 
