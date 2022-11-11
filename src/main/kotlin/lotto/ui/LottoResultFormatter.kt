@@ -28,7 +28,7 @@ class LottoResultFormatter(private val lottoResult: LottoResult) {
 
     fun getRankInfo(lottoRank: LottoRank): String {
         val prize = lottoRank.prize
-        val matchCnt = lottoRank.matchCnt
+        val matchCnt = lottoRank.matchedCnt
         val prizeFormatted = prize.toPriceFormatted()
         val infoFormat = if (lottoRank == LottoRank.SECOND) {
             SECOND_RANK_INFO_FORMAT

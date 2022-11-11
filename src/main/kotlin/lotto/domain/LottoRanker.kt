@@ -9,6 +9,6 @@ class LottoRanker {
 
     private fun getLottoRank(matchedCnt: Int, bonusMatched: Boolean) = LottoRank.values()
         .firstOrNull {
-            (it.matchCnt == matchedCnt) and (it.bonusMatched == bonusMatched)
+            (it.matchedCnt == matchedCnt) and (it.bonusMatched == bonusMatched)
         } ?: LottoRank.FAIL
 }
