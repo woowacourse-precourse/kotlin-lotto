@@ -7,4 +7,11 @@ fun inputPurchaseAmount(): Int? {
     return inputInt()
 }
 
+fun inputLottoNumbers(): List<Int> {
+    println("당첨 번호를 입력해 주세요.")
+    return input().split(',').map { it.toInt() }
+}
+
 private fun inputInt() = Console.readLine().toIntOrNull()
+
+private fun input() = Console.readLine()
