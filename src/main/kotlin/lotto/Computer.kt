@@ -13,6 +13,7 @@ class Computer {
 
     private fun makeOneLottery() {
         val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+        numbers.sort()
         addToList(numbers.toSet())
     }
 
