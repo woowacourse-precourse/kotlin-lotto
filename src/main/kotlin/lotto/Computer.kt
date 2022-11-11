@@ -3,7 +3,7 @@ package lotto
 import camp.nextstep.edu.missionutils.Randoms
 
 class Computer {
-    val lotteries = mutableListOf<Set<Int>>()
+    val lotteries = mutableListOf<List<Int>>()
 
     fun makeLotteries(count: Int) {
         while (lotteries.count() != count) {
@@ -14,12 +14,12 @@ class Computer {
     private fun makeOneLottery() {
         val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
         numbers.sort()
-        addToList(numbers.toSet())
+        addToList(numbers)
     }
 
-    private fun addToList(numbers: Set<Int>) {
+    private fun addToList(numbers: List<Int>) {
         if (!checkDuplicateLottery(numbers)) lotteries.add(numbers)
     }
 
-    private fun checkDuplicateLottery(numbers: Set<Int>) = lotteries.contains(numbers)
+    private fun checkDuplicateLottery(numbers: List<Int>) = lotteries.contains(numbers)
 }
