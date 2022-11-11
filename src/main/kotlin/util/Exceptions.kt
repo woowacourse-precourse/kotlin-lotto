@@ -23,4 +23,30 @@ object Exceptions {
             )
         }
     }
+
+    // 당첨번호의 문자 입력값 확인
+    fun isValidWinningNumber(winningNumber: List<String>): List<Int> {
+        return winningNumber.map { number ->
+            try {
+                number.toInt()
+            } catch (e: NumberFormatException) {
+                throw IllegalArgumentException(
+                    Messages.ERROR_MESSAGE +
+                            Messages.ERROR_NUMBER_FORMAT
+                )
+            }
+        }
+    }
+
+    // 당첨번호의 숫자 범위 예외 확인
+    fun isValidRangeWinningNumber(winningNumber: List<Int>) {
+        winningNumber.forEach { number ->
+            if (number < Constants.RANGE_START || Constants.RANGE_END < number) {
+                throw IllegalArgumentException(
+                    Messages.ERROR_MESSAGE +
+                            Messages.ERROR_NUMBER_RANGE
+                )
+            }
+        }
+    }
 }
