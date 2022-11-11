@@ -4,14 +4,22 @@ import java.lang.IllegalArgumentException
 import java.lang.NullPointerException
 import java.lang.NumberFormatException
 
+const val LOTTO_PRICE = 1000
+
 fun main() {
 
-    val lottoGenerate = LottoGenerate()
-    val lotto = lottoGenerate.createLottoNumbers()
-
     val money = inputMoney()
-    val winningLotto = inputWinningLotto()
-    val bonus = inputBonusNum()
+    /*val winningLotto = inputWinningLotto()
+    val bonus = inputBonusNum()*/
+
+    val lottoGenerate = LottoGenerate()
+    val lottos = lottoGenerate.createLottos(money / LOTTO_PRICE)
+    printLottos(money / LOTTO_PRICE, lottos)
+}
+fun printLottos(count: Int, lottos : List<Lotto>) {
+    println("${count}개를 구매했습니다.")
+    lottos.forEach { it.printLotto() }
+    println()
 }
 
 fun inputMoney() : Int {

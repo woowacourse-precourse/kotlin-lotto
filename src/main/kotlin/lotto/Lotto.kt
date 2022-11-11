@@ -19,4 +19,8 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     fun matchBonus(bonus: Int): Boolean = numbers.contains(bonus)
+
+    fun printLotto() {
+        println(numbers)
+    }
 }
