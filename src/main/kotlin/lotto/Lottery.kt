@@ -15,6 +15,7 @@ class Lottery(
         val amount = buyer.enterAmount()
         val lottoCount = calculator.getLottoCount(amount)
         printer.printLottoCountMessage(lottoCount)
+        computer.makeLotteries(lottoCount)
     }
 
     companion object{
