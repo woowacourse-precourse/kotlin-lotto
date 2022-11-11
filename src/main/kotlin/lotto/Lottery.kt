@@ -23,11 +23,12 @@ class Lottery(
 
     private fun getWinningNumber() {
         printer.printWinningNumberMessage()
-        val winningNumber = buyer.enterWinningNumber()
+        buyer.enterWinningNumber()
     }
 
     private fun getBonusNumber() {
         printer.printBonusNumberMessage()
+        buyer.enterBonusNumber()
     }
 
     companion object {

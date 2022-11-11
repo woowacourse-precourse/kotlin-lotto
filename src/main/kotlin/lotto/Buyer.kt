@@ -3,6 +3,8 @@ package lotto
 import camp.nextstep.edu.missionutils.Console.readLine
 
 class Buyer {
+    private var winningNumbers = listOf<Int>()
+
     fun enterAmount(): Int {
         val input = readLine()
         input.apply {
@@ -14,7 +16,7 @@ class Buyer {
         return input.toInt()
     }
 
-    fun enterWinningNumber(): List<Int> {
+    fun enterWinningNumber() {
         val input = readLine()
         input.apply {
             checkIsBlank(this)
@@ -22,7 +24,14 @@ class Buyer {
             checkIsNumberInRange(this)
             checkDuplicate(this)
         }
-        return input.split(",").map { it.toInt() }
+        winningNumbers = input.split(",").map { it.toInt() }
+    }
+
+    fun enterBonusNumber() {
+        val input = readLine()
+        checkIsBlank(input)
+        checkIsIn1To45(input.toInt())
+        checkDuplicateWithWinningNumber(input.toInt())
     }
 
     private fun checkIsBlank(input: String) {
@@ -60,14 +69,25 @@ class Buyer {
 
     private fun checkIsNumberInRange(input: String) {
         input.split(",").forEach {
-            if (it[0] == '0' || it.toInt() !in (1..45))
+            checkIsIn1To45(it.toInt())
+            if (it[0] == '0')
                 Lottery.printAndThrowException(WRONG_RANGE)
         }
+    }
+
+    private fun checkIsIn1To45(num: Int) {
+        if (num !in (1..45))
+            Lottery.printAndThrowException(WRONG_RANGE)
     }
 
     private fun checkDuplicate(input: String) {
         val numbers: Set<String> = input.split(",").toSet()
         if (numbers.count() != ONE_LOTTERY_COUNT)
+            Lottery.printAndThrowException(DUPLICATE_NUMBER)
+    }
+
+    private fun checkDuplicateWithWinningNumber(num: Int) {
+        if (winningNumbers.contains(num))
             Lottery.printAndThrowException(DUPLICATE_NUMBER)
     }
 
