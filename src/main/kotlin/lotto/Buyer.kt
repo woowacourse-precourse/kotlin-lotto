@@ -1,8 +1,9 @@
 package lotto
+import camp.nextstep.edu.missionutils.Console.readLine
 
 class Buyer {
     fun enterAmount(): Int {
-        val input = readln()
+        val input = readLine()
         checkIsBlank(input)
         checkIsNumber(input)
         checkCanDivide(input)
