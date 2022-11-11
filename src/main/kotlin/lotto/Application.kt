@@ -9,14 +9,15 @@ fun main() {
         createLottoNumber()
     }
     val winningNumbers = inputLottoWinningNumebers()
+
 }
 
-fun inputLottoWinningNumebers() {
+fun inputLottoWinningNumebers(): List<String> {
     println("당첨 번호를 입력해 주세요.")
     val winninngNumbers = readLine().toString().split(",")
 
-    if (winninngNumbers.size != 6) {
-        println("[ERROR] 6개의 숫자를 입력해주세요.")
+    if (winninngNumbers.distinct().size != 6) {
+        println("[ERROR] 6개의 중복되지 않은 숫자를 입력해주세요.")
         throw IllegalArgumentException()
     }
     for (number in winninngNumbers) {
@@ -25,6 +26,7 @@ fun inputLottoWinningNumebers() {
             throw IllegalArgumentException()
         }
     }
+    return winninngNumbers
 }
 
 fun createLottoNumber() {
