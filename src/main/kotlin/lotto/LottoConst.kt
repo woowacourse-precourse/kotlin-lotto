@@ -7,3 +7,6 @@ const val MAX_AMOUNT = "구매 가능 최대 금액은 2147483000원입니다."
 const val INPUT_FORMAT = "[1-45],[1-45],[1-45],[1-45],[1-45],[1-45]"
 const val FORMAT_ERROR = "올바른 입력 형식이 아닙니다. 1~45 사이의 숫자 6개를 쉼표로 구분해서 입력해주세요."
 const val DUPLICATE_NUMBER = "중복되는 값이 있습니다."
+const val ONE_THOUSAND = 1000
+const val ZERO = 0
+const val ONE_LOTTERY_COUNT = 6

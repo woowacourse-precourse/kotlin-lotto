@@ -50,7 +50,7 @@ class Buyer {
         }
     }
 
-    private fun canDivide1000(num: Int) = num % 1000 == 0
+    private fun canDivide1000(num: Int) = num % ONE_THOUSAND == ZERO
 
     private fun checkIsRightFormat(input: String) {
         if (!INPUT_FORMAT.toRegex().matches(input)) {
@@ -60,7 +60,7 @@ class Buyer {
 
     private fun checkDuplicate(input: String) {
         val numbers: Set<String> = input.split(",").toSet()
-        if (numbers.count() != 6)
+        if (numbers.count() != ONE_LOTTERY_COUNT)
             Lottery.printAndThrowException(DUPLICATE_NUMBER)
     }
 
