@@ -7,6 +7,7 @@ class Buyer {
         val input = readln()
         checkIsBlank(input)
         checkIsNumber(input)
+        checkCanDivide(input)
         checkIsInIntRange(input)
         return input.toInt()
     }
@@ -24,6 +25,13 @@ class Buyer {
                 Printer.printError("숫자를 입력해주세요.")
                 throw IllegalArgumentException("숫자를 입력해주세요.")
             }
+        }
+    }
+
+    private fun checkCanDivide(input: String){
+        if(input.toInt() % 1000 != 0) {
+            Printer.printError("1000원으로 나누어 떨어져야 합니다.")
+            throw IllegalArgumentException("1000원으로 나누어 떨어져야 합니다.")
         }
     }
 
