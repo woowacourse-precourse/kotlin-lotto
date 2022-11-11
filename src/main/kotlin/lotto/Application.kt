@@ -16,5 +16,6 @@ fun main() {
     val rank = machine.getTotalRank(winning.getLuckyNumber(),winning.getBonusNumber())
     val statistic = Statistic(rank)
     statistic.statisticMessage()
+    println("총 수익률은 ${statistic.calculateTotalYield(machine.getLottoCount() * 1000)}%입니다.")
 
 }
