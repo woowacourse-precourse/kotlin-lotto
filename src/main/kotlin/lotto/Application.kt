@@ -9,14 +9,14 @@ fun main() {
         val buyAmount = userInput().toInt()
         buyAmountException(buyAmount)
 
-        val lottoCnt = lottoCnt(buyAmount.toInt())
+        val lottoCnt = lottoCnt(buyAmount)
         println("\n${lottoCnt}개를 구매했습니다.")
 
         val myLotto = getLotto(lottoCnt)
         printLotto(myLotto)
 
         println("\n당첨 번호를 입력해 주세요.")
-        val lottoResult = userInput()
+        val lottoResult = userInput().split(",").map { it.toInt() }
         lottoException(lottoResult)
 
         println("\n보너스 번호를 입력해 주세요.")
@@ -53,6 +53,6 @@ fun buyAmountException(buyAmount: Int) {
     }
 }
 
-fun lottoException(lottoResult: String) {
-    Lotto(lottoResult.split(",").map { it.toInt() }).lottoException()
+fun lottoException(lottoResult: List<Int>) {
+    Lotto(lottoResult).lottoException()
 }
