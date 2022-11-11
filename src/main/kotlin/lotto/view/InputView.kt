@@ -12,6 +12,11 @@ fun inputLottoNumbers(): List<Int> {
     return input().split(',').map { it.toInt() }
 }
 
+fun inputBonusNumbers(): Int? {
+    println("보너스 번호를 입력해 주세요.")
+    return inputInt()
+}
+
 private fun inputInt() = Console.readLine().toIntOrNull()
 
 private fun input() = Console.readLine()
