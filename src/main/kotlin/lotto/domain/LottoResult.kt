@@ -1,13 +1,15 @@
 package lotto.domain
 
 class LottoResult(
-    val lottos: List<Lotto>,
-    val winningNumber: WinningNumber,
-    val origin: Int
+    lottos: List<Lotto>,
+    winningNumber: WinningNumber,
+    originCost: Int
 ) {
     private val _rankToCnt: MutableMap<LottoRank, Int>
     val rankToCnt: Map<LottoRank, Int>
         get() = _rankToCnt
+
+    val profit: Double
 
     init {
         _rankToCnt = mutableMapOf(
@@ -19,6 +21,7 @@ class LottoResult(
         )
 
         countRank(lottos, winningNumber)
+        profit = computeProfit(originCost)
     }
 
     private fun countRank(lottos: List<Lotto>, winningNumber: WinningNumber) {
@@ -29,11 +32,11 @@ class LottoResult(
         }
     }
 
-    fun computeProfit(): Double {
+    fun computeProfit(originCost: Int): Double {
         var prizeSum = 0
         for ((rank, cnt) in rankToCnt) {
             prizeSum += rank.prize * cnt
         }
-        return prizeSum / origin.toDouble() * 100.0
+        return prizeSum / originCost.toDouble() * 100.0
     }
 }
