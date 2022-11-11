@@ -11,12 +11,19 @@ class Lotto(private val numbers: List<Int>) {
     fun printLottoNumber() = println(numbers.sorted())
 
     fun confirmWinning(luckyNumber: List<Int>, bonusNumber: Int) : Int{
-        var score = luckyNumber.filter{number ->
+        var rank = luckyNumber.filter{number ->
             numbers.contains(number)
         }.size
-        if(numbers.contains(bonusNumber) && score == 5){
-            score = 7
+        if(numbers.contains(bonusNumber) && rank == 5){
+            rank = 7
         }
-        return score
+        return when(rank){
+            3 -> 5
+            4 -> 4
+            5 -> 3
+            7 -> 2
+            6 -> 1
+            else -> 0
+        }
     }
 }
