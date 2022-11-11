@@ -1,7 +1,12 @@
 package lotto
 
-import lotto.domain.LottoGame
+import lotto.ui.LottoGame
 
 fun main() {
-    LottoGame().start()
+    val game = LottoGame()
+    try {
+        game.start()
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+    }
 }
