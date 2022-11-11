@@ -7,4 +7,8 @@ class Purchase {
         }
     }
 
+    fun updateLottoCount(money: Int): Int {
+        return money / 1000
+    }
+
 }
