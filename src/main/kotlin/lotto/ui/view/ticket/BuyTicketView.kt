@@ -6,7 +6,7 @@ class BuyTicketView {
 
     fun enterTicketMoney(): String {
         println(INPUT_TICKET_MONEY_MESSAGE)
-        return Console.readLine()
+        return Console.readLine().trim()
     }
 
     fun printTicketCountMessage(ticketCount: Int) {

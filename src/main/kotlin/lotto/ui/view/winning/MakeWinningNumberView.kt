@@ -5,12 +5,12 @@ import camp.nextstep.edu.missionutils.Console
 class MakeWinningNumberView {
     fun enterWinningNumber(): String {
         println(INPUT_WINNING_NUMBER_MESSAGE)
-        return Console.readLine()
+        return Console.readLine().trim()
     }
 
     fun enterBonusNumber(): String {
         println(INPUT_BONUS_NUMBER_MESSAGE)
-        return Console.readLine()
+        return Console.readLine().trim()
     }
 
     companion object {
