@@ -15,7 +15,8 @@ fun main() {
     printLotto(myLotto)
 
     println("\n당첨 번호를 입력해 주세요.")
-    val lottoResult = userInput().split(",").map { it.toInt() }
+    val lottoResult = userInput()
+    lottoException(lottoResult)
 
     println("\n보너스 번호를 입력해 주세요.")
     val bonusNumber = userInput().toInt()
@@ -48,5 +49,14 @@ fun buyAmountException(buyAmount: String) {
 
     if(buyAmount.toInt() % 1000 != 0) {
         throw IllegalArgumentException("[ERROR] 입력은 1000단위로만 가능합니다.")
+    }
+}
+
+fun lottoException(lottoResult: String) {
+    try {
+        Lotto(lottoResult.split(",").map { it.toInt() }).lottoException()
+    }
+    catch (e: NumberFormatException) {
+        throw IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.")
     }
 }
