@@ -16,6 +16,7 @@ class WinningNumber {
     private fun getWinningNumbers(): List<Int> {
         println(REQUEST_WINNING_NUMBER_MESSAGE)
         val input = Console.readLine()
+        Exceptions().validateWinningNumbers(input)
         return listOf(1,2, 3)
     }
 
