@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 @Suppress("NonASCIICharacters")
 class ApplicationTest : NsTest() {
@@ -45,11 +46,7 @@ class ApplicationTest : NsTest() {
     @Test
     fun `예외 테스트`() {
         assertSimpleTest {
-            try {
-                runException("1000j")
-            } catch (_: IllegalArgumentException) {
-            }
-
+            assertThrows<IllegalArgumentException> { runException("1000j") }
             assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
