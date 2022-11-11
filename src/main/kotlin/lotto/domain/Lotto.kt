@@ -5,7 +5,7 @@ class Lotto(private val numbers: List<Int>) {
         LottoValidator().validateLottoNumber(numbers)
     }
 
-    fun getLottoRank(winningNumber: WinningNumber): LottoRank {
+    fun rank(winningNumber: WinningNumber): LottoRank {
         val overlapNumber = getOverlapNumber(winningNumber.numbers)
         val bonusMatched = winningNumber.bonus in numbers
         return getLottoRank(overlapNumber, bonusMatched)
