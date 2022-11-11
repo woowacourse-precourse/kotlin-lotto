@@ -16,4 +16,9 @@ fun main() {
         val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
         println(numbers.sorted())
     }
+
+    println("당첨 번호를 입력해 주세요.")
+    val winningNumber = Console.readLine()
+    val winningNumberList = winningNumber.split(",").toList().map { it.toInt() }
+    inputVerifier.validateWinningNumber(winningNumber)
 }
