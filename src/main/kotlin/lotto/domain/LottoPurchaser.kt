@@ -1,6 +1,10 @@
 package lotto.domain
 
+import camp.nextstep.edu.missionutils.Randoms
 import lotto.LOTTO_COST
+import lotto.LOTTO_LENGTH
+import lotto.LOTTO_MAX_NUM
+import lotto.LOTTO_MIN_NUM
 import lotto.util.requireWithPrefix
 
 class LottoPurchaser {
@@ -10,10 +14,14 @@ class LottoPurchaser {
 
         val lottos = mutableListOf<Lotto>()
         repeat(cost / LOTTO_COST) {
-            lottos.add(LottoFactory.generate())
+            lottos.add(generateLotto())
         }
         return lottos
     }
+
+    private fun generateLotto() = Lotto(
+        Randoms.pickUniqueNumbersInRange(LOTTO_MIN_NUM, LOTTO_MAX_NUM, LOTTO_LENGTH)
+    )
 
     companion object {
         private const val ERROR_COST_NOT_ENOUGH = "구입금액은 ${LOTTO_COST}원 이상이어야 합니다."
