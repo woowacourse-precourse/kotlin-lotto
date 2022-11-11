@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
 
@@ -47,6 +48,16 @@ class ApplicationTest : NsTest() {
         assertSimpleTest {
             runException("1000j")
             assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `당첨 번호 입력값 예외 테스트`() {
+        assertSimpleTest {
+            runException("1,2,3,4,45,j")
+            assertThrows<IllegalArgumentException> {
+                output()
+            }
         }
     }
 
