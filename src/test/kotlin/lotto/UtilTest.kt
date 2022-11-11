@@ -2,7 +2,7 @@ package lotto
 
 import lotto.util.divideToNums
 import lotto.util.readInt
-import lotto.util.requireWithPrint
+import lotto.util.requireWithPrefix
 import lotto.util.toPriceFormatted
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -23,7 +23,7 @@ class UtilTest {
     fun `예외가 발생하면 에러 메시지를 출력 후 종료한다`() {
         val output = systemSetOut()
         assertThrows<IllegalArgumentException> {
-            requireWithPrint(false, "test")
+            requireWithPrefix(false, "test")
         }
         assert(output.toString().contains(ERROR_MESSAGE))
     }
