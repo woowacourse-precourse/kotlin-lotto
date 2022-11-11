@@ -4,12 +4,12 @@ import camp.nextstep.edu.missionutils.Randoms
 import lotto.domain.model.ticket.Lotto
 import lotto.ui.view.ticket.BuyTicketView
 
-class BuyTicketController(
-    private val buyTicketView: BuyTicketView
-) {
+class BuyTicketController(private val buyTicketView: BuyTicketView) {
     private var ticketMoney = ""
     private var ticketCount = 0
-    private val lottoTickets = mutableListOf<Lotto>()
+    private val _lottoTickets = mutableListOf<Lotto>()
+    private val lottoTickets: MutableList<Lotto>
+        get() = _lottoTickets
 
     init {
         initTicket()
@@ -23,7 +23,7 @@ class BuyTicketController(
         makeLottoTicket()
 
         // 티켓 정보를 출력한다.
-        printTicketInfo()
+        printLottoTicketNumber()
     }
 
     private fun initTicket() {
@@ -35,9 +35,9 @@ class BuyTicketController(
         buyTicketView.printTicketCountMessage(ticketCount = ticketCount)
     }
 
-    private fun printTicketInfo() {
+    private fun printLottoTicketNumber() {
         repeat(ticketCount) { ticketIndex ->
-            val lottoNumbers = lottoTickets[ticketIndex].getLottoNumbers().joinToString(", ")
+            val lottoNumbers = _lottoTickets[ticketIndex].getLottoNumbers().joinToString(", ")
             buyTicketView.printLottoNumberMessage(lottoNumbers = lottoNumbers)
         }
     }
@@ -50,7 +50,7 @@ class BuyTicketController(
                 LOTTO_NUMBER_COUNT
             )
             val lotto = Lotto(numbers = numbers)
-            lottoTickets.add(lotto)
+            _lottoTickets.add(lotto)
         }
     }
 
