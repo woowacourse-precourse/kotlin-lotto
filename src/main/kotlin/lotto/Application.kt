@@ -20,7 +20,9 @@ private fun checkRegexAndTranslateToInt(userInput : String) : Int {
     if(!checkItOnlyContainsNumber(userInput)) {
         showErrorAndFinish(ErrorType.NotOnlyNumber.errorType)
     }
-    if(!checkItCanDivideWithThousand(changeStringToInt(userInput)))
+    if(!checkItCanDivideWithThousand(changeStringToInt(userInput))) {
+        showErrorAndFinish(ErrorType.NotDivideWithThousand.errorType)
+    }
 
     return changeStringToInt(userInput)
 }
