@@ -6,6 +6,7 @@ import java.util.regex.Pattern
 
 const val userInputMsg = "구입금액을 입력해 주세요."
 const val errorHeader = "[ERROR]"
+const val lottoEachPrice = 1000
 fun main() {
     getUserInputPrice()
 }
@@ -19,8 +20,9 @@ private fun checkRegexAndTranslateToInt(userInput : String) : Int {
     if(!checkItOnlyContainsNumber(userInput)) {
         showErrorAndFinish(ErrorType.NotOnlyNumber.errorType)
     }
+    if(!checkItCanDivideWithThousand(changeStringToInt(userInput)))
 
-    return userInput.toInt()
+    return changeStringToInt(userInput)
 }
 
 private fun showErrorAndFinish(errorType : Int) {
@@ -30,4 +32,12 @@ private fun showErrorAndFinish(errorType : Int) {
 
 private fun checkItOnlyContainsNumber(userInput: String) : Boolean {
     return Pattern.matches("^[0-9]*$", userInput)
+}
+
+private fun checkItCanDivideWithThousand(userInputPrice : Int) : Boolean {
+    return (userInputPrice % lottoEachPrice == 0)
+}
+
+private fun changeStringToInt(userInput : String) : Int {
+    return userInput.toInt()
 }
