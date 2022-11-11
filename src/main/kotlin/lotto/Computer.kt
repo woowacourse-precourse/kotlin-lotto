@@ -14,4 +14,6 @@ class Computer {
     private fun makeOneLottery() {
         val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
     }
+
+    private fun checkDuplicateLottery(numbers: Set<Int>) = lotteries.contains(numbers)
 }
