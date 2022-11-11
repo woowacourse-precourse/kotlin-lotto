@@ -1,10 +1,18 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Randoms
+
 class LottoMachine {
 
     fun start() {
         val paymentInput = View.getPaymentAmount()
         val numberOfLotto = getNumberOfLottos(paymentInput)
+
+        val lottos: ArrayList<Lotto> = arrayListOf()
+        repeat(numberOfLotto) {
+            val randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
+            lottos.add(Lotto(randomNumbers))
+        }
     }
 
     fun getNumberOfLottos(payment: String): Int {
