@@ -17,12 +17,12 @@ class LottoMachine(amount: String) {
             unit in '0'..'9'
         }
         require(typeCount.length == amount.length) {
-            throw IllegalArgumentException(ErrorMessage.intError(Constant.LOTTO_AMOUNT))
+            ErrorMessage.intError(Constant.LOTTO_AMOUNT)
         }
     }
 
     fun validateRemainder(amount: String) = require(amount.toInt() % Constant.LOTTO_PRICE == Constant.ZERO) {
-        throw IllegalArgumentException(ErrorMessage.unitError(Constant.LOTTO_AMOUNT))
+        ErrorMessage.unitError(Constant.LOTTO_AMOUNT)
     }
 
     fun pickNewLotto(count: Int) {

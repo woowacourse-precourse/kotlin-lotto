@@ -21,11 +21,11 @@ class BonusNumber(_winning: List<Int>, _bonus: String) {
     }
 
     fun validateRange(bonusNumber: Int) = require(bonusNumber in Constant.START_LOTTO_RANGE..Constant.END_LOTTO_RANGE) {
-        throw IllegalArgumentException(ErrorMessage.rangeError(Constant.BONUS_NUMBER))
+        ErrorMessage.rangeError(Constant.BONUS_NUMBER)
     }
 
     fun validateDuplicate(winningNumber: List<Int>, bonusNumber: Int) = require(!winningNumber.contains(bonusNumber)) {
-        throw IllegalArgumentException(ErrorMessage.duplicateError(Constant.BONUS_NUMBER))
+        ErrorMessage.duplicateError(Constant.BONUS_NUMBER)
     }
 
     fun getBonusNumber() = bonus

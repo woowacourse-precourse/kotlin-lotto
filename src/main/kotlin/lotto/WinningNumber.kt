@@ -18,7 +18,7 @@ class WinningNumber(_winning: String) {
             try {
                 winnings.add(number.toInt())
             } catch (exception: NumberFormatException) {
-                throw IllegalArgumentException(ErrorMessage.intError(Constant.WINNING_NUMBER))
+                ErrorMessage.intError(Constant.WINNING_NUMBER)
             }
         }
     }
