@@ -17,13 +17,7 @@ class LottoResultInfo(private val lottoResult: LottoResult) {
     }
 
     fun getProfitInfo(): String {
-        val rankToCnt = lottoResult.rankToCnt
-        val origin = lottoResult.origin
-        var prizeSum = 0
-        for ((rank, cnt) in rankToCnt) {
-            prizeSum += rank.prize * cnt
-        }
-        val profit = prizeSum / origin.toDouble() * 100.0
+        val profit = lottoResult.computeProfit()
         return String.format("%.1f", profit)
     }
 
