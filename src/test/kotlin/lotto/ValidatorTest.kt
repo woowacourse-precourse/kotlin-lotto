@@ -1,7 +1,6 @@
 package lotto.domaintest.validatortest
 
-import lotto.domain.InputValidator
-import org.assertj.core.api.Assertions.assertThat
+import lotto.InputValidator
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.params.ParameterizedTest
