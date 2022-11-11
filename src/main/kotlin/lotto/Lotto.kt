@@ -35,16 +35,16 @@ class Lotto(private val numbers: List<Int>) {
     fun checkLotto(myLotto: List<Int>, bonusNumber: Int): Int {
         val union = myLotto + numbers
         var sameNumCnt = union.groupBy { it }.filter { it.value.size > 1 }.flatMap { it.value }.distinct().size
-        if(sameNumCnt == 6) return 5
+        if(sameNumCnt == 6) return 4
 
         if(myLotto.contains(bonusNumber)) sameNumCnt += 1
 
         return when(sameNumCnt) {
-            3 -> 1
-            4 -> 2
-            5 -> 3
-            6 -> 4
-            else -> 0
+            3 -> 0
+            4 -> 1
+            5 -> 2
+            6 -> 3
+            else -> 5
         }
     }
 }
