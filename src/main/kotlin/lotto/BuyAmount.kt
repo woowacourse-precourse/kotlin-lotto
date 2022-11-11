@@ -22,15 +22,15 @@ class BuyAmount {
 
     fun exception(inputAmount: String?) {
         if (inputAmount!!.isEmpty()) {
-            println(emptyErrorMessage)
+            //println(emptyErrorMessage)
             throw IllegalArgumentException(emptyErrorMessage)
         }
         if (!inputAmount.all { it in regularMin..regularMax }) {
-            println(notIntErrorMessage)
+            //println(notIntErrorMessage)
             throw IllegalArgumentException(notIntErrorMessage)
         }
         if (inputAmount.toInt() % lottoCost != 0) {
-            println(costNotRegularErrorMessage)
+            //println(costNotRegularErrorMessage)
             throw IllegalArgumentException(costNotRegularErrorMessage)
         }
     }
