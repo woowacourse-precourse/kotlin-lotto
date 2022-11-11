@@ -35,4 +35,19 @@ class LottoTest {
             Lotto(listOf(1, 2, 3, 4, 5, 46))
         }
     }
+
+    @Test
+    fun `로또간의 겹치는 숫자의 개수를 알 수 있어야 한다`() {
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        val otherLotto = Lotto(listOf(1, 2, 3, 10, 11, 12))
+        assert(lotto.compare(otherLotto) == 3)
+    }
+
+    @Test
+    fun `로또에 특정한 숫자가 포함되어 있는지 알 수 있어야 한다`() {
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+
+        assert(1 in lotto)
+        assert(10 !in lotto)
+    }
 }
