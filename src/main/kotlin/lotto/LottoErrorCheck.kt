@@ -15,14 +15,23 @@ object LottoErrorCheck {
             throw IllegalArgumentException("[ERROR] 잔돈은 없어서 1000원 단위로 해야합니다.")
     }
 
-    fun checklottoerrorall(checklotto:MutableList<Int>){
+    fun checklottoallerror(checklotto:List<Int>){
         checklottosize(checklotto)
+        checklottonumber(checklotto)
     }
 
-    fun checklottosize(checklotto:MutableList<Int>){
+    private fun checklottosize(checklotto:List<Int>){
         if(checklotto.size!=6)
             throw IllegalArgumentException("[ERROR] 로또 번호는 6자리의 숫자여야 합니다.")
     }
 
+    private fun checklottonumber(checklotto:List<Int>){
+        for(count:Int in 0 until checklotto.size)
+            checknumberisin1to45(checklotto[count])
+    }
+    fun checknumberisin1to45(number:Int){
+        if(number<1||number>45)
+            throw IllegalArgumentException("[ERROR] 로또 번호는 1~45사이의 숫자여야 합니다.")
+    }
 
 }
