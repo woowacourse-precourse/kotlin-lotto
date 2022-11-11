@@ -8,6 +8,23 @@ fun main() {
     for (i in 0 until price / 1000) {
         createLottoNumber()
     }
+    val winningNumbers = inputLottoWinningNumebers()
+}
+
+fun inputLottoWinningNumebers() {
+    println("당첨 번호를 입력해 주세요.")
+    val winninngNumbers = readLine().toString().split(",")
+
+    if (winninngNumbers.size != 6) {
+        println("[ERROR] 6개의 숫자를 입력해주세요.")
+        throw IllegalArgumentException()
+    }
+    for (number in winninngNumbers) {
+        if (number.toInt() < 1 || number.toInt() > 45) {
+            println("[ERROR] 로또 번호는 1부터 45사이의 숫자여야 합니다.")
+            throw IllegalArgumentException()
+        }
+    }
 }
 
 fun createLottoNumber() {
