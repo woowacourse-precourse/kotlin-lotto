@@ -5,18 +5,22 @@ import camp.nextstep.edu.missionutils.Console.readLine
 class Buyer {
     fun enterAmount(): Int {
         val input = readLine()
-        checkIsBlank(input)
-        checkIsNumber(input)
-        checkCanDivide(input)
-        checkIsInIntRange(input)
+        input.apply {
+            checkIsBlank(this)
+            checkIsNumber(this)
+            checkCanDivide(this)
+            checkIsInIntRange(this)
+        }
         return input.toInt()
     }
 
     fun enterWinningNumber(): List<Int> {
         val input = readLine()
-        checkIsBlank(input)
-        checkIsRightFormat(input)
-        checkDuplicate(input)
+        input.apply {
+            checkIsBlank(this)
+            checkIsRightFormat(this)
+            checkDuplicate(this)
+        }
         return input.split(",").map { it.toInt() }
     }
 
