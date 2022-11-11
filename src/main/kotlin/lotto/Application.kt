@@ -10,7 +10,11 @@ fun main() {
     machine.getLottoNumbers()
     println("\n당첨 번호를 입력해 주세요.")
     val winning = Winning(Console.readLine())
+    println("\n보너스 번호를 입력해 주세요.")
     winning.inputBonusNumber(Console.readLine())
     winning.checkBonusNumberException()
+    val rank = machine.getTotalRank(winning.getLuckyNumber(),winning.getBonusNumber())
+    val statistic = Statistic(rank)
+    statistic.statisticMessage()
 
 }
