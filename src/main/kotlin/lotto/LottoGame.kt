@@ -14,6 +14,7 @@ class LottoGame() {
     fun gamestart() {
         getusermoney()
         makelottonumber()
+        val userlotto=getuserlotto()
 
 
     }
@@ -46,6 +47,20 @@ class LottoGame() {
         for (number: Int in 0 until lottos.size) {
             println(lottos[number])
         }
+    }
+
+    private fun getuserlotto():List<Int>{
+        val userinput = Console.readLine()
+        val userinputparsing= userinput.split(",")
+        val userinputnumber= mutableListOf<Int>()
+
+        for(element in userinputparsing){
+            LottoErrorCheck.checkinputisnumber(element)
+            userinputnumber.add(element.toInt())
+        }
+
+        return userinputnumber.toList()
+
     }
 
     private fun checklotto(){
