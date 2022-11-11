@@ -1,18 +1,18 @@
 package lotto.domain
 
-import lotto.LOTTO_LENGTH
-import lotto.LOTTO_MAX_NUM
-import lotto.LOTTO_MIN_NUM
+import lotto.domain.Lotto.Companion.LENGTH
+import lotto.domain.Lotto.Companion.MAX_NUM
+import lotto.domain.Lotto.Companion.MIN_NUM
 import lotto.util.requireWithPrefix
 
 class LottoValidator {
     fun validateLottoNumber(numbers: List<Int>) {
         requireWithPrefix(
-            numbers.size == LOTTO_LENGTH,
+            numbers.size == LENGTH,
             ERROR_LOTTO_LENGTH
         )
         requireWithPrefix(
-            numbers.all { it in LOTTO_MIN_NUM..LOTTO_MAX_NUM },
+            numbers.all { it in MIN_NUM..MAX_NUM },
             ERROR_LOTTO_NUM_RANGE
         )
         requireWithPrefix(
@@ -23,7 +23,7 @@ class LottoValidator {
 
     fun validateBonusNumber(numbers: List<Int>, bonus: Int) {
         requireWithPrefix(
-            bonus in LOTTO_MIN_NUM..LOTTO_MAX_NUM,
+            bonus in MIN_NUM..MAX_NUM,
             ERROR_BONUS_NUM_RANGE
         )
         requireWithPrefix(
@@ -33,10 +33,10 @@ class LottoValidator {
     }
 
     companion object {
-        private const val ERROR_LOTTO_LENGTH = "로또 번호는 ${LOTTO_LENGTH}개의 숫자여야 합니다."
-        private const val ERROR_LOTTO_NUM_RANGE = "로또 번호는 ${LOTTO_MIN_NUM}부터 $LOTTO_MAX_NUM 사이의 숫자여야 합니다."
+        private const val ERROR_LOTTO_LENGTH = "로또 번호는 ${LENGTH}개의 숫자여야 합니다."
+        private const val ERROR_LOTTO_NUM_RANGE = "로또 번호는 ${MIN_NUM}부터 $MAX_NUM 사이의 숫자여야 합니다."
         private const val ERROR_LOTTO_NUM_DUPLICATED = "로또 번호에는 중복되는 숫자가 없어야 합니다."
-        private const val ERROR_BONUS_NUM_RANGE = "보너스 번호는 ${LOTTO_MIN_NUM}부터 $LOTTO_MAX_NUM 사이의 숫자여야 합니다."
+        private const val ERROR_BONUS_NUM_RANGE = "보너스 번호는 ${MIN_NUM}부터 $MAX_NUM 사이의 숫자여야 합니다."
         private const val ERROR_BONUS_NUM_DUPLICATED = "보너스 번호는 로또 번호와 중복되지 않는 숫자여야 합니다."
     }
 }

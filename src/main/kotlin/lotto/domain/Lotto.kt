@@ -22,4 +22,11 @@ class Lotto(private val numbers: List<Int>) {
     override fun toString(): String {
         return numbers.toString()
     }
+
+    companion object {
+        const val LENGTH = 6
+        const val MAX_NUM = 45
+        const val MIN_NUM = 1
+        const val COST = 1000
+    }
 }
