@@ -1,9 +1,12 @@
 package lotto.ui.view.ticket
 
+import camp.nextstep.edu.missionutils.Console
+
 class BuyTicketView {
 
-    fun printEnterTicketMoneyMessage() {
+    fun enterTicketMoney(): String {
         println(INPUT_TICKET_MONEY_MESSAGE)
+        return Console.readLine()
     }
 
     fun printBuyTicketMessage() {

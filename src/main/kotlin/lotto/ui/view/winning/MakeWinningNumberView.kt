@@ -1,4 +1,4 @@
-package lotto.ui.view.winningnumber
+package lotto.ui.view.winning
 
 class MakeWinningNumberView {
 
