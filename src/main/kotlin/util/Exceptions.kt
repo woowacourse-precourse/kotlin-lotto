@@ -15,7 +15,7 @@ object Exceptions {
     }
 
     // 로또번호가 중복되었는지 확인
-    fun isValidLottoSize(lotto: List<Int>) {
+    fun hasDuplicateNumbers(lotto: List<Int>) {
         if (lotto.size != lotto.toSet().size) {
             throw IllegalArgumentException(
                 Messages.ERROR_MESSAGE +

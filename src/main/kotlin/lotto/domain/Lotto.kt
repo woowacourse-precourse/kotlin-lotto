@@ -9,7 +9,7 @@ class Lotto(private val numbers: List<Int>) {
             throw IllegalArgumentException(Messages.ERROR_MESSAGE + Messages.ERROR_LOTTO_SIZE)
         }
         // 로또번호 중복 예외 확인
-        Exceptions.isValidLottoSize(numbers)
+        Exceptions.hasDuplicateNumbers(numbers)
     }
 
     // 로또번호를 오름차순 정렬
