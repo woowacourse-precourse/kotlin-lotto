@@ -9,7 +9,7 @@ class LottoGame() {
 
     var money = ""
     val lottos = mutableListOf<List<Int>>()
-    val checkprize = mutableListOf<Int>()
+    val checkprize:MutableList<Int> = mutableListOf(0,0,0,0,0)
 
     fun gamestart() {
         getusermoney()
