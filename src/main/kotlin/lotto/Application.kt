@@ -54,10 +54,6 @@ fun buyAmountException(buyAmount: Int) {
     }
 }
 
-fun lottoException(lottoResult: List<Int>) {
-    Lotto(lottoResult).lottoException()
-}
+fun lottoException(lottoResult: List<Int>) = Lotto(lottoResult).lottoException()
 
-fun bonusNumberException(lottoResult: List<Int>, bonusNumber: Int) {
-    Lotto(lottoResult).bonusNumberException(bonusNumber)
-}
+fun bonusNumberException(lottoResult: List<Int>, bonusNumber: Int) = Lotto(lottoResult).bonusNumberException(bonusNumber)
