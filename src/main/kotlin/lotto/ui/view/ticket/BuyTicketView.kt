@@ -1,6 +1,14 @@
-package lotto.ui.view
+package lotto.ui.view.ticket
 
 class BuyTicketView {
+
+    fun printEnterTicketMoneyMessage() {
+        println(INPUT_TICKET_MONEY_MESSAGE)
+    }
+
+    fun printBuyTicketMessage() {
+        println(OUTPUT_BUY_TICKET_MESSAGE)
+    }
 
     companion object {
         private const val INPUT_TICKET_MONEY_MESSAGE = "구입금액을 입력해 주세요."
