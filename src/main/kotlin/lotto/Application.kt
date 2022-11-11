@@ -4,9 +4,14 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
+    println("구입금액을 입력해 주세요.")
     val buyAmount = userInput().toInt()
+
     val lottoCnt = lottoCnt(buyAmount)
+    println("\n${lottoCnt}개를 구매했습니다.")
+
     val myLotto = getLotto(lottoCnt)
+    printLotto(myLotto)
 }
 
 fun userInput(): String = Console.readLine()
@@ -14,11 +19,17 @@ fun userInput(): String = Console.readLine()
 fun lottoCnt(buyAmount: Int): Int = buyAmount / 1000
 
 fun getLotto(lottoCnt: Int): List<List<Int>> {
-    val myLotto = mutableListOf(listOf<Int>())
+    val myLotto = mutableListOf<List<Int>>()
 
     repeat(lottoCnt) {
         myLotto.add(Randoms.pickUniqueNumbersInRange(1, 45, 6))
     }
 
     return myLotto
+}
+
+fun printLotto(myLotto: List<List<Int>>) {
+    myLotto.forEach {
+        println(it)
+    }
 }
