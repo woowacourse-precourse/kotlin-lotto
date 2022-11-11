@@ -14,20 +14,20 @@
 - [x] 당첨 번호를 잘못 입력하거나 1부터 45 사이에 번호가 아닌 경우 예외 처리한다. - LottoWin#inputLottoNumberException
 - [x] 당첨 번호의 개수가 잘못 입력되었거나 중복되었을 경우 예외 처리한다. - LottoWin#inputWinningNumberException
 - [x] 보너스 번호가 당첨 번호와 중복되었을 경우 예외 처리한다. - LottoWin#inputWinningBonusNumberException
-- [ ] Lotto의 Numbers를 출력한다.  - Lotto#getNumbers()
-- [ ] 당첨금과 당첨을 하기위한 개수를 저장한다. - LottoCheck#LottoReward
-- [ ] 당첨은 1등부터 5등까지 있다. 로또 번호와 당첨 번호를 비교할 수 있다. - LottoCheck#compareLotto()
-    - [ ] 몇개의 숫자가 같은지 알 수 있다. - LottoCheck#correctLotto()
-    - [ ] 6개의 번호가 일치하면 1등이다.
-    - [ ] 5개의 번호와 보너스 번호가 일치하면 2등이다.
-    - [ ] 5개의 번호가 일치하면 3등이다.
-    - [ ] 4개의 번호가 일치하면 4등이다.
-    - [ ] 3개의 번호가 일치하면 5등이다.
-- [ ] 사용자의 로또 번호가 몇등인지 확인한다. - LottoCheck#rankLotto()
-- [ ] 저장한 당첨 번호를 리스트로 변환시킨다. - LottoCheck#lottoWinNumbers()
-- [ ] 저장한 보너스 번호를 정수형으로 변환시킨다. - LottoCheck#rankLotto()
+- [x] Lotto의 Numbers를 출력한다.  - Lotto#getNumbers()
+- [x] 당첨금과 당첨을 하기위한 개수를 저장한다. - LottoCheck#LottoReward
+- [x] 당첨은 1등부터 5등까지 있다. 로또 번호와 당첨 번호를 비교할 수 있다. - LottoCheck#compareLotto()
+    - [x] 몇개의 숫자가 같은지 알 수 있다. - LottoCheck#correctLotto()
+    - [x] 6개의 번호가 일치하면 1등이다.
+    - [x] 5개의 번호와 보너스 번호가 일치하면 2등이다.
+    - [x] 5개의 번호가 일치하면 3등이다.
+    - [x] 4개의 번호가 일치하면 4등이다.
+    - [x] 3개의 번호가 일치하면 5등이다.
+- [x] 사용자의 로또 번호가 몇등인지 확인한다. - LottoCheck#rankLotto()
+- [x] 저장한 당첨 번호를 리스트로 변환시킨다. - LottoCheck#lottoWinNumbers()
+- [x] 저장한 보너스 번호를 정수형으로 변환시킨다. - LottoCheck#rankLotto()
 - [ ] 사용자가 구매한 로또 번호와 당첨 번호를 비교하여 당첨 내역 및 수익률을 출력하고 로또 게임을 종료한다. - LottoBank#yieldLotto()
-- [ ] 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
+- [x] 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
 
 ## 기능 요구 사항
 로또 게임 기능을 구현해야 한다.
