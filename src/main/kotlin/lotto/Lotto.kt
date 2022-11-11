@@ -5,6 +5,7 @@ import lotto.Constant.Companion.lottoSize
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == lottoSize)
+        dupleException(numbers)
     }
 
     fun getNumbers(): List<Int> {
@@ -20,6 +21,12 @@ class Lotto(private val numbers: List<Int>) {
             if (number == bonusNumber) bonus = true
         }
         return getReward(winningCount, bonus)
+    }
+
+    private fun dupleException(inputList: List<Int>) {
+        if (inputList.size != inputList.distinct().count()) {
+            throw IllegalArgumentException(Constant.winningDupleErrorMessage)
+        }
     }
 
     fun getReward(winningCount: Int, bonus: Boolean): Reward {
