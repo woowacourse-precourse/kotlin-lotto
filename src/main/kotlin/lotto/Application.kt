@@ -3,6 +3,7 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import java.text.DecimalFormat
+import java.util.NoSuchElementException
 
 enum class CORRECTCNT(val message: String) {
     THREE("3개 일치 (5,000원) - "),
@@ -38,7 +39,8 @@ fun main() {
         profitRate(buyAmount, win)
     }
     catch (e: NumberFormatException) {
-        throw IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.")
+        println("[ERROR] 숫자만 입력 가능합니다.")
+        throw NoSuchElementException("[ERROR] 숫자만 입력 가능합니다.")
     }
 }
 
@@ -64,11 +66,12 @@ fun printLotto(myLotto: List<List<Int>>) {
 
 fun buyAmountException(buyAmount: Int) {
     if(buyAmount % 1000 != 0) {
+        println("[ERROR] 입력은 1000단위로만 가능합니다.")
         throw IllegalArgumentException("[ERROR] 입력은 1000단위로만 가능합니다.")
     }
 }
 
-fun lottoException(lottoResult: List<Int>) = Lotto(lottoResult).lottoException()
+fun lottoException(lottoResult: List<Int>) = Lotto(lottoResult)
 
 fun bonusNumberException(lottoResult: List<Int>, bonusNumber: Int) = Lotto(lottoResult).bonusNumberException(bonusNumber)
 

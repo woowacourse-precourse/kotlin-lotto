@@ -2,32 +2,33 @@ package lotto
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6)
-    }
+        if(numbers.size != 6) {
+            println("[ERROR] 입력 갯수가 잘못되었습니다.")
+            throw IllegalArgumentException("[ERROR] 입력 갯수가 잘못되었습니다.")
+        }
 
-    fun lottoException() {
-        val sortLotto = numbers.sorted()
-        var previousNumber = sortLotto[0]
+        val isDuplication = numbers.size == numbers.toSet().size
+        if(!isDuplication) {
+            println("[ERROR] 중복되는 숫자가 있습니다.")
+            throw IllegalArgumentException("[ERROR] 중복되는 숫자가 있습니다.")
+        }
 
-        for(num in 1 until sortLotto.size) {
-            if(previousNumber == sortLotto[num]) {
-                throw IllegalArgumentException("[ERROR] 중복되는 숫자가 있습니다.")
-            }
-
-            if(sortLotto[num] !in 1 .. 45) {
+        numbers.forEach { num ->
+            if(num !in 1..45) {
+                println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
                 throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
             }
-
-            previousNumber = sortLotto[num]
         }
     }
 
     fun bonusNumberException(bonusNumber: Int) {
         if(bonusNumber !in 1 .. 45) {
+            println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
             throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
         }
 
         if(numbers.contains(bonusNumber)) {
+            println("[ERROR] 중복되는 숫자가 있습니다.")
             throw IllegalArgumentException("[ERROR] 중복되는 숫자가 있습니다.")
         }
     }
