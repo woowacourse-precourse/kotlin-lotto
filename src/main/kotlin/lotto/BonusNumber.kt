@@ -7,22 +7,22 @@ class BonusNumber(_winningNumber: List<Int>, _bonusNumber: String) {
     private val winningNumber = _winningNumber
 
     init {
-        inputBonusNumber(_bonusNumber)
-        validateBonusNumberDuplicate(bonusNumber)
-        validateBonusNumberRange(bonusNumber)
+        validateNumeric(_bonusNumber)
+        validateRange(bonusNumber)
+        validateDuplicate(winningNumber, bonusNumber)
     }
 
     fun getBonusNumber() = bonusNumber
 
-    fun validateBonusNumberRange(bonusNumber: Int) = require(bonusNumber in 1..45) {
+    fun validateRange(bonusNumber: Int) = require(bonusNumber in 1..45) {
         throw IllegalArgumentException(ErrorMessage.rangeError(Constant.BONUS_NUMBER))
     }
 
-    fun validateBonusNumberDuplicate(bonusNumber: Int) = require(winningNumber.contains(bonusNumber)) {
+    fun validateDuplicate(winningNumber: List<Int>, bonusNumber: Int) = require(winningNumber.contains(bonusNumber)) {
         throw IllegalArgumentException(ErrorMessage.duplicateError(Constant.BONUS_NUMBER))
     }
 
-    fun inputBonusNumber(number: String) {
+    fun validateNumeric(number: String) {
         bonusNumber = try {
             number.toInt()
         } catch (exception: NumberFormatException) {
