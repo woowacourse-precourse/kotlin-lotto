@@ -8,7 +8,8 @@ class LottoWin {
     }
 
     fun winLotto() {
-        inputWinLotto()
+        val userInputLottoNum = inputWinLotto()
+        inputBonusLotto(userInputLottoNum)
     }
 
     fun inputWinLotto(): List<Int> {
@@ -23,6 +24,15 @@ class LottoWin {
         }
         return lottoWinNum
     }
+
+    fun inputBonusLotto(userLottoWinNum: List<Int>) {
+        println("보너스 번호를 입력해 주세요.")
+        val inputLottoBonusNum = readLine()!!
+        inputLottoBonusNum.inputLottoNumberTypeException()
+        inputWinningBonusNumberException(userLottoWinNum, inputLottoBonusNum.toInt())
+        LottoWinBall.BonusBall.num = inputLottoBonusNum.toInt()
+    }
+
 
     fun inputWinningNumberException(winningNumber: List<String>): List<Int> {
         try {
@@ -55,5 +65,20 @@ class LottoWin {
         return this.toInt()
     }
 
+    fun inputWinningBonusNumberException(winningNumber: List<Int>, bonusNumber: Int) {
+        if (winningNumber.contains(bonusNumber)) throw IllegalArgumentException("[ERROR] 보너스 번호가 당첨 번호와 중복되었습니다.")
+    }
+
+    fun String.inputLottoNumberTypeException() {
+        try {
+            this.map {
+                it.toInt()
+            }
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException("[ERROR] 보너스 번호를 잘못입력하셨습니다.")
+
+        }
+
+    }
 
 }
