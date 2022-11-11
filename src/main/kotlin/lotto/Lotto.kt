@@ -8,5 +8,6 @@ class Lotto(private val numbers: List<Int>) {
     private fun isDoubleCheck() = numbers.toSet().size != numbers.size
 
 
+    fun getNumbers() : List<Int> = numbers
     // TODO: 추가 기능 구현
 }
