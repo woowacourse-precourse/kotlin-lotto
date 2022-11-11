@@ -14,4 +14,12 @@ class Lottery(
         printer.printAmountMessage()
         val amount = buyer.enterAmount()
     }
+
+    companion object{
+        fun printAndThrowException(errorMessage: String){
+            Printer.printError(errorMessage)
+            throw IllegalArgumentException(errorMessage)
+        }
+
+    }
 }

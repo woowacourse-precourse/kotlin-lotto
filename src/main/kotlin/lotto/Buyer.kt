@@ -1,7 +1,5 @@
 package lotto
 
-import java.lang.IllegalArgumentException
-
 class Buyer {
     fun enterAmount(): Int {
         val input = readln()
@@ -12,33 +10,29 @@ class Buyer {
         return input.toInt()
     }
 
-    private fun checkIsBlank(input: String){
-        if(input.isBlank()) {
-            Printer.printError("구입금액을 입력해주세요.")
-            throw IllegalArgumentException("구입금액을 입력해주세요.")
+    private fun checkIsBlank(input: String) {
+        if (input.isBlank()) {
+            Lottery.printAndThrowException(ENTER_AMOUNT)
         }
     }
 
     private fun checkIsNumber(input: String) {
         input.forEach {
-            if(!it.isDigit()){
-                Printer.printError("숫자를 입력해주세요.")
-                throw IllegalArgumentException("숫자를 입력해주세요.")
+            if (!it.isDigit()) {
+                Lottery.printAndThrowException(ENTER_NUMBER)
             }
         }
     }
 
-    private fun checkCanDivide(input: String){
-        if(!canDivide1000(input.toInt())) {
-            Printer.printError("1000원으로 나누어 떨어져야 합니다.")
-            throw IllegalArgumentException("1000원으로 나누어 떨어져야 합니다.")
+    private fun checkCanDivide(input: String) {
+        if (!canDivide1000(input.toInt())) {
+            Lottery.printAndThrowException(MUST_CAN_DIVIDED)
         }
     }
 
     private fun checkIsInIntRange(input: String) {
         if (input.toLong() > Int.MAX_VALUE) {
-            Printer.printError("구매 가능 최대 금액은 2147483000원입니다.")
-            throw IllegalArgumentException("구매 가능 최대 금액은 2147483000원입니다.")
+            Lottery.printAndThrowException(MAX_AMOUNT)
         }
     }
 
