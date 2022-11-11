@@ -118,18 +118,28 @@ class LottoGame {
     }
 
     private fun printresult() {
+        printprize()
+        printyield()
+    }
+
+    private fun printprize(){
         println(
-            "당첨 통계\n---" +
+            "당첨 통계" +
+                    "---" +
                     "3개 일치 (5,000원) - ${checkprize[0]}개" +
                     "4개 일치 (50,000원) - ${checkprize[1]}개" +
                     "5개 일치 (1,500,000원) - ${checkprize[2]}개" +
                     "5개 일치, 보너스 볼 일치 (30,000,000원) - ${checkprize[3]}개" +
                     "6개 일치 (2,000,000,000원) - ${checkprize[4]}개"
         )
+    }
+
+    private fun printyield(){
         val lottoyield:Double = (RANK_5TH_REWARD * checkprize[0] + RANK_4TH_REWARD * checkprize[1]
                 + RANK_3RD_REWARD * checkprize[2] + RANK_2ND_REWARD * checkprize[3]
                 + RANK_1ST_REWARD * checkprize[4]) / money.toDouble()
         println("총 수익률은"+String.format("%.1f", lottoyield) +"입니다.")
+
     }
 
 }
