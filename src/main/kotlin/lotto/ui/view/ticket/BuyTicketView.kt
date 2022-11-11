@@ -9,8 +9,8 @@ class BuyTicketView {
         return Console.readLine()
     }
 
-    fun printBuyTicketMessage() {
-        println(OUTPUT_BUY_TICKET_MESSAGE)
+    fun printBuyTicketMessage(money: String) {
+        println(OUTPUT_BUY_TICKET_MESSAGE.format(money))
     }
 
     companion object {

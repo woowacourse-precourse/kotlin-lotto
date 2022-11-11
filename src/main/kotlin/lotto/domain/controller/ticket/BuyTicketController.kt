@@ -7,5 +7,13 @@ class BuyTicketController(
     private val lottoTicket: LottoTicket,
     private val buyTicketView: BuyTicketView
 ) {
+    private var ticketMoney = ""
 
+    fun getMoney() {
+        ticketMoney = buyTicketView.enterTicketMoney()
+    }
+
+    fun printMoney() {
+        buyTicketView.printBuyTicketMessage(money = ticketMoney)
+    }
 }
