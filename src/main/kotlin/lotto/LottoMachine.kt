@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 class LottoMachine(lottoAmount: String) {
     private var lottoCount = 0
     private val lottery = mutableListOf<Lotto>()
+    private val rank = mutableListOf(0,0,0,0,0,0,0,0)
 
     init {
         validateTypeAmount(lottoAmount)
@@ -42,6 +43,15 @@ class LottoMachine(lottoAmount: String) {
             0 -> true
             else -> throw IllegalArgumentException("[ERROR] 로또 구입 금액은 1000원 단위로 입력해주세요")
         }
+    }
+
+    fun getTotalRank(luckyNumber: List<Int>, bonusNumber: Int) : List<Int>{
+        for(index in 0 until lottoCount){
+            val increaseRank = lottery[index].confirmWinning(luckyNumber, bonusNumber)
+            rank[increaseRank]++
+        }
+
+        return rank
     }
 
     companion object {
