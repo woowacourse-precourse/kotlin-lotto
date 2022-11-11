@@ -15,9 +15,9 @@ class Lotto(private val numbers: List<Int>) {
         this.numbers.count { it in numbers }
 
     private fun getLottoRank(matchedCnt: Int, bonusMatched: Boolean) = LottoRank.values()
-        .filter { it.matchCnt == matchedCnt }
-        .filter { it.bonusMatched == bonusMatched }
-        .getOrElse(0) { LottoRank.FAIL }
+        .firstOrNull {
+            (it.matchCnt == matchedCnt) and (it.bonusMatched == bonusMatched)
+        } ?: LottoRank.FAIL
 
     override fun toString(): String {
         return numbers.toString()
