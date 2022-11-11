@@ -6,8 +6,8 @@ import lotto.Constant.Companion.lottoCost
 var lottoPrice: Int = 0
 
 fun main() {
-    val lottery = saveLotto()
     try {
+        val lottery = saveLotto()
         val winningNumber = WinningNumber().inputWinningNumber()
         val bonusNumber = BonusNumber().inputBonusNumber()
 
@@ -17,7 +17,7 @@ fun main() {
 
         PrintMethod().printRanking(rank)
         PrintMethod().printYield(rank, lottoPrice * lottoCost)
-    } catch (_: IllegalArgumentException){
+    } catch (_: IllegalArgumentException) {
     }
 }
 
@@ -40,10 +40,8 @@ fun sumRanking(lottery: MutableList<Lotto>, winningNumber: List<Int>, bonusNumbe
 
 fun saveLotto(): MutableList<Lotto> {
     val lottoWallet = mutableListOf<Lotto>()
-    try {
-        lottoPrice = BuyAmount().inputAmount()
-    } catch (_: IllegalArgumentException){
-    }
+
+    lottoPrice = BuyAmount().inputAmount()
     PrintMethod().printBuyAmount(lottoPrice)
     for (i in 0 until lottoPrice) {
         val makeLotto = Ticket().makeLotto()

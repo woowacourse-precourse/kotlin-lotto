@@ -15,6 +15,7 @@ class BonusNumber {
 
     fun inputBonusNumber(): Int {
         val inputWinningNumber = readLine().trim()
+
         exception(inputWinningNumber)
         return inputWinningNumber.toInt()
     }

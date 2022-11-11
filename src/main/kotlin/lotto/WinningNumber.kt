@@ -37,12 +37,14 @@ class WinningNumber {
 
     private fun sizeException(inputWinningNumber: List<String>) {
         if (inputWinningNumber.size != lottoSize) {
+            println(winningRegularErrorMessage)
             throw IllegalArgumentException(winningRegularErrorMessage)
         }
     }
 
     private fun dupleException(inputWinningNumber: List<String>) {
         if (checkDuple(inputWinningNumber)) {
+            println(winningDupleErrorMessage)
             throw IllegalArgumentException(winningDupleErrorMessage)
         }
     }
@@ -50,9 +52,11 @@ class WinningNumber {
     private fun typeException(inputWinningNumber: List<String>) {
         for (number in inputWinningNumber) {
             if (!isNumeric(number)) {
+                println(winningDigitErrorMessage)
                 throw IllegalArgumentException(winningDigitErrorMessage)
             }
             if (number.toInt() !in minLottoNumber..maxLottoNumber) {
+                println(winningRangeErrorMessage)
                 throw IllegalArgumentException(winningRangeErrorMessage)
             }
         }
