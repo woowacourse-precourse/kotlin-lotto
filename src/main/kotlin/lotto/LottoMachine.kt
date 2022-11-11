@@ -1,9 +1,16 @@
 package lotto
 
 class LottoMachine {
-
     fun start() {
 
+    }
+
+    fun getNumberOfLottos(payment: String): Int {
+        TODO()
+    }
+
+    fun checkPaymentException(payment: String) {
+        TODO()
     }
 
     fun generateLotto(): Lotto {
