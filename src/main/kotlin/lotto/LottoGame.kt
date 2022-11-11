@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console
 
 class LottoGame() {
 
+    val LOTTOPRICE=1000
     var money=0
     var lottos = mutableListOf<Int>()
 
@@ -22,7 +23,7 @@ class LottoGame() {
 
     private fun makelottonumber():Int{
         //넣기전 예외처리 먼저
-        val count = money/1000
+        val count = money/LOTTOPRICE
         printcount(count)
 
 
