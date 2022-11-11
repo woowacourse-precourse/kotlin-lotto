@@ -16,6 +16,7 @@ class Buyer {
         val input = readLine()
         checkIsBlank(input)
         checkIsRightFormat(input)
+        checkDuplicate(input)
         return input.split(",").map { it.toInt() }
     }
 
@@ -52,4 +53,11 @@ class Buyer {
             Lottery.printAndThrowException(FORMAT_ERROR)
         }
     }
+
+    private fun checkDuplicate(input: String) {
+        val numbers: Set<String> = input.split(",").toSet()
+        if (numbers.count() != 6)
+            Lottery.printAndThrowException(DUPLICATE_NUMBER)
+    }
+
 }
