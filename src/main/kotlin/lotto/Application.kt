@@ -1,5 +1,10 @@
 package lotto
 
+import lotto.ui.ui
+
 fun main() {
-    TODO("프로그램 구현")
+    var ui = ui()
+
+    var money = ui.moneyInput()
+
 }
