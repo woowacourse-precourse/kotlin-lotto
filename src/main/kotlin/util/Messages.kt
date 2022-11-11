@@ -9,4 +9,7 @@ object Messages {
     const val ERROR_LOTTO_NUMBER_DUPLICATE = "로또 번호가 중복되었습니다."
     const val ERROR_NUMBER_FORMAT = "당첨 번호는 \"쉼표(,)를 기준\"(형식)으로 입력해야 합니다 (ex -> 1,2,3,4,5,6)"
     const val ERROR_NUMBER_RANGE = "로또 번호는 1부터 45 사이의 숫자여야 합니다."
+    const val ERROR_BONUS_NUMBER_FORMAT = "보너스 번호는 숫자만 입력 가능합니다"
+    const val ERROR_BONUS_NUMBER_RANGE = "보너스 번호는 1부터 45 사이의 숫자여야 합니다."
+
 }

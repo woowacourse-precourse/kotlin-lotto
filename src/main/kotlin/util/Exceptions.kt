@@ -49,4 +49,27 @@ object Exceptions {
             }
         }
     }
+
+
+    // 보너스 번호 예외 확인
+    fun String.isValidBonusNumber() {
+        try {
+            this.toInt()
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException(
+                Messages.ERROR_MESSAGE +
+                        Messages.ERROR_BONUS_NUMBER_FORMAT
+            )
+        }
+    }
+
+    // 보너스 번호 숫자 범위 예외 확인
+    fun Int.isValidRangeBonusNumber() {
+        if (this < Constants.RANGE_START || Constants.RANGE_END < this) {
+            throw IllegalArgumentException(
+                Messages.ERROR_MESSAGE +
+                        Messages.ERROR_BONUS_NUMBER_RANGE
+            )
+        }
+    }
 }
