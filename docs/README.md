@@ -2,7 +2,7 @@
 * [o] 로또 구입 금액 입력받기 - ui / moneyInput()
 * [o] 구입 개수 만큼 로또 발행 - domain / lottoPublish()
     * 오름차순으로 정렬해 보여줌
-* [] 당첨 번호 입력 받기 - ui / correctNumberInput() 
+* [o] 당첨 번호 입력 받기 - ui / correctNumberInput() 
 * [] 보너스 번호 입력 받기 - ui / bonusNumberInput() 
 * [] 로또와 당첨 번호 비교하기 - Lotto / compare()
     *
