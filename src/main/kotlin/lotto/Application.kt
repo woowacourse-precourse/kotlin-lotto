@@ -12,6 +12,12 @@ fun main() {
 
     val myLotto = getLotto(lottoCnt)
     printLotto(myLotto)
+
+    println("\n당첨 번호를 입력해 주세요.")
+    val lottoResult = userInput().split(",").map { it.toInt() }
+
+    println("\n보너스 번호를 입력해 주세요.")
+    val bonusNumber = userInput().toInt()
 }
 
 fun userInput(): String = Console.readLine()
