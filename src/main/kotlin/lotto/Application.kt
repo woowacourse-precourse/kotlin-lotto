@@ -16,7 +16,18 @@ fun main() {
     val winningResult = compareNumbers(lotto, savedLottoNumbers, bonusNumber)
     printWinningResult(winningResult)
 
+    println("총 수익률은 ${String.format("%.1f", calcProfitRate(price, winningResult))}%입니다.")
+}
 
+fun calcProfitRate(price: Int, winningResult: MutableList<Int>): Double {
+    var profitPrice: Double = 0.0
+    profitPrice += winningResult[0] * 5000
+    profitPrice += winningResult[1] * 50000
+    profitPrice += winningResult[2] * 1500000
+    profitPrice += winningResult[3] * 30000000
+    profitPrice += winningResult[4] * 2000000000
+
+    return profitPrice / price
 }
 
 fun printWinningResult(winningResult: MutableList<Int>) {
@@ -42,6 +53,7 @@ fun compareNumbers(lotto: Lotto, savedLottoNumbers: ArrayList<List<Int>>, bonusN
                     winningCount[3]
                 }
             }
+
             Rank.SIX -> winningCount[4]++
         }
     }
