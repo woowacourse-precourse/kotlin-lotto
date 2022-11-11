@@ -9,24 +9,37 @@ class BuyTicketController(
 ) {
     private var ticketMoney = ""
     private var ticketCount = 0
-
     private val lottoTickets = mutableListOf<Lotto>()
 
     init {
-        initTicketInfo()
+        initTicket()
     }
 
-    private fun initTicketInfo() {
+    fun run() {
+        // 구매한 티켓 개수를 출력한다.
+        printTicketCount()
+
+        // 티켓 개수만큼 로또를 만든다.
+        makeLottoTicket()
+
+        // 티켓 정보를 출력한다.
+        printTicketInfo()
+    }
+
+    private fun initTicket() {
         ticketMoney = buyTicketView.enterTicketMoney()
         ticketCount = ticketMoney.toInt() / THOUSAND
     }
 
-    fun printTicketCount() {
+    private fun printTicketCount() {
         buyTicketView.printTicketCountMessage(ticketCount = ticketCount)
     }
 
-    fun printLottoNumber() {
-        buyTicketView.printLottoNumberMessage(lottoNumbers = )
+    private fun printTicketInfo() {
+        repeat(ticketCount) { ticketIndex ->
+            val lottoNumbers = lottoTickets[ticketIndex].getLottoNumbers().joinToString(", ")
+            buyTicketView.printLottoNumberMessage(lottoNumbers = lottoNumbers)
+        }
     }
 
     private fun makeLottoTicket() {
