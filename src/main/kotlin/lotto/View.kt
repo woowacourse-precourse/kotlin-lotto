@@ -9,7 +9,7 @@ class View {
     }
 
     fun printNumberOfLottos(number: Int) {
-        TODO()
+        println("${number}개를 구매했습니다.")
     }
 
     fun printLottos() {
