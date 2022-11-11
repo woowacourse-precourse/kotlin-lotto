@@ -8,9 +8,10 @@ class Lottery(
 ) {
     fun start() {
         purchaseLotto()
+        getWinningNumber()
     }
 
-    private fun purchaseLotto(){
+    private fun purchaseLotto() {
         printer.printAmountMessage()
         val amount = buyer.enterAmount()
         val lottoCount = calculator.getLottoCount(amount)
@@ -19,8 +20,12 @@ class Lottery(
         printer.printBoughtLottoList(computer.lotteries)
     }
 
-    companion object{
-        fun printAndThrowException(errorMessage: String){
+    private fun getWinningNumber() {
+        printer.printWinningNumberMessage()
+    }
+
+    companion object {
+        fun printAndThrowException(errorMessage: String) {
             Printer.printError(errorMessage)
             throw IllegalArgumentException(errorMessage)
         }

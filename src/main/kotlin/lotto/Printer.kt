@@ -15,6 +15,10 @@ class Printer {
         }
     }
 
+    fun printWinningNumberMessage() {
+        println("당첨 번호를 입력해 주세요.")
+    }
+
     companion object {
         fun printError(errorMessage: String) {
             println("[ERROR] $errorMessage")
