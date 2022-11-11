@@ -48,8 +48,8 @@ class Buyer {
     private fun canDivide1000(num: Int) = num % 1000 == 0
 
     private fun checkIsRightFormat(input: String) {
-        if (!"[1-45],[1-45],[1-45],[1-45],[1-45],[1-45]".toRegex().matches(input)) {
-            Lottery.printAndThrowException("입력 형식에 맞게 입력해주세요.")
+        if (!INPUT_FORMAT.toRegex().matches(input)) {
+            Lottery.printAndThrowException(FORMAT_ERROR)
         }
     }
 }
