@@ -4,7 +4,7 @@ import lotto.domain.LottoRank
 import lotto.domain.LottoResult
 import lotto.util.toPriceFormatted
 
-class LottoResultInfo(private val lottoResult: LottoResult) {
+class LottoResultFormatter(private val lottoResult: LottoResult) {
     fun getStatInfo(): String {
         val rankToCnt = lottoResult.rankToCnt
         val stats = mutableListOf<String>()

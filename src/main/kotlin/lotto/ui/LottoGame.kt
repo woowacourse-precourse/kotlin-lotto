@@ -11,8 +11,7 @@ import lotto.util.readInt
 class LottoGame {
     fun start() {
         val originCost = readCost()
-        val lottos = purchaseLotto(originCost)
-
+        val lottos = LottoPurchaser().purchaseLottos(originCost)
         printLottoInfo(lottos)
 
         val winningNumber = WinningNumber(
@@ -20,20 +19,14 @@ class LottoGame {
             readBonusNumber()
         )
         val lottoResult = LottoResult(lottos, winningNumber, originCost)
-        val lottoResultInfo = LottoResultInfo(lottoResult)
+        val lottoResultFormatter = LottoResultFormatter(lottoResult)
 
-        printResultInfo(lottoResultInfo)
+        printResultInfo(lottoResultFormatter)
     }
 
     private fun readCost(): Int {
         println(REQUEST_MONEY)
-        val cost = readInt()
-        println()
-        return cost
-    }
-
-    private fun purchaseLotto(cost: Int): List<Lotto> {
-        return LottoPurchaser().purchaseLottos(cost)
+        return readInt()
     }
 
     private fun printLottoInfo(lottos: List<Lotto>) {
@@ -44,22 +37,18 @@ class LottoGame {
 
     private fun readWinningNumber(): List<Int> {
         println(REQUEST_WINNING_NUMBER)
-        val numbers = Console.readLine()
+        return Console.readLine()
             .divideToNums(",")
-        println()
-        return numbers
     }
 
     private fun readBonusNumber(): Int {
         println(REQUEST_BONUS)
-        val bonus = readInt()
-        println()
-        return bonus
+        return readInt()
     }
 
-    private fun printResultInfo(lottoResultInfo: LottoResultInfo) {
-        val stats: String = lottoResultInfo.getStatInfo()
-        val profit: String = lottoResultInfo.getProfitInfo()
+    private fun printResultInfo(lottoResultFormatter: LottoResultFormatter) {
+        val stats: String = lottoResultFormatter.getStatInfo()
+        val profit: String = lottoResultFormatter.getProfitInfo()
         println(RESULT_INFO_FORMAT.trimIndent().format(stats, profit))
     }
 
