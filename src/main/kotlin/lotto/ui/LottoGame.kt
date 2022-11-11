@@ -26,7 +26,7 @@ class LottoGame {
     }
 
     private fun readCost(): Int {
-        println("구입금액을 입력해 주세요.")
+        println(REQUEST_MONEY)
         val cost = readInt()
         println()
         return cost
@@ -37,13 +37,13 @@ class LottoGame {
     }
 
     private fun printLottoInfo(lottos: List<Lotto>) {
-        println("${lottos.size}개를 구매했습니다.")
+        println(LOTTO_INFO_FORMAT.format(lottos.size))
         lottos.forEach { println(it.toString()) }
         println()
     }
 
     private fun readWinningNumber(): List<Int> {
-        println("당첨 번호를 입력해 주세요.")
+        println(REQUEST_WINNING_NUMBER)
         val numbers = Console.readLine()
             .divideToNums(",")
         println()
@@ -51,18 +51,29 @@ class LottoGame {
     }
 
     private fun readBonusNumber(): Int {
-        println("보너스 번호를 입력해 주세요.")
+        println(REQUEST_BONUS)
         val bonus = readInt()
         println()
         return bonus
     }
 
     private fun printResultInfo(lottoResultInfo: LottoResultInfo) {
-        val stats = lottoResultInfo.getStatInfo()
-        val profit = lottoResultInfo.getProfitInfo()
+        val stats: String = lottoResultInfo.getStatInfo()
+        val profit: String = lottoResultInfo.getProfitInfo()
+        println(RESULT_INFO_FORMAT.trimIndent().format(stats, profit))
+    }
 
-        println("당첨 통계\n---")
-        println(stats)
-        println("총 수익률은 $profit%입니다.")
+    companion object {
+        private const val REQUEST_MONEY = "구입금액을 입력해 주세요."
+        private const val LOTTO_INFO_FORMAT = "%d개를 구매했습니다."
+        private const val REQUEST_WINNING_NUMBER = "당첨 번호를 입력해 주세요."
+        private const val REQUEST_BONUS = "보너스 번호를 입력해 주세요."
+        private const val RESULT_INFO_FORMAT =
+            """
+                당첨 통계
+                ---
+                %s
+                총 수익률은 %s입니다.
+            """
     }
 }

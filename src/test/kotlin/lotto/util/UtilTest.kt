@@ -1,9 +1,5 @@
-package lotto
+package lotto.util
 
-import lotto.util.divideToNums
-import lotto.util.readInt
-import lotto.util.requireWithPrefix
-import lotto.util.toPriceFormatted
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import java.io.ByteArrayOutputStream

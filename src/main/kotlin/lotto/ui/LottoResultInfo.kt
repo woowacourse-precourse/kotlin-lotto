@@ -12,8 +12,10 @@ class LottoResultInfo(private val lottoResult: LottoResult) {
             if (rank == LottoRank.FAIL) {
                 continue
             }
+            val rankInfo = getRankInfo(rank)
+            val rankCnt = rankToCnt[rank]!!
             stats.add(
-                "${getRankInfo(rank)} - ${rankToCnt[rank]}개"
+                STAT_INFO_FORMAT.format(rankInfo, rankCnt)
             )
         }
         return stats.joinToString("\n")
@@ -21,16 +23,25 @@ class LottoResultInfo(private val lottoResult: LottoResult) {
 
     fun getProfitInfo(): String {
         val profit = lottoResult.computeProfit()
-        return String.format("%.1f", profit)
+        return PROFIT_INFO_FORMAT.format(profit)
     }
 
     fun getRankInfo(lottoRank: LottoRank): String {
         val prize = lottoRank.prize
         val matchCnt = lottoRank.matchCnt
-        val formatted = prize.toPriceFormatted()
-        if (lottoRank == LottoRank.SECOND) {
-            return "${matchCnt}개 일치, 보너스 볼 일치 (${formatted}원)"
+        val prizeFormatted = prize.toPriceFormatted()
+        val infoFormat = if (lottoRank == LottoRank.SECOND) {
+            SECOND_RANK_INFO_FORMAT
+        } else {
+            RANK_INFO_FORMAT
         }
-        return "${matchCnt}개 일치 (${formatted}원)"
+        return infoFormat.format(matchCnt, prizeFormatted)
+    }
+
+    companion object {
+        private const val PROFIT_INFO_FORMAT = "%.1f%%"
+        private const val STAT_INFO_FORMAT = "%s - %d개"
+        private const val RANK_INFO_FORMAT = "%d개 일치 (%s원)"
+        private const val SECOND_RANK_INFO_FORMAT = "%d개 일치, 보너스 볼 일치 (%s원)"
     }
 }

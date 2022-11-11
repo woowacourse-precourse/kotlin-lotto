@@ -1,9 +1,5 @@
-package lotto
+package lotto.domain
 
-import lotto.domain.Lotto
-import lotto.domain.LottoFactory
-import lotto.domain.LottoRank
-import lotto.domain.WinningNumber
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
