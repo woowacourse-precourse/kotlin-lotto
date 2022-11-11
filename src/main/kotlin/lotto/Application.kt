@@ -20,4 +20,5 @@ fun main() {
         var coincidence = lotto.compare(i, bonusNumber)
         lottoCoincidence.add(coincidence)
     }
+    lotto.LottoResult(lottoCoincidence, money)
 }
