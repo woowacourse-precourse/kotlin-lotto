@@ -79,6 +79,14 @@ fun enterBonusNumber(winningNumbers : List<Int>) : Int {
     return userCheck
 }
 
+fun showLottoPaper(cnt : Int) : MutableList<List<Int>> {
+    var lottoCollection = mutableListOf<List<Int>>()
+    var obj = LottoGames(numbers= listOf(0,0,0,0,0,0))
+    for (paper in 0 until cnt){
+        lottoCollection.add(obj.pickLottoNumbers())
+    }
+    return lottoCollection
+}
 
 fun main() {
     var cnt = 0
@@ -87,11 +95,12 @@ fun main() {
     var obj = LottoGames(numbers= listOf(0,0,0,0,0,0))
     var winningNumber = listOf<Int>()
     var bonusNumber = 0
+    var lottoCollection = mutableListOf<List<Int>>()
 
     lottoNumberCollect = obj.pickLottoNumbers()
     bonusNumberCollect = obj.pickBonusNumber(lottoNumberCollect)
-    println(lottoNumberCollect)
-    println(bonusNumberCollect)
+//    println(lottoNumberCollect)
+//    println(bonusNumberCollect)
 
     //시작
     println(State.start.message)
@@ -100,9 +109,10 @@ fun main() {
     cnt=howMany()
     println()
     println(cnt.toString()+State.many.message)
-    for (round in 0 until cnt){
-        //Lotto 클래스 활용해야함!!!
-        println(Lotto(lottoNumberCollect))
+    //Lotto 클래스 활용해야함!!!
+    lottoCollection=showLottoPaper(cnt)
+    for (lotto in 0 until lottoCollection.size){
+        println(lottoCollection[lotto])
     }
     println()
 
