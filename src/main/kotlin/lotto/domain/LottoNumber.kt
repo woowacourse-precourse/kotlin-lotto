@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 const val TICKET_BUY_MESSAGE = "개를 구매했습니다."
 
-class LottoGenerator(cost: Int) {
+class LottoNumber(cost: Int) {
     private val inputCost = cost
 
     init{
