@@ -21,4 +21,8 @@ fun main() {
     val winningNumber = Console.readLine()
     val winningNumberList = winningNumber.split(",").toList().map { it.toInt() }
     inputVerifier.validateWinningNumber(winningNumber)
+
+    println("보너스 번호를 입력해 주세요.")
+    val bonusNumber = Console.readLine().toInt()
+    inputVerifier.validateBonusNumber(bonusNumber)
 }

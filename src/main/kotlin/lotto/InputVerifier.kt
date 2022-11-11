@@ -1,6 +1,7 @@
 package lotto
 
 class InputVerifier {
+    var isBetween1And45 = true
     fun validateAmountOfPurchase(amountOfPurchase: Int) {
         if (amountOfPurchase % 1000 != 0) {
             throw IllegalArgumentException("[ERROR] 구입 금액은 1,000원으로 나누어 떨어져야 합니다.")
@@ -24,13 +25,22 @@ class InputVerifier {
 //        }
     }
 
-    private fun validateRange(winningNumberList: List<Int>): Boolean {
-        var isBetween1And45 = true
+    fun validateBonusNumber(bonusNumber: Int) {
+        validateElementRange(bonusNumber)
+        if (!isBetween1And45) {
+            throw IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.")
+        }
+    }
 
+    private fun validateElementRange(number: Int) {
+        if (number < 1 || number > 45) {
+            isBetween1And45 = false
+        }
+    }
+
+    private fun validateRange(winningNumberList: List<Int>): Boolean {
         for (i in winningNumberList.indices) {
-            if (winningNumberList[i] < 1 || winningNumberList[i] > 45) {
-                isBetween1And45 = false
-            }
+            validateElementRange(winningNumberList[i])
         }
         return isBetween1And45
     }
