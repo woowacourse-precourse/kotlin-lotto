@@ -7,7 +7,7 @@ const val LOTTO_PRICE=1000
 
 class LottoGame() {
 
-    var money=0
+    var money=""
     var lottos = mutableListOf<Int>()
 
     fun gamestart(){
@@ -19,12 +19,12 @@ class LottoGame() {
 
 
     private fun getusermoney(){
-        money=Console.readLine().toInt()
+        money=Console.readLine()
     }
 
     private fun makelottonumber():Int{
         //넣기전 예외처리 먼저
-        val count = money/LOTTO_PRICE
+        val count = money.toInt()/LOTTO_PRICE
         printcount(count)
 
 
