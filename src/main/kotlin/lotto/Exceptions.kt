@@ -18,4 +18,12 @@ class Exceptions {
         }
     }
 
+    fun validateBonusNumber(numbers: List<Int>, bonus: Int) {
+        if (bonus in numbers) {
+            throw IllegalArgumentException(ERROR + DUPLICATE_ERROR_EXCEPTION)
+        }
+        if (bonus !in 1..45) {
+            throw IllegalArgumentException(ERROR + RANGE_ERROR_EXCEPTION)
+        }
+    }
 }
