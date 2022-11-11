@@ -22,6 +22,8 @@ fun main() {
         println("\n보너스 번호를 입력해 주세요.")
         val bonusNumber = userInput().toInt()
         bonusNumberException(lottoResult, bonusNumber)
+
+        val win = checkLotto(lottoResult, myLotto, bonusNumber)
     }
     catch (e: NumberFormatException) {
         throw IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.")
@@ -57,3 +59,15 @@ fun buyAmountException(buyAmount: Int) {
 fun lottoException(lottoResult: List<Int>) = Lotto(lottoResult).lottoException()
 
 fun bonusNumberException(lottoResult: List<Int>, bonusNumber: Int) = Lotto(lottoResult).bonusNumberException(bonusNumber)
+
+fun checkLotto(lottoResult: List<Int>, myLotto: List<List<Int>>, bonusNumber: Int): Array<Int> {
+    val lotto = Lotto(lottoResult)
+    val win = Array(6) { 0 }
+
+    myLotto.forEach {
+        val grade = lotto.checkLotto(it, bonusNumber)
+        win[grade] += 1
+    }
+
+    return win
+}
