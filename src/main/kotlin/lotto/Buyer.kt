@@ -53,9 +53,8 @@ class Buyer {
     private fun canDivide1000(num: Int) = num % ONE_THOUSAND == ZERO
 
     private fun checkIsRightFormat(input: String) {
-        if (!INPUT_FORMAT.toRegex().matches(input)) {
+        if (!(INPUT_FORMAT.toRegex().matches(input)))
             Lottery.printAndThrowException(FORMAT_ERROR)
-        }
     }
 
     private fun checkDuplicate(input: String) {
