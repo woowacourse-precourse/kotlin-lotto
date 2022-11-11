@@ -1,11 +1,14 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Console
+
 class View {
     fun getPaymentAmount(): String {
-        TODO()
+        println("구입금액을 입력해 주세요.")
+        return Console.readLine()
     }
 
-    fun printNumberOfLottos() {
+    fun printNumberOfLottos(number: Int) {
         TODO()
     }
 
