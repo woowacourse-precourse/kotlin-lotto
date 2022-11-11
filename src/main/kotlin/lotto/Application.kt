@@ -5,9 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     println("구입금액을 입력해 주세요.")
-    val buyAmount = userInput().toInt()
+    val buyAmount = userInput()
+    buyAmountException(buyAmount)
 
-    val lottoCnt = lottoCnt(buyAmount)
+    val lottoCnt = lottoCnt(buyAmount.toInt())
     println("\n${lottoCnt}개를 구매했습니다.")
 
     val myLotto = getLotto(lottoCnt)
@@ -37,5 +38,15 @@ fun getLotto(lottoCnt: Int): List<List<Int>> {
 fun printLotto(myLotto: List<List<Int>>) {
     myLotto.forEach {
         println(it)
+    }
+}
+
+fun buyAmountException(buyAmount: String) {
+    if(!buyAmount.chars().allMatch { Character.isDigit(it) }) {
+        throw IllegalArgumentException("[ERROR] 숫자만 입력가능합니다.")
+    }
+
+    if(buyAmount.toInt() % 1000 != 0) {
+        throw IllegalArgumentException("[ERROR] 입력은 1000단위로만 가능합니다.")
     }
 }
