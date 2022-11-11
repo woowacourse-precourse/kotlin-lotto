@@ -25,4 +25,32 @@ class ExceptionsTest {
             Exceptions.isValidInputMoney("01000")
         }
     }
+
+    @Test
+    fun `문자가 들어간 당첨번호 예외 확인`() {
+        assertThrows<IllegalArgumentException> {
+            Exceptions.isValidWinningNumber(listOf("1", "2", "3", "t", "7", "12"))
+        }
+    }
+
+    @Test
+    fun `공백이 들어간 당첨번호 예외 확인`() {
+        assertThrows<IllegalArgumentException> {
+            Exceptions.isValidWinningNumber(listOf("1", "2", "3", " ", "7", "12"))
+        }
+    }
+
+    @Test
+    fun `1~45를 넘어간 0 포함 당첨번호 예외 확인`() {
+        assertThrows<IllegalArgumentException> {
+            Exceptions.isValidRangeWinningNumber(listOf(0,1,2,3,4,5))
+        }
+    }
+
+    @Test
+    fun `1~45를 넘어간 46 포함 당첨번호 예외 확인`() {
+        assertThrows<IllegalArgumentException> {
+            Exceptions.isValidRangeWinningNumber(listOf(46,1,2,3,4,5))
+        }
+    }
 }
