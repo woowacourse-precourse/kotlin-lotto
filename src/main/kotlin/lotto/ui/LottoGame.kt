@@ -27,7 +27,9 @@ class LottoGame {
 
     private fun readCost(): Int {
         println("구입금액을 입력해 주세요.")
-        return readInt()
+        val cost = readInt()
+        println()
+        return cost
     }
 
     private fun purchaseLotto(cost: Int): List<Lotto> {
@@ -37,18 +39,22 @@ class LottoGame {
     private fun printLottoInfo(lottos: List<Lotto>) {
         println("${lottos.size}개를 구매했습니다.")
         lottos.forEach { println(it.toString()) }
+        println()
     }
 
     private fun readWinningNumber(): List<Int> {
         println("당첨 번호를 입력해 주세요.")
-        return Console
-            .readLine()
+        val numbers = Console.readLine()
             .divideToNums(",")
+        println()
+        return numbers
     }
 
     private fun readBonusNumber(): Int {
         println("보너스 번호를 입력해 주세요.")
-        return readInt()
+        val bonus = readInt()
+        println()
+        return bonus
     }
 
     private fun printResultInfo(lottoResultInfo: LottoResultInfo) {
