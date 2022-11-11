@@ -9,6 +9,7 @@ class Lottery(
     fun start() {
         purchaseLotto()
         getWinningNumber()
+        getBonusNumber()
     }
 
     private fun purchaseLotto() {
@@ -23,6 +24,10 @@ class Lottery(
     private fun getWinningNumber() {
         printer.printWinningNumberMessage()
         val winningNumber = buyer.enterWinningNumber()
+    }
+
+    private fun getBonusNumber() {
+        printer.printBonusNumberMessage()
     }
 
     companion object {
