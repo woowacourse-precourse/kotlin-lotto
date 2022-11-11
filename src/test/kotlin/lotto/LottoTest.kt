@@ -1,5 +1,6 @@
 package lotto
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -24,5 +25,13 @@ class LottoTest {
         assertThrows<IllegalArgumentException>{
             Lotto(listOf(1, 3, 2, 4, 5, 6))
         }
+    }
+
+    @Test
+    fun `당첨 번호와 로또 번호를 비교해서 일치하는 개수`() {
+        val lottNumbers = listOf(1, 2, 3, 4, 5, 6)
+        val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
+        val result = Lotto(lottNumbers).getMachingLottoNumberCount(winningNumbers)
+        assertThat(result).isEqualTo(6)
     }
 }
