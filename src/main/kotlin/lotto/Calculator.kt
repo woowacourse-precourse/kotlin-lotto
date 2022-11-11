@@ -1,5 +1,5 @@
 package lotto
 
 class Calculator {
-    fun getLottoCount(amount: Int) = amount / 1000
+    fun getLottoCount(amount: Int) = amount / ONE_THOUSAND
 }
