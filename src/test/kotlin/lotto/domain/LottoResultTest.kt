@@ -48,7 +48,7 @@ class LottoResultTest {
                 listOf(1, 3, 5, 14, 22, 45)
             )
             val winningNumber = WinningNumber(
-                listOf(1, 2, 3, 4, 5, 6),
+                Lotto(listOf(1, 2, 3, 4, 5, 6)),
                 7
             )
             val lottos = lottoNums.map { Lotto(it) }

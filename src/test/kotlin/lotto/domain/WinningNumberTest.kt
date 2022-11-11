@@ -8,18 +8,20 @@ class WinningNumberTest {
     @Test
     fun `보너스 번호가 1부터 45까지의 수가 아닌 경우 예외를 발생시킨다`() {
         val winNums = listOf(1, 2, 3, 4, 5, 6)
+        val winLotto = Lotto(winNums)
         val bonus = 46
         assertThrows<IllegalArgumentException> {
-            WinningNumber(winNums, bonus)
+            WinningNumber(winLotto, bonus)
         }
     }
 
     @Test
     fun `보너스 번호가 로또 번호에 포함되어 있으면 예외를 발생시킨다`() {
         val winNums = listOf(1, 2, 3, 4, 5, 6)
+        val winLotto = Lotto(winNums)
         val bonus = 6
         assertThrows<IllegalArgumentException> {
-            WinningNumber(winNums, bonus)
+            WinningNumber(winLotto, bonus)
         }
     }
 }
