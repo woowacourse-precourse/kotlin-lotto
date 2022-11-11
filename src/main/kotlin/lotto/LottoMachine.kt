@@ -1,16 +1,22 @@
 package lotto
 
 class LottoMachine {
-    fun start() {
 
+    fun start() {
+        val paymentInput = View.getPaymentAmount()
+        val numberOfLotto = getNumberOfLottos(paymentInput)
     }
 
     fun getNumberOfLottos(payment: String): Int {
-        TODO()
+        checkPaymentException(payment)
+        return payment.toInt() / 1000
     }
 
     fun checkPaymentException(payment: String) {
-        TODO()
+        val price = payment.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] 잘못된 입력입니다.")
+        if (price % 1000 != 0) {
+            throw IllegalArgumentException("[ERROR] 1000원으로 나눠지지 않습니다.")
+        }
     }
 
     fun generateLotto(): Lotto {
