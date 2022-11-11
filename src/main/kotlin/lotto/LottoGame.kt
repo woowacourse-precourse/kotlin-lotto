@@ -12,7 +12,7 @@ class LottoGame() {
 
     fun gamestart() {
         getusermoney()
-        makelottonumber()
+        val count = makelottonumber()
 
 
     }
