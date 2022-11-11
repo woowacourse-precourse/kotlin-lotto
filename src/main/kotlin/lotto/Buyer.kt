@@ -19,6 +19,7 @@ class Buyer {
         input.apply {
             checkIsBlank(this)
             checkIsRightFormat(this)
+            checkIsNumberInRange(this)
             checkDuplicate(this)
         }
         return input.split(",").map { it.toInt() }
@@ -55,6 +56,13 @@ class Buyer {
     private fun checkIsRightFormat(input: String) {
         if (!(INPUT_FORMAT.toRegex().matches(input)))
             Lottery.printAndThrowException(FORMAT_ERROR)
+    }
+
+    private fun checkIsNumberInRange(input: String) {
+        input.split(",").forEach {
+            if (it[0] == ZERO.toChar() || it.toInt() !in (1..45))
+                Lottery.printAndThrowException(WRONG_RANGE)
+        }
     }
 
     private fun checkDuplicate(input: String) {
