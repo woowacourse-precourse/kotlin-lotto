@@ -23,4 +23,5 @@ class domain {
 
         return lottoPublishment
     }
+
 }
