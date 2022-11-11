@@ -1,6 +1,6 @@
 package lotto
 
-const val ERROR = "[ERROR]"
+const val ERROR = "[ERROR] "
 const val COST_RANGE_EXCEPTION = "구매 불가능한 금액입니다. 1000원 이상부터 구매 가능합니다."
 const val COST_UNIT_EXCEPTION = "구매 불가능한 금액입니다. 1000원 단위로 구매 가능합니다."
 const val LOTTO_SIZE_EXCEPTION = "로또 번호의 갯수는 6개 입니다."
@@ -29,10 +29,9 @@ class Exceptions {
         }
     }
 
-    fun validateWinningNumbers(input: String) {
-        val inputs = input.split(", ")
+    fun validateWinningNumbers(input: List<String>) {
         val numbers = listOf<Int>()
-        for (x in inputs) {
+        for (x in input) {
             if (x.toIntOrNull() == null) {
                 throw IllegalArgumentException(ERROR + INPUT_EXCEPTION)
             }
