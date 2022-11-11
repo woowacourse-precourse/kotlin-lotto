@@ -4,7 +4,7 @@
     * 오름차순으로 정렬해 보여줌
 * [o] 당첨 번호 입력 받기 - ui / correctNumberInput() 
 * [o] 보너스 번호 입력 받기 - ui / bonusNumberInput() 
-* [] 로또와 당첨 번호 비교하기 - Lotto / compare()
+* [o] 발행 로또와 당첨 번호 비교하기 - Lotto / compare()
     *
 * [] 당첨 통계 보여주기 - Lotto / showLottoResult()
     * 여기 enum 사용?

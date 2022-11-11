@@ -14,4 +14,10 @@ fun main() {
 
     var lotto = Lotto(ui.correctNumber())
     var bonusNumber = ui.bonusNumber()
+
+    var lottoCoincidence = mutableListOf<Int>()
+    for (i in lottoPublishment){
+        var coincidence = lotto.compare(i, bonusNumber)
+        lottoCoincidence.add(coincidence)
+    }
 }
