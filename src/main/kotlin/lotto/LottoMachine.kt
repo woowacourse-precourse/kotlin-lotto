@@ -28,13 +28,12 @@ class LottoMachine(lottoAmount: String) {
         }
     }
 
-    fun validateTypeAmount(amount: String): Boolean {
+    fun validateTypeAmount(amount: String){
         val typeCount = amount.filter { number ->
             number in '0'..'9'
         }
-        return when (typeCount.length) {
-            amount.length -> true
-            else -> throw IllegalArgumentException("[ERROR] 로또 구입 금액은 숫자만 입력해주세요.")
+        require(typeCount.length == amount.length) {
+            throw IllegalArgumentException("[ERROR] 로또 구입 금액은 숫자만 입력해주세요.")
         }
     }
 

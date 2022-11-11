@@ -13,12 +13,11 @@ fun main() {
         val winning = Winning(Console.readLine())
         println("\n보너스 번호를 입력해 주세요.")
         winning.inputBonusNumber(Console.readLine())
-        winning.checkBonusNumberException()
-        val rank = machine.getTotalRank(winning.getLuckyNumber(), winning.getBonusNumber())
+        val rank = machine.getTotalRank(winning.getWinningNumber(), winning.getBonusNumber())
         val statistic = Statistic(rank)
         statistic.statisticMessage()
         println("총 수익률은 ${statistic.calculateTotalYield(machine.getLottoCount() * 1000)}%입니다.")
-    } catch (exception: IllegalArgumentException){
+    } catch (exception: IllegalArgumentException) {
         println("[ERROR] ")
     }
 }
