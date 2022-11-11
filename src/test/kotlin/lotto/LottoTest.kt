@@ -1,5 +1,7 @@
 package lotto
 
+import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -25,4 +27,35 @@ class LottoTest {
             Lotto(listOf(1, 2, 3, 4, 5))
         }
     }
+
+    @Test
+    fun `1등 당첨인 경우`() {
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        assertThat(lotto.confirmWinning(listOf(1, 2, 3, 4, 5, 6), 7)).isEqualTo(6)
+    }
+
+    @Test
+    fun `2등 당첨인 경우`() {
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 7))
+        assertThat(lotto.confirmWinning(listOf(1, 2, 3, 4, 5, 6), 7)).isEqualTo(7)
+    }
+
+    @Test
+    fun `3등 당첨인 경우`() {
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 8))
+        assertThat(lotto.confirmWinning(listOf(1, 2, 3, 4, 5, 6), 7)).isEqualTo(5)
+    }
+
+    @Test
+    fun `4등 당첨인 경우`() {
+        val lotto = Lotto(listOf(1, 2, 3, 4, 8, 9))
+        assertThat(lotto.confirmWinning(listOf(1, 2, 3, 4, 5, 6), 7)).isEqualTo(4)
+    }
+
+    @Test
+    fun `5등 당첨인 경우`() {
+        val lotto = Lotto(listOf(1, 2, 3, 8, 9, 10))
+        assertThat(lotto.confirmWinning(listOf(1, 2, 3, 4, 5, 6), 7)).isEqualTo(3)
+    }
+
 }
