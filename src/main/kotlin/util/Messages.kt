@@ -2,7 +2,10 @@ package util
 
 object Messages {
     const val USER_INPUT_MESSAGE = "구입금액을 입력해 주세요."
+    const val WINNING_NUMBER_INPUT_MESSAGE = "당첨 번호를 입력해 주세요."
+    const val BONUS_NUMBER_INPUT_MESSAGE = "보너스 번호를 입력해 주세요"
     const val AMOUNT_LOTTO_MESSAGE = "개를 구매했습니다."
+
     const val ERROR_MESSAGE = "[ERROR] "
     const val ERROR_INVALID_INPUT_MESSAGE = "로또 구입 금액은 1000원 단위로 입력해 주세요."
     const val ERROR_LOTTO_SIZE = "로또는 6개의 숫자어야 합니다."

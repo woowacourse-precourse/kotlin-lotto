@@ -19,7 +19,17 @@ object Printers {
         nextLine()
     }
 
-    private fun nextLine() {
+    // 당첨 번호 입력 출력
+    fun inputWinningNumber() {
+        println(Messages.WINNING_NUMBER_INPUT_MESSAGE)
+    }
+
+    // 보너스 번호 입력 출력
+    fun inputBonusNumber() {
+        println(Messages.BONUS_NUMBER_INPUT_MESSAGE)
+    }
+
+    fun nextLine() {
         println()
     }
 }
