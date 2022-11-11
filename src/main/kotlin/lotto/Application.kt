@@ -3,21 +3,59 @@ package lotto
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    var lotto: Lotto
     val price = inputBuyLottoPrice()
+    val savedLottoNumbers = ArrayList<List<Int>>()
     for (i in 0 until price / 1000) {
-        createLottoNumber()
+        createLottoNumber(savedLottoNumbers)
     }
     val winningNumbers = inputLottoWinningNumebers()
-    val bonusNumber = inputBonusNumber()
+    val bonusNumber = inputBonusNumber(winningNumbers)
+
+    val lotto = Lotto(winningNumbers.map { it.toInt() })
+
+    val winningResult = compareNumbers(lotto, savedLottoNumbers, bonusNumber)
+    printWinningResult(winningResult)
+
+
 }
 
-fun inputBonusNumber(): Int {
-    println("보너스 번호를 입력해 주세요.")
+fun printWinningResult(winningResult: MutableList<Int>) {
+    println("\n당첨 통계\n---")
+    println("3개 일치 (5,000원) - ${winningResult[0]}개")
+    println("4개 일치 (50,000원) - ${winningResult[1]}개")
+    println("5개 일치 (1,500,000원) - ${winningResult[2]}개")
+    println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${winningResult[3]}개")
+    println("6개 일치 (2,000,000,000원) - ${winningResult[4]}개")
+}
+
+fun compareNumbers(lotto: Lotto, savedLottoNumbers: ArrayList<List<Int>>, bonusNumber: Int): MutableList<Int> {
+    val winningCount = MutableList<Int>(5) { 0 }
+    for (i in savedLottoNumbers) {
+        when (lotto.compareLottoNumbers(i)) {
+            Rank.ZERO, Rank.ONE, Rank.TWO -> null
+            Rank.THREE -> winningCount[0]++
+            Rank.FOUR -> winningCount[1]++
+            Rank.FIVE -> {
+                if (!i.contains(bonusNumber)) {
+                    winningCount[2]++
+                } else {
+                    winningCount[3]
+                }
+            }
+            Rank.SIX -> winningCount[4]++
+        }
+    }
+    return winningCount
+}
+
+fun inputBonusNumber(winningNumbers: List<String>): Int {
+    println("\n보너스 번호를 입력해 주세요.")
     try {
         val bonusNumber = readLine().toString().toInt()
         if (bonusNumber < 1 || bonusNumber > 45) {
             printException("[ERROR] 로또 번호는 1부터 45사이의 숫자여야 합니다.")
+        } else if (winningNumbers.contains(bonusNumber.toString())) {
+            printException("[ERROR] 보너스 번호는 당첨 번호와 중복되지 않은 숫자여야 합니다.")
         }
         return bonusNumber
     } catch (e: NumberFormatException) {
@@ -27,7 +65,7 @@ fun inputBonusNumber(): Int {
 }
 
 fun inputLottoWinningNumebers(): List<String> {
-    println("당첨 번호를 입력해 주세요.")
+    println("\n당첨 번호를 입력해 주세요.")
     val winninngNumbers = readLine().toString().split(",")
 
     if (winninngNumbers.distinct().size != 6) {
@@ -41,11 +79,11 @@ fun inputLottoWinningNumebers(): List<String> {
     return winninngNumbers
 }
 
-fun createLottoNumber() {
+fun createLottoNumber(savedLottoNumbers: ArrayList<List<Int>>) {
     val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
-    val lotto = Lotto(numbers)
+    savedLottoNumbers.add(numbers)
 
-    lotto.printLottoNumbers()
+    Lotto(numbers).printLottoNumbers()
 }
 
 fun inputBuyLottoPrice(): Int {
@@ -55,12 +93,14 @@ fun inputBuyLottoPrice(): Int {
         if (price.toInt() % 1000 != 0) {
             printException("[ERROR] 구입 금액은 1,000원 단위입니다.")
         }
+        println("\n${price.toInt() / 1000}개를 구매했습니다.")
         return price.toInt()
     } catch (e: NumberFormatException) {
         printException("[ERROR] 로또 번호는 1부터 45사이의 숫자여야 합니다.")
     }
     throw IllegalArgumentException()
 }
+
 fun printException(message: String) {
     println(message)
     throw IllegalArgumentException()
