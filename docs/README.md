@@ -6,7 +6,11 @@
 - [ ] 로또 구입 금액을 입력하면 1000원당 1장, 구입 금액에 해당하는 만큼 로또를 생성한다. - LottoShop#buyLotto()
 - [ ] 구입 금액에 만큼 살 수 있는 로또의 개수를 확인하다.- LottoShop#cntLotto()
 - [ ] 1부터 45까지 서로 다른 임의의 수 6개의 숫자를 생성한다. - LottoShop#createRandomLotto()
-- [ ] 당첨 번호는 중복되지 않는 숫자 6개와 보너스 번호 1개를 입력 받는다. - LottoWin#inputWinningNumber()
+- [ ] 당첨 번호와 보너스 번호를 구한다. - LottoWin#winLotto()
+- [ ] 당첨 번호와 보너스 번호를 저장한다. - LottoWin#LottoWinBall
+- [ ] 당첨 번호는 중복되지 않는 숫자 6개를 입력 받는다. - LottoWin#inputWinningNumber()
+- [ ] 당첨 번호와 중복되지 않는 보너스 번호 1개를 입력 받는다. - LottoWin#inputBonusLotto()
+- [ ] 당첨 번호를 잘못 입력한 경우 예외 처리한다. - LottoWin#inputLottoNumberTypeException()
 - [ ] 당첨 번호를 잘못 입력하거나 1부터 45 사이에 번호가 아닌 경우 예외 처리한다. - LottoWin#inputLottoNumberException
 - [ ] 당첨 번호의 개수가 잘못 입력되었거나 중복되었을 경우 예외 처리한다. - LottoWin#inputWinningNumberException
 - [ ] 보너스 번호가 당첨 번호와 중복되었을 경우 예외 처리한다. - LottoWin#inputWinningBonusNumberException
