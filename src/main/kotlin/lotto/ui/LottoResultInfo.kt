@@ -9,6 +9,9 @@ class LottoResultInfo(private val lottoResult: LottoResult) {
         val rankToCnt = lottoResult.rankToCnt
         val stats = mutableListOf<String>()
         for (rank in LottoRank.values()) {
+            if (rank == LottoRank.FAIL) {
+                continue
+            }
             stats.add(
                 "${getRankInfo(rank)} - ${rankToCnt[rank]}개"
             )
@@ -21,7 +24,7 @@ class LottoResultInfo(private val lottoResult: LottoResult) {
         return String.format("%.1f", profit)
     }
 
-    private fun getRankInfo(lottoRank: LottoRank): String {
+    fun getRankInfo(lottoRank: LottoRank): String {
         val prize = lottoRank.prize
         val matchCnt = lottoRank.matchCnt
         val formatted = prize.toPriceFormatted()
