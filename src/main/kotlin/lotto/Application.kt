@@ -60,30 +60,14 @@ fun lottoException(lottoResult: List<Int>) = Lotto(lottoResult).lottoException()
 
 fun bonusNumberException(lottoResult: List<Int>, bonusNumber: Int) = Lotto(lottoResult).bonusNumberException(bonusNumber)
 
-fun checkLotto(lottoResult: List<Int>, myLotto: List<List<Int>>, bonusNumber: Int): Map<String, Int> {
+fun checkLotto(lottoResult: List<Int>, myLotto: List<List<Int>>, bonusNumber: Int): Array<Int> {
     val lotto = Lotto(lottoResult)
-    val win = settingWin() as MutableMap
+    val win = Array(6) { 0 }
 
     myLotto.forEach {
-        when(lotto.checkLotto(it, bonusNumber)) {
-            1 -> win["THREE"] = win["THREE"]!!.plus(1)
-            2 -> win["FOUR"] = win["FOUR"]!!.plus(1)
-            3 -> win["FIVE"] = win["FIVE"]!!.plus(1)
-            4 -> win["BONUS"] = win["BONUS"]!!.plus(1)
-            5 -> win["SIX"] = win["SIX"]!!.plus(1)
-        }
+        val correct = lotto.checkLotto(it, bonusNumber)
+        win[correct] += 1
     }
-
-    return win
-}
-
-fun settingWin(): Map<String, Int> {
-    val win = HashMap<String, Int>()
-    win["THREE"] = 0
-    win["FOUR"] = 0
-    win["FIVE"] = 0
-    win["BONUS"] = 0
-    win["SIX"] = 0
 
     return win
 }
