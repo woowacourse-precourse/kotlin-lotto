@@ -15,4 +15,11 @@ class PurchaseTest {
             assertThat(true).isEqualTo(result)
         }
     }
+
+    @Test
+    fun `로또 구매 금액에 맞는 로또 갯수 존재 여부 테스트`() {
+        val purchase = Purchase()
+        val result = purchase.updateLottoCount(14000)
+        assertThat(14).isEqualTo(result)
+    }
 }
