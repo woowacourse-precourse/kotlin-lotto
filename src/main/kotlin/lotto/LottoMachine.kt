@@ -10,8 +10,7 @@ class LottoMachine {
 
         val lottos: ArrayList<Lotto> = arrayListOf()
         repeat(numberOfLotto) {
-            val randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
-            lottos.add(Lotto(randomNumbers))
+            lottos.add(generateLotto())
         }
     }
 
@@ -28,7 +27,8 @@ class LottoMachine {
     }
 
     fun generateLotto(): Lotto {
-        TODO()
+        val randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
+        return Lotto(randomNumbers)
     }
 
     fun checkWinningNumberException() {
