@@ -10,6 +10,7 @@ class Lottery(
         purchaseLotto()
         getWinningNumber()
         getBonusNumber()
+        getLottoResult()
     }
 
     private fun purchaseLotto() {
@@ -29,6 +30,10 @@ class Lottery(
     private fun getBonusNumber() {
         printer.printBonusNumberMessage()
         buyer.enterBonusNumber()
+    }
+
+    private fun getLottoResult() {
+        printer.printWinStaticMessage()
     }
 
     companion object {

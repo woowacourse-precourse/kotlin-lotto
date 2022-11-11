@@ -23,6 +23,10 @@ class Printer {
         println("\n보너스 번호를 입력해 주세요.")
     }
 
+    fun printWinStaticMessage() {
+        println("\n당첨 통계\n---\n")
+    }
+
     companion object {
         fun printError(errorMessage: String) {
             println("[ERROR] $errorMessage")
