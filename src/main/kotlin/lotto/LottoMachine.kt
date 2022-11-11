@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms
 class LottoMachine(amount: String) {
     private var lottoCount = 0
     private val lottery = mutableListOf<Lotto>()
-    private val rank = mutableListOf(0, 0, 0, 0, 0, 0, 0, 0)
 
     init {
         validateType(amount)
@@ -41,16 +40,15 @@ class LottoMachine(amount: String) {
 
     fun getLottoCount() = lottoCount
 
-    fun getLottoNumbers() {
-        for (index in 0 until lottoCount) {
-            lottery[index].printLottoNumber()
-        }
+    fun getLottoNumbers() = lottery.forEach { lotto ->
+        lotto.printLottoNumber()
     }
 
-    fun getTotalRank(luckyNumber: List<Int>, bonusNumber: Int): List<Int> {
-        for (index in 0 until lottoCount) {
-            val increaseRank = lottery[index].confirmWinning(luckyNumber, bonusNumber)
-            rank[increaseRank]++
+    fun getTotalRank(winningNumber: List<Int>, bonusNumber: Int): List<Int> {
+        val rank = mutableListOf(0, 0, 0, 0, 0, 0, 0, 0)
+        lottery.forEach { lotto ->
+            val rankIndex = lotto.confirmWinning(winningNumber, bonusNumber)
+            rank[rankIndex]++
         }
         return rank
     }
