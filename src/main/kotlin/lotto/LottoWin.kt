@@ -13,12 +13,12 @@ class LottoWin {
     }
 
     fun inputWinLotto(): List<Int> {
-        println("당첨 번호를 입력해 주세요.")
+        println("\n당첨 번호를 입력해 주세요.")
         val inputLottoWinNum = readLine()!!
         val inputLottoWinNumSplit = inputLottoWinNum.split(',')
-        println(inputLottoWinNumSplit)
         inputLottoWinNumSplit.inputLottoNumberTypeException()
         val lottoWinNum = inputWinningNumberException(inputLottoWinNumSplit)
+        println(lottoWinNum)
         for (i in 0 until LottoWinBall.values().size - 1) {
             LottoWinBall.values()[i].num = lottoWinNum[i]
         }
@@ -26,11 +26,12 @@ class LottoWin {
     }
 
     fun inputBonusLotto(userLottoWinNum: List<Int>) {
-        println("보너스 번호를 입력해 주세요.")
+        println("\n보너스 번호를 입력해 주세요.")
         val inputLottoBonusNum = readLine()!!
         inputLottoBonusNum.inputLottoNumberTypeException()
         inputWinningBonusNumberException(userLottoWinNum, inputLottoBonusNum.toInt())
         LottoWinBall.BonusBall.num = inputLottoBonusNum.toInt()
+        println(inputLottoBonusNum)
     }
 
 
