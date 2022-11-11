@@ -21,13 +21,5 @@ class WinningTest {
         assertThrows<IllegalArgumentException> { Winning("1,2,3,4,5") }
     }
 
-    @Test
-    fun `보너스 당첨 번호가 1~45 사이가 아닌 경우`() {
-        assertThrows<IllegalArgumentException> { (win.validateBonusNumberRange(46)) }
-    }
 
-    @Test
-    fun `보너스 당첨 번호가 로또 당첨 번호와 중복되면 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> { (win.validateBonusNumberDuplicate(4)) }
-    }
 }
