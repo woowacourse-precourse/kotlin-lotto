@@ -4,7 +4,7 @@ object LottoErrorCheck {
 
     fun checkinputisnumber(input:String){
         if(input.toIntOrNull()==null)
-            throw IllegalArgumentException("[ERROR] 돈은 숫자를 입력해야합니다.")
+            throw IllegalArgumentException("[ERROR] 숫자를 입력해야합니다.")
     }
 
     fun checklottoerrorall(checklotto:MutableList<Int>){
