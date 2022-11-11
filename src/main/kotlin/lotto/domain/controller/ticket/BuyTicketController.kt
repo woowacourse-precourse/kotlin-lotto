@@ -1,10 +1,11 @@
 package lotto.domain.controller.ticket
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.domain.controller.Controller
 import lotto.domain.model.ticket.Lotto
 import lotto.ui.view.ticket.BuyTicketView
 
-class BuyTicketController(private val buyTicketView: BuyTicketView) {
+class BuyTicketController(private val buyTicketView: BuyTicketView): Controller() {
     private var ticketMoney = ""
     private var ticketCount = 0
     private val _lottoTickets = mutableListOf<Lotto>()
@@ -15,7 +16,7 @@ class BuyTicketController(private val buyTicketView: BuyTicketView) {
         initTicket()
     }
 
-    fun run() {
+    override fun run() {
         // 구매한 티켓 개수를 출력한다.
         printTicketCount()
 
