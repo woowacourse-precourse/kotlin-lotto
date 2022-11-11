@@ -46,24 +46,35 @@
 
 
 ## 📝기능 구현 리스트
-1. inputMoney : 사용자에게 구매 금액을 입력받는 기능[ ]
-2. isNumInt : 사용자가 입력한 금액이 정수형이 맞는지 체크하는 기능[ ]
-3. countMoney : 사용자가 입력한 금액을 계산하여 생성할 로또 개수를 반환하는 기능[ ]
-   1. isEnoughMoney : 사용자가 입력한 금액이 충분한지 체크하는 기능[ ]
+1. inputMoney : 사용자에게 구매 금액을 입력받는 기능[ ] - Class LottoVendingMachine
+2. isNumInt : 사용자가 입력한 금액이 정수형이 맞는지 체크하는 기능[ ] - Class Util
+3. countMoney : 사용자가 입력한 금액을 계산하여 생성할 로또 개수를 반환하는 기능[ ] - Class LottoVendingMachine
+   1. isEnoughMoney : 사용자가 입력한 금액이 충분한지 체크하는 기능[ ] 
    2. isMoney1000 : 사용자가 입력한 금액이 1000원 단위인지 검사하고 거스름돈을 정의해주는 기능[ ]
-4. makeLottoNum : 원하는 만큼 로또를 생성하여 반환해주는 기능[ ]
-5. inputLottoNum : 사용자에게 로또 번호를 입력받는 기능[ ]
-6. checkLottoNum : 사용자가 로또 번호를 맞게 입력했는지 검사하는 기능[ ]
+4. makeLottoNum : 원하는 만큼 로또를 생성하여 반환해주는 기능[ ] - Class LottoNumGenerator
+5. inputLottoNum : 사용자에게 로또 번호를 입력받는 기능[ ] - Class LottoGame
+6. checkLottoNum : 사용자가 로또 번호를 맞게 입력했는지 검사하는 기능[ ] - Class Util
    1. isRightForm : 사용자가 입력 형식과 자료형을 맞췄는지 검사하는 기능[ ]
    2. isRightNumCount : 사용자가 맞는 개수를 입력했는지 검사하는 기능[ ]
    3. isRightRange : 사용자가 1~45 범위의 값을 입력했는지 검사하는 기능[ ]
    4. isOverlap : 로또 번호가 중복되는 경우[ ]
-7. inputBonusNum : 사용자가 보너스 번호를 입력받는 기능[ ]
-8. checkBonusNum : 사용자가 보너스 번호를 맞게 입력했는지 검사하는 기능[ ]
+7. inputBonusNum : 사용자가 보너스 번호를 입력받는 기능[ ] - Class LottoGame
+8. checkBonusNum : 사용자가 보너스 번호를 맞게 입력했는지 검사하는 기능[ ] -Class Util
    1. 2번 is NumInt 재사용 : 보너스 번호가 정수인지 체크[ ]
    2. 6.2번 isRightNumCount 재사용 : 보너스 번호를 1개만 입력했는지 체크[ ]
    3. 6.3번 isRightRange 재사용 : 보너스 번호가 1~45 범위의 값인지 체크[ ]
    4. 6.4 isOverlap 재사용 : 보너스 번호가 로또 번호와 겹치는지 검사[ ]
-9. compareLottoNum : 로또 번호와 당첨 번호를 비교해서 결과를 생성하는 기능[ ]
-10. calculateYield : 수익률을 계산해주는 기능[ ]
-11. printResult : 당첨 현황과 수익률을 출력해주는 기능[ ]
+9. compareLottoNum : 로또 번호와 당첨 번호를 비교해서 결과를 생성하는 기능[ ] - Class Calculator
+10. calculateYield : 수익률을 계산해주는 기능[ ] - Class Calculator
+11. printResult : 당첨 현황과 수익률을 출력해주는 기능[ ] - Class LottoGame 
+12. playLottoGame : 로또 게임 실행[ ] - Class LottoGame
+
+## 📦️ 생성 클래스
+1. Application : 메인 클래스
+2. LottoGame : 로또 게임이 진행되는 클래스
+3. Lotto : 로또 번호 클래스
+4. Bonus : 보너스 번호 클래스
+5. Util : 각종 입력들이 형식에 맞고 오류가 없는지 체크하는 클래스
+6. LottoVendingMachine : 사용자에게 돈을 받고 로또를 판매하는 클래스
+7. LottoNumGenerator : 로또 번호를 생성하는 클래스
+8. Calculator : 로또 게임 결과를 계산하는 클래스
