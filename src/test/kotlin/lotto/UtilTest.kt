@@ -20,19 +20,18 @@ class UtilTest {
     }
 
     @Test
-    fun `예외가 발생하면 에러 메시지를 출력 후 종료한다`() {
-        val output = systemSetOut()
-        assertThrows<IllegalArgumentException> {
-            requireWithPrefix(false, "test")
-        }
-        assert(output.toString().contains(ERROR_MESSAGE))
-    }
-
-    @Test
     fun `숫자를 1000 단위마다 쉼표로 끊어서 표시할 수 있어야 한다`() {
         val num = 2000000000
         val expect = "2,000,000,000"
         assert(num.toPriceFormatted() == expect)
+    }
+
+    @Test
+    fun `예외 메시지는 머릿말을 포함해야 한다`() {
+        val message = assertThrows<IllegalArgumentException> {
+            requireWithPrefix(false, "")
+        }.message
+        assert(message!!.contains(ERROR_MESSAGE))
     }
 
     @Test
