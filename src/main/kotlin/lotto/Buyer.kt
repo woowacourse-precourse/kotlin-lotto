@@ -14,6 +14,7 @@ class Buyer {
 
     fun enterWinningNumber(): List<Int> {
         val input = readLine()
+        checkIsBlank(input)
         checkIsRightFormat(input)
         return input.split(",").map { it.toInt() }
     }
