@@ -1,7 +1,5 @@
 package lotto
 
-import kotlin.math.round
-
 class Statistic(private val ranks: List<Int>) {
     enum class Money(val money: Int, val index: Int) {
         FIRST(2000000000, 1),
@@ -21,7 +19,6 @@ class Statistic(private val ranks: List<Int>) {
 
         return sum
     }
-
 
     fun statisticMessage() {
         println()

@@ -2,31 +2,31 @@ package lotto
 
 import java.lang.NumberFormatException
 
-class BonusNumber(_winningNumber: List<Int>, _bonusNumber: String) {
-    private var bonusNumber = 0
-    private val winningNumber = _winningNumber
+class BonusNumber(_winning: List<Int>, _bonus: String) {
+    private var bonus = 0
+    private val winning = _winning
 
     init {
-        validateNumeric(_bonusNumber)
-        validateRange(bonusNumber)
-        validateDuplicate(winningNumber, bonusNumber)
+        validateType(_bonus)
+        validateRange(bonus)
+        validateDuplicate(winning, bonus)
     }
 
-    fun getBonusNumber() = bonusNumber
-
-    fun validateRange(bonusNumber: Int) = require(bonusNumber in 1..45) {
-        throw IllegalArgumentException(ErrorMessage.rangeError(Constant.BONUS_NUMBER))
-    }
-
-    fun validateDuplicate(winningNumber: List<Int>, bonusNumber: Int) = require(winningNumber.contains(bonusNumber)) {
-        throw IllegalArgumentException(ErrorMessage.duplicateError(Constant.BONUS_NUMBER))
-    }
-
-    fun validateNumeric(number: String) {
-        bonusNumber = try {
-            number.toInt()
+    fun validateType(winningNumber: String) {
+        bonus = try {
+            winningNumber.toInt()
         } catch (exception: NumberFormatException) {
             throw IllegalArgumentException(ErrorMessage.intError(Constant.BONUS_NUMBER))
         }
     }
+
+    fun validateRange(bonusNumber: Int) = require(bonusNumber in Constant.START_LOTTO_RANGE..Constant.END_LOTTO_RANGE) {
+        throw IllegalArgumentException(ErrorMessage.rangeError(Constant.BONUS_NUMBER))
+    }
+
+    fun validateDuplicate(winningNumber: List<Int>, bonusNumber: Int) = require(!winningNumber.contains(bonusNumber)) {
+        throw IllegalArgumentException(ErrorMessage.duplicateError(Constant.BONUS_NUMBER))
+    }
+
+    fun getBonusNumber() = bonus
 }

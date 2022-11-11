@@ -4,20 +4,20 @@ import camp.nextstep.edu.missionutils.Console
 
 fun main() {
     try {
-        println("구입금액을 입력해 주세요.")
+        ConsoleMessage.machine()
         val machine = LottoMachine(Console.readLine())
         machine.pickNewLotto(machine.getLottoCount())
-        println("\n${machine.getLottoCount()}개를 구매했습니다.")
+        ConsoleMessage.purchase(machine.getLottoCount())
         machine.getLottoNumbers()
-        println("\n당첨 번호를 입력해 주세요.")
-        val winning = Winning(Console.readLine())
-        println("\n보너스 번호를 입력해 주세요.")
+        ConsoleMessage.winning()
+        val winning = WinningNumber(Console.readLine())
+        ConsoleMessage.bonus()
         val bonus = BonusNumber(winning.getWinningNumber(), Console.readLine())
         val rank = machine.getTotalRank(winning.getWinningNumber(), bonus.getBonusNumber())
         val statistic = Statistic(rank)
         statistic.statisticMessage()
         println("총 수익률은 ${statistic.calculateTotalYield(machine.getLottoCount() * 1000)}%입니다.")
     } catch (exception: IllegalArgumentException) {
-        println("[ERROR] ")
+        println("[ERROR] 입력에 오류가 있습니다.")
     }
 }
