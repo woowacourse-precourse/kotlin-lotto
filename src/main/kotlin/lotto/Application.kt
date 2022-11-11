@@ -9,7 +9,23 @@ fun main() {
         createLottoNumber()
     }
     val winningNumbers = inputLottoWinningNumebers()
+    val bonusNumber = inputBonusNumber()
 
+}
+
+fun inputBonusNumber(): Int {
+    println("보너스 번호를 입력해 주세요.")
+    try {
+        val bonusNumber = readLine().toString().toInt()
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            println("[ERROR] 보너스 번호는 1부터 45사이의 숫자여야 합니다.")
+            throw IllegalArgumentException()
+        }
+        return bonusNumber
+    } catch (e: NumberFormatException) {
+        println("[ERROR] 숫자를 입력해주세요.")
+        throw IllegalArgumentException()
+    }
 }
 
 fun inputLottoWinningNumebers(): List<String> {
