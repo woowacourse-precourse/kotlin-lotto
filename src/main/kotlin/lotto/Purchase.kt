@@ -3,8 +3,12 @@ package lotto
 class Purchase {
     private var expense = NO_MONEY
 
-    fun createExpense() {
+    fun createExpense(): Int {
+        println("구입금액을 입력해 주세요.")
         expense = readLine()!!.toInt()
+        checkMoney(expense)
+        println("${updateLottoQuantity(expense)}개를 구매했습니다.")
+        return updateLottoQuantity(expense)
     }
 
     fun checkMoney(money: Int) {
