@@ -19,7 +19,9 @@ fun produceLotto(amount: Int): List<Lotto> {
 }
 
 fun getInputBonusNumber(): Int {
-    return 0
+    val input = Console.readLine()
+
+    return input.toIntOrNull() ?: throw IllegalArgumentException()
 }
 
 fun getInputWinNumbers(): List<Int> {
