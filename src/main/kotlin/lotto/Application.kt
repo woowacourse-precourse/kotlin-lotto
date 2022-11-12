@@ -1,31 +1,31 @@
 package lotto
 
-fun calculateYield() {
-
+fun calculateYield(lottos: List<Lotto>, winNumber: List<Int>, bonusNumber: Int): Float {
+    return 0f
 }
 
-fun calculateWinRanks() {
-
+fun calculateWinRanks(lottos: List<Lotto>, winNumber: List<Int>, bonusNumber: Int): Map<LottoRank, Int> {
+    return mapOf()
 }
 
-fun generateLottoNumbers() {
-
+fun generateLottoNumbers(): Lotto {
+    return Lotto(listOf(1,2,3,4,5,6))
 }
 
-fun produceLotto() {
-
+fun produceLotto(amount: Int): List<Lotto> {
+    return listOf(Lotto(listOf(1,2,3,4,5,6)))
 }
 
-fun getInputBonusNumber() {
-
+fun getInputBonusNumber(): Int {
+    return 0
 }
 
-fun getInputWinNumber() {
-
+fun getInputWinNumber(): List<Int> {
+    return listOf()
 }
 
-fun getInputLottoMoney() {
-
+fun getInputLottoMoney(): Int {
+    return 0
 }
 
 fun main() {
