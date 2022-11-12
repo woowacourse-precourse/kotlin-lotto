@@ -6,8 +6,9 @@ import java.util.regex.Pattern
 
 private const val amount = 1000
 fun main() {
+    val winningNumber : MutableList<Int> = mutableListOf()
     setLotto(getSellLottoCount())
-    getWinningNumber()
+    getWinningNumber(winningNumber)
 }
 private fun getSellLottoCount() : Int {
 
@@ -21,7 +22,7 @@ private fun getSellLottoCount() : Int {
     }
 
     val lottoAmount = input.toInt() / amount
-    println("${lottoAmount}개를 구매했습니다.")
+    println("\n${lottoAmount}개를 구매했습니다.")
 
     return lottoAmount
 
@@ -37,15 +38,24 @@ private fun setLotto(count: Int) {
     }
 }
 
-private fun getWinningNumber(){ // 숫자랑 콤마만 입력할 수 있게 예외 처리 추가하기
+private fun getWinningNumber(winningNumber : MutableList<Int>){
 
-    println("당첨 번호를 입력해 주세요.")
+    println("\n당첨 번호를 입력해 주세요.")
 
     val input = readLine()!!
 
     if(!Pattern.matches("^[0-9],[0-9],[0-9],[0-9],[0-9],[0-9]\$", input)) {
         throw IllegalArgumentException("[ERROR] 공백 없이 당첨 번호 6개를 모두 입력해 주세요.")
     }
+
+    checkWinningNumberInputOverlapException(input).forEach {
+        winningNumber.add(it.toInt())
+    }
+
+    //println(winningNumber)
+}
+
+private fun checkWinningNumberInputOverlapException(input: String) : MutableSet<String> {
 
     var str = input.split(',')
     var winningStr : MutableSet<String> = mutableSetOf() // LinkedHashSet 생성: 순서O 중복X
@@ -54,14 +64,14 @@ private fun getWinningNumber(){ // 숫자랑 콤마만 입력할 수 있게 예�
         winningStr.add(it)
     }
 
-    if(winningStr.size != 6) {
-        throw IllegalArgumentException("[ERROR] ")
+    when (winningStr.size) {
+
+        6 -> return winningStr
+        else -> { throw IllegalArgumentException("[ERROR] 당첨 번호는 중복될 수 없습니다.") }
+
     }
 
-    winningStr.forEach {
-        it.toInt()
-    }
-
-    println(winningStr)
 }
+
+
 
