@@ -10,9 +10,13 @@ const val WINNING_BONUS_NUMBER_INPUT_MESSAGE = "보너스 번호를 입력해 �
 const val RESULT_TITLE_MESSAGE = "당첨 통계"
 const val RESULT_HORIZONTAL_LINE_MESSAGE = "---"
 
+const val ERROR_MESSAGE = "[ERROR]"
+const val ERROR_MESSAGE_BUDGET_INPUT = "$ERROR_MESSAGE 잘못된 구입금액을 입력하였습니다."
 fun main() {
     displayIntroduceGuideMessage()
     val userBudget = getUserBudget()
+    if (isWrongBudget(userBudget))
+        return
 
     val boughtLottoCount = userBudget.toInt() / 1000
     displaySuccessBuyLottoGuideMessage(boughtLottoCount)
@@ -28,6 +32,24 @@ fun main() {
 }
 
 fun getUserBudget(): String = Console.readLine()
+fun isWrongBudget(userBudget: String): Boolean {
+    return try {
+        if (isNotInteger(userBudget))
+            throw IllegalArgumentException(ERROR_MESSAGE_BUDGET_INPUT)
+
+        if (userBudget.toInt() % 1000 != 0)
+            throw IllegalArgumentException(ERROR_MESSAGE_BUDGET_INPUT)
+
+        if (userBudget.toInt() < 0)
+            throw IllegalArgumentException(ERROR_MESSAGE_BUDGET_INPUT)
+
+        false
+    } catch (e: IllegalArgumentException) {
+        println(ERROR_MESSAGE_BUDGET_INPUT)
+        true
+    }
+}
+
 fun getLottoTickets(boughtLottoCount: Int): List<Lotto> {
     val lottoTickets = mutableListOf<Lotto>()
     for (i in 0 until boughtLottoCount) {
@@ -49,4 +71,13 @@ fun displayWinningBonusNumberInputGuideMessage() = println(WINNING_BONUS_NUMBER_
 fun displayResultGuideMessage() = run {
     println(RESULT_TITLE_MESSAGE)
     println(RESULT_HORIZONTAL_LINE_MESSAGE)
+}
+
+fun isNotInteger(string: String): Boolean {
+    return try {
+        string.toInt()
+        false
+    } catch (e: NumberFormatException) {
+        true
+    }
 }
