@@ -20,7 +20,7 @@ ex)
 */
 
 // Enum 클래스 적용해 프로그래밍을 구현한다.
-enum class State(val message: String){
+enum class State(val message: String) {
     start("구입금액을 입력해 주세요."),
     many("개를 구매했습니다."),
     enterLottoNumber("당첨 번호를 입력해 주세요."),
@@ -31,95 +31,143 @@ enum class State(val message: String){
 
 }
 
-fun howMany() : Int{
+enum class Prize(val message: String) {
+    three("3개 일치 (5,000원) - "),
+    four("4개 일치 (50,000원) - "),
+    five("5개 일치 (1,500,000원) - "),
+    fiveBonus("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
+    six("6개 일치 (2,000,000,000원) - ");
+}
+
+fun howManyBuy(): Int {
     var money = readLine().toInt()
-    var answer=money/1000
+    var answer = money / 1000
     return answer
 }
 
-fun enterWinningNumber() : List<Int> {
+fun enterWinningNumber(): List<Int> {
     var userCheck = readLine()
     var winningNumber = mutableListOf<Int>()
-    var number=userCheck.split(',')
-    for (obj in 0 until number.size){
+    var number = userCheck.split(',')
+    for (obj in 0 until number.size) {
         // 번호가 중복된 경우 에러 유발해야함
         winningNumber.add(number[obj].toInt())
     }
     return winningNumber
 }
 
-fun enterBonusNumber(winningNumbers : List<Int>) : Int {
+fun enterBonusNumber(winningNumbers: List<Int>): Int {
     var userCheck = readLine().toInt()
     // 보너스 번호가 로또 번호와 같은 경우
-    if (winningNumbers.contains(userCheck)){
+    if (winningNumbers.contains(userCheck)) {
         throw IllegalArgumentException("[ERROR] 로또 번호와 겹칩니다")
     }
     // 번호 입력을 1~45사이 안한 경우
-    else if (userCheck>45 || userCheck<1){
+    else if (userCheck > 45 || userCheck < 1) {
         throw IllegalArgumentException("[ERROR] 보너스 번호는 1~45 사이")
     }
     return userCheck
 }
 
-fun showLottoPaper(cnt : Int) : MutableList<List<Int>> {
+fun showLottoPaper(cnt: Int): MutableList<List<Int>> {
     var lottoCollection = mutableListOf<List<Int>>()
-    var obj = LottoGames(numbers= listOf(0,0,0,0,0,0))
-    for (paper in 0 until cnt){
+    var obj = LottoGames(numbers = listOf(0, 0, 0, 0, 0, 0))
+    for (paper in 0 until cnt) {
         lottoCollection.add(obj.pickLottoNumbers())
     }
     return lottoCollection
 }
 
-fun compareNumbers(lottoCollection : List<Int>, winningNumber: List<Int>) : Int {
-    var count = 0
-    for (i in 0 until winningNumber.size){
-        if (lottoCollection.contains(winningNumber[i])){
-            count+=1
+fun showWinLottoPaper(lotto: List<Int>, sameNumber: Int, bonusNumber: Int): String {
+    var winLottoPaper = ""
+    if (sameNumber == 5) {
+        if (lotto.contains(bonusNumber)) {
+            winLottoPaper="5+1"
+            return winLottoPaper
+        } else if (!lotto.contains(bonusNumber)) {
+            winLottoPaper="5"
+            return winLottoPaper
         }
     }
-    return count
+    winLottoPaper=sameNumber.toString()
+    return winLottoPaper
+}
+
+fun prizeRate(winLottoCollection: List<String>) : Map<String,Int>{
+    var prizeRate = mutableMapOf("3" to 0, "4" to 0, "5" to 0, "5+1" to 0, "6" to 0)
+    if (winLottoCollection.contains("3")){
+        prizeRate += "3" to  winLottoCollection.count { it == "3" }
+    }
+    if (winLottoCollection.contains("4")){
+        prizeRate += "4" to  winLottoCollection.count { it == "4" }
+    }
+    if (winLottoCollection.contains("5")){
+        prizeRate += "5" to  winLottoCollection.count { it == "5" }
+    }
+    if (winLottoCollection.contains("5+1")){
+        prizeRate += "5+1" to  winLottoCollection.count { it == "5+1" }
+    }
+    if (winLottoCollection.contains("6")){
+        prizeRate += "6" to  winLottoCollection.count { it == "6" }
+    }
+    return prizeRate
 }
 
 
 fun main() {
     var cnt = 0
-    var lottoNumberCollect = mutableListOf<Int>()
-    var bonusNumberCollect = mutableListOf<Int>()
-    var obj = LottoGames(numbers= listOf(0,0,0,0,0,0))
+    var obj = LottoGames(numbers = listOf(0, 0, 0, 0, 0, 0))
     var winningNumber = listOf<Int>()
     var bonusNumber = 0
     var lottoCollection = mutableListOf<List<Int>>()
+    var sameNumber = 0
+    var winLottoCollection = mutableListOf<String>()
+    var prizeRating = mapOf<String, Int>()
+
 
     //시작
     println(State.start.message)
 
     //구매 개수
-    cnt=howMany()
+    cnt = howManyBuy()
     println()
-    println(cnt.toString()+State.many.message)
+    println(cnt.toString() + State.many.message)
     //Lotto 클래스 활용해야함!!!
-    lottoCollection=showLottoPaper(cnt)
-    for (lotto in 0 until lottoCollection.size){
-        println(lottoCollection[lotto])
+    lottoCollection = showLottoPaper(cnt)
+    for (lotto in lottoCollection) {
+        println(lotto)
     }
     println()
 
     //당첨 번호
     println(State.enterLottoNumber.message)
-    winningNumber=enterWinningNumber()
+    winningNumber = enterWinningNumber()
+    obj = LottoGames(numbers = winningNumber)
     println()
-//    println(winningNumber) // 확인용
+
 
     //보너스 번호
     println(State.enterBonusNumber.message)
-    bonusNumber=enterBonusNumber(winningNumber)
+    bonusNumber = enterBonusNumber(winningNumber)
     println()
 
     //당첨 통계
     println(State.end.message)
-    for (j in 0 until lottoCollection.size){
-        compareNumbers(lottoCollection[j], winningNumber)
+    println("---")
+    for (j in 0 until lottoCollection.size) {
+        sameNumber = obj.compareNumbers(lottoCollection[j], winningNumber)
+        showWinLottoPaper(lottoCollection[j], sameNumber, bonusNumber)
+        winLottoCollection.add(showWinLottoPaper(lottoCollection[j], sameNumber, bonusNumber))
     }
+//    println(winLottoCollection)
+    prizeRating=prizeRate(winLottoCollection)
+//    println(prizeRating)
+
+    println(Prize.three.message + "${prizeRating.get("3")}개")
+    println(Prize.four.message + "${prizeRating.get("4")}개")
+    println(Prize.five.message + "${prizeRating.get("5")}개")
+    println(Prize.fiveBonus.message + "${prizeRating.get("5+1")}개")
+    println(Prize.six.message + "${prizeRating.get("6")}개")
 
 
 }

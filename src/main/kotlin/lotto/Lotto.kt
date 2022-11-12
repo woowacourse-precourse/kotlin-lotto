@@ -56,4 +56,13 @@ class LottoGames: Lotto {
         return answer
     }
 
+    fun compareNumbers(lottoCollection : List<Int>, winningNumber: List<Int>) : Int {
+        var count = 0
+        for (i in 0 until winningNumber.size){
+            if (lottoCollection.contains(winningNumber[i])){
+                count+=1
+            }
+        }
+        return count
+    }
 }
