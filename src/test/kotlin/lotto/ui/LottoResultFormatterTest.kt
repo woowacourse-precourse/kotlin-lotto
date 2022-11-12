@@ -24,7 +24,7 @@ class LottoResultFormatterTest {
     fun `총 수익률 테스트`() {
         val formatter = LottoResultFormatter(makeLottoResult())
         val result = formatter.getProfitInfo()
-        val expect = "62.5%"
+        val expect = "총 수익률은 62.5%입니다."
         assert(result == expect)
     }
 
