@@ -19,4 +19,9 @@ class Purchase {
             throw IllegalArgumentException(Exception.EXCEPTION_INVALID_MONEY)
         }
     }
+
+    fun printAmount(money: Int){
+        val amount = money / Constant.MONEY_UNIT
+        println("$amount" + Message.MESSAGE_PRINT_AMOUNT)
+    }
 }
