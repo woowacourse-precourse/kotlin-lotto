@@ -10,4 +10,10 @@ class MoneyTest {
         val money = "-1000"
         assertThrows<IllegalArgumentException> { Money(money) }
     }
+
+    @Test
+    fun `금액이 숫자가 아닌 경우 테스트`() {
+        val money = "100a"
+        assertThrows<IllegalArgumentException> { Money(money) }
+    }
 }
