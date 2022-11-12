@@ -6,4 +6,8 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     // TODO: 추가 기능 구현
+
+    override fun toString(): String {
+        return numbers.toString()
+    }
 }
