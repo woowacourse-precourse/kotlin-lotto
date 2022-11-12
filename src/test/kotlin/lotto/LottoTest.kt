@@ -2,7 +2,7 @@ package lotto
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-
+import org.assertj.core.api.Assertions.assertThat
 
 class LottoTest {
     @Test
@@ -28,5 +28,15 @@ class LottoTest {
         assertThrows<IllegalArgumentException> {
             lottoGame.receiveMoney("abc")
         }
+    }
+
+    @Test
+    fun `당첨 내역 확인`() {
+        val lotto = Lotto(listOf(1,2,3,4,5,7))
+        val winningNum = listOf<Int>(1,2,3,4,5,6)
+        val bonusNumber = 7
+        val count = lotto.compareWithWinningNumber(winningNum)
+        val resultRank = lotto.determineRank(count, bonusNumber)
+        assertThat(resultRank).isEqualTo(Rank.Second)
     }
 }
