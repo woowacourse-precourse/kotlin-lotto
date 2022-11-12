@@ -5,7 +5,7 @@ object ResultExtractor {
         generatedLotto: List<Lotto>,
         winningNumbers: List<Int>,
         bonusNumber: Int,
-    ): MutableMap<LottoStatus, Int> {
+    ): Map<LottoStatus, Int> {
         val result = mutableMapOf<LottoStatus, Int>()
 
         generatedLotto.forEach { eachLotto ->
@@ -17,6 +17,6 @@ object ResultExtractor {
                 result[lottoStatus]!! + 1
             }
         }
-        return result
+        return result.toMap()
     }
 }
