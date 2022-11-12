@@ -45,7 +45,7 @@ class MessageMaker {
         println("$ALL_YIELD ${String.format("%.1f", result)}$IS")
     }
 
-    private fun errorMessage(error: Error) {
+    fun errorMessage(error: Error) {
         println(error.error)
     }
 
