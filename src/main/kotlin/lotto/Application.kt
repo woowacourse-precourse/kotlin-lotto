@@ -1,5 +1,10 @@
 package lotto
 
+import lottery.Lottery
+
 fun main() {
-    TODO("프로그램 구현")
+    val lotto = Lottery()
+    lotto.getAmount()
+    lotto.getLotteryNumbers()
+    lotto.getBonusNumber()
 }
