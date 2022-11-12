@@ -1,6 +1,8 @@
 package lottery
 
 import lotto.Lotto
+import camp.nextstep.edu.missionutils.Console.readLine
+import data.Price
 
 class Lottery {
     val winningCounter: HashMap<String, Int> = hashMapOf()
@@ -24,7 +26,12 @@ class Lottery {
     }
 
     fun getAmount() {
-        TODO("로또 구입 금액 입력 함수")
+        println("구입 금액을 입력해주세요.")
+        val purchase = readLine().toInt()
+        if (purchase % Price.STANDARD.price != 0) {
+            throw IllegalArgumentException("${Price.STANDARD.price}원 단위로 입력하세요.")
+        }
+        this.purchase = purchase
     }
 
     fun getLotteryNumbers() {
