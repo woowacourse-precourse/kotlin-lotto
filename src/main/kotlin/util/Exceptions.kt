@@ -72,4 +72,14 @@ object Exceptions {
             )
         }
     }
+
+    // 보너스 번호와 당첨번호 중복 확인
+    fun Int.isUniqueBonusNumber(winningNumber: List<Int>) {
+        if (winningNumber.contains(this)) {
+            throw IllegalArgumentException(
+                Messages.ERROR_MESSAGE +
+                        Messages.ERROR_BONUS_NUMBER_DUPLICATE
+            )
+        }
+    }
 }

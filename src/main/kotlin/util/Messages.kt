@@ -14,5 +14,6 @@ object Messages {
     const val ERROR_NUMBER_RANGE = "로또 번호는 1부터 45 사이의 숫자여야 합니다."
     const val ERROR_BONUS_NUMBER_FORMAT = "보너스 번호는 숫자만 입력 가능합니다"
     const val ERROR_BONUS_NUMBER_RANGE = "보너스 번호는 1부터 45 사이의 숫자여야 합니다."
+    const val ERROR_BONUS_NUMBER_DUPLICATE = "당첨 번호와 중복된 번호입니다."
 
 }

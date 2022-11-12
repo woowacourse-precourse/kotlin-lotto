@@ -67,6 +67,7 @@ class LottoMachine(
         Exceptions.run {
             bonus.isValidBonusNumber()
             bonus.toInt().isValidRangeBonusNumber()
+            bonus.toInt().isUniqueBonusNumber(winningNumber)
         }
         Printers.nextLine()
         return bonus.toInt()
