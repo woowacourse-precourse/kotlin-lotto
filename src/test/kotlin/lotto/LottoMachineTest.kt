@@ -71,4 +71,18 @@ class LottoMachineTest {
         assertThat(lottoMachine.convertNumbersToLotto("3,4,2,6,1,5").getNumbers()).isEqualTo(listOf(1, 2, 3, 4, 5, 6))
     }
 
+    @Test
+    fun `보너스 번호 1~45 범위를 벗어나면 예외 발생`() {
+        assertThrows<IllegalArgumentException> {
+            lottoMachine.checkBonusNumberException(Lotto(listOf(1, 2, 3, 4, 5, 6)), 0)
+        }
+    }
+
+    @Test
+    fun `보너스 번호가 당첨 번호와 중복되면 예외 발생`() {
+        assertThrows<IllegalArgumentException> {
+            lottoMachine.checkBonusNumberException(Lotto(listOf(1, 2, 3, 4, 5, 6)), 2)
+        }
+    }
+
 }
