@@ -22,27 +22,27 @@ fun getInputBonusNumber(): Int {
     return 0
 }
 
-fun getInputWinNumber(): List<Int> {
+fun getInputWinNumbers(): List<Int> {
     val input = Console.readLine().split(",")
 
     if (input.size != 6)
         throw IllegalArgumentException()
 
-    val intInput = input.map {
+    val winNumbers = input.map {
         it.toIntOrNull() ?: throw IllegalArgumentException()
     }
 
-    return intInput
+    return winNumbers
 }
 
 fun getInputLottoMoney(): Int {
     val input = Console.readLine()
-    val intInput = input.toIntOrNull() ?: throw IllegalArgumentException()
+    val lottoMoney = input.toIntOrNull() ?: throw IllegalArgumentException()
 
-    if (intInput % 1000 != 0)
+    if (lottoMoney % 1000 != 0)
         throw IllegalArgumentException()
 
-    return intInput
+    return lottoMoney
 }
 
 fun main() {

@@ -49,7 +49,7 @@ class LottoTest {
     fun `당첨 번호가 6개가 아니면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
             System.setIn("1,2,3,4,5,6,7".byteInputStream())
-            getInputWinNumber()
+            getInputWinNumbers()
         }
     }
 
@@ -57,7 +57,7 @@ class LottoTest {
     fun `당첨 번호가 숫자가 아니면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
             System.setIn("j".byteInputStream())
-            getInputWinNumber()
+            getInputWinNumbers()
         }
     }
 
