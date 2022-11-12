@@ -1,6 +1,7 @@
 package lotto
 
 import lotto.constant.LOTTO_MAX_GRADE
+import lotto.constant.LOTTO_MIN_GRADE
 import lotto.constant.LOTTO_NUM_RANGE_END
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -39,7 +40,6 @@ class LottoTest {
         5,
         4
     )
-    private val lottoGradeCounts = listOf(0, 1, 1, 1, 2, 2)
     private val sameLottoNumbersResult = listOf(
         Pair(6, false),
         Pair(5, true),
@@ -55,7 +55,14 @@ class LottoTest {
         Pair(3, true),
         Pair(4, true),
     )
-
+    private val lottoGradeCounts = listOf(0, 1, 1, 1, 2, 2)
+    private val lottoGradeCountsMessage = listOf(
+        "3개 일치 (5,000원) - 2개",
+        "4개 일치 (50,000원) - 2개",
+        "5개 일치 (1,500,000원) - 1개",
+        "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개",
+        "6개 일치 (2,000,000,000원) - 1개"
+    )
 
     @Test
     fun `로또 번호의 개수가 6개가 넘어가면 예외가 발생한다`() {
@@ -68,6 +75,14 @@ class LottoTest {
     fun `로또 번호에 중복된 숫자가 있으면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
             Lotto(listOf(1, 2, 3, 4, 5, 5))
+        }
+    }
+
+    @Test
+    fun `등수 별 개수에 대한 결과 출력`() {
+        for (grade in LOTTO_MAX_GRADE downTo LOTTO_MIN_GRADE) {
+            assertThat(parseLottoGradeCountToMessage(grade, lottoGradeCounts[grade]))
+                .isEqualTo(lottoGradeCountsMessage[lottoGradeCountsMessage.size - grade])
         }
     }
 
@@ -95,6 +110,17 @@ class LottoTest {
     fun `일치하는 로또 번호 개수 확인`() {
         lotties.forEachIndexed { idx, lotto ->
             assertThat(getSameCount(winLotto, lotto)).isEqualTo(sameLottoNumbersResult[idx])
+        }
+    }
+
+    private fun parseLottoGradeCountToMessage(grade: Int, count: Int): String {
+        return when (grade) {
+            5 -> "3개 일치 (5,000원) - ${count}개"
+            4 -> "4개 일치 (50,000원) - ${count}개"
+            3 -> "5개 일치 (1,500,000원) - ${count}개"
+            2 -> "5개 일치, 보너스 볼 일치 (30,000,000원) - ${count}개"
+            1 -> "6개 일치 (2,000,000,000원) - ${count}개"
+            else -> ""
         }
     }
 
