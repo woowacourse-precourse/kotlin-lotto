@@ -3,7 +3,8 @@ package lotto
 import camp.nextstep.edu.missionutils.Console.readLine
 
 class Buyer {
-    private var winningNumbers = listOf<Int>()
+    var winningNumbers = listOf<Int>()
+    var bonusNumber = 0
 
     fun enterAmount(): Int {
         val input = readLine()
@@ -32,6 +33,7 @@ class Buyer {
         checkIsBlank(input)
         checkIsIn1To45(input.toInt())
         checkDuplicateWithWinningNumber(input.toInt())
+        bonusNumber = input.toInt()
     }
 
     private fun checkIsBlank(input: String) {
