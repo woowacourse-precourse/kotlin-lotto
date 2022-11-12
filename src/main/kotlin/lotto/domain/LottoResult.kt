@@ -12,22 +12,20 @@ class LottoResult(
     val profit: Double
 
     init {
-        _rankToCnt = mutableMapOf(
-            LottoRank.FIFTH to 0,
-            LottoRank.FOURTH to 0,
-            LottoRank.THIRD to 0,
-            LottoRank.SECOND to 0,
-            LottoRank.FIRST to 0,
-        )
+        _rankToCnt = LottoRank.values()
+            .associateWith { 0 }
+            .toMutableMap()
 
         countRank(lottos, winningNumber)
         profit = computeProfit(originCost)
     }
 
     private fun countRank(lottos: List<Lotto>, winningNumber: WinningNumber) {
-        val ranker = LottoRanker(lottos, winningNumber)
-        val lottoToRank = ranker.rankAll()
-        lottoToRank.values.forEach { _rankToCnt.merge(it, 1, Integer::sum) }
+        LottoRanker(lottos, winningNumber)
+            .rankAll().values
+            .forEach {
+                _rankToCnt.merge(it, 1, Integer::sum)
+            }
     }
 
     private fun computeProfit(originCost: Int): Double {
