@@ -12,11 +12,6 @@ class Constant {
         const val WINNING_NUMBER = "당첨 번호는 "
         const val SPLIT_WINNING_NUMBER = ","
         const val ZERO = 0
-        const val FIRST = 1
-        const val SECOND = 2
-        const val THIRD = 3
-        const val FOURTH = 4
-        const val FIFTH = 5
         const val THREE_MATCH = 3
         const val FOUR_MATCH = 4
         const val FIVE_MATCH = 5
