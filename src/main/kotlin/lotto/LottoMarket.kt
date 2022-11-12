@@ -11,10 +11,9 @@ class LottoMarket(
         return readPaidMoney()
     }
 
-    //로또 구입 금액만큼 로또 반환
     private fun getLottoCount(paidMoney: Int): Int = paidMoney / LOTTO_PRICE
 
-    fun buyLotties(): List<IntArray> {
+    fun buyLotties(): List<List<Int>> {
         val paidMoney = payMoney()
         val lottoCount = getLottoCount(paidMoney)
         return lottoFactory.makeLotties(lottoCount)
