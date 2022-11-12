@@ -4,7 +4,16 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class LottoGenerator {
 
-    fun issueLotto(): Lotto {
+    fun issueLottos(numberOfPurchaseLotto: Int): Lottos {
+        val purchasedLottoList = mutableListOf<Lotto>()
+        for (i in 0 until numberOfPurchaseLotto) {
+            val lotto = issueLotto()
+            purchasedLottoList.add(lotto)
+        }
+        return Lottos(purchasedLottoList)
+    }
+
+    private fun issueLotto(): Lotto {
         var lottoNum: MutableList<Int>
         while (true) {
             val nums = Randoms.pickUniqueNumbersInRange(1, 45, 6)
