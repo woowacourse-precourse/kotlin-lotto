@@ -2,6 +2,7 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
+import java.lang.Exception
 import java.util.regex.Pattern
 import kotlin.math.*
 
@@ -15,30 +16,36 @@ fun main() {
     var earningRate : Double
 
     setLotto(lottos, sell)
-    getWinningNumber(winningNumber)
-    bonusNumber = getBonusNumber(winningNumber)
-    getWinningResult(lottos, winningNumber, bonusNumber, winningResult)
-    earningRate = getEarningRate(sell, winningResult)
-    printWinningResult(winningResult)
-    printYieldResult(earningRate)
+    if(sell != 0) {
+        getWinningNumber(winningNumber)
+        bonusNumber = getBonusNumber(winningNumber)
+        getWinningResult(lottos, winningNumber, bonusNumber, winningResult)
+        earningRate = getEarningRate(sell, winningResult)
+        printWinningResult(winningResult)
+        printYieldResult(earningRate)
+    }
 
 }
 private fun getSellLottoCount() : Int {
 
     println("구입금액을 입력해 주세요.")
 
-    val input = readLine()!!
+    val input = Console.readLine()!!
 
-    // 예외 처리
-    if (!Pattern.matches("^[0-9]*", input) || (input.toInt() % amount) != 0 || (input.toInt() / amount) == 0) {
-        throw IllegalArgumentException("[ERROR] 정확한 로또 금액을 입력해 주세요.")
+    try {
+        if (!Pattern.matches("^[0-9]*", input) || (input.toInt() % amount) != 0 || (input.toInt() / amount) == 0) {
+            throw IllegalArgumentException("[ERROR] 정확한 로또 금액을 입력해 주세요.")
+        }
+        else{
+            val lottoAmount = input.toInt() / amount
+            println("\n${lottoAmount}개를 구매했습니다.")
+
+            return lottoAmount
+        }
+    } catch (e: IllegalArgumentException){
+        println("[ERROR] 정확한 로또 금액을 입력해 주세요.")
+        return 0
     }
-
-    val lottoAmount = input.toInt() / amount
-    println("\n${lottoAmount}개를 구매했습니다.")
-
-    return lottoAmount
-
 }
 
 private fun setLotto(lottos : MutableList<Lotto>, count: Int) {
@@ -55,10 +62,14 @@ private fun getWinningNumber(winningNumber : MutableList<Int>){
 
     println("\n당첨 번호를 입력해 주세요.")
 
-    val input = readLine()!!
+    val input = Console.readLine()!!
 
-    if(!Pattern.matches("^[0-9]*,[0-9]*,[0-9]*,[0-9]*,[0-9]*,[0-9]*\$", input)) {
-        throw IllegalArgumentException("[ERROR] 공백 없이 입력해 주세요.")
+    try {
+        if (!Pattern.matches("^[0-9]*,[0-9]*,[0-9]*,[0-9]*,[0-9]*,[0-9]*\$", input)) {
+            throw IllegalArgumentException()
+        }
+    } catch (e: IllegalArgumentException) {
+        println("[ERROR] 공백 없이 입력해 주세요.")
     }
 
     var checkedNumber : MutableList<Int> = checkWinningNumberInputOvervalueException(checkWinningNumberInputOverlapException(input))
@@ -77,7 +88,7 @@ private fun checkWinningNumberInputOverlapException(input: String) : MutableSet<
     }
 
     if(winningSet.size != 6){
-        throw IllegalArgumentException("[ERROR] 당첨 번호는 중복될 수 없습니다.")
+       throw IllegalArgumentException("[ERROR] 당첨 번호는 중복될 수 없습니다.")
     }
 
     return winningSet
@@ -89,7 +100,7 @@ private fun checkWinningNumberInputOvervalueException(input : MutableSet<String>
     input.forEach {
         val num = it.toInt()
         if(num < 1 || num > 45){
-            throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+          throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
         }
         winningInt.add(num)
     }
@@ -102,12 +113,13 @@ private fun getBonusNumber(winningNumber: MutableList<Int>) : Int {
 
     println("\n보너스 번호를 입력해 주세요.")
 
-    val input = readLine()!!
+    val input = Console.readLine()!!
 
     if(!Pattern.matches("^[0-9]*$", input)
         || input.toInt() < 1 || input.toInt() > 45
         || winningNumber.contains(input.toInt())){
-        throw IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.")
+        println("[ERROR]")
+        //throw IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.")
     }
 
     return input.toInt()
@@ -183,6 +195,10 @@ private fun printWinningResult(winningResult: HashMap<String, Int>){
 
 private fun printYieldResult(rate : Double){
     println("총 수익률은 ${rate}%입니다.")
+}
+
+private fun throwExeption(){
+    throw IllegalArgumentException()
 }
 
 
