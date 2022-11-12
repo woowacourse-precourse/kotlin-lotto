@@ -15,4 +15,14 @@ class Lotto(private val numbers: List<Int>) {
             println(numberList.sorted())
         }
     }
+
+    fun checkNumber() {
+        numbers.forEach { number ->
+            when (number) {
+                in 1..45 -> number
+                else -> throw IllegalArgumentException("[Error] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+            }
+        }
+    }
+
 }
