@@ -5,39 +5,88 @@ import camp.nextstep.edu.missionutils.Console.readLine
 import camp.nextstep.edu.missionutils.Randoms
 import data.NumberRange
 import data.Price
+import data.WinningAmount
+import kotlin.math.round
 
 class Lottery {
-    val winningCounter: HashMap<String, Int> = hashMapOf()
+    private val winningCounter: MutableMap<String, Int> = mutableMapOf<String, Int>().withDefault { 0 }
     lateinit var lotteryNumbers: Lotto
-    val quickPicks: MutableList<Lotto> = mutableListOf()
+    private val quickPicks: MutableList<Lotto> = mutableListOf()
     var bonusNumber: Int = 0
     var purchase: Int = 0
-    var income: Int = 0
-    var incomeRatio: Float = 0.0f
+    var income: Double = 0.0
+    private var incomeRatio: Double = 0.0
 
-    fun printTicketNumbers() {
-        TODO("구매 개수 출력 함수")
+    private fun printTicketNumbers() {
+        println("${this.quickPicks.size}개를 구매했습니다.")
+        this.printQuickPick()
     }
 
-    fun printQuickPick() {
-        TODO("랜덤 배열 출력 함수")
+    private fun printQuickPick() {
+        this.quickPicks.forEach {
+            println("[${it.getList().joinToString(separator = ", ")}]")
+        }
     }
 
-    fun printWinnings() {
-        TODO("당첨 내역 출력 함수")
+    private fun printWinnings() {
+        println("3개 일치 (5,000원) - ${this.winningCounter.getValue("3")}개")
+        println("4개 일치 (50,000원) - ${this.winningCounter.getValue("4")}개")
+        println("5개 일치 (1,500,000원) - ${this.winningCounter.getValue("5_0")}개")
+        println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${this.winningCounter.getValue("5_1")}개")
+        println("6개 일치 (2,000,000,000원) - ${this.winningCounter.getValue("6")}개")
+
+        this.getIncomeRatio()
+    }
+
+    private fun getIncomeRatio() {
+        this.winningCounter.forEach { (k, v) ->
+            when (k) {
+                "6" -> this.income += WinningAmount.FIRST.amount
+                "5_1" -> this.income += WinningAmount.SECOND.amount
+                "5_0" -> this.income += WinningAmount.THIRD.amount
+                "4" -> this.income += WinningAmount.FOURTH.amount
+                "3" -> this.income += WinningAmount.FIFTH.amount
+            }
+        }
+
+        this.printIncomeRatio()
+    }
+
+    private fun printIncomeRatio() {
+        this.incomeRatio = round(this.income / this.purchase * 1000) / 10
+        println("총 수익률은 ${this.incomeRatio}%입니다.")
+    }
+
+    private fun getWinnings() {
+        this.quickPicks.forEach { it ->
+            val rank = it.compareOriginal(this.lotteryNumbers)
+            if (rank > 0 && rank != 5) {
+                this.winningCounter[rank.toString()] = this.winningCounter.getValue(rank.toString()) + 1
+            } else if (rank == 5) {
+                when (it.compareBonus(this.lotteryNumbers, this.bonusNumber)) {
+                    true -> this.winningCounter["5_0"] = this.winningCounter.getValue("5_0") + 1
+                    false -> this.winningCounter["5_1"] = this.winningCounter.getValue("5_1") + 1
+                }
+
+            }
+        }
+
+        this.printWinnings()
     }
 
     fun getAmount() {
         println("구입 금액을 입력해주세요.")
-        try {
-            val purchase = readLine().toInt()
-            if (purchase % Price.STANDARD.price != 0)
-                throw IllegalArgumentException("[ERROR] ${Price.STANDARD.price}원 단위로 입력하세요.")
-            this.purchase = purchase
-        } catch (e: IllegalArgumentException) {
-            throw IllegalArgumentException("[ERROR] 숫자만 입력하세요")
-        }
 
+        val inputString = readLine().trim()
+        if (inputString.toDoubleOrNull() == null)
+            throw IllegalArgumentException("[ERROR] 숫자만 입력하세요.")
+
+        val purchase = inputString.toInt()
+        if (purchase % Price.STANDARD.price != 0)
+            throw IllegalArgumentException("[ERROR] ${Price.STANDARD.price}원 단위로 입력하세요.")
+
+        this.purchase = purchase
+        this.getQuickPicks()
     }
 
     fun getLotteryNumbers() {
@@ -52,9 +101,10 @@ class Lottery {
         for (i in 0 until n){
             val numbers = Randoms.pickUniqueNumbersInRange(
                 NumberRange.START.number, NumberRange.END.number, NumberRange.MAX.number)
-            numbers.sort()
-            quickPicks.add(Lotto(numbers))
+
+            this.quickPicks.add(Lotto(numbers))
         }
+        this.printTicketNumbers()
     }
 
     fun getBonusNumber() {
@@ -70,6 +120,7 @@ class Lottery {
             throw IllegalArgumentException("[ERROR] 숫자만 입력하세요.")
         }
 
+        this.getWinnings()
     }
 
 }
