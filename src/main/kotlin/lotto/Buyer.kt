@@ -12,7 +12,7 @@ object Buyer {
             checkIsBlank(this)
             checkIsNumber(this)
             checkCanDivide(this)
-            checkIsInIntRange(this)
+            checkIsRightRange(this)
         }
         return input.toInt()
     }
@@ -56,8 +56,8 @@ object Buyer {
         }
     }
 
-    private fun checkIsInIntRange(input: String) {
-        if (input.toLong() > Int.MAX_VALUE) {
+    private fun checkIsRightRange(input: String) {
+        if (input.toLong() > Int.MAX_VALUE || input.toLong() <= ZERO) {
             Lottery.printAndThrowException(MAX_AMOUNT)
         }
     }
