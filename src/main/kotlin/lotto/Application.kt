@@ -56,10 +56,10 @@ private fun convertStringToIntList(input: String): List<Int> {
     }
 }
 
-private fun convertStringToInt(input : String) : Int{
+private fun convertStringToInt(input: String): Int {
     try {
         return input.toInt()
-    }catch (exception : NumberFormatException){
+    } catch (exception: NumberFormatException) {
         println("[ERROR] 입력값이 올바르지 않습니다.")
         throw IllegalArgumentException()
     }
