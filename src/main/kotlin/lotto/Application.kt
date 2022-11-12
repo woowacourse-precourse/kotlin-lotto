@@ -11,7 +11,7 @@ fun main() {
 
     setLotto(getSellLottoCount())
     getWinningNumber(winningNumber)
-    bonusNumber = getBonusNumber()
+    bonusNumber = getBonusNumber(winningNumber)
 }
 private fun getSellLottoCount() : Int {
 
@@ -88,13 +88,16 @@ private fun checkWinningNumberInputOvervalueException(input : MutableSet<String>
     return winningInt
 }
 
-private fun getBonusNumber() : Int {
+// 예외처리 리팩토링 필요
+private fun getBonusNumber(winningNumber: MutableList<Int>) : Int {
 
     println("\n보너스 번호를 입력해 주세요.")
 
     val input = readLine()!!
 
-    if(!Pattern.matches("^[0-9]*$", input) || input.toInt() < 1 || input.toInt() > 45){
+    if(!Pattern.matches("^[0-9]*$", input)
+        || input.toInt() < 1 || input.toInt() > 45
+        || winningNumber.contains(input.toInt())){
         throw IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.")
     }
 
