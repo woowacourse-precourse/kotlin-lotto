@@ -88,11 +88,12 @@ class Lottery {
             val rank = it.compareOriginal(this.lotteryNumbers)
             if (rank > 0 && rank != 5) {
                 this.winningCounter[rank.toString()] = this.winningCounter.getValue(rank.toString()) + 1
-            } else if (rank == 5) {
-                when (it.compareBonus(this.lotteryNumbers, this.bonusNumber)) {
-                    true -> this.winningCounter["5_0"] = this.winningCounter.getValue("5_0") + 1
-                    false -> this.winningCounter["5_1"] = this.winningCounter.getValue("5_1") + 1
-                }
+                return@forEach
+            }
+
+            when (it.compareBonus(this.lotteryNumbers, this.bonusNumber)) {
+                5 -> this.winningCounter["5_0"] = this.winningCounter.getValue("5_0") + 1
+                6 -> this.winningCounter["5_1"] = this.winningCounter.getValue("5_1") + 1
             }
         }
 

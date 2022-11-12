@@ -29,14 +29,13 @@ class Lotto(private val numbers: List<Int>) {
         return if (match >= 3) { match } else { 0 }
     }
 
-    fun compareBonus(lotteryNumbers: Lotto, bonusNumber: Int): Boolean {
+    fun compareBonus(lotteryNumbers: Lotto, bonusNumber: Int): Int {
         val answer = lotteryNumbers.getList().toSet()
         val bonusNumbers = this.numbers.toMutableList()
         bonusNumbers.add(bonusNumber)
         val lottoNum = bonusNumbers.toSet()
 
-        if (answer.intersect(lottoNum).size == 6) return true
-        return false
+        return answer.intersect(lottoNum).size
 
     }
 
