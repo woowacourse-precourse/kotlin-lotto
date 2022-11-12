@@ -10,14 +10,15 @@ fun main() {
     var lottos = mutableListOf<Lotto>()
     var sell = getSellLottoCount()
     var winningNumber: MutableList<Int> = mutableListOf()
-    var bonusNumber = 0
+    var bonusNumber : Int
     var winningResult = HashMap<String, Int>(5)
+    var earningRate : Double
 
     setLotto(lottos, sell)
     getWinningNumber(winningNumber)
     bonusNumber = getBonusNumber(winningNumber)
     getWinningResult(lottos, winningNumber, bonusNumber, winningResult)
-    getYield(sell, winningResult)
+    earningRate = getEarningRate(sell, winningResult)
 
 }
 private fun getSellLottoCount() : Int {
@@ -136,7 +137,7 @@ private fun getWinningResult(lottos: MutableList<Lotto>, winningNumber: MutableL
     //println(winningResult)
 }
 
-private fun getYield(sell : Int, winningResult: HashMap<String, Int>){
+private fun getEarningRate(sell : Int, winningResult: HashMap<String, Int>) : Double {
     // 총 수입
     var earn = 0
 
@@ -146,10 +147,7 @@ private fun getYield(sell : Int, winningResult: HashMap<String, Int>){
     }
 
     // 수익률
-     var yield = roundDigit(((earn / (sell * amount)) * 100).toDouble(), 2)
-
-    //println("수입: ${earn}, 수익률: $`yield`")
-
+     return roundDigit(((earn / (sell * amount)) * 100).toDouble(), 2)
 }
 
 private fun getEarnedMoney(grade: String) : Int {
@@ -169,12 +167,12 @@ private fun roundDigit(num : Double, digits : Int) : Double {
     return Math.round(num * Math.pow(10.0, digits.toDouble())) / Math.pow(10.0, digits.toDouble())
 }
 
-private fun printWinningResult(){
+private fun printWinningResult(winningResult: HashMap<String, Int>){
 
 }
 
 private fun printYieldResult(){
-    
+
 }
 
 
