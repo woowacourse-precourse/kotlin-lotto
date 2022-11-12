@@ -18,6 +18,21 @@ class Calculator {
         }
     }
 
+    fun getYield(amount: Int): String {
+        var winAmount = 0
+        lottoResults.forEach {
+            winAmount += when (it) {
+                LottoResultState.FIRST -> 2000000000
+                LottoResultState.SECOND -> 30000000
+                LottoResultState.THIRD -> 1500000
+                LottoResultState.FOURTH -> 50000
+                LottoResultState.FIFTH -> 5000
+                else -> 0
+            }
+        }
+        return String.format("%.1f", (winAmount * 100.0) / amount)
+    }
+
     private fun saveRankToList(correctCount: Int, isMatchedBonus: Boolean) {
         when {
             correctCount == 6 -> lottoResults.add(LottoResultState.FIRST)

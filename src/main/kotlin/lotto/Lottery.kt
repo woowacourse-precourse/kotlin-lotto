@@ -6,6 +6,8 @@ class Lottery(
     private val buyer: Buyer,
     private val printer: Printer
 ) {
+    private var amount: Int = 0
+
     fun start() {
         purchaseLotto()
         getWinningNumber()
@@ -15,7 +17,7 @@ class Lottery(
 
     private fun purchaseLotto() {
         printer.printAmountMessage()
-        val amount = buyer.enterAmount()
+        amount = buyer.enterAmount()
         val lottoCount = calculator.getLottoCount(amount)
         printer.printLottoCountMessage(lottoCount)
         computer.makeLotteries(lottoCount)
@@ -36,6 +38,7 @@ class Lottery(
         printer.printWinStaticMessage()
         calculator.getLottoResult(computer.lotteries, buyer.winningNumbers, buyer.bonusNumber)
         printer.printLottoResult(calculator.lottoResults)
+        val yieldPercentage = calculator.getYield(amount)
     }
 
     companion object {
