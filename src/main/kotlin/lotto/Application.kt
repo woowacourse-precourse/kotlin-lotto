@@ -1,4 +1,5 @@
 package lotto
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun createLottoNum(): List<Int> {
@@ -30,6 +31,14 @@ fun printLottos(table : List<List<Int>>){
     for (i in table)
         println(i)
 }
+fun inputMoney() : Int{
+    var money = Console.readLine()
+    require(money.all{it.isDigit()}){"[ERROR] 숫자만 입력해야 합니다."}
+    require(money.toInt()%1000 == 0){"[ERROR] 금액은 1000으로 나누어 떨어져야 합니다."}
+
+    return money.toInt()
+}
+
 fun main() {
     val numbers = createLottoNum()
     val numbers2 = listOf<Int>(1,2,3,4,5,5)
@@ -41,5 +50,5 @@ fun main() {
     //Lotto(numbers2)
     table = publishLotto(8000) as MutableList<List<Int>>
     printLottos(table)
-
+    inputMoney()
 }
