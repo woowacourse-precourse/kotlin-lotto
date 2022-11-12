@@ -6,6 +6,7 @@ class LottoGame {
     private var money = Money(0)
     private val lottoList = mutableListOf<Lotto>()
     private var winningNumber = Lotto(listOf(0,0,0,0,0,0))
+    private var bonusNumber = 0
 
     fun receiveMoney(money: String) {
         if (!money.all { Character.isDigit(it) })
@@ -38,7 +39,13 @@ class LottoGame {
             result.add(element.toInt())
         }
         // TODO:  num의 길이, 숫자인지여부, 중복 검사
-        winningNumber = Lotto(result)
+        winningNumber = Lotto(result.sorted())
+    }
+
+    fun receiveBonusNumber(number: String) {
+        // TODO: 입력값 유효한 숫자인지 검사
+        bonusNumber = number.toInt()
+        println(bonusNumber)
     }
 
 }

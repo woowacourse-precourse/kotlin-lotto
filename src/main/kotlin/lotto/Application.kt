@@ -14,4 +14,7 @@ fun main() {
     println("당첨 번호를 입력해 주세요.")
     lottoGame.receiveWinningNumber(Console.readLine())
 
+    println("보너스 번호를 입력해 주세요.")
+    lottoGame.receiveBonusNumber(Console.readLine())
+
 }
