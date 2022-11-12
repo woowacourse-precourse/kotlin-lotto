@@ -96,4 +96,8 @@ fun main() {
     println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${answerList[7]}개")
     println("6개 일치 (2,000,000,000원) - ${answerList[6]}개")
 
+    var totalPrice = 5000 * answerList[3] + 50000 * answerList[4] + 1500000 * answerList[5]
+    +2000000000 * answerList[6] + 30000000 * answerList[7]
+
+    var percent = totalPrice / money.toFloat() * 100
 }
