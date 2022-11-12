@@ -27,9 +27,7 @@ class WinningNumber(_winning: String) {
     }
 
     fun validateRange(winnings: List<Int>) {
-        val count = winnings.filter {
-            it in Constant.START_LOTTO_RANGE..Constant.END_LOTTO_RANGE
-        }.size
+        val count = winnings.filter { it in Constant.START_LOTTO_RANGE..Constant.END_LOTTO_RANGE }.size
         require(count == Constant.LOTTO_COUNT) { ErrorMessage.rangeError(Constant.WINNING_NUMBER) }
     }
 

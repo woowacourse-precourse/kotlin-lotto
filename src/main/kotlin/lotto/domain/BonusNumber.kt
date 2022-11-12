@@ -23,16 +23,13 @@ class BonusNumber(_winning: List<Int>, _bonus: String) {
         }
     }
 
-    fun validateRange(bonusNumber: Int) = require(
-        bonusNumber in Constant.START_LOTTO_RANGE..Constant.END_LOTTO_RANGE
-    ) {
+    fun validateRange(bonusNumber: Int) = require(bonusNumber in Constant.START_LOTTO_RANGE..Constant.END_LOTTO_RANGE) {
         ErrorMessage.rangeError(Constant.BONUS_NUMBER)
     }
 
-    fun validateDuplication(winningNumber: List<Int>, bonusNumber: Int) =
-        require(!winningNumber.contains(bonusNumber)) {
-            ErrorMessage.duplicateError(Constant.BONUS_NUMBER)
-        }
+    fun validateDuplication(winningNumber: List<Int>, bonusNumber: Int) = require(bonusNumber !in winningNumber) {
+        ErrorMessage.duplicateError(Constant.BONUS_NUMBER)
+    }
 
     fun getBonusNumber() = bonus
 }

@@ -1,7 +1,6 @@
 package lotto.domain
 
 import camp.nextstep.edu.missionutils.Randoms
-import lotto.util.ConsoleMessage
 import lotto.util.Constant
 import lotto.util.ErrorMessage
 
@@ -28,7 +27,7 @@ class LottoMachine(amount: String) {
         ErrorMessage.unitError(Constant.LOTTO_AMOUNT)
     }
 
-    fun pickNewLotto(count: Int) {
+    fun pickNewLottery(count: Int) {
         for (index in 0 until count) {
             val numbers = Randoms.pickUniqueNumbersInRange(
                 Constant.START_LOTTO_RANGE, Constant.END_LOTTO_RANGE, Constant.LOTTO_COUNT
@@ -43,12 +42,12 @@ class LottoMachine(amount: String) {
 
     fun getLottery() = lottery
 
-    fun getTotalRank(winningNumber: List<Int>, bonusNumber: Int): List<Int> {
-        val rank = mutableListOf(0, 0, 0, 0, 0, 0, 0, 0)
+    fun getRanks(winningNumber: List<Int>, bonusNumber: Int): List<Int> {
+        val ranks = mutableListOf(0, 0, 0, 0, 0, 0)
         lottery.forEach {
-            val rankIndex = it.confirmWinning(winningNumber, bonusNumber)
-            rank[rankIndex]++
+            val rankIndex = it.checkWinning(winningNumber, bonusNumber)
+            ranks[rankIndex]++
         }
-        return rank
+        return ranks
     }
 }

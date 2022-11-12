@@ -1,7 +1,10 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.domain.*
+import lotto.domain.BonusNumber
+import lotto.domain.Earning
+import lotto.domain.LottoMachine
+import lotto.domain.WinningNumber
 import lotto.util.ConsoleMessage
 
 fun main() {
@@ -12,19 +15,19 @@ fun main() {
 }
 
 private fun startLotto() {
-    ConsoleMessage.machine()
+    ConsoleMessage.enterPurchaseAmount()
     val machine = LottoMachine(Console.readLine())
-    machine.pickNewLotto(machine.getLottoCount())
-    ConsoleMessage.purchase(machine.getLottoCount())
+    machine.pickNewLottery(machine.getLottoCount())
+    ConsoleMessage.purchased(machine.getLottoCount())
     ConsoleMessage.lotteryNumbers(machine.getLottery())
 
-    ConsoleMessage.winning()
+    ConsoleMessage.enterWinningNumber()
     val winning = WinningNumber(Console.readLine())
-    ConsoleMessage.bonus()
+    ConsoleMessage.enterBonusNumber()
     val bonus = BonusNumber(winning.getWinningNumber(), Console.readLine())
 
-    val rank = machine.getTotalRank(winning.getWinningNumber(), bonus.getBonusNumber())
-    val earning = Earning(rank)
-    ConsoleMessage.winningHistory(rank)
+    val ranks = machine.getRanks(winning.getWinningNumber(), bonus.getBonusNumber())
+    val earning = Earning(ranks)
+    ConsoleMessage.winningHistory(ranks)
     ConsoleMessage.earningRate(earning.getRate(machine.getLottoCount()))
 }

@@ -2,6 +2,7 @@ package lotto.domain
 
 import lotto.util.Constant
 import lotto.util.ErrorMessage
+import lotto.util.Rank
 
 class Lotto(private val numbers: List<Int>) {
     init {
@@ -19,24 +20,22 @@ class Lotto(private val numbers: List<Int>) {
 
     fun getLottoNumber() = numbers.sorted()
 
-    fun confirmWinning(winningNumber: List<Int>, bonusNumber: Int): Int {
-        val match = winningNumber.filter {
-            numbers.contains(it)
-        }.size
-        if (numbers.contains(bonusNumber) && match == Constant.FIVE_MATCH) {
-            return Constant.SECOND
+    fun checkWinning(winningNumber: List<Int>, bonusNumber: Int): Int {
+        val match = winningNumber.filter { it in numbers }.size
+        if (match == Constant.FIVE_MATCH && bonusNumber in numbers) {
+            return Rank.SECOND.rank
         }
         return getRank(match)
     }
 
     private fun getRank(match: Int) = when (match) {
-        Constant.THREE_MATCH -> Constant.FIFTH
+        Constant.THREE_MATCH -> Rank.FIFTH.rank
 
-        Constant.FOUR_MATCH -> Constant.FOURTH
+        Constant.FOUR_MATCH -> Rank.FOURTH.rank
 
-        Constant.FIVE_MATCH -> Constant.THIRD
+        Constant.FIVE_MATCH -> Rank.THIRD.rank
 
-        Constant.SIX_MATCH -> Constant.FIRST
+        Constant.SIX_MATCH -> Rank.FIRST.rank
 
         else -> Constant.NOTHING
     }
