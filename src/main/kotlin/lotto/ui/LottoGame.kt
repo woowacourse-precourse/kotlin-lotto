@@ -10,6 +10,14 @@ import lotto.util.readInt
 
 class LottoGame {
     fun start() {
+        try {
+            startUtil()
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+        }
+    }
+
+    private fun startUtil() {
         val originCost = readCost()
         val lottos = LottoPurchaser().purchaseLottos(originCost)
         printLottoInfo(lottos)
