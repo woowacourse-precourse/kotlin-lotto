@@ -9,4 +9,8 @@ class Money (money: Int){
             throw IllegalArgumentException("[ERROR] 잘못된 입력입니다.")
         }
     }
+
+    fun countLotto(): Int {
+        return (money/1000)
+    }
 }
