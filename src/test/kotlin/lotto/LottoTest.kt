@@ -31,13 +31,13 @@ class LottoTest {
 //    @Test
 //    fun `숫자 외 문자를 받을 경우 예외가 발생한다`() {
 //        assertThrows<IllegalArgumentException> {
-//            Lotto(listOf(1, 2, 3, 4, 5, 6)).checkPurchaseAmount("900a")
+//            Lotto(listOf(1, 2, 3, 4, 5, 6)) -> rule 로 옮김
 //        }
 //    }
 //    @Test
 //    fun `1000원 단위가 아니거나 1000원 이하일 경우 예외가 발생한다`() {
 //        assertThrows<IllegalArgumentException> {
-//            Lotto(listOf(1, 2, 3, 4, 5, 6)).checkPurchaseAmount("10")
+//            Lotto(listOf(1, 2, 3, 4, 5, 6)) -> rule 로 옮김
 //        }
 //    }
 }

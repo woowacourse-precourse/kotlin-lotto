@@ -31,7 +31,7 @@ class Rule {
 
     private fun isNumberOutOfRange(numbers: List<String>): Boolean {
         for (number in numbers) {
-            if (number < "1" || number > "45")
+            if (number.toInt() < 1 || number.toInt() > 45)
                 return true
         }
         return false
