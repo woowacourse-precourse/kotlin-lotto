@@ -4,7 +4,7 @@ import lottery.Lottery
 
 fun main() {
     val lotto = Lottery()
-    lotto.getAmount()
+    lotto.getPurchase()
     lotto.getLotteryNumbers()
     lotto.getBonusNumber()
 }

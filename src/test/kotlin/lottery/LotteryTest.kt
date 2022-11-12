@@ -31,7 +31,7 @@ internal class LotteryTest {
         val gets = ByteArrayInputStream(input.toByteArray())
         System.setIn(gets)
 
-        assertThrows<IllegalArgumentException> { testClass.getAmount() }
+        assertThrows<IllegalArgumentException> { testClass.getPurchase() }
     }
 
     @Test
@@ -39,7 +39,7 @@ internal class LotteryTest {
         val input = "1000"
         val gets = ByteArrayInputStream(input.toByteArray())
         System.setIn(gets)
-        testClass.getAmount()
+        testClass.getPurchase()
         assertEquals(1000, testClass.purchase)
     }
 
@@ -49,7 +49,7 @@ internal class LotteryTest {
         val gets = ByteArrayInputStream(input.toByteArray())
         System.setIn(gets)
 
-        assertThrows<IllegalArgumentException> { testClass.getAmount() }
+        assertThrows<IllegalArgumentException> { testClass.getPurchase() }
     }
 
     @Test

@@ -74,14 +74,14 @@ class Lottery {
         this.printWinnings()
     }
 
-    fun getAmount() {
+    fun getPurchase() {
         println("구입 금액을 입력해주세요.")
 
-        val inputString = readLine().trim()
-        if (inputString.toDoubleOrNull() == null)
+        val input = readLine()
+        if (input.toDoubleOrNull() == null)
             throw IllegalArgumentException("[ERROR] 숫자만 입력하세요.")
 
-        val purchase = inputString.toInt()
+        val purchase = input.toInt()
         if (purchase % Price.STANDARD.price != 0)
             throw IllegalArgumentException("[ERROR] ${Price.STANDARD.price}원 단위로 입력하세요.")
 
@@ -109,15 +109,14 @@ class Lottery {
 
     fun getBonusNumber() {
         println("보너스 번호를 입력해 주세요.")
-        try {
-            val bonusNumber = readLine().toInt()
-            if (bonusNumber !in NumberRange.START.number..NumberRange.END.number) {
-                throw IllegalArgumentException(
-                    "[ERROR] ${NumberRange.START.number}와 ${NumberRange.END.number} 사이 숫자를 입력하세요.")
-            }
-            this.bonusNumber = bonusNumber
-        } catch (e: IllegalArgumentException) {
+        val input = readLine()
+        if (input.toDoubleOrNull() == null)
             throw IllegalArgumentException("[ERROR] 숫자만 입력하세요.")
+
+        val bonusNumber = input.toInt()
+        if (bonusNumber !in NumberRange.START.number..NumberRange.END.number) {
+            throw IllegalArgumentException(
+                "[ERROR] ${NumberRange.START.number}와 ${NumberRange.END.number} 사이 숫자를 입력하세요.")
         }
 
         this.getWinnings()
