@@ -14,22 +14,21 @@ class Lotto(private val numbers: List<Int>) {
         ErrorMessage.duplicateError(Constant.LOTTO_NUMBER)
     }
 
-    fun printLottoNumber() = println(numbers.sorted())
+    fun getLottoNumber() = numbers.sorted()
 
-    fun confirmWinning(luckyNumber: List<Int>, bonusNumber: Int): Int {
-        var rank = luckyNumber.filter { number ->
+    fun confirmWinning(winningNumber: List<Int>, bonusNumber: Int): Int {
+        val match = winningNumber.filter { number ->
             numbers.contains(number)
         }.size
-        if (numbers.contains(bonusNumber) && rank == 5) {
-            rank = 7
+        if (numbers.contains(bonusNumber) && match == Constant.FIVE_MATCH) {
+            return Constant.SECOND
         }
-        return when (rank) {
-            3 -> 5
-            4 -> 4
-            5 -> 3
-            7 -> 2
-            6 -> 1
-            else -> 0
+        return when (match) {
+            Constant.THREE_MATCH -> Constant.FIFTH
+            Constant.FOUR_MATCH -> Constant.FOURTH
+            Constant.FIVE_MATCH -> Constant.THIRD
+            Constant.SIX_MATCH -> Constant.FIRST
+            else -> Constant.NOTHING
         }
     }
 }

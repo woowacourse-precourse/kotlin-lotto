@@ -41,7 +41,7 @@ class LottoMachine(amount: String) {
     fun getLottoCount() = lottoCount
 
     fun getLottoNumbers() = lottery.forEach { lotto ->
-        lotto.printLottoNumber()
+        ConsoleMessage.lottoNumber(lotto.getLottoNumber())
     }
 
     fun getTotalRank(winningNumber: List<Int>, bonusNumber: Int): List<Int> {

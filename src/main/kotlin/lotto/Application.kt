@@ -15,9 +15,9 @@ fun main() {
         val bonus = BonusNumber(winning.getWinningNumber(), Console.readLine())
         val rank = machine.getTotalRank(winning.getWinningNumber(), bonus.getBonusNumber())
         val statistic = Statistic(rank)
-        statistic.statisticMessage()
-        println("총 수익률은 ${statistic.calculateTotalYield(machine.getLottoCount() * 1000)}%입니다.")
+        statistic.printWinningHistory()
+        statistic.printYield(machine.getLottoCount())
     } catch (exception: IllegalArgumentException) {
-        println("[ERROR] 입력에 오류가 있습니다.")
+        println(ErrorMessage.systemError())
     }
 }
