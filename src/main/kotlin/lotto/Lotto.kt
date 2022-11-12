@@ -10,6 +10,22 @@ class Lotto(private val numbers: List<Int>) {
         }
     }
 
+    fun matchLotto(answer : Lotto, bonus: Int) : LottoGrade {
+        val count = countCompareLotto(answer)
+        val bonusResult = matchBonus(bonus)
+
+        when(count) {
+            3 -> return LottoGrade.FIFTH
+            4 -> return LottoGrade.FOURTH
+            5 -> {
+                if(bonusResult) return LottoGrade.SECOND
+                return LottoGrade.THIRD
+            }
+            6 -> return LottoGrade.FIRST
+            else -> return LottoGrade.NOTHING
+        }
+    }
+
     // TODO: 추가 기능 구현
     fun countCompareLotto(answer: Lotto): Int {
         val union = numbers + answer.numbers
