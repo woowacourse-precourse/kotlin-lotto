@@ -21,4 +21,12 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+
+    @Test
+    fun `돈 입력 예외`() {
+        val lottoGame = LottoGame()
+        assertThrows<IllegalArgumentException> {
+            lottoGame.receiveMoney("abc")
+        }
+    }
 }
