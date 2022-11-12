@@ -7,7 +7,7 @@ object InputValidator {
         var isValid = true
 
         when {
-            winningNumber.size != 6 -> isValid = false
+            winningNumber.size != SIZE_OF_LOTTO_NUMBERS -> isValid = false
             !winningNumber.joinToString("").isNumeric() -> isValid = false
             !winningNumber.isInRange() -> isValid = false
             winningNumber.hasOverLappedNumber() -> isValid = false

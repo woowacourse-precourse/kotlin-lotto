@@ -1,10 +1,13 @@
-package lotto.domain
+package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
-import lotto.data.Lotto
 
 class LottoGenerator {
     fun generateLotto(): Lotto {
-        return Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6))
+        return Lotto(Randoms.pickUniqueNumbersInRange(
+            MINIMUM_LOTTO_NUMBER,
+            MAXIMUM_LOTTO_NUMBER,
+            SIZE_OF_LOTTO_NUMBERS)
+        )
     }
 }

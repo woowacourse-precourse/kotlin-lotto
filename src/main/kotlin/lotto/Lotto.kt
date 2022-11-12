@@ -2,8 +2,10 @@ package lotto
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6)
+        require(numbers.size == SIZE_OF_LOTTO_NUMBERS)
     }
+
+    fun printLottoNumbers() = println(numbers)
 
     fun checkLotto(winningNumber: List<Int>, bonusNumber: Int): LottoStatus {
         val catchCount = numbers.filter { number -> winningNumber.contains(number) }.size
