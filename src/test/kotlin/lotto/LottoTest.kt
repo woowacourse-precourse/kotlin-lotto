@@ -1,5 +1,6 @@
 package lotto
 
+import lotto.constant.LOTTO_MAX_GRADE
 import lotto.constant.LOTTO_NUM_RANGE_END
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -38,6 +39,7 @@ class LottoTest {
         5,
         4
     )
+    private val lottoGradeCounts = listOf(0, 1, 1, 1, 2, 2)
     private val sameLottoNumbersResult = listOf(
         Pair(6, false),
         Pair(5, true),
@@ -66,6 +68,19 @@ class LottoTest {
     fun `로또 번호에 중복된 숫자가 있으면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
             Lotto(listOf(1, 2, 3, 4, 5, 5))
+        }
+    }
+
+    @Test
+    fun `로또 등수 별로 개수 출력`() {
+        val gradeCounts = IntArray(LOTTO_MAX_GRADE + 1)
+        lottoGrades.forEach { grade ->
+            gradeCounts[grade]++
+        }
+        gradeCounts[0] = 0
+
+        lottoGradeCounts.forEachIndexed { idx, gradeCount ->
+            assertThat(gradeCount).isEqualTo(gradeCounts[idx])
         }
     }
 
