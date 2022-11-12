@@ -13,14 +13,12 @@ class LottoMarket(
 
     private fun getLottoCount(paidMoney: Int): Int = paidMoney / LOTTO_PRICE
 
-    fun buyLotties(): List<List<Int>> {
+    fun sellLotties(): List<Lotto> {
         val paidMoney = payMoney()
         val lottoCount = getLottoCount(paidMoney)
         println("${lottoCount}개를 구매했습니다.")
-        return lottoFactory.makeLotties(lottoCount).also{ lotties ->
-            lotties.forEach{ lotto ->
-                println(lotto)
-            }
+        return lottoFactory.makeLotties(lottoCount).onEach { lotto ->
+            println(lotto)
         }
     }
 }
