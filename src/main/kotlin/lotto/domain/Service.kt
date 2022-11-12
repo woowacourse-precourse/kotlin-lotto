@@ -1,12 +1,16 @@
 package lotto.domain
 
+import lotto.domain.ExceptionHandler.checkInputBonusNumber
+import lotto.domain.ExceptionHandler.checkInputPurchasingAmount
+import lotto.domain.ExceptionHandler.checkInputWinningNumbers
+
 class Service {
     /**
      * 구입금액을 입력 받고 구매 갯수를 리턴하는 함수
      * */
     fun getPurchasingAmount(): Int {
         val inputPurchasingAmount = Util.readLine()
-        ExceptionHandler.checkInputPurchasingAmount(inputPurchasingAmount)
+        checkInputPurchasingAmount(inputPurchasingAmount)
         return (inputPurchasingAmount.toInt() / 1000)
     }
 
@@ -26,7 +30,17 @@ class Service {
      * */
     fun getWinningNumbers(): List<Int> {
         val inputWinningNumber = Util.readLine()
-        ExceptionHandler.checkInputWinningNumbers(inputWinningNumber)
-        return inputWinningNumber.split(",").map { it.toInt() }
+        checkInputWinningNumbers(inputWinningNumber)
+        return inputWinningNumber
+            .split(",")
+            .map { it.toInt() }
+    }
+    /**
+     * 보너스 번호를 입력받고 예외 처리 후 리턴하는 함수
+     * */
+    fun getBonusNumber(winningNumbers: List<Int>): Int {
+        val inputBonusNumber = Util.readLine()
+        checkInputBonusNumber(winningNumbers.map { it.toString() }, inputBonusNumber)
+        return inputBonusNumber.toInt()
     }
 }
