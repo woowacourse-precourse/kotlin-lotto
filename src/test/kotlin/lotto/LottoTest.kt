@@ -8,6 +8,7 @@ import org.junit.jupiter.api.assertThrows
 class LottoTest {
 
     val answer = Lotto(listOf(1, 5, 14, 22, 33, 41))
+    val bonus = 3
 
     @Test
     fun `로또 번호의 개수가 6개가 넘어가면 예외가 발생한다`() {
@@ -26,55 +27,42 @@ class LottoTest {
 
     // 아래에 추가 테스트 작성 가능
     @Test
-    fun `로또 번호가 1에서 45 사이가 아니면 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 48, 5, 7, 9))
-        }
+    fun `당첨 결과가 5등인지 확인`() {
+        val user = Lotto(listOf(1, 7, 14, 25, 33, 42))
+        val result = LottoGrade.FIFTH
+
+        assertThat(user.matchLotto(answer,bonus)).isEqualTo(result)
     }
 
     @Test
-    fun `로또 번호가 당첨 번호와 3개 일치`() {
-        val user = Lotto(listOf(1, 2, 14, 22, 37, 38))
-        val result = 3
+    fun `당첨 결과가 4등인지 확인`() {
+        val user = Lotto(listOf(1, 5, 14, 25, 33, 42))
+        val result = LottoGrade.FOURTH
 
-        assertThat(user.countCompareLotto(answer)).isEqualTo(result)
+        assertThat(user.matchLotto(answer,bonus)).isEqualTo(result)
     }
 
     @Test
-    fun `로또 번호가 당첨 번호와 4개 일치`() {
-        val user = Lotto(listOf(1, 2, 14, 22, 33, 38))
-        val result = 4
+    fun `당첨 결과가 3등인지 확인`() {
+        val user = Lotto(listOf(1, 5, 14, 25, 33, 41))
+        val result = LottoGrade.THIRD
 
-        assertThat(user.countCompareLotto(answer)).isEqualTo(result)
+        assertThat(user.matchLotto(answer,bonus)).isEqualTo(result)
     }
 
     @Test
-    fun `로또 번호가 당첨 번호와 5개 일치`() {
-        val user = Lotto(listOf(1, 2, 14, 22, 33, 41))
-        val result = 5
+    fun `당첨 결과가 2등인지 확인`() {
+        val user = Lotto(listOf(1, 3, 5, 14, 33, 41))
+        val result = LottoGrade.SECOND
 
-        assertThat(user.countCompareLotto(answer)).isEqualTo(result)
+        assertThat(user.matchLotto(answer,bonus)).isEqualTo(result)
     }
 
     @Test
-    fun `로또 번호가 당첨 번호와 6개 일치`() {
+    fun `당첨 결과가 1등인지 확인`() {
         val user = Lotto(listOf(1, 5, 14, 22, 33, 41))
-        val result = 6
+        val result = LottoGrade.FIRST
 
-        assertThat(user.countCompareLotto(answer)).isEqualTo(result)
-    }
-
-    @Test
-    fun `보너스 번호가 로또 번호에 있는지 확인`() {
-        val user = Lotto(listOf(1, 5, 14, 22, 33, 41))
-        var bonus = 14
-        var result = true
-
-        assertThat(user.matchBonus(bonus)).isEqualTo(result)
-
-        bonus = 20
-        result = false
-
-        assertThat(user.matchBonus(bonus)).isEqualTo(result)
+        assertThat(user.matchLotto(answer,bonus)).isEqualTo(result)
     }
 }
