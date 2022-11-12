@@ -12,6 +12,9 @@ class LottoMachine {
         repeat(numberOfLotto) {
             lottos.add(generateLotto())
         }
+
+        View.printNumberOfLottos(numberOfLotto)
+        View.printLottos(lottos)
     }
 
     fun getNumberOfLottos(payment: String): Int {

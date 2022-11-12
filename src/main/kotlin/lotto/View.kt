@@ -14,8 +14,10 @@ class View {
             println("${number}개를 구매했습니다.")
         }
 
-        fun printLottos() {
-            TODO()
+        fun printLottos(lottos: ArrayList<Lotto>) {
+            lottos.forEach {
+                println(it.getNumbers())
+            }
         }
 
         fun getWinningNumber(): String {
