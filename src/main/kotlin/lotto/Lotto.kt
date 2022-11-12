@@ -1,9 +1,10 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 import kotlin.math.round
 
-class Lotto(private val numbers: List<Int>) {
+class Lotto(private var numbers: List<Int>) {
     private val inputVerifier = InputVerifier()
     private var issuedNumbers = mutableMapOf<Int, MutableList<Int>>()
     private var purchaseAmount = 0
@@ -41,6 +42,7 @@ class Lotto(private val numbers: List<Int>) {
         for (i in 0 until numberOfPurchase) {
             issuedNumbers[i] = numbers.sorted().toMutableList()
             println(issuedNumbers[i])
+            numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
         }
     }
 
