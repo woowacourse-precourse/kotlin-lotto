@@ -12,4 +12,10 @@ class Lottos(private val lottos: List<Lotto>) {
         }
         return winningResult
     }
+
+    fun printWinnigResult(answer: Lotto, bonus: Int) {
+        matchLotto(answer, bonus).printWinnigResult()
+    }
+
+
 }

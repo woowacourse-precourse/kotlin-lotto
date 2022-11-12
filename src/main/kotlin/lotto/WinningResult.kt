@@ -18,4 +18,12 @@ class WinningResult {
         }
     }
 
+    fun printWinnigResult() {
+        println(LottoGrade.FIFTH.toString() + fifth + "개")
+        println(LottoGrade.FOURTH.toString() + fourth + "개")
+        println(LottoGrade.THIRD.toString() + third + "개")
+        println(LottoGrade.SECOND.toString() + second + "개")
+        println(LottoGrade.FIRST.toString() + first + "개")
+    }
+
 }
