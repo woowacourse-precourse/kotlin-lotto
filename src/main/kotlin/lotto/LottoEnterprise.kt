@@ -14,7 +14,7 @@ import lotto.util.readWinLottoNumbers
 class LottoEnterprise(
     private val winLottoFactory: WinLottoFactory,
 ) {
-    private fun getWinLotto(): WinLotto {
+    fun getWinLotto(): WinLotto {
         val winLottoNumbers = getWinLottoNumbers()
         val winBonusNumber = getWinBonusNumber(winLottoNumbers)
         return winLottoFactory.makeWinLotto(
