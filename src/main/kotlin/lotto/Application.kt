@@ -1,6 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     println("구입금액을 입력해 주세요.")
@@ -20,4 +21,11 @@ fun main() {
     var lottoCount = money / 1000
 
     println("\n${lottoCount}개를 구매했습니다.")
+
+    var allLotto = Array<IntArray>(lottoCount) { IntArray(6) }
+
+    for (i in 0 until lottoCount) {
+        val numbers = Randoms.pickUniqueNumbersInRange(1, 20, 6)
+    }
+
 }
