@@ -1,6 +1,6 @@
 package lotto.util
 
-import lotto.exceptions.DivisibleMoneyException
+import lotto.exception.DivisibleMoneyException
 
 val br = System.`in`.bufferedReader()
 

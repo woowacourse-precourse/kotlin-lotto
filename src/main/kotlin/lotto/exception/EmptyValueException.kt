@@ -1,3 +1,3 @@
-package lotto.exceptions
+package lotto.exception
 
 class EmptyValueException : Exception()
