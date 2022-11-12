@@ -6,11 +6,13 @@ import lotto.domain.Lotto.Companion.LENGTH
 import lotto.domain.Lotto.Companion.MAX_NUM
 import lotto.domain.Lotto.Companion.MIN_NUM
 
-class LottoPurchaser {
-    fun purchaseLottos(cost: Int): List<Lotto> {
+class LottoPurchaser(val cost: Int) {
+    init {
         require(cost >= COST) { ERROR_COST_NOT_ENOUGH }
         require(cost % COST == 0) { ERROR_COST_DIVIDE }
+    }
 
+    fun purchaseLottos(): List<Lotto> {
         val lottos = mutableListOf<Lotto>()
         repeat(cost / COST) {
             lottos.add(generateLotto())

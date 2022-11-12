@@ -1,6 +1,5 @@
 package lotto.domain
 
-
 data class WinningNumber(val winLotto: Lotto, val bonus: Int) {
     init {
         require(bonus in Lotto.MIN_NUM..Lotto.MAX_NUM) { ERROR_BONUS_NUM_RANGE }

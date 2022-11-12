@@ -19,7 +19,8 @@ class LottoGame {
 
     private fun startUtil() {
         val originCost = readCost()
-        val lottos = LottoPurchaser().purchaseLottos(originCost)
+        val lottos = LottoPurchaser(originCost)
+            .purchaseLottos()
         printLottoInfo(lottos)
 
         val winningNumber = WinningNumber(
@@ -38,7 +39,7 @@ class LottoGame {
     }
 
     private fun printLottoInfo(lottos: List<Lotto>) {
-        println(LOTTO_INFO_FORMAT.format(lottos.size))
+        println(LOTTO_SIZE_FORMAT.format(lottos.size))
         lottos.forEach { println(it.toString()) }
         println()
     }
@@ -64,7 +65,7 @@ class LottoGame {
     companion object {
         private const val ERROR_MSG_PREFIX = "[ERROR]"
         private const val REQUEST_MONEY = "구입금액을 입력해 주세요."
-        private const val LOTTO_INFO_FORMAT = "%d개를 구매했습니다."
+        private const val LOTTO_SIZE_FORMAT = "%d개를 구매했습니다."
         private const val REQUEST_WINNING_NUMBER = "당첨 번호를 입력해 주세요."
         private const val REQUEST_BONUS = "보너스 번호를 입력해 주세요."
         private const val RESULT_INFO_FORMAT =
