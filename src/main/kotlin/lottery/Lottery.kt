@@ -2,6 +2,7 @@ package lottery
 
 import lotto.Lotto
 import camp.nextstep.edu.missionutils.Console.readLine
+import camp.nextstep.edu.missionutils.Randoms
 import data.NumberRange
 import data.Price
 
@@ -47,7 +48,13 @@ class Lottery {
     }
 
     fun getQuickPicks() {
-        TODO("랜덤 로또 생성 함수")
+        val n = this.purchase / Price.STANDARD.price
+        for (i in 0 until n){
+            val numbers = Randoms.pickUniqueNumbersInRange(
+                NumberRange.START.number, NumberRange.END.number, NumberRange.MAX.number)
+            numbers.sort()
+            quickPicks.add(Lotto(numbers))
+        }
     }
 
     fun getBonusNumber() {
