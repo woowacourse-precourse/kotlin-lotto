@@ -1,9 +1,11 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
+import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import java.lang.IllegalArgumentException
+import java.io.ByteArrayInputStream
 
 class LottoTest {
     @Test
@@ -24,6 +26,7 @@ class LottoTest {
     @Test
     fun `입력 받은 구입 금액이 1000원 단위가 아니면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
+            System.setIn("1001".byteInputStream())
             getInputLottoMoney()
         }
     }
@@ -31,6 +34,7 @@ class LottoTest {
     @Test
     fun `입력 받은 구입 금액이 숫자가 아니면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
+            System.setIn("1000j".byteInputStream())
             getInputLottoMoney()
         }
     }
@@ -44,6 +48,7 @@ class LottoTest {
     @Test
     fun `당첨 번호가 6개가 아니면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
+            System.setIn("1,2,3,4,5,6,7".byteInputStream())
             getInputWinNumber()
         }
     }
@@ -51,6 +56,7 @@ class LottoTest {
     @Test
     fun `당첨 번호가 숫자가 아니면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
+            System.setIn("j".byteInputStream())
             getInputWinNumber()
         }
     }
@@ -58,6 +64,7 @@ class LottoTest {
     @Test
     fun `보너스 번호가 1개가 아니면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
+            System.setIn("1,2".byteInputStream())
             getInputBonusNumber()
         }
     }
@@ -65,6 +72,7 @@ class LottoTest {
     @Test
     fun `보너스 번호가 숫자가 아니면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
+            System.setIn("j".byteInputStream())
             getInputBonusNumber()
         }
     }
