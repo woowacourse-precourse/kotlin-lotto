@@ -1,7 +1,15 @@
 package lotto
 
 object InputValidator {
-    fun validateMoney(money: Int) = (money > 0) && (money % 1000 == 0)
+    fun validateMoney(money: String): Boolean {
+        var isValid = true
+
+        when {
+            money.isNumeric() -> isValid = false
+            money.toInt() % LOTTO_PRICE != 0 -> isValid = false
+        }
+        return isValid
+    }
 
     fun validateWinningNumber(winningNumber: List<String>): Boolean {
         var isValid = true
