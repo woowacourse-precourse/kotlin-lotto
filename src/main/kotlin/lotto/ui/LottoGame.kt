@@ -1,12 +1,11 @@
 package lotto.ui
 
-import camp.nextstep.edu.missionutils.Console
 import lotto.domain.Lotto
 import lotto.domain.LottoPurchaser
 import lotto.domain.LottoResult
 import lotto.domain.WinningNumber
-import lotto.util.divideToNums
-import lotto.util.readInt
+import lotto.util.readNumber
+import lotto.util.readNumbers
 
 class LottoGame {
     fun start() {
@@ -35,7 +34,7 @@ class LottoGame {
 
     private fun readCost(): Int {
         println(REQUEST_MONEY)
-        return readInt()
+        return readNumber()
     }
 
     private fun printLottoInfo(lottos: List<Lotto>) {
@@ -46,14 +45,13 @@ class LottoGame {
 
     private fun readWinLotto(): Lotto {
         println(REQUEST_WINNING_NUMBER)
-        val winNumbers = Console.readLine()
-            .divideToNums(",")
+        val winNumbers = readNumbers()
         return Lotto(winNumbers)
     }
 
     private fun readBonusNumber(): Int {
         println(REQUEST_BONUS)
-        return readInt()
+        return readNumber()
     }
 
     private fun printResultInfo(lottoResultFormatter: LottoResultFormatter) {

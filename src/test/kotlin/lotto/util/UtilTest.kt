@@ -9,7 +9,7 @@ class UtilTest {
     fun `숫자를 읽었을 때 숫자가 아닌 경우 예외를 발생시킨다`() {
         systemSetIn("hi")
         assertThrows<IllegalArgumentException> {
-            readInt()
+            readNumber()
         }
     }
 
@@ -23,22 +23,20 @@ class UtilTest {
     @Test
     fun `숫자를 콤마 기준으로 나눌 수 있어야 한다`() {
         val input = "1,2,311,4"
+        systemSetIn(input)
         val expect = listOf(1, 2, 311, 4)
-        assert(input.divideToNums(",") == expect)
+        assert(readNumbers() == expect)
     }
 
     @Test
     fun `숫자를 콤마 기준으로 나눌 때 공백은 무시한다`() {
         val input = "1, 2, 311, 4    "
+        systemSetIn(input)
         val expect = listOf(1, 2, 311, 4)
-        assert(input.divideToNums(",") == expect)
+        assert(readNumbers() == expect)
     }
 
     private fun systemSetIn(input: String) {
         System.setIn(input.byteInputStream())
-    }
-
-    companion object {
-        private const val ERROR_MESSAGE = "[ERROR]"
     }
 }
