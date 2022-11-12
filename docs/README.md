@@ -15,9 +15,9 @@
 - [x] 로또 당첨 결과에 대해 통계 내주는 역할을 클래스로 의인화 한다 - LottoStatistics
   - [x] 로또 당첨 결과를 통계 내줘야 한다 -  LottoStatistics#statisticsLotto()
   - [x] 로또 결과에 대해 수익률을 구해줘야 한다 - LottoStatistics#yield()
-- [] 로또 진행을 위해 메시지 출력을 해주는 역할을 클래스로 의인화 한다 - MessageMaker()
-  - [] 로또 진행을 위해 메시지를 출력해준다 - MessageMake()#printMessage()
-  - [] 사용자의 입력이 잘못될 경우 에러문구를 출력해줘야 한다 - Person#inputError()
+- [x] 로또 진행을 위해 메시지 출력을 해주는 역할을 클래스로 의인화 한다 - MessageMaker()
+  - [x] 로또 진행을 위해 메시지를 출력해준다 - MessageMake()#printMessage()
+  - [x] 사용자의 입력이 잘못될 경우 에러문구를 출력해줘야 한다 - Person#inputError()
 - [x] 로또 객체는 결과와 자신을 비교해서 결과를 리턴 해줘야 한다  - Lotto#matchResult()
 - [x] 로또 객체는 자신이 보너스에 당첨됐는지 확인해줘야 한다 - Lotto#isMatchBonus()
 - [] 이 프로그램을 총괄해서 진행할 컨트롤러가 필요하다 - Controller()

@@ -19,8 +19,12 @@ class Lotto(private val numbers: List<Int>) {
 
     private fun isMatchBonus(bonus: Int): MatchResult =
         if (numbers.contains(bonus)) MatchResult.BONUS else MatchResult.FIVE
+
+    fun lottoEnumeration(): String {
+        return "[${numbers[0]}, ${numbers[1]}, ${numbers[2]}, ${numbers[3]}, ${numbers[4]}, ${numbers[5]}]"
+    }
 }
 
-enum class MatchResult(val index: Int,val money:Int) {
-    THREE(0,5000), FOUR(1,50000), FIVE(2,500000), BONUS(3,30000000), SIX(4,2000000000), FAILED(5,0)
+enum class MatchResult(val index: Int, val money: Int) {
+    THREE(0, 5000), FOUR(1, 50000), FIVE(2, 500000), BONUS(3, 30000000), SIX(4, 2000000000), FAILED(5, 0)
 }
