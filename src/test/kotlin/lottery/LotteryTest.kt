@@ -44,6 +44,15 @@ internal class LotteryTest {
     }
 
     @Test
+    fun `1000 단위 입력 테스트 3`() {
+        val input = "rk"
+        val gets = ByteArrayInputStream(input.toByteArray())
+        System.setIn(gets)
+
+        assertThrows<IllegalArgumentException> { testClass.getAmount() }
+    }
+
+    @Test
     fun `당첨 번호 입력 테스트 1`() {
         val input = "1,2,3,4,56"
         val gets = ByteArrayInputStream(input.toByteArray())
