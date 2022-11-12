@@ -8,7 +8,12 @@ fun calculateYield(lottos: List<Lotto>, winNumber: List<Int>, bonusNumber: Int):
 }
 
 fun calculateWinRanks(lottos: List<Lotto>, winNumber: List<Int>, bonusNumber: Int): Map<LottoRank, Int> {
-    return mapOf()
+    val rankMap = mutableMapOf<LottoRank, Int>()
+    for (i in lottos) {
+        val calculatedRank = i.calculateWinRank(winNumber, bonusNumber)
+        rankMap[calculatedRank] = (rankMap[calculatedRank] ?: 0) + 1
+    }
+    return rankMap
 }
 
 fun produceLotto(amount: Int): List<Lotto> {
