@@ -20,15 +20,15 @@ class Lotto(private val numbers: List<Int>) {
 
     fun determineRank(count : Int, bonusNumber: Int): Any {
         when (count) {
-            6 -> return Rank.First
+            6 -> return Rank.First.rank
             5 -> {
                 if (numbers.contains(bonusNumber))
-                    return Rank.Second
-                return Rank.Third
+                    return Rank.Second.rank
+                return Rank.Third.rank
             }
-            4 -> return Rank.Fourth
-            3 -> return Rank.Fifth
-            else -> return Rank.None
+            4 -> return Rank.Fourth.rank
+            3 -> return Rank.Fifth.rank
+            else -> return Rank.None.rank
         }
     }
 }

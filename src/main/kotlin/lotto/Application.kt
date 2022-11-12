@@ -20,4 +20,6 @@ fun main() {
     println("당첨 통계\n---")
     lottoGame.printResult()
 
+
+
 }

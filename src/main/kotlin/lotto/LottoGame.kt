@@ -51,13 +51,8 @@ class LottoGame {
         val prizeResult = mutableListOf<Int>(0,0,0,0,0,0)
         for (lotto in lottoList) {
             val containNumberCount = lotto.compareWithWinningNumber(winningNumber)
-            when(lotto.determineRank(containNumberCount, bonusNumber)){
-                Rank.First -> prizeResult[1]++
-                Rank.Second -> prizeResult[2]++
-                Rank.Third -> prizeResult[3]++
-                Rank.Fourth -> prizeResult[4]++
-                Rank.Fifth -> prizeResult[5]++
-            }
+            val rank: Int = lotto.determineRank(containNumberCount, bonusNumber) as Int
+            prizeResult[rank]++
         }
         return prizeResult
     }
@@ -70,5 +65,7 @@ class LottoGame {
         println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${prizeResult[2]}개")
         println("6개 일치 (2,000,000,000원) - ${prizeResult[1]}개")
     }
+
+
 
 }
