@@ -86,39 +86,26 @@ class Lotto(private var numbers: List<Int>) {
     }
 
     private fun printWinningHistory() {
-        val three = 0
-        val four = 0
-        val five = 0
-        val fiveWithBonus = 0
-        val six = 0
-
         when (matchedWinningNumbers.size) {
-            3 -> { addAmountAndNumberOfMatches(5000, three) }
-            4 -> { addAmountAndNumberOfMatches(50000, four) }
+            3 -> { Winning.THREE.addAmountAndNumberOfMatches() }
+            4 -> { Winning.FOUR.addAmountAndNumberOfMatches() }
             5 -> {
                 if (matchedBonusNumbers.size != 1) {
-                    addAmountAndNumberOfMatches(1500000, five)
+                    Winning.FIVE.addAmountAndNumberOfMatches()
                 } else {
-                    addAmountAndNumberOfMatches(30000000, fiveWithBonus)
+                    Winning.FIVEWITHBONUS.addAmountAndNumberOfMatches()
                 }
             }
-            6 -> { addAmountAndNumberOfMatches(2000000000, six) }
+            6 -> { Winning.SIX.addAmountAndNumberOfMatches() }
         }
 
         println(
-            "3개 일치 (5,000원) - ${three}개\n" +
-                    "4개 일치 (50,000원) - ${four}개\n" +
-                    "5개 일치 (1,500,000원) - ${five}개\n" +
-                    "5개 일치, 보너스 볼 일치 (30,000,000원) - ${fiveWithBonus}개\n" +
-                    "6개 일치 (2,000,000,000원) - ${six}개"
+            "3개 일치 (5,000원) - ${Winning.THREE.getNumberOfMatches()}개\n" +
+                    "4개 일치 (50,000원) - ${Winning.FOUR.getNumberOfMatches()}개\n" +
+                    "5개 일치 (1,500,000원) - ${Winning.FIVE.getNumberOfMatches()}개\n" +
+                    "5개 일치, 보너스 볼 일치 (30,000,000원) - ${Winning.FIVEWITHBONUS.getNumberOfMatches()}개\n" +
+                    "6개 일치 (2,000,000,000원) - ${Winning.SIX.getNumberOfMatches()}개"
         )
-    }
-
-    private fun addAmountAndNumberOfMatches(money: Int, number: Int) {
-        var numberOfMatches = number
-
-        winningAmount += money
-        numberOfMatches += 1
     }
 
     private fun printProfitRate() {
