@@ -26,6 +26,10 @@ fun publishLotto(money : Int):List<List<Int>>
     }
     return table
 }
+fun printLottos(table : List<List<Int>>){
+    for (i in table)
+        println(i)
+}
 fun main() {
     val numbers = createLottoNum()
     val numbers2 = listOf<Int>(1,2,3,4,5,5)
@@ -36,6 +40,6 @@ fun main() {
     //Lotto(numbers)
     //Lotto(numbers2)
     table = publishLotto(8000) as MutableList<List<Int>>
-    println(table)
+    printLottos(table)
 
 }
