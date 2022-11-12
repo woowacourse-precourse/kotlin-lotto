@@ -22,5 +22,7 @@ class Constant {
         const val FIVE_MATCH = 5
         const val SIX_MATCH = 6
         const val NOTHING = 0
+        const val DECIMAL_PLACE = 10
+        const val PERCENTAGE = 100
     }
 }
