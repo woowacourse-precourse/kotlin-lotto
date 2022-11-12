@@ -15,6 +15,9 @@ class LottoMachine {
 
         View.printNumberOfLottos(numberOfLotto)
         View.printLottos(lottos)
+
+        val winningNumberInput = View.getWinningNumber()
+        val winningLotto = convertNumbersToLotto(winningNumberInput)
     }
 
     fun getNumberOfLottos(payment: String): Int {
@@ -32,6 +35,10 @@ class LottoMachine {
     fun generateLotto(): Lotto {
         val randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
         return Lotto(randomNumbers)
+    }
+
+    fun convertNumbersToLotto(numbers: String): Lotto {
+        return Lotto(numbers.split(",").map { it.toInt() }.toList().sorted())
     }
 
     fun checkWinningNumberException() {
