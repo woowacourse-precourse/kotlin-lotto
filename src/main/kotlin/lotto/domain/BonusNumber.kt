@@ -11,14 +11,15 @@ class BonusNumber(_winning: List<Int>, _bonus: String) {
     init {
         validateType(_bonus)
         validateRange(bonus)
-        validateDuplicate(winning, bonus)
+        validateDuplication(winning, bonus)
     }
 
     fun validateType(winningNumber: String) {
         bonus = try {
             winningNumber.toInt()
         } catch (exception: NumberFormatException) {
-            throw IllegalArgumentException(ErrorMessage.intError(Constant.BONUS_NUMBER))
+            ErrorMessage.intError(Constant.BONUS_NUMBER)
+            throw IllegalArgumentException()
         }
     }
 
@@ -26,9 +27,10 @@ class BonusNumber(_winning: List<Int>, _bonus: String) {
         ErrorMessage.rangeError(Constant.BONUS_NUMBER)
     }
 
-    fun validateDuplicate(winningNumber: List<Int>, bonusNumber: Int) = require(!winningNumber.contains(bonusNumber)) {
-        ErrorMessage.duplicateError(Constant.BONUS_NUMBER)
-    }
+    fun validateDuplication(winningNumber: List<Int>, bonusNumber: Int) =
+        require(!winningNumber.contains(bonusNumber)) {
+            ErrorMessage.duplicateError(Constant.BONUS_NUMBER)
+        }
 
     fun getBonusNumber() = bonus
 }

@@ -14,7 +14,7 @@ class BonusNumberTest {
 
     @Test
     fun `보너스 당첨 번호가 로또 당첨 번호와 중복되면 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> { (bonus.validateDuplicate(listOf(1, 2, 3, 4, 5, 6), 6)) }
+        assertThrows<IllegalArgumentException> { (bonus.validateDuplication(listOf(1, 2, 3, 4, 5, 6), 6)) }
     }
 
     @Test

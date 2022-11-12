@@ -6,14 +6,14 @@ import lotto.util.ErrorMessage
 class Lotto(private val numbers: List<Int>) {
     init {
         validateSize()
-        validateDuplicate()
+        validateDuplication()
     }
 
     private fun validateSize() = require(numbers.size == Constant.LOTTO_COUNT) {
         ErrorMessage.sizeError(Constant.LOTTO_NUMBER)
     }
 
-    private fun validateDuplicate() = require(numbers.distinct().size == Constant.LOTTO_COUNT) {
+    private fun validateDuplication() = require(numbers.distinct().size == Constant.LOTTO_COUNT) {
         ErrorMessage.duplicateError(Constant.LOTTO_NUMBER)
     }
 

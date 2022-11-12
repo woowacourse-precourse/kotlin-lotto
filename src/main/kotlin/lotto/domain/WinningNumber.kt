@@ -11,7 +11,7 @@ class WinningNumber(_winning: String) {
         validateType(_winning)
         validateSize(winnings)
         validateRange(winnings)
-        validateDuplicate(winnings)
+        validateDuplication(winnings)
     }
 
     private fun validateType(numbers: String) {
@@ -35,7 +35,7 @@ class WinningNumber(_winning: String) {
         require(count == Constant.LOTTO_COUNT) { ErrorMessage.rangeError(Constant.WINNING_NUMBER) }
     }
 
-    fun validateDuplicate(winnings: List<Int>) = require(winnings.distinct().size == Constant.LOTTO_COUNT) {
+    fun validateDuplication(winnings: List<Int>) = require(winnings.distinct().size == Constant.LOTTO_COUNT) {
         ErrorMessage.duplicateError(Constant.WINNING_NUMBER)
     }
 

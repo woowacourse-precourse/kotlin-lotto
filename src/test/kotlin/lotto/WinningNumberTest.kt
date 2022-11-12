@@ -9,7 +9,7 @@ class WinningNumberTest {
 
     @Test
     fun `로또 당첨 번호에 중복된 수가 있으면 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> { (win.validateDuplicate(listOf(1, 2, 3, 4, 5, 5))) }
+        assertThrows<IllegalArgumentException> { (win.validateDuplication(listOf(1, 2, 3, 4, 5, 5))) }
     }
 
     @Test
