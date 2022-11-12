@@ -38,6 +38,14 @@ fun inputMoney() : Int{
 
     return money.toInt()
 }
+fun inputWinNum() : List<String> {
+    var nums = (Console.readLine().split(","))
+    require(nums.all{it.all{it.isDigit()}}){"[ERROR] 숫자만 입력해야 합니다."}
+    require(nums.all{it.toInt() in 1..45}){"[ERROR] 1부터 45까지의 숫자를 입력해야 합니다."}
+    require(nums.size == 6){"[ERROR] : 숫자가 6개가 아닙니다."}
+    require(nums.distinct().size==6){"[ERROR] : 중복된 숫자가 있습니다"}
+    return nums
+}
 
 fun main() {
     val numbers = createLottoNum()
@@ -50,5 +58,6 @@ fun main() {
     //Lotto(numbers2)
     table = publishLotto(8000) as MutableList<List<Int>>
     printLottos(table)
-    inputMoney()
+    //inputMoney()
+    inputWinNum()
 }
