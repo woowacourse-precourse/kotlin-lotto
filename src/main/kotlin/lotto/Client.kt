@@ -4,8 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class Client {
     private val rule = Rule()
-    private val purchaseLottos = mutableListOf<Lotto>()
-    private var purchaseCount = 0
+    val purchaseLottos = mutableListOf<Lotto>()
+    var purchaseCount = 0
     private var purchaseAmount = 0
 
     fun inputPurchaseAmount() {
