@@ -31,6 +31,8 @@ class Lotto(private var numbers: List<Int>) {
         purchaseAmount = Console.readLine().toInt()
 
         inputVerifier.validatePurchaseAmount(purchaseAmount)
+
+        println()
     }
 
     private fun printIssuedNumber() {
@@ -43,6 +45,8 @@ class Lotto(private var numbers: List<Int>) {
             println(issuedNumbers[i])
             numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
         }
+
+        println()
     }
 
     private fun enterWinningNumber() {
@@ -50,6 +54,8 @@ class Lotto(private var numbers: List<Int>) {
         winningNumber = Console.readLine()
 
         inputVerifier.validateWinningNumber(winningNumber)
+
+        println()
     }
 
     private fun enterBonusNumber() {
@@ -57,6 +63,8 @@ class Lotto(private var numbers: List<Int>) {
         bonusNumber = Console.readLine().toInt()
 
         inputVerifier.validateBonusNumber(bonusNumber)
+
+        println()
     }
 
     private fun printWinningStatistics() {
