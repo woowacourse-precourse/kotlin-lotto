@@ -20,7 +20,13 @@ class InputView {
         checkWinningNumbers(winningNumbers)
         return winningNumbers
     }
-    
+
+    fun inputBonusNumber(): Int {
+        val bonusNumber = Console.readLine().toInt()
+        LottoNumber(bonusNumber)
+        return bonusNumber
+    }
+
     private fun checkWinningNumbers(winningNumbers: List<Int>) {
         winningNumbers.map { number ->
             LottoNumber(number)
