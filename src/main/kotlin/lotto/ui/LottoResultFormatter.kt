@@ -6,19 +6,12 @@ import java.text.DecimalFormat
 
 class LottoResultFormatter(private val lottoResult: LottoResult) {
     fun getStatInfo(): String {
-        val rankToCnt = lottoResult.rankToCnt
-        val stats = mutableListOf<String>()
-        for (rank in LottoRank.values()) {
-            if (rank == LottoRank.FAIL) {
-                continue
+        val rankCounts = lottoResult.rankToCnt
+        return LottoRank.values()
+            .filter { it != LottoRank.FAIL }
+            .joinToString("\n") {
+                STAT_INFO_FORMAT.format(getRankInfo(it), rankCounts[it] ?: 0)
             }
-            val rankInfo = getRankInfo(rank)
-            val rankCnt = rankToCnt[rank] ?: 0
-            stats.add(
-                STAT_INFO_FORMAT.format(rankInfo, rankCnt)
-            )
-        }
-        return stats.joinToString("\n")
     }
 
     fun getProfitInfo(): String {
@@ -27,14 +20,14 @@ class LottoResultFormatter(private val lottoResult: LottoResult) {
     }
 
     fun getRankInfo(lottoRank: LottoRank): String {
-        val matchCnt = lottoRank.matchedCnt
+        val matchedCnt = lottoRank.matchedCnt
         val prizeFormatted = prizeFormat(lottoRank.prize)
         val infoFormat = if (lottoRank == LottoRank.SECOND) {
             SECOND_RANK_INFO_FORMAT
         } else {
             RANK_INFO_FORMAT
         }
-        return infoFormat.format(matchCnt, prizeFormatted)
+        return infoFormat.format(matchedCnt, prizeFormatted)
     }
 
     private fun prizeFormat(prize: Int) = DecimalFormat("#,###")
