@@ -2,6 +2,7 @@ package lotto.util
 
 import lotto.constant.LOTTO_NUM_COUNT
 import lotto.exception.DivisibleMoneyException
+import lotto.exception.DuplicateInputException
 import lotto.exception.InputCountException
 
 val br = System.`in`.bufferedReader()
@@ -26,6 +27,19 @@ fun readWinLottoNumbers(): List<Int> {
         }
         winLottoNumbers
     } catch (e: Exception) {
+        showError(e)
+        throw IllegalArgumentException()
+    }
+}
+
+fun readWinBonusNumber(winLottoNumbers: List<Int>): Int{
+    return try{
+        val winBonusNumber = br.readLine().toInt()
+        if(winLottoNumbers.find { it == winBonusNumber } != null){
+            throw DuplicateInputException()
+        }
+        winBonusNumber
+    }catch (e: Exception){
         showError(e)
         throw IllegalArgumentException()
     }
