@@ -3,6 +3,7 @@ package lotto
 import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console.readLine
 
+
 /*
 2주차 피드백
 1. 변수 이름에 자료형, 자료 구조 사용 X
@@ -36,11 +37,24 @@ enum class Prize(val message: String) {
     four("4개 일치 (50,000원) - "),
     five("5개 일치 (1,500,000원) - "),
     fiveBonus("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
-    six("6개 일치 (2,000,000,000원) - ");
+    six("6개 일치 (2,000,000,000원) - "),
+    profit1("총 수익률은"),
+    profit2("%입니다.")
 }
 
-fun howManyBuy(): Int {
+enum class Error(val message: String){
+    sameNumberInBonus("[ERROR] 로또 번호와 겹칩니다"),
+    wrongNumber("[ERROR] 보너스 번호는 1~45 사이")
+
+}
+
+fun howMuchDoYouHave() : Int{
     var money = readLine().toInt()
+    return money
+}
+
+
+fun howManyBuy(money : Int): Int {
     var answer = money / 1000
     return answer
 }
@@ -49,9 +63,9 @@ fun enterWinningNumber(): List<Int> {
     var userCheck = readLine()
     var winningNumber = mutableListOf<Int>()
     var number = userCheck.split(',')
-    for (obj in 0 until number.size) {
+    for (num in 0 until number.size) {
         // 번호가 중복된 경우 에러 유발해야함
-        winningNumber.add(number[obj].toInt())
+        winningNumber.add(number[num].toInt())
     }
     return winningNumber
 }
@@ -60,11 +74,11 @@ fun enterBonusNumber(winningNumbers: List<Int>): Int {
     var userCheck = readLine().toInt()
     // 보너스 번호가 로또 번호와 같은 경우
     if (winningNumbers.contains(userCheck)) {
-        throw IllegalArgumentException("[ERROR] 로또 번호와 겹칩니다")
+        throw IllegalArgumentException(Error.sameNumberInBonus.message)
     }
     // 번호 입력을 1~45사이 안한 경우
     else if (userCheck > 45 || userCheck < 1) {
-        throw IllegalArgumentException("[ERROR] 보너스 번호는 1~45 사이")
+        throw IllegalArgumentException(Error.wrongNumber.message)
     }
     return userCheck
 }
@@ -113,6 +127,19 @@ fun prizeRate(winLottoCollection: List<String>) : Map<String,Int>{
     return prizeRate
 }
 
+fun calculateProfitRate(price : Int, prizeRating : Map<String, Int>) : Double {
+    var profitRate=0.0
+    var totalreward=0.0
+    var reward = listOf(5000,50000,1500000,30000000,2000000000)
+    totalreward+=prizeRating.getValue("3")*reward[0]
+    totalreward+=prizeRating.getValue("4")*reward[1]
+    totalreward+=prizeRating.getValue("5")*reward[2]
+    totalreward+=prizeRating.getValue("5+1")*reward[3]
+    totalreward+=prizeRating.getValue("6")*reward[4]
+    profitRate=String.format("%.2f", (totalreward/price)*100).toDouble() // 둘째자리에서 반올림
+    return profitRate
+}
+
 
 fun main() {
     var cnt = 0
@@ -123,13 +150,14 @@ fun main() {
     var sameNumber = 0
     var winLottoCollection = mutableListOf<String>()
     var prizeRating = mapOf<String, Int>()
-
+    var money=0
 
     //시작
     println(State.start.message)
 
     //구매 개수
-    cnt = howManyBuy()
+    money=howMuchDoYouHave()
+    cnt = howManyBuy(money)
     println()
     println(cnt.toString() + State.many.message)
     //Lotto 클래스 활용해야함!!!
@@ -145,7 +173,6 @@ fun main() {
     obj = LottoGames(numbers = winningNumber)
     println()
 
-
     //보너스 번호
     println(State.enterBonusNumber.message)
     bonusNumber = enterBonusNumber(winningNumber)
@@ -159,9 +186,8 @@ fun main() {
         showWinLottoPaper(lottoCollection[j], sameNumber, bonusNumber)
         winLottoCollection.add(showWinLottoPaper(lottoCollection[j], sameNumber, bonusNumber))
     }
-//    println(winLottoCollection)
+
     prizeRating=prizeRate(winLottoCollection)
-//    println(prizeRating)
 
     println(Prize.three.message + "${prizeRating.get("3")}개")
     println(Prize.four.message + "${prizeRating.get("4")}개")
@@ -169,5 +195,5 @@ fun main() {
     println(Prize.fiveBonus.message + "${prizeRating.get("5+1")}개")
     println(Prize.six.message + "${prizeRating.get("6")}개")
 
-
+    calculateProfitRate(money, prizeRating)
 }
