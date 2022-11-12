@@ -2,6 +2,7 @@ package lotto
 
 class Lottos(private val lottos: List<Lotto>) {
 
+
     fun matchLotto(answer: Lotto, bonus : Int) : WinningResult {
 
         val winningResult = WinningResult()
@@ -13,9 +14,7 @@ class Lottos(private val lottos: List<Lotto>) {
         return winningResult
     }
 
-    fun printWinnigResult(answer: Lotto, bonus: Int) {
-        matchLotto(answer, bonus).printWinnigResult()
+    fun printWinningResult(answer: Lotto, bonus: Int) {
+        matchLotto(answer, bonus).printWinningResult()
     }
-
-
 }

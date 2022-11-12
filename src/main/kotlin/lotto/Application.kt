@@ -3,18 +3,31 @@ package lotto
 import java.lang.IllegalArgumentException
 import java.lang.NullPointerException
 import java.lang.NumberFormatException
+import kotlin.math.round
 
 const val LOTTO_PRICE = 1000
 
 fun main() {
 
     val money = inputMoney()
-    /*val winningLotto = inputWinningLotto()
-    val bonus = inputBonusNum()*/
+    val winningLotto = inputWinningLotto()
+    val bonus = inputBonusNum()
 
     val lottoGenerate = LottoGenerate()
-    val lottos = lottoGenerate.createLottos(money / LOTTO_PRICE)
-    printLottos(money / LOTTO_PRICE, lottos)
+    val lotto = lottoGenerate.createLottos(money / LOTTO_PRICE)
+    printLottos(money / LOTTO_PRICE, lotto)
+    val lottos = Lottos(lotto)
+
+    val winningResult = lottos.matchLotto(winningLotto!!, bonus)
+    winningResult.printWinningResult()
+    countYield(winningResult, money)
+}
+
+fun countYield(winningResult: WinningResult, money : Int) {
+    val sum = winningResult.sumWinningPrize()
+    val avg = sum / money.toDouble()
+
+    println("총 수익률은 " + "%.1f".format(avg * 100)  + "%입니다.")
 }
 fun printLottos(count: Int, lottos : List<Lotto>) {
     println("${count}개를 구매했습니다.")

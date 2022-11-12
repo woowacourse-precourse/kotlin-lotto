@@ -18,12 +18,15 @@ class WinningResult {
         }
     }
 
-    fun printWinnigResult() {
+    fun printWinningResult() {
         println(LottoGrade.FIFTH.toString() + fifth + "개")
         println(LottoGrade.FOURTH.toString() + fourth + "개")
         println(LottoGrade.THIRD.toString() + third + "개")
         println(LottoGrade.SECOND.toString() + second + "개")
         println(LottoGrade.FIRST.toString() + first + "개")
     }
+
+    fun sumWinningPrize() : Int = LottoGrade.FIFTH.prize * fifth + LottoGrade.FOURTH.prize * fourth + LottoGrade.THIRD.prize * third +
+            LottoGrade.SECOND.prize * second + LottoGrade.FIRST.prize * first
 
 }
