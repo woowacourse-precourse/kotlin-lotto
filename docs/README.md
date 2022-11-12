@@ -40,6 +40,8 @@
    - 당첨 번호 입력 함수(getLotteryNumbers)
    - 랜덤 로또 생성 함수(getQuickPicks)
    - 보너스 번호 입력 함수(getBounsNumber)
+   - 수익 계산 함수(getIncomeRatio)
+   - 수익 출력 함수(printIncomeRatio)
 
 3. Enum 클래스들
    - 당첨 등급에 따른 금액 클래스(WinningAmonut)
