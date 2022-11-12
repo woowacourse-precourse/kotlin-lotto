@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms
 class LottoMachine {
 
     private var numberOfLotto: Int = 0
-    private lateinit var winningLotto: Lotto
     private var bonusNumber = 0
 
     fun start() {
@@ -21,10 +20,10 @@ class LottoMachine {
         View.printLottos(lottos)
 
         val winningNumberInput = View.getWinningNumber()
-        winningLotto = convertNumbersToLotto(winningNumberInput)
+        val winningLotto = convertNumbersToLotto(winningNumberInput)
 
         bonusNumber = View.getBonusNumber().toInt()
-        checkBonusNumberException(bonusNumber)
+        checkBonusNumberException(winningLotto, bonusNumber)
     }
 
     fun getNumberOfLottos(payment: String): Int {
@@ -52,7 +51,7 @@ class LottoMachine {
         TODO()
     }
 
-    fun checkBonusNumberException(number: Int) {
+    fun checkBonusNumberException(winningLotto: Lotto, number: Int) {
         if (number !in 1..45) {
             throw IllegalArgumentException("[ERROR] 로또 번호 범위(1~45)를 벗어났습니다.")
         }
