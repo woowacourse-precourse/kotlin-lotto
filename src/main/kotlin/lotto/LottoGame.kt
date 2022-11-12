@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 class LottoGame {
     private var money = Money(0)
     private val lottoList = mutableListOf<Lotto>()
+    private var winningNumber = Lotto(listOf(0,0,0,0,0,0))
 
     fun receiveMoney(money: String) {
         if (!money.all { Character.isDigit(it) })
@@ -30,6 +31,14 @@ class LottoGame {
         }
     }
 
-
+    fun receiveWinningNumber(number: String) {
+        val num = number.split(",")
+        val result = mutableListOf<Int>()
+        for (element in num) {
+            result.add(element.toInt())
+        }
+        // TODO:  num의 길이, 숫자인지여부, 중복 검사
+        winningNumber = Lotto(result)
+    }
 
 }

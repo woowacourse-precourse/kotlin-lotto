@@ -11,6 +11,7 @@ fun main() {
 
     lottoGame.printLotto()
 
-
+    println("당첨 번호를 입력해 주세요.")
+    lottoGame.receiveWinningNumber(Console.readLine())
 
 }
