@@ -20,6 +20,19 @@ object LottoConsole {
         return amount.toInt()
     }
 
+    fun printPurchaseResult(lottos: List<Lotto>) {
+        printPurchasedLottoCount(lottos.size)
+        printPurchasedLottos(lottos)
+    }
+
+    private fun printPurchasedLottoCount(lottoCount: Int) {
+        println(LOTTO_PURCHASE_LOTTO_COUNT_MESSAGE.format(lottoCount))
+    }
+
+    private fun printPurchasedLottos(lottos: List<Lotto>) {
+        lottos.forEach { lotto -> println(lotto) }
+    }
+
     private fun validatePurchaseAmount(amount: String) {
         validateIntType(amount)
         validatePositiveNumber(amount.toInt())
