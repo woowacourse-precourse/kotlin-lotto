@@ -13,4 +13,9 @@ object Message {
     fun showCountOfLotto(countOfLotto: Int) {
         println("${countOfLotto}개를 구매했습니다.")
     }
+    fun showPurchasedLottoNumbers(lottoNumbers: MutableList<List<Int>>) {
+        for (lottoNumber in lottoNumbers) {
+            println(lottoNumber.toString())
+        }
+    }
 }
