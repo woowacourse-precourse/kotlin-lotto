@@ -12,14 +12,14 @@ import java.util.stream.Stream
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ValidatorTest {
     @ParameterizedTest
-    @ValueSource(ints = [0, 100, 1500, 11500])
-    fun `invalid money check`(money:Int){
+    @ValueSource(strings = ["0", "100", "1500", "11500"])
+    fun `invalid money check`(money:String){
         assertFalse(InputValidator.validateMoney(money))
     }
 
     @ParameterizedTest
-    @ValueSource(ints = [1000, 2000, 5000, 100000])
-    fun `valid money check`(money:Int){
+    @ValueSource(strings = ["1000", "2000", "5000", "100000"])
+    fun `valid money check`(money:String){
         assertTrue(InputValidator.validateMoney(money))
     }
 
