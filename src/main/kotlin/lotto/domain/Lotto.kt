@@ -12,7 +12,7 @@ class Lotto(private val numbers: List<Int>) {
     fun compare(other: Lotto) = numbers.count { it in other }
 
     override fun toString(): String {
-        return numbers.toString()
+        return numbers.sorted().toString()
     }
 
     companion object {

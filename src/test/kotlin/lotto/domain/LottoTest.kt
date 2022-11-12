@@ -50,4 +50,11 @@ class LottoTest {
         assert(1 in lotto)
         assert(10 !in lotto)
     }
+
+    @Test
+    fun `로또 번호는 오름차순으로 출력된다`() {
+        val lotto = Lotto(listOf(9, 8, 7, 6, 5, 4))
+        val expect = "[4, 5, 6, 7, 8, 9]"
+        assert(lotto.toString() == expect)
+    }
 }
