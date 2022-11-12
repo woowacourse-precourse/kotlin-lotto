@@ -1,5 +1,6 @@
 package lotto
 
+import lotto.model.Lotto
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -21,4 +22,20 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+
+    val check = CheckException()
+
+    @Test
+    fun `입력 금액이 1000원 단위인지 확인`() {
+        assertThrows<IllegalArgumentException> {
+            check.checkMod("15500")
+        }
+    }
+
+    @Test
+    fun `입력 금액이 숫자 형태 인지 확인`() {
+        assertThrows<IllegalArgumentException> {
+            check.checkInt("1500")
+        }
+    }
 }
