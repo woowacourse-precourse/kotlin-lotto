@@ -1,6 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
+import kotlin.IllegalArgumentException
 
 lateinit var consumer: Consumer
 fun main() {
@@ -10,8 +11,13 @@ fun main() {
 
 private fun orderLotto() {
     val money = Console.readLine()
-    consumer = Consumer(money.toInt())
-    consumer.buyLotto()
+    try {
+        consumer = Consumer(money.toInt())
+        consumer.buyLotto()
+        println("${money.toInt()/1000}개를 구매했습니다.")
+    }catch (e : IllegalArgumentException){
+        print("[ERROR] "+ e.message)
+    }
 }
 
 private fun printConsumerLotto(){
@@ -19,5 +25,4 @@ private fun printConsumerLotto(){
         println(lottoCount)
     }
 }
-
 
