@@ -14,6 +14,18 @@ class Calculator {
             correctCount = 12 - set.count()
             set.add(bonus)
             isMatchedBonus = (correctCount == 12 - set.count())
+            saveRankToList(correctCount, isMatchedBonus)
+        }
+    }
+
+    private fun saveRankToList(correctCount: Int, isMatchedBonus: Boolean) {
+        when {
+            correctCount == 6 -> lottoResults.add(LottoResultState.FIRST)
+            correctCount == 5 && isMatchedBonus -> lottoResults.add(LottoResultState.SECOND)
+            correctCount == 5 -> lottoResults.add(LottoResultState.THIRD)
+            correctCount == 4 -> lottoResults.add(LottoResultState.FOURTH)
+            correctCount == 3 -> lottoResults.add(LottoResultState.FIFTH)
+            else -> lottoResults.add(LottoResultState.NONE)
         }
     }
 }
