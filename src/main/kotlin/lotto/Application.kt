@@ -30,17 +30,60 @@ fun main() {
 
     println("당첨 통계")
     println("---")
+    var intersectionOfWinning = listOf<Int>()
+    var intersectionOfBonus = listOf<Int>()
     for (i in 0 until numberOfPurchase) {
         val unionOfWinning = listOf(winningNumberList, purchasedNumberMap[i]).flatMap { it.orEmpty() }
-        val intersectionOfWinning = unionOfWinning
+        intersectionOfWinning = unionOfWinning
             .groupBy { it }
             .filter { it.value.size > 1 }
             .flatMap { it.value }
             .distinct()
 
         purchasedNumberMap[i]?.add(bonusNumber)
-        val intersectionOfBonus = purchasedNumberMap[i]?.filter { item ->
-            (purchasedNumberMap[i]?.count { it == item } ?: 0) > 1
-        }?.distinct()
+        intersectionOfBonus = purchasedNumberMap[i]!!
+            .groupBy { it }
+            .filter { it.value.size > 1 }
+            .flatMap { it.value }
+            .distinct()
     }
+    var winningAmount = 0
+    var three = 0
+    var four = 0
+    var five = 0
+    var fiveWithBonus = 0
+    var six = 0
+    when (intersectionOfWinning.size) {
+        3 -> {
+            winningAmount += 5000
+            three += 1
+        }
+
+        4 -> {
+            winningAmount += 50000
+            four += 1
+        }
+
+        5 -> {
+            if (intersectionOfBonus.size != 1) {
+                winningAmount += 1500000
+                five += 1
+            } else {
+                winningAmount += 30000000
+                fiveWithBonus += 1
+            }
+        }
+
+        6 -> {
+            winningAmount += 2000000000
+            six += 1
+        }
+    }
+    println(
+        "3개 일치 (5,000원) - ${three}개\n" +
+                "4개 일치 (50,000원) - ${four}개\n" +
+                "5개 일치 (1,500,000원) - ${five}개\n" +
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - ${fiveWithBonus}개\n" +
+                "6개 일치 (2,000,000,000원) - ${six}개"
+    )
 }
