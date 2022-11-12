@@ -4,13 +4,13 @@ import lotto.exceptions.DivisibleMoneyException
 
 val br = System.`in`.bufferedReader()
 
-fun readSpendMoney(): Int {
+fun readPaidMoney(): Int {
     return try {
-        val spendMoney = br.readLine().toInt()
-        if (spendMoney % 1000 != 0) {
+        val paidMoney = br.readLine().toInt()
+        if (paidMoney % 1000 != 0) {
             throw DivisibleMoneyException()
         }
-        spendMoney
+        paidMoney
     } catch (e: Exception) {
         when (e) {
             is DivisibleMoneyException -> {

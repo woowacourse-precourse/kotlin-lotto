@@ -1,25 +1,21 @@
 package lotto
 
-import lotto.util.ErrorType
-import lotto.util.printErrorMessage
-import lotto.util.readSpendMoney
+import lotto.util.readPaidMoney
 
 class LottoMarket(
-    val lottoFactory: LottoFactory,
+    private val lottoFactory: LottoFactory,
 ) {
-    private var spendMoney: Int? = null
-
-    fun askSpendMoney() {
+    private fun payMoney(): Int {
         println("로또 구입 금액을 입력해 주세요.")
-        spendMoney = readSpendMoney()
+        return readPaidMoney()
     }
 
     //로또 구입 금액만큼 로또 반환
-    fun getLottoCount(): Int {
-        spendMoney?.let {
-            return it / 1000
-        }
-        printErrorMessage(ErrorType.EMPTY_VALUE)
-        throw IllegalArgumentException()
+    private fun getLottoCount(paidMoney: Int): Int = paidMoney / 1000
+
+    fun buyLotties(): List<IntArray> {
+        val paidMoney = payMoney()
+        val lottoCount = getLottoCount(paidMoney)
+        return lottoFactory.makeLotties(lottoCount)
     }
 }
