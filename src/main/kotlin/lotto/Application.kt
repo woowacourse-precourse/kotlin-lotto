@@ -1,12 +1,13 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import camp.nextstep.edu.missionutils.Console.readLine
 fun main() {
-    val lottoNumbers = makeLotto()
-    val lotto = Lotto(lottoNumbers)
-    val bonusNumber = makeBonusNumber(lottoNumbers)
+    val display = Display()
+    val client = Client()
+    display.printRequirePurchaseAmount()
+    client.inputPurchaseAmount()
 
-    lotto.start(bonusNumber)
 }
 
 fun makeLotto(): List<Int> {
