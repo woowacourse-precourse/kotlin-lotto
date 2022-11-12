@@ -13,6 +13,11 @@ class ExceptionHandlerTest {
         const val WINNING_NUMBERS_HAS_NOT_ELEMENTS = "1,2,3,4,5"
         const val WINNING_NUMBERS_IS_NOT_CORRECT_RANGE = "1,2,3,4,56,6"
         const val WINNING_NUMBERS_IS_NOT_UNIQUE = "1,2,3,4,5,5"
+
+        val TEST_WINNING_NUMBER = listOf<String>("1", "2", "3", "4", "5", "6")
+        const val BONUS_NUMBER_IS_NOT_NUMBER = "a"
+        const val BONUS_NUMBER_IS_NOT_CORRECT_RANGE = "50"
+        const val BONUS_NUMBER_IS_NOT_UNIQUE = "6"
     }
 
     @Test
@@ -54,6 +59,27 @@ class ExceptionHandlerTest {
     fun `당첨번호 예외처리 - 중복이 있을 때`() {
         assertThrows<IllegalArgumentException> {
             ExceptionHandler.checkInputWinningNumbers(Companion.WINNING_NUMBERS_IS_NOT_UNIQUE)
+        }
+    }
+
+    @Test
+    fun `보너스 번호 예외처리 - 숫자가 아닐 때`() {
+        assertThrows<IllegalArgumentException> {
+            ExceptionHandler.checkInputBonusNumber(TEST_WINNING_NUMBER, BONUS_NUMBER_IS_NOT_NUMBER)
+        }
+    }
+
+    @Test
+    fun `보너스 번호 예외처리 - 로또 범위 내 숫자가 아닐 때`() {
+        assertThrows<IllegalArgumentException> {
+            ExceptionHandler.checkInputBonusNumber(TEST_WINNING_NUMBER, BONUS_NUMBER_IS_NOT_CORRECT_RANGE)
+        }
+    }
+
+    @Test
+    fun `보너스 번호 예외처리 - 당첨 번호와 중복이 있을 때`() {
+        assertThrows<IllegalArgumentException> {
+            ExceptionHandler.checkInputBonusNumber(TEST_WINNING_NUMBER, BONUS_NUMBER_IS_NOT_UNIQUE)
         }
     }
 }
