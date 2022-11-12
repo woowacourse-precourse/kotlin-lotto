@@ -6,8 +6,6 @@ import org.junit.jupiter.api.assertThrows
 @Suppress("NonASCIICharacters")
 class LottoPurchaserTest {
 
-    private val lottoPurchaser = LottoPurchaser()
-
     @Test
     fun `특정 금액을 로또 가격으로 나눈 수 만큼 로또를 구입한다`() {
         val inputs = listOf(
@@ -26,7 +24,8 @@ class LottoPurchaserTest {
         )
 
         for ((idx, cost) in inputs.withIndex()) {
-            val lottos = lottoPurchaser.purchaseLottos(cost)
+            val lottoPurchaser = LottoPurchaser(cost)
+            val lottos = lottoPurchaser.purchaseLottos()
             assert(lottos.size == expects[idx])
         }
     }
@@ -34,14 +33,16 @@ class LottoPurchaserTest {
     @Test
     fun `로또를 1개도 구매할 수 없는 경우 예외를 발생시킨다`() {
         assertThrows<IllegalArgumentException> {
-            lottoPurchaser.purchaseLottos(999)
+            val lottoPurchaser = LottoPurchaser(999)
+            lottoPurchaser.purchaseLottos()
         }
     }
 
     @Test
     fun `로또 가격으로 나누어 떨어지지 않는 경우 예외를 발생시킨다`() {
         assertThrows<IllegalArgumentException> {
-            lottoPurchaser.purchaseLottos(5500)
+            val lottoPurchaser = LottoPurchaser(5500)
+            lottoPurchaser.purchaseLottos()
         }
     }
 }
