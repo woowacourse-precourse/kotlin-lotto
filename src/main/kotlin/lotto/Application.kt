@@ -7,11 +7,8 @@ fun main() {
     val client = Client()
     display.printRequirePurchaseAmount()
     client.inputPurchaseAmount()
+    client.purchaseLotto()
 
-}
-
-fun makeLotto(): List<Int> {
-    return Randoms.pickUniqueNumbersInRange(1, 45, 6)
 }
 
 fun makeBonusNumber(lottoNumbers: List<Int>): Int {
