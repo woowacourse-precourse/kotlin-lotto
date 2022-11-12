@@ -1,17 +1,25 @@
 package lotto.util
 
+import lotto.exceptions.DivisibleNumberException
+
 val br = System.`in`.bufferedReader()
 
 fun readSpendMoney(): Int {
     return try {
         val spendMoney = br.readLine().toInt()
         if (spendMoney % 1000 != 0) {
-            printErrorMessage(ErrorType.CANNOT_DIVISIBLE_INPUT)
-            throw IllegalArgumentException()
+            throw DivisibleNumberException()
         }
         spendMoney
-    } catch (e: java.lang.Exception) {
-        printErrorMessage(ErrorType.WRONG_TYPE_INPUT)
+    } catch (e: Exception) {
+        when(e){
+            is DivisibleNumberException -> {
+                printErrorMessage(ErrorType.CANNOT_DIVISIBLE_INPUT)
+            }
+            else -> {
+                printErrorMessage(ErrorType.WRONG_TYPE_INPUT)
+            }
+        }
         throw IllegalArgumentException()
     }
 }
