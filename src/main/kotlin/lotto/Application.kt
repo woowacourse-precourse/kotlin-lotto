@@ -42,5 +42,7 @@ fun main() {
     println("\n당첨 번호를 입력해 주세요.")
     var answerNum = Console.readLine().split(",")
 
+    println("\n보너스 번호를 입력해 주세요.")
+    var bonusNum = Console.readLine().toInt()
 
 }
