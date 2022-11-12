@@ -33,4 +33,9 @@ class Lotto(private val numbers: List<Int>) {
 
     }
 
+    fun createBonusNumber(): String {
+        println("보너스 번호")
+        return readLine()!!
+    }
+
 }
