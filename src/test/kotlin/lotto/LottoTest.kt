@@ -37,6 +37,6 @@ class LottoTest {
         val bonusNumber = 7
         val count = lotto.compareWithWinningNumber(winningNum)
         val resultRank = lotto.determineRank(count, bonusNumber)
-        assertThat(resultRank).isEqualTo(Rank.Second.rank)
+        assertThat(resultRank).isEqualTo(Rank.Second)
     }
 }

@@ -13,4 +13,8 @@ class Money (money: Int){
     fun countLotto(): Int {
         return (money/1000)
     }
+
+    fun getMoney(): Int {
+        return money
+    }
 }

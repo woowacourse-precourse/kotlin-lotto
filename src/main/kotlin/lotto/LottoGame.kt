@@ -1,12 +1,15 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import kotlin.math.roundToLong
 
 class LottoGame {
     private var money = Money(0)
     private val lottoList = mutableListOf<Lotto>()
     private var winningNumber = listOf<Int>()
     private var bonusNumber = 0
+    val prizeResult = mutableListOf<Int>(0,0,0,0,0,0)
+    var totalEarnedMoney = 0.0
 
     fun receiveMoney(money: String) {
         if (!money.all { Character.isDigit(it) })
@@ -47,18 +50,37 @@ class LottoGame {
         bonusNumber = number.toInt()
     }
 
-    fun calculateResult(): MutableList<Int> {
-        val prizeResult = mutableListOf<Int>(0,0,0,0,0,0)
+    fun calculateResult(){
         for (lotto in lottoList) {
             val containNumberCount = lotto.compareWithWinningNumber(winningNumber)
-            val rank: Int = lotto.determineRank(containNumberCount, bonusNumber) as Int
-            prizeResult[rank]++
+            val rank = lotto.determineRank(containNumberCount, bonusNumber)
+            when (rank) {
+                Rank.First -> {
+                    prizeResult[1]++
+                    totalEarnedMoney += Rank.First.prizeMoney
+                }
+                Rank.Second -> {
+                    prizeResult[2]++
+                    totalEarnedMoney += Rank.Second.prizeMoney
+                }
+                Rank.Third -> {
+                    prizeResult[3]++
+                    totalEarnedMoney += Rank.Third.prizeMoney
+                }
+                Rank.Fourth -> {
+                    prizeResult[4]++
+                    totalEarnedMoney += Rank.Fourth.prizeMoney
+                }
+                Rank.Fifth -> {
+                    prizeResult[5]++
+                    totalEarnedMoney += Rank.Fifth.prizeMoney
+                }
+            }
         }
-        return prizeResult
     }
 
     fun printResult() {
-        val prizeResult = calculateResult()
+        calculateResult()
         println("3개 일치 (5,000원) - ${prizeResult[5]}개")
         println("4개 일치 (50,000원) - ${prizeResult[4]}개")
         println("5개 일치 (1,500,000원) - ${prizeResult[3]}개")
@@ -66,6 +88,9 @@ class LottoGame {
         println("6개 일치 (2,000,000,000원) - ${prizeResult[1]}개")
     }
 
-
+    fun calculateProfitPercentage(): Double {
+        val profit = (totalEarnedMoney / money.getMoney().toDouble())*1000
+        return (profit.roundToLong().toDouble()/10)
+    }
 
 }

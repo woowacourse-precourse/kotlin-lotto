@@ -20,6 +20,8 @@ fun main() {
     println("당첨 통계\n---")
     lottoGame.printResult()
 
+    val profit = lottoGame.calculateProfitPercentage()
+    print("총 수익률은 ${profit}%입니다.")
 
 
 }
