@@ -7,7 +7,7 @@ enum class Winning(private val money: Int, private var number: Int, private var 
     FIVEWITHBONUS(30000000, 0, 0),
     SIX(2000000000, 0, 0);
 
-    fun addAmountAndNumberOfMatches() {
+    fun calculate() {
         amount += money
         number += 1
     }

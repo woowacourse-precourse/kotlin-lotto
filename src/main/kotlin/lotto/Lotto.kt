@@ -11,7 +11,6 @@ class Lotto(private var numbers: List<Int>) {
     private var numberOfPurchase = 0
     private var winningNumber = ""
     private var bonusNumber = 0
-    private var winningAmount = 0
     private var matchedWinningNumbers = listOf<Int>()
     private var matchedBonusNumbers = listOf<Int>()
 
@@ -64,6 +63,13 @@ class Lotto(private var numbers: List<Int>) {
         println("당첨 통계")
         println("---")
 
+        compareNumbers()
+
+        printWinningHistory()
+        printProfitRate()
+    }
+
+    private fun compareNumbers() {
         val winningNumberList = winningNumber.split(",").toList().map { it.toInt() }
 
         for (i in 0 until numberOfPurchase) {
@@ -72,10 +78,24 @@ class Lotto(private var numbers: List<Int>) {
 
             issuedNumbers[i]?.add(bonusNumber)
             matchedBonusNumbers = matchedNumbers(issuedNumbers[i]!!.toList())
-        }
 
-        printWinningHistory()
-        printProfitRate()
+            calculateWinning()
+        }
+    }
+
+    private fun calculateWinning() {
+        when (matchedWinningNumbers.size) {
+            3 -> { Winning.THREE.calculate() }
+            4 -> { Winning.FOUR.calculate() }
+            5 -> {
+                if (matchedBonusNumbers.size != 1) {
+                    Winning.FIVE.calculate()
+                } else {
+                    Winning.FIVEWITHBONUS.calculate()
+                }
+            }
+            6 -> { Winning.SIX.calculate() }
+        }
     }
 
     private fun matchedNumbers(list: List<Int>): List<Int> {
@@ -86,19 +106,6 @@ class Lotto(private var numbers: List<Int>) {
     }
 
     private fun printWinningHistory() {
-        when (matchedWinningNumbers.size) {
-            3 -> { Winning.THREE.addAmountAndNumberOfMatches() }
-            4 -> { Winning.FOUR.addAmountAndNumberOfMatches() }
-            5 -> {
-                if (matchedBonusNumbers.size != 1) {
-                    Winning.FIVE.addAmountAndNumberOfMatches()
-                } else {
-                    Winning.FIVEWITHBONUS.addAmountAndNumberOfMatches()
-                }
-            }
-            6 -> { Winning.SIX.addAmountAndNumberOfMatches() }
-        }
-
         println(
             "3개 일치 (5,000원) - ${Winning.THREE.getNumberOfMatches()}개\n" +
                     "4개 일치 (50,000원) - ${Winning.FOUR.getNumberOfMatches()}개\n" +
