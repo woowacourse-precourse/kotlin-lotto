@@ -1,5 +1,7 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Console
+
 fun calculateYield(lottos: List<Lotto>, winNumber: List<Int>, bonusNumber: Int): Float {
     return 0f
 }
@@ -25,7 +27,13 @@ fun getInputWinNumber(): List<Int> {
 }
 
 fun getInputLottoMoney(): Int {
-    return 0
+    val input = Console.readLine()
+    val intInput = input.toIntOrNull() ?: throw IllegalArgumentException()
+
+    if (intInput % 1000 != 0)
+        throw IllegalArgumentException()
+
+    return intInput
 }
 
 fun main() {
