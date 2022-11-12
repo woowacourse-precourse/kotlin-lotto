@@ -1,6 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import kotlin.random.Random
 
 class Lotto(private val numbers: List<Int>) {
     init {
@@ -14,6 +15,7 @@ class Lotto(private val numbers: List<Int>) {
             val numberList = Randoms.pickUniqueNumbersInRange(1, 45, numbers.size)
             println(numberList.sorted())
         }
+
     }
 
     fun checkNumber() {
@@ -23,6 +25,11 @@ class Lotto(private val numbers: List<Int>) {
                 else -> throw IllegalArgumentException("[Error] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
             }
         }
+    }
+
+    fun createWinningNumber(): List<Int> {
+        val winningNumber = Randoms.pickUniqueNumbersInRange(1,45, 6)
+        return winningNumber.sorted()
     }
 
 }
