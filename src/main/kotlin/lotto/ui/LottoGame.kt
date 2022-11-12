@@ -4,8 +4,6 @@ import lotto.domain.Lotto
 import lotto.domain.LottoPurchaser
 import lotto.domain.LottoResult
 import lotto.domain.WinningNumber
-import lotto.util.readNumber
-import lotto.util.readNumbers
 
 class LottoGame {
     fun start() {
