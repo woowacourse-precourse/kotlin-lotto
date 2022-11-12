@@ -1,6 +1,6 @@
 package lotto
 
-class Printer {
+object Printer {
     fun printAmountMessage() {
         println("구입금액을 입력해 주세요.")
     }
@@ -37,13 +37,13 @@ class Printer {
         )
     }
 
-    fun printYield(yieldPercentage: String){
+    fun printYield(yieldPercentage: String) {
         println("총 수익률은 ${yieldPercentage}%입니다.")
     }
 
-    companion object {
-        fun printError(errorMessage: String) {
-            println("[ERROR] $errorMessage")
-        }
+
+    fun printError(errorMessage: String) {
+        println("[ERROR] $errorMessage")
     }
+
 }

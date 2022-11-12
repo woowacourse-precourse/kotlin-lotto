@@ -1,11 +1,11 @@
 package lotto
 
 class Lottery(
-    private val computer: Computer,
-    private val calculator: Calculator,
-    private val buyer: Buyer,
-    private val printer: Printer
+    private val computer: Computer
 ) {
+    private val buyer = Buyer
+    private val calculator = Calculator
+    private val printer = Printer
     private var amount: Int = 0
 
     fun start() {

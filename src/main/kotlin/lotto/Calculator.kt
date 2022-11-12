@@ -1,6 +1,6 @@
 package lotto
 
-class Calculator {
+object Calculator {
     var lottoResults = mutableListOf<LottoResultState>()
 
     fun getLottoCount(amount: Int) = amount / ONE_THOUSAND

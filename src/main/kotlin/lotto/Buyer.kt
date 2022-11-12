@@ -2,7 +2,7 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console.readLine
 
-class Buyer {
+object Buyer {
     var winningNumbers = listOf<Int>()
     var bonusNumber = 0
 
