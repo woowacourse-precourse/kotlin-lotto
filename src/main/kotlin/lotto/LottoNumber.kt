@@ -7,5 +7,5 @@ class LottoNumber(private val lottoNumber: Int) {
     }
 
     private fun isValidNumberRange(): Boolean =
-            lottoNumber in 1 until 46
+        lottoNumber in 1 until 46
 }
