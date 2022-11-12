@@ -6,7 +6,7 @@ import data.Price
 
 class Lottery {
     val winningCounter: HashMap<String, Int> = hashMapOf()
-    val lotteryNumbers: MutableList<Int> = mutableListOf()
+    lateinit var lotteryNumbers: Lotto
     val quickPicks: MutableList<Lotto> = mutableListOf()
     var bonusNumber: Int = 0
     var purchase: Int = 0
@@ -35,7 +35,10 @@ class Lottery {
     }
 
     fun getLotteryNumbers() {
-        TODO("당첨 번호 입력 함수")
+        println("당첨 번호를 입력해 주세요.")
+        val lotteryNumbers = readLine().split(",").map { it.toInt() }
+
+        this.lotteryNumbers = Lotto(lotteryNumbers)
     }
 
     fun getQuickPicks() {
