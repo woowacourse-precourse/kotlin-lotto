@@ -6,4 +6,5 @@ enum class LottoRank {
     THIRD,
     FOURTH,
     FIFTH,
+    FAIL,
 }
