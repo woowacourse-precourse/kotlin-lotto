@@ -2,6 +2,7 @@ package lotto
 
 class InputVerifier {
     var isBetween1And45 = true
+
     fun validateAmountOfPurchase(amountOfPurchase: Int) {
         if (amountOfPurchase % 1000 != 0) {
             throw IllegalArgumentException("[ERROR] 구입 금액은 1,000원으로 나누어 떨어져야 합니다.")
@@ -20,9 +21,6 @@ class InputVerifier {
         if (validateCount(winningNumberList)) {
             throw IllegalArgumentException("[ERROR] 당첨 번호는 6개여야 합니다.")
         }
-//        if (validateComma(winningNumber)) {
-//            throw IllegalArgumentException("[ERROR] 당첨 번호에 쉼표와 숫자 이외의 문자가 입력되지 않아야 합니다.")
-//        }
     }
 
     fun validateBonusNumber(bonusNumber: Int) {
