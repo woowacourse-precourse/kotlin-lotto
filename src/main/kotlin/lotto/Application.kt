@@ -5,6 +5,8 @@ fun main() {
     val lottoNumbers = makeLotto()
     val lotto = Lotto(lottoNumbers)
     val bonusNumber = makeBonusNumber(lottoNumbers)
+
+    lotto.start(bonusNumber)
 }
 
 fun makeLotto(): List<Int> {
