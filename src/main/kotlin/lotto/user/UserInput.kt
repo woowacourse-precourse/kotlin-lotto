@@ -9,37 +9,56 @@ fun inputUser(): String {
     return userInputMoney.toString()
 }
 
-fun inputUserNumber(): String {
+fun inputUserMoney(): String {
     val userInputNumber=inputUser()
     checkMoneyStandard(userInputNumber)
+    println(userInputNumber.replace("000", ""))
     return userInputNumber.replace("000", "")
 }
 fun checkMoneyStandard(userInputNumber: String?) {
     userInputNumber ?: throw IllegalArgumentException()
     val checkMoney= userInputNumber.split(",").toList() as MutableList<String>
     checkInputMessagePatten(checkMoney)
-    if(userInputNumber.toInt()%1000 !=0) throw IllegalArgumentException()
+     try {
+        userInputNumber.toInt()%1000 !=0
+    }catch (e:IllegalArgumentException){
+        println("[ERROR]$e")
+    }
+
 }
 fun inputUserLotto(): String {
     val userInputNumber=inputUser()
     checkLottoStandard(userInputNumber)
+    println(userInputNumber)
     return userInputNumber
 }
 fun checkLottoStandard(userInputNumber: String?) {
     userInputNumber ?: throw IllegalArgumentException()
     val checkLotto= userInputNumber.split(",").toList() as MutableList<String>
-    for (i in checkLotto)
-        if(i.toInt()>=46) throw IllegalArgumentException()
-    checkInputMessagePatten(checkLotto)
-    println(checkLotto.size)
-    if(checkLotto.size !=6)throw IllegalArgumentException()
+    for (i in checkLotto){
+        try {
+            i.toInt()>=46
 
+        }catch  (e:IllegalArgumentException){
+            println("[ERROR]")
+        }
+    }
+    checkInputMessagePatten(checkLotto)
+    try {
+        checkLotto.size !=6
+    }catch (e:IllegalArgumentException){
+        println("[ERROR]")
+    }
 }
 fun checkInputMessagePatten( checkOverlap: MutableList<String>) {
     val regax="^[0-9]*$"
     val pattern: Pattern = Pattern.compile(regax)
     for (inputNum in checkOverlap) {
         val matcher: Matcher = pattern.matcher(inputNum)
-        if (matcher.find().toString() == "false") throw IllegalArgumentException()
+        try {
+            matcher.find().toString() == "false"
+        }catch (e:IllegalArgumentException){
+            println("[ERROR]")
+        }
     }
 }
