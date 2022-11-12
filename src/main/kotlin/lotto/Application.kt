@@ -41,8 +41,16 @@ fun main() {
 
     println("\n당첨 번호를 입력해 주세요.")
     var answerNum = Console.readLine().split(",")
+    answerNum.forEach {
+        if (it.toInt() < 1 || it.toInt() > 45) {
+            throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+        }
+    }
 
     println("\n보너스 번호를 입력해 주세요.")
     var bonusNum = Console.readLine().toInt()
+    if (bonusNum < 1 || bonusNum > 45) {
+        throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+    }
 
 }
