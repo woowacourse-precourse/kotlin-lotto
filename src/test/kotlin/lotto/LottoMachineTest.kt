@@ -28,4 +28,47 @@ class LottoMachineTest {
         }
     }
 
+    @Test
+    fun `당첨 번호 입력 형식이 아닐 때 예외 발생`() {
+        assertThrows<IllegalArgumentException> {
+            lottoMachine.convertNumbersToLotto("1 2 3 4 5 6")
+        }
+    }
+
+    @Test
+    fun `당첨 번호가 6개가 아니면 예외 발생`() {
+        assertThrows<IllegalArgumentException> {
+            lottoMachine.convertNumbersToLotto("1,2,3,4,5")
+        }
+    }
+
+    @Test
+    fun `당첨 번호가 숫자가 아니면 예외 발생`() {
+        assertThrows<IllegalArgumentException> {
+            lottoMachine.convertNumbersToLotto("1,2,a,b,5,6")
+        }
+        assertThrows<IllegalArgumentException> {
+            lottoMachine.convertNumbersToLotto("!,2,3,4,5,6")
+        }
+    }
+
+    @Test
+    fun `당첨 번호 중 1~45 범위를 벗어나는 수가 있으면 예외 발생`() {
+        assertThrows<IllegalArgumentException> {
+            lottoMachine.convertNumbersToLotto("100,2,3,4,5,6")
+        }
+    }
+
+    @Test
+    fun `당첨 번호에 중복된 숫자가 있으면 예외 발생`() {
+        assertThrows<IllegalArgumentException> {
+            lottoMachine.convertNumbersToLotto("1,2,4,4,5,5")
+        }
+    }
+
+    @Test
+    fun `당첨 번호 정렬 확인`() {
+        assertThat(lottoMachine.convertNumbersToLotto("3,4,2,6,1,5").getNumbers()).isEqualTo(listOf(1, 2, 3, 4, 5, 6))
+    }
+
 }
