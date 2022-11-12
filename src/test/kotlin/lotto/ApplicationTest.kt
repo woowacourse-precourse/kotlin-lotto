@@ -49,7 +49,20 @@ class ApplicationTest : NsTest() {
             assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
-
+    @Test
+    fun `예외 테스트2`() {
+        assertSimpleTest {
+            runException("100q")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+    @Test
+    fun `예외 테스트3`() {
+        assertSimpleTest {
+            runException("1001")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
     override fun runMain() {
         main()
     }
