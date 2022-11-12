@@ -23,7 +23,21 @@ class LottoTest {
         listOf(16, 4, 3, 2, 1, 7), // 4개 일치 + 보너스 일치
 
     )
-
+    private val lottoGrades = listOf(
+        1,
+        2,
+        3,
+        4,
+        5,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        5,
+        4
+    )
     private val sameLottoNumbersResult = listOf(
         Pair(6, false),
         Pair(5, true),
@@ -55,11 +69,30 @@ class LottoTest {
         }
     }
 
+    @Test
+    fun `로또 등수 출력`() {
+        sameLottoNumbersResult.forEachIndexed { idx, result ->
+            assertThat(parseResultToGrade(result)).isEqualTo(lottoGrades[idx])
+        }
+    }
 
     @Test
     fun `일치하는 로또 번호 개수 확인`() {
         lotties.forEachIndexed { idx, lotto ->
             assertThat(getSameCount(winLotto, lotto)).isEqualTo(sameLottoNumbersResult[idx])
+        }
+    }
+
+    private fun parseResultToGrade(result: Pair<Int, Boolean>): Int {
+        return when (result.first) {
+            3 -> 5
+            4 -> 4
+            5 -> {
+                if (result.second) 2
+                else 3
+            }
+            6 -> 1
+            else -> 0
         }
     }
 
