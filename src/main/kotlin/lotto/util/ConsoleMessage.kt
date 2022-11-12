@@ -1,5 +1,7 @@
 package lotto.util
 
+import lotto.domain.Lotto
+
 class ConsoleMessage {
     companion object {
         fun machine() = println("구입 금액을 입력해 주세요.")
@@ -10,8 +12,6 @@ class ConsoleMessage {
 
         fun bonus() = println("\n보너스 번호를 입력해 주세요.")
 
-        fun lottoNumber(numbers: List<Int>) = println(numbers)
-
         fun winningHistory(ranks: List<Int>) {
             println("\n당첨 통계")
             println("---")
@@ -21,5 +21,9 @@ class ConsoleMessage {
         }
 
         fun earningRate(rate: Double) = println("총 수익률은 $rate%입니다.")
+
+        fun lotteryNumbers(lottery: List<Lotto>) = lottery.forEach {
+            println(it.getLottoNumber())
+        }
     }
 }
