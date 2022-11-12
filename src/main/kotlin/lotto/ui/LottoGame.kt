@@ -6,6 +6,9 @@ import lotto.domain.LottoResult
 import lotto.domain.WinningNumber
 
 class LottoGame {
+
+    private val inputReader = InputReader()
+
     fun start() {
         try {
             startUtil()
@@ -32,7 +35,7 @@ class LottoGame {
 
     private fun readCost(): Int {
         println(REQUEST_MONEY)
-        return readNumber()
+        return inputReader.readNumber()
     }
 
     private fun printLottoInfo(lottos: List<Lotto>) {
@@ -43,13 +46,13 @@ class LottoGame {
 
     private fun readWinLotto(): Lotto {
         println(REQUEST_WINNING_NUMBER)
-        val winNumbers = readNumbers()
+        val winNumbers = inputReader.readNumbers()
         return Lotto(winNumbers)
     }
 
     private fun readBonusNumber(): Int {
         println(REQUEST_BONUS)
-        return readNumber()
+        return inputReader.readNumber()
     }
 
     private fun printResultInfo(lottoResultFormatter: LottoResultFormatter) {
