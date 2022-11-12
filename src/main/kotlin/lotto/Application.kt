@@ -57,7 +57,7 @@ private fun getWinningNumber(winningNumber : MutableList<Int>){
 
     val input = readLine()!!
 
-    if(!Pattern.matches("^[1-9]*,[1-9]*,[1-9]*,[1-9]*,[1-9]*,[1-9]*\$", input)) {
+    if(!Pattern.matches("^[0-9]*,[0-9]*,[0-9]*,[0-9]*,[0-9]*,[0-9]*\$", input)) {
         throw IllegalArgumentException("[ERROR] 공백 없이 입력해 주세요.")
     }
 
@@ -104,7 +104,7 @@ private fun getBonusNumber(winningNumber: MutableList<Int>) : Int {
 
     val input = readLine()!!
 
-    if(!Pattern.matches("^[1-9]*$", input)
+    if(!Pattern.matches("^[0-9]*$", input)
         || input.toInt() < 1 || input.toInt() > 45
         || winningNumber.contains(input.toInt())){
         throw IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.")
@@ -149,7 +149,9 @@ private fun getEarningRate(sell : Int, winningResult: HashMap<String, Int>) : Do
     }
 
     // 수익률
-     return roundDigit(((earn / (sell * amount)) * 100).toDouble(), 2)
+    var a = ((earn.toFloat() / (sell * amount).toFloat()) * 100)
+    print("수입: ${earn}, 구입액: ${sell * amount}, 수익: ${earn/(sell*amount)} 수익률: $a")
+    return a.toDouble()
 }
 
 private fun getEarnedMoney(grade: String) : Int {
@@ -162,7 +164,7 @@ private fun getEarnedMoney(grade: String) : Int {
         "sixWin" -> money = 2000000000
         "fiveWithBonusWin" -> money = 30000000
     }
-    // 데이터베이스 리팩토링 필요
+    // ENUM 리팩토링 필요
 
     return money
 }
