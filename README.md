@@ -230,5 +230,5 @@ class Lotto(private val numbers: List<Int>) {
  - [X] 사용자가 구매한 로또 번호와 당첨 번호를 비교한다. #compareNumbers()
    - [X] 몇 개의 숫자가 같은지 비교한다.
    - [X] 당첨 내역을 출력한다.
- - [ ] 수익률을 계산한다. #calculateProfitRate()
-   - [ ] 수익률을 출력한다. (소수점 둘째자리 반올림)
+ - [X] 수익률을 계산한다. #calculateProfitRate()
+   - [X] 수익률을 출력한다. (소수점 둘째자리 반올림)
