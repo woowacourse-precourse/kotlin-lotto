@@ -23,6 +23,10 @@ class Lotto(private val numbers: List<Int>) {
         if (numbers.contains(bonusNumber) && match == Constant.FIVE_MATCH) {
             return Constant.SECOND
         }
+        return getRank(match)
+    }
+
+    private fun getRank(match: Int): Int {
         return when (match) {
             Constant.THREE_MATCH -> Constant.FIFTH
             Constant.FOUR_MATCH -> Constant.FOURTH
