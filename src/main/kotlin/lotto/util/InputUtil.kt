@@ -12,15 +12,32 @@ fun readPaidMoney(): Int {
         }
         paidMoney
     } catch (e: Exception) {
-        when (e) {
-            is DivisibleMoneyException -> {
-                printErrorMessage(ErrorType.CANNOT_DIVISIBLE_MONEY)
-            }
-            else -> {
-                printErrorMessage(ErrorType.WRONG_TYPE_INPUT)
-            }
-        }
+        mappingException(e)
         throw IllegalArgumentException()
+    }
+}
+
+fun readWinLottoNumbers(): List<Int> {
+    return try {
+        val winLottoNumbers = br.readLine().split(',').map { it.toInt() }
+        winLottoNumbers
+    }catch (e: Exception){
+        mappingException(e)
+        throw IllegalArgumentException()
+    }
+}
+
+private fun mappingException(e: Exception){
+    when (e) {
+        is DivisibleMoneyException -> {
+            printErrorMessage(ErrorType.CANNOT_DIVISIBLE_MONEY)
+        }
+        is NumberFormatException -> {
+            printErrorMessage(ErrorType.WRONG_TYPE_INPUT)
+        }
+        else -> {
+            printErrorMessage(ErrorType.WRONG_VALUE)
+        }
     }
 }
 
