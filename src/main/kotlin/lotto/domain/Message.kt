@@ -1,4 +1,4 @@
-package lotto
+package lotto.domain
 
 object Message {
     fun showInputPurchasingAmount() {
@@ -9,5 +9,8 @@ object Message {
     }
     fun showInputBonusNumber() {
         println("보너스 번호를 입력해 주세요.")
+    }
+    fun showCountOfLotto(countOfLotto: Int) {
+        println("${countOfLotto}개를 구매했습니다.")
     }
 }
