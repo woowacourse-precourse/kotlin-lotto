@@ -9,4 +9,5 @@ class Lotto(private val numbers: List<Int>) {
         return numbers
     }
 
+
 }
