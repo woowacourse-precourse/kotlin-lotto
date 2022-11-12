@@ -10,4 +10,20 @@ class InputView {
         Money(money)
         return money.toInt()
     }
+
+    fun inputWinningNumber(): List<Int> {
+        val winningNumbers = Console.readLine()
+            .split(",")
+            .map { number ->
+                number.toInt()
+            }
+        checkWinningNumbers(winningNumbers)
+        return winningNumbers
+    }
+    
+    private fun checkWinningNumbers(winningNumbers: List<Int>) {
+        winningNumbers.map { number ->
+            LottoNumber(number)
+        }
+    }
 }
