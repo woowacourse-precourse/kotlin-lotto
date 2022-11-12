@@ -2,6 +2,7 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import kotlin.math.round
 
 fun main() {
     val inputVerifier = InputVerifier()
@@ -86,4 +87,6 @@ fun main() {
                 "5개 일치, 보너스 볼 일치 (30,000,000원) - ${fiveWithBonus}개\n" +
                 "6개 일치 (2,000,000,000원) - ${six}개"
     )
+    val profit = (winningAmount.toDouble() / amountOfPurchase.toDouble()) * 100
+    println("총 수익률은 ${round(profit * 10) / 10}%입니다.")
 }
