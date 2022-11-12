@@ -2,6 +2,7 @@ package lottery
 
 import lotto.Lotto
 import camp.nextstep.edu.missionutils.Console.readLine
+import data.NumberRange
 import data.Price
 
 class Lottery {
@@ -27,11 +28,15 @@ class Lottery {
 
     fun getAmount() {
         println("구입 금액을 입력해주세요.")
-        val purchase = readLine().toInt()
-        if (purchase % Price.STANDARD.price != 0) {
-            throw IllegalArgumentException("${Price.STANDARD.price}원 단위로 입력하세요.")
+        try {
+            val purchase = readLine().toInt()
+            if (purchase % Price.STANDARD.price != 0)
+                throw IllegalArgumentException("[ERROR] ${Price.STANDARD.price}원 단위로 입력하세요.")
+            this.purchase = purchase
+        } catch (e: IllegalArgumentException) {
+            throw IllegalArgumentException("[ERROR] 숫자만 입력하세요")
         }
-        this.purchase = purchase
+
     }
 
     fun getLotteryNumbers() {
@@ -46,6 +51,18 @@ class Lottery {
     }
 
     fun getBonusNumber() {
-        TODO("보너스 번호 입력 함수")
+        println("보너스 번호를 입력해 주세요.")
+        try {
+            val bonusNumber = readLine().toInt()
+            if (bonusNumber !in NumberRange.START.number..NumberRange.END.number) {
+                throw IllegalArgumentException(
+                    "[ERROR] ${NumberRange.START.number}와 ${NumberRange.END.number} 사이 숫자를 입력하세요.")
+            }
+            this.bonusNumber = bonusNumber
+        } catch (e: IllegalArgumentException) {
+            throw IllegalArgumentException("[ERROR] 숫자만 입력하세요.")
+        }
+
     }
+
 }
