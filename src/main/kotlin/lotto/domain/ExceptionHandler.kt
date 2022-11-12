@@ -3,6 +3,7 @@ package lotto.domain
 object ExceptionHandler {
     private const val PURCHASING_AMOUNT_EXCEPTION_MESSAGE = "[ERROR] 구입금액이 올바르지 않습니다."
     private const val WINNING_NUMBERS_EXCEPTION_MESSAGE = "[ERROR] 당첨번호가 올바르지 않습니다."
+    private const val BONUS_NUMBER_EXCEPTION_MESSAGE = "[ERROR] 보너스 번호가 올바르지 않습니다."
 
     /**
      * 구입 금액 예외 처리
@@ -87,6 +88,45 @@ object ExceptionHandler {
                 .distinct()
                 .count()
         ) {
+            return false
+        }
+        return true
+    }
+
+    /**
+     * 보너스 번호 예외처리
+     *
+     * 1. 숫자가 아닐 때
+     *
+     * 2. 로또 범위 내 숫자가 아닐 때
+     *
+     * 3. 당첨 번호와 중복일 때
+     * */
+    fun checkInputBonusNumber(winningNumbers: List<String>, bonusNumber: String) {
+        if (!isNumberOfBonusNumber(bonusNumber)
+            or !isCorrectRangeOfBonusNumber(bonusNumber)
+            or !isUniqueOfBonusNumber(winningNumbers, bonusNumber)
+        ) {
+            throw IllegalArgumentException(BONUS_NUMBER_EXCEPTION_MESSAGE)
+        }
+    }
+
+    private fun isNumberOfBonusNumber(bonusNumber: String): Boolean {
+        if (!bonusNumber.all { it.isDigit() }) {
+            return false
+        }
+        return true
+    }
+
+    private fun isCorrectRangeOfBonusNumber(bonusNumber: String): Boolean {
+        if (bonusNumber.toInt() !in 1..45) {
+            return false
+        }
+        return true
+    }
+
+    private fun isUniqueOfBonusNumber(winningNumbers: List<String>, bonusNumber: String): Boolean {
+        if(winningNumbers.contains(bonusNumber)) {
             return false
         }
         return true
