@@ -23,7 +23,7 @@ fun isSatisfyPriceConditions(string: String) =
 
 fun printEnterPriceMessage() = print("구매금액을 입력해주세요.\n")
 
-fun getPurchasePrice(): Int {
+fun enterPurchasePrice(): Int {
     val purchasePrice = Console.readLine()
 
     return if (isSatisfyPriceConditions(purchasePrice)) purchasePrice.toInt()
@@ -32,6 +32,11 @@ fun getPurchasePrice(): Int {
 
 fun printLottoPurchaseCountMessage(price: Int) = print("${price/1000}개를 구매했습니다.")
 
+fun purchaseLotto() {
+    printEnterPriceMessage()
+    val price = enterPurchasePrice()
+    printLottoPurchaseCountMessage(price)
+}
 
 
 
