@@ -11,8 +11,8 @@ object Buyer {
         input.apply {
             checkIsBlank(this)
             checkIsNumber(this)
-            checkCanDivide(this)
             checkIsRightRange(this)
+            checkCanDivide(this)
         }
         return input.toInt()
     }
@@ -57,8 +57,8 @@ object Buyer {
     }
 
     private fun checkIsRightRange(input: String) {
-        if (input.toLong() > Int.MAX_VALUE || input.toLong() <= ZERO) {
-            Lottery.printAndThrowException(MAX_AMOUNT)
+        if (input.toLong() > Int.MAX_VALUE || input.toLong() < ONE_THOUSAND) {
+            Lottery.printAndThrowException(WRONG_RANGE_AMOUNT)
         }
     }
 
@@ -73,13 +73,13 @@ object Buyer {
         input.split(",").forEach {
             checkIsIn1To45(it.toInt())
             if (it[0] == '0')
-                Lottery.printAndThrowException(WRONG_RANGE)
+                Lottery.printAndThrowException(WRONG_RANGE_NUMBER)
         }
     }
 
     private fun checkIsIn1To45(num: Int) {
         if (num !in (1..45))
-            Lottery.printAndThrowException(WRONG_RANGE)
+            Lottery.printAndThrowException(WRONG_RANGE_NUMBER)
     }
 
     private fun checkDuplicate(input: String) {
