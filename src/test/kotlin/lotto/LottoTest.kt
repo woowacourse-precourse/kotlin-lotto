@@ -1,8 +1,10 @@
 package lotto
 
+import lotto.domain.Lotto
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
-
+import camp.nextstep.edu.missionutils.Randoms
 
 class LottoTest {
     @Test
@@ -21,4 +23,18 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+
+    @Test
+    fun `랜덤으로 숫자 6개 생성해 로또 생성`() {
+        var lottoNum: MutableList<Int>
+        while (true) {
+            val nums = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+            if (nums.distinct().size == 6) {
+                lottoNum = nums
+                break
+            }
+        }
+        lottoNum.sort()
+        assertDoesNotThrow { Lotto(lottoNum) }
+    }
 }
