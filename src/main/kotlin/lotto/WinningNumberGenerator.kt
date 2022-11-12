@@ -5,7 +5,7 @@ import lotto.InputValidator.validateBonusNumber
 import lotto.InputValidator.validateWinningNumber
 
 object WinningNumberGenerator {
-    lateinit var generatedWinningNumber: Array<Int>
+    lateinit var generatedWinningNumber: List<Int>
         private set
 
     fun generateWinningNumber() {
@@ -14,7 +14,7 @@ object WinningNumberGenerator {
         if (!validateWinningNumber(winningNumber)) {
             throw java.lang.IllegalArgumentException("[ERROR]")
         }
-        generatedWinningNumber = winningNumber.map { it.toInt() }.toTypedArray()
+        generatedWinningNumber = winningNumber.map { it.toInt() }
     }
 
     val generatedBonusNumber: Int by lazy{

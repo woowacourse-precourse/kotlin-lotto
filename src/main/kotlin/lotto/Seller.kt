@@ -7,13 +7,9 @@ class Seller(
     override fun sellLotto(receivedMoney: Int, lottoPrice:Int): List<Lotto> {
         val generatedLotto = ArrayList<Lotto>()
 
-        repeat(receivedMoney / LOTTO_PRICE) {
+        repeat(receivedMoney / lottoPrice) {
             generatedLotto.add(machine.generateLotto())
         }
         return generatedLotto.toList()
     }
-
-
-
-
 }

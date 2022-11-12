@@ -15,7 +15,7 @@ object InputValidator {
         return isValid
     }
 
-    fun validateBonusNumber(bonusNumber: String, winningNumber: Array<Int>): Boolean {
+    fun validateBonusNumber(bonusNumber: String, winningNumber: List<Int>): Boolean {
         var isValid = true
 
         when {

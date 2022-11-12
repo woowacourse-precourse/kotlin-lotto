@@ -1,12 +1,10 @@
 package lotto
 
-import lotto.InputValidator
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
-import org.junit.jupiter.params.provider.CsvSource
 import org.junit.jupiter.params.provider.MethodSource
 import org.junit.jupiter.params.provider.ValueSource
 import java.util.stream.Stream
@@ -59,33 +57,33 @@ class ValidatorTest {
 
     @ParameterizedTest
     @MethodSource("generateInvalidBonusNumber")
-    fun `invalid bonus number check`(bonusNumber: String, winningNumber:List<String>){
+    fun `invalid bonus number check`(bonusNumber: String, winningNumber:List<Int>){
         assertFalse(InputValidator.validateBonusNumber(bonusNumber, winningNumber))
     }
 
     @ParameterizedTest
     @MethodSource("generateValidBonusNumber")
-    fun `valid bonus number check`(bonusNumber: String, winningNumber:List<String>){
+    fun `valid bonus number check`(bonusNumber: String, winningNumber:List<Int>){
         assertTrue(InputValidator.validateBonusNumber(bonusNumber, winningNumber))
     }
 
     private fun generateInvalidBonusNumber(): Stream<Arguments> {
         return Stream.of(
-            Arguments.of("1", listOf("1", "2", "3", "4", "5", "8")),
-            Arguments.of("r", listOf("1", "2", "3", "4", "5", "8")),
-            Arguments.of("0", listOf("1", "2", "3", "4", "5", "8")),
-            Arguments.of("46", listOf("1", "2", "3", "4", "5", "8")),
-            Arguments.of("8", listOf("1", "2", "3", "4", "5", "8")),
+            Arguments.of("1", listOf(1, 2, 3, 4, 5, 8)),
+            Arguments.of("r", listOf(1, 2, 3, 4, 5, 8)),
+            Arguments.of("0", listOf(1, 2, 3, 4, 5, 8)),
+            Arguments.of("46", listOf(1, 2, 3, 4, 5, 8)),
+            Arguments.of("8", listOf(1, 2, 3, 4, 5, 8)),
         )
     }
 
     private fun generateValidBonusNumber(): Stream<Arguments> {
         return Stream.of(
-            Arguments.of("45", listOf("1", "2", "3", "4", "5", "8")),
-            Arguments.of("9", listOf("1", "2", "3", "4", "5", "8")),
-            Arguments.of("6", listOf("1", "2", "3", "4", "5", "8")),
-            Arguments.of("7", listOf("1", "2", "3", "4", "5", "8")),
-            Arguments.of("23", listOf("1", "2", "3", "4", "5", "8")),
+            Arguments.of("45", listOf(1, 2, 3, 4, 5, 8)),
+            Arguments.of("9", listOf(1, 2, 3, 4, 5, 8)),
+            Arguments.of("6", listOf(1, 2, 3, 4, 5, 8)),
+            Arguments.of("7", listOf(1, 2, 3, 4, 5, 8)),
+            Arguments.of("23", listOf(1, 2, 3, 4, 5, 8)),
         )
     }
 }
