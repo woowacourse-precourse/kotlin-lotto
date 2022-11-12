@@ -13,7 +13,7 @@ class LottoResultFormatter(private val lottoResult: LottoResult) {
                 continue
             }
             val rankInfo = getRankInfo(rank)
-            val rankCnt = rankToCnt[rank]!!
+            val rankCnt = rankToCnt[rank] ?: 0
             stats.add(
                 STAT_INFO_FORMAT.format(rankInfo, rankCnt)
             )
