@@ -9,21 +9,26 @@ class Lotto(private val numbers: List<Int>) {
         return numbers
     }
 
-    fun compareWithWinningNumber(winningNumber: List<Int>, bonusNumber: Int): Int {
+    fun compareWithWinningNumber(winningNumber: List<Int>): Int {
         var count = 0
         for (i in winningNumber) {
             if (numbers.contains(i))
                 count++
         }
+        return count
+    }
+
+    fun determineRank(count : Int, bonusNumber: Int): Any {
         when (count) {
-            6 -> return 1
+            6 -> return Rank.First
             5 -> {
-                if (numbers.contains(bonusNumber)) return 2
-                return 3
+                if (numbers.contains(bonusNumber))
+                    return Rank.Second
+                return Rank.Third
             }
-            4 -> return 4
-            3 -> return 5
-            else -> return 0
+            4 -> return Rank.Fourth
+            3 -> return Rank.Fifth
+            else -> return Rank.None
         }
     }
 }

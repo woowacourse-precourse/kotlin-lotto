@@ -7,7 +7,6 @@ class LottoGame {
     private val lottoList = mutableListOf<Lotto>()
     private var winningNumber = listOf<Int>()
     private var bonusNumber = 0
-    private var result = mutableListOf<Int>(0,0,0,0,0,0)
 
     fun receiveMoney(money: String) {
         if (!money.all { Character.isDigit(it) })
@@ -48,20 +47,28 @@ class LottoGame {
         bonusNumber = number.toInt()
     }
 
-    private fun calculateResult() {
+    fun calculateResult(): MutableList<Int> {
+        val prizeResult = mutableListOf<Int>(0,0,0,0,0,0)
         for (lotto in lottoList) {
-            val ranking = lotto.compareWithWinningNumber(winningNumber, bonusNumber)
-            result[ranking]++
+            val containNumberCount = lotto.compareWithWinningNumber(winningNumber)
+            when(lotto.determineRank(containNumberCount, bonusNumber)){
+                Rank.First -> prizeResult[1]++
+                Rank.Second -> prizeResult[2]++
+                Rank.Third -> prizeResult[3]++
+                Rank.Fourth -> prizeResult[4]++
+                Rank.Fifth -> prizeResult[5]++
+            }
         }
+        return prizeResult
     }
 
     fun printResult() {
-        calculateResult()
-        println("3개 일치 (5,000원) - ${result[5]}개")
-        println("4개 일치 (50,000원) - ${result[4]}개")
-        println("5개 일치 (1,500,000원) - ${result[3]}개")
-        println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${result[2]}개")
-        println("6개 일치 (2,000,000,000원) - ${result[1]}개")
+        val prizeResult = calculateResult()
+        println("3개 일치 (5,000원) - ${prizeResult[5]}개")
+        println("4개 일치 (50,000원) - ${prizeResult[4]}개")
+        println("5개 일치 (1,500,000원) - ${prizeResult[3]}개")
+        println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${prizeResult[2]}개")
+        println("6개 일치 (2,000,000,000원) - ${prizeResult[1]}개")
     }
 
 }
