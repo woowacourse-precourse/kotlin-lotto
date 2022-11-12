@@ -37,6 +37,10 @@ class Printer {
         )
     }
 
+    fun printYield(yieldPercentage: String){
+        println("총 수익률은 ${yieldPercentage}%입니다.")
+    }
+
     companion object {
         fun printError(errorMessage: String) {
             println("[ERROR] $errorMessage")

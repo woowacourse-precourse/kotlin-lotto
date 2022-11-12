@@ -39,6 +39,7 @@ class Lottery(
         calculator.getLottoResult(computer.lotteries, buyer.winningNumbers, buyer.bonusNumber)
         printer.printLottoResult(calculator.lottoResults)
         val yieldPercentage = calculator.getYield(amount)
+        printer.printYield(yieldPercentage)
     }
 
     companion object {
