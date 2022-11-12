@@ -1,7 +1,8 @@
 package lotto.domain
 
 class LottoRanker(val lottos: List<Lotto>, val winningNumber: WinningNumber) {
-    fun rank(lotto: Lotto): LottoRank {
+    fun rank(index: Int): LottoRank {
+        val lotto = lottos[index]
         val matchedCnt = lotto.compare(winningNumber.winLotto)
         val bonusMatched = lotto.contains(winningNumber.bonus)
         return getLottoRank(matchedCnt, bonusMatched)
@@ -9,8 +10,9 @@ class LottoRanker(val lottos: List<Lotto>, val winningNumber: WinningNumber) {
 
     fun rankAll(): Map<Lotto, LottoRank> {
         val lottoToRank = mutableMapOf<Lotto, LottoRank>()
-        for (lotto in lottos) {
-            lottoToRank[lotto] = rank(lotto)
+        for (idx in lottos.indices) {
+            val lotto = lottos[idx]
+            lottoToRank[lotto] = rank(idx)
         }
         return lottoToRank
     }
