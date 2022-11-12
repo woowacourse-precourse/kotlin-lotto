@@ -43,7 +43,7 @@ class LottoMachine(amount: String) {
     fun getLottery() = lottery
 
     fun getRanks(winningNumber: List<Int>, bonusNumber: Int): List<Int> {
-        val ranks = mutableListOf(0, 0, 0, 0, 0, 0)
+        val ranks = MutableList(6) { 0 }
         lottery.forEach {
             val rankIndex = it.checkWinning(winningNumber, bonusNumber)
             ranks[rankIndex]++
