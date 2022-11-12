@@ -5,7 +5,8 @@ object InputValidator {
         var isValid = true
 
         when {
-            money.isNumeric() -> isValid = false
+            !money.isNumeric() -> isValid = false
+            money.toInt() == 0 -> isValid = false
             money.toInt() % LOTTO_PRICE != 0 -> isValid = false
         }
         return isValid
