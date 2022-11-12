@@ -19,6 +19,8 @@ fun main() {
     bonusNumber = getBonusNumber(winningNumber)
     getWinningResult(lottos, winningNumber, bonusNumber, winningResult)
     earningRate = getEarningRate(sell, winningResult)
+    printWinningResult(winningResult)
+    printYieldResult(earningRate)
 
 }
 private fun getSellLottoCount() : Int {
@@ -155,11 +157,12 @@ private fun getEarnedMoney(grade: String) : Int {
 
     when(grade){
         "threeWin" -> money = 5000
-        "fourWin" -> money =50000
+        "fourWin" -> money = 50000
         "fiveWin" -> money = 1500000
         "sixWin" -> money = 2000000000
         "fiveWithBonusWin" -> money = 30000000
     }
+    // 데이터베이스 리팩토링 필요
 
     return money
 }
@@ -168,11 +171,16 @@ private fun roundDigit(num : Double, digits : Int) : Double {
 }
 
 private fun printWinningResult(winningResult: HashMap<String, Int>){
-
+    println("\n당첨 통계\n---")
+    println("3개 일치 (5,000원) - ${winningResult.getValue("threeWin")}개")
+    println("4개 일치 (50,000원) - ${winningResult.getValue("fourWin")}개")
+    println("5개 일치 (1,500,000원) - ${winningResult.getValue("fiveWin")}개")
+    println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${winningResult.getValue("fiveWithBonusWin")}개")
+    println("6개 일치 (2,000,000,000원) - ${winningResult.getValue("sixWin")}개")
 }
 
-private fun printYieldResult(){
-
+private fun printYieldResult(rate : Double){
+    println("총 수익률은 ${rate}%입니다.")
 }
 
 
