@@ -27,13 +27,7 @@ fun main() {
     for (i in 0 until lottoCount) {
         val numbers = Randoms.pickUniqueNumbersInRange(1, 20, 6)
 
-        for (i in 0..4) {
-            for (j in i + 1..5) {
-                if (numbers[i] == numbers[j]) {
-                    throw IllegalArgumentException("[ERROR] numbers에 중복된 숫자가 포함되어 있습니다.")
-                }
-            }
-        }
+        var lotto = Lotto(numbers)
 
         println(numbers.sorted())
         allLotto[i] = numbers.toIntArray()
