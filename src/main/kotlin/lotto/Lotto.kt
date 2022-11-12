@@ -9,7 +9,7 @@ class Lotto(private val numbers: List<Int>) {
         return numbers
     }
 
-    fun getLottoWinning(winning : MutableList<Int>) {
+    fun getLottoWinning(winning : MutableList<Int>, bonus: Int) : Int {
         var winCount = 0
 
         winning.forEach{
@@ -18,14 +18,22 @@ class Lotto(private val numbers: List<Int>) {
             }
         }
 
+        if(winCount == 5 && getLottoBonus(bonus)){
+            winCount = 7
+        }
+
+        return winCount
     }
 
-    fun getLottoBonus(bonus : Int) {
+    fun getLottoBonus(bonus : Int) : Boolean {
         var hasBonus = false
 
         if(numbers.contains(bonus)){
             hasBonus = true
         }
+
+        return hasBonus
     }
+
 
 }
