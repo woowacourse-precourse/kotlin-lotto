@@ -23,7 +23,16 @@ fun getInputBonusNumber(): Int {
 }
 
 fun getInputWinNumber(): List<Int> {
-    return listOf()
+    val input = Console.readLine().split(",")
+
+    if (input.size != 6)
+        throw IllegalArgumentException()
+
+    val intInput = input.map {
+        it.toIntOrNull() ?: throw IllegalArgumentException()
+    }
+
+    return intInput
 }
 
 fun getInputLottoMoney(): Int {
