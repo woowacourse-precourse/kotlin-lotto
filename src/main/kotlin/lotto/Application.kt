@@ -46,6 +46,15 @@ fun main() {
             throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
         }
     }
+    
+    for (i in 0..4) {
+        for (j in i + 1..5) {
+            if (answerNum[i] == answerNum[j]) {
+                //예외처리
+                throw IllegalArgumentException("[ERROR] numbers에 중복된 숫자가 포함되어 있습니다.")
+            }
+        }
+    }
 
     println("\n보너스 번호를 입력해 주세요.")
     var bonusNum = Console.readLine().toInt()
