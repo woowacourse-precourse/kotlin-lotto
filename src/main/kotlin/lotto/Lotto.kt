@@ -109,6 +109,8 @@ class Lotto(private var numbers: List<Int>) {
     }
 
     private fun printProfitRate() {
+        val winningAmount =
+            Winning.THREE.getAmount() + Winning.FOUR.getAmount() + Winning.FIVE.getAmount() + Winning.FIVEWITHBONUS.getAmount() + Winning.SIX.getAmount()
         val profit = (winningAmount.toDouble() / purchaseAmount.toDouble()) * 100
 
         println("총 수익률은 ${round(profit * 10) / 10}%입니다.")
