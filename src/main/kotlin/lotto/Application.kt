@@ -7,7 +7,7 @@ fun main() {
 
     val lottoGame = LottoGame()
     lottoGame.receiveMoney(Console.readLine())
-    println(lottoGame.printLottoCount().toString()+"개를 구매했습니다.")
+    println("${lottoGame.printLottoCount()}개를 구매했습니다.")
 
     lottoGame.printLotto()
 
@@ -16,5 +16,8 @@ fun main() {
 
     println("보너스 번호를 입력해 주세요.")
     lottoGame.receiveBonusNumber(Console.readLine())
+
+    println("당첨 통계\n---")
+    lottoGame.printResult()
 
 }
