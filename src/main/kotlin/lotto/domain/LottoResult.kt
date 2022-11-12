@@ -5,27 +5,28 @@ class LottoResult(
     winningNumber: WinningNumber,
     originCost: Int
 ) {
-    private val _rankToCnt: MutableMap<LottoRank, Int>
-    val rankToCnt: Map<LottoRank, Int>
-        get() = _rankToCnt
 
+    val rankToCnt: Map<LottoRank, Int>
     val profit: Double
 
     init {
-        _rankToCnt = LottoRank.values()
-            .associateWith { 0 }
-            .toMutableMap()
-
-        countRank(lottos, winningNumber)
+        rankToCnt = countRank(lottos, winningNumber)
         profit = computeProfit(originCost)
     }
 
-    private fun countRank(lottos: List<Lotto>, winningNumber: WinningNumber) {
+    private fun countRank(lottos: List<Lotto>, winningNumber: WinningNumber): Map<LottoRank, Int> {
+        val rankToCnt = LottoRank.values()
+            .associateWith { 0 }
+            .toMutableMap()
+
         LottoRanker(lottos, winningNumber)
-            .rankAll().values
+            .rankAll()
+            .values
             .forEach {
-                _rankToCnt.merge(it, 1, Integer::sum)
+                rankToCnt.merge(it, 1, Integer::sum)
             }
+
+        return rankToCnt
     }
 
     private fun computeProfit(originCost: Int): Double {
