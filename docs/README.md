@@ -4,10 +4,10 @@
   - [x] 사용자가 금액을 입력한 것을 정수로 변환해줘야 함 - convertToInt()
   - [x] 사용자가 당첨번호를 입력한 것을 ,를 기준으로 변환해줘야 함 - separateComma()
   - [x] 사용자가 보너스 번호를 입력한 것을 정수로 변환해줘야 함 - convertToInt()
-- [] 사용자의 구입금액을 입력받은 것을 정수한개 입력받은거 맞는지 검사해야함 - InputCheck()
-  - [] 사용자가 금액을 제대로 입력했는지 검사한다
-  - [] 사용자가 당첨 번호를 제대로 입력했는지 검사한다
-  - [] 사용자가 보너스 번호를 정수로 입력했는지 검사한다
+- [x] 사용자의 구입금액을 입력받은 것을 정수한개 입력받은거 맞는지 검사해야함 - InputCheck()
+  - [x] 사용자가 금액을 제대로 입력했는지 검사한다 - InputCheck#checkInputLotteryPurchase
+  - [x] 사용자가 당첨 번호를 제대로 입력했는지 검사한다 - InputCheck#checkInputWinningLottery
+  - [x] 사용자가 보너스 번호를 정수로 입력했는지 검사한다 - InputCheck#checkInputBonusInteger
 - [x] 로또 발급을 해주는 역할을 클래스로 의인화한다 - LottoSeller()
     - [x] 사용자가 입력한 금액만큼 로또를 발행해야 함
         - [x] 사용자가 입력한 금액을 보고 몇개를 발급해주는지 알아야 한다 - LottoSeller#sellLottoCount()
