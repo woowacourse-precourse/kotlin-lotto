@@ -34,6 +34,9 @@ fun main() {
                 }
             }
         }
+
+        println(numbers.sorted())
+        allLotto[i] = numbers.toIntArray()
     }
 
 }
