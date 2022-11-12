@@ -9,6 +9,8 @@ fun main() {
     lottoGame.receiveMoney(Console.readLine())
     println(lottoGame.printLottoCount().toString()+"개를 구매했습니다.")
 
+    lottoGame.printLotto()
+
 
 
 }
