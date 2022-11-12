@@ -1,9 +1,18 @@
 package lotto
 
+import lotto.constant.LOTTO_NUM_RANGE_END
+
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6)
+        lottoNumberDuplicationCheck()
     }
 
-    // TODO: 추가 기능 구현
+    private fun lottoNumberDuplicationCheck() {
+        val used = BooleanArray(LOTTO_NUM_RANGE_END + 1)
+        numbers.forEach {
+            if (used[it]) throw IllegalArgumentException()
+            used[it] = true
+        }
+    }
 }
