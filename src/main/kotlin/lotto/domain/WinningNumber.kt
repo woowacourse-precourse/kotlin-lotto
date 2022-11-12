@@ -14,13 +14,11 @@ class WinningNumber(_winning: String) {
         validateDuplication(winnings)
     }
 
-    private fun validateType(numbers: String) {
-        numbers.split(Constant.SPLIT_WINNING_NUMBER).forEach { number ->
-            try {
-                winnings.add(number.toInt())
-            } catch (exception: NumberFormatException) {
-                ErrorMessage.intError(Constant.WINNING_NUMBER)
-            }
+    private fun validateType(winning: String) = winning.split(Constant.SPLIT_WINNING_NUMBER).forEach {
+        try {
+            winnings.add(it.toInt())
+        } catch (exception: NumberFormatException) {
+            ErrorMessage.intError(Constant.WINNING_NUMBER)
         }
     }
 
@@ -29,8 +27,8 @@ class WinningNumber(_winning: String) {
     }
 
     fun validateRange(winnings: List<Int>) {
-        val count = winnings.filter { number ->
-            number in Constant.START_LOTTO_RANGE..Constant.END_LOTTO_RANGE
+        val count = winnings.filter {
+            it in Constant.START_LOTTO_RANGE..Constant.END_LOTTO_RANGE
         }.size
         require(count == Constant.LOTTO_COUNT) { ErrorMessage.rangeError(Constant.WINNING_NUMBER) }
     }

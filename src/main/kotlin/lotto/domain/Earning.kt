@@ -5,9 +5,10 @@ import lotto.util.Rank
 import kotlin.math.roundToInt
 
 class Earning(private val ranks: List<Int>) {
-    private fun calculateRate(lottoAmount: Int) = (calculateTotal() / lottoAmount.toDouble()) * 100
+    private fun calculateRate(lottoAmount: Int) = (calculateTotal() / lottoAmount.toDouble()) * Constant.PERCENTAGE
 
-    private fun roundRate(rate: Double) = (rate * 10).roundToInt().toDouble() / 10
+    private fun roundRate(rate: Double) =
+        (rate * Constant.DECIMAL_PLACE).roundToInt().toDouble() / Constant.DECIMAL_PLACE
 
     private fun calculateTotal(): Double {
         var sum = 0.0

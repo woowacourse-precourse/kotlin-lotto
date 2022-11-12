@@ -20,8 +20,8 @@ class Lotto(private val numbers: List<Int>) {
     fun getLottoNumber() = numbers.sorted()
 
     fun confirmWinning(winningNumber: List<Int>, bonusNumber: Int): Int {
-        val match = winningNumber.filter { number ->
-            numbers.contains(number)
+        val match = winningNumber.filter {
+            numbers.contains(it)
         }.size
         if (numbers.contains(bonusNumber) && match == Constant.FIVE_MATCH) {
             return Constant.SECOND
@@ -29,13 +29,15 @@ class Lotto(private val numbers: List<Int>) {
         return getRank(match)
     }
 
-    private fun getRank(match: Int): Int {
-        return when (match) {
-            Constant.THREE_MATCH -> Constant.FIFTH
-            Constant.FOUR_MATCH -> Constant.FOURTH
-            Constant.FIVE_MATCH -> Constant.THIRD
-            Constant.SIX_MATCH -> Constant.FIRST
-            else -> Constant.NOTHING
-        }
+    private fun getRank(match: Int) = when (match) {
+        Constant.THREE_MATCH -> Constant.FIFTH
+
+        Constant.FOUR_MATCH -> Constant.FOURTH
+
+        Constant.FIVE_MATCH -> Constant.THIRD
+
+        Constant.SIX_MATCH -> Constant.FIRST
+
+        else -> Constant.NOTHING
     }
 }

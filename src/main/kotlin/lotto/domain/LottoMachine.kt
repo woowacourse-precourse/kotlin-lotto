@@ -16,8 +16,8 @@ class LottoMachine(amount: String) {
     }
 
     fun validateType(amount: String) {
-        val typeCount = amount.filter { unit ->
-            unit in '0'..'9'
+        val typeCount = amount.filter {
+            it in '0'..'9'
         }
         require(typeCount.length == amount.length) {
             ErrorMessage.intError(Constant.LOTTO_AMOUNT)
@@ -31,9 +31,7 @@ class LottoMachine(amount: String) {
     fun pickNewLotto(count: Int) {
         for (index in 0 until count) {
             val numbers = Randoms.pickUniqueNumbersInRange(
-                Constant.START_LOTTO_RANGE,
-                Constant.END_LOTTO_RANGE,
-                Constant.LOTTO_COUNT
+                Constant.START_LOTTO_RANGE, Constant.END_LOTTO_RANGE, Constant.LOTTO_COUNT
             )
             lottery.add(Lotto(numbers))
         }
@@ -43,14 +41,12 @@ class LottoMachine(amount: String) {
 
     fun getLottoCount() = lottoCount
 
-    fun getLottoNumbers() = lottery.forEach { lotto ->
-        ConsoleMessage.lottoNumber(lotto.getLottoNumber())
-    }
+    fun getLottery() = lottery
 
     fun getTotalRank(winningNumber: List<Int>, bonusNumber: Int): List<Int> {
         val rank = mutableListOf(0, 0, 0, 0, 0, 0, 0, 0)
-        lottery.forEach { lotto ->
-            val rankIndex = lotto.confirmWinning(winningNumber, bonusNumber)
+        lottery.forEach {
+            val rankIndex = it.confirmWinning(winningNumber, bonusNumber)
             rank[rankIndex]++
         }
         return rank
