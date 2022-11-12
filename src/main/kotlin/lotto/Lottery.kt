@@ -35,6 +35,7 @@ class Lottery(
     private fun getLottoResult() {
         printer.printWinStaticMessage()
         calculator.getLottoResult(computer.lotteries, buyer.winningNumbers, buyer.bonusNumber)
+        printer.printLottoResult(calculator.lottoResults)
     }
 
     companion object {
