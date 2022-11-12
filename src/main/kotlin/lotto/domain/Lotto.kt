@@ -1,8 +1,10 @@
 package lotto.domain
 
+import lotto.domain.LottoExceptionHandler.validateLottoNumberDuplication
+
 class Lotto(private val numbers: List<LottoNumber>) : List<LottoNumber> by numbers {
     init {
-        require(numbers.size == 6)
+        validateLottoNumberDuplication(this)
     }
 
     override fun toString(): String =

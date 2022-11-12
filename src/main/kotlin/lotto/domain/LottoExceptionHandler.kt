@@ -19,6 +19,10 @@ object LottoExceptionHandler {
         if (number !in LOTTO_START_NUMBER..LOTTO_END_NUMBER) throwException(LOTTO_NUMBER_OUT_OF_RANGE_EXCEPTION_MESSAGE)
     }
 
+    fun validateLottoNumberDuplication(lotto: Lotto) {
+        require(lotto.size == LOTTO_SIZE) { LOTTO_SIZE_EXCEPTION_MESSAGE }
+    }
+
     private fun throwException(errorMessage: String) {
         throw IllegalArgumentException(errorMessage)
     }
