@@ -49,12 +49,11 @@ fun inputWinNum() : List<String> {
 }
 fun inputBonusNum(winNum:List<String>):Int{
     var remainder = (1..45).toMutableList()
-    var ret :String
     for(i in winNum) {
         if (remainder.contains(i.toInt()))
             remainder.remove(i.toInt())
     }
-    ret = Console.readLine()
+    var ret :String = Console.readLine()
     require(ret.isNotEmpty()){"[ERROR] 값을 입력해야 합니다."}
     require(ret.all{it.isDigit()}){"[ERROR] 숫자만 입력해야 합니다."}
     require(remainder.contains(ret.toInt())){"[ERROR] : 올바른 숫자가 아닙니다."}
