@@ -133,7 +133,7 @@ private fun getWinningResult(lottos: MutableList<Lotto>, winningNumber: MutableL
     winningResult["fiveWithBonusWin"] = fiveWithBonusWin
     winningResult["sixWin"] = sixWin
 
-    println(winningResult)
+    //println(winningResult)
 }
 
 private fun getYield(sell : Int, winningResult: HashMap<String, Int>){
@@ -142,20 +142,40 @@ private fun getYield(sell : Int, winningResult: HashMap<String, Int>){
 
     var key = winningResult.filterValues { it != 0 }.keys
     key.forEach{
-        earn += winningResult.getValue(it)
+        earn += getEarnedMoney(it) * winningResult.getValue(it)
     }
 
     // 수익률
      var yield = roundDigit(((earn / (sell * amount)) * 100).toDouble(), 2)
 
-    println("수입: ${earn}, 수익률: $`yield`")
+    //println("수입: ${earn}, 수익률: $`yield`")
 
 }
 
+private fun getEarnedMoney(grade: String) : Int {
+    var money = 0
+
+    when(grade){
+        "threeWin" -> money = 5000
+        "fourWin" -> money =50000
+        "fiveWin" -> money = 1500000
+        "sixWin" -> money = 2000000000
+        "fiveWithBonusWin" -> money = 30000000
+    }
+
+    return money
+}
 private fun roundDigit(num : Double, digits : Int) : Double {
     return Math.round(num * Math.pow(10.0, digits.toDouble())) / Math.pow(10.0, digits.toDouble())
 }
 
+private fun printWinningResult(){
+
+}
+
+private fun printYieldResult(){
+    
+}
 
 
 
