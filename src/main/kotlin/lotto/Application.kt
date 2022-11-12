@@ -28,10 +28,12 @@ fun publishLotto(money : Int):List<List<Int>>
     return table
 }
 fun printLottos(table : List<List<Int>>){
+    println("${table.size}개를 구매했습니다.")
     for (i in table)
         println(i)
 }
 fun inputMoney() : Int{
+    println("구입금액을 입력해 주세요.")
     var money = Console.readLine()
     require(money.all{it.isDigit()}){"[ERROR] 숫자만 입력해야 합니다."}
     require(money.toInt()%1000 == 0){"[ERROR] 금액은 1000으로 나누어 떨어져야 합니다."}
@@ -39,6 +41,7 @@ fun inputMoney() : Int{
     return money.toInt()
 }
 fun inputWinNum() : List<String> {
+    println("당첨 번호를 입력해 주세요.")
     var nums = (Console.readLine().split(","))
     require(nums.size == 6){"[ERROR] : 숫자가 6개가 아닙니다."}
     require(nums.distinct().size==6){"[ERROR] : 중복된 숫자가 있습니다"}
@@ -48,6 +51,7 @@ fun inputWinNum() : List<String> {
     return nums
 }
 fun inputBonusNum(winNum:List<String>):Int{
+    println("보너스 번호를 입력해 주세요.")
     var remainder = (1..45).toMutableList()
     for(i in winNum) {
         if (remainder.contains(i.toInt()))
@@ -67,11 +71,8 @@ fun main() {
     var table = mutableListOf<List<Int>>()
     println(numbers)
     println(bonus)
-    //Lotto(numbers)
-    //Lotto(numbers2)
-    table = publishLotto(8000) as MutableList<List<Int>>
+    val money = inputMoney()
+    table = publishLotto(money) as MutableList<List<Int>>
     printLottos(table)
-    //inputMoney()
-    //inputWinNum()
     inputBonusNum(inputWinNum())
 }
