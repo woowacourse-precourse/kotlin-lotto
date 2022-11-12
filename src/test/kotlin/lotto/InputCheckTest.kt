@@ -21,6 +21,15 @@ class InputCheckTest {
         assertThat(result).isEqualTo(expected)
     }
 
+    @ParameterizedTest
+    @CsvSource(value = ["1:false", "45:true", "5:false", "4a1:false"],
+        delimiter = ':')
+    fun `로또 보너스 번호 제대로 입력했는지 검사`(input: String, expected: Boolean) {
+        val winningLottery = listOf(1, 2, 3, 4, 5, 6)
+        val result = checkInputBonusInteger(input, winningLottery)
+        assertThat(result).isEqualTo(expected)
+    }
+
     private fun checkInputLotteryPurchase(input: String): Boolean {
         if (!checkInputOneInteger(input)) return false
         if (!isOneThousandUnit(input)) return false
@@ -74,4 +83,12 @@ class InputCheckTest {
     private fun isLotteryRange(num: Int) = num in 1..45
 
     private fun isComma(char: Char): Boolean = char.code == 44
+
+    private fun checkInputBonusInteger(input: String, winningLottery: List<Int>): Boolean {
+        val inputTrim = input.trim()
+        if (!checkInputOneInteger(inputTrim)) return false
+        if (!isLotteryRange(inputTrim.toInt())) return false
+        if (winningLottery.contains(inputTrim.toInt())) return false
+        return true
+    }
 }
