@@ -40,11 +40,25 @@ fun inputMoney() : Int{
 }
 fun inputWinNum() : List<String> {
     var nums = (Console.readLine().split(","))
-    require(nums.all{it.all{it.isDigit()}}){"[ERROR] 숫자만 입력해야 합니다."}
-    require(nums.all{it.toInt() in 1..45}){"[ERROR] 1부터 45까지의 숫자를 입력해야 합니다."}
     require(nums.size == 6){"[ERROR] : 숫자가 6개가 아닙니다."}
     require(nums.distinct().size==6){"[ERROR] : 중복된 숫자가 있습니다"}
+    require(nums.all{it.all{it.isDigit()}}){"[ERROR] 숫자만 입력해야 합니다."}
+    require(nums.all{it.toInt() in 1..45}){"[ERROR] 1부터 45까지의 숫자를 입력해야 합니다."}
+
     return nums
+}
+fun inputBonusNum(winNum:List<String>):Int{
+    var remainder = (1..45).toMutableList()
+    var ret :String
+    for(i in winNum) {
+        if (remainder.contains(i.toInt()))
+            remainder.remove(i.toInt())
+    }
+    ret = Console.readLine()
+    require(ret.isNotEmpty()){"[ERROR] 값을 입력해야 합니다."}
+    require(ret.all{it.isDigit()}){"[ERROR] 숫자만 입력해야 합니다."}
+    require(remainder.contains(ret.toInt())){"[ERROR] : 올바른 숫자가 아닙니다."}
+    return ret.toInt()
 }
 
 fun main() {
@@ -59,5 +73,6 @@ fun main() {
     table = publishLotto(8000) as MutableList<List<Int>>
     printLottos(table)
     //inputMoney()
-    inputWinNum()
+    //inputWinNum()
+    inputBonusNum(inputWinNum())
 }
