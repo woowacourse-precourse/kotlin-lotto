@@ -1,4 +1,4 @@
-package lotto
+package lotto.domain
 
 class Lotto(private val numbers: List<Int>) {
     init {
@@ -6,4 +6,5 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     // TODO: 추가 기능 구현
+
 }
