@@ -100,4 +100,6 @@ fun main() {
     +2000000000 * answerList[6] + 30000000 * answerList[7]
 
     var percent = totalPrice / money.toFloat() * 100
+
+    println("총 수익률은 " + "%.1f".format(percent) + "%입니다.")
 }
