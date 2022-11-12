@@ -1,5 +1,9 @@
 package lotto
 
 fun main() {
-    TODO("프로그램 구현")
+    printStart()
+}
+
+fun printStart() {
+    println("구입금액을 입력해 주세요.")
 }
