@@ -1,15 +1,12 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.Console.readLine
 import utils.Constants
-import utils.Constants.ERROR_MESSAGE_NOT_1000WON
-import utils.Constants.ERROR_MESSAGE_OUT_OF_RANGE
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6)
-        require(!isReduplicateNumber())
-        require(!isNumberOverRange())
+        require(numbers.size == 6) { Constants.ERROR_OVER_COUNT_MESSAGE }
+        require(!isReduplicateNumber()) { Constants.ERROR_REDUPLICATED_NUMBER_MESSAGE }
+        require(!isNumberOutOfRange()) { Constants.ERROR_OUT_OF_RANGE_MESSAGE }
     }
 
     private fun isReduplicateNumber(): Boolean {
@@ -20,7 +17,7 @@ class Lotto(private val numbers: List<Int>) {
         return false
     }
 
-    private fun isNumberOverRange(): Boolean {
+    private fun isNumberOutOfRange(): Boolean {
         for(number in numbers) {
             if(number < 1 || number > 45)
                 return true

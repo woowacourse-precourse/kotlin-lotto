@@ -3,6 +3,7 @@ package lotto
 import utils.Constants
 import utils.Constants.PURCHASE_COUNT_MESSAGE
 import utils.Constants.REQUIRE_INPUT_PURCHASE_AMOUNT_MESSAGE
+import utils.Constants.REQUIRE_WINNING_NUMBER_MESSAGE
 
 class Display {
 
@@ -11,6 +12,7 @@ class Display {
     }
 
     fun printLottoCount(count: Int) {
+        println()
         println("${count}$PURCHASE_COUNT_MESSAGE")
     }
     fun printLottos(lottos: List<Lotto>) {
@@ -22,5 +24,10 @@ class Display {
             }
             println("${numbers.last()}]")
         }
+    }
+
+    fun printRequireWinningNumber() {
+        println()
+        println(REQUIRE_WINNING_NUMBER_MESSAGE)
     }
 }
