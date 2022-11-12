@@ -71,4 +71,33 @@ internal class LotteryTest {
         assertEquals(listOf(1,2,3,4,5,6), testClass.lotteryNumbers.getList())
     }
 
+    @Test
+    fun `보너스 번호 입력 테스트 1`() {
+        val input = "1"
+        val gets = ByteArrayInputStream(input.toByteArray())
+        System.setIn(gets)
+
+        testClass.getBonusNumber()
+        assertEquals(1, testClass.bonusNumber)
+    }
+
+    @Test
+    fun `보너스 번호 입력 테스트 2`() {
+        val input = "qwer"
+        val gets = ByteArrayInputStream(input.toByteArray())
+        System.setIn(gets)
+
+
+        assertThrows<IllegalArgumentException> { testClass.getBonusNumber() }
+    }
+
+    @Test
+    fun `보너스 번호 입력 테스트 3`() {
+        val input = "46"
+        val gets = ByteArrayInputStream(input.toByteArray())
+        System.setIn(gets)
+
+        assertThrows<IllegalArgumentException> { testClass.getBonusNumber() }
+    }
+
 }
