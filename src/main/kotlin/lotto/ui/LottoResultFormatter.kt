@@ -2,7 +2,7 @@ package lotto.ui
 
 import lotto.domain.LottoRank
 import lotto.domain.LottoResult
-import lotto.util.toPriceFormatted
+import java.text.DecimalFormat
 
 class LottoResultFormatter(private val lottoResult: LottoResult) {
     fun getStatInfo(): String {
@@ -27,9 +27,8 @@ class LottoResultFormatter(private val lottoResult: LottoResult) {
     }
 
     fun getRankInfo(lottoRank: LottoRank): String {
-        val prize = lottoRank.prize
         val matchCnt = lottoRank.matchedCnt
-        val prizeFormatted = prize.toPriceFormatted()
+        val prizeFormatted = prizeFormat(lottoRank.prize)
         val infoFormat = if (lottoRank == LottoRank.SECOND) {
             SECOND_RANK_INFO_FORMAT
         } else {
@@ -37,6 +36,9 @@ class LottoResultFormatter(private val lottoResult: LottoResult) {
         }
         return infoFormat.format(matchCnt, prizeFormatted)
     }
+
+    private fun prizeFormat(prize: Int) = DecimalFormat("#,###")
+        .format(prize)
 
     companion object {
         private const val PROFIT_INFO_FORMAT = "%.1f%%"
