@@ -16,6 +16,7 @@ class Lotto(private var numbers: List<Int>) {
 
     init {
         require(numbers.size == 6)
+        require(numbers.size == numbers.distinct().count())
     }
 
     fun startGame() {
