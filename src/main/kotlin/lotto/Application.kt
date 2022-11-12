@@ -11,16 +11,12 @@ fun calculateWinRanks(lottos: List<Lotto>, winNumber: List<Int>, bonusNumber: In
     return mapOf()
 }
 
-fun generateLottoNumbers(): Lotto {
-    val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
-    return Lotto(numbers)
-}
-
 fun produceLotto(amount: Int): List<Lotto> {
     val lottos = mutableListOf<Lotto>()
 
     for (i in 0 until amount) {
-        lottos.add(generateLottoNumbers())
+        val lotto = Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6))
+        lottos.add(lotto)
     }
 
     return lottos
