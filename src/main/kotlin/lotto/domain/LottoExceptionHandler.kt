@@ -23,6 +23,14 @@ object LottoExceptionHandler {
         require(lotto.size == LOTTO_SIZE) { LOTTO_SIZE_EXCEPTION_MESSAGE }
     }
 
+    fun validateLottoNumberDuplication(lotto: Lotto) {
+        val notDuplicatedLotto = lotto.distinctBy { lottoNumber ->
+            lottoNumber.number
+        }
+
+        require(notDuplicatedLotto.size == LOTTO_SIZE) { LOTTO_NUMBER_DUPLICATION_EXCEPTION_MESSAGE }
+    }
+
     private fun throwException(errorMessage: String) {
         throw IllegalArgumentException(errorMessage)
     }
