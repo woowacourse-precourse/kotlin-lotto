@@ -1,5 +1,6 @@
 package lotto
 
+import lotto.constant.LOTTO_PRICE
 import lotto.util.readPaidMoney
 
 class LottoMarket(
@@ -11,7 +12,7 @@ class LottoMarket(
     }
 
     //로또 구입 금액만큼 로또 반환
-    private fun getLottoCount(paidMoney: Int): Int = paidMoney / 1000
+    private fun getLottoCount(paidMoney: Int): Int = paidMoney / LOTTO_PRICE
 
     fun buyLotties(): List<IntArray> {
         val paidMoney = payMoney()
