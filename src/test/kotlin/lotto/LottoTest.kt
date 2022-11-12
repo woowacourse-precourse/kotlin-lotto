@@ -3,7 +3,6 @@ package lotto
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
-
 class LottoTest {
     @Test
     fun `로또 번호의 개수가 6개가 넘어가면 예외가 발생한다`() {
@@ -21,4 +20,17 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @Test
+    fun `번호가 6개 미만입니다`() {
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(1, 2, 3, 4))
+        }
+    }
+
+    @Test
+    fun `범위를 벗어나는 숫자가 있습니다`() {
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(1, 2, 3, 46, 4, 5))
+        }
+    }
 }
