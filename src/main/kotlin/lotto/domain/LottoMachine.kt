@@ -1,6 +1,9 @@
-package lotto
+package lotto.domain
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.util.ConsoleMessage
+import lotto.util.Constant
+import lotto.util.ErrorMessage
 
 class LottoMachine(amount: String) {
     private var lottoCount = 0

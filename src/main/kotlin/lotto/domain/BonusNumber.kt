@@ -1,5 +1,7 @@
-package lotto
+package lotto.domain
 
+import lotto.util.Constant
+import lotto.util.ErrorMessage
 import java.lang.NumberFormatException
 
 class BonusNumber(_winning: List<Int>, _bonus: String) {

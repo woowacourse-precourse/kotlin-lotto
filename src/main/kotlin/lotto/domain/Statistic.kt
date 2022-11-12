@@ -1,6 +1,6 @@
-package lotto
+package lotto.domain
 
-import kotlin.math.round
+import lotto.util.Constant
 import kotlin.math.roundToInt
 
 class Statistic(private val ranks: List<Int>) {

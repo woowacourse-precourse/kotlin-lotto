@@ -1,4 +1,7 @@
-package lotto
+package lotto.domain
+
+import lotto.util.Constant
+import lotto.util.ErrorMessage
 
 class Lotto(private val numbers: List<Int>) {
     init {

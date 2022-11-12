@@ -1,5 +1,7 @@
-package lotto
+package lotto.domain
 
+import lotto.util.Constant
+import lotto.util.ErrorMessage
 import java.lang.NumberFormatException
 
 class WinningNumber(_winning: String) {
