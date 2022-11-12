@@ -1,6 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun calculateYield(lottos: List<Lotto>, winNumber: List<Int>, bonusNumber: Int): Float {
     return 0f
@@ -11,7 +12,8 @@ fun calculateWinRanks(lottos: List<Lotto>, winNumber: List<Int>, bonusNumber: In
 }
 
 fun generateLottoNumbers(): Lotto {
-    return Lotto(listOf(1, 2, 3, 4, 5, 6))
+    val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+    return Lotto(numbers)
 }
 
 fun produceLotto(amount: Int): List<Lotto> {
