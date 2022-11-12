@@ -1,21 +1,10 @@
 package lotto.domain
 
-import lotto.util.requireWithPrefix
-
 class Lotto(private val numbers: List<Int>) {
     init {
-        requireWithPrefix(
-            numbers.size == LENGTH,
-            ERROR_LOTTO_LENGTH
-        )
-        requireWithPrefix(
-            numbers.all { it in MIN_NUM..MAX_NUM },
-            ERROR_LOTTO_NUM_RANGE
-        )
-        requireWithPrefix(
-            numbers == numbers.distinct(),
-            ERROR_LOTTO_NUM_DUPLICATED
-        )
+        require(numbers.size == LENGTH) { ERROR_LOTTO_LENGTH }
+        require(numbers.all { it in MIN_NUM..MAX_NUM }) { ERROR_LOTTO_NUM_RANGE }
+        require(numbers == numbers.distinct()) { ERROR_LOTTO_NUM_DUPLICATED }
     }
 
     operator fun contains(num: Int) = num in numbers

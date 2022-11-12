@@ -1,11 +1,10 @@
 package lotto.domain
 
-import lotto.util.requireWithPrefix
 
 data class WinningNumber(val winLotto: Lotto, val bonus: Int) {
     init {
-        requireWithPrefix(bonus in Lotto.MIN_NUM..Lotto.MAX_NUM, ERROR_BONUS_NUM_RANGE)
-        requireWithPrefix(bonus !in winLotto, ERROR_BONUS_NUM_DUPLICATED)
+        require(bonus in Lotto.MIN_NUM..Lotto.MAX_NUM) { ERROR_BONUS_NUM_RANGE }
+        require(bonus !in winLotto) { ERROR_BONUS_NUM_DUPLICATED }
     }
 
     companion object {

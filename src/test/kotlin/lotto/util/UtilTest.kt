@@ -2,8 +2,6 @@ package lotto.util
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import java.io.ByteArrayOutputStream
-import java.io.PrintStream
 
 @Suppress("NonASCIICharacters")
 class UtilTest {
@@ -23,14 +21,6 @@ class UtilTest {
     }
 
     @Test
-    fun `예외 메시지는 머릿말을 포함해야 한다`() {
-        val message = assertThrows<IllegalArgumentException> {
-            requireWithPrefix(false, "")
-        }.message
-        assert(message!!.contains(ERROR_MESSAGE))
-    }
-
-    @Test
     fun `숫자를 콤마 기준으로 나눌 수 있어야 한다`() {
         val input = "1,2,311,4"
         val expect = listOf(1, 2, 311, 4)
@@ -42,12 +32,6 @@ class UtilTest {
         val input = "1, 2, 311, 4    "
         val expect = listOf(1, 2, 311, 4)
         assert(input.divideToNums(",") == expect)
-    }
-
-    private fun systemSetOut(): ByteArrayOutputStream {
-        val output = ByteArrayOutputStream()
-        System.setOut(PrintStream(output))
-        return output
     }
 
     private fun systemSetIn(input: String) {

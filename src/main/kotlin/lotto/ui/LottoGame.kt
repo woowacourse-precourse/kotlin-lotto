@@ -13,7 +13,7 @@ class LottoGame {
         try {
             startUtil()
         } catch (e: IllegalArgumentException) {
-            println(e.message)
+            println("$ERROR_MSG_PREFIX ${e.message}")
         }
     }
 
@@ -62,6 +62,7 @@ class LottoGame {
     }
 
     companion object {
+        private const val ERROR_MSG_PREFIX = "[ERROR]"
         private const val REQUEST_MONEY = "구입금액을 입력해 주세요."
         private const val LOTTO_INFO_FORMAT = "%d개를 구매했습니다."
         private const val REQUEST_WINNING_NUMBER = "당첨 번호를 입력해 주세요."

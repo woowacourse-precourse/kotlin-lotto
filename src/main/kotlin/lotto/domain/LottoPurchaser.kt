@@ -5,12 +5,11 @@ import lotto.domain.Lotto.Companion.COST
 import lotto.domain.Lotto.Companion.LENGTH
 import lotto.domain.Lotto.Companion.MAX_NUM
 import lotto.domain.Lotto.Companion.MIN_NUM
-import lotto.util.requireWithPrefix
 
 class LottoPurchaser {
     fun purchaseLottos(cost: Int): List<Lotto> {
-        requireWithPrefix(cost >= COST, ERROR_COST_NOT_ENOUGH)
-        requireWithPrefix(cost % COST == 0, ERROR_COST_DIVIDE)
+        require(cost >= COST) { ERROR_COST_NOT_ENOUGH }
+        require(cost % COST == 0) { ERROR_COST_DIVIDE }
 
         val lottos = mutableListOf<Lotto>()
         repeat(cost / COST) {
