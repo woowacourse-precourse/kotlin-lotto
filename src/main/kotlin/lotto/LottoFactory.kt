@@ -22,7 +22,7 @@ class LottoFactory {
             used[num] = true
             lotto[idx] = num
         }
-        return lotto.toList()
+        return lotto.sorted()
     }
 
     private fun getRandomLottoNumber(): Int = Random.nextInt(LOTTO_NUM_RANGE_END) + 1
