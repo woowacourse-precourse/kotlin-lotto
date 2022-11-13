@@ -1,40 +1,18 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
-import java.lang.IllegalArgumentException
 import java.util.regex.Pattern
 
 const val userInputMsg = "구입금액을 입력해 주세요."
-const val errorHeader = "[ERROR]"
-const val lottoEachPrice = 1000
+const val LOTTO_EACH_PRICE = 1000
+const val INPUT_ERROR_CODE = 999
+
+private var userInputPrice = 0 //추후에 수익률에 재사용하므로 전역변수로 설정
+
 fun main() {
     getUserInputPrice()
 }
 private fun getUserInputPrice() {
     println(userInputMsg)
-    val userInput = Console.readLine()
-    checkRegexAndTranslateToInt(userInput)
-}
-
-private fun checkRegexAndTranslateToInt(userInput : String) : Int {
-    if (!checkItOnlyContainsNumber(userInput)) {
-        Error.showError(ErrorType.NotOnlyNumber)
-    }
-    if (!checkItCanDivideWithThousand(changeStringToInt(userInput))) {
-        Error.showError(ErrorType.NotDivideWithThousand)
-    }
-
-    return changeStringToInt(userInput)
-}
-
-private fun checkItOnlyContainsNumber(userInput: String) : Boolean {
-    return Pattern.matches("^[0-9]*$", userInput)
-}
-
-private fun checkItCanDivideWithThousand(userInputPrice : Int) : Boolean {
-    return (userInputPrice % lottoEachPrice == 0)
-}
-
-private fun changeStringToInt(userInput : String) : Int {
-    return userInput.toInt()
+    userInputPrice = UserInputPrice(Console.readLine()).checkUserInputPriceRegexAndTranslateToInt()
 }
