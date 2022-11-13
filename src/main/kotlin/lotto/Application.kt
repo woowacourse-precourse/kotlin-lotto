@@ -56,8 +56,14 @@ fun generateLottoNumbers(price: Int): ArrayList<MutableList<Int>> {
     return lottoNumbers
 }
 
+fun printNumbersByAscending(numbers: ArrayList<MutableList<Int>>) {
+    for (i in numbers.indices) print("${numbers[i].sorted()}\n")
+}
+
 fun publishLottoNumbers(price: Int): ArrayList<MutableList<Int>> {
     val lottoNumbers = generateLottoNumbers(price)
+
+    printNumbersByAscending(lottoNumbers)
 
     return lottoNumbers
 }
