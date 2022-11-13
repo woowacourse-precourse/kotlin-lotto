@@ -5,34 +5,37 @@ import utils.Messages.BUY_PRICE_INQUIRE_MESSAGE
 import utils.Messages.ERROR_PREFIX_MESSAGE
 import utils.Messages.ERROR_LOTTO_INPUT
 import utils.Messages.BUY_AMOUNT_MESSAGE
+import utils.Messages.FROM_INDEX
+import utils.Messages.END_INDEX
 import java.util.Arrays
+import kotlin.math.sign
 
 class LottoGame {
 
-//    fun buyPriceInquireMessage() {
-//        println(BUY_PRICE_INQUIRE_MESSAGE)
-//    }
-//
-//    fun calculateNumberOfLotto(): Int {
-//        val lottoInputPrice = readLine()!!.toInt()
-//        return lottoInputPrice / 1000
-//    }
-//
-//    fun checkRightLotto(lottoInputPrice: Int ): Boolean {
-//        val numOfRestLotto = lottoInputPrice % 1000
-//        if (numOfRestLotto != 0) {
-//            return false
-//        }
-//        return true
-//    }
-//
-//    fun resultRightLotto (flag: Boolean) {
-//        if (!flag) throw IllegalArgumentException(ERROR_PREFIX_MESSAGE+ERROR_LOTTO_INPUT)
-//    }
-//
-//    fun tellNumOfLotto(numOfLotto: Int) {
-//        println("$numOfLotto"+BUY_AMOUNT_MESSAGE)
-//    }
+    fun buyPriceInquireMessage() {
+        println(BUY_PRICE_INQUIRE_MESSAGE)
+    }
+
+    fun calculateNumberOfLotto(): Int {
+        val lottoInputPrice = readLine()!!.toInt()
+        return lottoInputPrice / 1000
+    }
+
+    fun checkRightLotto(lottoInputPrice: Int ): Boolean {
+        val numOfRestLotto = lottoInputPrice % 1000
+        if (numOfRestLotto != 0) {
+            return false
+        }
+        return true
+    }
+
+    fun resultRightLotto (flag: Boolean) {
+        if (!flag) throw IllegalArgumentException(ERROR_PREFIX_MESSAGE+ERROR_LOTTO_INPUT)
+    }
+
+    fun tellNumOfLotto(numOfLotto: Int) {
+        println("$numOfLotto"+BUY_AMOUNT_MESSAGE)
+    }
 
     fun generateRandomLottos(numOfLotto: Int): MutableList<Int> {
         val lottos = mutableListOf<Int>()
@@ -41,5 +44,9 @@ class LottoGame {
             lottos.addAll(pickLottoNums)
         }
         return lottos
+    }
+    fun showEachLotto(lottos: MutableList<Int>): MutableList<Int> {
+        val sublottos : MutableList<Int> = lottos.subList(FROM_INDEX, END_INDEX)
+        return sublottos
     }
 }
