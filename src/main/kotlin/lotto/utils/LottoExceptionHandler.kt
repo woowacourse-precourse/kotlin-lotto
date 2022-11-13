@@ -31,6 +31,10 @@ object LottoExceptionHandler {
         require(notDuplicatedLotto.size == LOTTO_SIZE) { LOTTO_NUMBER_DUPLICATION_EXCEPTION_MESSAGE }
     }
 
+    fun validateBonusNumberDuplication(lotto: List<LottoNumber>, bonusNumber: LottoNumber) {
+        if (lotto.contains(bonusNumber)) throwException(BONUS_NUMBER_DUPLICATION_EXCEPTION_MESSAGE)
+    }
+
     private fun throwException(errorMessage: String) {
         throw IllegalArgumentException(errorMessage)
     }
