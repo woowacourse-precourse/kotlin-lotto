@@ -17,4 +17,8 @@ class WinLotto {
         }
         return cntSame
     }
+
+    private fun isContainBonusNum(lotto: List<Int>, bonusNum: Int): Boolean{
+        return lotto.contains(bonusNum)
+    }
 }
