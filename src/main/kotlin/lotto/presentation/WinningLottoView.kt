@@ -15,7 +15,7 @@ object WinningLottoView {
     }
 
     fun inputWinningLottoNumbers(): WinningLotto {
-        val numbers = Console.readLine()
+        val numbers = Console.readLine().trim()
         val lottoNumbers = Separator.separateToInts(numbers, ',').map { number -> LottoNumber(number) }
             .sortedBy { lottoNumber -> lottoNumber.number }
 
@@ -28,7 +28,7 @@ object WinningLottoView {
     }
 
     fun inputBonusNumber(): LottoNumber {
-        val number = Console.readLine()
+        val number = Console.readLine().trim()
         LottoExceptionHandler.validateIntType(number)
 
         return LottoNumber(number.toInt())

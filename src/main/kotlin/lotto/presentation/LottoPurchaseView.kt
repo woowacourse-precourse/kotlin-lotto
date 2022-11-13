@@ -13,7 +13,7 @@ object LottoPurchaseView {
     }
 
     fun inputPurchaseAmount(): Money {
-        val amount = Console.readLine()
+        val amount = Console.readLine().trim()
         LottoExceptionHandler.validateIntType(amount)
         LottoExceptionHandler.validateAmountUnit(amount.toInt())
 
