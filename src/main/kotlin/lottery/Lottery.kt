@@ -1,12 +1,10 @@
 package lottery
 
 import lotto.Lotto
-import camp.nextstep.edu.missionutils.Console.readLine
 import camp.nextstep.edu.missionutils.Randoms
 import data.NumberRange
 import data.Price
 import data.WinningAmount
-import kotlin.math.round
 
 class Lottery {
     private val winningCounter: MutableMap<String, Int> = mutableMapOf<String, Int>().withDefault { 0 }
@@ -14,25 +12,12 @@ class Lottery {
     private val quickPicks: MutableList<Lotto> = mutableListOf()
     var bonusNumber: Int = 0
     var purchase: Int = 0
-    var income: Double = 0.0
+    private var income: Double = 0.0
     private var incomeRatio: Double = 0.0
 
-    fun getPurchase() {
-        println("구입 금액을 입력해주세요.")
-
-        val input = readLine()
-        if (input.toDoubleOrNull() == null)
-            throw IllegalArgumentException("[ERROR] 숫자만 입력하세요.")
-
-        val purchase = input.toInt()
-        if (purchase % Price.STANDARD.price != 0)
-            throw IllegalArgumentException("[ERROR] ${Price.STANDARD.price}원 단위로 입력하세요.")
-
-        this.purchase = purchase
-    }
-
-    fun printQuickPick() {
-        this.getQuickPicks()
+    fun printQuickPick(input: String) {
+        this.purchase = input.toInt()
+        this.quickPicksGenerator()
         println("${this.quickPicks.size}개를 구매했습니다.")
 
         this.quickPicks.forEach {
@@ -40,36 +25,24 @@ class Lottery {
         }
     }
 
-    private fun getQuickPicks() {
+    private fun quickPicksGenerator() {
         val n = this.purchase / Price.STANDARD.price
         for (i in 0 until n){
             val numbers = Randoms.pickUniqueNumbersInRange(
                 NumberRange.START.number, NumberRange.END.number, NumberRange.MAX.number)
-
+            numbers.sort()
             this.quickPicks.add(Lotto(numbers))
         }
 
     }
 
-    fun getLotteryNumbers() {
-        println("당첨 번호를 입력해 주세요.")
-        val lotteryNumbers = readLine().split(",").map { it.toInt() }
+    fun getLotteryNumbers(input: String) {
+        val lotteryNumbers = input.split(",").map { it.toInt() }
         this.lotteryNumbers = Lotto(lotteryNumbers)
-
     }
 
-    fun getBonusNumber() {
-        println("보너스 번호를 입력해 주세요.")
-        val input = readLine()
-        if (input.toDoubleOrNull() == null)
-            throw IllegalArgumentException("[ERROR] 숫자만 입력하세요.")
-
-        val bonusNumber = input.toInt()
-        if (bonusNumber !in NumberRange.START.number..NumberRange.END.number) {
-            throw IllegalArgumentException(
-                "[ERROR] ${NumberRange.START.number}와 ${NumberRange.END.number} 사이 숫자를 입력하세요.")
-        }
-
+    fun getBonusNumber(bonusNumber: String) {
+        this.bonusNumber = bonusNumber.toInt()
     }
 
     fun printWinnings() {
@@ -101,12 +74,12 @@ class Lottery {
 
     fun printIncomeRatio() {
         this.getIncomeRatio()
-        this.incomeRatio = round(this.income / this.purchase * 1000) / 10
-        println("총 수익률은 ${this.incomeRatio}%입니다.")
+        this.incomeRatio = (this.income / this.purchase) * 100
+        println("총 수익률은 ${String.format("%.1f", this.incomeRatio)}%입니다.")
     }
 
     private fun getIncomeRatio() {
-        this.winningCounter.forEach { (k, v) ->
+        this.winningCounter.forEach { (k, _) ->
             when (k) {
                 "6" -> this.income += WinningAmount.FIRST.amount
                 "5_1" -> this.income += WinningAmount.SECOND.amount
