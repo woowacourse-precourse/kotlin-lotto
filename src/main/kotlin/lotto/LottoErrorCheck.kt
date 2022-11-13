@@ -39,7 +39,7 @@ object LottoErrorCheck {
     }
 
     fun checknumberisinlottorange(number: Int) {
-        if (number < 1 || number > 45)
+        if (number !in 1..45)
             throw IllegalArgumentException("[ERROR] 로또 번호는 1~45사이의 숫자여야 합니다.")
     }
 
