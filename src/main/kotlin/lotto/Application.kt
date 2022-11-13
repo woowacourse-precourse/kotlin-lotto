@@ -7,10 +7,10 @@ fun main() {
     val lottoCount = calculatePrice(price)
     val lottoNumber = pickNumber(lottoCount)
     printNumbers(lottoNumber,lottoCount)
+    val winngNumber = inputWinningNumber()
 
 
 }
-
 
 enum class Message(){
     PRICE, COUNT, NUMBER, BONUS,
@@ -54,4 +54,10 @@ fun printNumbers(lottoNumber: MutableList<MutableList<Int>>, lottoCount: Int){
     for(count in 0 until lottoCount){
         println(lottoNumber[count])
     }
+}
+
+fun inputWinningNumber(): String {
+    getMessage(Message.NUMBER)
+    val winningNumber = readLine()
+    return winningNumber.toString()
 }
