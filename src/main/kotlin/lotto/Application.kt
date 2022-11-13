@@ -9,6 +9,7 @@ const val userWinNumberInputMsg = "당첨 번호를 입력해 주세요."
 const val userBonusNumberInputMsg = "보너스 번호를 입력해 주세요."
 const val LOTTO_EACH_PRICE = 1000
 const val INPUT_ERROR_CODE = 999
+const val lottoPrizeRankCount = 5
 
 private var userInputPrice = 0 //추후에 수익률에 재사용하므로 전역변수로 설정
 
@@ -50,5 +51,12 @@ private fun compareRandomAndUserWinNumbers(randomNumbers: List<List<Int>>, userW
     for (i in randomNumbers) {
         prizeList.add(Lotto(i).getUserWinNumbers(userWinNumbers))
     }
+    convertPrizeListToPrizeCountList(prizeList)
+}
 
+private fun convertPrizeListToPrizeCountList(prizeList: List<Int>) {
+    val prizeCountList = mutableListOf<Int>()
+    for (i in 0 until lottoPrizeRankCount) {
+        prizeCountList.add(prizeList.count { it == i })
+    }
 }
