@@ -1,16 +1,16 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
+import java.text.DecimalFormat
 
-class LottoProcess(private val seller: LottoSeller) {
+class LottoProcessor(private val seller: LottoSeller) {
     fun processLotto() {
         try {
             val purchasedLotto = processPurchasingLotto()
             val winningNumber = processGeneratingWinningNumber()
             val bonusNumber = processGeneratingBonusNumber(winningNumber)
-            val result = processExtractingResult(purchasedLotto, winningNumber, bonusNumber)
         } catch (e: java.lang.IllegalArgumentException) {
-
+            println(e)
         }
     }
 
@@ -22,9 +22,12 @@ class LottoProcess(private val seller: LottoSeller) {
         require(isErrorOccurred == Error.NO_ERROR) {
             isErrorOccurred.errorText
         }
-        val purchasedLotto=seller.sellLotto(money.toInt(), LOTTO_PRICE)
-        
+        val purchasedLotto = seller.sellLotto(money.toInt(), LOTTO_PRICE)
+
         println(PURCHASED_LOTTO_COUNT.format(purchasedLotto.size))
+        purchasedLotto.forEach { eachLotto ->
+            eachLotto.printLottoNumbers()
+        }
         return purchasedLotto
     }
 
@@ -48,37 +51,5 @@ class LottoProcess(private val seller: LottoSeller) {
             isErrorOccurred.errorText
         }
         return WinningNumberGenerator.generateBonusNumber(bonusNumber)
-    }
-
-    private fun processExtractingResult(
-        purchasedLotto: List<Lotto>,
-        winningNumber: List<Int>,
-        bonusNumber: Int,
-    ): Map<LottoStatus, Int> {
-        val result = ResultExtractor.extractResult(purchasedLotto, winningNumber, bonusNumber)
-
-        result.printResult()
-        return result
-    }
-
-    private fun processCalculateProfit(usedMoney: Int, result: Map<LottoStatus, Int>){
-        ResultExtractor.calcProfit(usedMoney.toDouble(), result)
-    }
-
-    private fun Map<LottoStatus, Int>.printResult() {
-        LottoStatus.values().forEach { eachLottoStatus ->
-            var eachStatusCount = 0
-            this[eachLottoStatus]?.let { eachStatusCount = it }
-
-            val msg = when (eachLottoStatus) {
-                LottoStatus.FIFTH_PLACE -> "3개 일치 (5,000원) - %d개".format(eachStatusCount)
-                LottoStatus.FOURTH_PLACE -> "4개 일치 (50,000원) - %d개".format(eachStatusCount)
-                LottoStatus.THIRD_PLACE -> "5개 일치 (1,500,000원) - %d개".format(eachStatusCount)
-                LottoStatus.SECOND_PLACE -> "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개".format(eachStatusCount)
-                LottoStatus.FIRST_PLACE -> "6개 일치 (2,000,000,000원) - %d개".format(eachStatusCount)
-                else -> return@forEach
-            }
-            println(msg)
-        }
     }
 }
