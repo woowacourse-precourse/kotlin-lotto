@@ -4,25 +4,23 @@ import lotto.domain.*
 import lotto.view.*
 
 fun main() {
-    val (purchaser, lottos) = purchaseLottos(inputPurchaseAmount())
+    val purchaser = purchaseLottos(inputPurchaseAmount())
     val winningLotto = registerWinningLotto()
 
-    lottos.map {
-        purchaser.resultRank[winningLotto.getRank(it.toList()) - 1] += 1
-        purchaser.totalPrize += winningLotto.getPrize(it.toList())
-    }
+    purchaser.calculateResult(winningLotto)
+
     printPrizeResult(purchaser.resultRank)
     printRateOfReturn(purchaser.rateOfReturn)
 }
 
-fun purchaseLottos(amount: Int?): Pair<Purchaser, List<Lotto>> {
+fun purchaseLottos(amount: Int?): Purchaser {
     val purchaser = Purchaser(amount)
     printNumberOfTickets(purchaser.ticket)
 
-    val lottos = Store().buyLotto(purchaser.ticket).map { Lotto(it) }
-    printNumbersOfLottos(lottos)
+    purchaser.lotto = Store().buyLotto(purchaser.ticket).map { Lotto(it) }
+    printNumbersOfLottos(purchaser.lotto)
 
-    return Pair(purchaser, lottos)
+    return purchaser
 }
 
 fun registerWinningLotto(): WinningLotto {
