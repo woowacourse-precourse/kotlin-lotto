@@ -1,12 +1,20 @@
 package lotto.domain
 
+import lotto.domain.NumberGenerator.Companion.LOTTO_END_NUMBER
+import lotto.domain.NumberGenerator.Companion.LOTTO_NUMBER_COUNT
+import lotto.domain.NumberGenerator.Companion.LOTTO_START_NUMBER
+
 class WinningLotto(private val winningNumbers: List<Int>, private val bonusNumber: Int) {
     init {
-        require(winningNumbers.size == 6) { "[ERROR] 입력은 6개만 있어야합니다." }
-        require(winningNumbers.toSet().size == 6) { "[ERROR] 중복된 숫자가 있으면 안됩니다." }
-        require(winningNumbers.filter { it in 1..45 }.size == 6) { "[ERROR] 로또 번호는 1부터 45까지 사이의 숫자여야 합니다." }
+        require(winningNumbers.size == LOTTO_NUMBER_COUNT) { "[ERROR] 입력은 6개만 있어야합니다." }
+        require(winningNumbers.toSet().size == LOTTO_NUMBER_COUNT) { "[ERROR] 중복된 숫자가 있으면 안됩니다." }
+        require(
+            winningNumbers.filter { it in LOTTO_START_NUMBER..LOTTO_END_NUMBER }.size == LOTTO_NUMBER_COUNT
+        ) { "[ERROR] 로또 번호는 1부터 45까지 사이의 숫자여야 합니다." }
 
-        require(bonusNumber in 1..45) { "[ERROR] 로또 번호는 1부터 45까지 사이의 숫자여야 합니다." }
+        require(
+            bonusNumber in LOTTO_START_NUMBER..LOTTO_END_NUMBER
+        ) { "[ERROR] 로또 번호는 1부터 45까지 사이의 숫자여야 합니다." }
         require(bonusNumber !in winningNumbers) { "[ERROR0] 중복된 숫자가 있으면 안됩니다." }
     }
 

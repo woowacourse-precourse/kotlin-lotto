@@ -1,16 +1,18 @@
 package lotto.domain
 
+import lotto.domain.NumberGenerator.Companion.LOTTO_NUMBER_COUNT
+
 enum class LottoRank(
     val numberOfSame: Int,
     val bonus: Boolean,
     val prize: Int
 ) {
-    FIRST(6, false, 2_000_000_000),
-    SECOND(5, true, 30_000_000),
-    THIRD(5, false, 1_500_000),
-    FOURTH(4, false, 50_000),
-    FIFTH(3, false, 5_000),
-    NONE(0, false, 0);
+    FIRST(LOTTO_NUMBER_COUNT, false, 2_000_000_000),
+    SECOND(LOTTO_NUMBER_COUNT - 1, true, 30_000_000),
+    THIRD(LOTTO_NUMBER_COUNT - 1, false, 1_500_000),
+    FOURTH(LOTTO_NUMBER_COUNT - 2, false, 50_000),
+    FIFTH(LOTTO_NUMBER_COUNT - 3, false, 5_000),
+    NONE(LOTTO_NUMBER_COUNT - 4, false, 0);
 
     companion object {
         fun of(numberOfSame: Int, bonus: Boolean): LottoRank {

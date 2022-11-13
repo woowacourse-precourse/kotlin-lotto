@@ -4,16 +4,16 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class NumberGenerator {
     fun createRandomNumbers(
-        start: Int = START,
-        end: Int = END,
-        count: Int = COUNT
+        start: Int = LOTTO_START_NUMBER,
+        end: Int = LOTTO_END_NUMBER,
+        count: Int = LOTTO_NUMBER_COUNT
     ): List<Int> {
         return Randoms.pickUniqueNumbersInRange(start, end, count).sorted()
     }
 
     companion object {
-        private const val START = 1
-        private const val END = 45
-        private const val COUNT = 6
+        const val LOTTO_START_NUMBER = 1
+        const val LOTTO_END_NUMBER = 45
+        const val LOTTO_NUMBER_COUNT = 6
     }
 }
