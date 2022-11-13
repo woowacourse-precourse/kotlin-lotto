@@ -7,6 +7,6 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     fun lottocheck(usernumbers:List<Int>, computernumber:List<Int>):Int{
-        return usernumbers.intersect(computernumber).size
+        return usernumbers.intersect(computernumber.toSet()).size
     }
 }
