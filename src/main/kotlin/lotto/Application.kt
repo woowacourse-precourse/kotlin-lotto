@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import java.text.DecimalFormat
 import kotlin.IllegalArgumentException
+import kotlin.math.round
 
 const val INTRODUCE_MESSAGE = "구입금액을 입력해 주세요."
 const val SUCCESS_BUY_LOTTO_MESSAGE = "개를 구매했습니다."
@@ -51,6 +52,9 @@ fun main() {
         getRankedLotto(lottoTickets, winningLotto.map { it.toInt() }, winningLottoBonusNumber.toInt())
     val totalPrizeAmount = getTotalPrizeAmount(matchedLottoTickets)
     displayResultPrize(matchedLottoTickets)
+
+    val yieldPercent = getYieldPercent(totalPrizeAmount, userBudget.toInt())
+    displayResultYieldGuideMessage(yieldPercent)
 }
 
 fun getUserBudget(): String = Console.readLine()
@@ -208,6 +212,11 @@ fun getTotalPrizeAmount(matchedLottoTickets: MutableMap<Rank, Int>): Int {
     return totalPrizeAmount
 }
 
+fun getYieldPercent(totalPrizeAmount: Int, userBudget: Int): Double {
+    val yieldPercent = (totalPrizeAmount.toDouble() / userBudget.toDouble()) * 100
+    return round(yieldPercent * 100) / 100
+}
+
 fun displayIntroduceGuideMessage() = println(INTRODUCE_MESSAGE)
 fun displaySuccessBuyLottoGuideMessage(boughtLottoCount: Int) = println("$boughtLottoCount$SUCCESS_BUY_LOTTO_MESSAGE")
 fun displayCurrentLottoNumbers(currentLotto: Lotto) = println(currentLotto.getSortedNumbers())
@@ -233,8 +242,8 @@ fun showCurrentRankingCount(rank: Rank, matchedNumberCount: Int) {
     }
     println("${rank.matchNumbers}개 일치 (${getNumberWithUnit(rank.prizeMoney)}원) - ${matchedNumberCount}개")
 }
-
 fun getNumberWithUnit(number: Int): String = DecimalFormat("#,###").format(number)
+fun displayResultYieldGuideMessage(yieldPercent: Double) = println("총 수익률은 ${yieldPercent}%입니다.")
 
 fun isNotInteger(string: String): Boolean {
     return try {
