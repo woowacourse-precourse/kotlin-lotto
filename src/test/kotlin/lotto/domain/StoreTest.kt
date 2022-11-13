@@ -1,15 +1,16 @@
 package lotto.domain
 
-import org.assertj.core.api.Assertions
+import camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class StoreTest {
     @Test
     fun `기능 테스트`() {
-        camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest(
+        assertRandomUniqueNumbersInRangeTest(
             {
                 val element = Store().buyLotto(8)
-                Assertions.assertThat(element).isEqualTo(
+                assertThat(element).isEqualTo(
                     listOf(
                         listOf(8, 21, 23, 41, 42, 43),
                         listOf(3, 5, 11, 16, 32, 38),

@@ -1,6 +1,7 @@
 package lotto.domain
 
-import org.assertj.core.api.Assertions
+import camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class NumberGeneratorTest {
@@ -10,7 +11,7 @@ class NumberGeneratorTest {
         val numberGenerator = NumberGenerator()
         val randomNumbers = numberGenerator.createRandomNumbers()
         print(randomNumbers.toString())
-        Assertions.assertThat(
+        assertThat(
             randomNumbers.size == 6 &&
             randomNumbers.toSet().size == 6 &&
             randomNumbers.filter { it in 1..45 }.size == 6
@@ -20,10 +21,10 @@ class NumberGeneratorTest {
     @Test
     fun `정렬 테스트`() {
         val numberGenerator = NumberGenerator()
-        camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest(
+        assertRandomUniqueNumbersInRangeTest(
             {
                 val getElement = numberGenerator.createRandomNumbers()
-                Assertions.assertThat(getElement).isEqualTo(
+                assertThat(getElement).isEqualTo(
                     listOf(8, 21, 23, 41, 42, 43)
                 )
             },
