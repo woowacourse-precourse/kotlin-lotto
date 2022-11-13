@@ -29,9 +29,7 @@ fun main() {
 
     message.printStatistics(winningResult)
 
-    val profit = calculatePrize(winningResult)
-
-    val profitRate = roundOff( calculateProfitRate(profit, money.money))
+    val profitRate = money.getProfitRate(winningResult)
 
     message.printProfit(profitRate)
 
@@ -69,19 +67,3 @@ fun generateWinningResult(lotteryTickets: List<Lotto>, winningNumber: List<Strin
     return winningResult
 }
 
-fun calculatePrize(winningResult: List<Int>): Int {
-    val winMoney = listOf(5000, 50000, 1500000, 30000000, 2000000000)
-    var prize = 0
-    winningResult.forEachIndexed { index, it -> prize += winMoney[index] * it }
-
-    return prize
-}
-
-fun calculateProfitRate(prize: Int, money: String): Double {
-    return (prize / money.toDouble() * 100)
-}
-
-
-fun roundOff(d: Double): Double {
-    return String.format("%.2f", d).toDouble()
-}
