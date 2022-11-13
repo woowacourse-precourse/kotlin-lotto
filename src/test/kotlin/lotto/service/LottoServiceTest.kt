@@ -1,6 +1,8 @@
 package lotto.service
 
+import lotto.domain.Lotto
 import lotto.domain.LottoShop
+import lotto.repository.LottoRepository
 import lotto.service.dto.LottoDto
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -18,6 +20,15 @@ internal class `LottoService 클래스의` {
 
                 assertThat(lotteries).hasSize(purchaseAmount / LottoShop.lottoPrice())
                 assertThat(lotteries).allMatch { it.javaClass == LottoDto::class.java }
+            }
+            @Test
+            fun `구입한 로또를 모두 LottoRepository에 저장한다`() {
+                val initLotteries = LottoRepository.findAll()
+                LottoService.purchaseLotteries(purchaseAmount)
+
+                val findLotteries = LottoRepository.findAll()
+
+                assertThat(findLotteries.size - initLotteries.size).isEqualTo(purchaseAmount / LottoShop.lottoPrice())
             }
         }
     }
