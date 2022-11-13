@@ -10,5 +10,5 @@ fun main() {
     val winningNumber = WinningNumber().getWinningNumber()
     println()
     val bonusNumber = BonusNumber().getBonusNumber(winningNumber)
-    val winningList = GameManager().getResult(lottoNumbers, winningNumber, bonusNumber)
+    val winningList = WinningCalculator().getResult(lottoNumbers, winningNumber, bonusNumber)
 }

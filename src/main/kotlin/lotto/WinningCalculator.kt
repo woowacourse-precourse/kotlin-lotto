@@ -1,6 +1,6 @@
 package lotto
 
-class GameManager() {
+class WinningCalculator() {
 
     private val winningList = mutableListOf<Int>(0, 0, 0, 0, 0, 0)
 
