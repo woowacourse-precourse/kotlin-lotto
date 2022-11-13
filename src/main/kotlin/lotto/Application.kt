@@ -9,4 +9,5 @@ fun main() {
 
     var seller = Seller()
     seller.generateLotto(lottoCnt)
+    seller.getWinningNumber()
 }

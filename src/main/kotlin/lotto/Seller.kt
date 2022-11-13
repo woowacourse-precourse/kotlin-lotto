@@ -14,7 +14,6 @@ class Seller {
             var randLotto = Randoms.pickUniqueNumbersInRange(1, 45, LOTTO_SIZE).sorted()
             println(randLotto)
         }
-        getWinningNumber()
     }
 
     fun getWinningNumber() {
