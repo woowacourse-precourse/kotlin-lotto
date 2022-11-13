@@ -13,13 +13,6 @@ import org.junit.jupiter.params.provider.MethodSource
 
 class `Lotto 클래스의` {
 
-    @Test
-    fun `로또 번호에 중복된 숫자가 있으면 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, 5))
-        }
-    }
-
     @Nested
     inner class `생성자는` {
         @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -38,6 +31,14 @@ class `Lotto 클래스의` {
         @Nested
         inner class `주어지는 로또 번호가 1에서 45 사이의 숫자가 아니면` {
             private val numbers = listOf(1, 2, 3, 4, 5, 46)
+            @Test
+            fun `예외를 던진다`() {
+                assertThatThrownBy { Lotto(numbers) }.isInstanceOf(IllegalArgumentException::class.java)
+            }
+        }
+        @Nested
+        inner class `주어지는 로또 번호 중 중복된 숫자가 있다면` {
+            private val numbers = listOf(1, 2, 3, 4, 5, 5)
             @Test
             fun `예외를 던진다`() {
                 assertThatThrownBy { Lotto(numbers) }.isInstanceOf(IllegalArgumentException::class.java)
