@@ -1,8 +1,8 @@
 ## 기능 목록
 - [ ] 구매 금액 1000원당 1개의 로또를 발행한다 - createPerThousand()
-- [ ] 로또 발행 시 1 ~ 45까지 중복되지 않는 6개의 숫자를 생성한다. - CreateLotto#createRandomNumbers()
-  - [ ] 당첨 번호가 몇 개 일치하는지 확인한다. Compare#checkWinningNumbers()
-  - [ ] 보너스 번호가 일치하는지 확인한다. Compare#checkBonusNumber()
+- [x] 로또 발행 시 1 ~ 45까지 중복되지 않는 6개의 숫자를 생성한다. - RandomGenerator#createRandomNumbers()
+  - [x] 당첨 번호가 몇 개 일치하는지 확인한다. Compare#checkWinningNumbers()
+  - [x] 보너스 번호가 일치하는지 확인한다. Compare#checkBonusNumber()
 - [ ] 번호 일치 개수로 몇 등 인지 확인한다. Ranking#checkRanking()
 - [ ] 각 등수가 몇 개 인지 확인한다. CountRank#countRankAllLotto()
 - [ ] 구매 금액과 총 당첨 금액을 비교하여 수익률을 계산한다. Calculator#calculateYield()
