@@ -22,21 +22,4 @@ class LottoTest {
 
     // 아래에 추가 테스트 작성 가능
 
-    @Test
-    fun `돈 입력 예외`() {
-        val lottoGame = LottoGame()
-        assertThrows<IllegalArgumentException> {
-            lottoGame.receiveMoney("abc")
-        }
-    }
-
-    @Test
-    fun `당첨 내역 확인`() {
-        val lotto = Lotto(listOf(1,2,3,4,5,7))
-        val winningNum = listOf<Int>(1,2,3,4,5,6)
-        val bonusNumber = 7
-        val count = lotto.compareWithWinningNumber(winningNum)
-        val resultRank = lotto.determineRank(count, bonusNumber)
-        assertThat(resultRank).isEqualTo(Rank.Second)
-    }
 }

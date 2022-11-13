@@ -1,27 +1,20 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.Console
-
 fun main() {
-    println("구입금액을 입력해 주세요.")
+    val outputView = OutputView()
+    val lottoController = LottoController()
 
-    val lottoGame = LottoGame()
-    lottoGame.receiveMoney(Console.readLine())
-    println("${lottoGame.printLottoCount()}개를 구매했습니다.")
+    outputView.printStartMessage()
 
-    lottoGame.printLotto()
+    lottoController.receiveMoney()
 
-    println("당첨 번호를 입력해 주세요.")
-    lottoGame.receiveWinningNumber(Console.readLine())
+    lottoController.createLotto()
 
-    println("보너스 번호를 입력해 주세요.")
-    lottoGame.receiveBonusNumber(Console.readLine())
+    outputView.printWinningNumberMessage()
+    lottoController.receiveWinningNumber()
 
-    println("당첨 통계\n---")
-    lottoGame.printResult()
+    outputView.printBonusNumberMessage()
+    lottoController.receiveBonusNumber()
 
-    val profit = lottoGame.calculateProfitPercentage()
-    print("총 수익률은 ${profit}%입니다.")
-
-
+    lottoController.result()
 }

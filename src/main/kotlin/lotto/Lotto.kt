@@ -3,22 +3,31 @@ package lotto
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6)
+        // 예외 확인
     }
 
-    fun printLottoNumber(): List<Int> {
+    fun getNumbers(): List<Int> {
         return numbers
     }
 
-    fun compareWithWinningNumber(winningNumber: List<Int>): Int {
+    fun compareWithWinningNumber(winningNum: Lotto): Int {
         var count = 0
-        for (i in winningNumber) {
+        for (i in winningNum.getNumbers()) {
             if (numbers.contains(i))
                 count++
         }
         return count
     }
 
-    fun determineRank(count : Int, bonusNumber: Int): Any {
+    fun calculateWinningResult(winningNumber: Lotto, bonusNumber: Int): Pair<Rank,Int> {
+        val count = compareWithWinningNumber(winningNumber)
+        val rank = determineRank(count, bonusNumber)
+        val sumPrizeMoney = rank.prizeMoney
+
+        return Pair(rank,sumPrizeMoney)
+    }
+
+    fun determineRank(count : Int, bonusNumber: Int): Rank {
         when (count) {
             6 -> return Rank.First
             5 -> {
@@ -31,4 +40,5 @@ class Lotto(private val numbers: List<Int>) {
             else -> return Rank.None
         }
     }
+
 }
