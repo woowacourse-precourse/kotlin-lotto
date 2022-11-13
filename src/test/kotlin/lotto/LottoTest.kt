@@ -91,7 +91,7 @@ class LottoTest {
                 Lotto(listOf(1, 3, 5, 14, 22, 45))
             ), listOf(1, 2, 3, 4, 5, 6), 7
         )
-        assertThat(winRanks).isEqualTo(mapOf(LottoRank.THIRD to 1))
+        assertThat(winRanks).isEqualTo(mapOf(LottoRank.FIFTH to 1, LottoRank.FAIL to 7))
     }
 
     @Test
