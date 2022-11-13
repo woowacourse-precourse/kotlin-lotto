@@ -6,4 +6,6 @@ fun main() {
     val lotto = LottoGenerator().generateLotto(numberOfLotto)
     println()
     LottoPrinter().printLotto(lotto)
+    println()
+    val winningNumber = WinningNumber().getWinningNumber()
 }
