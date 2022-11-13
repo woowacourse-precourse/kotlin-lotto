@@ -32,7 +32,8 @@ object LottoConsole {
     fun inputWinningLottoNumbers(): WinningLotto {
         val numbers = Console.readLine()
         val lottoNumbers = Separator.separateToInts(numbers, ',')
-            .map { LottoNumber(it) }
+            .map { number -> LottoNumber(number) }
+            .sortedBy { lottoNumber -> lottoNumber.number }
 
         return WinningLotto(lottoNumbers)
     }

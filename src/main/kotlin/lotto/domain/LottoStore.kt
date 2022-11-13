@@ -26,6 +26,7 @@ class LottoStore {
     private fun publish(): Lotto {
         val uniqueNumbers = Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_SIZE)
             .map { number -> LottoNumber(number) }
+            .sortedBy { lottoNumber -> lottoNumber.number }
 
         return Lotto(uniqueNumbers)
     }
