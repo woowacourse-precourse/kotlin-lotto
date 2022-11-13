@@ -1,19 +1,17 @@
 package lottery
 
 import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-import org.junit.jupiter.api.assertThrows
-import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
+import java.lang.reflect.Method
+import java.lang.reflect.InvocationTargetException
 
 internal class LotteryTest {
     private val outputStreamCaptor = ByteArrayOutputStream()
     private val standardOut = System.out
-    private val testClass = Lottery()
 
     @BeforeEach
     fun setUp() {
@@ -26,78 +24,13 @@ internal class LotteryTest {
     }
 
     @Test
-    fun `1000 단위 입력 테스트 1`() {
-        val input = "10001"
-        val gets = ByteArrayInputStream(input.toByteArray())
-        System.setIn(gets)
+    fun `등급별 당첨 개수 검증`() {
 
-        assertThrows<IllegalArgumentException> { testClass.getPurchase() }
     }
 
     @Test
-    fun `1000 단위 입력 테스트 2`() {
-        val input = "1000"
-        val gets = ByteArrayInputStream(input.toByteArray())
-        System.setIn(gets)
-        testClass.getPurchase()
-        assertEquals(1000, testClass.purchase)
-    }
+    fun `수익률 계산 검증`() {
 
-    @Test
-    fun `1000 단위 입력 테스트 3`() {
-        val input = "rk"
-        val gets = ByteArrayInputStream(input.toByteArray())
-        System.setIn(gets)
-
-        assertThrows<IllegalArgumentException> { testClass.getPurchase() }
-    }
-
-    @Test
-    fun `당첨 번호 입력 테스트 1`() {
-        val input = "1,2,3,4,56"
-        val gets = ByteArrayInputStream(input.toByteArray())
-        System.setIn(gets)
-
-        assertThrows<IllegalArgumentException> { testClass.getLotteryNumbers() }
-    }
-
-    @Test
-    fun `당첨 번호 입력 테스트 2`() {
-        val input = "1,2,3,4,5,6"
-        val gets = ByteArrayInputStream(input.toByteArray())
-        System.setIn(gets)
-
-        testClass.getLotteryNumbers()
-        assertEquals(listOf(1,2,3,4,5,6), testClass.lotteryNumbers.getList())
-    }
-
-    @Test
-    fun `보너스 번호 입력 테스트 1`() {
-        val input = "1"
-        val gets = ByteArrayInputStream(input.toByteArray())
-        System.setIn(gets)
-
-        testClass.getBonusNumber()
-        assertEquals(1, testClass.bonusNumber)
-    }
-
-    @Test
-    fun `보너스 번호 입력 테스트 2`() {
-        val input = "qwer"
-        val gets = ByteArrayInputStream(input.toByteArray())
-        System.setIn(gets)
-
-
-        assertThrows<IllegalArgumentException> { testClass.getBonusNumber() }
-    }
-
-    @Test
-    fun `보너스 번호 입력 테스트 3`() {
-        val input = "46"
-        val gets = ByteArrayInputStream(input.toByteArray())
-        System.setIn(gets)
-
-        assertThrows<IllegalArgumentException> { testClass.getBonusNumber() }
     }
 
 }
