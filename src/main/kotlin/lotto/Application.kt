@@ -7,14 +7,11 @@ fun main() {
     val purchasePrice = getPurchasePrice()
     val purchasedLotto = mutableListOf<Lotto>()
 
-    for (i in 0 until purchasePrice / 1000){
+    for (i in 0 until purchasePrice / 1000) {
         purchasedLotto.add(generateLottoNumber())
     }
 
     println("${purchasePrice / 1000}개를 구매하였습니다")
-    purchasedLotto.forEach {
-        println(it.toString())
-    }
 }
 
 fun getPurchasePrice(): Int {
@@ -23,9 +20,10 @@ fun getPurchasePrice(): Int {
     return Console.readLine().toInt()
 }
 
-fun getPrizeNumbers(): List<Int> {
+fun getPrizeNumbers(): Lotto {
     println("당첨 번호를 입력해 주세요.")
-    return Console.readLine().split(",").map { it.toInt() }
+    val numbers = Console.readLine().split(",").map { it.toInt() }
+    return Lotto(numbers)
 }
 
 fun getBonusNumber(): Int {
@@ -33,7 +31,7 @@ fun getBonusNumber(): Int {
     return Console.readLine().toInt()
 }
 
-fun generateLottoNumber(): Lotto{
+fun generateLottoNumber(): Lotto {
     val lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
     return Lotto(lottoNumbers)
 }
