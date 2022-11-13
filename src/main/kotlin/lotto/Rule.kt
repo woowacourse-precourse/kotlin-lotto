@@ -6,13 +6,16 @@ import utils.Constants.ERROR_NOT_1000WON_MESSAGE
 import utils.Constants.ERROR_OUT_OF_RANGE_MESSAGE
 import utils.Constants.ERROR_OVER_COUNT_MESSAGE
 import utils.Constants.ERROR_REDUPLICATED_NUMBER_MESSAGE
+import utils.Constants.RANGE_END
+import utils.Constants.RANGE_START
+import utils.Constants.STANDARD_WON
 
 class Rule {
     fun checkPurchaseAmount(input: String) {
         // 1. 숫자 외 문자일 경우
         val amount = input.toIntOrNull() ?: throw IllegalArgumentException(ERROR_OUT_OF_RANGE_MESSAGE)
         // 2. 1000원 단위인지
-        if (amount % 1000 != 0) throw IllegalArgumentException(ERROR_NOT_1000WON_MESSAGE)
+        if (amount % STANDARD_WON != 0) throw IllegalArgumentException(ERROR_NOT_1000WON_MESSAGE)
     }
 
     fun checkWinningNumbers(numbers: List<String>) {
@@ -31,7 +34,7 @@ class Rule {
 
     private fun isNumberOutOfRange(numbers: List<String>): Boolean {
         for (number in numbers) {
-            if (number.toInt() < 1 || number.toInt() > 45)
+            if (number.toInt() < RANGE_START || number.toInt() > RANGE_END)
                 return true
         }
         return false
@@ -39,7 +42,7 @@ class Rule {
 
     fun checkBonusNumber(lottoNumbers: List<Int>, bonusNumber: Int) {
         require(!lottoNumbers.contains(bonusNumber)) { ERROR_REDUPLICATED_NUMBER_MESSAGE }
-        require(bonusNumber in 1..45) { ERROR_OUT_OF_RANGE_MESSAGE }
+        require(bonusNumber in RANGE_START..RANGE_END) { ERROR_OUT_OF_RANGE_MESSAGE }
     }
 
 }

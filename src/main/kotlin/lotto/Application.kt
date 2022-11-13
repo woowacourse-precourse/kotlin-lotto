@@ -26,6 +26,3 @@ fun main() {
     display.printStatistics(matchingCounts, profit)
 
 }
-
-
-// todo 범위 수정 const로

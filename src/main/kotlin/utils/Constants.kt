@@ -16,6 +16,9 @@ object Constants {
     const val ERROR_REDUPLICATED_NUMBER_MESSAGE = "[ERROR] 로또 번호가 중복됩니다."
     const val ERROR_OVER_COUNT_MESSAGE = "[ERROR] 요청한 개수보다 많은 입력을 하였습니다."
 
+    const val STANDARD_WON = 1000
+    const val RANGE_START = 1
+    const val RANGE_END = 45
 
 
 }
