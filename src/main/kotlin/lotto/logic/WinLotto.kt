@@ -1,6 +1,24 @@
 package lotto.logic
 
 class WinLotto {
+
+    fun getRankResult(lottos: ArrayList<List<Int>>, winningNum: List<Int>, bonusNum: Int): MutableMap<Rank, Int>{
+        var rankResult = mutableMapOf<Rank, Int>()
+        rankResult = initializeMap(rankResult)
+
+        for(i in lottos.indices){
+            var cntSame = countSameNum(lottos[i], winningNum)
+
+            var isBonus = false
+            if(isContainBonusNum(lottos[i], bonusNum))
+                isBonus = true
+
+            rankResult = addToRankResult(cntSame, rankResult, isBonus)
+        }
+
+        return rankResult
+    }
+
     private fun initializeMap(rankResult: MutableMap<Rank, Int>): MutableMap<Rank, Int>{
         for(i in Rank.values()){
             rankResult[i] = 0
