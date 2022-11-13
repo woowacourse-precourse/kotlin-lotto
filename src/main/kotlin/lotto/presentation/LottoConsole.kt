@@ -47,8 +47,21 @@ object LottoConsole {
         return LottoNumber(number.toInt())
     }
 
+    fun printLottoStatics(lottoRanks: LottoRanks, earned: Money, investment: Money) {
+        println(LOTTO_STATIC_MESSAGE)
+        printMatchingLotto(lottoRanks)
+        printYieldRate(earned, investment)
+    }
+
+    private fun printMatchingLotto(lottoRanks: LottoRanks) {
+        lottoRanks.entries.forEach { entry ->
+            val (lottoRank, count) = entry.toPair()
+            println(lottoRank.message.format(count))
+        }
+    }
+
     private fun printYieldRate(earned: Money, investment: Money) {
-        println(TOTAL_YIELD_RATE_MESSAGE.format(earned.calculateYieldRate(investment)))
+        print(TOTAL_YIELD_RATE_MESSAGE.format(earned.calculateYieldRate(investment)))
     }
 
     private fun printPurchasedLottoCount(lottoCount: Int) {
