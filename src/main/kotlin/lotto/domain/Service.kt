@@ -17,10 +17,10 @@ class Service {
     /**
      * 구매 갯수 만큼 로또 번호를 생성해 리턴하는 함수
      * */
-    fun getLottoNumbers(countOfLotto: Int): MutableList<List<Int>> {
-        val lottoNumbers: MutableList<List<Int>> = mutableListOf()
+    fun getLottoNumbers(countOfLotto: Int): MutableList<Lotto> {
+        val lottoNumbers: MutableList<Lotto> = mutableListOf()
         for (i in 0 until countOfLotto) {
-            lottoNumbers.add(Util.createLottoNumbers().sorted())
+            lottoNumbers.add(Lotto(Util.createLottoNumbers().sorted()))
         }
         return lottoNumbers
     }
@@ -28,12 +28,10 @@ class Service {
     /**
      * 당첨 번호를 입력받고 예외 처리 후 리턴하는 함수
      * */
-    fun getWinningNumbers(): List<Int> {
+    fun getWinningNumbers(): Lotto {
         val inputWinningNumber = Util.readLine()
         checkInputWinningNumbers(inputWinningNumber)
-        return inputWinningNumber
-            .split(",")
-            .map { it.toInt() }
+        return Lotto(inputWinningNumber.split(",").map { it.toInt() })
     }
     /**
      * 보너스 번호를 입력받고 예외 처리 후 리턴하는 함수
