@@ -1,4 +1,4 @@
-package lotto
+package lotto.domain.statistics
 
 class Profit(private val prizeCount: Map<Int, Int>, private val money: Int) {
     fun calculateRate(): String {

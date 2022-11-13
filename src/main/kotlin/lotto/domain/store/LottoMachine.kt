@@ -1,4 +1,7 @@
-package lotto
+package lotto.domain.store
+
+import lotto.domain.lotto.Lotto
+import lotto.domain.lotto.LottoNumber
 
 class LottoMachine(private val money: Int) {
     fun sellLottos(): Int =

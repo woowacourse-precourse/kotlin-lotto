@@ -1,4 +1,7 @@
-package lotto
+package lotto.domain.statistics
+
+import lotto.domain.lotto.Lotto
+import lotto.domain.prize.LottoPrize
 
 class WinningLotto(private val lottoNumbers: List<Lotto>, private val bonusNumber: Int) {
     fun countWinningLotto(otherNumbers: List<Int>): Map<Int, Int> {
