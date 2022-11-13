@@ -6,6 +6,10 @@ import lotto.userinterface.UserInterface.askWinningNumbers
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.MethodSource
 import java.io.ByteArrayInputStream
 
 internal class `UserInterface 클래스의` {
@@ -72,6 +76,20 @@ internal class `UserInterface 클래스의` {
             private val winningNumbers = "1,2,3,4,5"
             @Test
             fun `예외를 던지고 에러 메시지를 출력한다`() {
+                assertThatThrownBy { runException(winningNumbers) }.isInstanceOf(IllegalArgumentException::class.java)
+                    .hasMessageContaining(ERROR_MESSAGE)
+            }
+        }
+        @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+        @Nested
+        inner class `당첨 번호가 1에서 45 사이의 숫자가 아니면` {
+            private fun winningNumbers() = listOf(
+                Arguments.of("1,2,3,4,5,0"),
+                Arguments.of("1,2,3,4,5,a")
+            )
+            @ParameterizedTest
+            @MethodSource("winningNumbers")
+            fun `예외를 던지고 에러 메시지를 출력한다`(winningNumbers: String) {
                 assertThatThrownBy { runException(winningNumbers) }.isInstanceOf(IllegalArgumentException::class.java)
                     .hasMessageContaining(ERROR_MESSAGE)
             }
