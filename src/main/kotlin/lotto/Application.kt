@@ -29,6 +29,10 @@ fun main() {
     if (isValidBonusNumber(bonusNumber).not()) {
         throw IllegalArgumentException("[ERROR]")
     }
+
+    println("\n당첨 통계")
+    println("---")
+
 }
 
 fun isValidPrice(price: Int): Boolean = (price % 1000 == 0)
@@ -48,7 +52,7 @@ fun isValidWinningNumbers(input: String): Boolean {
 
 fun isValidBonusNumber(number: Int): Boolean = (number in 1..45)
 
-fun getRandomNumbers(): List<Int> = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+fun getRandomNumbers(): List<Int> = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
 
 fun getLotto(price: Int): List<List<Int>> {
     val lotto = mutableListOf<List<Int>>()
