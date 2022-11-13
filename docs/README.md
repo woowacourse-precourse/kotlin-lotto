@@ -18,8 +18,8 @@
 - 각 파일
 
 1. Application.kt 메인
-2. LottoGame.kt 로또 게임을 실질적으로 진행
-3. Lotto.kt 로또 계산
+2. LottoGame.kt 로또 게임에 대한 계산 진행
+3. Lotto.kt 로또 게임에 대한 출력 진행
 4. LottoErrorCheck.kt 프로그램 에러 체크
 
 
