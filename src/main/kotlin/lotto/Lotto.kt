@@ -14,7 +14,7 @@ class Lotto(private val numbers: List<Int>) {
             return usernumbers.intersect(computernumber.toSet()).size
         }
         fun printcount(count: Int) {
-            println("$count" + "개를 구입했습니다.")
+            println("$count" + "개를 구매했습니다.")
         }
         fun printlottolist(lottos:List<List<Int>>) {
             for (element in lottos) {
@@ -41,7 +41,7 @@ class Lotto(private val numbers: List<Int>) {
             println("6개 일치 (2,000,000,000원) - ${checkprize[4]}개")
         }
         fun printyield(lottoyield:Double) {
-            println("총 수익률은" + String.format("%.1f", lottoyield) + "%입니다.")
+            println("총 수익률은 " + String.format("%.1f", lottoyield) + "%입니다.")
 
         }
 
