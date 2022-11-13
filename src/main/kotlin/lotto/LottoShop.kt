@@ -11,7 +11,7 @@ class LottoShop {
 
     fun cntLotto(purchaseAmount: Int): Int {
         val purchaseCnt = (purchaseAmount / 1000)
-        println("${purchaseCnt}개를 구매했습니다.")
+        println("\n${purchaseCnt}개를 구매했습니다.")
         return purchaseCnt
     }
 
