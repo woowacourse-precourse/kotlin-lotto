@@ -1,6 +1,6 @@
 package lotto.domain
 
-import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Console.readLine
 
 class LottoGame {
     fun start() {
@@ -8,18 +8,14 @@ class LottoGame {
         val playerTicket = getLottoTicket(playerCost)
         printTicket(playerTicket)
         val winningNumbers = getWinningNumbers()
-        val result = checkLotto(winningNumbers, playerTicket)
+        val result = checkLotto(winningNumbers)
         printResult(result)
     }
 
     private fun getCost(): Int {
         println(GAME_START_MESSAGE)
-        val playerInput = Console.readLine()
-        try {
-            return playerInput.toInt()
-        } catch (e: NumberFormatException) {
-            throw IllegalArgumentException(INPUT_EXCEPTION)
-        }
+        val playerInput = readLine()
+        return validateNumberInput(playerInput)
     }
 
     private fun getLottoTicket(cost: Int): List<Lotto> {
@@ -33,9 +29,17 @@ class LottoGame {
         }
     }
 
-    private fun getWinningNumbers(): Pair<List<Int>, Int> {
-        return WinningNumber().generate()
+    private fun getWinningNumbers(): WinningNumber {
+        println(REQUEST_WINNING_NUMBER_MESSAGE)
+        var input = readLine()
+        val winningNumbers = validateNumbersInput(input)
+        println(REQUEST_BONUS_NUMBER_MESSAGE)
+        input = readLine()
+        val bonusNumber = validateNumberInput(input)
+
+        return WinningNumber(winningNumbers, bonusNumber)
     }
+
 
     private fun checkLotto(winningNumbers: Pair<List<Int>, Int>, tickets: List<Lotto>): List<Int> {
         return LottoResult().getResult()
@@ -45,10 +49,28 @@ class LottoGame {
         LottoResult().printResult(result)
     }
 
+    private fun validateNumberInput(input: String): Int {
+        try {
+            return input.toInt()
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException(INPUT_EXCEPTION)
+        }
+    }
 
+    private fun validateNumbersInput(input: String): List<Int>{
+        val inputs = input.split((","))
+        try {
+            return inputs.map { it.toInt() }
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException(INPUT_EXCEPTION)
+        }
+    }
 
     companion object {
         const val GAME_START_MESSAGE = "구입금액을 입력해 주세요."
-        const val INPUT_EXCEPTION = "잘못된 입력입니다."
+        const val INPUT_EXCEPTION = "[ERROR] 잘못된 입력입니다. 숫자만을 입력해주세요"
+        const val REQUEST_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요."
+        const val REQUEST_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요."
+
     }
 }
