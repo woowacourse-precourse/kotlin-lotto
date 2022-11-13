@@ -2,11 +2,11 @@ package lotto
 
 object Printer {
     fun printAmountMessage() {
-        println("구입금액을 입력해 주세요.")
+        println(ENTER_BUY_AMOUNT)
     }
 
     fun printLottoCountMessage(count: Int) {
-        println("\n${count}개를 구매했습니다.")
+        println(BOUGHT_COUNT.format(count))
     }
 
     fun printBoughtLottoList(lotteries: List<List<Int>>) {
@@ -16,34 +16,33 @@ object Printer {
     }
 
     fun printWinningNumberMessage() {
-        println("\n당첨 번호를 입력해 주세요.")
+        println(ENTER_WINNING_NUMBER)
     }
 
     fun printBonusNumberMessage() {
-        println("\n보너스 번호를 입력해 주세요.")
+        println(ENTER_BONUS_NUMBER)
     }
 
     fun printWinStaticMessage() {
-        println("\n당첨 통계\n---")
+        println(WINNING_STATICS)
     }
 
     fun printLottoResult(result: List<LottoResultState>) {
         println(
-            "3개 일치 (5,000원) - ${result.count{it==LottoResultState.FIFTH}}개\n" +
-            "4개 일치 (50,000원) - ${result.count{it==LottoResultState.FOURTH}}개\n" +
-            "5개 일치 (1,500,000원) - ${result.count{it==LottoResultState.THIRD}}개\n" +
-            "5개 일치, 보너스 볼 일치 (30,000,000원) - ${result.count{it==LottoResultState.SECOND}}개\n" +
-            "6개 일치 (2,000,000,000원) - ${result.count{it==LottoResultState.FIRST}}개"
+            CORRECT_THREE.format(result.count { it == LottoResultState.FIFTH }) +
+            CORRECT_FOUR.format(result.count { it == LottoResultState.FOURTH }) +
+            CORRECT_FIVE.format(result.count { it == LottoResultState.THIRD }) +
+            CORRECT_FIVE_AND_BONUS.format(result.count { it == LottoResultState.SECOND }) +
+            CORRECT_SIX.format(result.count { it == LottoResultState.FIRST })
         )
     }
 
     fun printYield(yieldPercentage: String) {
-        println("총 수익률은 ${yieldPercentage}%입니다.")
+        println(TOTAL_YIELD.format(yieldPercentage))
     }
 
-
     fun printError(errorMessage: String) {
-        println("[ERROR] $errorMessage")
+        println(ERROR_MESSAGE.format(errorMessage))
     }
 
 }
