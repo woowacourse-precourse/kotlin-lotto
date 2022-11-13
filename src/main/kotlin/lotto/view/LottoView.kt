@@ -23,15 +23,15 @@ class LottoView {
         val inputWinningLottoNumbers = Console.readLine()
         val list = inputWinningLottoNumbers.split(",")
         validWinningLotto(list)
-        for (i in list) {
-            WinningLottoNumbers.add(i.toInt())
+        for (eachLottoNumber in list) {
+            WinningLottoNumbers.add(eachLottoNumber.toInt())
         }
         return WinningLottoNumbers
     }
 
     private fun validWinningLotto(lottoNumList: List<String>) {
         for (lottoNum in lottoNumList) {
-            if (!isNumber(lottoNum)) {
+            if (!isNumber(lottoNum) || !isValidNumberRange(lottoNum.toInt())) {
                 throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
             }
         }
@@ -40,7 +40,7 @@ class LottoView {
     fun getBonusNumber(): Int {
         println("\n보너스 번호를 입력해 주세요.")
         val inputBonusNumber = Console.readLine()
-        if (!isNumber(inputBonusNumber)) {
+        if (!isNumber(inputBonusNumber) || !isValidNumberRange(inputBonusNumber.toInt())) {
             throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
         }
         return inputBonusNumber.toInt()
@@ -50,7 +50,16 @@ class LottoView {
         return if (s.isNullOrEmpty()) false else s.all { Character.isDigit(it) }
     }
 
+    private fun isValidNumberRange(bonusNumber: Int): Boolean {
+        if (bonusNumber < MINIMUM_LOTTO_NUMBER || bonusNumber > MAXIMUM_LOTTO_NUMBER) {
+                throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+        }
+        return true
+    }
+
     companion object {
         const val PRICE_PER_LOTTO = 1000
+        const val MINIMUM_LOTTO_NUMBER = 1
+        const val MAXIMUM_LOTTO_NUMBER = 45
     }
 }
