@@ -26,6 +26,7 @@ object LottoErrorCheck {
     fun checklottoallerror(checklotto: List<Int>) {
         checklottosize(checklotto)
         checklottonumber(checklotto)
+        checklottonumberunique(checklotto)
     }
 
     private fun checklottosize(checklotto: List<Int>) {
@@ -41,6 +42,11 @@ object LottoErrorCheck {
     fun checknumberisinlottorange(number: Int) {
         if (number !in 1..45)
             throw IllegalArgumentException("[ERROR] 로또 번호는 1~45사이의 숫자여야 합니다.")
+    }
+
+    private fun checklottonumberunique(number:List<Int>){
+        if (number!=number.distinct())
+            throw IllegalArgumentException("[ERROR] 로또 번호는 중복이 없어야 합니다.")
     }
 
     fun bonusballcheck(checklotto: List<Int>, bonusnumber: Int) {
