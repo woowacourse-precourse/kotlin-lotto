@@ -98,7 +98,7 @@ class LottoGame {
         for (number: Int in 0 until lottos.size) {
             val rank = checklotto.lottocheck(userlotto, lottos[number])
             val itdonothitfivenumber = prizecheck(rank)
-            if (!itdonothitfivenumber && userlotto.contains(bonusnumber))
+            if (!itdonothitfivenumber && lottos[number].contains(bonusnumber))
                 checkprize[3] += 1
             else if (!itdonothitfivenumber)
                 checkprize[2] += 1
