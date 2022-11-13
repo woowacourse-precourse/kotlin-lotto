@@ -1,38 +1,37 @@
 package lotto
 
 object InputValidator {
-    fun validateMoney(money: String): Boolean {
-        var isValid = true
+    fun validateMoney(money: String): Error {
+        var isOccurredError = Error.NO_ERROR
 
         when {
-            !money.isNumeric() -> isValid = false
-            money.toInt() == 0 -> isValid = false
-            money.toInt() % LOTTO_PRICE != 0 -> isValid = false
+            !money.isNumeric() -> isOccurredError = Error.ERROR_NUMERIC
+            money.toInt() % LOTTO_PRICE != 0 -> isOccurredError = Error.ERROR_INPUT_MONEY
         }
-        return isValid
+        return isOccurredError
     }
 
-    fun validateWinningNumber(winningNumber: List<String>): Boolean {
-        var isValid = true
+    fun validateWinningNumber(winningNumber: List<String>): Error {
+        var isOccurredError = Error.NO_ERROR
 
         when {
-            winningNumber.size != SIZE_OF_LOTTO_NUMBERS -> isValid = false
-            !winningNumber.joinToString("").isNumeric() -> isValid = false
-            !winningNumber.isInRange() -> isValid = false
-            winningNumber.hasOverLappedNumber() -> isValid = false
+            winningNumber.size != SIZE_OF_LOTTO_NUMBERS -> isOccurredError = Error.ERROR_OVER_SIZE
+            !winningNumber.joinToString("").isNumeric() -> isOccurredError = Error.ERROR_NUMERIC
+            !winningNumber.isInRange() -> isOccurredError=Error.ERROR_RANGE
+            winningNumber.hasOverLappedNumber() -> isOccurredError=Error.ERROR_OVERLAPPED
         }
-        return isValid
+        return isOccurredError
     }
 
-    fun validateBonusNumber(bonusNumber: String, winningNumber: List<Int>): Boolean {
-        var isValid = true
+    fun validateBonusNumber(bonusNumber: String, winningNumber: List<Int>): Error {
+        var isOccurredError = Error.NO_ERROR
 
         when {
-            !bonusNumber.isNumeric() -> isValid = false
-            !bonusNumber.isInRange() -> isValid = false
-            winningNumber.contains(bonusNumber.toInt()) -> isValid = false
+            !bonusNumber.isNumeric() -> isOccurredError = Error.ERROR_NUMERIC
+            !bonusNumber.isInRange() -> isOccurredError = Error.ERROR_RANGE
+            winningNumber.contains(bonusNumber.toInt()) -> isOccurredError = Error.ERROR_OVERLAPPED
         }
-        return isValid
+        return isOccurredError
     }
 
     private fun String.isNumeric(): Boolean {
@@ -48,5 +47,5 @@ object InputValidator {
         return true
     }
 
-    private fun String.isInRange(): Boolean = this.toInt() in MINIMUM_LOTTO_NUMBER..MAXIMUM_LOTTO_NUMBER
+    private fun String.isInRange() = this.toInt() in MINIMUM_LOTTO_NUMBER..MAXIMUM_LOTTO_NUMBER
 }
