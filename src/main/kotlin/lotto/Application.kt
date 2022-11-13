@@ -4,6 +4,9 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
+    val money = getMoney()
+    val lottoList = makeLottoList(money)
+    print(lottoList.toString())
 }
 
 fun getMoney(): Int {
@@ -19,4 +22,15 @@ fun getMoney(): Int {
 fun makeLotto(): Lotto {
     val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
     return Lotto(numbers.sorted())
+}
+
+fun makeLottoList(money: Int): List<Lotto> {
+    val lottoList = mutableListOf<Lotto>()
+    val cnt = money / 1000
+
+    for (i in 1..cnt) {
+        lottoList.add(makeLotto())
+    }
+
+    return lottoList
 }
