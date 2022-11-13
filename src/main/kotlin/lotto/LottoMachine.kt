@@ -6,7 +6,7 @@ class LottoMachine {
 
     private var numberOfLotto: Int = 0
     private var bonusNumber = 0
-    private lateinit var rankCount: List<Int>
+    private lateinit var rankCount: MutableList<Int>
     private var prizeMoney = 0.0
 
     fun start() {
@@ -29,6 +29,8 @@ class LottoMachine {
 
         calculateResult(lottos, winningLotto)
         val earningsRate = getEarningsRate()
+
+        View.printResultStats(rankCount, earningsRate)
     }
 
     fun getNumberOfLottos(payment: String): Int {
@@ -66,7 +68,7 @@ class LottoMachine {
     }
 
     fun calculateResult(lottos: List<Lotto>, winningLotto: Lotto) {
-        rankCount = listOf(0, 0, 0, 0, 0)
+        rankCount = mutableListOf(0, 0, 0, 0, 0)
         prizeMoney = 0.0
         lottos.forEach { calculateLottoResult(it, winningLotto) }
     }
@@ -74,16 +76,27 @@ class LottoMachine {
     fun calculateLottoResult(lotto: Lotto, winningLotto: Lotto) {
         val matchCount = lotto.getNumbers().count { winningLotto.getNumbers().contains(it) }
         when (matchCount) {
-            6 -> prizeMoney += 2000000000
+            6 -> {
+                prizeMoney += 2000000000
+                rankCount[0]++
+            }
             5 -> {
-                prizeMoney += if (lotto.getNumbers().contains(bonusNumber)) {
-                    30000000
+                if (lotto.getNumbers().contains(bonusNumber)) {
+                    prizeMoney += 30000000
+                    rankCount[1]++
                 } else {
-                    1500000
+                    prizeMoney += 1500000
+                    rankCount[2]++
                 }
             }
-            4 -> prizeMoney += 50000
-            3 -> prizeMoney += 5000
+            4 -> {
+                prizeMoney += 50000
+                rankCount[3]++
+            }
+            3 -> {
+                prizeMoney += 5000
+                rankCount[4]++
+            }
         }
     }
 
