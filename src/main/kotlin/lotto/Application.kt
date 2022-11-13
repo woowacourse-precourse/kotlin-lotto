@@ -17,6 +17,18 @@ fun main() {
     lotto.forEach { numbers ->
         println(numbers.toString())
     }
+
+    println("\n당첨번호를 입력해주세요.")
+    val winningNumbers = Console.readLine()
+    if (isValidWinningNumbers(winningNumbers).not()) {
+        throw IllegalArgumentException("[ERROR]")
+    }
+
+    println("\n보너스 번호를 입력해 주세요.")
+    val bonusNumber = Console.readLine().toInt()
+    if (isValidBonusNumber(bonusNumber).not()) {
+        throw IllegalArgumentException("[ERROR]")
+    }
 }
 
 fun isValidPrice(price: Int): Boolean = (price % 1000 == 0)
