@@ -1,8 +1,12 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Console
 import lotto.model.Lotto
+import lotto.view.Input
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Assertions.assertEquals
 
 
 class LottoTest {
@@ -38,4 +42,14 @@ class LottoTest {
             check.checkInt("1500")
         }
     }
+
+    @Test
+    fun `당첨 번호를 6개 입력 했는지 확인`() {
+        var num = listOf<String>("1","2","3","4","5")
+
+        assertThrows<IllegalArgumentException> {
+            check.checkListSize(num)
+        }
+    }
+
 }
