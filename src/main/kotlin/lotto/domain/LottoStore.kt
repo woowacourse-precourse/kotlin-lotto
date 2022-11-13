@@ -1,9 +1,9 @@
 package lotto.domain
 
 import camp.nextstep.edu.missionutils.Randoms
-import lotto.LOTTO_END_NUMBER
-import lotto.LOTTO_SIZE
-import lotto.LOTTO_START_NUMBER
+import lotto.utils.LOTTO_END_NUMBER
+import lotto.utils.LOTTO_SIZE
+import lotto.utils.LOTTO_START_NUMBER
 import lotto.presentation.LottoConsole.inputPurchaseAmount
 import lotto.presentation.LottoConsole.printPurchaseMessage
 import lotto.presentation.LottoConsole.printPurchaseResult
