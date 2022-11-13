@@ -54,7 +54,26 @@ class Lotto(private val numbers: List<Int>) {
         }
     }
 
+    fun resultPrint() {
+        Output.winningStatistics()
+        printStatistics(WinningAmount.THREE, three)
+        printStatistics(WinningAmount.FOUR, four)
+        printStatistics(WinningAmount.FIVE, five)
+        printStatistics(WinningAmount.FIVE_PLUS, fivePlus)
+        printStatistics(WinningAmount.SIX, six)
+    }
+
     private fun getRandomNumber(): List<Int> {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6)
+    }
+
+    private fun printStatistics(w: WinningAmount, number: Int) {
+        when (w) {
+            WinningAmount.THREE -> Output.resultThree(number)
+            WinningAmount.FOUR -> Output.resultFour(number)
+            WinningAmount.FIVE -> Output.resultFive(number)
+            WinningAmount.FIVE_PLUS -> Output.resultFivePlus(number)
+            WinningAmount.SIX -> Output.resultSix(number)
+        }
     }
 }
