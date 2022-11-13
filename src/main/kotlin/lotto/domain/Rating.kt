@@ -11,23 +11,4 @@ enum class Rating(
     FOURTH(4, 50_000, false),
     FIFTH(3, 5_000, false),
     LOSE(0, 0, false);
-
-    fun isWinningLotto(hit: Int, bonus: Boolean): Rating {
-        if ((hit == 6) and (!bonus)) {
-            return FIRST
-        }
-        if ((hit == 5) and (bonus)) {
-            return SECOND
-        }
-        if ((hit == 5) and (!bonus)) {
-            return THIRD
-        }
-        if ((hit == 4) and (!bonus)) {
-            return FOURTH
-        }
-        if ((hit == 3) and (!bonus)) {
-            return FIFTH
-        }
-        return LOSE
-    }
 }
