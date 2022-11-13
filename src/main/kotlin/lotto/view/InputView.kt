@@ -5,10 +5,10 @@ import lotto.domain.lotto.LottoNumber
 import lotto.domain.money.Money
 
 class InputView {
-    fun inputPurchaseAmount(): Int {
+    fun inputPurchaseAmount(): String {
         val money = Console.readLine()
         Money(money)
-        return money.toInt()
+        return money
     }
 
     fun inputWinningNumber(): List<Int> {
