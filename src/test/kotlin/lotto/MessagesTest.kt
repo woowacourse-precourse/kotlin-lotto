@@ -1,14 +1,14 @@
 package lotto
 
-import lotto.domain.Message
+import lotto.domain.Messages
 import lotto.domain.Service
 import org.junit.jupiter.api.Test
 
-class MessageTest {
+class MessagesTest {
     @Test
     fun `구입한 로또 장 수 출력`() {
         val countOfLotto = 14
-        Message.showCountOfLotto(countOfLotto)
+        Messages.showCountOfLotto(countOfLotto)
     }
 
     @Test
@@ -16,6 +16,6 @@ class MessageTest {
         val service = Service()
         val countOfLotto = 8
         val lottoNumbers = service.getLottoNumbers(countOfLotto)
-        Message.showPurchasedLottoNumbers(lottoNumbers)
+        Messages.showPurchasedLottoNumbers(lottoNumbers)
     }
 }
