@@ -8,6 +8,10 @@ import lotto.util.Constants.WINNING_NUMBER_COUNT
 
 object Validator {
 
+    fun isNotContainsCharacter(value: String): Boolean {
+        return value.all { Character.isDigit(it) }
+    }
+
     fun isDividedByUnit(value: Int): Boolean {
         return value % Constants.LOTTO_UNIT_NUMBER == 0
     }
@@ -23,7 +27,7 @@ object Validator {
         require(isNumberInRange(value)) {
             ERROR_MESSAGE_HEADER + ERROR_MESSAGE_BODY_NUMBER_SHOULD_BE_IN_RANGE
         }
-        return value.length == 1 && value.toCharArray().first().isDigit()
+        return value.all { it.isDigit() }
     }
 
     private fun isAllNumberInRange(value: List<String>): Boolean {
