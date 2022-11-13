@@ -39,12 +39,12 @@ object ExceptionHandler {
         }
     }
 
-    fun checkBonusNumber(amount: Int, winningNumber: List<Int>) {
-        if (amount > 45 || amount < 1) {
+    fun checkBonusNumber(bonusNumber: Int, winningNumber: List<Int>) {
+        if (bonusNumber > 45 || bonusNumber < 1) {
             throw IllegalArgumentException("[ERROR] 1부터 45사이의 번호를 입력하세요")
         }
         repeat(winningNumber.size) {
-            if (winningNumber.contains(amount)) {
+            if (winningNumber.contains(bonusNumber)) {
                 throw IllegalArgumentException("[ERROR] 당첨 번호와 중복됩니다")
             }
         }

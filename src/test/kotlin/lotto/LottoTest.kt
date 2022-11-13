@@ -36,10 +36,27 @@ class LottoTest {
     }
 
     @Test
-    fun `1000으로 나누어 떨어지지 않으면 예외가 발생한다`(){
+    fun `1000으로 나누어 떨어지지 않으면 예외가 발생한다`() {
         val amount = 1500
         assertThrows<IllegalArgumentException> {
             ExceptionHandler.checkAmount(amount)
+        }
+    }
+
+    @Test
+    fun `1부터 45사이 이외의 범위 수 입력`() {
+        val winningNumber = listOf(1, 2, 3, 4, 5, 46)
+        assertThrows<IllegalArgumentException> {
+            ExceptionHandler.checkWinningNumber(winningNumber)
+        }
+    }
+
+    @Test
+    fun `보너스 번호가 당첨 번호와 중복되면 예외 발생`() {
+        val bonusNumber = 6
+        val winningNumber = listOf(1, 4, 6, 7, 11, 15)
+        assertThrows<IllegalArgumentException> {
+            ExceptionHandler.checkBonusNumber(bonusNumber, winningNumber)
         }
     }
 }
