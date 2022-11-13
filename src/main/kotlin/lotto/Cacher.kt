@@ -7,7 +7,10 @@ const val UNIT_NOT_THOUSAND = "[ERROR] 구입금액은 1000원 단위여야합�
 const val INPUT_IS_EMPTY = "[ERROR] 입력값이 비었습니다."
 
 class Cacher {
-    fun enterMoney() {}
+
+    fun calculateNumberOfLottos(money: Int): Int {
+        return money / 1000
+    }
 
     fun enterPurchaseMoney(inputMoney: String = readLine()): Int {
         isInputValid(inputMoney)
