@@ -43,4 +43,12 @@ object Regex {
         }
         return true
     }
+
+    fun checkIfBonusDuplicatedWithWinNumbers(WinNumbers: List<String>, BonusNumber: String): Boolean {
+        return WinNumbers.contains(BonusNumber)
+    }
+
+    fun checkInputIsNull(userInput : String) : Boolean {
+        return userInput.isNotEmpty()
+    }
 }
