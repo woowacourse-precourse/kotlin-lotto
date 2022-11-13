@@ -19,11 +19,10 @@ const val THIRD_PLACE_PRICE = 1500000
 const val SECOND_PLACE_PRICE = 30000000
 const val FIRST_PLACE_PRICE = 2000000000
 
-const val PLACE_MSG="%d개 일치 (%d원) - %d개"
+const val PLACE_MSG="%d개 일치 (%s원) - %d개"
 const val SECOND_PLACE_MSG="5개 일치, 보너스 볼 일치 (30,000,000원) - %d개"
 
 const val ERROR_MSG_INPUT_MONEY= "[ERROR] 돈은 1000원 단위로 입력할 수 있습니다."
-const val ERROR_MSG_ZERO_MONEY = "[ERROR] 0원은 입력할 수 없습니다."
 const val ERROR_MSG_NUMERIC = "[ERROR] 숫자가 아닌 입력이 포함되어 있습니다."
 const val ERROR_MSG_RANGE = "[ERROR] 로또 번호는 1과 45사이의 숫자로 이루어져야합니다."
 const val ERROR_MSG_OVERLAPPED = "[ERROR] 하나의 로또 안에 중복된 숫자는 존재할 수 없습니다."
