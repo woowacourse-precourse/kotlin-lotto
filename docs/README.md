@@ -5,8 +5,8 @@
 - [x] 사용자로부터 로또 구입 금액을 입력받는다. -Buyer#getPurchaseAmount
   - [x] 구매 금액은 1000원 단위로 입력받는다. -Judgment#checkPurchaseAmount
 - [x] 사용자가 구매하는 로또 개수를 알 수 있다. -Judgment#getPurchaseNumber
-- [ ] 사용자로부터 로또 번호 6개를 1~45 범위에서 중복없이 입력받는다. -Buyer#getLottoNumber
-  - [ ] 사용자로부터 보너스 번호 1개를 입력받는다. -Buyer#getBonusNumber
+- [ ] 로또 당첨번호를 입력받는다. -Seller#getWinningNumber
+  - [ ] 로또의 보너스 번호 1개를 입력받는다. -Seller#getBonusNumber
 - [ ] 사용자가 구매한 로또 개수만큼 로또를 생성한다. -Seller#generateLotto
   - [ ] 로또 번호를 오름차순으로 정렬한다.
 - [ ] 사용자의 로또 당첨 내역을 출력한다. -Lotto#showLottoResult
