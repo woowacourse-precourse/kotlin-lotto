@@ -1,13 +1,15 @@
 package lotto
 
+import exception.LottoPurchase
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import exception.LottoBonus
+import exception.LottoWinning
 import kotlin.math.round
 
 class Lotto(private var numbers: List<Int>) {
-    private val inputVerifier = InputVerifier()
     private var issuedNumbers = mutableMapOf<Int, MutableList<Int>>()
-    private var purchaseAmount = 0
+    private var purchaseAmount = ""
     private var numberOfPurchase = 0
     private var winningNumber = ""
     private var bonusNumber = 0
@@ -29,15 +31,15 @@ class Lotto(private var numbers: List<Int>) {
 
     private fun enterPurchaseAmount() {
         println("구입금액을 입력해 주세요.")
-        purchaseAmount = Console.readLine().toInt()
+        purchaseAmount = Console.readLine()
 
-        inputVerifier.validatePurchaseAmount(purchaseAmount)
+        LottoPurchase(purchaseAmount)
 
         println()
     }
 
     private fun printIssuedNumber() {
-        numberOfPurchase = purchaseAmount.div(1000)
+        numberOfPurchase = purchaseAmount.toInt().div(1000)
 
         println("${numberOfPurchase}개를 구매했습니다.")
 
@@ -54,7 +56,7 @@ class Lotto(private var numbers: List<Int>) {
         println("당첨 번호를 입력해 주세요.")
         winningNumber = Console.readLine()
 
-        inputVerifier.validateWinningNumber(winningNumber)
+        LottoWinning(winningNumber)
 
         println()
     }
@@ -63,7 +65,7 @@ class Lotto(private var numbers: List<Int>) {
         println("보너스 번호를 입력해 주세요.")
         bonusNumber = Console.readLine().toInt()
 
-        inputVerifier.validateBonusNumber(bonusNumber)
+        LottoBonus(bonusNumber)
 
         println()
     }
