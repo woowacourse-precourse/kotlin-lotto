@@ -1,5 +1,14 @@
 package lotto
 
+import lotto.domain.GetPrice
+import lotto.ui.Input
+
 fun main() {
-    TODO("프로그램 구현")
+    val price = getMoney()
+
+}
+
+fun getMoney(): Int {
+    val strPrice = Input.getPrice()
+    return GetPrice.getNum(strPrice)
 }
