@@ -73,6 +73,16 @@ internal class `UserInterface 클래스의` {
     @Nested
     inner class `askWinningNumbers 메소드는`: NsTest() {
         @Nested
+        inner class `실행하면` {
+            private val winningNumbers = "1,2,3,4,5,6"
+            @Test
+            fun `당첨 번호 입력 요청 메시지를 출력한다`() {
+                run(winningNumbers)
+
+                assertThat(output()).isEqualTo(REQUEST_WINNING_NUMBERS)
+            }
+        }
+        @Nested
         inner class `당첨 번호가 6개가 아니면` {
             private val winningNumbers = "1,2,3,4,5"
             @Test
@@ -135,6 +145,16 @@ internal class `UserInterface 클래스의` {
     @Nested
     inner class `askBonusNumberNotIncludedInWinningNumbers 메소드는`: NsTest() {
         private val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
+        @Nested
+        inner class `실행하면` {
+            private val bonusNumber = "7"
+            @Test
+            fun `보너스 번호 입력 요청 메시지를 출력한다`() {
+                run(bonusNumber)
+
+                assertThat(output()).isEqualTo(REQUEST_BONUS_NUMBER)
+            }
+        }
         @TestInstance(TestInstance.Lifecycle.PER_CLASS)
         @Nested
         inner class `사용자가 1에서 45 사이의 숫자가 아닌 값을 입력하면` {

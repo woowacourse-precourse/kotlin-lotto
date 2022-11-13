@@ -38,6 +38,7 @@ object UserInterface {
     }
 
     fun askWinningNumbers(): List<Int> {
+        println(REQUEST_WINNING_NUMBERS)
         val readValue = Console.readLine()
         validateWinningNumbers(readValue)
         return readValue.split(",").map { it.trim() }.map { it.toInt() }
@@ -51,6 +52,7 @@ object UserInterface {
     }
 
     fun askBonusNumberNotIncludedInWinningNumbers(winningNumbers: List<Int>): Int {
+        println(REQUEST_BONUS_NUMBER)
         val readValue = Console.readLine()
         require(readValue.matches(Regex("\\d{1,2}")) && readValue.toInt() in 1..45) { BONUS_NUMBER_IS_NOT_IN_BETWEEN_1_AND_45 }
         require(readValue.toInt() !in winningNumbers) { BONUS_NUMBER_IS_INCLUDED_IN_WINNING_NUMBERS }
