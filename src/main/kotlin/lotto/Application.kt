@@ -2,6 +2,7 @@ package lotto
 
 fun main() {
     val price = inputPrice()
+    val lottoCount = calculatePrice(price)
 }
 
 
@@ -21,4 +22,11 @@ fun getMessage(message: Message) {
 fun inputPrice(): Int {
     getMessage(Message.PRICE)
     return readLine()!!.toInt()
+}
+
+fun calculatePrice(price: Int): Int {
+    if (price % 1000 != 0) {
+        throw IllegalArgumentException("[ERROR] 로또는 1000원 단위로 구매 가능합니다.")
+    }
+    return price / 1000
 }
