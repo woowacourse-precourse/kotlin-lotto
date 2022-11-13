@@ -7,6 +7,7 @@ class LottoVendingMachine {
     fun inputMoney(): String{
         println("구입금액을 입력해 주세요.")
         val input = Console.readLine()
+        return input
     }
 
     fun countMoney(input: String): Int{
@@ -21,7 +22,7 @@ class LottoVendingMachine {
         if (money >= 1000)
             return true
         if (money < 1000) {
-            throw IllegalArgumentException("[Error] 돈이 부족합니다.")
+            throw IllegalArgumentException("[ERROR] 돈이 부족합니다.")
         }
         return false
     }

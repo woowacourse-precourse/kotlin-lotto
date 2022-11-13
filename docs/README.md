@@ -48,9 +48,9 @@
 ## 📝기능 구현 리스트
 1. inputMoney : 사용자에게 구매 금액을 입력받는 기능[ ] - Class LottoVendingMachine
 2. isNumInt : 사용자가 입력한 금액이 정수형이 맞는지 체크하는 기능[ ] - Class Util
-3. countMoney : 사용자가 입력한 금액을 계산하여 생성할 로또 개수를 반환하는 기능[ ] - Class LottoVendingMachine
-   1. isEnoughMoney : 사용자가 입력한 금액이 충분한지 체크하는 기능[ ] 
-   2. isMoney1000 : 사용자가 입력한 금액이 1000원 단위인지 검사하고 거스름돈을 정의해주는 기능[ ]
+3. countMoney : 사용자가 입력한 금액을 계산하여 생성할 로또 개수를 반환하는 기능[O] - Class LottoVendingMachine
+   1. isEnoughMoney : 사용자가 입력한 금액이 충분한지 체크하는 기능[O] 
+   2. isMoney1000 : 사용자가 입력한 금액이 1000원 단위인지 검사하고 거스름돈을 정의해주는 기능[O]
 4. makeLottoNum : 원하는 만큼 로또를 생성하여 반환해주는 기능[ ] - Class LottoNumGenerator
 5. inputLottoNum : 사용자에게 로또 번호를 입력받는 기능[ ] - Class LottoGame
 6. isRightForm : 사용자가 입력 형식과 자료형을 맞췄는지 검사하는 기능[ ] -Class Util
