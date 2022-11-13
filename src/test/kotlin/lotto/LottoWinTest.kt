@@ -13,6 +13,12 @@ class LottoWinTest {
             inputWinningNumberException(listOf("1","2","3","4","5","5"))
         }
     }
+    @Test
+    fun `당첨 번호에 숫자가 아닌 문자가 있는 경우 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            inputWinningNumberException(listOf("1","2","3","4","5","a"))
+        }
+    }
 
     @Test
     fun `당첨 번호와 중복되는 보너스 번호를 입력 받은 경우 예외가 발생한다`() {
