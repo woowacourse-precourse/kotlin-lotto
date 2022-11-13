@@ -16,9 +16,8 @@ fun main() {
     outputView.outputAvailableTickets(availableTickets)
 
     // 로또 숫자 출력
-    val lottoNumberRepository = LottoNumberRepository()
-    println(
-        lottoNumberRepository.lottoNumberRepository(availableTickets))
+    outputView.outputListOfLotto(availableTickets)
+
 
 
     //val lotto = Lotto(list)
