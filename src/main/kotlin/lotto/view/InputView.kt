@@ -7,9 +7,9 @@ fun inputPurchaseAmount(): Int? {
     return inputInt()
 }
 
-fun inputLottoWinningNumbers(): List<Int> {
+fun inputLottoWinningNumbers(): String {
     println("당첨 번호를 입력해 주세요.")
-    return input().split(',').map { it.toInt() }
+    return input()
 }
 
 fun inputBonusNumbers(): Int? {
