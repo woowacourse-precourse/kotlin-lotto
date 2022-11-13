@@ -24,8 +24,7 @@ object UserInterface {
         val purchaseAmount = BigInteger(readValue)
         require(purchaseAmount <= BigInteger(PURCHASE_AMOUNT_LIMIT.toString())) {
             String.format(
-                PURCHASE_AMOUNT_EXCESS_LIMIT,
-                decimalFormat.format(PURCHASE_AMOUNT_LIMIT)
+                PURCHASE_AMOUNT_EXCESS_LIMIT, decimalFormat.format(PURCHASE_AMOUNT_LIMIT)
             )
         }
         require(
@@ -41,6 +40,8 @@ object UserInterface {
     fun askWinningNumbers(): List<Int> {
         val readValue = Console.readLine()
         require(readValue.split(",").size == 6) { WINNING_NUMBERS_SIZE_NOT_6 }
+        val splitValues = readValue.split(",")
+        require(splitValues.all { it.matches(Regex("\\d{1,2}")) && it.toInt() in 1..45 }) { WINNING_NUMBERS_NOT_IN_BETWEEN_1_AND_45 }
         return listOf()
     }
 }
