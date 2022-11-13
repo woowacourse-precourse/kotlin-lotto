@@ -17,6 +17,11 @@ class WinningLotto(private val winningNumbers: List<Int>, private val bonusNumbe
         )
     }
 
+    fun getPrize(guessNumber: List<Int>): Int {
+        val (countSame, bonus) = checkResult(guessNumber)
+        return LottoRank.of(countSame, bonus).prize
+    }
+
     fun getRank(guessNumber: List<Int>): Int {
         val (countSame, bonus) = checkResult(guessNumber)
         return LottoRank.of(countSame, bonus).ordinal + 1
