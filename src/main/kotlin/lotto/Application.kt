@@ -1,5 +1,10 @@
 package lotto
 
 fun main() {
-    TODO("프로그램 구현")
+    try {
+        val controller = Controller()
+        controller.run()
+    } catch (e: Exception) {
+        MessageMaker.errorMessage()
+    }
 }
