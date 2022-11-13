@@ -25,5 +25,3 @@ console을 통해 출력
 
 ## Application.kt
 Application.kt는 프로그램이 실행되는 main 함수를 관리한다.
-
-### 
