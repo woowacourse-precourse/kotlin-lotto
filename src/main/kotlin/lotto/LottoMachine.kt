@@ -101,7 +101,7 @@ class LottoMachine {
     }
 
     fun getEarningsRate(): String {
-        return String.format("%.1f", prizeMoney / (numberOfLotto * 1000.0))
+        return String.format("%.1f", (prizeMoney / (numberOfLotto * 1000.0)) * 100)
     }
 
 }
