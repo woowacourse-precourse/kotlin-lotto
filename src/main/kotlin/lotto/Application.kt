@@ -3,7 +3,7 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import java.text.DecimalFormat
-import java.util.NoSuchElementException
+import kotlin.NoSuchElementException
 
 enum class CORRECTCNT(val message: String) {
     THREE("3개 일치 (5,000원) - "),
