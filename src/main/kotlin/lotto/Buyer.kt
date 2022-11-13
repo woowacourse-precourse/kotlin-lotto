@@ -10,7 +10,7 @@ class Buyer {
         var money = Console.readLine()
 
         if (judgment.checkPurchaseAmount(money)) {
-            println("구매 개수 : ${judgment.getPurchaseNumber(money)}")
+            Seller().generateLotto(judgment.getPurchaseNumber(money))
         }
     }
 }
