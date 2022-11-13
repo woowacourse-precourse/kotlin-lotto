@@ -17,4 +17,8 @@ class Lotto(private val numbers: List<Int>) {
             throw IllegalArgumentException("[ERROR]: 로또는 중복되지 않는 6개의 숫자를 가져야 한다.")
         }
     }
+
+    fun getLottoNumberList(): List<Int> {
+        return numbers
+    }
 }
