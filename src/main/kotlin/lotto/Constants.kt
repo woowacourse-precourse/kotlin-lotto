@@ -3,6 +3,7 @@ package lotto
 // purchase I/O messages
 const val LOTTO_PURCHASE_MESSAGE = "구입금액을 입력해 주세요."
 const val LOTTO_PURCHASE_LOTTO_COUNT_MESSAGE= "%d개를 구매했습니다."
+const val WINNING_LOTTO_ENTER_MESSAGE = "당첨 번호를 입력해 주세요."
 
 // exception messages
 private const val ERROR_PREFIX = "[ERROR] "

@@ -3,6 +3,7 @@ package lotto.presentation
 import camp.nextstep.edu.missionutils.Console
 import lotto.LOTTO_PURCHASE_LOTTO_COUNT_MESSAGE
 import lotto.LOTTO_PURCHASE_MESSAGE
+import lotto.WINNING_LOTTO_ENTER_MESSAGE
 import lotto.domain.Lotto
 import lotto.domain.LottoExceptionHandler.validateIntType
 import lotto.domain.Money
@@ -22,6 +23,11 @@ object LottoConsole {
     fun printPurchaseResult(lottos: List<Lotto>) {
         printPurchasedLottoCount(lottos.size)
         printPurchasedLottos(lottos)
+    }
+
+    fun printWinningLottoEnterMessage() {
+        println(WINNING_LOTTO_ENTER_MESSAGE)
+
     }
 
     private fun printPurchasedLottoCount(lottoCount: Int) {
