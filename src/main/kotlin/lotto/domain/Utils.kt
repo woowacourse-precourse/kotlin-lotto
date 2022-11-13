@@ -4,10 +4,10 @@ import lotto.resources.ERROR_INPUT_VALUE_NUMBER_ONLY
 
 fun String.splitToIntList(separator: String = ","): List<Int> {
     return this.split(separator)
-        .map { it.toIntOrNull().checkNull() }
+        .map { it.toIntOrNull().toIntOrError() }
 }
 
-fun Int?.checkNull(): Int {
+fun Int?.toIntOrError(): Int {
     requireNotNull(this) { ERROR_INPUT_VALUE_NUMBER_ONLY }
     return this
 }

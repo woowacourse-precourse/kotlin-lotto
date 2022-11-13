@@ -4,7 +4,7 @@ import lotto.domain.*
 import lotto.view.*
 
 fun main() {
-    val amount = inputPurchaseAmount().checkNull()
+    val amount = inputPurchaseAmount().toIntOrError()
     val tickets = purchaseTickets(amount)
     val winningLotto = registerWinningLotto()
     val (resultRank, totalPrize) = Purchaser().calculateResult(winningLotto, tickets)
@@ -25,7 +25,7 @@ fun registerWinningLotto(): WinningLotto {
     val winningNumbers = inputLottoWinningNumbers().splitToIntList()
     printWinningNumbers(winningNumbers)
 
-    val bonusNumber = inputBonusNumber().checkNull()
+    val bonusNumber = inputBonusNumber().toIntOrError()
     printBonusNumber(bonusNumber)
 
     return WinningLotto(winningNumbers, bonusNumber)

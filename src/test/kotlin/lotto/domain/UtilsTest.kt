@@ -20,11 +20,11 @@ class UtilsTest {
 
     @Test
     fun `checkNull 기능 테스트`() {
-        assertThat(0.checkNull())
+        assertThat(0.toIntOrError())
     }
 
     @Test
     fun `checkNull 에러 테스트`() {
-        assertThrows<IllegalArgumentException> { null.checkNull() }
+        assertThrows<IllegalArgumentException> { null.toIntOrError() }
     }
 }
