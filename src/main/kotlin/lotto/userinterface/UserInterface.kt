@@ -13,6 +13,12 @@ object UserInterface {
     fun askPurchaseAmount(): Int {
         println(REQUEST_PURCHASE_AMOUNT)
         val readValue = Console.readLine()
+        validatePurchaseAmount(readValue)
+        val purchaseAmount = BigInteger(readValue)
+        return purchaseAmount.toInt()
+    }
+
+    private fun validatePurchaseAmount(readValue: String) {
         require(readValue.all { it.isDigit() }) { PURCHASE_AMOUNT_NOT_DIGIT }
         val purchaseAmount = BigInteger(readValue)
         require(purchaseAmount <= BigInteger(PURCHASE_AMOUNT_LIMIT.toString())) {
@@ -24,6 +30,5 @@ object UserInterface {
         require(
             purchaseAmount.mod(BigInteger("1000")).equals(BigInteger.ZERO)
         ) { PURCHASE_AMOUNT_NOT_DIVISIBLE_BY_1000 }
-        return purchaseAmount.toInt()
     }
 }

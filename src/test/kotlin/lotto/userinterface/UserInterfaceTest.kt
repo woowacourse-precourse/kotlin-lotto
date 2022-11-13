@@ -2,9 +2,7 @@ package lotto.userinterface
 
 import camp.nextstep.edu.missionutils.test.NsTest
 import lotto.userinterface.UserInterface.askPurchaseAmount
-import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.*
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import java.io.ByteArrayInputStream
