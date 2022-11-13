@@ -8,7 +8,7 @@ import lotto.util.ErrorType
 import lotto.util.printErrorMessage
 import lotto.util.showError
 
-class WinLotto(private val numbers: List<Int>) {
+class WinLotto(val numbers: List<Int>) {
     init {
         require(numbers.size == LOTTO_NUM_COUNT + LOTTO_BONUS_NUM_COUNT) {
             printErrorMessage(ErrorType.WRONG_WIN_LOTTO_NUMBERS_COUNT)
@@ -26,4 +26,5 @@ class WinLotto(private val numbers: List<Int>) {
             used[it] = true
         }
     }
+
 }
