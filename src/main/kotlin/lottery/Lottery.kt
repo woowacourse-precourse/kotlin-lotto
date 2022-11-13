@@ -10,8 +10,8 @@ class Lottery {
     private val winningCounter: MutableMap<String, Int> = mutableMapOf<String, Int>().withDefault { 0 }
     lateinit var lotteryNumbers: Lotto
     private val quickPicks: MutableList<Lotto> = mutableListOf()
-    var bonusNumber: Int = 0
-    var purchase: Int = 0
+    private var bonusNumber: Int = 0
+    private var purchase: Int = 0
     private var income: Double = 0.0
     private var incomeRatio: Double = 0.0
 
