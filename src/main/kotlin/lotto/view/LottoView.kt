@@ -33,4 +33,8 @@ class LottoView {
                 "5개 일치, 보너스 볼 일치 (30,000,000원) - ${rankResult[Rank.Second]}개\n" +
                 "6개 일치 (2,000,000,000원) - ${rankResult[Rank.First]}개")
     }
+
+    fun printRevenue(revenue: Float){
+        println("\n총 수익률은 " +String.format("%.2f", revenue) +"% 입니다.")
+    }
 }
