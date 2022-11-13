@@ -3,10 +3,12 @@ package lotto
 fun main() {
     val money = User().getMoney()
     val numberOfLotto = money / 1000
-    val lotto = LottoGenerator().generateLotto(numberOfLotto)
+    val lottoNumbers = LottoGenerator().generateLotto(numberOfLotto)
     println()
-    LottoPrinter().printLotto(lotto)
+    LottoPrinter().printLotto(lottoNumbers)
     println()
     val winningNumber = WinningNumber().getWinningNumber()
+    println()
     val bonusNumber = BonusNumber().getBonusNumber()
+    val winningList = GameManager().getResult(lottoNumbers, winningNumber, bonusNumber)
 }
