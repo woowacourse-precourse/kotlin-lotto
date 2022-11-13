@@ -2,15 +2,6 @@ package lotto
 
 class LottoCheck {
 
-    enum class LottoReward(val cnt: Int, val prize: String) {
-        FIRST(6, "2,000,000,000"),
-        SECOND(5, "30,000,000"),
-        THIRD(5, "1,500,000"),
-        FOURTH(4, "50,000"),
-        FIFTH(3, "5,000"),
-        NOTHING(0, "0")
-    }
-
     fun compareLotto(userNumber: List<Lotto>): List<Int> {
         val ranking = mutableListOf<Int>(0, 0, 0, 0, 0)
         for (lotto in userNumber) {
@@ -57,12 +48,12 @@ class LottoCheck {
 
     fun lottoWinNumbers(): List<Int> {
         val winNumbers = mutableListOf<Int>()
-        for (i in 0 until LottoWin.LottoWinBall.values().size - 1) {
-            winNumbers.add(LottoWin.LottoWinBall.values()[i].num)
+        for (i in 0 until LottoWinBall.values().size - 1) {
+            winNumbers.add(LottoWinBall.values()[i].num)
         }
 
         return winNumbers
     }
 
-    fun lottoBonusNumbers(): Int = LottoWin.LottoWinBall.values()[5].num
+    fun lottoBonusNumbers(): Int = LottoWinBall.values()[5].num
 }
