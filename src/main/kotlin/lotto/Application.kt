@@ -27,6 +27,14 @@ fun main() {
 
     var winningResult = generateWinningResult(lotteryTickets, winningNumber, bonus)
 
+    message.printStatistics(winningResult)
+
+    val profit = calculatePrize(winningResult)
+
+    val profitRate = calculateProfitRate(profit, money.money)
+
+    message.printProfit(profitRate)
+
 }
 
 fun generateLotteryTickets(num: Int): MutableList<Lotto> {
@@ -59,4 +67,22 @@ fun generateWinningResult(lotteryTickets: List<Lotto>, winningNumber: List<Strin
             winningResult[winning]++
     }
     return winningResult
+}
+
+fun calculatePrize(winningResult: List<Int>): Int {
+    val winMoney = listOf(5000, 50000, 1500000, 30000000, 2000000000)
+    var prize = 0
+    winningResult.forEachIndexed { index, it -> prize += winMoney[index] * it }
+
+    return prize
+}
+
+fun calculateProfitRate(prize: Int, money: String): Double {
+    return makeTwoDecimalPlaces((prize / money.toDouble() * 100))
+}
+
+
+fun makeTwoDecimalPlaces(double: Double): Double {
+    val roundOff = String.format("%.2f", double)
+    return roundOff.toDouble()
 }
