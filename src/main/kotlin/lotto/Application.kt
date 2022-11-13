@@ -27,7 +27,7 @@ fun registerWinningLotto(): WinningLotto {
     val winningNumbers = inputLottoWinningNumbers().splitToIntList()
     printWinningNumbers(winningNumbers)
 
-    val bonusNumber = inputBonusNumbers()
+    val bonusNumber = inputBonusNumber()
     printBonusNumber(bonusNumber.checkNull())
 
     return WinningLotto(winningNumbers, bonusNumber.checkNull())

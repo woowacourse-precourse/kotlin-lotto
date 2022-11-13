@@ -15,7 +15,7 @@ fun inputLottoWinningNumbers(): String {
     return input()
 }
 
-fun inputBonusNumbers(): Int? {
+fun inputBonusNumber(): Int? {
     println(INPUT_BONUS_NUMBER)
     return inputInt()
 }
