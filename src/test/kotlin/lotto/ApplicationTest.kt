@@ -50,6 +50,24 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `유효한 구입 금액인지 확인`() {
+        val input = isValidPrice(5500)
+        assertThat(input).isFalse
+    }
+
+    @Test
+    fun `유효한 당첨 번호인지 확인`() {
+        val input = isValidWinningNumbers("0,1,2,3,4,5")
+        assertThat(input).isFalse
+    }
+
+    @Test
+    fun `유효한 보너스 번호인지 확인`() {
+        val input = isValidBonusNumber(46)
+        assertThat(input).isFalse
+    }
+
     override fun runMain() {
         main()
     }
