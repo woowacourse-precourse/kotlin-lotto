@@ -3,6 +3,9 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 import java.text.DecimalFormat
 
+/**
+ * 로또의 판매부터 모든 과정을 여기서 진행하게 된다.
+ */
 class LottoProcessor(private val seller: LottoSeller) {
     fun processLotto() {
         try {

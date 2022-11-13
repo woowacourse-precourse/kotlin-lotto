@@ -1,9 +1,5 @@
 package lotto
 
-import java.awt.font.FontRenderContext
-import java.text.DecimalFormat
-import kotlin.math.round
-
 object ResultExtractor {
     fun extractResult(
         generatedLotto: List<Lotto>,
