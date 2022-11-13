@@ -135,9 +135,9 @@ class LottoGame {
     }
 
     private fun printyield() {
-        val lottoyield: Double = (RANK_5TH_REWARD * checkprize[0] + RANK_4TH_REWARD * checkprize[1]
+        val lottoyield: Double = ((RANK_5TH_REWARD * checkprize[0] + RANK_4TH_REWARD * checkprize[1]
                 + RANK_3RD_REWARD * checkprize[2] + RANK_2ND_REWARD * checkprize[3]
-                + RANK_1ST_REWARD * checkprize[4]) / (money.toDouble() * 100)
+                + RANK_1ST_REWARD * checkprize[4]) / money.toDouble()) * 100
         println("총 수익률은" + String.format("%.1f", lottoyield) + "%입니다.")
 
     }
