@@ -1,5 +1,20 @@
 package lotto
 
 fun main() {
-    TODO("프로그램 구현")
+    val player = getPlayer()
+    player.buyLotties()
+    player.matchLotties()
+}
+
+private fun getPlayer(): LottoPlayer {
+    val lottoEnterprise = LottoEnterprise(
+        WinLottoFactory()
+    )
+    val lottoMarket = LottoMarket(
+        LottoFactory()
+    )
+    return LottoPlayer(
+        lottoEnterprise,
+        lottoMarket
+    )
 }

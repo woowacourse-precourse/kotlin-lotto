@@ -1,29 +1,33 @@
 package lotto.util
 
+import camp.nextstep.edu.missionutils.Console.readLine
+import lotto.constant.LOTTO_MIN_GRADE
 import lotto.constant.LOTTO_NUM_COUNT
+import lotto.constant.LOTTO_NUM_RANGE_END
 import lotto.exception.DivisibleMoneyException
 import lotto.exception.DuplicateInputException
 import lotto.exception.InputCountException
 
-val br = System.`in`.bufferedReader()
-
 fun readPaidMoney(): Int {
     return try {
-        val paidMoney = br.readLine().toInt()
+        val paidMoney = readLine().toInt()
         if (paidMoney % 1000 != 0) {
             throw DivisibleMoneyException()
         }
         paidMoney
     } catch (e: Exception) {
         showError(e)
-        throw IllegalArgumentException()
+        throw NoSuchElementException()
     }
 }
 
 fun readWinLottoNumbers(): List<Int> {
     return try {
-        val winLottoNumbers = br.readLine().split(',').map { it.toInt() }.also { winLottoNumbers ->
+        val winLottoNumbers = readLine().split(',').map { it.toInt() }.also { winLottoNumbers ->
             if (winLottoNumbers.size != LOTTO_NUM_COUNT) throw InputCountException()
+            winLottoNumbers.forEach {
+                checkOutOfLottoBound(it)
+            }
         }
         winLottoNumbers
     } catch (e: Exception) {
@@ -32,20 +36,20 @@ fun readWinLottoNumbers(): List<Int> {
     }
 }
 
-fun readWinBonusNumber(winLottoNumbers: List<Int>): Int{
-    return try{
-        val winBonusNumber = br.readLine().toInt()
-        if(winLottoNumbers.find { it == winBonusNumber } != null){
+fun readWinBonusNumber(winLottoNumbers: List<Int>): Int {
+    return try {
+        val winBonusNumber = readLine().toInt()
+        if (winLottoNumbers.find { it == winBonusNumber } != null) {
             throw DuplicateInputException()
         }
+        checkOutOfLottoBound(winBonusNumber)
         winBonusNumber
-    }catch (e: Exception){
+    } catch (e: Exception) {
         showError(e)
         throw IllegalArgumentException()
     }
 }
 
-
-fun bufferedReaderClose() {
-    br.close()
+private fun checkOutOfLottoBound(lottoNumber: Int) {
+    if (lottoNumber !in LOTTO_MIN_GRADE..LOTTO_NUM_RANGE_END) throw ArrayIndexOutOfBoundsException()
 }
