@@ -14,6 +14,21 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.joinToString(", ")
     }
 
+    fun check (winning: WinningNumber): String {
+        var cnt = 0
+        var bonus = false
+        for (num in numbers) {
+            if (num in winning.numbers()) {
+                cnt += 1
+            }
+            if (num == winning.bonus()) {
+                bonus = true
+            }
+        }
+
+        return Reward.getRank(cnt, bonus)
+    }
+
     companion object {
         const val LOTTO_SIZE_EXCEPTION = "[ERROR] 로또 번호의 갯수는 6개 입니다."
         const val LOTTO_DUPLICATE_EXCEPTION = "[ERROR] 로또 번호는 중복이 있으면 안됩니다."
