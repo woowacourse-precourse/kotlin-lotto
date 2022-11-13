@@ -1,14 +1,11 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import utils.Messages.ANSWER_NUMBERS_MESSAGE
 import utils.Messages.BUY_PRICE_INQUIRE_MESSAGE
 import utils.Messages.ERROR_PREFIX_MESSAGE
 import utils.Messages.ERROR_LOTTO_INPUT
 import utils.Messages.BUY_AMOUNT_MESSAGE
-import utils.Messages.FROM_INDEX
-import utils.Messages.END_INDEX
-import java.util.Arrays
-import kotlin.math.sign
 
 class LottoGame {
 
@@ -16,8 +13,11 @@ class LottoGame {
         println(BUY_PRICE_INQUIRE_MESSAGE)
     }
 
-    fun calculateNumberOfLotto(): Int {
-        val lottoInputPrice = readLine()!!.toInt()
+    fun inputPrice(): Int {
+        return readLine()!!.toInt()
+    }
+
+    fun calculateNumberOfLotto(lottoInputPrice: Int): Int {
         return lottoInputPrice / 1000
     }
 
@@ -40,7 +40,7 @@ class LottoGame {
     fun generateRandomLottos(numOfLotto: Int): MutableList<List<Int>> {
         val lottos = mutableListOf<Int>()
         var doubleLottos = mutableListOf<List<Int>>()
-        for (i in 0..numOfLotto){
+        for (i in 1..numOfLotto){
             val pickLottoNums = Randoms.pickUniqueNumbersInRange(1, 45, 6)
             lottos.addAll(pickLottoNums)
         }
@@ -52,5 +52,8 @@ class LottoGame {
         for (i in 0..doubleLottos.size) {
             println(doubleLottos[i])
         }
+    }
+    fun answerNumbersMessage(){
+        println(ANSWER_NUMBERS_MESSAGE)
     }
 }
