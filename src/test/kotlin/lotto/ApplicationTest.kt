@@ -51,42 +51,6 @@ class ApplicationTest : NsTest() {
         }
     }
 
-    @Test
-    fun `당첨 번호 입력값 예외 테스트`() {
-        assertSimpleTest {
-            runException("1000", "1,2,3,4,4?5,j")
-            assertThat(output()).contains(ERROR_MESSAGE)
-        }
-
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> {
-                runException("1000", "1,2,3,4,5")
-            }
-        }
-
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> {
-                runException("1000", "1,2,3,4,5,46")
-            }
-        }
-
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> {
-                runException("1000", "1,2,3,3,5,6")
-            }
-        }
-
-        assertSimpleTest {
-            runException("1000", "12?")
-            assertThat(output()).contains(ERROR_MESSAGE)
-        }
-
-        assertSimpleTest {
-            runException("1000")
-            assertThat(output()).contains(ERROR_MESSAGE)
-        }
-    }
-
     override fun runMain() {
         main()
     }
