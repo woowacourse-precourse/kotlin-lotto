@@ -1,11 +1,13 @@
 package lotto
 
 import utils.Messages.ERROR_ANSWER_DIFFERENT
+import utils.Messages.ERROR_ANSWER_SIX
 import utils.Messages.ERROR_PREFIX_MESSAGE
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6)
+        require(numbers.size == 6) {ERROR_PREFIX_MESSAGE+ERROR_ANSWER_SIX }
+        require(checkinputAnswer())
     }
     fun checkinputAnswer(): Boolean {
         for (i in numbers){
