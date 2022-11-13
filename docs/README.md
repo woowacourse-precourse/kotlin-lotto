@@ -19,10 +19,11 @@
 - [x] 금액을 받는다. 해당 금액이 유효한 금액인지 판단 Money:#validateMoney()
   - [ERROR] 예외처리 필요
 - 로또를 구매하기 위한 금액에 맞게 로또 갯수 구하는 기능 (로또 가격 1,000)
-  - [ ] 금액을 1,000 단위로 나누는 기능 : Publisher#countNumberOfLottery()
+  - [x] 금액을 1,000 단위로 나누는 기능 : Publisher#generateLottery()
+  - [x] LottoMachine 에게 로또 발행 협력하기 Publisher#operateMachine()
 - 로또 갯수에 따라서 로또 랜덤값 발행 (정렬 필요)
   - `pickUniqueNumbersInRange()` 를 사용하여 랜덤 값 발행
-    - [ ] 중복 없이 6자리 값 구하기 : LotteryMachine#generateLottery()
+    - [x] 중복 없이 6자리 값 구하기 : LotteryMachine#operate()
 - [ ] 당첨 번호를 입력 받아서 유효한 당첨 번호인지 판단 : WinningLottery#validateLottery()
   - [ERROR] 예외처리 필요
 - 구매한 로또 번호와 당첨 번호를 비교하는 기능
