@@ -2,6 +2,7 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import java.text.DecimalFormat
 import kotlin.IllegalArgumentException
 
 const val INTRODUCE_MESSAGE = "구입금액을 입력해 주세요."
@@ -48,6 +49,8 @@ fun main() {
     displayResultGuideMessage()
     val matchedLottoTickets =
         getRankedLotto(lottoTickets, winningLotto.map { it.toInt() }, winningLottoBonusNumber.toInt())
+    val totalPrizeAmount = getTotalPrizeAmount(matchedLottoTickets)
+    displayResultPrize(matchedLottoTickets)
 }
 
 fun getUserBudget(): String = Console.readLine()
@@ -195,6 +198,16 @@ fun getLottoRanking(currentLotto: Lotto, winningLotto: MutableList<Int>, bonusNu
 fun containsBonusNumber(currentLotto: Lotto, bonusLottoNumber: Int) =
     currentLotto.getSortedNumbers().contains(bonusLottoNumber)
 
+fun getTotalPrizeAmount(matchedLottoTickets: MutableMap<Rank, Int>): Int {
+    var totalPrizeAmount = 0
+    for (ranking in Rank.values().reversed()) {
+        if (ranking != Rank.NON_RANKED) {
+            totalPrizeAmount += ranking.prizeMoney * matchedLottoTickets.getOrPut(ranking) { 0 }
+        }
+    }
+    return totalPrizeAmount
+}
+
 fun displayIntroduceGuideMessage() = println(INTRODUCE_MESSAGE)
 fun displaySuccessBuyLottoGuideMessage(boughtLottoCount: Int) = println("$boughtLottoCount$SUCCESS_BUY_LOTTO_MESSAGE")
 fun displayCurrentLottoNumbers(currentLotto: Lotto) = println(currentLotto.getSortedNumbers())
@@ -204,6 +217,24 @@ fun displayResultGuideMessage() = run {
     println(RESULT_TITLE_MESSAGE)
     println(RESULT_HORIZONTAL_LINE_MESSAGE)
 }
+
+fun displayResultPrize(matchedLottoTickets: MutableMap<Rank, Int>) {
+    for (ranking in Rank.values().reversed()) {
+        if (ranking != Rank.NON_RANKED) {
+            showCurrentRankingCount(ranking, matchedLottoTickets.getOrPut(ranking) { 0 })
+        }
+    }
+}
+
+fun showCurrentRankingCount(rank: Rank, matchedNumberCount: Int) {
+    if (rank == Rank.SECOND) {
+        println("${rank.matchNumbers}개 일치, 보너스 볼 일치 (${getNumberWithUnit(rank.prizeMoney)}원) - ${matchedNumberCount}개")
+        return
+    }
+    println("${rank.matchNumbers}개 일치 (${getNumberWithUnit(rank.prizeMoney)}원) - ${matchedNumberCount}개")
+}
+
+fun getNumberWithUnit(number: Int): String = DecimalFormat("#,###").format(number)
 
 fun isNotInteger(string: String): Boolean {
     return try {
