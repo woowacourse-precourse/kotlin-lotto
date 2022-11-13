@@ -63,4 +63,11 @@ class WinningLottoTest {
             WinningLotto(listOf(1, 2, 3, 4, 5, 6), 7).getRank(listOf(1, 2, 3, 4, 5, 5)) == 3
         )
     }
+
+    @Test
+    fun `getPrize 기능 테스트`() {
+        assertThat(
+            WinningLotto(listOf(1, 2, 3, 4, 5, 6), 7).getRank(listOf(1, 2, 3, 4, 5, 6)) == LottoRank.FIRST.prize
+        )
+    }
 }
