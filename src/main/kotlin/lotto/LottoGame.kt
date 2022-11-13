@@ -9,15 +9,15 @@ import java.util.Arrays
 
 class LottoGame {
 
-    fun buyPriceInquireMessage() {
-        println(BUY_PRICE_INQUIRE_MESSAGE)
+//    fun buyPriceInquireMessage() {
+//        println(BUY_PRICE_INQUIRE_MESSAGE)
+//    }
+
+    fun calculateNumberOfLotto(): Int {
+        val lottoInputPrice = readLine()!!.toInt()
+        return lottoInputPrice / 1000
     }
 
-//    fun calculateNumberOfLotto(): Int {
-//        val lottoInputPrice = readLine()!!.toInt()
-//        return lottoInputPrice / 1000
-//    }
-//
 //    fun checkRightLotto(lottoInputPrice: Int ): Boolean {
 //        val numOfRestLotto = lottoInputPrice % 1000
 //        if (numOfRestLotto != 0) {
