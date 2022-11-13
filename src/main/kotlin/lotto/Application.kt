@@ -10,6 +10,8 @@ fun main() {
     val winning = inputWinning()
     val winningNumber = changeNumberList(winning)
     Lotto(winningNumber)
+    val bonusNumber = inputBonus()
+
 
 }
 
@@ -67,4 +69,10 @@ fun changeNumberList(winning: String): List<Int> {
     val winningNumber = winning.split(',').map{it.toInt()}
     print(winningNumber)
     return winningNumber
+}
+
+fun inputBonus(): Int {
+    getMessage(Message.BONUS)
+    val bonusNumber = readLine()
+    return bonusNumber!!.toInt()
 }
