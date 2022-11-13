@@ -7,6 +7,7 @@ import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
+import java.io.ByteArrayInputStream
 
 internal class `UserInterface 클래스의` {
     @Nested
@@ -36,6 +37,18 @@ internal class `UserInterface 클래스의` {
             fun `예외를 던지고 에러 메시지를 출력한다`() {
                 assertThatThrownBy { runException(purchaseAmount) }.isInstanceOf(IllegalArgumentException::class.java)
                     .hasMessageContaining(ERROR_MESSAGE)
+            }
+        }
+        @Nested
+        inner class `사용자가 콘솔에 20억보다 같거나 작고 1000으로 나누어 떨어지는 숫자를 입력하면` {
+            private val purchaseAmount = "2000000000"
+            @Test
+            fun `로또 구입 금액을 반환한다`() {
+                System.setIn(ByteArrayInputStream(purchaseAmount.toByteArray()))
+
+                val result = askPurchaseAmount()
+
+                assertThat(result).isEqualTo(purchaseAmount.toInt())
             }
         }
 
