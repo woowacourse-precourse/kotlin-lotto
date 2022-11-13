@@ -29,6 +29,15 @@ internal class `UserInterface 클래스의` {
                     .hasMessageContaining(ERROR_MESSAGE)
             }
         }
+        @Nested
+        inner class `사용자가 콘솔에 1000으로 나누어 떨어지지 않는 숫자를 입력하면` {
+            private val purchaseAmount = "1300"
+            @Test
+            fun `예외를 던지고 에러 메시지를 출력한다`() {
+                assertThatThrownBy { runException(purchaseAmount) }.isInstanceOf(IllegalArgumentException::class.java)
+                    .hasMessageContaining(ERROR_MESSAGE)
+            }
+        }
 
         override fun runMain() {
             askPurchaseAmount()
