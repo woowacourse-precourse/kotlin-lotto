@@ -16,7 +16,7 @@ fun main() {
 
     val lottos = Lottos(lotto)
     lottos.printLottos()
-    lottos.printWinningResult(winningLotto!!, bonus!!, money.money)
+    lottos.printWinningResult(winningLotto!!, bonus.bonus, money.money)
 }
 
 fun inputMoney() : Money {
@@ -42,17 +42,10 @@ fun inputWinningLotto(): Lotto? {
     }
 }
 
-fun inputBonusNum(): Int? {
+fun inputBonusNum(): Bonus {
     println("보너스 번호를 입력해 주세요.")
 
-    try {
-        val bonus = Console.readLine().toInt()
-        require(bonus!! >= 1 && bonus <= 45) { "[ERROR] 보너스 번호는 1에서 45사이의 값이여야 합니다." }
-        return bonus
-    } catch (e: NullPointerException) {
-        //throw IllegalArgumentException("[ERROR] 보너스 번호를 입력하지 않았습니다.")
-    } catch (e: NumberFormatException) {
-        throw IllegalArgumentException("[ERROR] 보너스 번호가 올바르게 입력되지 않았습니다.")
-    }
-    return null
+    val bonus = Console.readLine()
+
+    return Bonus(bonus)
 }
