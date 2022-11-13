@@ -1,8 +1,14 @@
 package lotto.service
 
 import lotto.domain.*
-import lotto.presentation.LottoConsole
-import lotto.presentation.LottoConsole.printLottoStatics
+import lotto.presentation.LottoPurchaseView.inputPurchaseAmount
+import lotto.presentation.LottoPurchaseView.printPurchaseMessage
+import lotto.presentation.LottoPurchaseView.printPurchaseResult
+import lotto.presentation.LottoStaticsView.printLottoStatics
+import lotto.presentation.WinningLottoView.inputBonusNumber
+import lotto.presentation.WinningLottoView.inputWinningLottoNumbers
+import lotto.presentation.WinningLottoView.printBonusNumberEnterMessage
+import lotto.presentation.WinningLottoView.printWinningLottoEnterMessage
 import lotto.utils.INITIAL_COUNT
 import lotto.utils.LottoExceptionHandler.validateBonusNumberDuplication
 
@@ -26,16 +32,24 @@ class LottoService : Service() {
         printLottoStatics(lottoRanks, rewardMoney, amount)
     }
 
-    private fun inputAmount(): Money = lottoStore.inputAmount()
+    private fun inputAmount(): Money {
+        printPurchaseMessage()
+        return inputPurchaseAmount()
+    }
 
-    private fun purchaseLottos(amount: Money): List<Lotto> = lottoStore.purchase(amount)
+    private fun purchaseLottos(amount: Money): List<Lotto> {
+        val lottos = lottoStore.purchase(amount)
+        printPurchaseResult(lottos)
+
+        return lottos
+    }
 
     private fun inputWinningLotto(): Pair<WinningLotto, LottoNumber> {
-        LottoConsole.printWinningLottoEnterMessage()
-        val winningLotto = LottoConsole.inputWinningLottoNumbers()
+        printWinningLottoEnterMessage()
+        val winningLotto = inputWinningLottoNumbers()
 
-        LottoConsole.printBonusNumberEnterMessage()
-        val bonusNumber = LottoConsole.inputBonusNumber()
+        printBonusNumberEnterMessage()
+        val bonusNumber = inputBonusNumber()
 
         validateBonusNumberDuplication(winningLotto, bonusNumber)
         return Pair(winningLotto, bonusNumber)
