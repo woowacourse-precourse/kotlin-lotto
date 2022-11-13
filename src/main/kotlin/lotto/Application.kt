@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    println(getLotto().toString())
+    println(makeLotto().toString())
 }
 
 fun getMoney(): Int {
@@ -12,7 +12,7 @@ fun getMoney(): Int {
     return Console.readLine().trim().toInt()
 }
 
-fun getLotto(): Lotto {
+fun makeLotto(): Lotto {
     val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
     return Lotto(numbers.sorted())
 }
