@@ -25,7 +25,7 @@ class Lotto(private val numbers: List<Int>) {
         return false
     }
 
-    fun getLotto(): List<Int> {
+    fun getNumbers(): List<Int> {
         return this.numbers
     }
 }

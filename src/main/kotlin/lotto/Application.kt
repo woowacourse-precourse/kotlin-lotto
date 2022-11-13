@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console.readLine
 fun main() {
     val display = Display()
     val client = Client()
+    val statistics = LottoStatistics()
     display.printRequirePurchaseAmount()
 
     client.inputPurchaseAmount()
@@ -12,20 +13,21 @@ fun main() {
 
     // 발행한 로또 수량 및 번호 출력
     display.printLottoCount(client.purchaseCount)
-    display.printLottos(client.purchaseLottos)
+    display.printLottos(client.lottos)
 
-    // 당첨 번호 입력
-    display.printRequireWinningNumber()
+    // 당첨 번호 및 보너스 번호 입력
+    display.printRequireWinningNumbers()
     client.inputWinningNumbers()
+    display.printRequireBonusNumber()
     client.inputBonusNumber()
+
+    // 당첨 통계
+    statistics.matchingCalculator(client.lottos)
+    val matchingCounts = statistics.getMatchingCounts()
+    val yield = statistics.getYield()
+    display.printMatchingResult(matchingCounts)
+
 }
 
-fun makeBonusNumber(lottoNumbers: List<Int>): Int {
-    var bonusNumber: Int
-    while(true) {
-        bonusNumber = Randoms.pickNumberInRange(1, 45)
-        if (!lottoNumbers.contains(bonusNumber))
-            break
-    }
-    return bonusNumber
-}
+
+// todo 범위 수정 const로
