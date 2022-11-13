@@ -12,7 +12,7 @@ class LottoController {
     fun start() {
         var inputMoney = 0
         try {
-            val inputMoney = lottoView.getInputMoney()
+            inputMoney = lottoView.getInputMoney()
         } catch (e: IllegalArgumentException) {
             println(e.message)
         }
