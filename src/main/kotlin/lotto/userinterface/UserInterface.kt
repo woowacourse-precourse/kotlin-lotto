@@ -39,6 +39,8 @@ object UserInterface {
     }
 
     fun askWinningNumbers(): List<Int> {
+        val readValue = Console.readLine()
+        require(readValue.split(",").size == 6) { WINNING_NUMBERS_SIZE_NOT_6 }
         return listOf()
     }
 }
