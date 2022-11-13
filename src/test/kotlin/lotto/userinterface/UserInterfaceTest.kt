@@ -115,6 +115,18 @@ internal class `UserInterface 클래스의` {
                 assertThat(result).containsExactly(1, 2, 3, 4, 5, 6)
             }
         }
+        @Nested
+        inner class `당첨 번호를 입력할 때 공백이 포함되어도` {
+            private val winningNumbers = "1, 2, 3, 4, 5, 6"
+            @Test
+            fun `당첨 번호를 반환한다`() {
+                System.setIn(ByteArrayInputStream(winningNumbers.toByteArray()))
+
+                val result = askWinningNumbers()
+
+                assertThat(result).containsExactly(1, 2, 3, 4, 5, 6)
+            }
+        }
         override fun runMain() {
             askWinningNumbers()
         }
