@@ -26,7 +26,15 @@ class LottoTest {
         val matchCount = lottoList.updateMatchCount(listOf(7,8,9,10,11,12))
         assertThat(0).isEqualTo(matchCount)
 
-
     }
+
+    @Test
+    fun `번호 5개와 보너스 번호가 일치할 때 7을 반환`() {
+        val lottoList = Lotto(listOf(1,2,3,4,5,6))
+        val matchCount = lottoList.updateMatchCount(listOf(1,2,3,4,5,7))
+        assertThat(7).isEqualTo(matchCount)
+    }
+
+
 
 }
