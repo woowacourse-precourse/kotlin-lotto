@@ -22,9 +22,9 @@ class PurchaserTest {
     @Test
     fun `수익률 테스트`() {
         val purchaser = Purchaser(5000)
-        purchaser.totalPrize = 6200
+        val totalPrize = 6200
         assertThat(
-            purchaser.rateOfReturn == 6200 / 5000.0F
+            purchaser.calculateRateOfReturn(totalPrize) == 6200 / 5000.0F
         )
     }
 }

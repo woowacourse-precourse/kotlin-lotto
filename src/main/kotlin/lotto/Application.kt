@@ -6,11 +6,10 @@ import lotto.view.*
 fun main() {
     val purchaser = purchaseLottos(inputPurchaseAmount())
     val winningLotto = registerWinningLotto()
+    val (resultRank, totalPrize) = purchaser.calculateResult(winningLotto)
 
-    purchaser.calculateResult(winningLotto)
-
-    printPrizeResult(purchaser.resultRank)
-    printRateOfReturn(purchaser.rateOfReturn)
+    printPrizeResult(resultRank)
+    printRateOfReturn((totalPrize * 10000 / (purchaser.amount) / 100.0F))
 }
 
 fun purchaseLottos(amount: Int?): Purchaser {
