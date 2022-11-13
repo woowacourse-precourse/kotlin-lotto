@@ -36,4 +36,7 @@
 5. 테스트 두 가지 통과하기
    - try catch로 printtrace -실패 
    - try catch로 println -실패
+   - try catch로 error.message로 출력 -실패
+   - 예외처리하는 클래스에 throw하기 전에 println으로 출력 -실패
+   - error가 생기면 println으로 출력하고 함수로 프로세스 닫기 -실패
    - output()은 무엇인가?
