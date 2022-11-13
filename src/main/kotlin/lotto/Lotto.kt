@@ -48,9 +48,13 @@ class Lotto(private val numbers: List<Int>) {
         val winningNumber = listOf(1, 2, 3, 4, 5, 6)
         val bonusNumber = 7
         var count = 0
+        // 일치하는 숫자가 있으면 증가
         for (item in userNumber.indices) {
             if (winningNumber.contains(userNumber[item])) count++
         }
+        // 2등을 가르기 위해서 5개를 맞추고 보너스 넘버까지 맞추었을 때
+        if (count == 5 && userNumber.contains(bonusNumber)) count += 2
+
         return count
 
     }
