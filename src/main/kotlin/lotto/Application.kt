@@ -2,6 +2,7 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import kotlin.math.round
 
 fun main() {
     println("구입금액을 입력해주세요")
@@ -52,6 +53,16 @@ fun main() {
         if (intersection.count() == 6)
             won_2000000000++
     }
+    resultLotto = won_5000 * 5000 + won_50000 * 50000 + won_1500000 * 1500000 + won_3000000 * 3000000 + won_2000000000 * 2000000000
+    var lottoProfit = round(resultLotto / lottoPay.toFloat() * 1000) /10
+    println("당첨 통계")
+    println("---")
+    println("3개 일치 (5,000원) - ${won_5000}개 ")
+    println("4개 일치 (50,000원) - ${won_50000}개 ")
+    println("5개 일치 (1,500,000원) - ${won_1500000}개 ")
+    println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${won_3000000}개 ")
+    println("6개 일치 (2,000,000,000원) - ${won_2000000000}개")
+    println("총 수익률은 ${lottoProfit}%입니다.")
 }
 fun chkNum(str: String) : Boolean {
     var temp: Char
