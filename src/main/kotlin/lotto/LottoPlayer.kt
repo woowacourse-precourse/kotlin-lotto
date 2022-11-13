@@ -4,7 +4,6 @@ import lotto.constant.LOTTO_MAX_GRADE
 import lotto.constant.LOTTO_MIN_GRADE
 import lotto.util.printLottoEarningsRate
 import lotto.util.printLottoGradeCountToMessage
-import lotto.util.showError
 
 data class SameLottoResult(
     val lottoSameCount: Int,
@@ -35,15 +34,10 @@ class LottoPlayer(
     }
 
     fun matchLotties() {
-        try {
-            val winLotto = lottoEnterprise.getWinLotto()
-            val lottoGrades = getSameLottiesResult(winLotto, lotties).map { it.parseResultToGrade() }
-            val gradeCounts = getGradeCounts(lottoGrades)
-            showLottoResults(gradeCounts)
-        } catch (e: Exception) {
-            showError(e)
-            throw IllegalArgumentException()
-        }
+        val winLotto = lottoEnterprise.getWinLotto()
+        val lottoGrades = getSameLottiesResult(winLotto, lotties).map { it.parseResultToGrade() }
+        val gradeCounts = getGradeCounts(lottoGrades)
+        showLottoResults(gradeCounts)
     }
 
     private fun showLottoResults(gradeCounts: IntArray) {
