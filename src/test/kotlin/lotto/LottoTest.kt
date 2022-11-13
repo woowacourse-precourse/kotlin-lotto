@@ -33,4 +33,11 @@ class LottoTest {
             Lotto(listOf(1, 2, 3, 46, 4, 5))
         }
     }
+
+    @Test
+    fun `보너스 번호가 중복되었습니다`() {
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(1, 2, 3, 4, 5, 6)).bonusNumberException(3)
+        }
+    }
 }
