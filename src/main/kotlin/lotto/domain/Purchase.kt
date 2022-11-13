@@ -7,16 +7,16 @@ import lotto.constants.Constant.Companion.MINIMUM_LOTTO_NUMBER
 import lotto.constants.Constant.Companion.MONEY_UNIT
 import lotto.constants.Constant.Companion.START_INDEX
 import lotto.constants.Exception.Companion.EXCEPTION_INVALID_MONEY
-import lotto.views.InputView
-import lotto.views.OutputView
+import lotto.views.InputView.inputMoney
+import lotto.views.OutputView.printInputMoney
 
 class Purchase {
     init {
-        OutputView.printInputMoney()
+        printInputMoney()
     }
 
     fun buyLotto(): Int {
-        val money = InputView.inputMoney()
+        val money = inputMoney()
         validateMoney(money)
         return money / MONEY_UNIT
     }
