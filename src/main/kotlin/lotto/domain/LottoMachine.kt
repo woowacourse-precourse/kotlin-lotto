@@ -16,6 +16,7 @@ class LottoMachine (cost: Int) {
 
         repeat(ticketCount) {
             lottoTicket = Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6))
+            lottoTicket.sort()
             lottoTickets.add(lottoTicket)
         }
 
