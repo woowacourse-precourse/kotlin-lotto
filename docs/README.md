@@ -8,16 +8,26 @@
 - [ ] 1부터 45까지 서로 다른 임의의 수를 6개 와 1개를 입력 받는다.
     - [ ] 사용자가 잘못된 값을 입력할 경우 예외처리 한다.
 - [ ] 발행된 로또 번호와 입력한 당첨번호를 비교할수 있다.
-    - [ ] 같은 수 개수 만큼 1등 에서 5등까지 내역을 받는다.
+    - [ ] 같은 수 개수 만큼 1등 에서 5등까지 결과를 받는다.
 - [ ] 당첨 내역과 수익률을 출력한다.
 
 
 ## 구성 요소
 
-- Message::class
-- Exceptions::object
-- Domain::package
-  - Input::class
-  - Generator::class
-  - Lotto::class
-  - Drawing::class
+- Message(class)
+- Exceptions(object)
+- Domain(package)
+  - money(class)
+  - Lotto(class)
+  
+## money
+
+1. 유저에게서 로또를 살 금액을 받을 수 있다.
+2. 로또를 살 수 있는 개수 를 반환할 수 있다.
+3. 로또를 산 금액과 상금을 비교하여 수익금을 반환할 수 있다.
+
+
+## lotto
+
+1. 발행된 로또 번호와 입력한 당첨번호를 비교할수 있다.
+2. 같은 수 개수 만큼 1등 에서 5등까지 당첨결과를 만들 수 있다.
