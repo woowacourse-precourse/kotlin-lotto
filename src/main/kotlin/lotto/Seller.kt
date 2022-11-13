@@ -23,6 +23,13 @@ class Seller {
         winningLottoNumber.split(",").forEach() {
             it.toIntOrNull()?.let { it -> winningNumber.add(it) }
         }
-        judgment.checkWinningNumber(winningNumber)
+        if (judgment.checkWinningNumber(winningNumber)) {
+            getBonusNumber()
+        }
+    }
+
+    fun getBonusNumber() {
+        println("\n 보너스 번호를 입력해 주세요.")
+        var bonusNumber = Console.readLine()
     }
 }
