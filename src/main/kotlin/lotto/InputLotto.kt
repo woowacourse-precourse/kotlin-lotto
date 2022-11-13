@@ -21,6 +21,10 @@ class InputLotto() {
         }
     }
 
+    private fun checkAmount(amount: Int) {
+        if (amount % 1000 != 0)
+            invalidInputValue(VALUE_ERROR)
+    }
 
     private fun invalidInputValue(message: String) {
         throw IllegalArgumentException("[ERROR] : $message")
