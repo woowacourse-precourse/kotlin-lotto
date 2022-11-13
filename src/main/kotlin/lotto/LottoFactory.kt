@@ -6,11 +6,11 @@ import kotlin.random.Random
 
 class LottoFactory {
 
-    fun makeLotties(lottoCount: Int): List<Lotto> {
+    fun makeLotties(lottoCount: Int): List<List<Int>> {
         return List(lottoCount) { makeLotto() }
     }
 
-    private fun makeLotto(): Lotto {
+    private fun makeLotto(): List<Int> {
         val used = BooleanArray(LOTTO_NUM_RANGE_END + 1)
         val lotto = IntArray(LOTTO_NUM_COUNT)
 
@@ -22,7 +22,7 @@ class LottoFactory {
             used[num] = true
             lotto[idx] = num
         }
-        return Lotto(lotto.sorted())
+        return lotto.sorted()
     }
 
     private fun getRandomLottoNumber(): Int = Random.nextInt(LOTTO_NUM_RANGE_END) + 1
