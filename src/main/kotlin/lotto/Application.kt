@@ -15,9 +15,9 @@ fun main() {
 
 fun purchaseLottos(amount: Int?): Purchaser {
     val purchaser = Purchaser(amount)
-    printNumberOfTickets(purchaser.ticket)
 
-    purchaser.lotto = Store().buyLotto(purchaser.ticket).map { Lotto(it) }
+    purchaser.lotto = Store().buyLotto(purchaser.amount).map { Lotto(it) }
+    printNumberOfTickets(purchaser.lotto.size)
     printNumbersOfLottos(purchaser.lotto)
 
     return purchaser
