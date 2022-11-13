@@ -10,11 +10,12 @@ class Lotto(private val numbers: List<Int>) {
     fun sort(): Lotto {
         return Lotto(numbers.sorted())
     }
+
     fun toStr(): String {
         return numbers.joinToString(", ")
     }
 
-    fun check (winning: WinningNumber): String {
+    fun check(winning: WinningNumber): String {
         var cnt = 0
         var bonus = false
         for (num in numbers) {

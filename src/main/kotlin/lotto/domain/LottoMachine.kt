@@ -2,7 +2,7 @@ package lotto.domain
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class LottoMachine (cost: Int) {
+class LottoMachine(cost: Int) {
     private val ticketCount = cost / 1000
 
     init {
