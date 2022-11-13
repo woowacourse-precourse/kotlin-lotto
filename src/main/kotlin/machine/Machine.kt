@@ -11,19 +11,27 @@ class Machine(val inputMoney: Int) {
     }
 
     fun makeLottoNumbers(count: Int = this.count): MutableList<List<Int>> {
-        println("${count}개를 구매했습니다.")
+        printButLottoMessage(count)
         var lotterysCount = 0
         while (lotterysCount < count) {
             lotterys += Randoms.pickUniqueNumbersInRange(1, 45, 6)
                 .toList()
-            println(lotterys[lotterysCount].sorted())
+            printTickets(lotterys, lotterysCount)
             lotterysCount++
         }
         return lotterys
     }
 
+    private fun printButLottoMessage(count: Int) = println("${count}${BUY_LOTTO_MESSAGE}")
+
+    private fun printTickets(
+        lotterys: MutableList<List<Int>>,
+        lotterysCount: Int
+    ) =
+        println(lotterys[lotterysCount].sorted())
 
     companion object {
         const val NOT_THOUSANDS_NUMBER = "[ERROR] 입력된 금액이 1000원단위여야 합니다."
+        const val BUY_LOTTO_MESSAGE = "개를 구매했습니다."
     }
 }
