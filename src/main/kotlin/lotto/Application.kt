@@ -1,10 +1,9 @@
 package lotto
 
 
+import camp.nextstep.edu.missionutils.Console
 import java.lang.NullPointerException
 import java.lang.NumberFormatException
-import kotlin.NoSuchElementException
-import kotlin.math.round
 
 fun main() {
 
@@ -14,6 +13,7 @@ fun main() {
 
     val lottoGenerate = LottoGenerate()
     val lotto = lottoGenerate.createLottos(money.getCountLotto())
+
     val lottos = Lottos(lotto)
     lottos.printLottos()
     lottos.printWinningResult(winningLotto!!, bonus!!, money.money)
@@ -21,7 +21,7 @@ fun main() {
 
 fun inputMoney() : Money {
     println("구입금액을 입력해 주세요.")
-    val money = readLine()
+    val money = Console.readLine()
     require(money != null) { println("[ERROR] 구입금액을 입력하지 않았습니다.") }
     return Money(money)
 }
@@ -30,7 +30,7 @@ fun inputWinningLotto(): Lotto? {
     println("당첨 번호를 입력해 주세요.")
 
     try {
-        val numStr = readLine()?.split(",")
+        val numStr = Console.readLine().split(",")
         val num = numStr!!.map { it.toInt() }
         return Lotto(num)
     } catch (e: NullPointerException) {
@@ -45,7 +45,7 @@ fun inputBonusNum(): Int? {
     println("보너스 번호를 입력해 주세요.")
 
     try {
-        val bonus = readLine()?.toInt()
+        val bonus = Console.readLine().toInt()
         require(bonus!! >= 1 && bonus <= 45) { "[ERROR] 보너스 번호는 1에서 45사이의 값이여야 합니다." }
         return bonus
     } catch (e: NullPointerException) {
