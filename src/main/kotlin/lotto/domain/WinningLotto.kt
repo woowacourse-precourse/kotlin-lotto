@@ -22,7 +22,7 @@ class WinningLotto {
         return Lotto(winningNumbers.sorted())
     }
 
-    private fun validateWinningNumbers(winningNumbers: MutableList<Int>) {
+    fun validateWinningNumbers(winningNumbers: MutableList<Int>) {
         checkWinningNumbersSize(winningNumbers)
         checkDuplication(winningNumbers)
         checkWinningNumbersValue(winningNumbers)
