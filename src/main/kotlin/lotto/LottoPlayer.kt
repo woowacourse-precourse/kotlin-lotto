@@ -2,6 +2,7 @@ package lotto
 
 import lotto.constant.LOTTO_MAX_GRADE
 import lotto.constant.LOTTO_MIN_GRADE
+import lotto.util.printLottoEarningsRate
 import lotto.util.printLottoGradeCountToMessage
 import lotto.util.showError
 
@@ -25,9 +26,12 @@ class LottoPlayer(
     private val lottoEnterprise: LottoEnterprise,
     private val lottoMarket: LottoMarket,
 ) {
-    lateinit var lotties: List<Lotto>
+    private lateinit var lotties: List<Lotto>
+    private var payMoney: Int = 0
+
     fun buyLotties() {
-        lotties = lottoMarket.sellLotties()
+        payMoney = lottoMarket.payMoney()
+        lotties = lottoMarket.sellLotties(payMoney)
     }
 
     fun matchLotties() {
@@ -43,9 +47,38 @@ class LottoPlayer(
     }
 
     private fun showLottoResults(gradeCounts: IntArray) {
+        showLottoResultGrade(gradeCounts)
+        showLottoEarningRate(gradeCounts)
+    }
+
+    private fun showLottoEarningRate(gradeCounts: IntArray) {
+        val lottoPrizeSum = getLottoPrizeSum(gradeCounts)
+        printLottoEarningsRate(lottoPrizeSum, payMoney)
+    }
+
+    private fun showLottoResultGrade(gradeCounts: IntArray) {
         for (grade in LOTTO_MAX_GRADE downTo LOTTO_MIN_GRADE) {
             printLottoGradeCountToMessage(grade, gradeCounts[grade])
         }
+    }
+
+    private fun getLottoPrizeSum(gradeCounts: IntArray): Long {
+        return gradeCounts.mapIndexed { grade, count ->
+            parseGradeToPrize(grade, count)
+        }.sum()
+    }
+
+    private fun parseGradeToPrize(grade: Int, count: Int): Long {
+        val prize = when (grade) {
+            5 -> 5_000
+            4 -> 50_000
+            3 -> 1_500_000
+            2 -> 30_000_000
+            1 -> 2_000_000_000
+            else -> 0
+        }
+        return prize * count.toLong()
+
     }
 
     private fun getSameLottiesResult(
