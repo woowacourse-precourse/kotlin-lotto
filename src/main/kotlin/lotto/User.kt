@@ -5,10 +5,14 @@ class User {
         println("구입금액을 입력해 주세요.")
         val input = readLine()
 
-        checkNumberFormat(input)
         checkMoneyException(input)
 
         return input?.toInt() ?: 0
+    }
+
+    private fun checkMoneyException(input: String?) {
+        checkNumberFormat(input)
+        checkMoney(input)
     }
 
     private fun checkNumberFormat(input: String?) {
@@ -19,7 +23,7 @@ class User {
         }
     }
 
-    private fun checkMoneyException(input: String?) {
+    private fun checkMoney(input: String?) {
         val inputToInt = input?.toInt()
         if (inputToInt != null) {
             require(inputToInt % 1000 == 0 && inputToInt != 0) {
