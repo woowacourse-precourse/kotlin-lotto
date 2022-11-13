@@ -63,6 +63,9 @@ class Lotto(private val numbers: List<Int>) {
         printStatistics(WinningAmount.SIX, six)
     }
 
+    fun moneySum(): Int {
+        return three * 5_000 + four * 50_000 + five * 1_500_000 + fivePlus * 30_000_000 + six * 2_000_000_000
+    }
     private fun getRandomNumber(): List<Int> {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6)
     }
