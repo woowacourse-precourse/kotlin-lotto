@@ -8,19 +8,13 @@ import utils.Messages.ERROR_PREFIX_MESSAGE
 import utils.Messages.ERROR_LOTTO_INPUT
 import utils.Messages.BUY_AMOUNT_MESSAGE
 import utils.Messages.ERROR_ANSWER_COMMA
-import utils.Messages.ERROR_ANSWER_SIX
 import utils.Messages.ERROR_BONUS_ONE
-import utils.Messages.FIFTH_RANK_MESSAGE
-import utils.Messages.FIRST_RANK_MESSAGE
-import utils.Messages.FOURTH_RANK_MESSAGE
-import utils.Messages.SECOND_RANK_MESSAGE
-import utils.Messages.STATICS_COUNT_MESSAGE
-import utils.Messages.STATICS_REVENUE_MESSAGE
 import utils.Messages.STATICS_SPLITTER_MESSAGE
 import utils.Messages.STATICS_TITLE_MESSAGE
-import utils.Messages.THIRD_RANK_MESSAGE
-import java.util.ListResourceBundle
-import java.util.StringJoiner
+import lotto.Ranking.Rank
+import utils.Messages.STATICS_REVENUE_PREFIX_MESSAGE
+import utils.Messages.STATICS_REVENUE_SUFFIX_MESSAGE
+import java.lang.Math.round
 
 class LottoGame {
 
@@ -54,12 +48,11 @@ class LottoGame {
 
     fun generateRandomLottos(numOfLotto: Int): MutableList<List<Int>> {
         val lottos = mutableListOf<Int>()
-        var doubleLottos = mutableListOf<List<Int>>()
         for (i in 1..numOfLotto){
             val pickLottoNums = Randoms.pickUniqueNumbersInRange(1, 45, 6)
             lottos.addAll(pickLottoNums)
         }
-        doubleLottos = lottos.chunked(6).toMutableList()
+        var doubleLottos: MutableList<List<Int>> = lottos.chunked(6).toMutableList()
         return doubleLottos
     }
 
@@ -78,8 +71,9 @@ class LottoGame {
 
         if (!inputAnswerNumbers.contains(",")) throw IllegalArgumentException(ERROR_PREFIX_MESSAGE+ERROR_ANSWER_COMMA)
         for (i in inputAnswerNumbers) {
+            println("i: $i")
             if(i.toString() != ","){
-                inputAnswerNumbersList.add(i.code)
+                inputAnswerNumbersList.add((i.code) - 48)
             }
         }
         inputAnswerNumbersList.removeAt(0)
@@ -96,39 +90,66 @@ class LottoGame {
         return true
     }
 
-    fun printStats(winList: MutableList<Int>){
+    fun printStatsRank(winList: MutableList<Int>){
         println(STATICS_TITLE_MESSAGE)
         println(STATICS_SPLITTER_MESSAGE)
-        println(FIFTH_RANK_MESSAGE+winList[0]+STATICS_COUNT_MESSAGE)
-        println(FOURTH_RANK_MESSAGE+winList[1]+ STATICS_COUNT_MESSAGE)
-        println(THIRD_RANK_MESSAGE+winList[2]+ STATICS_COUNT_MESSAGE)
-        println(SECOND_RANK_MESSAGE+winList[3]+ STATICS_COUNT_MESSAGE)
-        println(FIRST_RANK_MESSAGE+winList[4]+ STATICS_COUNT_MESSAGE)
-        println(STATICS_REVENUE_MESSAGE) // 여기에 수익률 수치 넣기
+        Rank.FIFTH.print(winList)
+        Rank.FOURTH.print(winList)
+        Rank.THIRD.print(winList)
+        Rank.SECOND.print(winList)
+        Rank.FIRST.print(winList)
+    }
+    fun computeRank(
+        doubleLottos: MutableList<List<Int>>,
+        answerNumbers: MutableList<Int>,
+        bonusNumber: Int): MutableList<Int> {
+        val countResultList = mutableListOf<MutableList<Int>>()
+        val winList = mutableListOf<Int>(0,0,0,0,0)
+        for (i in 0 until doubleLottos.size){
+//            countResultList[i] = countSameNumbers(doubleLottos[i], answerNumbers, bonusNumber)) // 근데 이건 왜 안되지?
+            countResultList.add(i, countSameNumbers(doubleLottos[i], answerNumbers, bonusNumber))
+        }
+        for (i in 0 until countResultList.size) {
+            when {
+                countResultList[i][0] == 3 -> winList[0] += 1
+                countResultList[i][0] == 4 -> winList[1] += 1
+                countResultList[i][0] == 5 -> winList[2] += 1
+                countResultList[i][0] == 5 && countResultList[i][1] == 1 -> winList[3] += 1
+                countResultList[i][0] == 6 -> winList[4] += 1
+            }
+        }
+        return winList
     }
 
-//    fun computeRank(
-//        doubleLottos: MutableList<List<Int>>,
-//        answerNumbers: MutableList<Int>,
-//        bonusNumber: Int): MutableList<Int> {
-//        val winList = mutableListOf<Int>()
-//        val answerString = answerNumbers.toString()
-//        var count = 0
-//        for (i in 0 until doubleLottos.size) {
-//            if (answerString.contains(doubleLottos[i].toString())){
-//                println("answerString: $answerString")
-//                println("doubleLottos[i]: $doubleLottos[i]")
-//                count += 1
-//                println("count: $count")
-//            }
-//            when ((count >= 3)) {
-//                (count == 3) -> winList[0] += 1
-//                (count == 4) -> winList[1] += 1
-//                (count == 5) -> winList[2] += 1
-//                (count == 5 && (answerNumbers.contains(bonusNumber))) -> winList[3] += 1
-//                else -> winList[4] += 1
-//            }
-//        }
-//        return winList
-//    }
+    fun countSameNumbers(
+        lottos: List<Int>,
+        answerNumbers: MutableList<Int>,
+        bonusNumber: Int): MutableList<Int> {
+        val answerString = answerNumbers.toString()
+        var countNormal = 0
+        var countBonus = 0
+        var countResultList = mutableListOf<Int>(0,0)
+        for (num in lottos) {
+            if (answerString.contains(num.toString())){
+                countNormal += 1
+            }
+            if (answerString.contains(bonusNumber.toString()))
+                countBonus += 1
+        }
+        countResultList[0] = countNormal
+        countResultList[1] = countBonus
+        return countResultList
+    }
+
+    fun printStatsRevenue(revenuePercent: Float){
+        println(STATICS_REVENUE_PREFIX_MESSAGE+"$revenuePercent"+ STATICS_REVENUE_SUFFIX_MESSAGE) // 여기에 수익률 수치 넣기
+    }
+    fun statsRevenue(payCost: Int,
+                 winList: MutableList<Int>,
+                 ): Float {
+    val revenue = 5000 * winList[0] + 50000 * winList[1] + 1500000 * winList[2] + 30000000 * winList[3] + 2000000000 * winList[4]
+    val roundRevenue = (revenue.toFloat() / payCost) * 100
+    val result = String.format("%.2f", roundRevenue)
+    return result.toFloat()
+    }
 }
