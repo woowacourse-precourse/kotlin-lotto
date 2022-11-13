@@ -27,4 +27,12 @@ class Judgment {
         }
         return true
     }
+
+    fun checkBonusNumber(bonusNumber: String) {
+        if (bonusNumber.toIntOrNull() == null) {
+            throw IllegalArgumentException("[ERROR] 숫자 형태로 입력해주세요.")
+        } else if (bonusNumber.toInt() in 1..45) {
+            throw IllegalArgumentException("[ERROR] 1~45 범위 내 숫자를 입력해주세요.")
+        }
+    }
 }

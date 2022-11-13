@@ -18,7 +18,7 @@ class Seller {
         var judgment = Judgment()
         var winningNumber = mutableListOf<Int>()
 
-        println("\n당첨 번호를 입력해주세요.")
+        println("\n당첨 번호를 입력해 주세요.")
         var winningLottoNumber = Console.readLine()
         winningLottoNumber.split(",").forEach() {
             it.toIntOrNull()?.let { it -> winningNumber.add(it) }
@@ -29,7 +29,10 @@ class Seller {
     }
 
     fun getBonusNumber() {
-        println("\n 보너스 번호를 입력해 주세요.")
+        var judgment = Judgment()
+
+        println("\n보너스 번호를 입력해 주세요.")
         var bonusNumber = Console.readLine()
+        judgment.checkBonusNumber(bonusNumber)
     }
 }
