@@ -9,7 +9,7 @@ class LottoSeller() {
     fun sellLottery(count: Int): List<Lotto> {
         val sellLotteries = mutableListOf<Lotto>()
         for (i in 0 until count) {
-            sellLotteries.add(Lotto(issueLottery()))
+            sellLotteries.add(Lotto(issueLottery().sorted()))
         }
         return sellLotteries
     }
