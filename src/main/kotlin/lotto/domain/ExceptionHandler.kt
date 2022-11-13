@@ -102,7 +102,7 @@ object ExceptionHandler {
      *
      * 3. 당첨 번호와 중복일 때
      * */
-    fun checkInputBonusNumber(winningNumbers: List<String>, bonusNumber: String) {
+    fun checkInputBonusNumber(winningNumbers: Lotto, bonusNumber: String) {
         if (!isNumberOfBonusNumber(bonusNumber)
             or !isCorrectRangeOfBonusNumber(bonusNumber)
             or !isUniqueOfBonusNumber(winningNumbers, bonusNumber)
@@ -125,8 +125,14 @@ object ExceptionHandler {
         return true
     }
 
-    private fun isUniqueOfBonusNumber(winningNumbers: List<String>, bonusNumber: String): Boolean {
-        if(winningNumbers.contains(bonusNumber)) {
+    private fun isUniqueOfBonusNumber(winningNumbers: Lotto, bonusNumber: String): Boolean {
+        if (winningNumbers
+                .getLottoNumbers()
+                .contains(
+                    bonusNumber
+                        .toInt()
+                )
+        ) {
             return false
         }
         return true

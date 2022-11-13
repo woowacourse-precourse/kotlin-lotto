@@ -1,6 +1,7 @@
 package lotto
 
 import lotto.domain.ExceptionHandler
+import lotto.domain.Lotto
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -14,7 +15,7 @@ class ExceptionHandlerTest {
         const val WINNING_NUMBERS_IS_NOT_CORRECT_RANGE = "1,2,3,4,56,6"
         const val WINNING_NUMBERS_IS_NOT_UNIQUE = "1,2,3,4,5,5"
 
-        val TEST_WINNING_NUMBER = listOf<String>("1", "2", "3", "4", "5", "6")
+        val TEST_WINNING_NUMBER = Lotto(listOf(1, 2, 3, 4, 5, 6))
         const val BONUS_NUMBER_IS_NOT_NUMBER = "a"
         const val BONUS_NUMBER_IS_NOT_CORRECT_RANGE = "50"
         const val BONUS_NUMBER_IS_NOT_UNIQUE = "6"
