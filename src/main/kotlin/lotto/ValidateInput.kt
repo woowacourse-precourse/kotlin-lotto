@@ -1,28 +1,29 @@
 package lotto
 
+import lotto.Model.Lotto
+
 class ValidateInput {
-    fun validateRange(number: String): Boolean {
-        val num: Int = number.toInt()
-        if (num<1 || num >45)
-            throw IllegalArgumentException("[ERROR] 잘못된 입력입니다.")
+    fun validateRange(number: Int): Boolean {
+        if (number<1 || number>45)
+            throw IllegalArgumentException()
         return true
     }
 
     fun validateNumber(input: String): Boolean {
         if (!input.all { Character.isDigit(it) })
-            throw IllegalArgumentException("[ERROR] 잘못된 입력입니다.")
+            throw IllegalArgumentException()
         return true
     }
 
     fun validateDuplication(winningNumbers: List<Int>): Boolean {
         if (winningNumbers.distinct().size != 6)
-            throw IllegalArgumentException("[ERROR] 잘못된 입력입니다.")
+            throw IllegalArgumentException()
         return true
     }
 
-    fun validateDuplicationBonusNum(lottoNumber: Lotto, bonusNum: String): Boolean {
-        if (lottoNumber.getNumbers().contains(bonusNum.toInt()))
-            throw IllegalArgumentException("[ERROR] 잘못된 입력입니다.")
+    fun validateDuplicationBonusNum(lottoNumber: Lotto, bonusNum: Int): Boolean {
+        if (lottoNumber.getNumbers().contains(bonusNum))
+            throw IllegalArgumentException()
         return true
     }
 }

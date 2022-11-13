@@ -1,20 +1,23 @@
 package lotto
 
+import lotto.View.OutputView
+
 fun main() {
-    val outputView = OutputView()
-    val lottoController = LottoController()
+    val game = LottoController()
+    try {
+        game.receiveMoney()
 
-    outputView.printStartMessage()
+        game.createLotto()
 
-    lottoController.receiveMoney()
+        game.receiveWinningNumber()
 
-    lottoController.createLotto()
+        game.receiveBonusNumber()
 
-    outputView.printWinningNumberMessage()
-    lottoController.receiveWinningNumber()
+        game.concludePrizeResult()
 
-    outputView.printBonusNumberMessage()
-    lottoController.receiveBonusNumber()
-
-    lottoController.result()
+        game.concludeEarningRate()
+    } catch (e: IllegalArgumentException) {
+        OutputView().printErrorMessage()
+        return
+    }
 }

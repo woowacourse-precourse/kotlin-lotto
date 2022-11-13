@@ -1,4 +1,4 @@
-package lotto
+package lotto.Model
 
 enum class Rank(val prizeMoney: Int) {
     First(2000000000), Second(30000000),

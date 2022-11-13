@@ -1,6 +1,11 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.Model.Lotto
+import lotto.Model.Money
+import lotto.Model.Rank
+import lotto.View.InputView
+import lotto.View.OutputView
 import kotlin.math.roundToLong
 
 class LottoController {
@@ -8,14 +13,15 @@ class LottoController {
     private var money = Money()
     private var moneyCount: Int = 0
     private val lottoList = mutableListOf<Lotto>()
-    private var winningNumber = Lotto(listOf(1,2,3,4,5,6))
+    private lateinit var winningNumber: Lotto
     private var bonusNumber = 0
-    private val prizeResult = mutableListOf<Int>(0,0,0,0,0,0)
+    private val prizeResult = mutableListOf(0, 0, 0, 0, 0, 0)
     private var earnedMoney = 0
 
     fun receiveMoney() {
+        OutputView().printStartMessage()
         this.money = InputView().receiveMoneyInput()
-        moneyCount= money.getMoney()/1000
+        moneyCount = money.getMoney() / 1000
         OutputView().printBuyMessage(moneyCount)
     }
 
@@ -27,20 +33,21 @@ class LottoController {
         OutputView().printLottoList(lottoList)
     }
 
-    fun receiveWinningNumber(){
+    fun receiveWinningNumber() {
+        OutputView().printWinningNumberMessage()
         winningNumber = InputView().receiveWinningNumberInput()
     }
 
-    fun receiveBonusNumber(){
-        val number = InputView().receiveBonusNumberInput()
+    fun receiveBonusNumber() {
+        OutputView().printBonusNumberMessage()
+        val bonusNumber = InputView().receiveBonusNumberInput()
         val validator = ValidateInput()
-        if (validator.validateNumber(number) && validator.validateRange(number)
-            && validator.validateDuplicationBonusNum(winningNumber, number))
-            bonusNumber = number.toInt()
+        if (validator.validateDuplicationBonusNum(winningNumber, bonusNumber))
+            this.bonusNumber = bonusNumber
     }
 
-    fun result(){
-        for (lotto in lottoList){
+    fun concludePrizeResult() {
+        for (lotto in lottoList) {
             val result = lotto.calculateWinningResult(winningNumber, bonusNumber)
             val rank = result.first
             earnedMoney += result.second
@@ -50,17 +57,18 @@ class LottoController {
                 Rank.Third -> prizeResult[3]++
                 Rank.Fourth -> prizeResult[4]++
                 Rank.Fifth -> prizeResult[5]++
-                else -> return
             }
         }
-
         OutputView().printWinningStatistics(prizeResult)
-        val percentage = calculateProfitPercentage(earnedMoney)
+    }
+
+    fun concludeEarningRate() {
+        val percentage = calculateEarningRate(earnedMoney)
         OutputView().printEarningsRate(percentage)
     }
-    fun calculateProfitPercentage(totalEarnedMoney: Int): Double {
-        val profit = (totalEarnedMoney / money.getMoney().toDouble())*1000
-        return (profit.roundToLong().toDouble()/10)
-    }
 
+    private fun calculateEarningRate(totalEarnedMoney: Int): Double {
+        val profit = (totalEarnedMoney / money.getMoney().toDouble()) * 1000
+        return (profit.roundToLong().toDouble() / 10)
+    }
 }
