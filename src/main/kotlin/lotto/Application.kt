@@ -9,6 +9,6 @@ fun main() {
     println()
     val winningNumber = WinningNumber().getWinningNumber()
     println()
-    val bonusNumber = BonusNumber().getBonusNumber()
+    val bonusNumber = BonusNumber().getBonusNumber(winningNumber)
     val winningList = GameManager().getResult(lottoNumbers, winningNumber, bonusNumber)
 }
