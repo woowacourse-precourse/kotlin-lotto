@@ -13,6 +13,8 @@ class InputLotto() {
 
     }
 
+    fun moneyToLotto(money: Int) = money / 1000
+
     private fun checkInputType(input: String) {
         try {
             input.toInt()
