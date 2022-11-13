@@ -14,6 +14,7 @@ fun main() {
     println(getWinningNumber())
     println(getBonusNumber())
 
+
 }
 
 // 1000원 단위의 구입 금액을 입력 받는다.
