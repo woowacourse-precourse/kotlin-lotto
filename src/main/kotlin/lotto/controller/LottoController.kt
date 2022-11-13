@@ -10,17 +10,21 @@ class LottoController {
     private val lottoView = LottoView()
 
     fun start() {
+        val inputMoney = getInputMoney()
+        val numberOfIssueLotto = numberOfLotto(inputMoney)
+        val issuedLottoList = issueLottos(numberOfIssueLotto)
+        val winningLottoNumber = lottoView.getWinningLotto()
+        val winnigLotto = Lotto(winningLottoNumber)
+    }
+
+    private fun getInputMoney(): Int {
         var inputMoney = 0
         try {
             inputMoney = lottoView.getInputMoney()
         } catch (e: IllegalArgumentException) {
             println(e.message)
         }
-
-        val numberOfIssueLotto = numberOfLotto(inputMoney)
-        val issuedLottoList = issueLottos(numberOfIssueLotto)
-        val winningLottoNumber = lottoView.getWinningLotto()
-        val winnigLotto = Lotto(winningLottoNumber)
+        return inputMoney
     }
 
     private fun issueLottos(inputMoney: Int): Lottos {
