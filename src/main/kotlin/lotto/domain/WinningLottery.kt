@@ -1,21 +1,21 @@
 package lotto.domain
 
 import lotto.utils.Constants.LOTTO_NUMBER_COUNT
-import lotto.utils.Constants.LOTTO_NUMBER_MAX_IN_RANGE
-import lotto.utils.Constants.LOTTO_NUMBER_MIN_IN_RANGE
+import lotto.utils.Constants.LOTTO_MAX_RANGE
+import lotto.utils.Constants.LOTTO_MIN_RANGE
 import lotto.utils.Constants.ZERO
-import lotto.utils.ErrorMessage.INPUT_LOTTO_NUMBER_CONTAIN_HALF_SPOT
-import lotto.utils.ErrorMessage.INPUT_LOTTO_NUMBER_SIZE
-import lotto.utils.ErrorMessage.INPUT_LOTTO_NUMBER_DUPLICATE
-import lotto.utils.ErrorMessage.INPUT_LOTTO_NUMBER_IN_RANGE
-import lotto.utils.ErrorMessage.INPUT_NOT_NUMBERS
+import lotto.utils.ErrorMessage.ERROR_CONTAIN_HALF_SPOT
+import lotto.utils.ErrorMessage.ERROR_NUMBER_SIZE_OVER
+import lotto.utils.ErrorMessage.ERROR_NUMBER_DUPLICATE
+import lotto.utils.ErrorMessage.ERROR_NOT_NUMBER_IN_RANGE
+import lotto.utils.ErrorMessage.ERROR_NOT_NUMBERS
 
 class WinningLottery(private val winningLottery: String, private val bonus: String) {
     private var numbers = mutableListOf<Int>()
     private var bonusNumber = ZERO
 
     init {
-        val numbers = validateNumbers(winningLottery)
+        val numbers = validateNumbers(winningLottery.split(','))
         numbers.forEach { this.numbers.add(it.toInt()) }
         this.numbers = this.numbers.sorted() as MutableList<Int>
 
@@ -32,31 +32,16 @@ class WinningLottery(private val winningLottery: String, private val bonus: Stri
     }
 
     private fun validateBonusNumber(bonus: String) {
-        require(bonus.all { it.isDigit() }) { INPUT_NOT_NUMBERS }
-        require(bonus.toInt() in LOTTO_NUMBER_MIN_IN_RANGE..LOTTO_NUMBER_MAX_IN_RANGE) {
-            INPUT_LOTTO_NUMBER_IN_RANGE
-        }
+        require(bonus.all { it.isDigit() }) { ERROR_NOT_NUMBERS }
+        require(bonus.toInt() in LOTTO_MIN_RANGE..LOTTO_MAX_RANGE) { ERROR_NOT_NUMBER_IN_RANGE }
     }
 
-    private fun validateNumbers(winningLottery: String): List<String> {
-        val numbers = winningLottery.split(',')
-        require(numbers.joinToString("").all { it.isDigit() }) {
-            INPUT_NOT_NUMBERS
-        }
-        require(numbers[numbers.lastIndex].isNotEmpty()) { INPUT_LOTTO_NUMBER_CONTAIN_HALF_SPOT }
-        require(numbers.size == LOTTO_NUMBER_COUNT) {
-            INPUT_LOTTO_NUMBER_SIZE
-        }
-        require(numbers.toSet().size == LOTTO_NUMBER_COUNT) {
-            INPUT_LOTTO_NUMBER_DUPLICATE
-        }
-        require(
-            numbers.all { number ->
-                number.toInt() in LOTTO_NUMBER_MIN_IN_RANGE..LOTTO_NUMBER_MAX_IN_RANGE
-            }
-        ) {
-            INPUT_LOTTO_NUMBER_IN_RANGE
-        }
+    private fun validateNumbers(numbers: List<String>): List<String> {
+        require(numbers.joinToString("").all { it.isDigit() }) { ERROR_NOT_NUMBERS }
+        require(numbers[numbers.lastIndex].isNotEmpty()) { ERROR_CONTAIN_HALF_SPOT }
+        require(numbers.size == LOTTO_NUMBER_COUNT) { ERROR_NUMBER_SIZE_OVER }
+        require(numbers.toSet().size == LOTTO_NUMBER_COUNT) { ERROR_NUMBER_DUPLICATE }
+        require(numbers.all { it.toInt() in LOTTO_MIN_RANGE..LOTTO_MAX_RANGE }) { ERROR_NOT_NUMBER_IN_RANGE }
 
         return numbers
     }

@@ -9,6 +9,6 @@ object Constants {
     const val LOTTO_PRICE = 1_000
 
     const val LOTTO_NUMBER_COUNT = 6
-    const val LOTTO_NUMBER_MIN_IN_RANGE = 1
-    const val LOTTO_NUMBER_MAX_IN_RANGE = 45
+    const val LOTTO_MIN_RANGE = 1
+    const val LOTTO_MAX_RANGE = 45
 }
