@@ -8,4 +8,12 @@ class Lottos(private val lottos: List<Lotto>) {
         }
         return resultList
     }
+
+    fun getLottosList(): MutableList<Lotto> {
+        val listLottos = mutableListOf<Lotto>()
+        for (i in lottos) {
+            listLottos.add(i)
+        }
+        return listLottos
+    }
 }
