@@ -8,4 +8,5 @@ class LottoNumber(val number: Int) {
         validateLottoNumberRange(number)
     }
 
+    override fun toString() = number.toString()
 }
