@@ -1,11 +1,13 @@
 package lotto
 
+import kotlin.math.round
+
 
 class LottoStatistics {
     private val winningNumbers = mutableListOf<Int>()
     private var bonusNumber: Int = 0
-    private val matchingCounts = MutableList<Int>(5) { 0 }
-    private val yield: Double = 0.0
+    private val matchingCounts = MutableList(5) { 0 }
+    private var profit: Double = 0.0
     private val rule = Rule()
 
     fun setWinningNumbers(numbers: List<String>) {
@@ -18,13 +20,16 @@ class LottoStatistics {
         this.bonusNumber = number
     }
 
-    fun matchingCalculator(lottos: List<Lotto>) {
+    fun matchingCalculator(client: Client) {
+        val lottos = client.lottos
+        val purchaseAmount = client.purchaseAmount
         for (lotto in lottos) {
             val lottoNumbers = lotto.getNumbers()
             val matchingCount = calculateMatchingCount(lottoNumbers)
             val containsBonusNumber = lottoNumbers.contains(bonusNumber)
 
             setMatchingCounts(matchingCount, containsBonusNumber)
+            calculateProfit(purchaseAmount)
         }
     }
 
@@ -51,14 +56,24 @@ class LottoStatistics {
         }
     }
 
+    // 수익률 공식: 100 + (당첨금 - 구매 금액) / 구매 금액 * 100
+    private fun calculateProfit(purchaseAmount: Int) {
+        var prizeAmount: Long = 0
+        val matching = Matching.values()
+        for (i in matchingCounts.indices) {
+            prizeAmount += matching[i].prize * matchingCounts[i]
+        }
+
+        profit = 100 + (prizeAmount - purchaseAmount) / purchaseAmount * 100.0
+        profit = round(profit * 10) / 10
+    }
+
     fun getMatchingCounts(): List<Int> {
         return this.matchingCounts
     }
-    fun getYield(): Double {
-        return this.yield
+
+    fun getProfit(): Double {
+        return this.profit
     }
 }
 
-enum class Matching(val index: Int) {
-    THREE(0), FOUR(1), FIVE(2), FIVE_AND_BONUS(3), SIX(4);
-}

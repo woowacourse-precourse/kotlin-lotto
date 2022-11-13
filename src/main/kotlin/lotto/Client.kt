@@ -7,7 +7,7 @@ class Client {
     private val rule = Rule()
     private val statistics = LottoStatistics()
     val lottos = mutableListOf<Lotto>()
-    private var purchaseAmount = 0
+    var purchaseAmount = 0
     var purchaseCount = 0
 
     fun inputPurchaseAmount() {

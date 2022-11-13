@@ -35,7 +35,7 @@ class Display {
         println(REQUIRE_INPUT_BONUS_MESSAGE)
     }
 
-    fun printMatchingResult(matchingCounts: List<Int>) {
+    fun printStatistics(matchingCounts: List<Int>, profit: Double) {
         val contents = MatchingContent.values()
 
         println()
@@ -43,6 +43,8 @@ class Display {
         for(i in matchingCounts.indices) {
             println(contents[i].content + matchingCounts[i] + "개")
         }
+
+        println("총 수익률은 ${profit}입니다.")
     }
 }
 

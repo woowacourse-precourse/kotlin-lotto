@@ -1,7 +1,5 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.Randoms
-import camp.nextstep.edu.missionutils.Console.readLine
 fun main() {
     val display = Display()
     val client = Client()
@@ -22,10 +20,10 @@ fun main() {
     client.inputBonusNumber()
 
     // 당첨 통계
-    statistics.matchingCalculator(client.lottos)
+    statistics.matchingCalculator(client)
     val matchingCounts = statistics.getMatchingCounts()
-    val yield = statistics.getYield()
-    display.printMatchingResult(matchingCounts)
+    val profit = statistics.getProfit()
+    display.printStatistics(matchingCounts, profit)
 
 }
 
