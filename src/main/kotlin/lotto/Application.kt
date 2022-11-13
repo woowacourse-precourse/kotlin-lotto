@@ -1,10 +1,12 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 import java.lang.IllegalArgumentException
 
 fun main() {
-    purchaseLotto()
+    val price = enterPurchasePrice()
+    print(publishLottoNumbers(price))
 }
 
 fun isNumber(string: String) = string.toIntOrNull() != null
@@ -36,6 +38,32 @@ fun purchaseLotto() {
     printEnterPriceMessage()
     val price = enterPurchasePrice()
     printLottoPurchaseCountMessage(price)
+}
+
+fun addNotDuplicateNumber(number: Int, numbers: MutableList<Int>) {
+    if (!numbers.contains(number)) numbers.add(number)
+}
+
+fun generateRandomNumber() = Randoms.pickNumberInRange(1,45)
+
+fun generateLottoNumber(): MutableList<Int> {
+    val numbers = mutableListOf<Int>()
+
+    while (numbers.size != 6) {
+        val number = generateRandomNumber()
+        addNotDuplicateNumber(number, numbers)
+    }
+
+    return numbers
+}
+
+fun publishLottoNumbers(price: Int): ArrayList<MutableList<Int>> {
+    val lottoNumbers = arrayListOf<MutableList<Int>>()
+    val size = price/1000
+
+    for (i in 0 until size) lottoNumbers.add(generateLottoNumber())
+
+    return lottoNumbers
 }
 
 
