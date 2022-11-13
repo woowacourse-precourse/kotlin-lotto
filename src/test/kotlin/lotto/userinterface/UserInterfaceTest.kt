@@ -13,6 +13,16 @@ internal class `UserInterface 클래스의` {
     @Nested
     inner class `askPurchaseAmount 메소드는`: NsTest() {
         @Nested
+        inner class `실행하면` {
+            private val purchaseAmount = "1000"
+            @Test
+            fun `구입 금액 입력을 요청하는 메시지를 출력한다`() {
+                run(purchaseAmount)
+
+                assertThat(output()).isEqualTo(REQUEST_PURCHASE_AMOUNT)
+            }
+        }
+        @Nested
         inner class `사용자가 콘솔에 숫자가 아닌 값을 입력하면` {
             private val purchaseAmount = "1000j"
             @Test
