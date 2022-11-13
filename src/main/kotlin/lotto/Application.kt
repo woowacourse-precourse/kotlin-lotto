@@ -24,7 +24,7 @@ fun main() {
         var aaaa = calculater(pointnumber)
         var bbbb = profit(usermoney, aaaa)
         var cccc = '%'
-        System.out.println(String.format("총 수익률은 %.1f%c입니다.", bbbb, cccc))
+        println(String.format("총 수익률은 %.1f%c입니다.", bbbb, cccc))
     } catch (e: Exception){
         print("[ERROR]")
     }
@@ -142,74 +142,85 @@ fun bonusnumber (a:IntArray) : Int
     return bonusnumber
 }
 
+fun comparenumber1(a:MutableList<MutableList<Int>> , b:IntArray , c:Int , d:Int , e:Int) : Int {
+    var firstcount = 0
+    if (b[0] == a[d][e])
+    {
+        firstcount+=1
+    }
+    if (b[1] == a[d][e])
+    {
+        firstcount+=1
+    }
+    if (b[2] == a[d][e])
+    {
+        firstcount+=1
+    }
+    return firstcount
+}
+
+fun comparenumber2(a:MutableList<MutableList<Int>> , b:IntArray , c:Int , d:Int , e:Int) : Int {
+    var secondcount = 0
+    if (b[3] == a[d][e])
+    {
+        secondcount+=1
+    }
+    if (b[4] == a[d][e])
+    {
+        secondcount+=1
+    }
+    if (b[5] == a[d][e])
+    {
+        secondcount+=1
+    }
+    return secondcount
+}
+
+fun bonuscompare(a:MutableList<MutableList<Int>> , b:IntArray , c:Int , d:Int , e:Int) : Int {
+    var bonuscount = 0
+    if( c==a[d][e])
+    {
+        bonuscount +=1
+    }
+    return bonuscount
+}
 
 
 fun comparenumber(a:MutableList<MutableList<Int>> , b:IntArray , c:Int) : IntArray {
     var countunion = IntArray(a.size)
-    for (i in 0..a.size-1)
-    {
-        var count = 0
-        var bonuscount = 0
-
-        for (j in 0..5)
-        {
-            if (b[0] == a[i][j])
-            {
-                count+=1
-            }
-            if (b[1] == a[i][j])
-            {
-                count+=1
-            }
-            if (b[2] == a[i][j])
-            {
-                count+=1
-            }
-            if (b[3] == a[i][j])
-            {
-                count+=1
-            }
-            if (b[4] == a[i][j])
-            {
-                count+=1
-            }
-            if( b[5] == a[i][j])
-            {
-                count+=1
-            }
-            if( c==a[i][j])
-            {
-                bonuscount +=1
-            }
-        }
-        countunion[i]=count
-        if (bonuscount > 0 && countunion[i] == 5)
-        {
+    var bcp = 0
+    for (i in 0..a.size-1) {
+        var cpn1 = mutableListOf<Int>()
+        var cpn2 = mutableListOf<Int>()
+        for (j in 0..5) {
+            cpn1.add(comparenumber1(a,b,c,i,j))
+            cpn2.add(comparenumber2(a,b,c,i,j))
+            bcp = bonuscompare(a,b,c,i,j) }
+            countunion[i]+=cpn1.sum()
+            countunion[i]+=cpn2.sum()
+        if (bcp > 0 && countunion[i] == 5) {
             countunion[i]+=10
-        }
-    }
-    return countunion
-}
+        } }
+    return countunion }
 
-fun calculater (a:IntArray) : Int
-{
+fun calculater (a:IntArray) : Int {
     var money = 0
     var rank = IntArray(5,)
     for(item in a){ when(item){
             3 -> { rank[0] += 1
                 money+=5000 }
             4 -> { rank[1] += 1
-                money+=5000 }
+                money+=50000 }
             5 -> { rank[2] += 1
-                money+=5000 }
-            6 -> { rank[3] += 1
-                money+=5000 }
-            15 -> { rank[4] += 1
-                money+=5000 } }
-    }
+                money+=1500000 }
+            6 -> { rank[4] += 1
+                money+=30000000 }
+            15 -> { rank[3] += 1
+                money+=2000000000 } } }
     printwin(rank)
-    return money
-}
+    return money }
+
+
 fun printwin (a:IntArray)
 {
     println("3개 일치 (5,000원) - ${a[0]}개")
@@ -224,7 +235,6 @@ fun profit (a: Int , b: Int) : Double
     var aa = a.toDouble()
     var bb = b.toDouble()
     var result = (bb/aa)*100
-
     return result
 }
 
