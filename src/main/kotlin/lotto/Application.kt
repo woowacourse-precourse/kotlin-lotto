@@ -1,5 +1,7 @@
 package lotto
 
-fun main() {
+import lotto.userinterface.UserInterface
 
+fun main() {
+    val purchaseAmount = UserInterface.askPurchaseAmount()
 }
