@@ -23,6 +23,6 @@ object UserInterface {
         require(
             purchaseAmount.mod(BigInteger("1000")).equals(BigInteger.ZERO)
         ) { PURCHASE_AMOUNT_NOT_DIVISIBLE_BY_1000 }
-        return 0
+        return purchaseAmount.toInt()
     }
 }
