@@ -61,6 +61,14 @@ fun getInputLottoMoney(): Int {
     return lottoMoney / 1000
 }
 
+fun formatLottos(lottos: List<Lotto>): String {
+    val formattedLottos = StringBuilder()
+    for (i in lottos) {
+        formattedLottos.append(i.toString() + "\n")
+    }
+    return formattedLottos.toString()
+}
+
 fun formatWinRanks(winRanks: Map<LottoRank, Int>): String {
     val formattedRank = StringBuilder()
     formattedRank.append("3개 일치 (5,000원) - ${winRanks[LottoRank.FIFTH] ?: 0}개\n")
@@ -81,12 +89,18 @@ fun main() {
 
     println("${lottoMoney}개를 구매했습니다.")
     val lottos = produceLotto(lottoMoney)
+    println(formatLottos(lottos))
 
-
+    println("당첨 번호를 입력해 주세요.")
     val winNumber = getInputWinNumbers()
+
+    println("보너스 번호를 입력해 주세요.")
     val bonusNumber = getInputBonusNumber()
+
+    println("당첨 통계\n---")
     val winRanks = calculateWinRanks(lottos, winNumber, bonusNumber)
     println(formatWinRanks(winRanks))
+
     val `yield` = calculateYield(winRanks, lottoMoney)
     println(formatYield(`yield`))
 }
