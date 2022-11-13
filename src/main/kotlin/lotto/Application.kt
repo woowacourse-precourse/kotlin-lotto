@@ -1,5 +1,7 @@
 package lotto
 
+import java.util.Locale
+
 /* import lotto.LottoGame */
 
 fun main() {
@@ -23,7 +25,13 @@ fun main() {
     LottoGame().checkinputBonus(inputBonusPrice)
     
     // 통계 결과 내기
-    LottoGame().printStats()
+    println(lottos)
+    println(answerNumbers)
+    println(inputBonusPrice)
+    val winList = LottoGame().computeRank(lottos, answerNumbers, inputBonusPrice.toInt())
+    LottoGame().printStatsRank(winList)
+    val revenuePercent = LottoGame().statsRevenue(inputPrice, winList)
+    LottoGame().printStatsRevenue(revenuePercent)
 
 
 }
