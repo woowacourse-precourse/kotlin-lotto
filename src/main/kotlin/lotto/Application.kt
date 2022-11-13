@@ -15,4 +15,13 @@ fun main() {
 
     val bonusNumber = inputBonusNumbers()
     printBonusNumber(bonusNumber.checkNull())
+
+    val winningLotto = WinningLotto(winningNumbers, bonusNumber.checkNull())
+
+    lottos.map {
+        purchase.resultRank[winningLotto.getRank(it.toList()) - 1] += 1
+        purchase.totalPrize += winningLotto.getPrize(it.toList())
+    }
+    printPrizeResult(purchase.resultRank)
+    printRateOfReturn(purchase.rateOfReturn)
 }
