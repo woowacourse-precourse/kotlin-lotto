@@ -39,6 +39,6 @@ class WinningLotto(private val numbers: List<LottoNumber>) : List<LottoNumber> b
         return 0
     }
 
-    override fun toString(): String = numbers.joinToString(", ", "[", "]")
-
+    override fun toString(): String =
+        numbers.joinToString(", ", "[", "]")
 }

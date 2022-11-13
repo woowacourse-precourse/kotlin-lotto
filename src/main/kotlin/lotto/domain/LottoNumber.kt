@@ -9,6 +9,7 @@ class LottoNumber(val number: Int) {
     }
 
     override fun toString() = number.toString()
+
     override fun equals(other: Any?): Boolean {
         if (other is LottoNumber) {
             return this.number == other.number
