@@ -1,5 +1,6 @@
 package lotto
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.TestInstance
@@ -12,27 +13,27 @@ import java.util.stream.Stream
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ValidatorTest {
     @ParameterizedTest
-    @ValueSource(strings = ["0", "100", "1500", "11500"])
+    @ValueSource(strings = ["100", "1500", "11500"])
     fun `invalid money check`(money:String){
-        assertFalse(InputValidator.validateMoney(money))
+        assertThat(InputValidator.validateMoney(money)).isNotEqualTo(Error.NO_ERROR)
     }
 
     @ParameterizedTest
     @ValueSource(strings = ["1000", "2000", "5000", "100000"])
     fun `valid money check`(money:String){
-        assertTrue(InputValidator.validateMoney(money))
+        assertThat(InputValidator.validateMoney(money)).isEqualTo(Error.NO_ERROR)
     }
 
     @ParameterizedTest
     @MethodSource("generateInvalidWinningNumber")
     fun `invalid winning number check`(winningNumber:List<String>){
-        assertFalse(InputValidator.validateWinningNumber(winningNumber))
+        assertThat(InputValidator.validateWinningNumber(winningNumber)).isNotEqualTo(Error.NO_ERROR)
     }
 
     @ParameterizedTest
     @MethodSource("generateValidWinningNumber")
     fun `valid winning number check`(winningNumber:List<String>){
-        assertTrue(InputValidator.validateWinningNumber(winningNumber))
+        assertThat(InputValidator.validateWinningNumber(winningNumber)).isEqualTo(Error.NO_ERROR)
     }
 
     private fun generateInvalidWinningNumber(): Stream<Arguments> {
@@ -58,13 +59,13 @@ class ValidatorTest {
     @ParameterizedTest
     @MethodSource("generateInvalidBonusNumber")
     fun `invalid bonus number check`(bonusNumber: String, winningNumber:List<Int>){
-        assertFalse(InputValidator.validateBonusNumber(bonusNumber, winningNumber))
+        assertThat(InputValidator.validateBonusNumber(bonusNumber, winningNumber)).isNotEqualTo(Error.NO_ERROR)
     }
 
     @ParameterizedTest
     @MethodSource("generateValidBonusNumber")
     fun `valid bonus number check`(bonusNumber: String, winningNumber:List<Int>){
-        assertTrue(InputValidator.validateBonusNumber(bonusNumber, winningNumber))
+        assertThat(InputValidator.validateBonusNumber(bonusNumber, winningNumber)).isEqualTo(Error.NO_ERROR)
     }
 
     private fun generateInvalidBonusNumber(): Stream<Arguments> {
