@@ -31,14 +31,15 @@ fun inputWinningLotto(): Lotto? {
 
     try {
         val numStr = Console.readLine().split(",")
-        val num = numStr!!.map { it.toInt() }
-        return Lotto(num)
+        val nums = numStr!!.map { it.toInt() }
+        return Lotto(nums)
     } catch (e: NullPointerException) {
         println("[ERROR] 당첨 번호를 입력하지 않았습니다.")
+        throw IllegalArgumentException()
     } catch (e: NumberFormatException) {
         println("[ERROR] 당첨 번호에 올바른 값이 입력되지 않았습니다.")
+        throw IllegalArgumentException()
     }
-    return null
 }
 
 fun inputBonusNum(): Int? {
