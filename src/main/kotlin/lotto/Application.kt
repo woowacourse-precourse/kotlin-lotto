@@ -4,11 +4,11 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun calculateYield(winRanks: Map<LottoRank, Int>, lottoMoney: Int): Float {
-    var winMoney = 0
+    var winMoney = 0f
     for ((k, v) in winRanks) {
         winMoney += k.value * v
     }
-    return winMoney / lottoMoney * 100f
+    return (winMoney / lottoMoney) * 100f
 }
 
 fun calculateWinRanks(lottos: List<Lotto>, winNumber: List<Int>, bonusNumber: Int): Map<LottoRank, Int> {
