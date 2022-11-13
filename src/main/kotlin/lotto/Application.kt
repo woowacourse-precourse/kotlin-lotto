@@ -76,15 +76,30 @@ fun lottoException(lottoResult: List<Int>) = Lotto(lottoResult)
 fun bonusNumberException(lottoResult: List<Int>, bonusNumber: Int) = Lotto(lottoResult).bonusNumberException(bonusNumber)
 
 fun checkLotto(lottoResult: List<Int>, myLotto: List<List<Int>>, bonusNumber: Int): Array<Int> {
-    val lotto = Lotto(lottoResult)
     val win = Array(6) { 0 }
 
-    myLotto.forEach {
-        val correct = lotto.checkLotto(it, bonusNumber)
+    myLotto.forEach { lotto ->
+        val correct = checkEachLotto(lottoResult, lotto, bonusNumber)
         win[correct] += 1
     }
 
     return win
+}
+
+fun checkEachLotto(lottoResult: List<Int>, myLotto: List<Int>, bonusNumber: Int): Int {
+    val union = myLotto + lottoResult
+    var sameNumCnt = union.groupBy { it }.filter { it.value.size > 1 }.flatMap { it.value }.distinct().size
+    if(sameNumCnt == 6) return 4
+
+    if(myLotto.contains(bonusNumber)) sameNumCnt += 1
+
+    return when(sameNumCnt) {
+        3 -> 0
+        4 -> 1
+        5 -> 2
+        6 -> 3
+        else -> 5
+    }
 }
 
 fun printWin(win: Array<Int>) {
