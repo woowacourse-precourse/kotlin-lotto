@@ -9,6 +9,8 @@ class LottoProcessor(private val seller: LottoSeller) {
             val purchasedLotto = processPurchasingLotto()
             val winningNumber = processGeneratingWinningNumber()
             val bonusNumber = processGeneratingBonusNumber(winningNumber)
+            val result = processExtractingResult(purchasedLotto, winningNumber, bonusNumber)
+            processCalculateProfit(purchasedLotto.size * LOTTO_PRICE, result)
         } catch (e: java.lang.IllegalArgumentException) {
             println(e)
         }
@@ -52,4 +54,36 @@ class LottoProcessor(private val seller: LottoSeller) {
         }
         return WinningNumberGenerator.generateBonusNumber(bonusNumber)
     }
+
+    private fun processExtractingResult(
+        purchasedLotto: List<Lotto>,
+        winningNumber: List<Int>,
+        bonusNumber: Int,
+    ): Map<LottoPrice, Int> {
+        val result = ResultExtractor.extractResult(purchasedLotto, winningNumber, bonusNumber)
+
+        result.printResult()
+        return result
+    }
+
+    private fun processCalculateProfit(usedMoney: Int, result: Map<LottoPrice, Int>) {
+        val profit = ResultExtractor.calcProfit(usedMoney.toDouble(), result)
+        println(PROFIT_RESULT.format(profit))
+    }
+
+    private fun Map<LottoPrice, Int>.printResult() {
+        LottoPrice.values().forEach { eachLottoStatus ->
+            var eachStatusCount = 0
+
+            this[eachLottoStatus]?.let { eachStatusCount = it }
+            val msg = when (eachLottoStatus) {
+                LottoPrice.NONE -> return@forEach
+                LottoPrice.SECOND_PLACE -> SECOND_PLACE_MSG.format(eachStatusCount)
+                else -> PLACE_MSG.format(eachLottoStatus.catchCount, eachLottoStatus.price.withComma(), eachStatusCount)
+            }
+            println(msg)
+        }
+    }
+
+    private fun Int.withComma() = DecimalFormat("#,###").format(this)
 }
