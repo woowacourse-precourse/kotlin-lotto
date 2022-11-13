@@ -1,9 +1,11 @@
 package lotto
 
+import lotto.Util
 import camp.nextstep.edu.missionutils.Console
 import java.lang.IllegalArgumentException
 
 class LottoVendingMachine {
+    val util = Util()
     fun inputMoney(): String{
         println("구입금액을 입력해 주세요.")
         val input = Console.readLine()
@@ -11,14 +13,14 @@ class LottoVendingMachine {
     }
 
     fun countMoney(input: String): Int{
-        isNumInt(input)
+        util.isNumInt(input)
         val money = input.toInt()
-        isEnougMoney(money)
+        isEnoughMoney(money)
         val amount = isMoney1000(money)
         return amount
     }
 
-    fun isEnougMoney(money : Int): Boolean {
+    fun isEnoughMoney(money : Int): Boolean {
         if (money >= 1000)
             return true
         if (money < 1000) {

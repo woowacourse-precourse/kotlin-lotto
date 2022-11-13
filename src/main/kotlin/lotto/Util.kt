@@ -3,7 +3,6 @@ package lotto
 import java.lang.IllegalArgumentException
 
 class Util {
-
     fun isNumInt(input: String): Boolean{
         val isNull = input.toIntOrNull()
         if(isNull == null){
