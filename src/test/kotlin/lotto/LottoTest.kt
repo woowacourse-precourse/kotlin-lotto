@@ -156,7 +156,7 @@ class LottoTest : NsTest() {
         @Test
         fun `총 수익률 계산`() {
             val decimal = DecimalFormat("#,##0.0%")
-            assertEquals(compareUserAndComputer.statistics(), decimal.format(10001.6666))
+            assertEquals(decimal.format(compareUserAndComputer.statistics()), decimal.format(10001.6666))
         }
     }
 
