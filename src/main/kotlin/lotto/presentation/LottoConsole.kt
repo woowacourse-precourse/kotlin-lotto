@@ -47,6 +47,10 @@ object LottoConsole {
         return LottoNumber(number.toInt())
     }
 
+    private fun printYieldRate(earned: Money, investment: Money) {
+        println(TOTAL_YIELD_RATE_MESSAGE.format(earned.calculateYieldRate(investment)))
+    }
+
     private fun printPurchasedLottoCount(lottoCount: Int) {
         println(LOTTO_PURCHASE_LOTTO_COUNT_MESSAGE.format(lottoCount))
     }
