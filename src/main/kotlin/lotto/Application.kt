@@ -6,7 +6,7 @@ import java.lang.IllegalArgumentException
 
 fun main() {
     val price = enterPurchasePrice()
-    print(publishLottoNumbers(price))
+    publishLottoNumbers(price)
 }
 
 fun isNumber(string: String) = string.toIntOrNull() != null
@@ -47,11 +47,17 @@ fun purchaseLotto() {
 
 fun generateLottoNumber(): MutableList<Int> = Randoms.pickUniqueNumbersInRange(1,45,6)
 
-fun publishLottoNumbers(price: Int): ArrayList<MutableList<Int>> {
+fun generateLottoNumbers(price: Int): ArrayList<MutableList<Int>> {
     val lottoNumbers = arrayListOf<MutableList<Int>>()
     val size = getLottoCount(price)
 
     for (i in 0 until size) lottoNumbers.add(generateLottoNumber())
+
+    return lottoNumbers
+}
+
+fun publishLottoNumbers(price: Int): ArrayList<MutableList<Int>> {
+    val lottoNumbers = generateLottoNumbers(price)
 
     return lottoNumbers
 }
