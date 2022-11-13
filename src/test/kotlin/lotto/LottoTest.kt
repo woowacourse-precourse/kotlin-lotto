@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.domain.WinningLotto
 
 class LottoTest {
     @Test
@@ -36,5 +37,12 @@ class LottoTest {
         }
         lottoNum.sort()
         assertDoesNotThrow { Lotto(lottoNum) }
+    }
+
+    @Test
+    fun `당첨 로또와 보너스 번호에 중복이 있으면 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            WinningLotto(Lotto(listOf(1, 2, 3, 4, 5, 6)), 1)
+        }
     }
 }
