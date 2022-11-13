@@ -103,6 +103,18 @@ internal class `UserInterface 클래스의` {
                     .hasMessageContaining(ERROR_MESSAGE)
             }
         }
+        @Nested
+        inner class `사용자가 1에서 45 사이의 서로 다른 숫자로 이루어진 당첨 번호를 입력하면` {
+            private val winningNumbers = "1,2,3,4,5,6"
+            @Test
+            fun `당첨 번호를 반환한다`() {
+                System.setIn(ByteArrayInputStream(winningNumbers.toByteArray()))
+
+                val result = askWinningNumbers()
+
+                assertThat(result).containsExactly(1, 2, 3, 4, 5, 6)
+            }
+        }
         override fun runMain() {
             askWinningNumbers()
         }
