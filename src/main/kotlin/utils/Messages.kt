@@ -38,6 +38,15 @@ object Messages {
     const val STATICS_REVENUE_MESSAGE = "총 수익률은 ${.1f}%입니다."
 
     // 에러 표기를 위한 메세지
-    const val ERROR_PREFIX_MESSAGE = "[ERROR]"
-    const val ERROR_LOTTO_INPUT = " 맞는 로또 금액을 제시해 주세요."
+    const val ERROR_PREFIX_MESSAGE = "[ERROR] "
+    const val ERROR_LOTTO_INPUT = "맞는 로또 금액을 제시해 주세요."
+    const val ERROR_ANSWER_COMMA = "콤마를 넣어서 정답을 입력해 주세요"
+    const val ERROR_ANSWER_SIX = "숫자 6개를 입력해주세요"
+    const val ERROR_ANSWER_DIFFERENT = "서로 다른 숫자 6개를 입력해주세요"
+    const val ERROR_BONUS_ONE = "숫자 1개를 입력해주세요"
+    const val ERROR_BONUS_DIFFERENT = "정답 숫자 6개와 다른 숫자를 입력해주세요"
+
+    // 숫자 벨류
+    const val FROM_INDEX = 0
+    const val END_INDEX = 6
 }
