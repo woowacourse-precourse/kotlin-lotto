@@ -1,13 +1,6 @@
 package lotto.domain
 
-import lotto.domain.NumberGenerator.Companion.LOTTO_NUMBER_COUNT
-
-private const val LOTTO_FIRST_PRIZE = 2_000_000_000
-private const val LOTTO_SECOND_PRIZE = 30_000_000
-private const val LOTTO_THIRD_PRIZE = 1_500_000
-private const val LOTTO_FOURTH_PRIZE = 50_000
-private const val LOTTO_FIFTH_PRIZE = 5_000
-private const val LOTTO_NONE_PRIZE = 0
+import lotto.resources.*
 
 enum class LottoRank(
     val numberOfSame: Int,

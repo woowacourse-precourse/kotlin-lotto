@@ -1,6 +1,9 @@
 package lotto.domain
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.resources.LOTTO_END_NUMBER
+import lotto.resources.LOTTO_NUMBER_COUNT
+import lotto.resources.LOTTO_START_NUMBER
 
 class NumberGenerator {
     fun createRandomNumbers(
@@ -9,11 +12,5 @@ class NumberGenerator {
         count: Int = LOTTO_NUMBER_COUNT
     ): List<Int> {
         return Randoms.pickUniqueNumbersInRange(start, end, count).sorted()
-    }
-
-    companion object {
-        const val LOTTO_START_NUMBER = 1
-        const val LOTTO_END_NUMBER = 45
-        const val LOTTO_NUMBER_COUNT = 6
     }
 }

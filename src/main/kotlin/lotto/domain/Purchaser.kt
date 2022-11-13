@@ -1,5 +1,7 @@
 package lotto.domain
 
+import lotto.resources.ERROR_INPUT_VALUE_NUMBER_ONLY
+
 class Purchaser(amount: Int?) {
     var amount = 0
         private set
@@ -11,7 +13,7 @@ class Purchaser(amount: Int?) {
     var lotto: List<Lotto> = emptyList()
 
     init {
-        requireNotNull(amount) { "[ERROR] Required value was null." }
+        requireNotNull(amount) { ERROR_INPUT_VALUE_NUMBER_ONLY }
         this.amount = amount
     }
 
