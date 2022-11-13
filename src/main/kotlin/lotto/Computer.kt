@@ -14,12 +14,11 @@ class Computer {
     private fun makeOneLottery() {
         val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
         numbers.sort()
+        Lotto(numbers)
         addToList(numbers)
     }
 
     private fun addToList(numbers: List<Int>) {
-        if (!checkDuplicateLottery(numbers)) lotteries.add(numbers)
+        lotteries.add(numbers)
     }
-
-    private fun checkDuplicateLottery(numbers: List<Int>) = lotteries.contains(numbers)
 }
