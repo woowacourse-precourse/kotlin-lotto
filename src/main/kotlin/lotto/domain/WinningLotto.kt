@@ -16,7 +16,7 @@ class WinningLotto(private val winningNumbers: List<Int>, private val bonusNumbe
         ) { ERROR_INPUT_VALUE_ONE_OR_FORTY_FIVE_ONLY }
     }
 
-    fun getResult(guessNumbers: List<Int>): Pair<Int, Boolean> {
+    private fun getResult(guessNumbers: List<Int>): Pair<Int, Boolean> {
         return Pair(
             winningNumbers.countSameNumbers(guessNumbers),
             bonusNumber in guessNumbers
