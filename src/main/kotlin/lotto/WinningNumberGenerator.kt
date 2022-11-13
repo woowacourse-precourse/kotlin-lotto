@@ -5,24 +5,7 @@ import lotto.InputValidator.validateBonusNumber
 import lotto.InputValidator.validateWinningNumber
 
 object WinningNumberGenerator {
-    lateinit var generatedWinningNumber: List<Int>
-        private set
+    fun generateWinningNumber(winningNumber: List<String>): List<Int> = winningNumber.map { it.toInt() }
 
-    fun generateWinningNumber() {
-        val winningNumber = Console.readLine().split(",")
-
-        if (!validateWinningNumber(winningNumber)) {
-            throw java.lang.IllegalArgumentException("[ERROR]")
-        }
-        generatedWinningNumber = winningNumber.map { it.toInt() }
-    }
-
-    val generatedBonusNumber: Int by lazy{
-        val bonusNumber=Console.readLine()
-
-        if (!validateBonusNumber(bonusNumber, generatedWinningNumber)) {
-            throw java.lang.IllegalArgumentException("[ERROR]")
-        }
-        bonusNumber.toInt()
-    }
+    fun generateBonusNumber(bonusNumber: String): Int = bonusNumber.toInt()
 }
