@@ -3,13 +3,14 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import java.lang.StringBuilder
+import kotlin.math.round
 
 fun calculateYield(winRanks: Map<LottoRank, Int>, lottoMoney: Int): Float {
     var winMoney = 0f
     for ((k, v) in winRanks) {
         winMoney += k.value * v
     }
-    return (winMoney / lottoMoney) * 100f
+    return round((winMoney / (lottoMoney * 1000) * 1000)) / 10
 }
 
 fun calculateWinRanks(lottos: List<Lotto>, winNumber: List<Int>, bonusNumber: Int): Map<LottoRank, Int> {
@@ -80,7 +81,7 @@ fun formatWinRanks(winRanks: Map<LottoRank, Int>): String {
 }
 
 fun formatYield(yield: Float): String {
-    return String.format("총 수익률은 %.2f%%입니다.", `yield`)
+    return "총 수익률은 $`yield`%입니다."
 }
 
 fun main() {
