@@ -1,8 +1,11 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Randoms
+
 fun main() {
     val price = inputPrice()
     val lottoCount = calculatePrice(price)
+    val lottoNumber = pickNumber(lottoCount)
 }
 
 
@@ -29,4 +32,14 @@ fun calculatePrice(price: Int): Int {
         throw IllegalArgumentException("[ERROR] 로또는 1000원 단위로 구매 가능합니다.")
     }
     return price / 1000
+}
+
+fun pickNumber(lottoCount: Int){
+    val lottoNumber:MutableList<MutableList<Int>> = mutableListOf()
+
+    for(number:Int in 0 until lottoCount){
+        val randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+        randomNumbers.sort()
+        lottoNumber.add(randomNumbers)
+    }
 }
