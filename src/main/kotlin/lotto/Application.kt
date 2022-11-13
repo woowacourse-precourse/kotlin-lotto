@@ -31,10 +31,22 @@ fun getLottoTicket(lottoList : MutableList<Lotto>, countLottoTicket : Int) {
     }
 }
 
+fun inputWinningNumbers() : Lotto {
+    println("당첨 번호를 입력해 주세요.")
+    val inputNumber = Console.readLine().split(',')
+    val winningNumber = inputNumber!!.map { it.toInt() }
+
+    if(winningNumber.size != 6) throw IllegalArgumentException("[ERROR] 로또 번호 6개를 입력해주세요.")
+
+    return Lotto(winningNumber)
+}
+
 fun main() {
 //    TODO("프로그램 구현")
     val lottoTickets = mutableListOf<Lotto>()
 //    print(purchaseLotto())
-    getLottoTicket(lottoTickets, purchaseLotto())
+//    getLottoTicket(lottoTickets, purchaseLotto())
+    val testNum = inputWinningNumbers().getLottoNumbers()
+    println(testNum)
 
 }
