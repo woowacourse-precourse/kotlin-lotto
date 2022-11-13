@@ -12,4 +12,10 @@ class MachineTest {
         }
     }
 
+    @Test
+    fun `로또번호 출력`() {
+        val machine = Machine(12000)
+        val count = machine.inputMoney / 1000
+        assert(machine.makeLottoNumbers(count).size == 12)
+    }
 }
