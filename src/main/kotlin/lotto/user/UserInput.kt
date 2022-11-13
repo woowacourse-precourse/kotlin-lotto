@@ -63,9 +63,10 @@ fun checkBonusStandard(userInputNumber: String?, lottoNumber: String) {
     if (userInputNumber.toInt() >= 46 || userInputNumber.toInt() < 1) throw IllegalArgumentException()
     lottoOverlapCheck.add(userInputNumber)
     checkInputMessagePatten(lottoOverlapCheck)
-    if (lottoNumber.contains(lottoOverlapCheck[0])) throw IllegalArgumentException()
-
-    if (lottoOverlapCheck.size != 1) throw IllegalArgumentException()
+    if (lottoOverlapCheck.size != 1 ||lottoNumber.contains(lottoOverlapCheck[0])){
+        println("[ERROR]")
+        throw IllegalArgumentException()
+    }
 }
 fun checkInputMessagePatten(checkOverlap: MutableList<String>) {
     val rega1x1 = "^\\d*$"
