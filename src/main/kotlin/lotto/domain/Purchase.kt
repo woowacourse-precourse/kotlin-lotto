@@ -3,25 +3,23 @@ package lotto.domain
 import camp.nextstep.edu.missionutils.Console
 import lotto.constants.Constant
 import lotto.constants.Exception
-import lotto.constants.Message
+import lotto.views.InputView
+import lotto.views.OutputView
 
 class Purchase {
     init {
-        println(Message.MESSAGE_INPUT_MONEY)
+        OutputView.printInputMoney()
     }
 
-    fun inputMoney(): Int {
-        return Console.readLine().toInt()
+    fun buyLotto(): Int {
+        val money = InputView.inputMoney()
+        validateMoney(money)
+        return money / Constant.MONEY_UNIT
     }
 
     fun validateMoney(money: Int) {
         if (money % 1000 != 0) {
             throw IllegalArgumentException(Exception.EXCEPTION_INVALID_MONEY)
         }
-    }
-
-    fun printAmount(money: Int){
-        val amount = money / Constant.MONEY_UNIT
-        println("$amount" + Message.MESSAGE_PRINT_AMOUNT)
     }
 }
