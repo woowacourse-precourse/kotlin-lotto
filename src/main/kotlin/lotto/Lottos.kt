@@ -20,7 +20,18 @@ class Lottos(private val lottos: List<Lotto>) {
         println()
     }
 
-    fun printWinningResult(answer: Lotto, bonus: Int) {
-        matchLotto(answer, bonus).printWinningResult()
+    fun printWinningResult(answer: Lotto, bonus: Int, money: Int) {
+        val winningResult = matchLotto(answer, bonus)
+        println("당첨 통계")
+        println("---")
+        winningResult.printWinningResult()
+        countYield(winningResult, money)
+    }
+
+    fun countYield(winningResult: WinningResult, money : Int) {
+        val sum = winningResult.sumWinningPrize()
+        val avg = sum / money.toDouble()
+
+        println("총 수익률은 " + "%.1f".format(avg * 100) + "%입니다.")
     }
 }

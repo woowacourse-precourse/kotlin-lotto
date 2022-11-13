@@ -16,17 +16,7 @@ fun main() {
     val lotto = lottoGenerate.createLottos(money.getCountLotto())
     val lottos = Lottos(lotto)
     lottos.printLottos()
-
-    val winningResult = lottos.matchLotto(winningLotto!!, bonus!!)
-    winningResult.printWinningResult()
-    countYield(winningResult, money.money)
-}
-
-fun countYield(winningResult: WinningResult, money: Int) {
-    val sum = winningResult.sumWinningPrize()
-    val avg = sum / money.toDouble()
-
-    println("총 수익률은 " + "%.1f".format(avg * 100) + "%입니다.")
+    lottos.printWinningResult(winningLotto!!, bonus!!, money.money)
 }
 
 fun inputMoney() : Money {
