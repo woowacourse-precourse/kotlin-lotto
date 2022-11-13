@@ -3,6 +3,10 @@ package lotto
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6)
+        numbers.sorted()
+        for (i in 0 until numbers.size - 1)
+            if(numbers[i] == numbers[i + 1])
+                throw IllegalArgumentException()
     }
 
     fun calculateWinRank(winNumbers: List<Int>, bonus: Int): LottoRank {
@@ -17,6 +21,4 @@ class Lotto(private val numbers: List<Int>) {
         }
         return rank
     }
-
-    // TODO: 추가 기능 구현
 }
