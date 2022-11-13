@@ -2,9 +2,8 @@
 
 ## 핵심 로직 (도메인 로직)
 - [ ] 구입 금액에 해당하는 만큼 로또를 발행한다. (1~45까지의 중복되지 않는 6개의 숫자)- NumberGenerator#createLottoNumber
-- [ ] 당첨 번호를 뽑는다. (1~45까지의 중복되지 않는 6개의 숫자) - NumberGenerator#createWinningNumber
-- [ ] 보너스 번호를 뽑는다. (당첨 번호와 중복되지 않는 1개의 숫자) - NumberGenerator#createBonusNumber
-- [ ] 당첨 여부를 가른다.
+- [ ] 당첨 번호와 보너스 번호는 사용자에게 입력 받는다. 
+- [ ] 당첨 여부를 가른다. 
     - [ ] 사용자가 구매한 로또 번호와 당첨 번호를 비교한다. - Lotto#compare
       - [ ] 일치하는 번호의 개수를 반환한다. - Judgement#countMatchNumber
     - [ ] 당첨 내역을 출력한다. (5등에서 1등까지 당첨된 개수 출력) - Lotto#getWinningList
@@ -19,7 +18,7 @@
 ## UI 로직 (System.out, System.in, Scanner)
 
 ### 입력
-- [ ] 1000원 단위로 로또 구입 금액을 입력 받는다. (1000원으로 나눠 떨어지지 않으면 예외 처리)
+- [ ] 1000원 단위로 로또 구입 금액을 입력 받는다. (1000원으로 나눠 떨어지지 않으면 예외 처리) 
 - [ ] 쉼표로 구분된 당첨 번호를 입력 받는다.
 - [ ] 보너스 번호를 입력 받는다.
 - [ ] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.

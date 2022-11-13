@@ -7,14 +7,4 @@ class NumberGenerator {
     fun createLottoNumber(): List<Int> {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6)
     }
-
-    // 당첨 번호를 뽑는다.
-    fun createWinningNumber(): List<Int> {
-        return emptyList()
-    }
-
-    // 보너스 번호를 뽑는다.
-    fun createBonusNumber(): Int {
-        return 0
-    }
 }
