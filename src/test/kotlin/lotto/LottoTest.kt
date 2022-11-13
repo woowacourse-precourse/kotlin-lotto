@@ -30,49 +30,49 @@ class LottoTest {
     fun `first place check`() {
         assertThat(Lotto(listOf(1, 2, 3, 4, 5, 6))
             .checkLotto(listOf(1, 2, 3, 4, 5, 6), 7))
-            .isEqualTo(LottoStatus.FIRST_PLACE)
+            .isEqualTo(LottoPrice.FIRST_PLACE)
     }
 
     @Test
     fun `second place check`() {
         assertThat(Lotto(listOf(1, 2, 3, 4, 5, 7))
             .checkLotto(listOf(1, 2, 3, 4, 5, 6), 7))
-            .isEqualTo(LottoStatus.SECOND_PLACE)
+            .isEqualTo(LottoPrice.SECOND_PLACE)
     }
 
     @Test
     fun `third place check`() {
         assertThat(Lotto(listOf(1, 2, 3, 4, 5, 45))
             .checkLotto(listOf(1, 2, 3, 4, 5, 6), 7))
-            .isEqualTo(LottoStatus.THIRD_PLACE)
+            .isEqualTo(LottoPrice.THIRD_PLACE)
     }
 
     @Test
     fun `fourth place check`() {
         assertThat(Lotto(listOf(1, 2, 3, 43, 5, 45))
             .checkLotto(listOf(1, 2, 3, 4, 5, 6), 7))
-            .isEqualTo(LottoStatus.FOURTH_PLACE)
+            .isEqualTo(LottoPrice.FOURTH_PLACE)
     }
 
     @Test
     fun `fifth place check`() {
         assertThat(Lotto(listOf(1, 2, 32, 43, 5, 45))
             .checkLotto(listOf(1, 2, 3, 4, 5, 6), 7))
-            .isEqualTo(LottoStatus.FIFTH_PLACE)
+            .isEqualTo(LottoPrice.FIFTH_PLACE)
     }
 
     @Test
     fun `none check with two numbers are matched`(){
         assertThat(Lotto(listOf(1, 2, 32, 43, 7, 45))
             .checkLotto(listOf(1, 2, 3, 4, 5, 6), 7))
-            .isEqualTo(LottoStatus.NONE)
+            .isEqualTo(LottoPrice.NONE)
     }
 
     @Test
     fun `none check with a number is matched`(){
         assertThat(Lotto(listOf(1, 7, 32, 43, 8, 45))
             .checkLotto(listOf(1, 2, 3, 4, 5, 6), 7))
-            .isEqualTo(LottoStatus.NONE)
+            .isEqualTo(LottoPrice.NONE)
     }
 
 }
