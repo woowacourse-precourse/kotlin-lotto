@@ -20,5 +20,5 @@
   - [x] 사용자의 입력이 잘못될 경우 에러문구를 출력해줘야 한다 - Person#inputError()
 - [x] 로또 객체는 결과와 자신을 비교해서 결과를 리턴 해줘야 한다  - Lotto#matchResult()
 - [x] 로또 객체는 자신이 보너스에 당첨됐는지 확인해줘야 한다 - Lotto#isMatchBonus()
-- [] 이 프로그램을 총괄해서 진행할 컨트롤러가 필요하다 - Controller()
-  - [] 사용자의 입력이 잘못될 경우 에러문구를 출력하고 종료해야 한다. - Controller#inputError()
+- [x] 이 프로그램을 총괄해서 진행할 컨트롤러가 필요하다 - Controller()
+  - [x] 사용자의 입력이 잘못될 경우 에러를 발생해야 한다. - Controller#throwError()
