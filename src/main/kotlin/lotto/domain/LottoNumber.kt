@@ -1,6 +1,6 @@
 package lotto.domain
 
-import lotto.domain.LottoExceptionHandler.validateLottoNumberRange
+import lotto.utils.LottoExceptionHandler.validateLottoNumberRange
 
 class LottoNumber(val number: Int) {
 

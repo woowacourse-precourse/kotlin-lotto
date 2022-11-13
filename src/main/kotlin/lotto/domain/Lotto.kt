@@ -1,7 +1,7 @@
 package lotto.domain
 
-import lotto.domain.LottoExceptionHandler.validateLottoNumberDuplication
-import lotto.domain.LottoExceptionHandler.validateLottoSize
+import lotto.utils.LottoExceptionHandler.validateLottoNumberDuplication
+import lotto.utils.LottoExceptionHandler.validateLottoSize
 
 class Lotto(private val numbers: List<LottoNumber>) : List<LottoNumber> by numbers {
     init {

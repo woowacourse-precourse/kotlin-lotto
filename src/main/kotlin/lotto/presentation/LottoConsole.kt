@@ -6,7 +6,7 @@ import lotto.utils.LOTTO_PURCHASE_MESSAGE
 import lotto.utils.WINNING_LOTTO_ENTER_MESSAGE
 import lotto.domain.Lotto
 import lotto.domain.LottoNumber
-import lotto.domain.LottoExceptionHandler.validateIntType
+import lotto.utils.LottoExceptionHandler.validateIntType
 import lotto.domain.Money
 import lotto.domain.WinningLotto
 import lotto.utils.Separator

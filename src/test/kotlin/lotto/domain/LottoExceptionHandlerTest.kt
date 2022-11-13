@@ -1,8 +1,8 @@
 package lotto.domain
 
-import lotto.domain.LottoExceptionHandler.validateAmountUnit
-import lotto.domain.LottoExceptionHandler.validateIntType
-import lotto.domain.LottoExceptionHandler.validatePositiveNumber
+import lotto.utils.LottoExceptionHandler.validateAmountUnit
+import lotto.utils.LottoExceptionHandler.validateIntType
+import lotto.utils.LottoExceptionHandler.validatePositiveNumber
 import org.junit.jupiter.api.*
 
 internal class LottoExceptionHandlerTest {

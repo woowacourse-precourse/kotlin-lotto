@@ -1,6 +1,6 @@
 package lotto.utils
 
-import lotto.domain.LottoExceptionHandler.validateIntType
+import lotto.utils.LottoExceptionHandler.validateIntType
 
 object Separator {
 

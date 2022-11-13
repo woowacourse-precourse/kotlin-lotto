@@ -1,7 +1,7 @@
 package lotto.domain
 
-import lotto.domain.LottoExceptionHandler.validateAmountUnit
-import lotto.domain.LottoExceptionHandler.validatePositiveNumber
+import lotto.utils.LottoExceptionHandler.validateAmountUnit
+import lotto.utils.LottoExceptionHandler.validatePositiveNumber
 
 class Money(private val money: Int) {
 

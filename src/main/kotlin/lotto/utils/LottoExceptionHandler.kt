@@ -1,6 +1,6 @@
-package lotto.domain
+package lotto.utils
 
-import lotto.utils.*
+import lotto.domain.LottoNumber
 
 object LottoExceptionHandler {
     fun validateIntType(amount: String) {
