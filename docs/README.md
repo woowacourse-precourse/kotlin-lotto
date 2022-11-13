@@ -1,3 +1,4 @@
+기능 구현 목록
 - [x] 로또를 구매하는 사용자를 클래스로 의인화 한다 - Person()
   - [x] 사용자의 입력을 받아야 한다. - Person#input()
 - [x] 사용자가 입력한 것을 질문에 맞게 알맞은 타입으로 변환해줘야 함 - InputConverter()
@@ -22,3 +23,9 @@
 - [x] 로또 객체는 자신이 보너스에 당첨됐는지 확인해줘야 한다 - Lotto#isMatchBonus()
 - [x] 이 프로그램을 총괄해서 진행할 컨트롤러가 필요하다 - Controller()
   - [x] 사용자의 입력이 잘못될 경우 에러를 발생해야 한다. - Controller#throwError()
+  - [x] 로또 게임을 시작하는 기능 - Controller#run()
+    - [x] 로또 게임 진행시 구입 금액 입력 단계를 수행하는 기능 - Controller#purchaseMoneyStep()
+    - [x] 로또 게임 진행시 로또를 발행받는 단계를 수행하는 기능 - Controller#issueLotteryStep()
+    - [x] 로또 게임 진행시 당첨 번호 입력 단계를 수행하는 기능 - Controller#winningLotteryStep()
+    - [x] 로또 게임 진행시 보너스 번호 입력 단계를 수행하는 기능 - Controller#bonusStep()
+    - [x] 로또 게임 진행시 최종 통계 단계를 수행하는 기능 - Controller#statisticsStep()
