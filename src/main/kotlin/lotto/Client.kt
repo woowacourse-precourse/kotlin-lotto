@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class Client {
     private val rule = Rule()
-    private val statistics = LottoStatistics()
     val lottos = mutableListOf<Lotto>()
     var purchaseAmount = 0
     var purchaseCount = 0
@@ -29,13 +28,13 @@ class Client {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6)
     }
 
-    fun inputWinningNumbers() {
+    fun inputWinningNumbers(statistics: LottoStatistics) {
         val input = readLine()
         val numbers = input.split(",")
         statistics.setWinningNumbers(numbers)
     }
 
-    fun inputBonusNumber() {
+    fun inputBonusNumber(statistics: LottoStatistics) {
         val input = readLine().toInt()
         statistics.setBonusNumber(input)
     }

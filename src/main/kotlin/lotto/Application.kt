@@ -15,9 +15,9 @@ fun main() {
 
     // 당첨 번호 및 보너스 번호 입력
     display.printRequireWinningNumbers()
-    client.inputWinningNumbers()
+    client.inputWinningNumbers(statistics)
     display.printRequireBonusNumber()
-    client.inputBonusNumber()
+    client.inputBonusNumber(statistics)
 
     // 당첨 통계
     statistics.matchingCalculator(client)
