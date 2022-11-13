@@ -24,7 +24,7 @@ class Lotto(private val numbers: List<Int>) {
         }
     }
 
-    fun containBonus(bonusNumber: Int): Boolean = numbers.contains(bonusNumber)
+    private fun containBonus(bonusNumber: Int): Boolean = numbers.contains(bonusNumber)
 
     override fun toString(): String {
         return numbers.toString()
