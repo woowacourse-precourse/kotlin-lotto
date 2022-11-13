@@ -23,24 +23,24 @@ class UtilTest {
 
     @Test
     fun isRightNumCountTest(){
-        assertThat(isRightNumCOunt("1,2,3,4,5,6")).isEqualTo(true)
+        assertThat(isRightNumCOunt(1,2,3,4,5,6)).isEqualTo(true)
         assertThrows<IllegalArgumentException> {
-            isRightNumCOunt("1,2,3,4,5")
+            isRightNumCOunt(1,2,3,4,5)
         }
     }
 
     @Test
     fun isRightRangeTest(){
-        assertThat(isRightNumCOunt("1,2,3,4,5,6")).isEqualTo(true)
+        assertThat(isRightNumCOunt(1,2,3,4,5,6)).isEqualTo(true)
         assertThrows<IllegalArgumentException> {
-            isRightNumCOunt("1,2,3,4,5,46")
+            isRightNumCOunt(1,2,3,4,5,46)
         }
     }
     @Test
     fun isOverlapTest(){
-        assertThat(isOverlap("1,2,3,4,5,6")).isEqualTo(false)
+        assertThat(isOverlap(1,2,3,4,5,6)).isEqualTo(false)
         assertThrows<IllegalArgumentException> {
-            isOverlap("1,2,3,4,5,5")
+            isOverlap(1,2,3,4,5,5)
         }
     }
 
