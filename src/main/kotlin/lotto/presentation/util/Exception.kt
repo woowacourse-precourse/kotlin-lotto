@@ -1,6 +1,13 @@
 package lotto.presentation.util
 
 import lotto.domain.Lotto
+import lotto.presentation.util.Constant.bonusOverlapErrorMessage
+import lotto.presentation.util.Constant.costNotRegularErrorMessage
+import lotto.presentation.util.Constant.purchaseAmountErrorMessage
+import lotto.presentation.util.Constant.winningOverlapAndWrongErrorMessage
+import lotto.presentation.util.Constant.winningRangeErrorMessage
+import lotto.presentation.util.Constant.wrongBonusNumberErrorMessage
+import lotto.presentation.util.Constant.wrongWinningNumberErrorMessage
 
 
 fun String.inputTypeException() {
@@ -8,13 +15,13 @@ fun String.inputTypeException() {
         this.toInt()
 
     } catch (e: NumberFormatException) {
-        throw IllegalArgumentException("[ERROR] 구입 금액을 잘못입력하셨습니다.")
+        throw IllegalArgumentException(purchaseAmountErrorMessage)
     }
 }
 
 fun String.inputMoneyException(): Int {
     if (this.toInt() % 1000 == 0) return this.toInt()
-    throw IllegalArgumentException("[ERROR] 숫자가 나누어 떨어지지 않습니다.")
+    throw IllegalArgumentException(costNotRegularErrorMessage)
 }
 
 
@@ -22,7 +29,7 @@ fun inputWinningNumberException(winningNumber: List<String>): List<Int> {
     try {
         Lotto(winningNumber.map { it.inputLottoNumberException() })
     } catch (e: IllegalArgumentException) {
-        throw IllegalArgumentException("[ERROR] 당첨 번호의 개수가 잘못 입력되었거나 중복되었습니다.")
+        throw IllegalArgumentException(winningOverlapAndWrongErrorMessage)
     }
     return winningNumber.map { it.inputLottoNumberException() }
 }
@@ -33,7 +40,7 @@ fun List<String>.inputLottoNumberTypeException() {
             it.toInt()
         }
     } catch (e: NumberFormatException) {
-        throw IllegalArgumentException("[ERROR] 당첨 번호를 잘못입력하셨습니다.")
+        throw IllegalArgumentException(wrongWinningNumberErrorMessage)
 
     }
 }
@@ -41,16 +48,16 @@ fun List<String>.inputLottoNumberTypeException() {
 fun String.inputLottoNumberException(): Int {
     try {
         if (this.toInt() <= 0 || this.toInt() > 45) {
-            throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+            throw IllegalArgumentException(winningRangeErrorMessage)
         }
     } catch (e: NumberFormatException) {
-        throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+        throw IllegalArgumentException(winningRangeErrorMessage)
     }
     return this.toInt()
 }
 
 fun inputWinningBonusNumberException(winningNumber: List<Int>, bonusNumber: Int) {
-    if (winningNumber.contains(bonusNumber)) throw IllegalArgumentException("[ERROR] 보너스 번호가 당첨 번호와 중복되었습니다.")
+    if (winningNumber.contains(bonusNumber)) throw IllegalArgumentException(bonusOverlapErrorMessage)
 }
 
 fun String.inputLottoNumberTypeException() {
@@ -59,7 +66,7 @@ fun String.inputLottoNumberTypeException() {
             it.code
         }
     } catch (e: NumberFormatException) {
-        throw IllegalArgumentException("[ERROR] 보너스 번호를 잘못입력하셨습니다.")
+        throw IllegalArgumentException(wrongBonusNumberErrorMessage)
 
     }
 }
