@@ -20,6 +20,15 @@ internal class `UserInterface 클래스의` {
                     .hasMessageContaining(ERROR_MESSAGE)
             }
         }
+        @Nested
+        inner class `사용자가 콘솔에 20억 보다 큰 숫자를 입력하면` {
+            private val purchaseAmount = "2000000001"
+            @Test
+            fun `예외를 던지고 에러 메시지를 출력한다`() {
+                assertThatThrownBy { runException(purchaseAmount) }.isInstanceOf(IllegalArgumentException::class.java)
+                    .hasMessageContaining(ERROR_MESSAGE)
+            }
+        }
 
         override fun runMain() {
             askPurchaseAmount()
