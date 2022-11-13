@@ -17,19 +17,14 @@ private fun getUserInputPrice() {
 }
 
 private fun checkRegexAndTranslateToInt(userInput : String) : Int {
-    if(!checkItOnlyContainsNumber(userInput)) {
-        showErrorAndFinish(ErrorType.NotOnlyNumber)
+    if (!checkItOnlyContainsNumber(userInput)) {
+        Error.showError(ErrorType.NotOnlyNumber)
     }
-    if(!checkItCanDivideWithThousand(changeStringToInt(userInput))) {
-        showErrorAndFinish(ErrorType.NotDivideWithThousand)
+    if (!checkItCanDivideWithThousand(changeStringToInt(userInput))) {
+        Error.showError(ErrorType.NotDivideWithThousand)
     }
 
     return changeStringToInt(userInput)
-}
-
-private fun showErrorAndFinish(errorType : ErrorType) {
-    println("$errorHeader ${EnumError().checkErrorType(errorType)}")
-    throw IllegalArgumentException()
 }
 
 private fun checkItOnlyContainsNumber(userInput: String) : Boolean {
