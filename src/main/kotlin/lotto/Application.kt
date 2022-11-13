@@ -38,3 +38,11 @@ fun getLottoCount(lottoPrice : Int) : Int{
     //만약 나누어지지 않을 시에 발생하는 예외 사항 처리 필요
     return lottoCount
 }
+
+//3. 당첨 번호 입력 받기
+fun getWinNums() : String? {
+    println("당첨 번호를 입력해 주세요.")
+    val winNums = readLine()
+    //당첨 번호를 양식에 맞게 입력하지 않았을 때의 예외 사항 처리 필요
+    return winNums
+}
