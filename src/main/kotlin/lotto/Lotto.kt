@@ -5,9 +5,5 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.size == 6)
     }
 
-    fun createLottoNumbers(purchasedLottoCount : Int) :  {}
-
-    fun compareLottoNumbers(purchasedNumbers : List<Int>){}
-
-    fun calculateEarningRate() : Float{}
+    // TODO: 추가 기능 구현
 }
