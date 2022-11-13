@@ -24,4 +24,11 @@ class MoneyTest {
         val money = "1100"
         assertThrows<IllegalArgumentException> { Money(money) }
     }
+
+    @Test
+    fun `돈 단위 변경 테스트`() {
+        val money = "2000000000"
+        val result = Money(money).changeMoneyUnit()
+        assertThat(result).isEqualTo("2,000,000,000")
+    }
 }
