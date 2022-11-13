@@ -21,7 +21,7 @@ class LottoGame {
         getusermoney()
         makelottonumber()
         val userlotto = getuserlotto()
-        getbonusnumber()
+        getbonusnumber(userlotto)
         checklotto(userlotto)
         printresult()
     }
@@ -84,11 +84,12 @@ class LottoGame {
         println("보너스 번호를 입력해 주세요.")
     }
 
-    private fun getbonusnumber() {
+    private fun getbonusnumber(userlotto : List<Int>) {
         messagetogiveuserbonus()
         val tempbonus = Console.readLine()
         LottoErrorCheck.checkinputisnumber(tempbonus)
         LottoErrorCheck.checknumberisinlottorange(tempbonus.toInt())
+        LottoErrorCheck.bonusballcheck(userlotto,tempbonus.toInt())
         bonusnumber = tempbonus.toInt()
     }
 

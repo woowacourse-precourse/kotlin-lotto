@@ -49,6 +49,10 @@ class LottoTest {
 
     }
 
-
-
+    @Test
+    fun `당첨번호와 보너스볼은 중복 안됨`(){
+        assertThrows<IllegalArgumentException>{
+            LottoErrorCheck.bonusballcheck(listOf(1,2,3,4,5,6),1)
+        }
+    }
 }
