@@ -13,13 +13,7 @@ class LottoGenerator {
     }
 
     private fun generateLottoNumber(): List<Int> {
-        val lottoNumber = mutableListOf<Int>()
-        while (lottoNumber.size < 6) {
-            val randomNumber = Randoms.pickNumberInRange(1, 45)
-            if (!lottoNumber.contains(randomNumber)) {
-                lottoNumber.add(randomNumber)
-            }
-        }
+        val lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6)
         lottoNumber.sort()
         return lottoNumber
     }
