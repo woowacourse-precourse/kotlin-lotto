@@ -12,4 +12,11 @@ class ExceptionChecker {
                 throw IllegalArgumentException("[ERROR] 로또 번호는 1~45의 정수여야 합니다.")
         }
     }
+
+    fun validBonusNumExceptionCheck(winningNum: List<Int>, bonusNum: Int){
+        if(bonusNum < 1 || bonusNum > 45)
+            throw  IllegalArgumentException("[ERROR] 보너스 번호는 1~45의 정수여야 합니다.")
+        if(winningNum.contains(bonusNum))
+            throw IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복되지 않아야 합니다.")
+    }
 }
