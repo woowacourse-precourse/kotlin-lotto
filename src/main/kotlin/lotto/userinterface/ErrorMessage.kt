@@ -7,3 +7,5 @@ const val PURCHASE_AMOUNT_NOT_DIVISIBLE_BY_1000 = HEADER + "로또 구입 금액
 const val WINNING_NUMBERS_SIZE_NOT_6 = HEADER + "당첨 번호는 6개여야 합니다."
 const val WINNING_NUMBERS_NOT_IN_BETWEEN_1_AND_45 = HEADER + "당첨 번호는 1에서 45 사이의 숫자여야 합니다."
 const val WINNING_NUMBERS_DUPLICATED = HEADER + "당첨 번호는 모두 서로 달라야 합니다."
+const val BONUS_NUMBER_NOT_IN_BETWEEN_1_AND_45 = HEADER + "보너스 번호는 1에서 45 사이의 숫자여야 합니다."
+const val BONUS_NUMBER_INCLUDED_IN_WINNING_NUMBERS = HEADER + "보너스 번호는 당첨 번호에 포함되지 않아야 합니다."
