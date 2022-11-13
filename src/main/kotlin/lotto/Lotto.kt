@@ -14,8 +14,8 @@ class Lotto(private val numbers: List<Int>) {
             val numberList = Randoms.pickUniqueNumbersInRange(START_NUMBER_ONE,
                 END_NUMBER_FORTY_FIVE,
                 numbers.size)
-            println(numberList.sorted())
-
+            val sortedNumberList = numberList.sorted()
+            println(sortedNumberList)
         }
 
     }
@@ -35,6 +35,7 @@ class Lotto(private val numbers: List<Int>) {
         return winningNumberList.map { winningNumber ->
             winningNumber.toInt()
         }
+
     }
 
     fun createBonusNumber(): Int {
@@ -42,6 +43,17 @@ class Lotto(private val numbers: List<Int>) {
         return readLine()!!.toInt()
     }
 
+    // 맞은 갯수 배출하는 기능
+    fun updateMatchCount(userNumber: List<Int>): Int {
+        val winningNumber = listOf(1, 2, 3, 4, 5, 6)
+        val bonusNumber = 7
+        var count = 0
+        for (item in userNumber.indices) {
+            if (winningNumber.contains(userNumber[item])) count++
+        }
+        return count
+
+    }
 }
 
 const val START_NUMBER_ONE = 1
