@@ -2,27 +2,9 @@ package lotto.domain
 
 class Lotto(numbers: List<Int>) {
     init {
-        validateLottoSize(numbers)
-        validateLottoDuplicate(numbers)
-        validateLottoRange(numbers)
-    }
-
-    private fun validateLottoSize (numbers: List<Int>) {
-        if (numbers.size != 6) {
-            throw IllegalArgumentException(LOTTO_SIZE_EXCEPTION)
-        }
-    }
-
-    private fun validateLottoDuplicate (numbers: List<Int>) {
-        if (numbers.distinct().size != 6) {
-            throw IllegalArgumentException(LOTTO_DUPLICATE_EXCEPTION)
-        }
-    }
-
-    private fun validateLottoRange (numbers: List<Int>) {
-        if (numbers.any { it !in 1..45 }) {
-            throw IllegalArgumentException(LOTTO_RANGE_EXCEPTION)
-        }
+        require(numbers.size == 6) { LOTTO_SIZE_EXCEPTION }
+        require(numbers.distinct().size == 6) { LOTTO_DUPLICATE_EXCEPTION }
+        require(numbers.all { it in 1..45 }) { LOTTO_RANGE_EXCEPTION }
     }
 
     companion object {

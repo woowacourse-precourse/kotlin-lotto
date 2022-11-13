@@ -6,16 +6,8 @@ class LottoMachine (cost: Int) {
     private val ticketCount = cost % 1000
 
     init {
-        validateCostRange(cost)
-    }
-
-    private fun validateCostRange(cost: Int) {
-        if (cost < 1000) {
-            throw IllegalArgumentException(COST_RANGE_EXCEPTION)
-        }
-        if (cost % 1000 != 0) {
-            throw IllegalArgumentException(COST_UNIT_EXCEPTION)
-        }
+        require(cost >= 1000) { COST_RANGE_EXCEPTION }
+        require(cost % 1000 == 0) { COST_UNIT_EXCEPTION }
     }
 
     fun generate(): List<Lotto> {
