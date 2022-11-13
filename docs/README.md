@@ -8,7 +8,7 @@
 - [x] 로또 당첨번호를 입력받는다. -Seller#getWinningNumber
   - [x] 로또 당첨번호는 1~45 사이 숫자를 입력받는다. -Judgment#checkWinningNumber
   - [x] 로또의 보너스 번호 1개를 입력받는다. -Seller#getBonusNumber
-  - [ ] 보너스 번호는 1~45 사이 숫자를 입력받는다. -Judgment#checkBonusNumber
+  - [x] 보너스 번호는 1~45 사이 숫자를 입력받는다. -Judgment#checkBonusNumber
 - [x] 사용자가 구매한 로또 개수만큼 로또를 생성한다. -Seller#generateLotto
   - [x] 로또 번호를 오름차순으로 정렬한다.
 - [ ] 사용자의 로또 당첨 내역을 출력한다. -Lotto#showLottoResult
