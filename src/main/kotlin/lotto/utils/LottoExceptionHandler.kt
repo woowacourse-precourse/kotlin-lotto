@@ -7,12 +7,12 @@ object LottoExceptionHandler {
         amount.toIntOrNull() ?: throwException(INTEGER_TYPE_EXCEPTION_MESSAGE)
     }
 
-    fun validatePositiveNumber(amount: Int) {
-        if (amount <= 0) throwException(LOTTO_AMOUNT_NEGATIVE_EXCEPTION_MESSAGE)
+    fun validateNotNegative(amount: Int) {
+        require(amount >= 0) { LOTTO_AMOUNT_NEGATIVE_OR_ZERO_EXCEPTION_MESSAGE }
     }
 
     fun validateAmountUnit(amount: Int) {
-        if (amount % 1000 != 0) throwException(LOTTO_AMOUNT_UNIT_EXCEPTION_MESSAGE)
+        require(amount % LOTTO_PRICE == 0 && amount > 0) { LOTTO_AMOUNT_UNIT_EXCEPTION_MESSAGE }
     }
 
     fun validateLottoNumberRange(number: Int) {

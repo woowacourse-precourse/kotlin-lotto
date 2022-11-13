@@ -2,7 +2,7 @@ package lotto.domain
 
 import lotto.utils.LottoExceptionHandler.validateAmountUnit
 import lotto.utils.LottoExceptionHandler.validateIntType
-import lotto.utils.LottoExceptionHandler.validatePositiveNumber
+import lotto.utils.LottoExceptionHandler.validateNotNegative
 import org.junit.jupiter.api.*
 
 internal class LottoExceptionHandlerTest {
@@ -39,7 +39,7 @@ internal class LottoExceptionHandlerTest {
         @Test
         fun `양수가 주어지면 예외가 발생하지 않는다`() {
             assertDoesNotThrow {
-                validatePositiveNumber(1000)
+                validateNotNegative(1000)
             }
         }
 
@@ -47,15 +47,15 @@ internal class LottoExceptionHandlerTest {
         @Test
         fun `음수가 주어지면 예외가 발생한다`() {
             assertThrows<IllegalArgumentException> {
-                validatePositiveNumber(-1000)
+                validateNotNegative(-1000)
             }
         }
 
         @DisplayName("입력값이 0인 경우")
         @Test
         fun `0이 주어지면 예외가 발생한다`() {
-            assertThrows<IllegalArgumentException> {
-                validatePositiveNumber(0)
+            assertDoesNotThrow {
+                validateNotNegative(0)
             }
         }
     }

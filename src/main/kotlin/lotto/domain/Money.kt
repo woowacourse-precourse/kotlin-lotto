@@ -1,13 +1,11 @@
 package lotto.domain
 
-import lotto.utils.LottoExceptionHandler.validateAmountUnit
-import lotto.utils.LottoExceptionHandler.validatePositiveNumber
+import lotto.utils.LottoExceptionHandler.validateNotNegative
 
 class Money(private val money: Int) {
 
     init {
-        validatePositiveNumber(money)
-        validateAmountUnit(money)
+        validateNotNegative(money)
     }
 
     fun calculateYieldRate(investment: Money): String =

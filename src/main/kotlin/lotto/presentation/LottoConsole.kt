@@ -1,12 +1,10 @@
 package lotto.presentation
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.domain.Lotto
-import lotto.domain.LottoNumber
+import lotto.domain.*
 import lotto.utils.LottoExceptionHandler.validateIntType
-import lotto.domain.Money
-import lotto.domain.WinningLotto
 import lotto.utils.*
+import lotto.utils.LottoExceptionHandler.validateAmountUnit
 
 object LottoConsole {
     fun printPurchaseMessage() {
@@ -16,6 +14,7 @@ object LottoConsole {
     fun inputPurchaseAmount(): Money {
         val amount = Console.readLine()
         validateIntType(amount)
+        validateAmountUnit(amount.toInt())
 
         return Money(amount.toInt())
     }
@@ -31,8 +30,7 @@ object LottoConsole {
 
     fun inputWinningLottoNumbers(): WinningLotto {
         val numbers = Console.readLine()
-        val lottoNumbers = Separator.separateToInts(numbers, ',')
-            .map { number -> LottoNumber(number) }
+        val lottoNumbers = Separator.separateToInts(numbers, ',').map { number -> LottoNumber(number) }
             .sortedBy { lottoNumber -> lottoNumber.number }
 
         return WinningLotto(lottoNumbers)
