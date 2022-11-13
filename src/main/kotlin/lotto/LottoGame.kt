@@ -19,11 +19,16 @@ class LottoGame {
     private var bonusnumber = 0
 
     fun gamestart() {
-        getusermoney()
-        makelottonumber()
-        val userlotto = getuserlotto()
-        checklotto(userlotto)
-        printresult()
+        try {
+            getusermoney()
+            makelottonumber()
+            val userlotto = getuserlotto()
+            checklotto(userlotto)
+            printresult()
+        }
+        catch(error:Exception){
+            println(error.message)
+        }
     }
 
     private fun getusermoney() {
