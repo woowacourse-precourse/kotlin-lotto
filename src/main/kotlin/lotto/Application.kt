@@ -14,7 +14,7 @@ fun main() {
 }
 
 fun purchaseLottos(amount: Int): List<Lotto> {
-    val tickets = Store().buyTickets(amount.checkNull()).map { Lotto(it) }
+    val tickets = Store().buyTickets(amount).map { Lotto(it) }
     printNumberOfTickets(tickets.size)
     printNumbersOfLottos(tickets)
 
