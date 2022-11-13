@@ -2,6 +2,7 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import kotlin.IllegalArgumentException
 
 const val INTRODUCE_MESSAGE = "구입금액을 입력해 주세요."
 const val SUCCESS_BUY_LOTTO_MESSAGE = "개를 구매했습니다."
@@ -45,6 +46,8 @@ fun main() {
         return
 
     displayResultGuideMessage()
+    val matchedLottoTickets =
+        getRankedLotto(lottoTickets, winningLotto.map { it.toInt() }, winningLottoBonusNumber.toInt())
 }
 
 fun getUserBudget(): String = Console.readLine()
@@ -152,6 +155,45 @@ fun isWrongWinningLotto(winningLotto: List<String>): Boolean {
         true
     }
 }
+
+fun getRankedLotto(
+    lottoTickets: List<Lotto>,
+    winningLotto: List<Int>,
+    winningLottoBonusNumber: Int
+): MutableMap<Rank, Int> {
+    val matchedLottoTickets = mutableMapOf<Rank, Int>()
+    for (currentLotto in lottoTickets) {
+        val currentLottoRanking = getLottoRanking(
+            currentLotto,
+            winningLotto as MutableList<Int>, winningLottoBonusNumber
+        )
+        if (currentLottoRanking != Rank.NON_RANKED)
+            matchedLottoTickets[currentLottoRanking] = matchedLottoTickets.getOrPut(currentLottoRanking) { 0 } + 1
+    }
+
+    return matchedLottoTickets
+}
+
+fun getLottoRanking(currentLotto: Lotto, winningLotto: MutableList<Int>, bonusNumber: Int): Rank {
+    val matchNumbers = currentLotto.getSortedNumbers().toSet().intersect(winningLotto.toSet())
+    when (matchNumbers.size) {
+        Rank.FIRST.matchNumbers -> return Rank.FIRST
+        Rank.SECOND.matchNumbers -> {
+            if (containsBonusNumber(currentLotto, bonusNumber)) Rank.SECOND
+            return Rank.THIRD
+        }
+        Rank.THIRD.matchNumbers -> {
+            if (containsBonusNumber(currentLotto, bonusNumber)) Rank.SECOND
+            return Rank.THIRD
+        }
+        Rank.FOURTH.matchNumbers -> return Rank.FOURTH
+        Rank.FIFTH.matchNumbers -> return Rank.FIFTH
+    }
+    return Rank.NON_RANKED
+}
+
+fun containsBonusNumber(currentLotto: Lotto, bonusLottoNumber: Int) =
+    currentLotto.getSortedNumbers().contains(bonusLottoNumber)
 
 fun displayIntroduceGuideMessage() = println(INTRODUCE_MESSAGE)
 fun displaySuccessBuyLottoGuideMessage(boughtLottoCount: Int) = println("$boughtLottoCount$SUCCESS_BUY_LOTTO_MESSAGE")
