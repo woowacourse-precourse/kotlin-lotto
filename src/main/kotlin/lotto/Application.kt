@@ -13,7 +13,7 @@ fun main() {
         purchasedLotto.add(generateLottoNumber())
     }
 
-    println("${purchasePrice / 1000}개를 구매하였습니다")
+    println("${purchasePrice / 1000}개를 구매했습니다.")
     purchasedLotto.forEach {
         println(it)
     }
