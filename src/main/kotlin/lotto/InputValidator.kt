@@ -35,18 +35,6 @@ object InputValidator {
         return isValid
     }
 
-    private fun List<String>.hasOverLappedNumber(): Boolean {
-        val existNumber = mutableSetOf<String>()
-
-        this.forEach { number ->
-            if (existNumber.contains(number)) {
-                return true
-            }
-            existNumber.add(number)
-        }
-        return false
-    }
-
     private fun String.isNumeric(): Boolean {
         return this.chars().allMatch { eachChar -> Character.isDigit(eachChar) }
     }
@@ -61,5 +49,4 @@ object InputValidator {
     }
 
     private fun String.isInRange(): Boolean = this.toInt() in MINIMUM_LOTTO_NUMBER..MAXIMUM_LOTTO_NUMBER
-
 }
