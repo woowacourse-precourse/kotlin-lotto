@@ -12,12 +12,12 @@ class LottoGame {
 //    fun buyPriceInquireMessage() {
 //        println(BUY_PRICE_INQUIRE_MESSAGE)
 //    }
-
-    fun calculateNumberOfLotto(): Int {
-        val lottoInputPrice = readLine()!!.toInt()
-        return lottoInputPrice / 1000
-    }
-
+//
+//    fun calculateNumberOfLotto(): Int {
+//        val lottoInputPrice = readLine()!!.toInt()
+//        return lottoInputPrice / 1000
+//    }
+//
 //    fun checkRightLotto(lottoInputPrice: Int ): Boolean {
 //        val numOfRestLotto = lottoInputPrice % 1000
 //        if (numOfRestLotto != 0) {
@@ -25,11 +25,11 @@ class LottoGame {
 //        }
 //        return true
 //    }
-//
-//    fun resultRightLotto (flag: Boolean) {
-//        if (!flag) throw IllegalArgumentException(ERROR_PREFIX_MESSAGE+ERROR_LOTTO_INPUT)
-//    }
-//
+
+    fun resultRightLotto (flag: Boolean) {
+        if (!flag) throw IllegalArgumentException(ERROR_PREFIX_MESSAGE+ERROR_LOTTO_INPUT)
+    }
+
 //    fun tellNumOfLotto(numOfLotto: Int) {
 //        println("$numOfLotto"+BUY_AMOUNT_MESSAGE)
 //    }
