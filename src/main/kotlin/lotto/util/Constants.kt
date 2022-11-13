@@ -23,6 +23,7 @@ object Constants {
     const val ERROR_MESSAGE_HEADER = "[ERROR] "
     const val ERROR_MESSAGE_BODY_NUMBER_SHOULD_BE_IN_RANGE = "로또 번호는 1부터 45 사이의 숫자여야 합니다."
     const val ERROR_MESSAGE_BODY_NUMBER_SHOULD_BE_DIVIDED_BY_UNIT = "구입 금액은 1,000원 단위로 입력해야 합니다."
+    const val ERROR_MESSAGE_BODY_INPUT_SHOULD_NOT_CONTAIN_CHARACTER = "입력은 숫자로만 이루어져 있어야 합니다."
     const val TOTAL_PUBLISHED_LOTTO_NUMBER = "\n%d개를 구매했습니다."
     const val TOTAL_RATE_OF_RETURN = "총 수익률은 %.1f%%입니다."
 
