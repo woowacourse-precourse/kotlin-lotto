@@ -82,6 +82,36 @@ class LottoTest : NsTest(){
         }
     }
 
+    /** 유저가 입력하는 보너스 번호 에러 테스트 **/
+
+    @Test
+    fun `유저가 입력하는 로또 보너스 번호가 당첨 번호와 중복된 숫자일 경우 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            UserBonusNumber(listOf("1","2","3","4","5","6"), "5").getBonusNumberRegex()
+        }
+    }
+
+    @Test
+    fun `유저가 입력하는 로또 보너스 번호가 문자열일 경우 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            UserBonusNumber(listOf("1","2","3","4","5","6"), "w").getBonusNumberRegex()
+        }
+    }
+
+    @Test
+    fun `유저가 입력하는 로또 보너스 번호가 허용된 숫자의 범위를 벗어날 경우 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            UserBonusNumber(listOf("1","2","3","4","5","6"), "55").getBonusNumberRegex()
+        }
+    }
+
+    @Test
+    fun `유저가 입력하는 로또 보너스 번호에 아무것도 입력되지 않을 경우 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            UserBonusNumber(listOf("1","2","3","4","5","6"), "").getBonusNumberRegex()
+        }
+    }
+
     override fun runMain() {
         main()
     }
