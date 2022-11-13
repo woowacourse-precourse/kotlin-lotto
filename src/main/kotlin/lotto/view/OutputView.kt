@@ -1,5 +1,7 @@
 package lotto.view
 
+import lotto.domain.money.Money
+
 class OutputView {
     fun printInputPurchaseAmount() {
         println("구입금액을 입력해주세요.")
@@ -32,7 +34,8 @@ class OutputView {
     }
 
     fun printStatistics(matchedCount: Int, money: String, prizeCount: Int) {
-        println("${matchedCount}개 일치 (${money}) - ${prizeCount}개")
+        val moneyUnit = Money(money).changeMoneyUnit()
+        println("${matchedCount}개 일치 (${moneyUnit}) - ${prizeCount}개")
     }
 
     fun printPrifitRate(profitRate: String) {

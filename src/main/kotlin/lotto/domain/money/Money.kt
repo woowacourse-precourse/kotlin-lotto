@@ -9,6 +9,12 @@ class Money(private val money: String) {
         require(canDividedMoney()) { println(DIVIDED_MONEY) }
     }
 
+    fun changeMoneyUnit(): String {
+        val money = money.toInt()
+        val moneyFormaht = DecimalFormat("#,###")
+        return moneyFormaht.format(money)
+    }
+
     private fun isNumber(): Boolean =
         money.all { number ->
             number.isDigit()
