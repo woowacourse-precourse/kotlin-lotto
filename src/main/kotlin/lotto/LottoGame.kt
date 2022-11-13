@@ -8,13 +8,12 @@ class LottoGame {
     private val lottoList = mutableListOf<Lotto>()
     private var winningNumber = listOf<Int>()
     private var bonusNumber = 0
-    val prizeResult = mutableListOf<Int>(0,0,0,0,0,0)
+    private val prizeResult = mutableListOf<Int>(0,0,0,0,0,0)
     var totalEarnedMoney = 0.0
 
     fun receiveMoney(money: String) {
-        if (!money.all { Character.isDigit(it) })
-            throw IllegalArgumentException("[ERROR] 잘못된 입력입니다.")
-        this.money = Money(money.toInt())
+        if (validateNumber(money))
+            this.money = Money(money.toInt())
     }
 
     fun printLottoCount(): Int {
@@ -38,16 +37,44 @@ class LottoGame {
     fun receiveWinningNumber(number: String) {
         val num = number.split(",")
         val result = mutableListOf<Int>()
-        for (element in num) {
-            result.add(element.toInt())
+        for (i in num.indices) {
+            if (validateNumber(num[i]) && validateRange(num[i]))
+                result.add(num[i].toInt())
         }
-        // TODO:  num의 길이, 숫자인지여부, 중복 검사
-        winningNumber = result.sorted()
+
+        if(validateDuplication(result))
+            winningNumber = result.sorted()
+    }
+
+    fun validateRange(number: String): Boolean {
+        val num: Int = number.toInt()
+        if (num<1 || num >45)
+            throw IllegalArgumentException("[ERROR] 잘못된 입력입니다.")
+        return true
+    }
+
+    fun validateNumber(input: String): Boolean {
+        if (!input.all { Character.isDigit(it) })
+            throw IllegalArgumentException("[ERROR] 잘못된 입력입니다.")
+        return true
+    }
+
+    fun validateDuplication(winningNumbers: List<Int>): Boolean {
+        if (winningNumbers.distinct().size != 6)
+            throw IllegalArgumentException("[ERROR] 잘못된 입력입니다.")
+        return true
+    }
+
+    fun validateDuplicationBonusNum(lottoNumber: List<Int>, bonusNum: String): Boolean {
+        if (lottoNumber.contains(bonusNum.toInt()))
+            throw IllegalArgumentException("[ERROR] 잘못된 입력입니다.")
+        return true
     }
 
     fun receiveBonusNumber(number: String) {
-        // TODO: 입력값 유효한 숫자인지 검사
-        bonusNumber = number.toInt()
+        if (validateNumber(number) && validateRange(number)
+            && validateDuplicationBonusNum(winningNumber, number))
+            bonusNumber = number.toInt()
     }
 
     fun calculateResult(){
