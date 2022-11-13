@@ -23,7 +23,14 @@ class LottoGame {
     }
 
     fun inputNum(): Int {
-        return readLine()!!.toInt()
+        val input = readLine()
+        for (i in input.toString()) {
+            if("[a-z]||[A-Z]".toRegex().matches(i.toString())){
+                println(i)
+                throw IllegalArgumentException(ERROR_PREFIX_MESSAGE+ERROR_LOTTO_INPUT)
+            }
+        }
+        return input!!.toInt()
     }
 
     fun calculateNumberOfLotto(lottoInputPrice: Int): Int {
@@ -71,7 +78,6 @@ class LottoGame {
 
         if (!inputAnswerNumbers.contains(",")) throw IllegalArgumentException(ERROR_PREFIX_MESSAGE+ERROR_ANSWER_COMMA)
         for (i in inputAnswerNumbers) {
-            println("i: $i")
             if(i.toString() != ","){
                 inputAnswerNumbersList.add((i.code) - 48)
             }
