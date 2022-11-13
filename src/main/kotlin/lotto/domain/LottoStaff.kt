@@ -8,9 +8,21 @@ class LottoStaff() {
         return amount / LOTTO_PRICE
     }
 
-    fun generateLotto():Lotto{
-        val numbers=Randoms.pickUniqueNumbersInRange(1, 45, 6)
+    fun generateLotto(): Lotto {
+        val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
         return Lotto(numbers.sorted())
+    }
+
+    fun countMatchingNumber(lottoNumbers: List<Int>, winningNumbers: List<Int>): Int {
+        var count = 0
+        lottoNumbers.forEach { number ->
+            if (winningNumbers.contains(number)) count++
+        }
+        return count
+    }
+
+    fun checkBonusNumber(lottoNumbers: List<Int>,bonusNUmber:Int):Boolean{
+        return lottoNumbers.contains(bonusNUmber)
     }
 
     companion object {
