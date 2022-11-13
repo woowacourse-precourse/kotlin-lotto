@@ -2,6 +2,8 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.LottoResult.*
+import kotlin.math.roundToInt
 
 fun main() {
     val purchasePrice = getPurchasePrice()
@@ -25,7 +27,7 @@ fun main() {
     }
 
     val resultTable = mutableMapOf<LottoResult, Int>().apply {
-        LottoResult.values().forEach { result ->
+        values().forEach { result ->
             this[result] = 0
         }
     }
@@ -34,10 +36,33 @@ fun main() {
         computeResult(it, resultTable)
     }
 
-    resultTable.forEach {
-        println(it)
-    }
+    printResult(resultTable, purchasePrice)
 }
+
+fun printResult(resultTable: MutableMap<LottoResult, Int>, purchasePrice: Int) {
+    println("당첨 통계")
+    println("---")
+    values().forEach {
+        if (it != ElseMatch) {
+            println("${it.prefix} 일치 (${priceFormat(it.price)}) - ${resultTable[it]}개")
+        }
+    }
+    val totalPrice = resultTable.map {
+        it.key.price * it.value
+    }.sum()
+    val priceRatio = ((totalPrice * 100f) / purchasePrice * 10.0).roundToInt() / 10.0
+    println("총 수익률은 ${priceRatio}%입니다.")
+}
+
+fun priceFormat(price: Int): String =
+    "${
+        price
+            .toString()
+            .reversed()
+            .chunked(3)
+            .reversed().joinToString(",") { it.reversed() }
+    }원"
+
 
 fun getPurchasePrice(): Int {
     println("구입금액을 입력해 주세요.")

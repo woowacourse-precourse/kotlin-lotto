@@ -31,11 +31,11 @@ class Lotto(private val numbers: List<Int>) {
     }
 }
 
-enum class LottoResult(val price: Int) {
-    ThreeMatch(5_000),
-    FourMatch(50_000),
-    FiveMatch(1_500_000),
-    FiveMatchWithBonus(30_000_000),
-    SixMatch(2_000_000_000),
-    ElseMatch(0)
+enum class LottoResult(val prefix: String, val price: Int) {
+    ThreeMatch("3개", 5_000),
+    FourMatch("4개", 50_000),
+    FiveMatch("5개", 1_500_000),
+    FiveMatchWithBonus("5개 일치, 보너스 볼", 30_000_000),
+    SixMatch("6개", 2_000_000_000),
+    ElseMatch("", 0)
 }
