@@ -11,18 +11,20 @@ fun main() {
         print("[ERROR]")
         throw NoSuchElementException()
     }
-
     var lottoCount = moneyInput!!.toInt()/1000
     println("${lottoCount}개를 구매했습니다.")
-
     var randomlotto = makeRandomLotto(lottoCount)
+
 
     println("당첨 번호를 입력해 주세요.")
     var myNumber = Console.readLine()
     var myList = myNumber!!.split(',').map { it.toInt() }.toList()
+    Lotto(myList)
 
     println("보너스 번호를 입력해 주세요.")
     var bonusNumber = Console.readLine()
+    if (bonusNumber!!.toInt() !in (1..45) )
+        throw IllegalArgumentException("[ERROR]")
 }
 
 fun makeRandomLotto(count:Int): MutableList<List<Int>> {
