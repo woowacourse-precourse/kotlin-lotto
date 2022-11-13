@@ -26,6 +26,32 @@ fun main() {
         lotto.add(numbers)
         lottoTicket = lottoTicket!! - 1
     }
+    println("당첨 번호를 입력해 주세요.")
+
+    var won_5000 = 0
+    var won_50000 = 0
+    var won_1500000 = 0
+    var won_3000000 = 0
+    var won_2000000000 = 0
+    var resultLotto = 0
+
+    var userNum= Console.readLine().split(",").map{it.toInt()}
+    Lotto(userNum)
+    var userBonus = Console.readLine().toInt()
+    for (i in 0 until lotto.size){
+        val union = lotto[i]+userNum
+        val intersection = union.groupBy { it }.filter { it.value.size > 1 }.flatMap { it.value }.distinct()
+        if (intersection.count() == 3)
+            won_5000++
+        if (intersection.count() == 4)
+            won_50000++
+        if ((intersection.count() == 5) && !(lotto[i].contains(userBonus)))
+            won_1500000++
+        if ((intersection.count() == 5) && (lotto[i].contains(userBonus)))
+            won_3000000++
+        if (intersection.count() == 6)
+            won_2000000000++
+    }
 }
 fun chkNum(str: String) : Boolean {
     var temp: Char
