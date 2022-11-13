@@ -21,7 +21,7 @@ object OutputView {
         }
     }
 
-    fun printInputWinningNumbers(){
+    fun printInputWinningNumbers() {
         println(Message.MESSAGE_INPUT_WINNING_NUMBERS)
     }
 }
