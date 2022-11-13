@@ -1,20 +1,15 @@
 package lotto
 
-import exception.LottoPurchase
 import camp.nextstep.edu.missionutils.Console
-import camp.nextstep.edu.missionutils.Randoms
 import exception.LottoBonus
+import exception.LottoPurchase
 import exception.LottoWinning
-import kotlin.math.round
 
 class Lotto(private var numbers: List<Int>) {
-    private var issuedNumbers = mutableMapOf<Int, MutableList<Int>>()
-    private var purchaseAmount = ""
-    private var numberOfPurchase = 0
-    private var winningNumber = ""
-    private var bonusNumber = 0
-    private var matchedWinningNumbers = listOf<Int>()
-    private var matchedBonusNumbers = listOf<Int>()
+    private val viewModel = LottoViewModel()
+    var purchaseAmount = ""
+    var winningNumber = ""
+    var bonusNumber = 0
 
     init {
         require(numbers.size == 6)
@@ -39,14 +34,14 @@ class Lotto(private var numbers: List<Int>) {
     }
 
     private fun printIssuedNumber() {
-        numberOfPurchase = purchaseAmount.toInt().div(1000)
+        val numberOfPurchase = viewModel.div(purchaseAmount)
 
         println("${numberOfPurchase}개를 구매했습니다.")
 
         for (i in 0 until numberOfPurchase) {
-            issuedNumbers[i] = numbers.sorted().toMutableList()
-            println(issuedNumbers[i])
-            numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+            viewModel.issuedNumbers[i] = numbers.sorted().toMutableList()
+            println(viewModel.issuedNumbers[i])
+            numbers = viewModel.pickRandomNumber()
         }
 
         println()
@@ -74,46 +69,10 @@ class Lotto(private var numbers: List<Int>) {
         println("당첨 통계")
         println("---")
 
-        compareNumbers()
+        viewModel.compareNumbers(purchaseAmount, winningNumber, bonusNumber)
 
         printWinningHistory()
-        printProfitRate()
-    }
-
-    private fun compareNumbers() {
-        val winningNumberList = winningNumber.split(",").toList().map { it.toInt() }
-
-        for (i in 0 until numberOfPurchase) {
-            val unionOfWinning = listOf(winningNumberList, issuedNumbers[i]).flatMap { it.orEmpty() }
-            matchedWinningNumbers = matchedNumbers(unionOfWinning)
-
-            issuedNumbers[i]?.add(bonusNumber)
-            matchedBonusNumbers = matchedNumbers(issuedNumbers[i]!!.toList())
-
-            calculateWinning()
-        }
-    }
-
-    private fun calculateWinning() {
-        when (matchedWinningNumbers.size) {
-            3 -> { Winning.THREE.calculate() }
-            4 -> { Winning.FOUR.calculate() }
-            5 -> {
-                if (matchedBonusNumbers.size != 1) {
-                    Winning.FIVE.calculate()
-                } else {
-                    Winning.FIVEWITHBONUS.calculate()
-                }
-            }
-            6 -> { Winning.SIX.calculate() }
-        }
-    }
-
-    private fun matchedNumbers(list: List<Int>): List<Int> {
-        return list.groupBy { it }
-            .filter { it.value.size > 1 }
-            .flatMap { it.value }
-            .distinct()
+        println("총 수익률은 ${viewModel.getProfit(purchaseAmount)}%입니다.")
     }
 
     private fun printWinningHistory() {
@@ -124,13 +83,5 @@ class Lotto(private var numbers: List<Int>) {
                     "5개 일치, 보너스 볼 일치 (30,000,000원) - ${Winning.FIVEWITHBONUS.getNumberOfMatches()}개\n" +
                     "6개 일치 (2,000,000,000원) - ${Winning.SIX.getNumberOfMatches()}개"
         )
-    }
-
-    private fun printProfitRate() {
-        val winningAmount =
-            Winning.THREE.getAmount() + Winning.FOUR.getAmount() + Winning.FIVE.getAmount() + Winning.FIVEWITHBONUS.getAmount() + Winning.SIX.getAmount()
-        val profit = (winningAmount.toDouble() / purchaseAmount.toDouble()) * 100
-
-        println("총 수익률은 ${round(profit * 10) / 10}%입니다.")
     }
 }

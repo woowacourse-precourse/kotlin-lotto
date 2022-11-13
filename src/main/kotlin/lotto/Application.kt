@@ -1,9 +1,8 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.Randoms
-
 fun main() {
-    val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+    val viewModel = LottoViewModel()
+    val numbers = viewModel.pickRandomNumber()
     val lotto = Lotto(numbers)
 
     lotto.startGame()
