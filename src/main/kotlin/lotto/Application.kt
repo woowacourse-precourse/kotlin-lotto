@@ -1,5 +1,11 @@
 package lotto
 
+import lotto.domain.LottoCheck
+import lotto.domain.LottoShop
+import lotto.domain.LottoWin
+import lotto.presentation.LottoBank
+import lotto.presentation.LottoOrder
+
 fun main() {
     val lottoOrder: LottoOrder = LottoOrder()
     val lottoShop: LottoShop = LottoShop()

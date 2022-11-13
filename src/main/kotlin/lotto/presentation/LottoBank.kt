@@ -1,5 +1,6 @@
-package lotto
+package lotto.presentation
 
+import lotto.domain.LottoReward
 import kotlin.math.roundToInt
 
 class LottoBank {

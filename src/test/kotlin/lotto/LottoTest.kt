@@ -1,6 +1,6 @@
 package lotto
 
-import org.assertj.core.api.Assertions
+import lotto.domain.Lotto
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 

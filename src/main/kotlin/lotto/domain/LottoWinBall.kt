@@ -1,4 +1,4 @@
-package lotto
+package lotto.domain
 
 enum class LottoWinBall(var num: Int) {
 
