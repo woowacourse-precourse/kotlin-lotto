@@ -1,5 +1,13 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Console
+
 fun main() {
-    TODO("프로그램 구현")
+    getInputLotteryAmount()
+}
+
+fun getInputLotteryAmount(): Int {
+    val amount = Console.readLine().toInt()
+    println()
+    return amount / 1000
 }
