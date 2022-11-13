@@ -57,9 +57,9 @@ class LottoController {
 
     private fun bonusValidationCheck() {
         message.inputBonusNumber()
-        val inputbonusNumber = userNumber.inputNumber()
-        if (bonusNumberValidation(inputbonusNumber)) {
-            userBonusNumber = inputbonusNumber.toInt()
+        val inputBonusNumber = userNumber.inputNumber()
+        if (bonusNumberValidation(inputBonusNumber)) {
+            userBonusNumber = inputBonusNumber.toInt()
         }
     }
 
@@ -69,7 +69,7 @@ class LottoController {
         message.winningTotalRevenue(compareUserAndComputer.statistics())
     }
 
-    fun numberValidation(amount: String): Boolean {
+    private fun numberValidation(amount: String): Boolean {
         if (InputValidation(amount).inputNumberExceptionCheck()) {
             calculateNumber(amount.toInt())
             return true
@@ -78,7 +78,7 @@ class LottoController {
     }
 
     private fun calculateNumber(amount: Int) {
-        purchaseAmount = amount / Lotto.LottoInformation.LOTTO_PRICE.number
+        purchaseAmount = amount / Lotto.Information.PRICE.number
     }
 
     private fun winningNumberValidation(numberLine: String): Boolean {

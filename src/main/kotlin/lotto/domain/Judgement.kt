@@ -14,7 +14,7 @@ class Judgement(
 
     fun calculate(): ArrayList<Int> {
         for (numberLine in computerNumber) {
-            for (i in 0 until Lotto.LottoInformation.LOTTO_SIZE.number) {
+            for (i in 0 until Lotto.Information.SIZE.number) {
                 includeNumber(numberLine.getValues(i))
             }
             if (count == 5) {
@@ -59,7 +59,7 @@ class Judgement(
     fun statistics(): String {
         val totalPrize =
             (winningAmount[0] * winningCount[0]) + (winningAmount[1] * winningCount[1]) + (winningAmount[2] * winningCount[2]) + (winningAmount[3] * winningCount[3]) + (winningAmount[4] * winningCount[4])
-        val amount = computerNumber.size * Lotto.LottoInformation.LOTTO_PRICE.number
+        val amount = computerNumber.size * Lotto.Information.PRICE.number
         val decimal = DecimalFormat("#,##0.0%")
         return decimal.format((totalPrize.toDouble() / amount.toDouble()))
     }

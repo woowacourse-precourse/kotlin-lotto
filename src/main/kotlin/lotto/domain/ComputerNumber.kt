@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class ComputerNumber(private val number: Int) {
 
-    val computerNumber: MutableList<Lotto> = mutableListOf()
+    private val computerNumber: MutableList<Lotto> = mutableListOf()
 
     fun makeComputerBaseball(): List<Lotto> {
         while (computerNumber.size < number) {
