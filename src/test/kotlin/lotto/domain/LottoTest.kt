@@ -35,5 +35,13 @@ class `Lotto 클래스의` {
                 assertThatThrownBy { Lotto(numbers) }.isInstanceOf(IllegalArgumentException::class.java)
             }
         }
+        @Nested
+        inner class `주어지는 로또 번호가 1에서 45 사이의 숫자가 아니면` {
+            private val numbers = listOf(1, 2, 3, 4, 5, 46)
+            @Test
+            fun `예외를 던진다`() {
+                assertThatThrownBy { Lotto(numbers) }.isInstanceOf(IllegalArgumentException::class.java)
+            }
+        }
     }
 }
