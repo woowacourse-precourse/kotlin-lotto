@@ -8,4 +8,5 @@ fun main() {
     LottoPrinter().printLotto(lotto)
     println()
     val winningNumber = WinningNumber().getWinningNumber()
+    val bonusNumber = BonusNumber().getBonusNumber()
 }
