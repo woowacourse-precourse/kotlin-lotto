@@ -7,7 +7,7 @@ class InputView {
     private val ERROR_MESSAGE_BUY_TICKET = "[ERROR] 로또 구입 금액은 천원 단위 숫자로만 입력해야 합니다."
     private val REGULAR_CORRECT_MONEY = "^[0-9]+0{3,}$"
 
-    // 값 입력
+    // 구입할 금액 입력
     fun inputMoney(): Long {
         println(MESSAGE_HOW_MUCH_BUY_TICKET)
         // todo cosole readLine 체인지
