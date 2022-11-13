@@ -38,4 +38,15 @@ object ExceptionHandler {
             }
         }
     }
+
+    fun checkBonusNumber(amount: Int, winningNumber: List<Int>) {
+        if (amount > 45 || amount < 1) {
+            throw IllegalArgumentException("[ERROR] 1부터 45사이의 번호를 입력하세요")
+        }
+        repeat(winningNumber.size) {
+            if (winningNumber.contains(amount)) {
+                throw IllegalArgumentException("[ERROR] 당첨 번호와 중복됩니다")
+            }
+        }
+    }
 }

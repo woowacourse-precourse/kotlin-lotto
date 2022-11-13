@@ -5,6 +5,7 @@ fun main() {
     val amount = getInputLotteryAmount()
     lotto.getLotteryPaper(amount)
     val winningNumber = getWinningNumber()
+    val bonusNumber = getBonusNumber(winningNumber)
 }
 
 fun getInputLotteryAmount(): Int {
@@ -21,4 +22,12 @@ fun getWinningNumber(): List<Int> {
     ExceptionHandler.checkWinningNumber(winningNumber)
     println()
     return winningNumber
+}
+
+fun getBonusNumber(winningNumber: List<Int>): Int {
+    Output.bonusNumber()
+    val number = ExceptionHandler.checkNumber()
+    ExceptionHandler.checkBonusNumber(number, winningNumber)
+    println()
+    return number
 }
