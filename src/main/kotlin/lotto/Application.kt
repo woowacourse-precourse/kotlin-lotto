@@ -58,7 +58,7 @@ fun getInputLottoMoney(): Int {
     if (lottoMoney % 1000 != 0)
         throw IllegalArgumentException()
 
-    return lottoMoney
+    return lottoMoney / 1000
 }
 
 fun formatWinRanks(winRanks: Map<LottoRank, Int>): String {
@@ -76,10 +76,17 @@ fun formatYield(yield: Float): String {
 }
 
 fun main() {
+    println("구입금액을 입력해 주세요.")
     val lottoMoney = getInputLottoMoney()
-    val lottos = produceLotto(lottoMoney / 1000)
+
+    println("${lottoMoney}개를 구매했습니다.")
+    val lottos = produceLotto(lottoMoney)
+
+
     val winNumber = getInputWinNumbers()
     val bonusNumber = getInputBonusNumber()
     val winRanks = calculateWinRanks(lottos, winNumber, bonusNumber)
+    println(formatWinRanks(winRanks))
     val `yield` = calculateYield(winRanks, lottoMoney)
+    println(formatYield(`yield`))
 }
