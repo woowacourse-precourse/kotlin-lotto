@@ -83,4 +83,13 @@ class InputExceptionHandlerTest {
             InputExceptionHandler.checkInputBonusNumber(TEST_WINNING_NUMBER, BONUS_NUMBER_IS_NOT_UNIQUE)
         }
     }
+
+    @Test
+    fun `try catch exception test`() {
+        try {
+            InputExceptionHandler.checkInputPurchasingAmount("1000j")
+        } catch (e: IllegalArgumentException) {
+            println("[ERROR]")
+        }
+    }
 }
