@@ -11,6 +11,7 @@ object UserInterface {
     private val decimalFormat = DecimalFormat("#,###")
 
     fun askPurchaseAmount(): Int {
+        println(REQUEST_PURCHASE_AMOUNT)
         val readValue = Console.readLine()
         require(readValue.all { it.isDigit() }) { PURCHASE_AMOUNT_NOT_DIGIT }
         val purchaseAmount = BigInteger(readValue)
