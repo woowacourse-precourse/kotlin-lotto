@@ -104,7 +104,7 @@ internal class `UserInterface 클래스의` {
             }
         }
         @Nested
-        inner class `사용자가 1에서 45 사이의 서로 다른 숫자로 이루어진 당첨 번호를 입력하면` {
+        inner class `사용자가 1에서 45 사이의 서로 다른 6개의 숫자로 이루어진 당첨 번호를 입력하면` {
             private val winningNumbers = "1,2,3,4,5,6"
             @Test
             fun `당첨 번호를 반환한다`() {
