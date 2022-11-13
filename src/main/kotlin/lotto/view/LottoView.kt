@@ -17,6 +17,29 @@ class LottoView {
         }
     }
 
+    fun getWinningLotto(): List<Int> {
+        val WinningLottoNumbers = mutableListOf<Int>()
+        println("당첨 번호를 입력해 주세요.")
+        val inputWinningLottoNumbers = Console.readLine()
+        val list = inputWinningLottoNumbers.split(",")
+        validWinningLotto(list)
+        for (i in list) {
+            WinningLottoNumbers.add(i.toInt())
+        }
+        return WinningLottoNumbers
+    }
+
+    private fun validWinningLotto(lottoNumList: List<String>) {
+        if (lottoNumList.size != 6) {
+            throw IllegalArgumentException("[ERROR]: 당첨 숫자의 개수는 6개여야 합니다.")
+        }
+        for (lottoNum in lottoNumList) {
+            if (!isNumber(lottoNum)) {
+                throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+            }
+        }
+    }
+
     private fun isNumber(s: String?): Boolean {
         return if (s.isNullOrEmpty()) false else s.all { Character.isDigit(it) }
     }
