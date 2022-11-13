@@ -1,11 +1,14 @@
 package lotto
+
 const val NOTHING = -1
+
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6)
 
         Exceptions.checkLotto(numbers)
     }
+
     enum class WinningGroup(val same: Int, val Winning: Int) {
         FirstPlace(6, 4),
         SecondPlace(-1, 3),
@@ -14,20 +17,30 @@ class Lotto(private val numbers: List<Int>) {
         FifthPlace(3, 0),
     }
 
-    fun getNumber():String{
+    fun getNumber(): String {
         return numbers.toString()
     }
 
-    fun checkWinning(winningNumber: List<String>, bonus : String): Int {
-        val winning = numbers.count {
-            winningNumber
-                .contains(it.toString())
-        }
+    fun compareDrawing(winningNumber: List<String>, bonus: String): Int {
+        val winning = compareWinningNumber(winningNumber)
         if (winning == 5) {
-            if (bonus.contentEquals(numbers.toString()))
-                return WinningGroup.SecondPlace.Winning
+            return compareBonusNumber(bonus)
         }
-        return WinningGroup.values().find { it.same==winning }?.Winning ?: return NOTHING
+        return WinningGroup.values().find { it.same == winning }?.Winning ?: return NOTHING
     }
+
+    private fun compareWinningNumber(winningNumber: List<String>): Int {
+        return numbers.count {
+            winningNumber.contains(it.toString())
+        }
+    }
+
+
+    private fun compareBonusNumber(bonus: String): Int {
+        if (bonus.contentEquals(numbers.toString()))
+            return WinningGroup.SecondPlace.Winning
+        return WinningGroup.ThirdPlace.Winning
+    }
+
 
 }

@@ -31,7 +31,7 @@ fun main() {
 
     val profit = calculatePrize(winningResult)
 
-    val profitRate = calculateProfitRate(profit, money.money)
+    val profitRate = roundOff( calculateProfitRate(profit, money.money))
 
     message.printProfit(profitRate)
 
@@ -62,7 +62,7 @@ fun generateBonusNumber(): String {
 fun generateWinningResult(lotteryTickets: List<Lotto>, winningNumber: List<String>, bonus: String): MutableList<Int> {
     val winningResult = mutableListOf(0, 0, 0, 0, 0)
     lotteryTickets.forEach {
-        val winning = it.checkWinning(winningNumber, bonus)
+        val winning = it.compareDrawing(winningNumber, bonus)
         if (winning in 0..4)
             winningResult[winning]++
     }
@@ -78,11 +78,10 @@ fun calculatePrize(winningResult: List<Int>): Int {
 }
 
 fun calculateProfitRate(prize: Int, money: String): Double {
-    return makeTwoDecimalPlaces((prize / money.toDouble() * 100))
+    return (prize / money.toDouble() * 100)
 }
 
 
-fun makeTwoDecimalPlaces(double: Double): Double {
-    val roundOff = String.format("%.2f", double)
-    return roundOff.toDouble()
+fun roundOff(d: Double): Double {
+    return String.format("%.2f", d).toDouble()
 }
