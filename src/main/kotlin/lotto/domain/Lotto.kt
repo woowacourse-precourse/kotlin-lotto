@@ -7,7 +7,7 @@ import kotlin.math.*
  */
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6) { "[ERROR] 로또 번호는 6자리여야 합니다." }
+        require(numbers.size == 6) { SIZE_BOUNDS_EXCEPTION_MGS }
     }
 
     // 로또 번호와 당첨 번호를 비교한다.

@@ -26,33 +26,33 @@ fun main() {
 
 // 1000원 단위의 구입 금액을 입력 받는다.
 fun askUserMoney(): Int {
-    println("구입 금액을 입력해주세요.")
+    println(MONEY_INPUT_MSG)
     val money = Console.readLine().toInt()
-    if(money % 1000 != 0) handleException("[ERROR] 1000원 단위의 금액만 입력해주세요.")
+    if(money % 1000 != 0) handleException(DIVISION_EXCEPTION_MSG)
     return money
 }
 
 // 쉼표로 구분된 당첨 번호를 입력 받는다.
 fun askWinningNumbers(): List<Int> {
-    println("당첨 번호를 입력해주세요.")
+    println(WINNING_INPUT_MSG)
     val numbers = mutableListOf<Int>()
 
     Console.readLine().split(",").map {
         val item = it.toInt()
-        if(item !in 1..45) handleException("[ERROR] 1부터 45 사이의 숫자만 입력해주세요.")
-        if(numbers.contains(item)) handleException("[ERROR] 중복되지 않는 숫자를 입력해주세요.")
+        if(item !in 1..45) handleException(RANGE_BOUNDS_EXCEPTION_MSG)
+        if(numbers.contains(item)) handleException(DUPLICATE_EXCEPTION_MSG)
         numbers.add(item)
     }
-    if(numbers.size != 6) handleException("[ERROR] 당첨 번호는 6개여야 합니다.")
+    if(numbers.size != 6) handleException(SIZE_BOUNDS_EXCEPTION_MGS)
 
     return numbers
 }
 
 // 보너스 번호를 입력 받는다.
 fun askBonusNumber(): Int {
-    println("보너스 번호를 입력해주세요.")
+    println(BONUS_INPUT_MSG)
     val input = Console.readLine().toInt()
-    if(input !in 1..45) handleException("[ERROR] 1부터 45 사이의 숫자만 입력해주세요.")
+    if(input !in 1..45) handleException(DUPLICATE_EXCEPTION_MSG)
     return input
 }
 
