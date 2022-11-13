@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main() {
     val money = getMoney()
     val lottoList = makeLottoList(money)
-    print(lottoList.toString())
+    printLottoList(lottoList)
 }
 
 fun getMoney(): Int {
@@ -33,4 +33,12 @@ fun makeLottoList(money: Int): List<Lotto> {
     }
 
     return lottoList
+}
+
+fun printLottoList(lottos: List<Lotto>) {
+    val cnt = lottos.size
+    println("${cnt}개를 구매했습니다.")
+    for (lotto in lottos) {
+        println(lotto.toString())
+    }
 }
