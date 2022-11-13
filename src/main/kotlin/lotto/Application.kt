@@ -1,5 +1,6 @@
 package lotto
 
+import domain.CreateLottoNumber
 import view.InputView
 import view.OutputView
 
@@ -12,6 +13,8 @@ fun main() {
     val outputView = OutputView()
     outputView.outputAvailableTickets(availableTickets)
 
+    val createLottoNumber = CreateLottoNumber()
+    createLottoNumber.createRandomLottoNumber()
 
     //val lotto = Lotto(list)
 
