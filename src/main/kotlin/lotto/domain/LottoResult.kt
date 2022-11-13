@@ -19,15 +19,15 @@ class LottoResult() {
         println("당첨 통계\n---")
         for (rank in ranks) {
             if (rank == "SECOND") {
-                println("$(results[rank])개 일치, 보너스 볼 일치 (" + Reward.getPrizeMoney(rank) + "원) - " + Reward.getSameCount(rank) + "개")
+                println("${Reward.getSameCount(rank)}개 일치, 보너스 볼 일치 (${Reward.getPrizeMoney(rank)}원) - ${results[rank]}개")
                 continue
             }
-            println("$(results[rank])개 일치" + Reward.getPrizeMoney(rank) + "원) - " + Reward.getSameCount(rank) + "개")
+            println("${Reward.getSameCount(rank)}개 일치 (${Reward.getPrizeMoney(rank)}원) - ${results[rank]}개")
         }
-        println("총 수익률은 " + getProfit(results, ticketCount) +"%입니다.")
+        println("총 수익률은 " + getProfit(results, ticketCount) + "%입니다.")
     }
 
-    private fun getProfit(results: Map<String, Int>, ticketCount: Int): Float {
+    private fun getProfit(results: Map<String, Int>, ticketCount: Int): String {
         var sum = 0.0F
         var prize: String
         for (rank in ranks) {
@@ -35,7 +35,7 @@ class LottoResult() {
             sum += (prize.toInt() * results[rank]!!)
         }
 
-        return sum / ticketCount / 100
+        return String.format("%.2f", sum / ticketCount / 100)
     }
 
 }
