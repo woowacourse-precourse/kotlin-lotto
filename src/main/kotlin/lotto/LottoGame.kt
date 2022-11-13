@@ -75,18 +75,17 @@ class LottoGame {
     fun inputAnswerNumbers(): MutableList<Int> {
         val inputAnswerNumbers = readLine().toString()
         val inputAnswerNumbersList = mutableListOf<Int>(6)
+
+        if (!inputAnswerNumbers.contains(",")) throw IllegalArgumentException(ERROR_PREFIX_MESSAGE+ERROR_ANSWER_COMMA)
         for (i in inputAnswerNumbers) {
-            inputAnswerNumbersList.add(i.code)
+            if(i.toString() != ","){
+                inputAnswerNumbersList.add(i.code)
+            }
         }
+        inputAnswerNumbersList.removeAt(0)
         return inputAnswerNumbersList
     }
 
-//    fun checkinputAnswer(inputAnswerNumbers: String): Boolean {
-//        if (!inputAnswerNumbers.contains(",")) throw IllegalArgumentException(ERROR_PREFIX_MESSAGE+ERROR_ANSWER_COMMA)
-//        if (inputAnswerNumbers.length != 11) throw IllegalArgumentException(ERROR_PREFIX_MESSAGE+ERROR_ANSWER_SIX)
-//        // 같은 숫자가 있는 지 체크하는 로직 추가되어야
-//        return true
-//    }
     fun bonusNumberMessage(){
         println(BONUS_NUMBER_MESSAGE)
     }
