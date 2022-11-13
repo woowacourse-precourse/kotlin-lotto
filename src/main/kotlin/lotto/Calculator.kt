@@ -6,6 +6,7 @@ object Calculator {
     fun getLottoCount(amount: Int) = amount / ONE_THOUSAND
 
     fun getLottoResult(boughtLotteries: List<List<Int>>, winLottery: List<Int>, bonus: Int) {
+        lottoResults.clear()
         var correctCount: Int
         var isMatchedBonus: Boolean
         boughtLotteries.forEach {
