@@ -12,7 +12,7 @@ import java.lang.IllegalArgumentException
 
 class LottoGame {
 
-    fun gameStart(){
+    fun gameStart() {
         try {
             val userOrder = inputUserLotto()
             val userLottoNumber = LottoShop().buyLotto(userOrder)
@@ -21,7 +21,7 @@ class LottoGame {
             val lottoRank = LottoCheck().compareLotto(userLottoNumber)
             LottoBank().yieldLotto(lottoRank, userOrder)
 
-        }catch (e: IllegalArgumentException){
+        } catch (e: IllegalArgumentException) {
             println("[ERROR] 잘못입력하셨습니다.")
         }
     }

@@ -9,7 +9,7 @@ import lotto.presentation.util.Constant.printBuyMessage
 
 class LottoShop {
 
-    fun buyLotto(money: Int) : List<Lotto> {
+    fun buyLotto(money: Int): List<Lotto> {
         val buyCntLotto = cntLotto(money)
         return createRandomLotto(buyCntLotto)
     }

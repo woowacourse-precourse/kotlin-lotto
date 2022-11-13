@@ -12,7 +12,6 @@ class LottoCheck {
                 LottoReward.FOURTH -> ranking[1]++
                 LottoReward.FIFTH -> ranking[0]++
                 else -> {}
-
             }
         }
         return ranking

@@ -14,8 +14,9 @@ import kotlin.math.roundToInt
 
 class LottoBank {
 
-    fun yieldLotto(rank : List<Int>, charger: Int) {
-        val rate= ((rank[0] * fifthReward) + (rank[1] * fourthReward) + (rank[2] * thirdReward) + (rank[3] * secondReward) + (rank[4] * firstReward)).toDouble()
+    fun yieldLotto(rank: List<Int>, charger: Int) {
+        val rate =
+            ((rank[0] * fifthReward) + (rank[1] * fourthReward) + (rank[2] * thirdReward) + (rank[3] * secondReward) + (rank[4] * firstReward)).toDouble()
 
         println(printRankMessage)
         println("${LottoReward.FIFTH.cnt}개 일치 (${LottoReward.FIFTH.prize}원) - ${rank[0]}개")
