@@ -3,6 +3,7 @@ package lotto.presentation
 import lotto.domain.LottoCheck
 import lotto.domain.LottoShop
 import lotto.domain.LottoWin
+import lotto.presentation.util.Constant.errorMessage
 import lotto.presentation.util.Constant.inputAmountMessage
 import lotto.presentation.util.Constant.inputBonusMessage
 import lotto.presentation.util.Constant.inputWinningMessage
@@ -22,7 +23,7 @@ class LottoGame {
             LottoBank().yieldLotto(lottoRank, userOrder)
 
         } catch (e: IllegalArgumentException) {
-            println("[ERROR] 잘못입력하셨습니다.")
+            println(errorMessage)
         }
     }
 

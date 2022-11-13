@@ -27,6 +27,7 @@ object Constant {
     const val yieldMessage = "총 수익률은 "
     const val yieldEndMessage = "%입니다."
 
+    const val errorMessage = "[ERROR] 잘못입력하셨습니다."
     const val purchaseAmountErrorMessage = "[ERROR] 구입 금액을 잘못입력하셨습니다."
     const val costNotRegularErrorMessage = "[ERROR] 숫자가 나누어 떨어지지 않습니다."
     const val winningRangeErrorMessage = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."
