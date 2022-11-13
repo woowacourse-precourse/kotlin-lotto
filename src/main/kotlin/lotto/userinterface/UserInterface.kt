@@ -37,4 +37,8 @@ object UserInterface {
         println(String.format(PURCHASE_RESULT, lotteries.size))
         lotteries.forEach { println(it.numbers()) }
     }
+
+    fun askWinningNumbers(): List<Int> {
+        return listOf()
+    }
 }

@@ -2,6 +2,7 @@ package lotto.userinterface
 
 import camp.nextstep.edu.missionutils.test.NsTest
 import lotto.userinterface.UserInterface.askPurchaseAmount
+import lotto.userinterface.UserInterface.askWinningNumbers
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -62,6 +63,21 @@ internal class `UserInterface 클래스의` {
 
         override fun runMain() {
             askPurchaseAmount()
+        }
+    }
+    @Nested
+    inner class `askWinningNumbers 메소드는`: NsTest() {
+        @Nested
+        inner class `당첨 번호가 6개가 아니면` {
+            private val winningNumbers = "1,2,3,4,5"
+            @Test
+            fun `예외를 던지고 에러 메시지를 출력한다`() {
+                assertThatThrownBy { runException(winningNumbers) }.isInstanceOf(IllegalArgumentException::class.java)
+                    .hasMessageContaining(ERROR_MESSAGE)
+            }
+        }
+        override fun runMain() {
+            askWinningNumbers()
         }
     }
 
