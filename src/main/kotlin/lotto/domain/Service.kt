@@ -1,8 +1,9 @@
 package lotto.domain
 
-import lotto.domain.ExceptionHandler.checkInputBonusNumber
-import lotto.domain.ExceptionHandler.checkInputPurchasingAmount
-import lotto.domain.ExceptionHandler.checkInputWinningNumbers
+import lotto.domain.InputExceptionHandler.checkInputBonusNumber
+import lotto.domain.InputExceptionHandler.checkInputPurchasingAmount
+import lotto.domain.InputExceptionHandler.checkInputWinningNumbers
+import kotlin.math.round
 
 class Service {
     /**
@@ -96,5 +97,23 @@ class Service {
             3 to false -> return Rating.FIFTH
         }
         return Rating.LOSE
+    }
+
+    /**
+     * 당첨 통계 중 순위 당 갯수를 계산하는 함수
+     * */
+    fun countRank(resultOfLotto: MutableList<Rating>, rating: Rating): Int {
+        return resultOfLotto.count { it == rating }
+    }
+
+    /**
+     * 당첨 통계 중 수익률을 계산하는 함수
+     * */
+    fun calculateIncome(resultOfLotto: MutableList<Rating>, countOfLotto: Int): Double {
+        var sum = 0.0
+        for (rank in Rating.values()) {
+            sum += countRank(resultOfLotto, rank) * rank.getPrize()
+        }
+        return round((sum / (countOfLotto * 1000) * 100) * 10) / 10
     }
 }
