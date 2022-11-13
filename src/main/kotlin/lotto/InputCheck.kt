@@ -2,30 +2,30 @@ package lotto
 
 class InputCheck {
 
-    fun checkInputLotteryPurchase(input: String): Boolean {
+    fun checkInputLotteryPurchase(input: String): MessageMaker.Error {
         val inputTrim = input.trim()
-        if (!checkInputOneInteger(inputTrim)) return false
-        if (!isOneThousandUnit(inputTrim)) return false
-        return true
+        if (!checkInputOneInteger(inputTrim)) return MessageMaker.Error.PURCHASE_IS_NOT_ONE_INTEGER
+        if (!isOneThousandUnit(inputTrim)) return MessageMaker.Error.PURCHASE_MONEY
+        return MessageMaker.Error.NON_ERROR
     }
 
-    fun checkInputWinningLottery(input: String): Boolean {
+    fun checkInputWinningLottery(input: String): MessageMaker.Error {
         val inputTrim = input.trim()
-        if (!isConsistAllCommaAndNumber(inputTrim)) return false
-        if (!isAlternatingCommaAndNumber(inputTrim)) return false
+        if (!isConsistAllCommaAndNumber(inputTrim)) return MessageMaker.Error.WINNING_INPUT_COUNT_ERROR
+        if (!isAlternatingCommaAndNumber(inputTrim)) return MessageMaker.Error.WINNING_INPUT_COUNT_ERROR
         val numbers = convertSeparateComma(inputTrim)
-        numbers.forEach { if (!isLotteryRange(it)) return false }
-        if (numbers.size != 6) return false
-        if (numbers.toSet().size != 6) return false
-        return true
+        numbers.forEach { if (!isLotteryRange(it)) return MessageMaker.Error.LOTTERY_RANGE }
+        if (numbers.size != 6) return MessageMaker.Error.WINNING_INPUT_COUNT_ERROR
+        if (numbers.toSet().size != 6) return MessageMaker.Error.WINNING_INPUT_DISTINCT_ERROR
+        return MessageMaker.Error.NON_ERROR
     }
 
-    fun checkInputBonusInteger(input: String, winningLottery: List<Int>): Boolean {
+    fun checkInputBonusInteger(input: String, winningLottery: List<Int>): MessageMaker.Error {
         val inputTrim = input.trim()
-        if (!checkInputOneInteger(inputTrim)) return false
-        if (!isLotteryRange(inputTrim.toInt())) return false
-        if (winningLottery.contains(inputTrim.toInt())) return false
-        return true
+        if (!checkInputOneInteger(inputTrim)) return MessageMaker.Error.BONUS_RANGE
+        if (!isLotteryRange(inputTrim.toInt())) return MessageMaker.Error.BONUS_RANGE
+        if (winningLottery.contains(inputTrim.toInt())) return MessageMaker.Error.BONUS_ALREADY_IN_WINNING
+        return MessageMaker.Error.NON_ERROR
     }
 
     private fun checkInputOneInteger(input: String): Boolean {
