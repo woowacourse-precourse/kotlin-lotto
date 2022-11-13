@@ -19,25 +19,26 @@ class InputView {
         require(isDividedByUnit(inputPurchaseAmount.toInt())) {
             ERROR_MESSAGE_HEADER + ERROR_MESSAGE_BODY_NUMBER_SHOULD_BE_DIVIDED_BY_UNIT
         }
+        // TODO(해당 수 만큼 로또 발행하는 로직 추가)
     }
 
     fun inputWinningNumber() {
         println(INPUT_WINNING_NUMBER)
         val inputWinningNumber: String = Console.readLine()
         val inputWinningNumbers = inputWinningNumber.toListSplitByComma()
-        // TODO(당첨 번호 저장하는 로직 추가)
         println(inputWinningNumber)
         require(isCorrectFormatInputWinningNumber(inputWinningNumbers)) {
             ERROR_MESSAGE_HEADER
         }
+        // TODO(당첨 번호 저장하는 로직 추가)
     }
 
     fun inputBonusNumber() {
         println(INPUT_BONUS_NUMBER)
         val inputBonusNumber: String = Console.readLine()
-        // TODO(보너스 번호 저장하는 로직 추가)
         require(isCorrectFormatInputBonusNumber(inputBonusNumber)) {
             ERROR_MESSAGE_HEADER
         }
+        // TODO(보너스 번호 저장하는 로직 추가)
     }
 }
