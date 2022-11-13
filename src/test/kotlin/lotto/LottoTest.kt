@@ -52,6 +52,36 @@ class LottoTest : NsTest(){
         }
     }
 
+    /** 유저가 입력하는 당첨번호 에러 테스트 **/
+
+    @Test
+    fun `유저가 입력하는 로또 당첨번호에 문자열이 포함될 경우 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            UserWinNumbers("1,2,3,4,r,6").checkUserWinNumberRegex()
+        }
+    }
+
+    @Test
+    fun `유저가 입력하는 로또 당첨번호가 6자리가 아닐 경우 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            UserWinNumbers("1,2,3,4,6").checkUserWinNumberRegex()
+        }
+    }
+
+    @Test
+    fun `유저가 입력하는 로또 당첨번호에 범위를 벗어난 숫자가 포함될 경우 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            UserWinNumbers("1,2,3,4,46,6").checkUserWinNumberRegex()
+        }
+    }
+
+    @Test
+    fun `유저가 입력하는 로또 당첨번호에 중복된 숫자가 포함될 경우 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            UserWinNumbers("1,2,3,4,4,6").checkUserWinNumberRegex()
+        }
+    }
+
     override fun runMain() {
         main()
     }
