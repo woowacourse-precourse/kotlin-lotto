@@ -33,7 +33,7 @@
 4. 도메인 로직에 단위 테스트 구현
    - LottoTest대로면 이미 LottoTest에 구현한 것. 
    - 다만 도메인 로직은 과연 어디? -성공?
-6. 테스트 두 가지 통과하기
+5. 테스트 두 가지 통과하기
    - try catch로 printtrace -실패 
    - try catch로 println -실패
    - output()은 무엇인가?
