@@ -12,7 +12,13 @@ fun main() {
     println("${lottoCount}개를 구매했습니다.")
 
     var randomlotto = MakeRandomLotto(lottoCount)
-    println(randomlotto)
+
+    println("당첨 번호를 입력해 주세요.")
+    var myNumber = Console.readLine()
+    var myList = myNumber!!.split(',').map { it.toInt() }.toList()
+
+    println("보너스 번호를 입력해 주세요.")
+    var bonusNumber = Console.readLine()
 }
 
 fun MakeRandomLotto(count:Int): MutableList<List<Int>> {
