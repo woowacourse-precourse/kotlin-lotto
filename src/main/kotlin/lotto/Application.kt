@@ -3,7 +3,9 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 
 fun main() {
-    getInputLotteryAmount()
+    val lotto = Lotto(List(6) { 0 })
+    val amount = getInputLotteryAmount()
+    lotto.getLotteryPaper(amount)
 }
 
 fun getInputLotteryAmount(): Int {
