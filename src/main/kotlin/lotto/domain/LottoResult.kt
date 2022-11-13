@@ -2,32 +2,40 @@ package lotto.domain
 
 import kotlin.math.round
 
-class LottoResult {
-    fun getResult(): List<Int> {
-        return listOf(1, 2,3 )
-    }
+class LottoResult() {
+    private val ranks = listOf("FIFTH", "FORTH", "THIRD", "SECOND", "FIRST")
 
-    fun printResult(results: List<Int>) {
-        println("당첨 통계\\n---")
-        println(Reward.FIFTH.same + "개 일치 (" + Reward.FIFTH.reward + "원) - " + results[0] + "개")
-        println(Reward.FORTH.same + "개 일치 (" + Reward.FORTH.reward + "원) - " + results[1] + "개")
-        println(Reward.THIRD.same + "개 일치 (" + Reward.THIRD.reward + "원) - " + results[2] + "개")
-        println(Reward.SECOND.same + "개 일치, 보너스 볼 일치 (" + Reward.SECOND.reward + "원) - " + results[3] + "개")
-        println(Reward.FIRST.same + "개 일치 (" + Reward.FIRST.reward + "원) - " + results[4] + "개")
-        println("총 수익률은 " + getProfit(results) +"%입니다.")
-    }
+    fun getResult(winningNumbers: WinningNumber, playerTickets: List<Lotto>): Map<String, Int> {
+        var result = mutableMapOf("FIRST" to 0, "SECOND" to 0, "THIRD" to 0, "FORTH" to 0, "FIFTH" to 0, "NOTHING" to 0)
 
-    fun getProfit(results: List<Int>): Float {
-        var sum = 0.0F
-        var ticketCount = 0
-        var index = 0
-
-        if (results[index] != 0) {
-            sum += (Reward.FIFTH.reward.toFloat() * results[index])
-            ticketCount += results[index]
+        for (ticket in playerTickets) {
+            result[ticket.check(winningNumbers)] = result[ticket.check(winningNumbers)]!! + 1
         }
 
-        return round(sum / ticketCount * 100) / 100
+        return result
+    }
+
+    fun printResult(results: Map<String, Int>, ticketCount: Int) {
+        println("당첨 통계\n---")
+        for (rank in ranks) {
+            if (rank == "SECOND") {
+                println("$(results[rank])개 일치, 보너스 볼 일치 (" + Reward.getPrizeMoney(rank) + "원) - " + Reward.getSameCount(rank) + "개")
+                continue
+            }
+            println("$(results[rank])개 일치" + Reward.getPrizeMoney(rank) + "원) - " + Reward.getSameCount(rank) + "개")
+        }
+        println("총 수익률은 " + getProfit(results, ticketCount) +"%입니다.")
+    }
+
+    private fun getProfit(results: Map<String, Int>, ticketCount: Int): Float {
+        var sum = 0.0F
+        var prize: String
+        for (rank in ranks) {
+            prize = Reward.getPrizeMoney(rank).replace(",", "")
+            sum += (prize.toInt() * results[rank]!!)
+        }
+
+        return sum / ticketCount / 100
     }
 
 }
