@@ -78,7 +78,7 @@ class LottoController {
     }
 
     private fun calculateNumber(amount: Int) {
-        purchaseAmount = amount / Lotto.ConstantVariable.LOTTO_PRICE.number
+        purchaseAmount = amount / Lotto.LottoInformation.LOTTO_PRICE.number
     }
 
     private fun winningNumberValidation(numberLine: String): Boolean {

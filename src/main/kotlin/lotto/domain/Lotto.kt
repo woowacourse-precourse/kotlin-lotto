@@ -2,14 +2,14 @@ package lotto.domain
 
 
 class Lotto(private val numbers: List<Int>) {
-    enum class ConstantVariable(val number: Int) {
+    enum class LottoInformation(val number: Int) {
         LOTTO_SIZE(6),
         LOTTO_PRICE(1000)
     }
 
     init {
         require(numbers.size == 6)
-        require(numbers.toSet().size == ConstantVariable.LOTTO_SIZE.number)
+        require(numbers.toSet().size == LottoInformation.LOTTO_SIZE.number)
     }
 
     fun contains(number: Int): Boolean {
