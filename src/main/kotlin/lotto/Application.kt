@@ -80,7 +80,7 @@ fun formatWinRanks(winRanks: Map<LottoRank, Int>): String {
 }
 
 fun formatYield(yield: Float): String {
-    return String.format("총 수익률은 %.2f%입니다.", `yield`)
+    return String.format("총 수익률은 %.2f%%입니다.", `yield`)
 }
 
 fun main() {
