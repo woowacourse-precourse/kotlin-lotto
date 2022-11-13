@@ -1,5 +1,9 @@
 package lotto
 
+import lotto.domain.*
+import lotto.view.*
+
 fun main() {
-    TODO("프로그램 구현")
+    val purchase = Purchase(inputPurchaseAmount())
+    printNumberOfTickets(purchase.ticket)
 }
