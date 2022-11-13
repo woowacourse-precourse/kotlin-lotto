@@ -6,14 +6,14 @@ class WinningLotto(private val winningNumbers: List<Int>, private val bonusNumbe
     init {
         require(winningNumbers.size == LOTTO_NUMBER_COUNT) { ERROR_INPUT_VALUE_SIX_ONLY }
         require(winningNumbers.toSet().size == LOTTO_NUMBER_COUNT) { ERROR_INPUT_VALUE_NO_DUPLICATES }
-        require(
-            winningNumbers.filter { it in LOTTO_START_NUMBER..LOTTO_END_NUMBER }.size == LOTTO_NUMBER_COUNT
-        ) { ERROR_INPUT_VALUE_ONE_OR_FORTY_FIVE_ONLY }
+        require(winningNumbers.filter { it in LOTTO_START_NUMBER..LOTTO_END_NUMBER }.size == LOTTO_NUMBER_COUNT) {
+            ERROR_INPUT_VALUE_ONE_OR_FORTY_FIVE_ONLY
+        }
 
         require(bonusNumber !in winningNumbers) { ERROR_INPUT_VALUE_NO_DUPLICATES }
-        require(
-            bonusNumber in LOTTO_START_NUMBER..LOTTO_END_NUMBER
-        ) { ERROR_INPUT_VALUE_ONE_OR_FORTY_FIVE_ONLY }
+        require(bonusNumber in LOTTO_START_NUMBER..LOTTO_END_NUMBER) {
+            ERROR_INPUT_VALUE_ONE_OR_FORTY_FIVE_ONLY
+        }
     }
 
     private fun getResult(guessNumbers: List<Int>): Pair<Int, Boolean> {
