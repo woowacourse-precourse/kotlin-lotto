@@ -8,11 +8,11 @@ import lotto.utils.INITIAL_COUNT
 class LottoService : Service() {
     private val lottoStore by lazy { LottoStore() }
     private val lottoRanks = linkedMapOf(
-        LottoRank.FIRST to INITIAL_COUNT,
-        LottoRank.SECOND to INITIAL_COUNT,
-        LottoRank.THIRD to INITIAL_COUNT,
+        LottoRank.FIFTH to INITIAL_COUNT,
         LottoRank.FOURTH to INITIAL_COUNT,
-        LottoRank.FIFTH to INITIAL_COUNT
+        LottoRank.THIRD to INITIAL_COUNT,
+        LottoRank.SECOND to INITIAL_COUNT,
+        LottoRank.FIRST to INITIAL_COUNT,
     )
 
     override fun start() {
