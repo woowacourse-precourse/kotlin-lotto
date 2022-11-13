@@ -1,19 +1,19 @@
 # 기능 목록
 
 ## 핵심 로직 (도메인 로직)
-- [ ] 구입 금액에 해당하는 만큼 로또를 발행한다. (1~45까지의 중복되지 않는 6개의 숫자)- Lotto#createLottoNumber
-- [ ] 당첨 번호를 뽑는다. (1~45까지의 중복되지 않는 6개의 숫자) - Lotto#createWinningNumber
-- [ ] 보너스 번호를 뽑는다. (당첨 번호와 중복되지 않는 1개의 숫자) - Lotto#createBonusNumber
+- [ ] 구입 금액에 해당하는 만큼 로또를 발행한다. (1~45까지의 중복되지 않는 6개의 숫자)- NumberGenerator#createLottoNumber
+- [ ] 당첨 번호를 뽑는다. (1~45까지의 중복되지 않는 6개의 숫자) - NumberGenerator#createWinningNumber
+- [ ] 보너스 번호를 뽑는다. (당첨 번호와 중복되지 않는 1개의 숫자) - NumberGenerator#createBonusNumber
 - [ ] 당첨 여부를 가른다.
-    - [ ] 사용자가 구매한 로또 번호와 당첨 번호를 비교한다. - Referee#compare
+    - [ ] 사용자가 구매한 로또 번호와 당첨 번호를 비교한다. - Lotto#compare
       - [ ] 일치하는 번호의 개수를 반환한다. - Judgement#countMatchNumber
-    - [ ] 당첨 내역을 출력한다. (5등에서 1등까지 당첨된 개수 출력) - Referee#getWinningList
+    - [ ] 당첨 내역을 출력한다. (5등에서 1등까지 당첨된 개수 출력) - Lotto#getWinningList
         - 3개 일치 (5,000원) - x개
         - 4개 일치 (50,000원) - x개
         - 5개 일치 (1,500,000원) - x개
         - 5개 일치, 보너스 볼 일치 (30,000,000원) - x개
         - 6개 일치 (2,000,000,000원) - x개
-    - [ ] 수익률을 출력한다.- Referee#getEarningRate
+    - [ ] 수익률을 출력한다.- Lotto#getEarningRate
     - [ ] 로또 게임을 종료한다. 
 
 ## UI 로직 (System.out, System.in, Scanner)
