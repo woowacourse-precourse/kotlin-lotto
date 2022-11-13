@@ -2,29 +2,24 @@ package lotto.domain
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 
 class PurchaserTest {
-
     @Test
-    fun `기능 테스트`() {
-        val purchaser = Purchaser(17000)
+    fun `수익률 테스트`() {
         assertThat(
-            purchaser.amount == 17000
+            Purchaser().calculateRateOfReturn(6200, 5000) == 6200 * 10000 / (5000) / 100.0F
         )
     }
 
     @Test
-    fun `예외 테스트`() {
-        assertThrows<IllegalArgumentException> { Purchaser(null) }
-    }
-
-    @Test
-    fun `수익률 테스트`() {
-        val purchaser = Purchaser(5000)
-        val totalPrize = 6200
+    fun `순위 테스트`() {
+        val winningLotto = WinningLotto(listOf(1, 2, 3, 4, 5, 6), 7)
+        val tickets = listOf(
+            Lotto(listOf(1, 2, 3, 4, 5, 6)),
+            Lotto(listOf(1, 2, 3, 4, 5, 7))
+        )
         assertThat(
-            purchaser.calculateRateOfReturn(totalPrize) == 6200 / 5000.0F
+            Purchaser().calculateResult(winningLotto, tickets) == listOf(1, 1, 0, 0, 0, 0)
         )
     }
 }
