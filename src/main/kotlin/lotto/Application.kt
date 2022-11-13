@@ -7,7 +7,9 @@ fun main() {
 }
 
 fun getInputLotteryAmount(): Int {
-    val amount = Console.readLine().toInt()
+    Output.purchaseAmount()
+    val amount = ExceptionHandler.checkNumber()
+    ExceptionHandler.checkAmount(amount)
     println()
     return amount / 1000
 }
