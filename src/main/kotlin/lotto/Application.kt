@@ -12,6 +12,31 @@ fun main() {
     }
 
     println("${purchasePrice / 1000}개를 구매하였습니다")
+    purchasedLotto.forEach {
+        println(it)
+    }
+
+    val prizeLotto = getPrizeNumbers()
+    val bonusNumber = getBonusNumber()
+
+    fun computeResult(purchasedLotto: Lotto, resultTable: MutableMap<LottoResult, Int>) {
+        val lottoResult = prizeLotto.computeResult(purchasedLotto, bonusNumber)
+        resultTable[lottoResult] = resultTable[lottoResult]?.plus(1) ?: 1
+    }
+
+    val resultTable = mutableMapOf<LottoResult, Int>().apply {
+        LottoResult.values().forEach { result ->
+            this[result] = 0
+        }
+    }
+
+    purchasedLotto.forEach {
+        computeResult(it, resultTable)
+    }
+
+    resultTable.forEach {
+        println(it)
+    }
 }
 
 fun getPurchasePrice(): Int {
