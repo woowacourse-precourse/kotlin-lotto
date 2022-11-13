@@ -6,7 +6,7 @@ import kotlin.math.*
 class Lotto(private val numbers: List<Int>) { //당첨번호 로또를 넣고
     init {
         require(numbers.size == 6)
-
+        mutipleException(numbers)
     }
     fun compare(lotto: List<Int>, bonusNumber: Int)  : Int{
         var coincidence = 0
@@ -54,5 +54,20 @@ class Lotto(private val numbers: List<Int>) { //당첨번호 로또를 넣고
         println("총 수익률은 $moneyRatio%입니다.")
     }
 
+    fun mutipleException(numbers: List<Int>) {
+        for (i in numbers.indices){
+            for (j in numbers.indices){
+                multipleExceptionDetail(i,j)
+            }
+        }
+    }
+    fun multipleExceptionDetail(i : Int, j : Int){
+        if (i != j){
+            if (numbers[i] == numbers[j]){
+                println("[ERROR] 로또 번호가 중복되었습니다.")
+                throw IllegalArgumentException("[ERROR] 로또 번호가 중복되었습니다.")
+            }
+        }
+    }
 }
 
