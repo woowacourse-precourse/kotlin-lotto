@@ -2,14 +2,13 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 import utils.Messages.ANSWER_NUMBERS_MESSAGE
+import utils.Messages.BONUS_NUMBER_MESSAGE
 import utils.Messages.BUY_PRICE_INQUIRE_MESSAGE
 import utils.Messages.ERROR_PREFIX_MESSAGE
 import utils.Messages.ERROR_LOTTO_INPUT
 import utils.Messages.BUY_AMOUNT_MESSAGE
 import utils.Messages.ERROR_ANSWER_COMMA
 import utils.Messages.ERROR_ANSWER_SIX
-import utils.Messages.ERROR_ANSWER_DIFFERENT
-import java.util.IllegalFormatCodePointException
 
 class LottoGame {
 
@@ -17,7 +16,7 @@ class LottoGame {
         println(BUY_PRICE_INQUIRE_MESSAGE)
     }
 
-    fun inputPrice(): Int {
+    fun inputNum(): Int {
         return readLine()!!.toInt()
     }
 
@@ -53,7 +52,7 @@ class LottoGame {
     }
 
     fun printEachLotto(doubleLottos: MutableList<List<Int>>){
-        for (i in 0..doubleLottos.size) {
+        for (i in 0 until doubleLottos.size) {
             println(doubleLottos[i])
         }
     }
@@ -62,8 +61,7 @@ class LottoGame {
     }
 
     fun inputAnswerNumbers(): String {
-        val inputAnswerNumbers = readLine().toString()
-        return inputAnswerNumbers
+        return readLine().toString()
     }
 
     fun checkinputAnswer(inputAnswerNumbers: String): Boolean {
@@ -71,5 +69,8 @@ class LottoGame {
         if (inputAnswerNumbers.length != 11) throw IllegalArgumentException(ERROR_PREFIX_MESSAGE+ERROR_ANSWER_SIX)
         // 같은 숫자가 있는 지 체크하는 로직 추가되어야
         return true
+    }
+    fun bonusNumberMessage(){
+        println(BONUS_NUMBER_MESSAGE)
     }
 }
