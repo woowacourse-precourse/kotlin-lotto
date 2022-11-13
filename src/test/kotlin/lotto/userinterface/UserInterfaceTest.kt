@@ -94,6 +94,15 @@ internal class `UserInterface 클래스의` {
                     .hasMessageContaining(ERROR_MESSAGE)
             }
         }
+        @Nested
+        inner class `당첨 번호가 중복되었다면` {
+            private val winningNumbers = "1,2,3,4,5,5"
+            @Test
+            fun `예외를 던지고 에러 메시지를 출력한다`() {
+                assertThatThrownBy { runException(winningNumbers) }.isInstanceOf(IllegalArgumentException::class.java)
+                    .hasMessageContaining(ERROR_MESSAGE)
+            }
+        }
         override fun runMain() {
             askWinningNumbers()
         }
