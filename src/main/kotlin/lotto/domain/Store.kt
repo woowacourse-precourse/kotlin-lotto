@@ -4,7 +4,7 @@ import lotto.resources.ERROR_INPUT_VALUE_MULTIPLE_OF_1000_ONLY
 import lotto.resources.LOTTO_TICKET_PRICE
 
 class Store {
-    fun buyLotto(amount: Int): List<List<Int>> {
+    fun buyTickets(amount: Int): List<List<Int>> {
         return 0.until(getTicket(amount)).map { NumberGenerator().createRandomNumbers() }
     }
 

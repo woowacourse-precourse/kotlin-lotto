@@ -10,7 +10,7 @@ class Purchaser(amount: Int?) {
     var rateOfReturn: Float = 0.0F
         get() = (totalPrize * 10000 / (amount) / 100.0F)
         private set
-    var lotto: List<Lotto> = emptyList()
+    var tickets: List<Lotto> = emptyList()
 
     init {
         requireNotNull(amount) { ERROR_INPUT_VALUE_NUMBER_ONLY }
@@ -18,7 +18,7 @@ class Purchaser(amount: Int?) {
     }
 
     fun calculateResult(winningLotto: WinningLotto) {
-        lotto.map {
+        tickets.map {
             resultRank[winningLotto.getRank(it.toList()) - 1] += 1
             totalPrize += winningLotto.getPrize(it.toList())
         }
