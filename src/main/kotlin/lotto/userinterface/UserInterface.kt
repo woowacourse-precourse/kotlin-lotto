@@ -20,6 +20,9 @@ object UserInterface {
                 decimalFormat.format(PURCHASE_AMOUNT_LIMIT)
             )
         }
+        require(
+            purchaseAmount.mod(BigInteger("1000")).equals(BigInteger.ZERO)
+        ) { PURCHASE_AMOUNT_NOT_DIVISIBLE_BY_1000 }
         return 0
     }
 }
