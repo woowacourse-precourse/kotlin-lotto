@@ -1,7 +1,7 @@
 package lotto.util
 
 import lotto.model.LottoData
-import lotto.model.LottoData.lottosLotto
+import lotto.model.LottoData.lottoContainer
 import lotto.model.LottoData.publishedLottoNumber
 import lotto.util.Constants.FIVE_AND_BONUS_COINCIDE_WINNING_PRIZE_NUMBER
 import lotto.util.Constants.FIVE_COINCIDE_WINNING_PRIZE_NUMBER
@@ -13,7 +13,7 @@ import lotto.util.Constants.THREE_COINCIDE_WINNING_PRIZE_NUMBER
 object Statistics {
 
     fun processStatistics() {
-        lottosLotto.forEach {
+        lottoContainer.forEach {
             it.saveLottoData()
         }
     }

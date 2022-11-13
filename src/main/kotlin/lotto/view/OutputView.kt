@@ -1,7 +1,7 @@
 package lotto.view
 
 import lotto.model.LottoData.lottoStats
-import lotto.model.LottoData.lottos
+import lotto.model.LottoData.lottoInfoContainer
 import lotto.model.LottoData.publishedLottoNumber
 import lotto.model.LottoPublisher
 import lotto.util.Constants.LOTTO_RESULT_FIVE_AND_BONUS_COINCIDE
@@ -22,7 +22,7 @@ class OutputView {
     fun printPublishedLotto() {
         println(TOTAL_PUBLISHED_LOTTO_NUMBER.format(publishedLottoNumber))
         lottoPublisher = LottoPublisher(publishedLottoNumber)
-        lottos.forEach { lottoInfo ->
+        lottoInfoContainer.forEach { lottoInfo ->
             println(lottoInfo)
         }
     }
