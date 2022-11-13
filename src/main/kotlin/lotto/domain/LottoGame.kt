@@ -8,8 +8,8 @@ class LottoGame {
         val playerTicket = getLottoTicket(playerCost)
         printTicket(playerTicket)
         val winningNumbers = getWinningNumbers()
-        val result = checkLotto(winningNumbers)
-        printResult(result)
+        val result = getLottoResult(winningNumbers, playerTicket)
+        printResult(result, playerTicket.size)
     }
 
     private fun getCost(): Int {
@@ -41,12 +41,12 @@ class LottoGame {
     }
 
 
-    private fun checkLotto(winningNumbers: Pair<List<Int>, Int>, tickets: List<Lotto>): List<Int> {
-        return LottoResult().getResult()
+    private fun getLottoResult(winningNumbers: WinningNumber, playerTickets: List<Lotto>): Map<String, Int> {
+        return LottoResult().getResult(winningNumbers, playerTickets)
     }
 
-    private fun printResult(result: List<Int>) {
-        LottoResult().printResult(result)
+    private fun printResult(result: Map<String, Int>, ticketCount: Int) {
+        LottoResult().printResult(result, ticketCount)
     }
 
     private fun validateNumberInput(input: String): Int {
