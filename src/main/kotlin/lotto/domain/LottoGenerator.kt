@@ -11,7 +11,7 @@ class LottoGenerator {
     private fun checkPriceInt(price:String): Int {
         try {
             return Integer.parseInt(price)
-        } catch (e: NumberFormatException){
+        } catch (e: IllegalArgumentException){
             println("[ERROR] 로또 구입 금액이 정수가 아닙니다.")
             throw e
         }
