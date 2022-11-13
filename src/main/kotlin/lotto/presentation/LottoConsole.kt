@@ -1,15 +1,12 @@
 package lotto.presentation
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.utils.LOTTO_PURCHASE_LOTTO_COUNT_MESSAGE
-import lotto.utils.LOTTO_PURCHASE_MESSAGE
-import lotto.utils.WINNING_LOTTO_ENTER_MESSAGE
 import lotto.domain.Lotto
 import lotto.domain.LottoNumber
 import lotto.utils.LottoExceptionHandler.validateIntType
 import lotto.domain.Money
 import lotto.domain.WinningLotto
-import lotto.utils.Separator
+import lotto.utils.*
 
 object LottoConsole {
     fun printPurchaseMessage() {
@@ -38,6 +35,10 @@ object LottoConsole {
             .map { LottoNumber(it) }
 
         return WinningLotto(lottoNumbers)
+    }
+
+    fun printBonusNumberEnterMessage() {
+        println(BONUS_NUMBER_ENTER_MESSAGE)
     }
 
     private fun printPurchasedLottoCount(lottoCount: Int) {
