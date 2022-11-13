@@ -83,7 +83,7 @@ class LottoMachine {
                 }
             }
             4 -> prizeMoney += 50000
-            3 -> 5000
+            3 -> prizeMoney += 5000
         }
     }
 
