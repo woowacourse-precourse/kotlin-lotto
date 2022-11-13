@@ -10,8 +10,7 @@ class PurchaserTest {
     fun `기능 테스트`() {
         val purchaser = Purchaser(17000)
         assertThat(
-            purchaser.amount == 17000 &&
-            purchaser.ticket == 17
+            purchaser.amount == 17000
         )
     }
 

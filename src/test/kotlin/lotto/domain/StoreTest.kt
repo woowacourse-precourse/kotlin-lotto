@@ -9,7 +9,7 @@ class StoreTest {
     fun `기능 테스트`() {
         assertRandomUniqueNumbersInRangeTest(
             {
-                val element = Store().buyLotto(8)
+                val element = Store().buyLotto(8000)
                 assertThat(element).isEqualTo(
                     listOf(
                         listOf(8, 21, 23, 41, 42, 43),
