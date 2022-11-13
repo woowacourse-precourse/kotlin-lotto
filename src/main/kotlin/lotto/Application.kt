@@ -2,6 +2,7 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
+
 fun main() {
     val money = Money()
     val message = Message()
@@ -14,7 +15,7 @@ fun main() {
     }
 
     val lotteryTickets = generateLotteryTickets(money.countLotteryTickets())
-    message.printTickets(lotteryTickets.map{ lotto -> lotto.getNumber() })
+    message.printTickets(lotteryTickets.map { lotto -> lotto.getNumber() })
 
     println(Message.INPUT_WINNING_MASSAGE)
     val winningNumber = generateWinningNumber()
@@ -22,8 +23,9 @@ fun main() {
 
     println(Message.INPUT_BONUS_MASSAGE)
     val bonus = generateBonusNumber()
-    Exceptions.checkBonus(winningNumber,bonus)
+    Exceptions.checkBonus(winningNumber, bonus)
 
+    var winningResult = generateWinningResult(lotteryTickets, winningNumber, bonus)
 
 }
 
@@ -47,4 +49,14 @@ fun generateWinningNumber(): List<String> {
 
 fun generateBonusNumber(): String {
     return Console.readLine().trim()
+}
+
+fun generateWinningResult(lotteryTickets: List<Lotto>, winningNumber: List<String>, bonus: String): MutableList<Int> {
+    val winningResult = mutableListOf(0, 0, 0, 0, 0)
+    lotteryTickets.forEach {
+        val winning = it.checkWinning(winningNumber, bonus)
+        if (winning in 0..4)
+            winningResult[winning]++
+    }
+    return winningResult
 }

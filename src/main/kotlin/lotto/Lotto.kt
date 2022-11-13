@@ -18,13 +18,13 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.toString()
     }
 
-    fun checkWinning(drawingNumber: Pair<List<String>, String>): Int {
+    fun checkWinning(winningNumber: List<String>, bonus : String): Int {
         val winning = numbers.count {
-            drawingNumber.first
+            winningNumber
                 .contains(it.toString())
         }
         if (winning == 5) {
-            if (drawingNumber.second.contentEquals(numbers.toString()))
+            if (bonus.contentEquals(numbers.toString()))
                 return WinningGroup.SecondPlace.Winning
         }
         return WinningGroup.values().find { it.same==winning }?.Winning ?: return NOTHING
