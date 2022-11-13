@@ -9,7 +9,7 @@ fun main() {
     printNumbers(lottoNumber,lottoCount)
     val winning = inputwinning()
     val winningNumber = changeNumberList(winning)
-
+    Lotto(winningNumber)
 
 }
 
@@ -68,4 +68,3 @@ fun changeNumberList(winning: String): List<Int> {
     print(winningNumber)
     return winningNumber
 }
-
