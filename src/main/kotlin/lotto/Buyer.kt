@@ -1,13 +1,10 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.Console.readLine
-
 object Buyer {
     var winningNumbers = listOf<Int>()
     var bonusNumber = 0
 
-    fun enterAmount(): Int {
-        val input = readLine()
+    fun enterAmount(input: String): Int {
         input.apply {
             checkIsBlank(this)
             checkIsNumber(this)
@@ -17,8 +14,7 @@ object Buyer {
         return input.toInt()
     }
 
-    fun enterWinningNumber() {
-        val input = readLine()
+    fun enterWinningNumber(input: String) {
         input.apply {
             checkIsBlank(this)
             checkIsRightFormat(this)
@@ -28,8 +24,7 @@ object Buyer {
         winningNumbers = input.split(",").map { it.toInt() }
     }
 
-    fun enterBonusNumber() {
-        val input = readLine()
+    fun enterBonusNumber(input: String) {
         checkIsBlank(input)
         checkIsIn1To45(input.toInt())
         checkDuplicateWithWinningNumber(input.toInt())

@@ -1,5 +1,8 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Console.readLine
+import java.lang.IllegalArgumentException
+
 class Lottery(
     private val computer: Computer
 ) {
@@ -17,7 +20,7 @@ class Lottery(
 
     private fun purchaseLotto() {
         printer.printAmountMessage()
-        amount = buyer.enterAmount()
+        amount = buyer.enterAmount(readLine())
         val lottoCount = calculator.getLottoCount(amount)
         printer.printLottoCountMessage(lottoCount)
         computer.makeLotteries(lottoCount)
@@ -26,12 +29,12 @@ class Lottery(
 
     private fun getWinningNumber() {
         printer.printWinningNumberMessage()
-        buyer.enterWinningNumber()
+        buyer.enterWinningNumber(readLine())
     }
 
     private fun getBonusNumber() {
         printer.printBonusNumberMessage()
-        buyer.enterBonusNumber()
+        buyer.enterBonusNumber(readLine())
     }
 
     private fun getLottoResult() {
@@ -47,6 +50,5 @@ class Lottery(
             Printer.printError(errorMessage)
             throw IllegalArgumentException(errorMessage)
         }
-
     }
 }
