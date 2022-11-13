@@ -14,6 +14,7 @@ class EnumError() : EnumErrorInterface {
             ErrorType.WinNumberListIsDuplicated -> "당첨 번호는 중복된 숫자일 수 없습니다."
             ErrorType.DuplicatedWithWinList -> "보너스 번호는 당첨 번호와 중복될 수 없습니다."
             ErrorType.InputIsNull -> "입력값은 공백일 수 없습니다."
+            ErrorType.NotMatchedToLottoLength -> "로또번호는 6자리여야 합니다."
             ErrorType.NotExpectedError -> "예기치 않은 오류가 발생했습니다."
         }
     }
@@ -27,5 +28,6 @@ enum class ErrorType() {
     WinNumberListIsDuplicated,
     DuplicatedWithWinList,
     InputIsNull,
+    NotMatchedToLottoLength,
     NotExpectedError
 }

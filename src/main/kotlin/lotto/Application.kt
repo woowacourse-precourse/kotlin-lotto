@@ -21,6 +21,7 @@ private fun getUserInputPrice() {
     if(userInputPrice != INPUT_ERROR_CODE) {
         val randomLottoNumbers = RandomNumbers(userInputPrice).getRandomLottoNumbers()
         val userInputWinNumbers = combineWinAndBonus()
+        compareRandomAndUserWinNumbers(randomLottoNumbers, userInputWinNumbers)
     }
 }
 
@@ -42,4 +43,12 @@ private fun getUserWinNumbers() : List<String>{
 private fun getUserBonusNumber(userWinNumbers: List<String>) : String {
     println(userBonusNumberInputMsg)
     return UserBonusNumber(userWinNumbers, Console.readLine()).getBonusNumberRegex()
+}
+
+private fun compareRandomAndUserWinNumbers(randomNumbers: List<List<Int>>, userWinNumbers: List<Int>) {
+    val prizeList = mutableListOf<Int>()
+    for (i in randomNumbers) {
+        prizeList.add(Lotto(i).getUserWinNumbers(userWinNumbers))
+    }
+
 }
