@@ -12,4 +12,12 @@ object Exceptions {
             throw IllegalArgumentException("[ERROR] 1000 이상 입력해야 합니다.")
         }
     }
+    fun checkLotto(numbers: List<Int>){
+        if(numbers.any { it !in  1 .. 45 }){
+            throw IllegalArgumentException("[ERROR] 1 ~ 45사이 숫자를 입력해야 합니다.")
+        }
+        if(numbers.toSet().size != numbers.size){
+            throw IllegalArgumentException("[ERROR] 서로 다른 숫자를 입력해야 합니다.")
+        }
+    }
 }

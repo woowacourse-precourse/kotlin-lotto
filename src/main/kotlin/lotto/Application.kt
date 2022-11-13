@@ -5,6 +5,7 @@ fun main() {
     val money = Money()
     val message = Message()
 
+    println(Message.INPUT_MONEY_MASSAGE)
     money.inputMoney()
 
     if (money.money == "ERROR") {
