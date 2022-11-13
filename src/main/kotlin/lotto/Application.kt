@@ -74,3 +74,11 @@ fun arrangePublishNums(publishNums : List<Int>) : List<Int>{
     val arrangedNums = publishNums.sorted()
     return arrangedNums
 }
+
+//6-1. 당첨 숫자를 게산하는 함수 생성
+fun getWinCount(publishNums: List<Int>, winNums : List<Int>) : Int{
+    var winCount = 0
+    val commonNums = publishNums.filter { it in winNums.map { item -> item } }
+    winCount = commonNums.size
+    return winCount
+}
