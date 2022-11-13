@@ -8,7 +8,7 @@ import utils.Messages.BUY_AMOUNT_MESSAGE
 import java.util.Arrays
 
 class LottoGame {
-
+//
 //    fun buyPriceInquireMessage() {
 //        println(BUY_PRICE_INQUIRE_MESSAGE)
 //    }
@@ -25,15 +25,15 @@ class LottoGame {
 //        }
 //        return true
 //    }
+//
+//    fun resultRightLotto (flag: Boolean) {
+//        if (!flag) throw IllegalArgumentException(ERROR_PREFIX_MESSAGE+ERROR_LOTTO_INPUT)
+//    }
 
-    fun resultRightLotto (flag: Boolean) {
-        if (!flag) throw IllegalArgumentException(ERROR_PREFIX_MESSAGE+ERROR_LOTTO_INPUT)
+    fun tellNumOfLotto(numOfLotto: Int) {
+        println("$numOfLotto"+BUY_AMOUNT_MESSAGE)
     }
 
-//    fun tellNumOfLotto(numOfLotto: Int) {
-//        println("$numOfLotto"+BUY_AMOUNT_MESSAGE)
-//    }
-//
 //    fun generateRandomLottos(numOfLotto: Int): MutableList<Int> {
 //        val lottos = mutableListOf<Int>()
 //        for (i in 0..numOfLotto){
