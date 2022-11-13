@@ -50,6 +50,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `숫자 출력 형태 테스트`(){
+        assertThat(getPriceFormat(999)).isEqualTo("999원")
+        assertThat(getPriceFormat(999999)).isEqualTo("999,999원")
+        assertThat(getPriceFormat(999999999)).isEqualTo("999,999,999원")
+    }
+
     override fun runMain() {
         main()
     }
