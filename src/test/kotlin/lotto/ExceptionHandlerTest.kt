@@ -17,4 +17,26 @@ class ExceptionHandlerTest {
         val result = ExceptionHandler.isDivideBy1000(money)
         assertThat(result).isEqualTo(true)
     }
+
+    @Test
+    fun `숫자로 이루어져있는지 1000원으로 나누어떨어지는지 예외 확인1`() {
+        val money = "1234"
+        val result = ExceptionHandler.checkInputMoney(money)
+        assertThat(result).isEqualTo(false)
+    }
+
+    @Test
+    fun `숫자로 이루어져있는지 1000원으로 나누어떨어지는지 예외 확인2`() {
+        val money = "a123"
+        val result = ExceptionHandler.checkInputMoney(money)
+        assertThat(result).isEqualTo(false)
+    }
+
+    @Test
+    fun `숫자로 이루어져있는지 1000원으로 나누어떨어지는지 예외 확인3`() {
+        val money = "10000"
+        val result = ExceptionHandler.checkInputMoney(money)
+        assertThat(result).isEqualTo(true)
+    }
+
 }
