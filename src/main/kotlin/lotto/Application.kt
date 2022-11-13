@@ -5,7 +5,7 @@ import lotto.view.*
 
 fun main() {
     val amount = inputPurchaseAmount().checkNull()
-    val tickets = purchaseLottos(amount)
+    val tickets = purchaseTickets(amount)
     val winningLotto = registerWinningLotto()
     val (resultRank, totalPrize) = Purchaser().calculateResult(winningLotto, tickets)
 
@@ -13,7 +13,7 @@ fun main() {
     printRateOfReturn((totalPrize * 10000 / (amount) / 100.0F))
 }
 
-fun purchaseLottos(amount: Int): List<Lotto> {
+fun purchaseTickets(amount: Int): List<Lotto> {
     val tickets = Purchaser().purchase(amount)
     printNumberOfTickets(tickets.size)
     printNumbersOfLottos(tickets)
