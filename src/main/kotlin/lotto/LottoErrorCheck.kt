@@ -43,8 +43,8 @@ object LottoErrorCheck {
             throw IllegalArgumentException("[ERROR] 로또 번호는 1~45사이의 숫자여야 합니다.")
     }
 
-    fun bonusballcheck(checklotto: List<Int>, bonusnumber: Int){
-        require(!checklotto.contains(bonusnumber)){"[ERROR] 보너스는 당첨번호에 없어야합니다."}
+    fun bonusballcheck(checklotto: List<Int>, bonusnumber: Int) {
+        require(!checklotto.contains(bonusnumber)) { "[ERROR] 보너스는 당첨번호에 없어야합니다." }
     }
 
 }

@@ -84,12 +84,12 @@ class LottoGame {
         println("보너스 번호를 입력해 주세요.")
     }
 
-    private fun getbonusnumber(userlotto : List<Int>) {
+    private fun getbonusnumber(userlotto: List<Int>) {
         messagetogiveuserbonus()
         val tempbonus = Console.readLine()
         LottoErrorCheck.checkinputisnumber(tempbonus)
         LottoErrorCheck.checknumberisinlottorange(tempbonus.toInt())
-        LottoErrorCheck.bonusballcheck(userlotto,tempbonus.toInt())
+        LottoErrorCheck.bonusballcheck(userlotto, tempbonus.toInt())
         bonusnumber = tempbonus.toInt()
     }
 
@@ -137,7 +137,7 @@ class LottoGame {
     private fun printyield() {
         val lottoyield: Double = (RANK_5TH_REWARD * checkprize[0] + RANK_4TH_REWARD * checkprize[1]
                 + RANK_3RD_REWARD * checkprize[2] + RANK_2ND_REWARD * checkprize[3]
-                + RANK_1ST_REWARD * checkprize[4]) / (money.toDouble()*100)
+                + RANK_1ST_REWARD * checkprize[4]) / (money.toDouble() * 100)
         println("총 수익률은" + String.format("%.1f", lottoyield) + "%입니다.")
 
     }
