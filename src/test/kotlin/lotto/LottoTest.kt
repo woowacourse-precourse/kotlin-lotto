@@ -1,5 +1,6 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
@@ -26,18 +27,27 @@ class LottoTest : NsTest(){
 
     // 아래에 추가 테스트 작성 가능
 
+    /** 유저가 입력하는 로또 투입금액 에러 테스트 **/
     @Test
-    fun `문자가 포함된 입력값이 있으면 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> {
-            runException("10,000")
+    fun `사용자 입력 값에 아무것도 입력되지 않을 경우 예외가 발생한다`() {
+        assertSimpleTest {
+            UserInputPrice("").checkUserInputPriceRegexAndTranslateToInt()
             Assertions.assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
 
     @Test
-    fun `입력값이 1000으로 나누어 떨어지지 않을 경우 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> {
-            runException("14500")
+    fun `사용자 입력 값에 문자열이 포함될 경우 예외가 발생한다`() {
+        assertSimpleTest {
+            UserInputPrice("10r00").checkUserInputPriceRegexAndTranslateToInt()
+            Assertions.assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `사용자 입력 값이 로또 가격으로 나누어 떨어지지 않을 경우 예외가 발생한다`() {
+        assertSimpleTest {
+            UserInputPrice("1200").checkUserInputPriceRegexAndTranslateToInt()
             Assertions.assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
