@@ -15,7 +15,7 @@ fun readPaidMoney(): Int {
         paidMoney
     } catch (e: Exception) {
         showError(e)
-        throw IllegalArgumentException()
+        throw NoSuchElementException()
     }
 }
 
