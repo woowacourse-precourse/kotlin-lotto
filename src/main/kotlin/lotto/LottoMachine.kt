@@ -7,7 +7,7 @@ class LottoMachine {
     private var numberOfLotto: Int = 0
     private var bonusNumber = 0
     private lateinit var rankCount: List<Int>
-    private var prizeMoney = 0
+    private var prizeMoney = 0.0
 
     fun start() {
         val paymentInput = View.getPaymentAmount()
@@ -27,8 +27,8 @@ class LottoMachine {
         bonusNumber = View.getBonusNumber().toInt()
         checkBonusNumberException(winningLotto, bonusNumber)
 
-        rankCount = listOf(0, 0, 0, 0, 0)
-        prizeMoney = 0
+        calculateResult(lottos, winningLotto)
+        val earningsRate = getEarningsRate()
     }
 
     fun getNumberOfLottos(payment: String): Int {
@@ -65,8 +65,10 @@ class LottoMachine {
         }
     }
 
-    fun calculateResult() {
-        TODO()
+    fun calculateResult(lottos: List<Lotto>, winningLotto: Lotto) {
+        rankCount = listOf(0, 0, 0, 0, 0)
+        prizeMoney = 0.0
+        lottos.forEach { calculateLottoResult(it, winningLotto) }
     }
 
     fun calculateLottoResult(lotto: Lotto, winningLotto: Lotto) {
@@ -85,8 +87,8 @@ class LottoMachine {
         }
     }
 
-    fun getEarningsRate(): Double {
-        TODO()
+    fun getEarningsRate(): String {
+        return String.format("%.1f", prizeMoney / (numberOfLotto * 1000.0))
     }
 
 }
