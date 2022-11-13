@@ -13,6 +13,14 @@ class LottoStaff() {
         return Lotto(numbers.sorted())
     }
 
+    fun generateLotteries(lottoCount:Int):List<Lotto>{
+        val lotteries= mutableListOf<Lotto>()
+        for (i in 0 until lottoCount){
+            lotteries.add(generateLotto())
+        }
+        return lotteries
+    }
+
     fun countMatchingNumber(lottoNumbers: List<Int>, winningNumbers: List<Int>): Int {
         var count = 0
         lottoNumbers.forEach { number ->
