@@ -37,16 +37,20 @@ class LottoGame {
         println("$numOfLotto"+BUY_AMOUNT_MESSAGE)
     }
 
-    fun generateRandomLottos(numOfLotto: Int): MutableList<Int> {
+    fun generateRandomLottos(numOfLotto: Int): MutableList<List<Int>> {
         val lottos = mutableListOf<Int>()
+        var doubleLottos = mutableListOf<List<Int>>()
         for (i in 0..numOfLotto){
             val pickLottoNums = Randoms.pickUniqueNumbersInRange(1, 45, 6)
             lottos.addAll(pickLottoNums)
         }
-        return lottos
+        doubleLottos = lottos.chunked(6).toMutableList()
+        return doubleLottos
     }
-    fun showEachLotto(lottos: MutableList<Int>): MutableList<Int> {
-        val sublottos : MutableList<Int> = lottos.subList(FROM_INDEX, END_INDEX)
-        return sublottos
+
+    fun printEachLotto(doubleLottos: MutableList<List<Int>>){
+        for (i in 0..doubleLottos.size) {
+            println(doubleLottos[i])
+        }
     }
 }
