@@ -91,13 +91,12 @@ class LottoGame {
     }
 
     fun checkinputBonus(inputBonus: String): Boolean {
-        if (inputBonus.length != 1) throw IllegalArgumentException(ERROR_PREFIX_MESSAGE+ERROR_BONUS_ONE)
+        if (inputBonus.length != 1 && inputBonus.length != 2) throw IllegalArgumentException(ERROR_PREFIX_MESSAGE+ERROR_BONUS_ONE)
         // 같은 숫자가 있는 지 체크하는 로직 추가
         return true
     }
 
-    fun printStats(){
-        val winList = mutableListOf<Int>()
+    fun printStats(winList: MutableList<Int>){
         println(STATICS_TITLE_MESSAGE)
         println(STATICS_SPLITTER_MESSAGE)
         println(FIFTH_RANK_MESSAGE+winList[0]+STATICS_COUNT_MESSAGE)
@@ -108,10 +107,28 @@ class LottoGame {
         println(STATICS_REVENUE_MESSAGE) // 여기에 수익률 수치 넣기
     }
 
-    fun computeRank(doubleLottos: MutableList<List<Int>>) {
-        val winList = mutableListOf<Int>()
-        for (i in 0 until doubleLottos.size) {
-            TODO()
-        }
-    }
+//    fun computeRank(
+//        doubleLottos: MutableList<List<Int>>,
+//        answerNumbers: MutableList<Int>,
+//        bonusNumber: Int): MutableList<Int> {
+//        val winList = mutableListOf<Int>()
+//        val answerString = answerNumbers.toString()
+//        var count = 0
+//        for (i in 0 until doubleLottos.size) {
+//            if (answerString.contains(doubleLottos[i].toString())){
+//                println("answerString: $answerString")
+//                println("doubleLottos[i]: $doubleLottos[i]")
+//                count += 1
+//                println("count: $count")
+//            }
+//            when ((count >= 3)) {
+//                (count == 3) -> winList[0] += 1
+//                (count == 4) -> winList[1] += 1
+//                (count == 5) -> winList[2] += 1
+//                (count == 5 && (answerNumbers.contains(bonusNumber))) -> winList[3] += 1
+//                else -> winList[4] += 1
+//            }
+//        }
+//        return winList
+//    }
 }
