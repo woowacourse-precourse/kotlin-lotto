@@ -1,8 +1,5 @@
 package lotto.domain
 
-import java.text.DecimalFormat
-
-
 class Judgement(
     private val computerNumber: List<Lotto>,
     private val userWinningNumber: Lotto,
@@ -56,11 +53,11 @@ class Judgement(
         }
     }
 
-    fun statistics(): String {
+    fun statistics(): Double {
         val totalPrize =
             (winningAmount[0] * winningCount[0]) + (winningAmount[1] * winningCount[1]) + (winningAmount[2] * winningCount[2]) + (winningAmount[3] * winningCount[3]) + (winningAmount[4] * winningCount[4])
         val amount = computerNumber.size * Lotto.Information.PRICE.number
-        val decimal = DecimalFormat("#,##0.0%")
-        return decimal.format((totalPrize.toDouble() / amount.toDouble()))
+
+        return (totalPrize.toDouble() / amount.toDouble())
     }
 }

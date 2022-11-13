@@ -6,6 +6,7 @@ import lotto.domain.Judgement
 import lotto.domain.Lotto
 import lotto.view.ConsoleMessage
 import lotto.view.UserNumber
+import java.text.DecimalFormat
 import java.util.stream.Collectors
 
 class LottoController {
@@ -65,8 +66,9 @@ class LottoController {
 
     private fun judgeNumber() {
         val compareUserAndComputer = Judgement(computerNumber, userWinningNumber, userBonusNumber)
+        val decimal = DecimalFormat("#,##0.0%")
         message.winningResult(compareUserAndComputer.calculate())
-        message.winningTotalRevenue(compareUserAndComputer.statistics())
+        message.winningTotalRevenue(decimal.format(compareUserAndComputer.statistics()))
     }
 
     private fun numberValidation(amount: String): Boolean {
