@@ -40,4 +40,18 @@ object ResultExtractor {
             println(msg)
         }
     }
+
+        fun calcProfit(money: Double, extractedResult: Map<LottoStatus, Int>): Double {
+        val lottoPrices =
+            arrayOf(0, FIFTH_PLACE_PRICE, FOURTH_PLACE_PRICE, THIRD_PLACE_PRICE, SECOND_PLACE_PRICE, FIRST_PLACE_PRICE)
+        var totalPrice: Double = 0.00
+
+        extractedResult.forEach { eachLottoResult ->
+            repeat(eachLottoResult.value) {
+                totalPrice += lottoPrices[eachLottoResult.key.ordinal]
+            }
+        }
+
+        return totalPrice * 100 / money
+    }
 }
