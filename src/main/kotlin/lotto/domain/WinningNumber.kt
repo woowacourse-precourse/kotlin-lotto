@@ -18,21 +18,21 @@ class WinningNumber(_winning: String) {
         try {
             winnings.add(it.toInt())
         } catch (exception: NumberFormatException) {
-            ErrorMessage.intError(Constant.WINNING_NUMBER)
+            ErrorMessage.integer(Constant.WINNING_NUMBER)
         }
     }
 
     fun validateSize(winnings: List<Int>) = require(winnings.size == Constant.LOTTO_COUNT) {
-        ErrorMessage.sizeError(Constant.WINNING_NUMBER)
+        ErrorMessage.size(Constant.WINNING_NUMBER)
     }
 
     fun validateRange(winnings: List<Int>) {
         val count = winnings.filter { it in Constant.START_LOTTO_RANGE..Constant.END_LOTTO_RANGE }.size
-        require(count == Constant.LOTTO_COUNT) { ErrorMessage.rangeError(Constant.WINNING_NUMBER) }
+        require(count == Constant.LOTTO_COUNT) { ErrorMessage.range(Constant.WINNING_NUMBER) }
     }
 
     fun validateDuplication(winnings: List<Int>) = require(winnings.distinct().size == Constant.LOTTO_COUNT) {
-        ErrorMessage.duplicateError(Constant.WINNING_NUMBER)
+        ErrorMessage.duplicate(Constant.WINNING_NUMBER)
     }
 
     fun getWinningNumber() = winnings

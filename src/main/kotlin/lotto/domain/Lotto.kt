@@ -11,11 +11,11 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     private fun validateSize() = require(numbers.size == Constant.LOTTO_COUNT) {
-        ErrorMessage.sizeError(Constant.LOTTO_NUMBER)
+        ErrorMessage.size(Constant.LOTTO_NUMBER)
     }
 
     private fun validateDuplication() = require(numbers.distinct().size == Constant.LOTTO_COUNT) {
-        ErrorMessage.duplicateError(Constant.LOTTO_NUMBER)
+        ErrorMessage.duplicate(Constant.LOTTO_NUMBER)
     }
 
     fun getLottoNumber() = numbers.sorted()

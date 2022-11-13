@@ -11,7 +11,7 @@ class Constant {
         const val BONUS_NUMBER = "보너스 번호는 "
         const val WINNING_NUMBER = "당첨 번호는 "
         const val SPLIT_WINNING_NUMBER = ","
-        const val ZERO = 0
+        const val REMAINDER = 0
         const val THREE_MATCH = 3
         const val FOUR_MATCH = 4
         const val FIVE_MATCH = 5

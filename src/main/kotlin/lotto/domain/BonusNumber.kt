@@ -18,17 +18,17 @@ class BonusNumber(_winning: List<Int>, _bonus: String) {
         bonus = try {
             winningNumber.toInt()
         } catch (exception: NumberFormatException) {
-            ErrorMessage.intError(Constant.BONUS_NUMBER)
+            ErrorMessage.integer(Constant.BONUS_NUMBER)
             throw IllegalArgumentException()
         }
     }
 
     fun validateRange(bonusNumber: Int) = require(bonusNumber in Constant.START_LOTTO_RANGE..Constant.END_LOTTO_RANGE) {
-        ErrorMessage.rangeError(Constant.BONUS_NUMBER)
+        ErrorMessage.range(Constant.BONUS_NUMBER)
     }
 
     fun validateDuplication(winningNumber: List<Int>, bonusNumber: Int) = require(bonusNumber !in winningNumber) {
-        ErrorMessage.duplicateError(Constant.BONUS_NUMBER)
+        ErrorMessage.duplicate(Constant.BONUS_NUMBER)
     }
 
     fun getBonusNumber() = bonus

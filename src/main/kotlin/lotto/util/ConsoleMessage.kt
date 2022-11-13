@@ -13,8 +13,10 @@ class ConsoleMessage {
         fun enterBonusNumber() = println("\n보너스 번호를 입력해 주세요.")
 
         fun winningHistory(ranks: List<Int>) {
-            println("\n당첨 통계" +
-                    "\n---")
+            println(
+                "\n당첨 통계" +
+                        "\n---"
+            )
             Rank.values().forEach { index ->
                 println("${index.message} ${ranks[index.rank]}개")
             }

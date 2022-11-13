@@ -19,13 +19,15 @@ class LottoMachine(amount: String) {
             it in '0'..'9'
         }
         require(typeCount.length == amount.length) {
-            ErrorMessage.intError(Constant.LOTTO_AMOUNT)
+            ErrorMessage.integer(Constant.LOTTO_AMOUNT)
         }
     }
 
-    fun validateRemainder(amount: String) = require(amount.toInt() % Constant.LOTTO_PRICE == Constant.ZERO) {
-        ErrorMessage.unitError(Constant.LOTTO_AMOUNT)
+    fun validateRemainder(amount: String) = require(amount.toInt() % Constant.LOTTO_PRICE == Constant.REMAINDER) {
+        ErrorMessage.unit(Constant.LOTTO_AMOUNT)
     }
+
+    private fun calculateLottoCount(amount: String) = amount.toInt() / Constant.LOTTO_PRICE
 
     fun pickNewLottery(count: Int) {
         for (index in 0 until count) {
@@ -36,14 +38,12 @@ class LottoMachine(amount: String) {
         }
     }
 
-    private fun calculateLottoCount(amount: String) = amount.toInt() / Constant.LOTTO_PRICE
-
     fun getLottoCount() = lottoCount
 
     fun getLottery() = lottery
 
     fun getRanks(winningNumber: List<Int>, bonusNumber: Int): List<Int> {
-        val ranks = MutableList(6) { 0 }
+        val ranks = MutableList(Constant.LOTTO_COUNT) { 0 }
         lottery.forEach {
             val rankIndex = it.checkWinning(winningNumber, bonusNumber)
             ranks[rankIndex]++
