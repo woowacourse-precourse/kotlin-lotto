@@ -1,10 +1,15 @@
 package lotto.domain
 
-class Lotto(numbers: List<Int>) {
+class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6) { LOTTO_SIZE_EXCEPTION }
         require(numbers.distinct().size == 6) { LOTTO_DUPLICATE_EXCEPTION }
         require(numbers.all { it in 1..45 }) { LOTTO_RANGE_EXCEPTION }
+    }
+
+    override fun toString(): String {
+        val sortedNumbers = numbers.sorted()
+        return sortedNumbers.joinToString(", ")
     }
 
     companion object {
