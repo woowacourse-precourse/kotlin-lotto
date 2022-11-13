@@ -21,12 +21,17 @@ class Lotto(private val numbers: List<Int>) {
         println()
     }
 
-    fun winningStatistics(winningNumber: List<Int>) {
+    fun winningStatistics(winningNumber: List<Int>, bonusNumber: Int) {
         saveRandomNumber.forEach {
             var cnt = 0
             for (i in winningNumber.indices) {
                 if (it.contains(winningNumber[i])) {
                     cnt++
+                }
+            }
+            if (cnt == 5) {
+                if (it.contains(bonusNumber)) {
+                    cnt = 7
                 }
             }
             countNumber.add(cnt)
