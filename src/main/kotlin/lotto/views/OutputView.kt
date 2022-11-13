@@ -20,4 +20,8 @@ object OutputView {
             println(lotto.getNumbers())
         }
     }
+
+    fun printInputWinningNumbers(){
+        println(Message.MESSAGE_INPUT_WINNING_NUMBERS)
+    }
 }
