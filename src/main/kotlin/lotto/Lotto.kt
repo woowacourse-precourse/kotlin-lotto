@@ -7,17 +7,22 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.size == 6)
     }
 
-    fun createNumber() {
+    private val numberHashMap: HashMap<Int, List<Int>> = HashMap()
+
+    fun createNumber(): List<Int> {
         val purchase = Purchase()
         val lottoQuantity = purchase.createExpense()
-        for (item in 0 until lottoQuantity) {
-            val numberList = Randoms.pickUniqueNumbersInRange(START_NUMBER_ONE,
-                END_NUMBER_FORTY_FIVE,
-                numbers.size)
-            val sortedNumberList = numberList.sorted()
-            println(sortedNumberList)
-        }
+        val winningNumber = createWinningNumber()
+        val bonusNumber = createBonusNumber()
 
+        for (item in 0 until lottoQuantity) {
+            val numberList = Randoms.pickUniqueNumbersInRange(START_NUMBER_ONE, END_NUMBER_FORTY_FIVE, numbers.size)
+            numberHashMap[item] = numberList.sorted()
+        }
+        numberHashMap.forEach { (_, value) -> println(value) }
+        return numberHashMap.map { (_, value) ->
+            updateMatchCount(value, winningNumber, bonusNumber)
+        }
     }
 
     fun checkNumber() {
@@ -44,21 +49,19 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     // 맞은 갯수 배출하는 기능
-    fun updateMatchCount(userNumber: List<Int>): Int {
-        val winningNumber = listOf(1, 2, 3, 4, 5, 6)
-        val bonusNumber = 7
-        var count = 0
-        // 일치하는 숫자가 있으면 증가
+    fun updateMatchCount(userNumber: List<Int>, winningNumber: List<Int>, bonusNumber: Int): Int {
+        var count = NONE_MATCH
         for (item in userNumber.indices) {
             if (winningNumber.contains(userNumber[item])) count++
         }
-        // 2등을 가르기 위해서 5개를 맞추고 보너스 넘버까지 맞추었을 때
-        if (count == 5 && userNumber.contains(bonusNumber)) count += 2
-
+        if (count == FIVE_MATCH && userNumber.contains(bonusNumber)) count += TWO
         return count
-
     }
 }
 
 const val START_NUMBER_ONE = 1
 const val END_NUMBER_FORTY_FIVE = 45
+
+const val NONE_MATCH = 0
+const val FIVE_MATCH = 5
+const val TWO = 2
