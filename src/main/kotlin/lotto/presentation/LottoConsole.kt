@@ -20,11 +20,13 @@ object LottoConsole {
     }
 
     fun printPurchaseResult(lottos: List<Lotto>) {
+        printEnter()
         printPurchasedLottoCount(lottos.size)
         printPurchasedLottos(lottos)
     }
 
     fun printWinningLottoEnterMessage() {
+        printEnter()
         println(WINNING_LOTTO_ENTER_MESSAGE)
     }
 
@@ -37,6 +39,7 @@ object LottoConsole {
     }
 
     fun printBonusNumberEnterMessage() {
+        printEnter()
         println(BONUS_NUMBER_ENTER_MESSAGE)
     }
 
@@ -48,6 +51,7 @@ object LottoConsole {
     }
 
     fun printLottoStatics(lottoRanks: LottoRanks, earned: Money, investment: Money) {
+        printEnter()
         println(LOTTO_STATIC_MESSAGE)
         printMatchingLotto(lottoRanks)
         printYieldRate(earned, investment)
@@ -71,4 +75,6 @@ object LottoConsole {
     private fun printPurchasedLottos(lottos: List<Lotto>) {
         lottos.forEach { lotto -> println(lotto) }
     }
+
+    private fun printEnter() = println()
 }
