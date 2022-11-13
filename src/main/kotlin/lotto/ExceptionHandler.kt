@@ -16,4 +16,12 @@ object ExceptionHandler {
             throw IllegalArgumentException("[ERROR] 숫자만 입력하세요")
         }
     }
+
+    fun checkNumbers(): List<Int> {
+        try {
+            return Console.readLine()!!.split(",").map { it.toInt() }
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException("[ERROR] 숫자만 입력하세요")
+        }
+    }
 }
