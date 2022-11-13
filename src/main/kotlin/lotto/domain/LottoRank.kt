@@ -1,0 +1,14 @@
+package lotto.domain
+
+import lotto.utils.*
+
+enum class LottoRank(
+    val message: String
+) {
+    NO_LUCK(LOTTO_NO_LUCK_MESSAGE),
+    FIRST(LOTTO_FIRST_RANK_MESSAGE),
+    SECOND(LOTTO_SECOND_RANK_MESSAGE),
+    THIRD(LOTTO_THIRD_RANK_MESSAGE),
+    FOURTH(LOTTO_FOURTH_RANK_MESSAGE),
+    FIFTH(LOTTO_FIFTH_RANK_MESSAGE);
+}
