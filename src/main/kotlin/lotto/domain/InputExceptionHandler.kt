@@ -1,6 +1,6 @@
 package lotto.domain
 
-object ExceptionHandler {
+object InputExceptionHandler {
     private const val PURCHASING_AMOUNT_EXCEPTION_MESSAGE = "[ERROR] 구입금액이 올바르지 않습니다."
     private const val WINNING_NUMBERS_EXCEPTION_MESSAGE = "[ERROR] 당첨번호가 올바르지 않습니다."
     private const val BONUS_NUMBER_EXCEPTION_MESSAGE = "[ERROR] 보너스 번호가 올바르지 않습니다."

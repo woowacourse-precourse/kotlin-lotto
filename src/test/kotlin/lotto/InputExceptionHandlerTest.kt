@@ -1,11 +1,11 @@
 package lotto
 
-import lotto.domain.ExceptionHandler
+import lotto.domain.InputExceptionHandler
 import lotto.domain.Lotto
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
-class ExceptionHandlerTest {
+class InputExceptionHandlerTest {
     companion object {
         const val PURCHASING_AMOUNT_HAS_REMAINDER = "14001"
         const val PURCHASING_AMOUNT_IS_NOT_NUMBER = "abcd1"
@@ -24,63 +24,63 @@ class ExceptionHandlerTest {
     @Test
     fun `구입 금액 예외처리 - 1000원으로 나누어 떨어지지 않을 때`() {
         assertThrows<IllegalArgumentException> {
-            ExceptionHandler.checkInputPurchasingAmount(Companion.PURCHASING_AMOUNT_HAS_REMAINDER)
+            InputExceptionHandler.checkInputPurchasingAmount(Companion.PURCHASING_AMOUNT_HAS_REMAINDER)
         }
     }
 
     @Test
     fun `구입 금액 예외처리 - 숫자가 아닐 때`() {
         assertThrows<IllegalArgumentException> {
-            ExceptionHandler.checkInputPurchasingAmount(Companion.PURCHASING_AMOUNT_IS_NOT_NUMBER)
+            InputExceptionHandler.checkInputPurchasingAmount(Companion.PURCHASING_AMOUNT_IS_NOT_NUMBER)
         }
     }
 
     @Test
     fun `당첨번호 예외처리 - 숫자가 아닐 때`() {
         assertThrows<IllegalArgumentException> {
-            ExceptionHandler.checkInputWinningNumbers(Companion.WINNING_NUMBERS_IS_NOT_NUMBER)
+            InputExceptionHandler.checkInputWinningNumbers(Companion.WINNING_NUMBERS_IS_NOT_NUMBER)
         }
     }
 
     @Test
     fun `당첨번호 예외처리 - 요소 수가 6개가 아닐 때`() {
         assertThrows<IllegalArgumentException> {
-            ExceptionHandler.checkInputWinningNumbers(Companion.WINNING_NUMBERS_HAS_NOT_ELEMENTS)
+            InputExceptionHandler.checkInputWinningNumbers(Companion.WINNING_NUMBERS_HAS_NOT_ELEMENTS)
         }
     }
 
     @Test
     fun `당첨번호 예외처리 - 로또 범위 내 숫자가 아닐 때`() {
         assertThrows<IllegalArgumentException> {
-            ExceptionHandler.checkInputWinningNumbers(Companion.WINNING_NUMBERS_IS_NOT_CORRECT_RANGE)
+            InputExceptionHandler.checkInputWinningNumbers(Companion.WINNING_NUMBERS_IS_NOT_CORRECT_RANGE)
         }
     }
 
     @Test
     fun `당첨번호 예외처리 - 중복이 있을 때`() {
         assertThrows<IllegalArgumentException> {
-            ExceptionHandler.checkInputWinningNumbers(Companion.WINNING_NUMBERS_IS_NOT_UNIQUE)
+            InputExceptionHandler.checkInputWinningNumbers(Companion.WINNING_NUMBERS_IS_NOT_UNIQUE)
         }
     }
 
     @Test
     fun `보너스 번호 예외처리 - 숫자가 아닐 때`() {
         assertThrows<IllegalArgumentException> {
-            ExceptionHandler.checkInputBonusNumber(TEST_WINNING_NUMBER, BONUS_NUMBER_IS_NOT_NUMBER)
+            InputExceptionHandler.checkInputBonusNumber(TEST_WINNING_NUMBER, BONUS_NUMBER_IS_NOT_NUMBER)
         }
     }
 
     @Test
     fun `보너스 번호 예외처리 - 로또 범위 내 숫자가 아닐 때`() {
         assertThrows<IllegalArgumentException> {
-            ExceptionHandler.checkInputBonusNumber(TEST_WINNING_NUMBER, BONUS_NUMBER_IS_NOT_CORRECT_RANGE)
+            InputExceptionHandler.checkInputBonusNumber(TEST_WINNING_NUMBER, BONUS_NUMBER_IS_NOT_CORRECT_RANGE)
         }
     }
 
     @Test
     fun `보너스 번호 예외처리 - 당첨 번호와 중복이 있을 때`() {
         assertThrows<IllegalArgumentException> {
-            ExceptionHandler.checkInputBonusNumber(TEST_WINNING_NUMBER, BONUS_NUMBER_IS_NOT_UNIQUE)
+            InputExceptionHandler.checkInputBonusNumber(TEST_WINNING_NUMBER, BONUS_NUMBER_IS_NOT_UNIQUE)
         }
     }
 }
