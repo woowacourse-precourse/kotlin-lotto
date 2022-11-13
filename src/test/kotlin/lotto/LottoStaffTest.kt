@@ -4,18 +4,21 @@ import lotto.domain.LottoStaff
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import kotlin.properties.Delegates
 
 
 class LottoStaffTest {
     private lateinit var lottoStaff: LottoStaff
     private lateinit var lottoNumbers: List<Int>
     private lateinit var winningNumbers: List<Int>
+    private var bonusNumber = 0
 
     @BeforeEach
     fun setUp() {
         lottoStaff = LottoStaff()
         winningNumbers = listOf<Int>(1,2,3,4,5,6)
         lottoNumbers = listOf<Int>(3,5,7,9,11,13)
+        bonusNumber = 3
     }
 
     @Test
@@ -27,4 +30,11 @@ class LottoStaffTest {
     fun `몇개 번호 일치하는지 확인하는 테스트`(){
         assertThat(lottoStaff.countMatchingNumber(lottoNumbers,winningNumbers)).isEqualTo(2)
     }
+
+    @Test
+    fun `보너스 번호가 일치하는지 확인하는 테스트`(){
+        assertThat(lottoStaff.checkBonusNumber(lottoNumbers,bonusNumber)).isTrue
+    }
+
+
 }
