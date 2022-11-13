@@ -1,9 +1,12 @@
-package lotto
+package lotto.util
 
-object Constant {
+object Constants {
     const val DEFAULT_NUMBER = 0
     const val LOTTO_MIN_NUMBER = 1
     const val LOTTO_MAX_NUMBER = 45
+    const val LOTTO_UNIT_NUMBER = 1_000
+
+    const val WINNING_NUMBER_COUNT = 6
 
     const val THREE_COINCIDE_WINNING_PRIZE_NUMBER = 5_000
     const val FOUR_COINCIDE_WINNING_PRIZE_NUMBER = 50_000
@@ -19,11 +22,12 @@ object Constant {
 
     const val ERROR_MESSAGE_HEADER = "[ERROR] "
     const val ERROR_MESSAGE_BODY_NUMBER_SHOULD_BE_IN_RANGE = "로또 번호는 1부터 45 사이의 숫자여야 합니다."
-    const val TOTAL_PUBLISHED_LOTTO_NUMBER = "%d개를 구매했습니다."
+    const val ERROR_MESSAGE_BODY_NUMBER_SHOULD_BE_DIVIDED_BY_UNIT = "구입 금액은 1,000원 단위로 입력해야 합니다."
+    const val TOTAL_PUBLISHED_LOTTO_NUMBER = "\n%d개를 구매했습니다."
     const val TOTAL_RATE_OF_RETURN = "총 수익률은 %.1f%%입니다."
 
     const val INPUT_PURCHASE_AMOUNT = "구입금액을 입력해 주세요."
-    const val INPUT_WINNING_NUMBER = "당첨 번호를 입력해 주세요."
-    const val INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요."
-    const val WINNING_STATS = "당첨 통계\n---"
+    const val INPUT_WINNING_NUMBER = "\n당첨 번호를 입력해 주세요."
+    const val INPUT_BONUS_NUMBER = "\n보너스 번호를 입력해 주세요."
+    const val WINNING_STATS = "\n당첨 통계\n---"
 }

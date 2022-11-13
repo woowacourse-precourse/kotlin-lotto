@@ -1,5 +1,9 @@
 package lotto
 
+import lotto.view.InputView
+
 fun main() {
-    println(Constant.TOTAL_RATE_OF_RETURN.format(62.99))
+    InputView().inputPurchaseAmount()
+    InputView().inputWinningNumber()
+    InputView().inputBonusNumber()
 }
