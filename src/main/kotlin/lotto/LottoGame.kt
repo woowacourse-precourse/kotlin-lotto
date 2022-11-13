@@ -25,26 +25,17 @@ class LottoGame {
         printresult()
     }
 
-
-    private fun messagetogivemoney() {
-        println("구입금액을 입력해 주세요.")
-    }
-
     private fun getusermoney() {
-        messagetogivemoney()
+        Lotto.messagetogivemoney()
         money = Console.readLine()
     }
 
     private fun makelottonumber() {
         LottoErrorCheck.checkallmoneyerror(money)
         val count = money.toInt() / LOTTO_PRICE
-        printcount(count)
+        Lotto.printcount(count)
         createlottos(count)
-        printlottolist()
-    }
-
-    private fun printcount(count: Int) {
-        println("$count" + "개를 구입했습니다.")
+        Lotto.printlottolist(lottos.toList())
     }
 
     private fun createlottos(count: Int) {
@@ -53,19 +44,8 @@ class LottoGame {
             lottos.add(numbers)
         }
     }
-
-    private fun printlottolist() {
-        for (number: Int in 0 until lottos.size) {
-            println(lottos[number])
-        }
-    }
-
-    private fun messagetogiveuserlotto() {
-        println("당첨 번호를 입력해 주세요.")
-    }
-
     private fun getuserlotto(): List<Int> {
-        messagetogiveuserlotto()
+        Lotto.messagetogiveuserlotto()
         val userinput = Console.readLine()
         val userinputparsing = userinput.split(",")
         val userinputnumber = mutableListOf<Int>()
@@ -79,12 +59,9 @@ class LottoGame {
 
     }
 
-    private fun messagetogiveuserbonus() {
-        println("보너스 번호를 입력해 주세요.")
-    }
 
     private fun getbonusnumber(userlotto: List<Int>) {
-        messagetogiveuserbonus()
+        Lotto.messagetogiveuserbonus()
         val tempbonus = Console.readLine()
         LottoErrorCheck.checkinputisnumber(tempbonus)
         LottoErrorCheck.checknumberisinlottorange(tempbonus.toInt())
@@ -93,10 +70,10 @@ class LottoGame {
     }
 
     private fun checklotto(userlotto: List<Int>) {
-        val checklotto = Lotto(userlotto)
+        Lotto(userlotto)
         getbonusnumber(userlotto)
         for (number: Int in 0 until lottos.size) {
-            val rank = checklotto.lottocheck(userlotto, lottos[number])
+            val rank = Lotto.lottocheck(userlotto, lottos[number])
             val itdonothitfivenumber = prizecheck(rank)
             if (!itdonothitfivenumber && lottos[number].contains(bonusnumber))
                 checkprize[3] += 1
@@ -120,26 +97,11 @@ class LottoGame {
     }
 
     private fun printresult() {
-        printprize()
-        printyield()
-    }
-
-    private fun printprize() {
-        println("당첨 통계")
-        println("---")
-        println("3개 일치 (5,000원) - ${checkprize[0]}개")
-        println("4개 일치 (50,000원) - ${checkprize[1]}개")
-        println("5개 일치 (1,500,000원) - ${checkprize[2]}개")
-        println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${checkprize[3]}개")
-        println("6개 일치 (2,000,000,000원) - ${checkprize[4]}개")
-    }
-
-    private fun printyield() {
+        Lotto.printprize(checkprize.toList())
         val lottoyield: Double = ((RANK_5TH_REWARD * checkprize[0] + RANK_4TH_REWARD * checkprize[1]
                 + RANK_3RD_REWARD * checkprize[2] + RANK_2ND_REWARD * checkprize[3]
                 + RANK_1ST_REWARD * checkprize[4]) / money.toDouble()) * 100
-        println("총 수익률은" + String.format("%.1f", lottoyield) + "%입니다.")
-
+        Lotto.printyield(lottoyield)
     }
 
 }

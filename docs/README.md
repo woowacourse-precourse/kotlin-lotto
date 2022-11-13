@@ -31,5 +31,6 @@
 4. 단위 테스트 구현
 5. 도메인 로직에 단위 테스트 구현??? 아직 무슨 의미인지 이해못함.
 6. 테스트 두 가지 통과하기
-   a. try catch로 printtrace -실패
-   b. try catch로 println -실패
+   - try catch로 printtrace -실패 
+   - try catch로 println -실패
+   - output()은 무엇인가?
