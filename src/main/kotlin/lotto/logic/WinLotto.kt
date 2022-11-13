@@ -21,4 +21,20 @@ class WinLotto {
     private fun isContainBonusNum(lotto: List<Int>, bonusNum: Int): Boolean{
         return lotto.contains(bonusNum)
     }
+
+    private fun addToRankResult(cntSame: Int, rankResult2: MutableMap<Rank, Int>, isBonus: Boolean): MutableMap<Rank, Int>{
+        when(cntSame){
+            3 -> rankResult2[Rank.Fifth] = rankResult2[Rank.Fifth]!! + 1
+            4 -> rankResult2[Rank.Fourth] = rankResult2[Rank.Fourth]!! + 1
+            5 -> {
+                if(!isBonus)
+                    rankResult2[Rank.Third] = rankResult2[Rank.Third]!! + 1
+                else
+                    rankResult2[Rank.Second] = rankResult2[Rank.Second]!! + 1
+            }
+            6 -> rankResult2[Rank.First] = rankResult2[Rank.First]!! + 1
+        }
+
+        return rankResult2
+    }
 }
