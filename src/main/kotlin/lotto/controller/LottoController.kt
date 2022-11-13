@@ -3,6 +3,7 @@ package lotto.controller
 import lotto.domain.Lotto
 import lotto.domain.LottoGenerator
 import lotto.domain.Lottos
+import lotto.domain.WinningLotto
 import lotto.view.LottoView
 
 class LottoController {
@@ -13,8 +14,8 @@ class LottoController {
         val inputMoney = getInputMoney()
         val numberOfIssueLotto = numberOfLotto(inputMoney)
         val issuedLottoList = issueLottos(numberOfIssueLotto)
-        val winningLottoNumber = lottoView.getWinningLotto()
-        val winnigLotto = Lotto(winningLottoNumber)
+        val inputWinningLottoNumber = lottoView.getWinningLotto()
+        val winningLottoNumList = Lotto(inputWinningLottoNumber)
         val bonusNumber = getBonusNumber()
     }
 
