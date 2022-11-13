@@ -20,7 +20,7 @@ const val ERROR_INPUT_VALUE_SIX_ONLY = "[ERROR] 입력은 6개만 있어야합�
 const val ERROR_INPUT_VALUE_NO_DUPLICATES = "[ERROR] 중복된 숫자가 있으면 안됩니다."
 const val ERROR_INPUT_VALUE_ONE_OR_FORTY_FIVE_ONLY = "[ERROR] 입력은 6개만 있어야합니다."
 const val ERROR_INPUT_VALUE_NUMBER_ONLY = "[ERROR] 숫자만 입력해주세요."
-const val ERROR_INPUT_VALUE_MULTIPLE_OF_1000_ONLY = "[ERROR] "
+const val ERROR_INPUT_VALUE_MULTIPLE_OF_THOUSAND_ONLY = "[ERROR] 천원 단위로만 입력해주세요."
 
 // FOR LOTTO LOGIC
 const val LOTTO_START_NUMBER = 1
