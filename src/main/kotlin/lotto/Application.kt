@@ -6,6 +6,8 @@ fun main() {
     lotto.getLotteryPaper(amount)
     val winningNumber = getWinningNumber()
     val bonusNumber = getBonusNumber(winningNumber)
+    lotto.winningStatistics(winningNumber, bonusNumber)
+    lotto.resultCorrect()
 }
 
 fun getInputLotteryAmount(): Int {

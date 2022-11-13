@@ -3,7 +3,11 @@ package lotto
 import camp.nextstep.edu.missionutils.Randoms
 
 class Lotto(private val numbers: List<Int>) {
-
+    private var three = 0
+    private var four = 0
+    private var five = 0
+    private var fivePlus = 0
+    private var six = 0
     private var saveRandomNumber = mutableListOf<List<Int>>()
     private var countNumber = mutableListOf<Int>()
 
@@ -35,6 +39,18 @@ class Lotto(private val numbers: List<Int>) {
                 }
             }
             countNumber.add(cnt)
+        }
+    }
+
+    fun resultCorrect() {
+        countNumber.forEach {
+            when (it) {
+                3 -> three++
+                4 -> four++
+                5 -> five++
+                6 -> six++
+                7 -> fivePlus++
+            }
         }
     }
 
