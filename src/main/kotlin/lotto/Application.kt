@@ -59,4 +59,5 @@ private fun convertPrizeListToPrizeCountList(prizeList: List<Int>) {
     for (i in 0 until lottoPrizeRankCount) {
         prizeCountList.add(prizeList.count { it == i })
     }
+    LottoResults(userInputPrice, prizeCountList.reversed()).printPrizeResults()
 }
