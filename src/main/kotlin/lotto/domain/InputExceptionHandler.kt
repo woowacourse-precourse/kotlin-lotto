@@ -13,9 +13,10 @@ object InputExceptionHandler {
      * 2. 숫자가 아닐 때
      * */
     fun checkInputPurchasingAmount(inputPurchasingAmount: String) {
-        if (!hasRemainderOfPurchasingAmount(inputPurchasingAmount)
-            or !isNumberOfPurchasingAmount(inputPurchasingAmount)
-        ) {
+        if (!isNumberOfPurchasingAmount(inputPurchasingAmount)) {
+            throw IllegalArgumentException(PURCHASING_AMOUNT_EXCEPTION_MESSAGE)
+        }
+        if (!hasRemainderOfPurchasingAmount(inputPurchasingAmount)) {
             throw IllegalArgumentException(PURCHASING_AMOUNT_EXCEPTION_MESSAGE)
         }
     }
