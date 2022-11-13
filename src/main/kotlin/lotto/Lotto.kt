@@ -63,7 +63,14 @@ class Lotto(private val numbers: List<Int>) {
         printStatistics(WinningAmount.SIX, six)
     }
 
-    fun moneySum(): Int {
+    fun getYield(amount: Int) {
+        val totalWinning = (moneySum()).toDouble()
+        val investmentAmount = (amount * 1000).toDouble()
+        val resultTotalYield = String.format("%.1f", totalWinning / investmentAmount * 100).toDouble()
+        Output.resultYield(resultTotalYield)
+    }
+
+    private fun moneySum(): Int {
         return three * 5_000 + four * 50_000 + five * 1_500_000 + fivePlus * 30_000_000 + six * 2_000_000_000
     }
     private fun getRandomNumber(): List<Int> {

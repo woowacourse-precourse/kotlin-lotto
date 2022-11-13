@@ -9,6 +9,7 @@ fun main() {
     lotto.winningStatistics(winningNumber, bonusNumber)
     lotto.resultCorrect()
     lotto.resultPrint()
+    lotto.getYield(amount)
 }
 
 fun getInputLotteryAmount(): Int {
