@@ -1,8 +1,8 @@
 package lotto
 
-class Judgment {
+val LOTTO_PRICE = 1000
 
-    val LOTTO_PRICE = 1000
+class Judgment {
 
     fun checkPurchaseAmount(input: String): Boolean {
         if (input.toIntOrNull() == null) {
@@ -17,5 +17,14 @@ class Judgment {
     fun getPurchaseNumber(input: String): Int {
         var money = input.toInt()
         return money / LOTTO_PRICE
+    }
+
+    fun checkWinningNumber(lottoNumber: MutableList<Int>): Boolean {
+        var winningNumber = lottoNumber.distinct().filter { it in 1..45 }
+        println(winningNumber)
+        if (winningNumber.size != LOTTO_SIZE) {
+            throw IllegalArgumentException("[ERROR] 6개의 숫자를 입력해주세요.")
+        }
+        return true
     }
 }

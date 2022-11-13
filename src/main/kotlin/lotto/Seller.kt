@@ -16,13 +16,13 @@ class Seller {
 
     fun getWinningNumber() {
         var judgment = Judgment()
-        var winningLottoNumber = Console.readLine()
         var winningNumber = mutableListOf<Int>()
 
         println("\n당첨 번호를 입력해주세요.")
+        var winningLottoNumber = Console.readLine()
         winningLottoNumber.split(",").forEach() {
             it.toIntOrNull()?.let { it -> winningNumber.add(it) }
         }
-        println(winningNumber)
+        judgment.checkWinningNumber(winningNumber)
     }
 }
