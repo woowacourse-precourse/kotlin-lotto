@@ -22,7 +22,6 @@ fun main() {
 fun inputMoney() : Money {
     println("구입금액을 입력해 주세요.")
     val money = Console.readLine()
-    require(money != null) { println("[ERROR] 구입금액을 입력하지 않았습니다.") }
     return Money(money)
 }
 
