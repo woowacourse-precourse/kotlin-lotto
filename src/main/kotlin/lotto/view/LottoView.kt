@@ -14,4 +14,14 @@ class LottoView {
         for(i in lottos.indices)
             println(lottos[i])
     }
+
+    fun getWinningNumber(): List<Int>{
+        println("\n당첨 번호를 입력해 주세요.")
+        return readLine()!!.split(",").map { it.toInt() }
+    }
+
+    fun getBonusNumber(): Int{
+        println("\n보너스 번호를 입력해 주세요.")
+        return readLine()!!.toInt()
+    }
 }
