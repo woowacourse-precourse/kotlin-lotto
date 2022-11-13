@@ -216,3 +216,17 @@ class Lotto(private val numbers: List<Int>) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
   - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+---
+
+## 기능 목록
+
+- [ ] 잘못된 값 입력 시 예외 발생
+  - 구입 금액은 1000으로 나누어 떨어져야한다.
+  - 당첨번호는 1~45 사이의 숫자 중 6개를 쉼표로 구분하여 입력받는다.
+  - 보너스 번호는 1~45 사이의 숫자 중 1개를 입력받는다.
+- [ ] 중복되지 않는 6개의 랜덤 숫자 뽑기
+- [ ] 금액에 따른 로또 구매
+- [ ] 당첨 번호 및 보너스 번호 입력 받기
+- [ ] 당첨 내역 확인
+- [ ] 수익률 확인
