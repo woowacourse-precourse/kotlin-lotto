@@ -2,6 +2,7 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import java.lang.StringBuilder
 
 fun calculateYield(winRanks: Map<LottoRank, Int>, lottoMoney: Int): Float {
     var winMoney = 0f
@@ -60,6 +61,32 @@ fun getInputLottoMoney(): Int {
     return lottoMoney
 }
 
+fun formatWinRanks(winRanks: Map<LottoRank, Int>): String {
+    val formattedRank = StringBuilder()
+    for ((k, v) in winRanks) {
+        formattedRank.append(
+            when (k) {
+                LottoRank.FIRST -> "6개 일치 (2,000,000,000원) - ${v}개"
+                LottoRank.SECOND -> "5개 일치, 보너스 볼 일치 (30,000,000원) - ${v}개"
+                LottoRank.THIRD -> "5개 일치 (1,500,000원) - ${v}개"
+                LottoRank.FOURTH -> "4개 일치 (50,000원) - ${v}개"
+                LottoRank.FIFTH -> "3개 일치 (5,000원) - ${v}개"
+                else -> ""
+            }
+        )
+    }
+    return formattedRank.toString()
+}
+
+fun formatYield(yield: Float): String {
+    return String.format("총 수익률은 %.2f%입니다.", `yield`)
+}
+
 fun main() {
-    TODO("프로그램 구현")
+    val lottoMoney = getInputLottoMoney()
+    val lottos = produceLotto(lottoMoney / 1000)
+    val winNumber = getInputWinNumbers()
+    val bonusNumber = getInputBonusNumber()
+    val winRanks = calculateWinRanks(lottos, winNumber, bonusNumber)
+    val `yield` = calculateYield(winRanks, lottoMoney)
 }
