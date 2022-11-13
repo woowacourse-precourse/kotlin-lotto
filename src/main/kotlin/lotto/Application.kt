@@ -14,6 +14,10 @@ const val ERROR_MESSAGE = "[ERROR]"
 const val ERROR_MESSAGE_BUDGET_INPUT = "$ERROR_MESSAGE 잘못된 구입금액을 입력하였습니다."
 const val ERROR_MESSAGE_RANDOM_NUMBER_LOTTO = "$ERROR_MESSAGE 잘못된 개수의 랜덤 로또 뽑기입니다."
 const val ERROR_MESSAGE_RANDOM_NUMBER_LOTTO_COUNT = "$ERROR_MESSAGE 구입한 로또 개수와 실제로 뽑은 랜덤 로또 개수가 일치하지 않습니다."
+const val ERROR_MESSAGE_WINNING_NUMBERS_INPUT = "$ERROR_MESSAGE 잘못된 로또 당첨번호 입력입니다."
+const val ERROR_MESSAGE_BONUS_NUMBER_INPUT = "$ERROR_MESSAGE 잘못된 보너스 번호 입력입니다."
+const val ERROR_MESSAGE_WINNING_NUMBER_FINAL_INPUT = "$ERROR_MESSAGE 각각 다른 당첨번호 및 보너스 번호를 작성해주세요."
+
 fun main() {
     displayIntroduceGuideMessage()
     val userBudget = getUserBudget()
@@ -28,9 +32,17 @@ fun main() {
 
     displayWinningNumbersInputGuideMessage()
     val winningNumbers = getWinningNumbers()
+    if (isWrongWinningNumbers(winningNumbers))
+        return
 
     displayWinningBonusNumberInputGuideMessage()
     val winningLottoBonusNumber = getWinningBonusNumber()
+    if (isWrongWinningBonusNumber(winningLottoBonusNumber))
+        return
+
+    val winningLotto = getWinningLotto(winningNumbers, winningLottoBonusNumber)
+    if (isWrongWinningLotto(winningLotto))
+        return
 
     displayResultGuideMessage()
 }
@@ -93,7 +105,53 @@ fun isWrongLottoTicketCount(boughtLottoCount: Int, lottoTickets: List<Lotto>): B
 }
 
 fun getWinningNumbers() = Console.readLine().split(",").toMutableList()
+fun isWrongWinningNumbers(winningNumbers: List<String>): Boolean {
+    return try {
+        for (winningNumber in winningNumbers) {
+            if (isNotInteger(winningNumber)) {
+                throw IllegalArgumentException(ERROR_MESSAGE_WINNING_NUMBERS_INPUT)
+            }
+            if (winningNumber.toInt() !in 1..45) {
+                throw IllegalArgumentException(ERROR_MESSAGE_WINNING_NUMBERS_INPUT)
+            }
+        }
+        false
+    } catch (e: IllegalArgumentException) {
+        println(ERROR_MESSAGE_WINNING_NUMBERS_INPUT)
+        true
+    }
+}
+
 fun getWinningBonusNumber(): String = Console.readLine()
+fun isWrongWinningBonusNumber(winningBonusNumber: String): Boolean {
+    return try {
+        if (isNotInteger(winningBonusNumber))
+            throw IllegalArgumentException(ERROR_MESSAGE_BONUS_NUMBER_INPUT)
+        if (winningBonusNumber.toInt() !in 1..45)
+            throw IllegalArgumentException(ERROR_MESSAGE_BONUS_NUMBER_INPUT)
+        false
+    } catch (e: IllegalArgumentException) {
+        println(ERROR_MESSAGE_BONUS_NUMBER_INPUT)
+        true
+    }
+}
+
+fun getWinningLotto(winningNumbers: MutableList<String>, winningLottoBonusNumber: String): List<String> {
+    winningNumbers.add(winningLottoBonusNumber)
+    return winningNumbers
+}
+
+fun isWrongWinningLotto(winningLotto: List<String>): Boolean {
+    return try {
+        if (winningLotto.toSet().size != 7) {
+            throw IllegalArgumentException(ERROR_MESSAGE_WINNING_NUMBER_FINAL_INPUT)
+        }
+        false
+    } catch (e: IllegalArgumentException) {
+        println(ERROR_MESSAGE_WINNING_NUMBER_FINAL_INPUT)
+        true
+    }
+}
 
 fun displayIntroduceGuideMessage() = println(INTRODUCE_MESSAGE)
 fun displaySuccessBuyLottoGuideMessage(boughtLottoCount: Int) = println("$boughtLottoCount$SUCCESS_BUY_LOTTO_MESSAGE")
