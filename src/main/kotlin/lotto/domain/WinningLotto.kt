@@ -18,15 +18,15 @@ class WinningLotto(private val numbers: List<LottoNumber>) : List<LottoNumber> b
 
         return when (matchedNumberCount) {
             MATCH_SIX -> LottoRank.FIRST
-            MATCH_FIVE -> getRankWhichBonus(bonusNumber)
+            MATCH_FIVE -> getRankWhichBonus(lotto, bonusNumber)
             MATCH_FOUR -> LottoRank.FOURTH
             MATCH_THREE -> LottoRank.FIFTH
             else -> LottoRank.NO_LUCK
         }
     }
 
-    private fun getRankWhichBonus(bonusNumber: LottoNumber): LottoRank {
-        if (numbers.contains(bonusNumber)) {
+    private fun getRankWhichBonus(lotto: Lotto, bonusNumber: LottoNumber): LottoRank {
+        if (lotto.contains(bonusNumber)) {
             return LottoRank.SECOND
         }
         return LottoRank.THIRD
