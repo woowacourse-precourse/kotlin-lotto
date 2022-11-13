@@ -21,7 +21,6 @@ class LottoGame {
         getusermoney()
         makelottonumber()
         val userlotto = getuserlotto()
-        getbonusnumber(userlotto)
         checklotto(userlotto)
         printresult()
     }
@@ -95,6 +94,7 @@ class LottoGame {
 
     private fun checklotto(userlotto: List<Int>) {
         val checklotto = Lotto(userlotto)
+        getbonusnumber(userlotto)
         for (number: Int in 0 until lottos.size) {
             val rank = checklotto.lottocheck(userlotto, lottos[number])
             val itdonothitfivenumber = prizecheck(rank)
