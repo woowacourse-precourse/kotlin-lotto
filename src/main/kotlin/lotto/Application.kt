@@ -6,6 +6,9 @@ fun main() {
     val price = inputPrice()
     val lottoCount = calculatePrice(price)
     val lottoNumber = pickNumber(lottoCount)
+    printNumbers(lottoNumber,lottoCount)
+
+
 }
 
 
@@ -34,12 +37,21 @@ fun calculatePrice(price: Int): Int {
     return price / 1000
 }
 
-fun pickNumber(lottoCount: Int){
+fun pickNumber(lottoCount: Int): MutableList<MutableList<Int>> {
     val lottoNumber:MutableList<MutableList<Int>> = mutableListOf()
 
     for(number:Int in 0 until lottoCount){
         val randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
         randomNumbers.sort()
         lottoNumber.add(randomNumbers)
+    }
+    return lottoNumber
+}
+
+fun printNumbers(lottoNumber: MutableList<MutableList<Int>>, lottoCount: Int){
+    print(lottoCount)
+    getMessage(Message.COUNT)
+    for(count in 0 until lottoCount){
+        println(lottoNumber[count])
     }
 }
