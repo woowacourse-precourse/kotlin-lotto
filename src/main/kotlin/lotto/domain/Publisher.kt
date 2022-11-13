@@ -7,7 +7,7 @@ import lotto.view.OutputView
 class Publisher {
 
     fun generateLottery(money: Money): List<Lotto> {
-        val lottoCount = money.purchasingAmount / LOTTO_PRICE
+        val lottoCount = money.getAmountOfMoney() / LOTTO_PRICE
         OutputView.printLottoCount(lottoCount)
 
         return operateMachine(lottoCount)
