@@ -2,13 +2,14 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
-
-const val LOTTO_PRICE = 1000
-const val RANK_5TH_REWARD = 5000
-const val RANK_4TH_REWARD = 50000
-const val RANK_3RD_REWARD = 1500000
-const val RANK_2ND_REWARD = 30000000
-const val RANK_1ST_REWARD = 2000000000
+enum class Lottoprice(val prize:Int){
+    LOTTO_PRICE(1000),
+    RANK_5TH_REWARD(5000),
+    RANK_4TH_REWARD(50000),
+    RANK_3RD_REWARD(1500000),
+    RANK_2ND_REWARD(30000000),
+    RANK_1ST_REWARD(2000000000)
+}
 
 class LottoGame {
 
@@ -32,7 +33,7 @@ class LottoGame {
 
     private fun makelottonumber() {
         LottoErrorCheck.checkallmoneyerror(money)
-        val count = money.toInt() / LOTTO_PRICE
+        val count = money.toInt() / Lottoprice.LOTTO_PRICE.prize
         Lotto.printcount(count)
         createlottos(count)
         Lotto.printlottolist(lottos.toList())
@@ -98,9 +99,9 @@ class LottoGame {
 
     private fun printresult() {
         Lotto.printprize(checkprize.toList())
-        val lottoyield: Double = ((RANK_5TH_REWARD * checkprize[0] + RANK_4TH_REWARD * checkprize[1]
-                + RANK_3RD_REWARD * checkprize[2] + RANK_2ND_REWARD * checkprize[3]
-                + RANK_1ST_REWARD * checkprize[4]) / money.toDouble()) * 100
+        val lottoyield: Double = ((Lottoprice.RANK_5TH_REWARD.prize * checkprize[0] + Lottoprice.RANK_4TH_REWARD.prize * checkprize[1]
+                + Lottoprice.RANK_3RD_REWARD.prize * checkprize[2] + Lottoprice.RANK_2ND_REWARD.prize * checkprize[3]
+                + Lottoprice.RANK_1ST_REWARD.prize * checkprize[4]) / money.toDouble()) * 100
         Lotto.printyield(lottoyield)
     }
 
