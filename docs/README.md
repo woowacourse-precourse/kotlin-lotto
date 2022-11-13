@@ -33,10 +33,10 @@
    - 구입 금액(purchase)
    - 총 수익(income)
    - 수익률(incomeRatio)
-   - 구매 개수 출력 함수(printTicketNumbers)
+   - ~~구매 개수 출력 함수(printTicketNumbers)~~ 랜덤 배열 출력 함수와 통합
    - 랜덤 배열 출력 함수(printQuickPick)
-   - 당첨 내역 출력 함수(printWinnings)
-   - 로또 구입 금액 입력 함수(getAmount)
+   - ~~당첨 내역 출력 함수(printWinnings)~~ 당첨 내역 저장하는 함수(getWinnings)
+   - ~~로또 구입 금액 입력 함수(getAmount)~~ 기능 분리로 삭제
    - 당첨 번호 입력 함수(getLotteryNumbers)
    - 랜덤 로또 생성 함수(getQuickPicks)
    - 보너스 번호 입력 함수(getBounsNumber)
@@ -47,3 +47,8 @@
    - 당첨 등급에 따른 금액 클래스(WinningAmonut)
    - 로또 숫자 번호 범위 클래스(NumberRange)
    - 로또 가격 클래스(Price)
+
+4. main 내 함수들
+   - 구입 금액 입력 검증 함수(purchaseChecker)
+   - 당첨 번호 입력 검증 함수(lotteryChecker)
+   - 보너스 번호 입력 검증 함수(bonusChecker)
