@@ -4,6 +4,7 @@ import lotto.domain.*
 import lotto.presentation.LottoConsole
 import lotto.presentation.LottoConsole.printLottoStatics
 import lotto.utils.INITIAL_COUNT
+import lotto.utils.LottoExceptionHandler.validateBonusNumberDuplication
 
 class LottoService : Service() {
     private val lottoStore by lazy { LottoStore() }
@@ -35,6 +36,8 @@ class LottoService : Service() {
 
         LottoConsole.printBonusNumberEnterMessage()
         val bonusNumber = LottoConsole.inputBonusNumber()
+
+        validateBonusNumberDuplication(winningLotto, bonusNumber)
         return Pair(winningLotto, bonusNumber)
     }
 
