@@ -6,7 +6,7 @@ class Lotto(private val numbers: List<Int>) {
         numbers.sorted()
         for (i in 0 until numbers.size - 1)
             if(numbers[i] == numbers[i + 1])
-                throw IllegalArgumentException()
+                throw IllegalArgumentException("로또번호는 각각 다른 숫자여야 합니다.")
     }
 
     fun calculateWinRank(winNumbers: List<Int>, bonus: Int): LottoRank {
