@@ -12,4 +12,7 @@ fun main() {
 
     val winningNumbers = inputLottoWinningNumbers().splitToIntList()
     printWinningNumbers(winningNumbers)
+
+    val bonusNumber = inputBonusNumbers()
+    printBonusNumber(bonusNumber.checkNull())
 }
