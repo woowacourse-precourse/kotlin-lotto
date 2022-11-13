@@ -39,10 +39,14 @@ object UserInterface {
 
     fun askWinningNumbers(): List<Int> {
         val readValue = Console.readLine()
+        validateWinningNumbers(readValue)
+        return readValue.split(",").map { it.trim() }.map { it.toInt() }
+    }
+
+    private fun validateWinningNumbers(readValue: String) {
         require(readValue.split(",").size == 6) { WINNING_NUMBERS_SIZE_NOT_6 }
         val splitValues = readValue.split(",").map { it.trim() }
         require(splitValues.all { it.matches(Regex("\\d{1,2}")) && it.toInt() in 1..45 }) { WINNING_NUMBERS_NOT_IN_BETWEEN_1_AND_45 }
         require(splitValues.toSet().size == splitValues.size) { WINNING_NUMBERS_DUPLICATED }
-        return splitValues.map { it.toInt() }
     }
 }
