@@ -50,14 +50,15 @@ class LottoGame {
     }
 
     private fun validateNumberInput(input: String): Int {
-        try {
-            return input.toInt()
-        } catch (e: NumberFormatException) {
+        val num = input.toIntOrNull()
+        if (num == null) {
+            println(INPUT_EXCEPTION)
             throw IllegalArgumentException(INPUT_EXCEPTION)
         }
+        return num
     }
 
-    private fun validateNumbersInput(input: String): List<Int>{
+    private fun validateNumbersInput(input: String): List<Int> {
         val inputs = input.split((","))
         try {
             return inputs.map { it.toInt() }
