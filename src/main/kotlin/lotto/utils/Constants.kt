@@ -20,7 +20,7 @@ const val BONUS_NUMBER_DUPLICATION_EXCEPTION_MESSAGE = ERROR_PREFIX + "보너스
 const val LOTTO_START_NUMBER = 1
 const val LOTTO_END_NUMBER = 45
 const val LOTTO_SIZE = 6
-const val INITIAL_MATCHING_COUNT = 0
+const val INITIAL_COUNT = 0
 const val LOTTO_PRICE = 1000
 
 // match counts
@@ -41,3 +41,11 @@ const val LOTTO_NO_LUCK_MESSAGE = "꽝"
 // lotto statics
 const val LOTTO_STATIC_MESSAGE = "당첨 통계\n---"
 const val TOTAL_YIELD_RATE_MESSAGE = "총 수익률은 %s입니다."
+
+// lotto rewards
+const val FIRST_REWARD = 2_000_000_000
+const val SECOND_REWARD = 30_000_000
+const val THIRD_REWARD = 1_500_000
+const val FOURTH_REWARD = 50_000
+const val FIFTH_REWARD = 5_000
+const val NO_LUCK_REWARD = 0

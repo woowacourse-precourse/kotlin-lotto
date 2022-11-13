@@ -12,7 +12,7 @@ class WinningLotto(private val numbers: List<LottoNumber>) : List<LottoNumber> b
     }
 
     fun compareLottoRank(lotto: Lotto, bonusNumber: LottoNumber): LottoRank {
-        val matchedNumberCount = lotto.fold(INITIAL_MATCHING_COUNT) { matchedCount, lottoNumber ->
+        val matchedNumberCount = lotto.fold(INITIAL_COUNT) { matchedCount, lottoNumber ->
             matchedCount + checkMatch(lottoNumber)
         }
 

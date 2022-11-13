@@ -10,15 +10,16 @@ import lotto.presentation.LottoConsole.printPurchaseResult
 
 class LottoStore {
 
-    fun purchase(): List<Lotto> {
+    fun inputAmount(): Money {
         printPurchaseMessage()
-        val amount: Money = inputPurchaseAmount()
-        val lottos = arrayListOf<Lotto>()
+        return inputPurchaseAmount()
+    }
 
+    fun purchase(amount: Money): List<Lotto> {
+        val lottos = arrayListOf<Lotto>()
         for (i in 0 until amount.convertLottoCount()) {
             lottos.add(publish())
         }
-
         printPurchaseResult(lottos)
         return lottos
     }
