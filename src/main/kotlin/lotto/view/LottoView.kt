@@ -30,9 +30,6 @@ class LottoView {
     }
 
     private fun validWinningLotto(lottoNumList: List<String>) {
-        if (lottoNumList.size != 6) {
-            throw IllegalArgumentException("[ERROR]: 당첨 숫자의 개수는 6개여야 합니다.")
-        }
         for (lottoNum in lottoNumList) {
             if (!isNumber(lottoNum)) {
                 throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
