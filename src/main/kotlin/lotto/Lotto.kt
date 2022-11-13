@@ -8,19 +8,19 @@ class Lotto(private val numbers: List<Int>) {
 
     fun printLottoNumbers() = println(numbers)
 
-    fun checkLotto(winningNumber: List<Int>, bonusNumber: Int): LottoStatus {
+    fun checkLotto(winningNumber: List<Int>, bonusNumber: Int): LottoPrice {
         val catchCount = numbers.filter { number -> winningNumber.contains(number) }.size
-        var result = LottoStatus.NONE
+        var result = LottoPrice.NONE
 
         when (catchCount) {
-            3 -> result = LottoStatus.FIFTH_PLACE
-            4 -> result = LottoStatus.FOURTH_PLACE
+            3 -> result = LottoPrice.FIFTH_PLACE
+            4 -> result = LottoPrice.FOURTH_PLACE
             5 -> result = if (!numbers.contains(bonusNumber)) {
-                LottoStatus.THIRD_PLACE
+                LottoPrice.THIRD_PLACE
             } else {
-                LottoStatus.SECOND_PLACE
+                LottoPrice.SECOND_PLACE
             }
-            6 -> result = LottoStatus.FIRST_PLACE
+            6 -> result = LottoPrice.FIRST_PLACE
         }
         return result
     }
