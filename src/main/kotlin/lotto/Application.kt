@@ -1,5 +1,7 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Randoms
+
 //기능 목록
 /*
 1. 로또 구입 금액을 입력 받는다.
@@ -8,7 +10,8 @@ package lotto
 1. 당첨 번호 6개를 입력 받는다.
 2. 당첨 번호는 쉼표를 기준으로 구분한다.
 3. 보너스 번호를 입력 받는다.
-4. 1~45까지의 숫자 중 중복되지 않는 6개의 숫자를 뽑는다.
+
+4. 1~45까지의 숫자 중 중복되지 않는 6개의 숫자를 뽑는다. *현재*
 1. 1.에서 계산한 로또 발행 수량에 따라, 1번 발행시 6개의 숫자를 뽑는다.
 5. 3.에서 발행한 로또 번호를 보여준다.
 1. 몇 개를 구매했는지 발행 번호 출력 전에 보여준다. ex)8개를 구매했습니다.
@@ -59,4 +62,10 @@ fun getBonusNum() : Int? {
     val bonusNum = readLine()?.toInt()
     //보너스 번호가 양식에 맞게 입력되지 않았을 때의 예외 사항 처리 필요
     return bonusNum
+}
+
+//4. 1~45까지의 숫자 중 중복되지 않는 6개의 숫자를 뽑는다
+fun getLottoNums() : List<Int> {
+    val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+    return numbers
 }
