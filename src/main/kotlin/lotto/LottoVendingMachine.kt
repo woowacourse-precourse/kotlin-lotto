@@ -26,4 +26,10 @@ class LottoVendingMachine {
         return false
     }
 
+    fun isMoney1000(money: Int) : Int{
+        if(money%1000!=0){
+            println("거스름돈은 ${money%1000}원입니다.")
+        }
+        return money/1000
+    }
 }
