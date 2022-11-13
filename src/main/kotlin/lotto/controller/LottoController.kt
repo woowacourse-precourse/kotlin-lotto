@@ -15,6 +15,7 @@ class LottoController {
         val issuedLottoList = issueLottos(numberOfIssueLotto)
         val winningLottoNumber = lottoView.getWinningLotto()
         val winnigLotto = Lotto(winningLottoNumber)
+        val bonusNumber = getBonusNumber()
     }
 
     private fun getInputMoney(): Int {
@@ -25,6 +26,16 @@ class LottoController {
             println(e.message)
         }
         return inputMoney
+    }
+
+    private fun getBonusNumber(): Int {
+        var bonusNumber = 0
+        try {
+            bonusNumber = lottoView.getBonusNumber()
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+        }
+        return bonusNumber
     }
 
     private fun issueLottos(inputMoney: Int): Lottos {

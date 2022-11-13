@@ -37,6 +37,15 @@ class LottoView {
         }
     }
 
+    fun getBonusNumber(): Int {
+        println("\n보너스 번호를 입력해 주세요.")
+        val inputBonusNumber = Console.readLine()
+        if (!isNumber(inputBonusNumber)) {
+            throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+        }
+        return inputBonusNumber.toInt()
+    }
+
     private fun isNumber(s: String?): Boolean {
         return if (s.isNullOrEmpty()) false else s.all { Character.isDigit(it) }
     }
