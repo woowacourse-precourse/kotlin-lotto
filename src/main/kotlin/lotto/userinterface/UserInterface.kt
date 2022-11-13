@@ -8,7 +8,7 @@ import java.text.DecimalFormat
 
 object UserInterface {
 
-    private const val PURCHASE_AMOUNT_LIMIT = 2000000000
+    private const val PURCHASE_AMOUNT_LIMIT = 2_000_000_000
     private val decimalFormat = DecimalFormat("#,###")
 
     fun askPurchaseAmount(): Int {
