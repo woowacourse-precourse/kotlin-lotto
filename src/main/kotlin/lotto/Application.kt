@@ -10,7 +10,7 @@ fun main() {
     val (resultRank, totalPrize) = Purchaser().calculateResult(winningLotto, tickets)
 
     printPrizeResult(resultRank)
-    printRateOfReturn((totalPrize * 10000 / (amount) / 100.0F))
+    printRateOfReturn(Purchaser().calculateRateOfReturn(totalPrize, amount))
 }
 
 fun purchaseTickets(amount: Int): List<Lotto> {
