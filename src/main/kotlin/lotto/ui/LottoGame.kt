@@ -19,8 +19,7 @@ class LottoGame {
 
     private fun startUtil() {
         val originCost = readCost()
-        val lottos = LottoPurchaser(originCost)
-            .purchaseLottos()
+        val lottos = LottoPurchaser(originCost).purchaseLottos()
         printLottoInfo(lottos)
 
         val winningNumber = WinningNumber(
