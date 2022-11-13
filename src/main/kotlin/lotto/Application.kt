@@ -7,7 +7,8 @@ fun main() {
     val lottoCount = calculatePrice(price)
     val lottoNumber = pickNumber(lottoCount)
     printNumbers(lottoNumber,lottoCount)
-    val winngNumber = inputWinningNumber()
+    val winning = inputwinning()
+    val winningNumber = changeNumberList(winning)
 
 
 }
@@ -56,8 +57,15 @@ fun printNumbers(lottoNumber: MutableList<MutableList<Int>>, lottoCount: Int){
     }
 }
 
-fun inputWinningNumber(): String {
+fun inputwinning(): String {
     getMessage(Message.NUMBER)
-    val winningNumber = readLine()
-    return winningNumber.toString()
+    val winning = readLine()
+    return winning.toString()
 }
+
+fun changeNumberList(winning: String): List<Int> {
+    val winningNumber = winning.split(',').map{it.toInt()}
+    print(winningNumber)
+    return winningNumber
+}
+
