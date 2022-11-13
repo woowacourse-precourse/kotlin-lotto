@@ -46,4 +46,21 @@ class WinningLottoTest {
             WinningLotto(listOf(1, 2, 3, 4, 5, 6), 50)
         }
     }
+
+    @Test
+    fun `getRank 기능 테스트`() {
+        assertThat(
+            WinningLotto(listOf(1, 2, 3, 4, 5, 6), 7).getRank(listOf(1, 2, 3, 4, 5, 6)) == 1 &&
+            WinningLotto(listOf(1, 2, 3, 4, 5, 6), 7).getRank(listOf(1, 2, 3, 4, 5, 7)) == 2 &&
+            WinningLotto(listOf(1, 2, 3, 4, 5, 6), 7).getRank(listOf(11, 12, 13, 14, 15, 16)) == 6
+        )
+    }
+
+    @Test
+    fun `getRank 입력 받은 숫자에 중복이 있을 때`() {
+        assertThat(
+            WinningLotto(listOf(1, 2, 3, 4, 5, 6), 7).getRank(listOf(1, 1, 1, 1, 1, 1)) == 6 &&
+            WinningLotto(listOf(1, 2, 3, 4, 5, 6), 7).getRank(listOf(1, 2, 3, 4, 5, 5)) == 3
+        )
+    }
 }
