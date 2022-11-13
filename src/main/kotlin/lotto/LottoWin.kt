@@ -18,7 +18,7 @@ class LottoWin {
         val inputLottoWinNumSplit = inputLottoWinNum.split(',')
         inputLottoWinNumSplit.inputLottoNumberTypeException()
         val lottoWinNum = inputWinningNumberException(inputLottoWinNumSplit)
-        println(lottoWinNum)
+        println(inputLottoWinNum)
         for (i in 0 until LottoWinBall.values().size - 1) {
             LottoWinBall.values()[i].num = lottoWinNum[i]
         }
@@ -73,7 +73,7 @@ class LottoWin {
     fun String.inputLottoNumberTypeException() {
         try {
             this.map {
-                it.toInt()
+                it.code
             }
         } catch (e: NumberFormatException) {
             throw IllegalArgumentException("[ERROR] 보너스 번호를 잘못입력하셨습니다.")
