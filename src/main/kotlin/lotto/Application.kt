@@ -1,5 +1,7 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Randoms
+
 private val winningNumbersRegex = "[0-9]{1,2}(,[0-9]{1,2}){5}".toRegex()
 
 fun main() {
@@ -22,3 +24,5 @@ fun isValidWinningNumbers(input: String): Boolean {
 }
 
 fun isValidBonusNumber(number: Int): Boolean = (number in 1..45)
+
+fun getRandomNumbers(): List<Int> = Randoms.pickUniqueNumbersInRange(1, 45, 6)

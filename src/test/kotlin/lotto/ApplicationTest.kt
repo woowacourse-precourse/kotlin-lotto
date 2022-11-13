@@ -58,14 +58,21 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `유효한 당첨 번호인지 확인`() {
-        val input = isValidWinningNumbers("0,1,2,3,4,5")
-        assertThat(input).isFalse
+        val result = isValidWinningNumbers("0,1,2,3,4,5")
+        assertThat(result).isFalse
     }
 
     @Test
     fun `유효한 보너스 번호인지 확인`() {
-        val input = isValidBonusNumber(46)
-        assertThat(input).isFalse
+        val result = isValidBonusNumber(46)
+        assertThat(result).isFalse
+    }
+
+    @Test
+    fun `중복되지 않는 6개의 숫자인지 확인`() {
+        val numbers = getRandomNumbers()
+        val result = numbers.toSet().size
+        assertThat(result).isEqualTo(6)
     }
 
     override fun runMain() {
