@@ -3,6 +3,7 @@ package lotto
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == SIZE_OF_LOTTO_NUMBERS)
+        require(!numbers.map { it.toString() }.hasOverLappedNumber())
     }
 
     fun printLottoNumbers() = println(numbers)
