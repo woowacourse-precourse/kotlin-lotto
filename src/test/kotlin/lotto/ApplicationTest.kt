@@ -75,6 +75,13 @@ class ApplicationTest : NsTest() {
         assertThat(result).isEqualTo(6)
     }
 
+    @Test
+    fun `금액에 따른 로또 개수 확인`() {
+        val lotto = getLotto(8000)
+        val result = lotto.size
+        assertThat(result).isEqualTo(8)
+    }
+
     override fun runMain() {
         main()
     }
