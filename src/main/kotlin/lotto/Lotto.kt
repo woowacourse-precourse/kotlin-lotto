@@ -5,5 +5,10 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.size == 6)
     }
 
-    // TODO: 추가 기능 구현
+    fun getLottoBundle(): MutableList<List<Int>> {
+        val lottoBundle = mutableListOf<List<Int>>()
+        lottoBundle.add(numbers)
+
+        return lottoBundle
+    }
 }
