@@ -24,7 +24,7 @@ class LottoProcessor(private val seller: LottoSeller) {
         require(isErrorOccurred == Error.NO_ERROR) {
             isErrorOccurred.errorText
         }
-        val purchasedLotto = seller.sellLotto(money.toInt(), LOTTO_PRICE)
+        val purchasedLotto = seller.sellLotto(money.toInt())
 
         println(PURCHASED_LOTTO_COUNT.format(purchasedLotto.size))
         purchasedLotto.forEach { eachLotto ->
