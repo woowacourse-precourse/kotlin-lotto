@@ -63,7 +63,7 @@ fun main() {
     println("5개 일치 (1,500,000원) - ${emd3}개")
     println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${emd2}개")
     println("6개 일치 (2,000,000,000원) - ${emd1}개")
-    println("총 수익률은 ${moneyResult*100/moneyInput.toFloat()}%입니다.")
+    println("총 수익률은 ${round(moneyResult/moneyInput.toFloat()*1000) /10}%입니다.")
 }
 
 fun makeRandomLotto(count:Int): MutableList<List<Int>> {
