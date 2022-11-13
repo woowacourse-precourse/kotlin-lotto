@@ -6,6 +6,10 @@ import utils.Messages.BUY_PRICE_INQUIRE_MESSAGE
 import utils.Messages.ERROR_PREFIX_MESSAGE
 import utils.Messages.ERROR_LOTTO_INPUT
 import utils.Messages.BUY_AMOUNT_MESSAGE
+import utils.Messages.ERROR_ANSWER_COMMA
+import utils.Messages.ERROR_ANSWER_SIX
+import utils.Messages.ERROR_ANSWER_DIFFERENT
+import java.util.IllegalFormatCodePointException
 
 class LottoGame {
 
@@ -56,4 +60,16 @@ class LottoGame {
     fun answerNumbersMessage(){
         println(ANSWER_NUMBERS_MESSAGE)
     }
+
+    fun inputAnswerNumbers(): String {
+        val inputAnswerNumbers = readLine().toString()
+        return inputAnswerNumbers
+    }
+
+//    fun checkinputAnswer(inputAnswerNumbers: String): Boolean {
+//        if (!inputAnswerNumbers.contains(",")) throw IllegalArgumentException(ERROR_PREFIX_MESSAGE+ERROR_ANSWER_COMMA)
+//        if (inputAnswerNumbers.length != 11) throw IllegalArgumentException(ERROR_PREFIX_MESSAGE+ERROR_ANSWER_SIX)
+//        // 같은 숫자가 있는 지 체크하는 로직 추가되어야
+//        return true
+//    }
 }
