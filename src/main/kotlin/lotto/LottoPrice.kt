@@ -1,6 +1,9 @@
 package lotto
 
-enum class LottoPrice(val catchCount:Int, val price:Int) {
+/**
+ * catchCount는 당첨 번호 중 몇개를 맞춰야 하는지를 나타낸다.
+ */
+enum class LottoPrice(val catchCount: Int, val price: Int) {
     NONE(-1, 0),
     FIFTH_PLACE(3, FIFTH_PLACE_PRICE),
     FOURTH_PLACE(4, FOURTH_PLACE_PRICE),

@@ -17,8 +17,8 @@ object InputValidator {
         when {
             winningNumber.size != SIZE_OF_LOTTO_NUMBERS -> isOccurredError = Error.ERROR_OVER_SIZE
             !winningNumber.joinToString("").isNumeric() -> isOccurredError = Error.ERROR_NUMERIC
-            !winningNumber.isInRange() -> isOccurredError=Error.ERROR_RANGE
-            winningNumber.hasOverLappedNumber() -> isOccurredError=Error.ERROR_OVERLAPPED
+            !winningNumber.isInRange() -> isOccurredError = Error.ERROR_RANGE
+            winningNumber.hasOverLappedNumber() -> isOccurredError = Error.ERROR_OVERLAPPED
         }
         return isOccurredError
     }

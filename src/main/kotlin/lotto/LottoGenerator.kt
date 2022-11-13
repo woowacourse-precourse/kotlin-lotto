@@ -7,7 +7,6 @@ class LottoGenerator {
         return Lotto(Randoms.pickUniqueNumbersInRange(
             MINIMUM_LOTTO_NUMBER,
             MAXIMUM_LOTTO_NUMBER,
-            SIZE_OF_LOTTO_NUMBERS)
-        )
+            SIZE_OF_LOTTO_NUMBERS))
     }
 }
