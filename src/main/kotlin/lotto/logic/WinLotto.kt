@@ -8,4 +8,13 @@ class WinLotto {
 
         return rankResult
     }
+
+    private fun countSameNum(lotto: List<Int>, winningNum: List<Int>):Int{
+        var cntSame = 0
+        for(i in winningNum.indices){
+            if(lotto.contains(winningNum[i]))
+                cntSame++
+        }
+        return cntSame
+    }
 }
