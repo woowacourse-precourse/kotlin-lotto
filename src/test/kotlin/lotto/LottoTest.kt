@@ -24,6 +24,17 @@ class LottoTest {
     // 아래에 추가 테스트 작성 가능
 
     @Nested
+    inner class TicketingMachineTest {
+        private val ticketingMachine = TicketingMachine()
+
+        @Test
+        fun `개수만큼 로또 발행`() {
+            val result = ticketingMachine.createLottoNumbers(5)
+            assertThat(result).hasSize(5)
+        }
+    }
+
+    @Nested
     inner class CacherTest {
         private val cacher = Cacher()
 
