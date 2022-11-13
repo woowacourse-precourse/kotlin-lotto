@@ -94,11 +94,12 @@ class LottoGame {
 
     private fun checklotto(userlotto: List<Int>) {
         val checklotto = Lotto(userlotto)
-        for (elements in lottos) {
-            val rank = checklotto.lottocheck(userlotto, elements)
-            if (!prizecheck(rank) && userlotto.contains(bonusnumber))
+        for (number: Int in 0 until lottos.size) {
+            val rank = checklotto.lottocheck(userlotto, lottos[number])
+            val itdonothitfivenumber = prizecheck(rank)
+            if (!itdonothitfivenumber && userlotto.contains(bonusnumber))
                 checkprize[3] += 1
-            else if (!prizecheck(rank))
+            else if (!itdonothitfivenumber)
                 checkprize[2] += 1
 
         }
@@ -122,23 +123,21 @@ class LottoGame {
         printyield()
     }
 
-    private fun printprize(){
-        println(
-            "당첨 통계" +
-                    "---" +
-                    "3개 일치 (5,000원) - ${checkprize[0]}개" +
-                    "4개 일치 (50,000원) - ${checkprize[1]}개" +
-                    "5개 일치 (1,500,000원) - ${checkprize[2]}개" +
-                    "5개 일치, 보너스 볼 일치 (30,000,000원) - ${checkprize[3]}개" +
-                    "6개 일치 (2,000,000,000원) - ${checkprize[4]}개"
-        )
+    private fun printprize() {
+        println("당첨 통계")
+        println("---")
+        println("3개 일치 (5,000원) - ${checkprize[0]}개")
+        println("4개 일치 (50,000원) - ${checkprize[1]}개")
+        println("5개 일치 (1,500,000원) - ${checkprize[2]}개")
+        println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${checkprize[3]}개")
+        println("6개 일치 (2,000,000,000원) - ${checkprize[4]}개")
     }
 
-    private fun printyield(){
-        val lottoyield:Double = (RANK_5TH_REWARD * checkprize[0] + RANK_4TH_REWARD * checkprize[1]
+    private fun printyield() {
+        val lottoyield: Double = (RANK_5TH_REWARD * checkprize[0] + RANK_4TH_REWARD * checkprize[1]
                 + RANK_3RD_REWARD * checkprize[2] + RANK_2ND_REWARD * checkprize[3]
-                + RANK_1ST_REWARD * checkprize[4]) / money.toDouble()
-        println("총 수익률은"+String.format("%.1f", lottoyield) +"입니다.")
+                + RANK_1ST_REWARD * checkprize[4]) / (money.toDouble()*100)
+        println("총 수익률은" + String.format("%.1f", lottoyield) + "%입니다.")
 
     }
 
