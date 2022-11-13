@@ -22,12 +22,19 @@ fun purchaseLotto() : Int {
     return inputMoney.toInt() / 1000
 }
 
-//fun getLottoTicket(countLotto : Int) {
-//
-//}
+fun getLottoTicket(lottoList : MutableList<Lotto>, countLottoTicket : Int) {
+    println("${countLottoTicket}개를 구매했습니다.")
+    for(i in 0 until countLottoTicket) {
+        val lotto = Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6))
+        lottoList.add(lotto)
+        println(lotto.getLottoNumbers())
+    }
+}
 
 fun main() {
 //    TODO("프로그램 구현")
-    print(purchaseLotto())
+    val lottoTickets = mutableListOf<Lotto>()
+//    print(purchaseLotto())
+    getLottoTicket(lottoTickets, purchaseLotto())
 
 }
