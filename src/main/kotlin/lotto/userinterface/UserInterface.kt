@@ -1,6 +1,7 @@
 package lotto.userinterface
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.service.dto.LottoDto
 import java.math.BigInteger
 import java.text.DecimalFormat
 
@@ -30,5 +31,10 @@ object UserInterface {
         require(
             purchaseAmount.mod(BigInteger("1000")).equals(BigInteger.ZERO)
         ) { PURCHASE_AMOUNT_NOT_DIVISIBLE_BY_1000 }
+    }
+
+    fun showPurchaseResult(lotteries: List<LottoDto>) {
+        println(String.format(PURCHASE_RESULT, lotteries.size))
+        lotteries.forEach { println(it.numbers()) }
     }
 }
