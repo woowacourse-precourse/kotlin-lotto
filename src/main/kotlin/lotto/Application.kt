@@ -1,14 +1,14 @@
 package lotto
 
-import lotto.domain.Message.showCountOfLotto
-import lotto.domain.Message.showInputBonusNumber
-import lotto.domain.Message.showInputPurchasingAmount
-import lotto.domain.Message.showInputWinningNumber
-import lotto.domain.Message.showPurchasedLottoNumbers
+import lotto.domain.Messages.showCountOfLotto
+import lotto.domain.Messages.showInputBonusNumber
+import lotto.domain.Messages.showInputPurchasingAmount
+import lotto.domain.Messages.showInputWinningNumber
+import lotto.domain.Messages.showPurchasedLottoNumbers
+import lotto.domain.Messages.showResultOfLotto
 import lotto.domain.Service
 
 fun main() {
-    TODO("프로그램 구현")
     playLotto()
 }
 
@@ -23,6 +23,8 @@ fun playLotto() {
     val winningNumbers = service.getWinningNumbers()
     showInputBonusNumber()
     val bonusNumber = service.getBonusNumber(winningNumbers)
+    val resultOfLotto = service.isWinningLotto(lottoNumbers, winningNumbers, bonusNumber)
+    showResultOfLotto(resultOfLotto, countOfLotto)
 }
 
 
