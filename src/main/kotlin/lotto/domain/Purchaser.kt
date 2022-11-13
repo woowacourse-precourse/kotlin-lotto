@@ -1,6 +1,6 @@
 package lotto.domain
 
-data class Purchase(val amount: Int?) {
+data class Purchaser(val amount: Int?) {
     var ticket = 0
         get() = amount?.div(1000) ?: 0
         private set
