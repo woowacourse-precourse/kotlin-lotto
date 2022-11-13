@@ -16,7 +16,7 @@ class WinningLotto(private val winningNumbers: List<Int>, private val bonusNumbe
         require(bonusNumber !in winningNumbers) { ERROR_INPUT_VALUE_NO_DUPLICATES }
     }
 
-    fun checkResult(guessNumbers: List<Int>): Pair<Int, Boolean> {
+    fun getResult(guessNumbers: List<Int>): Pair<Int, Boolean> {
         return Pair(
             winningNumbers.countSameNumbers(guessNumbers),
             bonusNumber in guessNumbers
@@ -24,12 +24,12 @@ class WinningLotto(private val winningNumbers: List<Int>, private val bonusNumbe
     }
 
     fun getPrize(guessNumbers: List<Int>): Int {
-        val (countSame, bonus) = checkResult(guessNumbers)
+        val (countSame, bonus) = getResult(guessNumbers)
         return LottoRank.of(countSame, bonus).prize
     }
 
     fun getRank(guessNumbers: List<Int>): Int {
-        val (countSame, bonus) = checkResult(guessNumbers)
+        val (countSame, bonus) = getResult(guessNumbers)
         return LottoRank.of(countSame, bonus).ordinal + 1
     }
 
