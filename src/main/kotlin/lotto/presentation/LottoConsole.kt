@@ -41,6 +41,13 @@ object LottoConsole {
         println(BONUS_NUMBER_ENTER_MESSAGE)
     }
 
+    fun inputBonusNumber(): LottoNumber {
+        val number = Console.readLine()
+        validateIntType(number)
+
+        return LottoNumber(number.toInt())
+    }
+
     private fun printPurchasedLottoCount(lottoCount: Int) {
         println(LOTTO_PURCHASE_LOTTO_COUNT_MESSAGE.format(lottoCount))
     }
