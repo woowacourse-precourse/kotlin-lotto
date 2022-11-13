@@ -49,4 +49,8 @@ object UserInterface {
         require(splitValues.all { it.matches(Regex("\\d{1,2}")) && it.toInt() in 1..45 }) { WINNING_NUMBERS_NOT_IN_BETWEEN_1_AND_45 }
         require(splitValues.toSet().size == splitValues.size) { WINNING_NUMBERS_DUPLICATED }
     }
+
+    fun askBonusNumberNotIncludedInWinningNumbers(winningNumbers: List<Int>): Int {
+        return 0
+    }
 }

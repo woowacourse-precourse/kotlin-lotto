@@ -1,6 +1,7 @@
 package lotto.userinterface
 
 import camp.nextstep.edu.missionutils.test.NsTest
+import lotto.userinterface.UserInterface.askBonusNumberNotIncludedInWinningNumbers
 import lotto.userinterface.UserInterface.askPurchaseAmount
 import lotto.userinterface.UserInterface.askWinningNumbers
 import org.assertj.core.api.Assertions.*
@@ -129,6 +130,36 @@ internal class `UserInterface 클래스의` {
         }
         override fun runMain() {
             askWinningNumbers()
+        }
+    }
+    @Nested
+    inner class `askBonusNumberNotIncludedInWinningNumbers 메소드는`: NsTest() {
+        private val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
+        @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+        @Nested
+        inner class `사용자가 1에서 45 사이의 숫자가 아닌 값을 입력하면` {
+            private fun bonusNumber() = listOf(
+                Arguments.of("0"),
+                Arguments.of("a")
+            )
+            @ParameterizedTest
+            @MethodSource("bonusNumber")
+            fun `예외를 던지고 에러 메시지를 출력한다`(bonusNumber: String) {
+                assertThatThrownBy { runException(bonusNumber) }.isInstanceOf(IllegalArgumentException::class.java)
+                    .hasMessageContaining(ERROR_MESSAGE)
+            }
+        }
+        @Nested
+        inner class `사용자가 당첨 번호에 포함되는 숫자를 입력하면` {
+            private val bonusNumber = "1"
+            @Test
+            fun `예외를 던지고 에러 메시지를 출력한다`() {
+                assertThatThrownBy { runException(bonusNumber) }.isInstanceOf(IllegalArgumentException::class.java)
+                    .hasMessageContaining(ERROR_MESSAGE)
+            }
+        }
+        override fun runMain() {
+            askBonusNumberNotIncludedInWinningNumbers(winningNumbers)
         }
     }
 
