@@ -5,25 +5,23 @@ import lotto.ValidateInput
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6)
-        // 예외 확인
-        val validator = ValidateInput()
 
+        val validator = ValidateInput()
         for (i in numbers)
             validator.validateRange(i)
         validator.validateDuplication(numbers)
-
     }
 
     fun getNumbers(): List<Int> {
         return numbers
     }
 
-    fun compareWithWinningNumber(winningNum: Lotto): Int {
+    private fun compareWithWinningNumber(winningNum: Lotto): Int {
         var count = 0
-        for (i in winningNum.getNumbers()) {
+        for (i in winningNum.getNumbers())
             if (numbers.contains(i))
                 count++
-        }
+
         return count
     }
 
@@ -35,7 +33,7 @@ class Lotto(private val numbers: List<Int>) {
         return Pair(rank, sumPrizeMoney)
     }
 
-    fun determineRank(count: Int, bonusNumber: Int): Rank {
+    private fun determineRank(count: Int, bonusNumber: Int): Rank {
         when (count) {
             6 -> return Rank.First
             5 -> {
@@ -43,11 +41,9 @@ class Lotto(private val numbers: List<Int>) {
                     return Rank.Second
                 return Rank.Third
             }
-
             4 -> return Rank.Fourth
             3 -> return Rank.Fifth
             else -> return Rank.None
         }
     }
-
 }

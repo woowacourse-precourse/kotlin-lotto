@@ -36,7 +36,7 @@ class OutputView {
         println("$EARNINGS_RATE$earningRate%입니다.")
     }
 
-    fun printErrorMessage() {
-        println(ERROR_MESSAGE)
+    fun printErrorMessage(error: String) {
+        println(ERROR_MESSAGE+error)
     }
 }

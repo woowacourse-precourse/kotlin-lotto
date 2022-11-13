@@ -57,6 +57,7 @@ class LottoController {
                 Rank.Third -> prizeResult[3]++
                 Rank.Fourth -> prizeResult[4]++
                 Rank.Fifth -> prizeResult[5]++
+                else -> prizeResult[0]++
             }
         }
         OutputView().printWinningStatistics(prizeResult)

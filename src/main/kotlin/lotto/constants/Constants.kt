@@ -11,3 +11,6 @@ val RESULT_MESSAGES = listOf(
 )
 const val EARNINGS_RATE = "총 수익률은 "
 const val ERROR_MESSAGE = "[ERROR] "
+const val ERROR_NOT_NUMBER = "숫자가 아닌 입력이 있습니다."
+const val ERROR_RANGE = "로또 번호는 1부터 45 사이의 숫자여야 합니다."
+const val ERROR_DUPLICATION = "중복된 수가 있습니다."
