@@ -33,7 +33,5 @@ class WinningLotto(private val winningNumbers: List<Int>, private val bonusNumbe
         return LottoRank.of(countSame, bonus).ordinal + 1
     }
 
-    private fun List<Int>.countSameNumbers(guess: List<Int>): Int {
-        return this.filter { it in guess }.size
-    }
+    private fun List<Int>.countSameNumbers(guess: List<Int>) = this.filter { it in guess }.size
 }
