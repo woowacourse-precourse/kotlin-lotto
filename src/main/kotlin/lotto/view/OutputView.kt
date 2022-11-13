@@ -11,3 +11,7 @@ fun printNumbersOfLottos(lottos: List<Lotto>) {
         println(it.toList())
     }
 }
+
+fun printWinningNumbers(winningNumbers: List<Int>) {
+    println(winningNumbers.joinToString(","))
+}

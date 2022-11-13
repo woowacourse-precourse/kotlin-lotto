@@ -9,4 +9,7 @@ fun main() {
 
     val lottos = Store().buyLotto(purchase.ticket).map { Lotto(it) }
     printNumbersOfLottos(lottos)
+
+    val winningNumbers = inputLottoWinningNumbers().splitToIntList()
+    printWinningNumbers(winningNumbers)
 }
