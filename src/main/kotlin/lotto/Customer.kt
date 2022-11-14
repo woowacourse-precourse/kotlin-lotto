@@ -8,9 +8,12 @@ class Customer() {
 
     fun getBonusLottoNumber(): String = readLine()
 
+    fun getPurchaseAmount(): String = readLine()
+
     companion object {
         var mainLottoNumbers = listOf<Int>()
         var bonusLottoNumber by Delegates.notNull<Int>()
+        var purchaseAmount by Delegates.notNull<Int>()
 
         fun updateMainLottoNumbers(mainLottoNumbers: List<Int>) {
             this.mainLottoNumbers = mainLottoNumbers
@@ -18,6 +21,10 @@ class Customer() {
 
         fun updateBonusLottoNumber(bonusLottoNumber: Int) {
             this.bonusLottoNumber = bonusLottoNumber
+        }
+
+        fun updatePurchaseAmount(purchaseAmount: Int) {
+            this.purchaseAmount = purchaseAmount
         }
     }
 }
