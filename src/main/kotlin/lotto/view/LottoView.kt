@@ -1,12 +1,17 @@
 package lotto.view
 
 import lotto.domain.Rank
+import lotto.util.ExceptionChecker
 
 class LottoView {
 
+    val exceptionChecker = ExceptionChecker()
+
     fun getPrice(): Long{
         println("구입금액을 입력해 주세요.")
-        return readLine()!!.toLong()
+        val price = readLine()!!
+        exceptionChecker.priceExceptionCheck(price)
+        return price.toLong()
     }
 
     fun printLotto(lottos: ArrayList<List<Int>>){
@@ -17,12 +22,16 @@ class LottoView {
 
     fun getWinningNumber(): List<Int>{
         println("\n당첨 번호를 입력해 주세요.")
-        return readLine()!!.split(",").map { it.toInt() }
+        val winningNumber = readLine()!!.split(",").map { it.toInt() }
+        exceptionChecker.validLottoNumExceptionCheck(winningNumber)
+        return winningNumber
     }
 
-    fun getBonusNumber(): Int{
+    fun getBonusNumber(winningNumber: List<Int>): Int{
         println("\n보너스 번호를 입력해 주세요.")
-        return readLine()!!.toInt()
+        val bonusNumber = readLine()!!.toInt()
+        exceptionChecker.validBonusNumExceptionCheck(winningNumber, bonusNumber)
+        return bonusNumber
     }
 
     fun printRankResult(rankResult: MutableMap<Rank, Int>){
