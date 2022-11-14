@@ -12,13 +12,26 @@ class UserNumberPicker {
     fun userNumbersInput() {
         val input = Console.readLine().split(',')
         checkNumberException(input)
+        _numbers.addAll(input.map { it.toInt() })
+    }
 
+    fun userBonusInput() {
+        val input = Console.readLine()
+        checkBonusType(input)
     }
 
     private fun checkNumberException(input: List<String>) {
         checkNumberType(input)
         checkNumberOverlap(input)
         checkNumberLength(input)
+    }
+
+    private fun checkBonusType(input: String) {
+        try {
+            input.toInt()
+        } catch (e: Exception) {
+            invalidInputValue(TYPE_ERROR)
+        }
     }
 
     private fun checkNumberType(input: List<String>) {
