@@ -7,4 +7,5 @@ enum class Money (val value: Int) {
     FIVE(1500000),
     FIVE_BONUS(30000000),
     SIX(2000000000);
+
 }

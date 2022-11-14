@@ -1,12 +1,13 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import java.util.regex.Pattern
+import kotlin.math.pow
+import kotlin.math.roundToInt
 
 class Lottery (
-    private val printer: Printer,
-    private val lotto : Lotto,
-    private val money : Money
+    private val printer: Printer
 ) {
     private var lottos = mutableListOf<Lotto>()
     private var sell = getSellLottoCount()
@@ -14,30 +15,36 @@ class Lottery (
     private var winningResult = HashMap<String, Int>(5)
 
 
-    fun Start(){
+    fun start(){
 
         setLotto(lottos, sell)
         getWinningNumber(winningNumber)
         var bonusNumber = getBonusNumber(winningNumber)
         getWinningResult(lottos, winningNumber, bonusNumber, winningResult)
         var earningRate = getEarningRate(sell, winningResult)
-        printWinningResult(winningResult)
-        printYieldResult(earningRate)
+        printer.printWinningResult(winningResult)
+        printer.printYieldResult(earningRate)
     }
+
     private fun getSellLottoCount() : Int {
 
         printer.printGetPurchaseAmountMessage()
 
         val input = readLine()!!
 
-        if (!Pattern.matches("^[0-9]*", input) || (input.toInt() % AMOUNT) != 0 || (input.toInt() / AMOUNT) == 0) {
-            throw IllegalArgumentException("[ERROR] 정확한 로또 금액을 입력해 주세요.")
+        try {
+            if (!Pattern.matches("^[0-9]*", input) || (input.toInt() % AMOUNT) != 0 || (input.toInt() / AMOUNT) == 0) {
+                throw IllegalArgumentException()
+            }
+            else {
+                val lottoAmount = input.toInt() / AMOUNT
+                println("\n${lottoAmount}개를 구매했습니다.")
+                return lottoAmount
+            }
+        } catch (e: IllegalArgumentException) {
+            println("[ERROR] 정확한 로또 금액을 입력해 주세요.")
+            return 0
         }
-
-        val lottoAmount = input.toInt() / AMOUNT
-        println("\n${lottoAmount}개를 구매했습니다.")
-
-        return lottoAmount
     }
 
     private fun setLotto(lottos : MutableList<Lotto>, count: Int) {
@@ -52,18 +59,23 @@ class Lottery (
     // 로또 번호 오름차순
     private fun getWinningNumber(winningNumber : MutableList<Int>){
 
-        // println("\n당첨 번호를 입력해 주세요.")
+        printer.printGetWinningNumberMessage()
 
         val input = readLine()!!
 
-        if(!Pattern.matches("^[1-9]*,[1-9]*,[1-9]*,[1-9]*,[1-9]*,[1-9]*\$", input)) {
-            throw IllegalArgumentException("[ERROR] 공백 없이 입력해 주세요.")
+        try{
+            if(!Pattern.matches("^[1-9]*,[1-9]*,[1-9]*,[1-9]*,[1-9]*,[1-9]*\$", input)) {
+                throw IllegalArgumentException("[ERROR] 공백 없이 입력해 주세요.")
+            }
+
+            else {
+                var checkedNumber : MutableList<Int> = checkWinningNumberInputOvervalueException(checkWinningNumberInputOverlapException(input))
+                winningNumber.addAll(checkedNumber)
+            }
+
+        } catch (e: IllegalArgumentException) {
+            println("[ERROR] 공백 없이 입력해 주세요.")
         }
-
-        var checkedNumber : MutableList<Int> = checkWinningNumberInputOvervalueException(checkWinningNumberInputOverlapException(input))
-        winningNumber.addAll(checkedNumber)
-
-        //println(winningNumber)
     }
 
     private fun checkWinningNumberInputOverlapException(input: String) : MutableSet<String> {
@@ -75,8 +87,13 @@ class Lottery (
             winningSet.add(it)
         }
 
-        if(winningSet.size != 6){
-            throw IllegalArgumentException("[ERROR] 당첨 번호는 중복될 수 없습니다.")
+        try {
+            if(winningSet.size != 6){
+                throw IllegalArgumentException()
+            }
+        } catch (e: IllegalArgumentException) {
+            println("[ERROR] 당첨 번호는 중복될 수 없습니다.")
+            winningSet.clear()
         }
 
         return winningSet
@@ -87,29 +104,40 @@ class Lottery (
 
         input.forEach {
             val num = it.toInt()
-            if(num < 1 || num > 45){
-                throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+            try {
+                if(num < 1 || num > 45){
+                    throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+                }
+                else {
+                    winningInt.add(num)
+                }
+            } catch (e: IllegalArgumentException){
+                println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
             }
-            winningInt.add(num)
         }
-
         return winningInt
     }
 
     // 예외처리 리팩토링 필요
     private fun getBonusNumber(winningNumber: MutableList<Int>) : Int {
 
-        //println("\n보너스 번호를 입력해 주세요.")
+        printer.printGetBonusNumberMessage()
 
         val input = readLine()!!
 
-        if(!Pattern.matches("^[1-9]*$", input)
-            || input.toInt() < 1 || input.toInt() > 45
-            || winningNumber.contains(input.toInt())){
-            throw IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.")
+        try{
+            if(!Pattern.matches("^[1-9]*$", input)
+                || input.toInt() < 1 || input.toInt() > 45
+                || winningNumber.contains(input.toInt())){
+                throw IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.")
+            }
+            else {
+                return input.toInt()
+            }
+        } catch (e: IllegalArgumentException){
+            println("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.")
+            return 0
         }
-
-        return input.toInt()
     }
 
     private fun getWinningResult(lottos: MutableList<Lotto>, winningNumber: MutableList<Int>, bonusNumber : Int, winningResult : HashMap<String, Int>){
@@ -129,13 +157,12 @@ class Lottery (
             }
         }
 
-        winningResult["threeWin"] = threeWin
-        winningResult["fourWin"] = fourWin
-        winningResult["fiveWin"] = fiveWin
-        winningResult["fiveWithBonusWin"] = fiveWithBonusWin
-        winningResult["sixWin"] = sixWin
+        winningResult[THREE_WIN] = threeWin
+        winningResult[FOUR_WIN] = fourWin
+        winningResult[FIVE_WIN] = fiveWin
+        winningResult[FIVE_BONUS] = fiveWithBonusWin
+        winningResult[SIX_WIN] = sixWin
 
-        //println(winningResult)
     }
 
     private fun getEarningRate(sell : Int, winningResult: HashMap<String, Int>) : Double {
@@ -155,30 +182,17 @@ class Lottery (
         var money = 0
 
         when(grade){
-            "threeWin" -> money = 5000
-            "fourWin" -> money = 50000
-            "fiveWin" -> money = 1500000
-            "sixWin" -> money = 2000000000
-            "fiveWithBonusWin" -> money = 30000000
+            "threeWin" -> money = Money.THREE.value
+            "fourWin" -> money = Money.FOUR.value
+            "fiveWin" -> money = Money.FIVE.value
+            "sixWin" -> money = Money.SIX.value
+            "fiveWithBonusWin" -> money = Money.FIVE_BONUS.value
         }
-        // 데이터베이스 리팩토링 필요
 
         return money
     }
     private fun roundDigit(num : Double, digits : Int) : Double {
-        return Math.round(num * Math.pow(10.0, digits.toDouble())) / Math.pow(10.0, digits.toDouble())
+        return (num * POW.pow(digits.toDouble())).roundToInt() / POW.pow(digits.toDouble())
     }
 
-    private fun printWinningResult(winningResult: HashMap<String, Int>){
-        // println("\n당첨 통계\n---")
-        println("3개 일치 (5,000원) - ${winningResult.getValue("threeWin")}개")
-        println("4개 일치 (50,000원) - ${winningResult.getValue("fourWin")}개")
-        println("5개 일치 (1,500,000원) - ${winningResult.getValue("fiveWin")}개")
-        println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${winningResult.getValue("fiveWithBonusWin")}개")
-        println("6개 일치 (2,000,000,000원) - ${winningResult.getValue("sixWin")}개")
-    }
-
-    private fun printYieldResult(rate : Double){
-        println("총 수익률은 ${rate}%입니다.")
-    }
 }
