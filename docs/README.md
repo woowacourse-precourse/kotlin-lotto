@@ -23,14 +23,15 @@
   - [ ] `lottoAnswer` : 당첨 번호 입력
   - [ ] `lottoBonus` : 보너스 번호
   - [ ] `lottoStats` : 당첨 통계
-  - [ ] `lottoRateOfReturn` : 수익률  
-
+  - [ ] `lottoRateOfReturn` : 수익률
 
 ### `LottoLogic` _클래스_
   - [ ] `lottoCreateLists` : 구입한 수만큼 로또 생성
   - [ ] `lottoMatchList` : 로또 당첨 여부  
   - [ ] `lottoRateOfReturn` : 수익률 계산
-  - [ ] `lottoStats` : 당첨 통계 및 수익률(Enum)
+
+### `LottoStats` _클래스(Enum)_
+  - [ ] `lottoStats` : 당첨 통계 및 수익률
   
 ---
 ## 프로그래밍 요구 사항
