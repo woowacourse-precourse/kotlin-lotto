@@ -9,32 +9,7 @@ fun main() {
     val allLotto = publishLotto(lottoCount)
     val answerNum = inputWinningNumber()
     val bonusNum = inputBonusNumber()
-
-    var bonusCount = 0
-
-    var answerList = mutableListOf<Int>(0, 0, 0, 0, 0, 0, 0, 0)
-
-    for (i in 0 until lottoCount) {
-        val lottos = allLotto[i].toList()
-        var answerCount = 0
-        for (j in 0..5) {
-            val lottoNum = lottos[j]
-            for (k in 0..5) {
-                if (answerNum[k].toInt() == lottoNum) {
-                    answerCount++
-                }
-                if (bonusNum == lottoNum) {
-                    bonusCount = 1
-                }
-            }
-        }
-        if (answerCount != 0) {
-            answerList[answerCount] = answerList[answerCount] + 1
-        }
-        if (answerCount == 5 && bonusCount == 1) {
-            answerList[7] = answerList[7] + 1
-        }
-    }
+    val answerList = calculateLottoWin(lottoCount, allLotto, answerNum, bonusNum)
 
     println("\n당첨 통계")
     println("---")
@@ -110,4 +85,38 @@ fun inputBonusNumber(): Int {
         throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
     }
     return bonusNum
+}
+
+fun calculateLottoWin(
+    lottoCount: Int,
+    allLotto: Array<IntArray>,
+    answerNum: List<String>,
+    bonusNum: Int,
+): MutableList<Int> {
+    var bonusCount = 0
+    var answerList = mutableListOf<Int>(0, 0, 0, 0, 0, 0, 0, 0)
+
+    for (i in 0 until lottoCount) {
+        val lottos = allLotto[i].toList()
+        var answerCount = 0
+        for (j in 0..5) {
+            val lottoNum = lottos[j]
+            for (k in 0..5) {
+                if (answerNum[k].toInt() == lottoNum) {
+                    answerCount++
+                }
+                if (bonusNum == lottoNum) {
+                    bonusCount = 1
+                }
+            }
+        }
+        if (answerCount != 0) {
+            answerList[answerCount] = answerList[answerCount] + 1
+        }
+        if (answerCount == 5 && bonusCount == 1) {
+            answerList[7] = answerList[7] + 1
+        }
+    }
+
+    return answerList
 }
