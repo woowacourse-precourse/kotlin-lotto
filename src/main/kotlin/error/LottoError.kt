@@ -20,8 +20,9 @@ enum class LottoError {
     abstract fun getErrorMessage(): String
 
     companion object {
-        fun print(lottoError: LottoError) {
+        fun makeError(lottoError: LottoError) {
             println("[ERROR] ${lottoError.getErrorMessage()}")
+            throw IllegalArgumentException()
         }
     }
 }
