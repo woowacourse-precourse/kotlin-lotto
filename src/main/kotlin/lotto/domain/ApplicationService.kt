@@ -3,7 +3,6 @@ package lotto.domain
 import lotto.domain.InputExceptionHandler.checkInputBonusNumber
 import lotto.domain.InputExceptionHandler.checkInputPurchasingAmount
 import lotto.domain.InputExceptionHandler.checkInputWinningNumbers
-import kotlin.math.round
 
 class ApplicationService {
     companion object {
@@ -30,6 +29,15 @@ class ApplicationService {
         }
     }
 
+    /** 정상 구입금액을 입력할 때까지 반복하는 함수 */
+    fun retryGetPurchasingAmount(applicationService: ApplicationService): Int {
+        var countOfLotto: Int
+        do {
+            countOfLotto = applicationService.getPurchasingAmount()
+        } while (countOfLotto == 0)
+        return countOfLotto
+    }
+
     /**
      * 구매 갯수 만큼 로또 번호를 생성해 리턴하는 함수
      * */
@@ -51,11 +59,23 @@ class ApplicationService {
             checkInputWinningNumbers(inputWinningNumber)
             Lotto(inputWinningNumber
                 .split(",")
-                .map { it.toInt() }).also { println(it.toString()) }
+                .map { it.toInt() })
+                .also { println(it.toString()) }
         } catch (e: IllegalArgumentException) {
             println(WINNING_NUMBERS_EXCEPTION_MESSAGE)
             null
         }
+    }
+
+    /**
+     * 정상 당첨 번호를 입력할 때까지 반복하는 함수
+     * */
+    fun retryGetWinningNumbers(applicationService: ApplicationService): Lotto {
+        var winningNumbers: Lotto?
+        do {
+            winningNumbers = applicationService.getWinningNumbers()
+        } while (winningNumbers == null)
+        return winningNumbers
     }
 
     /**
@@ -66,10 +86,23 @@ class ApplicationService {
         val inputBonusNumber = Util.readLine()
         return try {
             checkInputBonusNumber(winningNumbers, inputBonusNumber)
-            inputBonusNumber.toInt().also { println(it) }
+            inputBonusNumber
+                .toInt()
+                .also { println(it) }
         } catch (e: IllegalArgumentException) {
             println(BONUS_NUMBER_EXCEPTION_MESSAGE)
             0
         }
+    }
+
+    /**
+     * 정상 보너스 번호를 입력할 때까지 반복하는 함수
+     * */
+    fun retryGetBonusNumber(applicationService: ApplicationService, winningNumbers: Lotto): Int {
+        var bonusNumber: Int
+        do {
+            bonusNumber = applicationService.getBonusNumber(winningNumbers)
+        } while (bonusNumber == 0)
+        return bonusNumber
     }
 }
