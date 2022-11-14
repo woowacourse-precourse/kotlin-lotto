@@ -4,28 +4,23 @@ import camp.nextstep.edu.missionutils.Randoms
 
 private const val LOTTO_SIZE = 6
 
-enum class Rank(var index:Int,var prize:Int){
-    FIRST_PRIZE(0,2000000000),
-    SECOND_PRIZE(1,30000000),
-    THIRD_PRIZE(2,1500000),
-    FOURTH_PRIZE(3,50000),
-    FIFTH_PRIZE(4,5000);
+enum class Rank(var prize:Int){
+    FIRST_PRIZE(2000000000),
+    SECOND_PRIZE(30000000),
+    THIRD_PRIZE(1500000),
+    FOURTH_PRIZE(50000),
+    FIFTH_PRIZE(5000);
     }
 
-class LottoMachine {
-    private val printer: LottoPrinter
-    private val console: LottoConsole
+class LottoMachine(private val printer: LottoPrinter, private val console: LottoConsole) {
     private lateinit var user: User
     private lateinit var winningNum:Lotto
     private var bonusNum:Int
     private val lottoResult: MutableList<Int>
 
-    constructor(printer: LottoPrinter, console: LottoConsole) {
-        this.printer = printer
-        this.console = console
+    init {
         this.bonusNum=0
         this.lottoResult= mutableListOf<Int>(0,0,0,0,0)
-
     }
 
 
@@ -35,7 +30,6 @@ class LottoMachine {
         printer.printTicketsCount(user.amount)
         printer.printMyTickets(user)
     }
-
     fun inputWinningNum(){
         this.winningNum=console.inputWinningNumbers()
     }
@@ -43,8 +37,6 @@ class LottoMachine {
     fun inputBonusNum(){
         this.bonusNum=console.inputBonusNum(winningNum)
     }
-
-
 
     fun makeRandomNumber(): Lotto {
         val numbers =Randoms.pickUniqueNumbersInRange(1, 45, 6)
@@ -67,7 +59,7 @@ class LottoMachine {
 
 
     fun checkResult(){
-        var correctCount=0
+        var correctCount:Int
         for(myLotto in user.myLottoTickets){
             correctCount=checkResultOneByOne(myLotto)
 
@@ -115,24 +107,38 @@ class LottoMachine {
         val rates:Double=wholePrize/user.amount.toDouble() *100.0
         return rates
     }
-
-    fun startLottoProgram() {
-        printer.printIntroMsg()
-        val amount = console.inputAmount()
+    fun setUser() {
+        printHowMuchLotto()
+        val amount =inputAmount()
         val lottoTickets = makeUserLottoTickets(amount)
         initializeUser(amount,lottoTickets)
-        printer.printTicketsCount(amount)
+    }
+
+    fun printUserLotto(){
+        printer.printTicketsCount(user.amount)
         printer.printMyTickets(user)
+    }
+    fun inputWinningNumber(){
         printer.printAskingWinningNumber()
-        //console.inputWinningNumbers()
+
         inputWinningNum()
         printer.printAskingBonusNumber()
-        //console.inputBonusNum(winningNum)
+
         inputBonusNum()
-        checkResult()
+    }
+
+    fun printResult(){
         printer.printResultStats(lottoResult)
         val rates=calculatePrize()
         printer.printRatesofResult(rates)
+    }
+    fun startLottoProgram() {
+
+        setUser()
+        printUserLotto()
+        inputWinningNumber()
+        checkResult()
+        printResult()
 
     }
 
