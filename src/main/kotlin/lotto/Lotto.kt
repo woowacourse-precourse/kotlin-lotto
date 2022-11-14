@@ -16,7 +16,7 @@ class Lotto(private val numbers: List<Int>) {
     fun matchLotto(winningNumbers: List<Int>, bonusNumber: Int): WinningType {
         var hit = 0
         for(i in 0..5) {
-            if (winningNumbers[i] == numbers[i]) hit += 1
+            if (numbers.contains(winningNumbers[i])) hit += 1
         }
         return when(hit) {
             6 -> WinningType.FIRST
