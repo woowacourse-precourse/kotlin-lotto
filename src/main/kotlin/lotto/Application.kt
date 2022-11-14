@@ -11,13 +11,7 @@ fun main() {
     val bonusNum = inputBonusNumber()
     val answerList = calculateLottoWin(lottoCount, allLotto, answerNum, bonusNum)
     printWinningScore(answerList)
-
-    var totalPrice = 5000 * answerList[3] + 50000 * answerList[4] + 1500000 * answerList[5]
-    +2000000000 * answerList[6] + 30000000 * answerList[7]
-
-    var percent = totalPrice / money.toFloat() * 100
-
-    println("총 수익률은 " + "%.1f".format(percent) + "%입니다.")
+    printWinningRate(answerList, money)
 }
 
 fun inputMoney(): Int {
@@ -122,4 +116,11 @@ fun printWinningScore(answerList: MutableList<Int>) {
     println("5개 일치 (1,500,000원) - ${answerList[5]}개")
     println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${answerList[7]}개")
     println("6개 일치 (2,000,000,000원) - ${answerList[6]}개")
+}
+
+fun printWinningRate(answerList: MutableList<Int>, money: Int) {
+    var totalPrice = 5000 * answerList[3] + 50000 * answerList[4] + 1500000 * answerList[5]
+    +2000000000 * answerList[6] + 30000000 * answerList[7]
+    var percent = totalPrice / money.toFloat() * 100
+    println("총 수익률은 " + "%.1f".format(percent) + "%입니다.")
 }
