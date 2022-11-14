@@ -14,4 +14,7 @@ class LottoShop() {
     }
 
     fun isInputTypeNumber(input: String): Boolean = Pattern.matches("^[0-9]+$", input)
+
+    fun convertToInt(input: String): Int = input.toInt()
+
 }
