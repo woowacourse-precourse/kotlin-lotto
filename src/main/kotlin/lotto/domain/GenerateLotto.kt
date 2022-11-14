@@ -6,7 +6,7 @@ import lotto.Lotto
 object GenerateLotto {
 
     fun generate(): Lotto {
-        return Lotto(pickUniqueNumbersInRange(1, 45, 6))
+        return Lotto(pickUniqueNumbersInRange(1, 45, 6).sorted())
     }
 
     fun stringToList(string: String): Lotto {
@@ -17,6 +17,7 @@ object GenerateLotto {
             intLotto.add(i.toInt())
         }
 
+        intLotto.sort()
         return Lotto(intLotto)
     }
 
