@@ -70,9 +70,10 @@ object ExceptionHandler {
         return true
     }
 
-    fun checkBonusNumber(number: String) {
+    fun checkBonusNumber(number: String, winningNumberList: List<Int>) {
         if(!isOnlyInt(number)
-                || !isInRange(number)){
+                || !isInRange(number)
+                || winningNumberList.contains(number.toInt())){
             throw IllegalArgumentException("checkBonusNumber 잘못된 입력입니다.")
         }
     }

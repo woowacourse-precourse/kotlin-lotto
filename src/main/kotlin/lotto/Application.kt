@@ -4,11 +4,11 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-//    val money = getMoney()
-//    val lottoList = makeLottoList(money)
-//    printLottoList(lottoList)
-//    println(getWinningNumber().toString())
-    println(getBonusNumber())
+    val money = getMoney()
+    val lottoList = makeLottoList(money)
+    printLottoList(lottoList)
+    val winningNumber = getWinningNumber()
+    println(getBonusNumber(winningNumber))
 }
 
 fun getMoney(): Int {
@@ -56,10 +56,10 @@ fun getWinningNumber(): List<Int> {
     return winningNumberList
 }
 
-fun getBonusNumber(): Int {
+fun getBonusNumber(winningNumber: List<Int>): Int {
     println("보너스 번호를 입력해 주세요.")
     val number = Console.readLine().trim()
-    ExceptionHandler.checkBonusNumber(number)
+    ExceptionHandler.checkBonusNumber(number, winningNumber)
 
     return number.toInt()
 }
