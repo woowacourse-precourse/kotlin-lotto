@@ -1,5 +1,6 @@
 package lotto
 
+import utils.Constants.PROFIT_RESULT
 import utils.Constants.PURCHASE_COUNT_MESSAGE
 import utils.Constants.REQUIRE_INPUT_BONUS_MESSAGE
 import utils.Constants.REQUIRE_INPUT_PURCHASE_AMOUNT_MESSAGE
@@ -17,7 +18,7 @@ class Display {
     }
     fun printLottos(lottos: List<Lotto>) {
         for(lotto in lottos) {
-            val numbers = lotto.getNumbers()
+            val numbers = lotto.getNumbers().sorted()
             print("[")
             for(i in 0 until numbers.size - 1) {
                 print("${numbers[i]}, ")
@@ -44,7 +45,7 @@ class Display {
             println(contents[i].content + matchingCounts[i] + "개")
         }
 
-        println("총 수익률은 ${profit}%입니다.")
+        println(PROFIT_RESULT.format(profit))
     }
 }
 

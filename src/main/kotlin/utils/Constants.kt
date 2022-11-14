@@ -20,5 +20,7 @@ object Constants {
     const val RANGE_START = 1
     const val RANGE_END = 45
 
+    const val PROFIT_RESULT = "총 수익률은 %.1f%%입니다."
+
 
 }
