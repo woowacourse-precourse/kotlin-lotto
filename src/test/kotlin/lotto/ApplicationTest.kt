@@ -44,7 +44,7 @@ class ApplicationTest : NsTest() {
     @Test
     fun `기능 테스트1`() {
         assertSimpleTest {
-            run("10000")
+            run("10000","1,2,3,4,5,6")
         }
     }
 
@@ -52,6 +52,28 @@ class ApplicationTest : NsTest() {
     fun `예외 테스트`() {
         assertSimpleTest {
             runException("1000j")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `예외 테스트1`() {
+        assertSimpleTest {
+            run("10000","1,2,3,4,5,6,7")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+    @Test
+    fun `예외 테스트2`() {
+        assertSimpleTest {
+            run("10000","1,2,3,4,5,46")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+    @Test
+    fun `예외 테스트3`() {
+        assertSimpleTest {
+            run("10000","1,2,3,4,5,a")
             assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
