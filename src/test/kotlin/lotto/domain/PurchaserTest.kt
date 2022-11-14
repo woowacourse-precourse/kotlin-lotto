@@ -31,7 +31,7 @@ class PurchaserTest {
 
     @Test
     fun `순위 테스트`() {
-        val winningLotto = WinningLotto(Lotto(listOf(1, 2, 3, 4, 5, 6)), 7)
+        val winningLotto = WinningLotto(listOf(1, 2, 3, 4, 5, 6), 7)
         val tickets = listOf(
             Lotto(listOf(1, 2, 3, 4, 5, 6)),
             Lotto(listOf(1, 2, 3, 4, 5, 7))

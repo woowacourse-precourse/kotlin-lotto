@@ -8,58 +8,58 @@ class WinningLottoTest {
     @Test
     fun `기능 테스트`() {
         assertThat(
-            WinningLotto(Lotto(listOf(1, 2, 3, 4, 5, 6)), 7)
+            WinningLotto(listOf(1, 2, 3, 4, 5, 6), 7)
         )
     }
 
     @Test
     fun `로또 번호에 중복이 있을 때`() {
         assertThrows<IllegalArgumentException> {
-            WinningLotto(Lotto(listOf(1, 2, 3, 4, 5, 5)), 6)
+            WinningLotto(listOf(1, 2, 3, 4, 5, 5), 6)
         }
     }
 
     @Test
     fun `로또 번호에 1부터 45의 이외의 숫자가 있을 때`() {
         assertThrows<IllegalArgumentException> {
-            WinningLotto(Lotto(listOf(1, 2, 3, 4, 5, 50)), 6)
+            WinningLotto(listOf(1, 2, 3, 4, 5, 50), 6)
         }
     }
 
     @Test
     fun `6개 이외의 개수가 들어 올 떄`() {
         assertThrows<IllegalArgumentException> {
-            WinningLotto(Lotto(listOf(1, 2, 3, 4, 5)), 6)
+            WinningLotto(listOf(1, 2, 3, 4, 5), 6)
         }
     }
 
     @Test
     fun `보너스가 로또 번호와 중복일 떄`() {
         assertThrows<IllegalArgumentException> {
-            WinningLotto(Lotto(listOf(1, 2, 3, 4, 5, 6)), 5)
+            WinningLotto(listOf(1, 2, 3, 4, 5, 6), 5)
         }
     }
 
     @Test
     fun `보너스가 1부터 45의 이외에 숫자일 때 `() {
         assertThrows<IllegalArgumentException> {
-            WinningLotto(Lotto(listOf(1, 2, 3, 4, 5, 6)), 50)
+            WinningLotto(listOf(1, 2, 3, 4, 5, 6), 50)
         }
     }
 
     @Test
     fun `getRank 기능 테스트`() {
         assertThat(
-            WinningLotto(Lotto(listOf(1, 2, 3, 4, 5, 6)), 7).getRank(Lotto(listOf(1, 2, 3, 4, 5, 6))) == 1 &&
-            WinningLotto(Lotto(listOf(1, 2, 3, 4, 5, 6)), 7).getRank(Lotto(listOf(1, 2, 3, 4, 5, 7))) == 2 &&
-            WinningLotto(Lotto(listOf(1, 2, 3, 4, 5, 6)), 7).getRank(Lotto(listOf(11, 12, 13, 14, 15, 16))) == 6
+            WinningLotto(listOf(1, 2, 3, 4, 5, 6), 7).getRank(Lotto(listOf(1, 2, 3, 4, 5, 6))) == 1 &&
+            WinningLotto(listOf(1, 2, 3, 4, 5, 6), 7).getRank(Lotto(listOf(1, 2, 3, 4, 5, 7))) == 2 &&
+            WinningLotto(listOf(1, 2, 3, 4, 5, 6), 7).getRank(Lotto(listOf(11, 12, 13, 14, 15, 16))) == 6
         )
     }
 
     @Test
     fun `getPrize 기능 테스트`() {
         assertThat(
-            WinningLotto(Lotto(listOf(1, 2, 3, 4, 5, 6)), 7).getRank(Lotto(listOf(1, 2, 3, 4, 5, 6))) == LottoRank.FIRST.prize
+            WinningLotto(listOf(1, 2, 3, 4, 5, 6), 7).getRank(Lotto(listOf(1, 2, 3, 4, 5, 6))) == LottoRank.FIRST.prize
         )
     }
 }
