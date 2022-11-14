@@ -1,6 +1,6 @@
 package error
 
-enum class LottoError {
+enum class ErrorMaking {
     OUT_OF_RANGE {
         override fun getErrorMessage() = "숫자가 범위를 벗어났습니다."
     },
@@ -20,8 +20,8 @@ enum class LottoError {
     abstract fun getErrorMessage(): String
 
     companion object {
-        fun makeError(lottoError: LottoError) {
-            println("[ERROR] ${lottoError.getErrorMessage()}")
+        fun makeError(errorMaking: ErrorMaking) {
+            println("[ERROR] ${errorMaking.getErrorMessage()}")
             throw IllegalArgumentException()
         }
     }
