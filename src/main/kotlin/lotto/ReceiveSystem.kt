@@ -13,7 +13,7 @@ class ReceiveSystem {
         val money = Console.readLine()
         if (validator.validateNumber(money))
             return Money(money.toInt())
-        return Money()
+        return Money(0)
     }
 
     fun receiveWinningNumber(): Lotto {

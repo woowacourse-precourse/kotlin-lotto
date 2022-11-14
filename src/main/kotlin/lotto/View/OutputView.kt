@@ -37,6 +37,6 @@ class OutputView {
     }
 
     fun printErrorMessage(error: String) {
-        println(ERROR_MESSAGE+error)
+        println(ERROR_MESSAGE + error)
     }
 }

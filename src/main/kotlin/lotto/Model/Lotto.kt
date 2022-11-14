@@ -8,9 +8,8 @@ class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6)
 
-        val validator = ValidateInput()
         for (i in numbers)
-            validator.validateRange(i)
+            ValidateInput().validateRange(i)
         validateLengthAndDuplication(numbers)
     }
 

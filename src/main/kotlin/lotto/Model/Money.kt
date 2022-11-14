@@ -3,10 +3,10 @@ package lotto.Model
 import lotto.View.OutputView
 import lotto.constants.ERROR_WRONG_MONEY
 
-class Money() {
+class Money(money: Int) {
     private var money: Int = -1
 
-    constructor(money: Int) : this() {
+    init {
         if (validateMoney(money))
             this.money = money
     }

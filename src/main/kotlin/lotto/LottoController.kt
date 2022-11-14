@@ -24,14 +24,21 @@ class LottoController {
     fun concludePrizeResult(lottoList: MutableList<Lotto>, winningNumber: Lotto, bonusNumber: Int): MutableList<Int> {
         var earnedMoney = 0
         val prizeResult = mutableListOf(0, 0, 0, 0, 0, 0)
+
         for (lotto in lottoList) {
             val rank = lotto.calculateWinningResult(winningNumber, bonusNumber)
             earnedMoney += rank.prizeMoney
             prizeResult[countPrizeResult(rank)]++
         }
+
         prizeResult[0] = earnedMoney
         OutputView().printWinningStatistics(prizeResult)
         return prizeResult
+    }
+
+    fun concludeEarningRate(earnedMoney: Int, moneyPut: Double) {
+        val percentage = calculateEarningRate(earnedMoney, moneyPut)
+        OutputView().printEarningsRate(percentage)
     }
 
     private fun countPrizeResult(rank: Rank): Int {
@@ -43,11 +50,6 @@ class LottoController {
             Rank.Fifth -> 5
             else -> 0
         }
-    }
-
-    fun concludeEarningRate(earnedMoney: Int, moneyPut: Double) {
-        val percentage = calculateEarningRate(earnedMoney, moneyPut)
-        OutputView().printEarningsRate(percentage)
     }
 
     private fun calculateEarningRate(totalEarnedMoney: Int, moneyPut: Double): Double {
