@@ -1,5 +1,6 @@
 package lotto
 
+
 enum class Money (val value: Int) {
     THREE(5000),
     FOUR(50000),
