@@ -13,6 +13,7 @@ class MakeLottos {
         repeat(count){
             val lotto = getRandomNumber()
             lottos.add(Lotto(lotto))
+            println(lotto)
         }
 
         return lottos

@@ -2,7 +2,12 @@ package lotto
 
 fun main() {
     printStart()
-    val purchaseAmount = inputPrice()
+    val numberOfLotto = inputPrice()
+    println()
+
+    printCount(numberOfLotto)
+    val lottos = MakeLottos().getLottos(numberOfLotto)
+    println()
 }
 
 fun printStart() {
@@ -15,5 +20,9 @@ fun inputPrice(): Int {
     if (price % 1000 != 0)
         throw IllegalArgumentException(Error.NotDivideThousand.message)
 
-    return price
+    return price / 1000
+}
+
+fun printCount(count: Int) {
+    println("$count${Output.NumberOfPurchases.message}")
 }
