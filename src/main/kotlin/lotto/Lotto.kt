@@ -65,7 +65,6 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     fun showLottoResult() {
-        //println("\n당첨 통계")
         println("당첨 통계")
         println("- - -")
 

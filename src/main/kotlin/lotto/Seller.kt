@@ -13,8 +13,7 @@ class Seller {
     var judgment = Judgment()
 
     fun generateLotto(LottoCnt: Int) {
-        //println("\n${LottoCnt}개를 구입했습니다.")
-        println("${LottoCnt}개를 구입했습니다.")
+        println("${LottoCnt}개를 구매했습니다.")
         for (cnt in 0 until LottoCnt) {
             var randLotto = Randoms.pickUniqueNumbersInRange(1, 45, LOTTO_SIZE).sorted()
             println(randLotto)
@@ -23,7 +22,6 @@ class Seller {
     }
 
     fun getWinningNumber() {
-        //println("\n당첨 번호를 입력해 주세요.")
         println("당첨 번호를 입력해 주세요.")
         var winningLottoNumber = Console.readLine()
         winningLottoNumber.split(",").forEach() {
@@ -36,7 +34,6 @@ class Seller {
     }
 
     fun getBonusNumber() {
-        //println("보너스 번호를 입력해 주세요.")
         println("보너스 번호를 입력해 주세요.")
         bonusNumber = Console.readLine()
         judgment.checkBonusNumber(bonusNumber, winningNumber)
