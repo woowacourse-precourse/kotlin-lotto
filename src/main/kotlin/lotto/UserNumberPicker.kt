@@ -26,6 +26,10 @@ class UserNumberPicker {
         if (input.size != input.toSet().size) invalidInputValue(VALUE_ERROR)
     }
 
+    private fun checkNumberLength(input: List<String>) {
+        if (input.size != 6) invalidInputValue(VALUE_ERROR)
+    }
+
     private fun invalidInputValue(message: String) {
         throw IllegalArgumentException("[ERROR] : $message")
     }
