@@ -18,8 +18,8 @@ fun main() {
         winningCounts = Lotto(it.toList()).calculateLottoWin(lottoCount, allLotto, bonusNum)
     }
 
-    Print().printWinningScore(winningCounts)
-    Print().printWinningRate(winningCounts, money)
+    PrintScore().printWinningScore(winningCounts)
+    PrintScore().printWinningRate(winningCounts, money)
 }
 
 fun publishLotto(lottoCount: Int): Array<IntArray> {

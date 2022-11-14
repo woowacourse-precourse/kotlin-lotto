@@ -1,9 +1,8 @@
 package lotto
 
-import message.Message
 import message.ScoreMessage
 
-class Print {
+class PrintScore {
 
     fun printWinningScore(winningCounts: MutableList<Int>) {
         println(ScoreMessage.SCORE_TITLE.message)
