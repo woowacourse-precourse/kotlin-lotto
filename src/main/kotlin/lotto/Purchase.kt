@@ -7,7 +7,7 @@ class Purchase {
         println("구입금액을 입력해 주세요.")
         expense = readLine()!!.toInt()
         checkMoney(expense)
-        println("${updateLottoQuantity(expense)}개를 구매했습니다.")
+        println("\n${updateLottoQuantity(expense)}개를 구매했습니다.")
         return updateLottoQuantity(expense)
     }
 

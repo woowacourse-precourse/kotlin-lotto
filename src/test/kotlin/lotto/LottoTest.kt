@@ -23,7 +23,11 @@ class LottoTest {
     @Test
     fun `모든 번호가 일치 하지 않을 때 반환 갯수 0개`() {
         val lottoList = Lotto(listOf(1,2,3,4,5,6))
-        val matchCount = lottoList.updateMatchCount(listOf(7,8,9,10,11,12))
+        val matchCount = lottoList.updateMatchCount(
+            listOf(1,2,3,4,5,6),
+            listOf(7,8,9,10,11,12),
+            13,
+        )
         assertThat(0).isEqualTo(matchCount)
 
     }
@@ -31,7 +35,11 @@ class LottoTest {
     @Test
     fun `번호 5개와 보너스 번호가 일치할 때 7을 반환`() {
         val lottoList = Lotto(listOf(1,2,3,4,5,6))
-        val matchCount = lottoList.updateMatchCount(listOf(1,2,3,4,5,7))
+        val matchCount = lottoList.updateMatchCount(
+            listOf(1,2,3,4,5,6),
+            listOf(1,2,3,4,5,7),
+            7
+        )
         assertThat(7).isEqualTo(matchCount)
     }
 

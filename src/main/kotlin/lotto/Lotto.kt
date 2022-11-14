@@ -12,14 +12,14 @@ class Lotto(private val numbers: List<Int>) {
     fun createNumber(): List<Int> {
         val purchase = Purchase()
         val lottoQuantity = purchase.createExpense()
-        val winningNumber = createWinningNumber()
-        val bonusNumber = createBonusNumber()
 
         for (item in 0 until lottoQuantity) {
             val numberList = Randoms.pickUniqueNumbersInRange(START_NUMBER_ONE, END_NUMBER_FORTY_FIVE, numbers.size)
             numberHashMap[item] = numberList.sorted()
         }
         updateNumberList()
+        val winningNumber = createWinningNumber()
+        val bonusNumber = createBonusNumber()
 
         return createMatchCountList(winningNumber, bonusNumber)
     }
@@ -47,7 +47,7 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     private fun createWinningNumber(): List<Int> {
-        println("당첨 번호를 입력해 주세요")
+        println("\n당첨 번호를 입력해 주세요")
         val winningNumberList = readLine()!!.split(",")
         return winningNumberList.map { winningNumber ->
             winningNumber.toInt()
@@ -56,7 +56,7 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     private fun createBonusNumber(): Int {
-        println("보너스 번호를 입력해 주세요")
+        println("\n보너스 번호를 입력해 주세요")
         return readLine()!!.toInt()
     }
     
