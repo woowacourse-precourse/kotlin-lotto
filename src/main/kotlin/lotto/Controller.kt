@@ -8,6 +8,7 @@ class Controller() {
         view.View().tellNumOfLotto(numberOfLotto)
         return numberOfLotto
     }
+
     // 정답 로또 번호 받기
     fun answerLottoNum(): MutableList<Int> {
         view.View().answerNumbersMessage()
@@ -16,11 +17,15 @@ class Controller() {
         return answerNumbers
     }
 
-    fun bonusLottoNum(): String {
+    fun bonusLottoNum(answerNumbers: MutableList<Int>): String {
         view.View().bonusNumberMessage()
-        val inputBonusPrice = LottoGame().inputNum().toString()
-        LottoGame().checkinputBonus(inputBonusPrice)
+        val inputBonusPrice = bonusLottoInput().toString()
+        LottoGame().checkinputBonus(inputBonusPrice, answerNumbers)
         return inputBonusPrice
+    }
+
+    fun bonusLottoInput(): Int {
+        return readLine()!!.trim().toInt()
     }
 
     fun winLotto(
