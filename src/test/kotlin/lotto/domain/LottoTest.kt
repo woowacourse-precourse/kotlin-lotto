@@ -27,12 +27,16 @@ class LottoTest {
     }
 
     @Test
-    fun `로또 번호가 1부터 45까지의 수가 아닌 경우 예외를 발생시킨다`() {
+    fun `로또 번호가 1보다 작은 경우 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 0, 3, 4, 5, 6))
+            Lotto(listOf(1, 2, 3, 4, 5, Int.MIN_VALUE))
         }
+    }
+
+    @Test
+    fun `로또 번호가 45를 넘는 경우 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, 46))
+            Lotto(listOf(1, 0, 3, 4, 5, Int.MAX_VALUE))
         }
     }
 

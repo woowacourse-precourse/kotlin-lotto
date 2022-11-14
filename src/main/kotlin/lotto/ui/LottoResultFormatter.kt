@@ -16,7 +16,8 @@ class LottoResultFormatter(private val lottoResult: LottoResult) {
 
     fun getProfitInfo(): String {
         val profit = lottoResult.profit
-        return PROFIT_INFO_FORMAT.format(profit)
+        val profitFormatted = DecimalFormat("#,###.0").format(profit)
+        return PROFIT_INFO_FORMAT.format(profitFormatted)
     }
 
     fun getRankInfo(lottoRank: LottoRank): String {
@@ -34,7 +35,7 @@ class LottoResultFormatter(private val lottoResult: LottoResult) {
         .format(prize)
 
     companion object {
-        private const val PROFIT_INFO_FORMAT = "총 수익률은 %.1f%%입니다."
+        private const val PROFIT_INFO_FORMAT = "총 수익률은 %s%%입니다."
         private const val STAT_INFO_FORMAT = "%s - %d개"
         private const val RANK_INFO_FORMAT = "%d개 일치 (%s원)"
         private const val SECOND_RANK_INFO_FORMAT = "%d개 일치, 보너스 볼 일치 (%s원)"

@@ -1,6 +1,8 @@
 package lotto.ui
 
-import lotto.domain.LottoResultTest
+import lotto.domain.Lotto
+import lotto.domain.LottoResult
+import lotto.domain.WinningNumber
 import org.junit.jupiter.api.Test
 
 @Suppress("NonASCIICharacters")
@@ -24,11 +26,21 @@ class LottoResultFormatterTest {
     fun `총 수익률 테스트`() {
         val formatter = LottoResultFormatter(makeLottoResult())
         val result = formatter.getProfitInfo()
-        val expect = "총 수익률은 62.5%입니다."
+        val expect = "총 수익률은 166.7%입니다."
         assert(result == expect)
     }
 
     companion object {
-        fun makeLottoResult() = LottoResultTest.makeLottoResult()
+        fun makeLottoResult() = LottoResult(
+            listOf(
+                Lotto(listOf(1, 2, 3, 45, 44, 43)),
+                Lotto(listOf(7, 8, 9, 10, 11, 12)),
+                Lotto(listOf(13, 14, 15, 16, 17, 18))
+            ),
+            WinningNumber(
+                Lotto(listOf(1, 2, 3, 4, 5, 6)), 7
+            ),
+            3000
+        )
     }
 }
