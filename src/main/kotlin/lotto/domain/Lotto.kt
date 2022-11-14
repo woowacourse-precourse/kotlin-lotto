@@ -1,13 +1,13 @@
 package lotto.domain
 
 import util.Exceptions
-import util.Messages
+
+import util.Messages.ERROR_LOTTO_SIZE
+import util.Messages.ERROR_MESSAGE
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6) {
-            throw IllegalArgumentException(Messages.ERROR_MESSAGE + Messages.ERROR_LOTTO_SIZE)
-        }
+        require(numbers.size == 6) { ERROR_MESSAGE + ERROR_LOTTO_SIZE }
         // 로또번호 중복 예외 확인
         Exceptions.hasDuplicateNumbers(numbers)
     }

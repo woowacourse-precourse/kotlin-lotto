@@ -1,5 +1,17 @@
 package util
 
+import util.Constants.RANGE_END
+import util.Constants.RANGE_START
+
+import util.Messages.ERROR_BONUS_NUMBER_DUPLICATE
+import util.Messages.ERROR_BONUS_NUMBER_FORMAT
+import util.Messages.ERROR_BONUS_NUMBER_RANGE
+import util.Messages.ERROR_INVALID_INPUT_MESSAGE
+import util.Messages.ERROR_LOTTO_NUMBER_DUPLICATE
+import util.Messages.ERROR_MESSAGE
+import util.Messages.ERROR_NUMBER_FORMAT
+import util.Messages.ERROR_NUMBER_RANGE
+
 object Exceptions {
 
     fun isValidInputMoney(money: String) {
@@ -7,20 +19,14 @@ object Exceptions {
         // 숫자만 들어가야한다
         val regex = "(^[1-9])([0-9]*)(0{3})(0*)".toRegex()
         if (!regex.matches(money)) {
-            throw IllegalArgumentException(
-                Messages.ERROR_MESSAGE +
-                        Messages.ERROR_INVALID_INPUT_MESSAGE
-            )
+            throw IllegalArgumentException(ERROR_MESSAGE + ERROR_INVALID_INPUT_MESSAGE)
         }
     }
 
     // 로또번호가 중복되었는지 확인
     fun hasDuplicateNumbers(lotto: List<Int>) {
         if (lotto.size != lotto.toSet().size) {
-            throw IllegalArgumentException(
-                Messages.ERROR_MESSAGE +
-                        Messages.ERROR_LOTTO_NUMBER_DUPLICATE
-            )
+            throw IllegalArgumentException(ERROR_MESSAGE + ERROR_LOTTO_NUMBER_DUPLICATE)
         }
     }
 
@@ -30,10 +36,7 @@ object Exceptions {
             try {
                 number.toInt()
             } catch (e: NumberFormatException) {
-                throw IllegalArgumentException(
-                    Messages.ERROR_MESSAGE +
-                            Messages.ERROR_NUMBER_FORMAT
-                )
+                throw IllegalArgumentException(ERROR_MESSAGE + ERROR_NUMBER_FORMAT)
             }
         }
     }
@@ -41,11 +44,8 @@ object Exceptions {
     // 당첨번호의 숫자 범위 예외 확인
     fun isValidRangeWinningNumber(winningNumber: List<Int>) {
         winningNumber.forEach { number ->
-            if (number < Constants.RANGE_START || Constants.RANGE_END < number) {
-                throw IllegalArgumentException(
-                    Messages.ERROR_MESSAGE +
-                            Messages.ERROR_NUMBER_RANGE
-                )
+            if (number < RANGE_START || RANGE_END < number) {
+                throw IllegalArgumentException(ERROR_MESSAGE + ERROR_NUMBER_RANGE)
             }
         }
     }
@@ -56,30 +56,21 @@ object Exceptions {
         try {
             this.toInt()
         } catch (e: NumberFormatException) {
-            throw IllegalArgumentException(
-                Messages.ERROR_MESSAGE +
-                        Messages.ERROR_BONUS_NUMBER_FORMAT
-            )
+            throw IllegalArgumentException(ERROR_MESSAGE + ERROR_BONUS_NUMBER_FORMAT)
         }
     }
 
     // 보너스 번호 숫자 범위 예외 확인
     fun Int.isValidRangeBonusNumber() {
-        if (this < Constants.RANGE_START || Constants.RANGE_END < this) {
-            throw IllegalArgumentException(
-                Messages.ERROR_MESSAGE +
-                        Messages.ERROR_BONUS_NUMBER_RANGE
-            )
+        if (this < RANGE_START || RANGE_END < this) {
+            throw IllegalArgumentException(ERROR_MESSAGE + ERROR_BONUS_NUMBER_RANGE)
         }
     }
 
     // 보너스 번호와 당첨번호 중복 확인
     fun Int.isUniqueBonusNumber(winningNumber: List<Int>) {
         if (winningNumber.contains(this)) {
-            throw IllegalArgumentException(
-                Messages.ERROR_MESSAGE +
-                        Messages.ERROR_BONUS_NUMBER_DUPLICATE
-            )
+            throw IllegalArgumentException(ERROR_MESSAGE + ERROR_BONUS_NUMBER_DUPLICATE)
         }
     }
 }
