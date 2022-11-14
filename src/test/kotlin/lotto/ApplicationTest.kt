@@ -81,7 +81,7 @@ class ApplicationTest : NsTest() {
             assertSimpleTest{
                 val purchase = Purchase("5000")
                 val result = 5000
-                assertThat(purchase.price).isEqualTo(5000)
+                assertThat(purchase.price).isEqualTo(result)
             }
         }
 
