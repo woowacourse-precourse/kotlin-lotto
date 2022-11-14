@@ -1,10 +1,11 @@
 package lotto.view
 
-import lotto.Lotto
-import java.lang.StringBuilder
+import lotto.domain.Lotto
+import lotto.domain.LotteryChecker
+import lotto.domain.Money
+import lotto.domain.Rank
 
 object OutputView {
-
     fun printLottoCount(lottoCount: Long) {
         println("\n${lottoCount}개를 구매했습니다.")
     }
@@ -18,5 +19,38 @@ object OutputView {
 
         println(builder)
         builder.setLength(0)
+    }
+
+    fun printResult(lotteryChecker: LotteryChecker) {
+        val builder = StringBuilder()
+        builder.append("\n당첨 통계").append('\n')
+            .append("---")
+
+        for (rank in Rank.values()) {
+            if (rank == Rank.FAIL) continue
+            builder.append('\n').append(printWinningRecord(rank, lotteryChecker))
+        }
+        println(builder)
+    }
+    private fun printWinningRecord(rank: Rank, lotteryChecker: LotteryChecker): String {
+        return String.format(
+            "%d개 일치%s (%,d원) - %d개",
+            rank.getCount(),
+            hasBonusNumber(rank),
+            rank.getPrice(),
+            lotteryChecker.getWinnerScore(rank)
+        )
+    }
+
+    private fun hasBonusNumber(rank: Rank): String {
+        if (rank == Rank.SECOND) return ", 보너스 볼 일치"
+        return ""
+    }
+
+    fun printRateOfProfit(money: Money, totalPrice: Long) {
+        println(String.format("총 수익률은 %.1f", calculateRatingOfProfit(money, totalPrice)) + "%입니다.")
+    }
+    private fun calculateRatingOfProfit(money: Money, totalPrice: Long): Double {
+        return (totalPrice / money.getAmountOfMoney().toDouble() * 100)
     }
 }
