@@ -20,9 +20,9 @@ class BuyLotto() {
     }
 
 
-    fun moneyToLotto(money: Int) = money / 1000
+    fun moneyToLotto() = _money / 1000
 
-    fun printBuyLotto(count: Int) = println("${count}를 구매했습니다.")
+    fun printBuyLotto() = println("\n${_money / 1000}를 구매했습니다.")
 
     fun printInputMessage() = println("구입 금액을 입력해 주세요.")
 
