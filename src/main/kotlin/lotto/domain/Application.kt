@@ -8,12 +8,26 @@ fun main() {
     val paidAmount = askUserMoney()
     val tryNumber = paidAmount / 1000
 
-    val generator = NumberGenerator()
-    generator.printLottoList(tryNumber)
+    println("${tryNumber}를 구매했습니다.")
+    val lottoNumbers = getLottoNumbers(tryNumber)
 
-    // 당첨 번호와 보너스 번호는 Lotto한테 넘겨야 한다.
-    askWinningNumbers()
-    askBonusNumber()
+    val winningNumbers = askWinningNumbers()
+    val bonusNumber = askBonusNumber()
+
+    val lotto = Lotto(winningNumbers)
+    lotto.compare(lottoNumbers, bonusNumber)
+}
+
+// 구입 금액 만큼 로또를 추첨한 결과를 출력한다.
+fun getLottoNumbers(tryNumber: Int): List<List<Int>> {
+    val generator = NumberGenerator()
+    val lottoNumbers = mutableListOf<List<Int>>()
+    for(i in 0 until tryNumber){
+        val lottoNumber = generator.createLottoNumbers()
+        lottoNumbers.add(lottoNumber)
+        println(lottoNumber)
+    }
+    return lottoNumbers
 }
 
 // 1000원 단위의 구입 금액을 입력 받는다.
