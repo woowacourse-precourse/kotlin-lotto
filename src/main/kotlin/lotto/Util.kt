@@ -47,7 +47,9 @@ class Util {
         return true
     }
 
-    fun isOverlap() {
-
+    fun isOverlap(numList: List<Int>) : Boolean {
+        if(numList.size != numList.toSet().size)
+            throw IllegalArgumentException("[ERROR] 중복된 로또 번호가 존재합니다.")
+        return false
     }
 }
