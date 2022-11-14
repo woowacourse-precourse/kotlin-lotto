@@ -9,6 +9,10 @@ class Lotto(private val numbers: List<Int>) {
         require(correctNumbers(numbers)) { "[ERROR] 입력된 수가 로또번호가 아닙니다." }
     }
 
+    fun getNumbers(): List<Int> {
+        return numbers
+    }
+
     private fun correctNumbers(numbers: List<Int>): Boolean {
         for (number in numbers) {
             if (number !in 1..45) return false
