@@ -21,7 +21,7 @@ class Controller() {
         val purchaseMoney = person.input()
         val purchaseInputCheckResult = inputCheck.checkInputLotteryPurchase(purchaseMoney)
         checkResultCompare(purchaseInputCheckResult)
-        return inputConverter.convertToPurchaseCount(purchaseMoney)
+        return lottoSeller.sellLottoCount(inputConverter.convertToInt(purchaseMoney))
     }
 
     private fun issueLotteryStep(count: Int): List<Lotto> {

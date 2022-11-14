@@ -14,6 +14,8 @@ class LottoSeller() {
         return sellLotteries
     }
 
+    fun sellLottoCount(money: Int): Int = money / LOTTO_SELL_PRICE
+
     companion object {
         const val LOTTO_SELL_PRICE = 1000
     }
