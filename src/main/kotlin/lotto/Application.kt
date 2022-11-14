@@ -109,8 +109,12 @@ fun showWinningStatistics(result: List<Int>){
             "6개 일치 (2,000,000,000원) - ${result[4]}개\n"
     )
 }
+fun calculateEarning(lotteResult: List<Int>): Long {
+    val twoBillion: Long = 2_000_000_000
+    return lotteResult[0] * 5_000 + lotteResult[1] * 50_000 + lotteResult[2] * 1_500_000 + lotteResult[1] * 30_000_000 + lotteResult[1] * twoBillion
+}
 
-fun calculateEarningRate(earnedMoney: Int, amountPaid: String) {
+fun calculateEarningRate(earnedMoney: Long, amountPaid: String) {
     val paidFee = amountPaid.toDouble()
     val earningRate = (earnedMoney/paidFee)*100
     val earningRateRounded = String.format("%.1f", earningRate)
