@@ -14,7 +14,7 @@ class Lottery(private val purchase: Int, private val lotteryNumbers: Lotto, priv
     private var incomeRatio: Double = 0.0
 
     init {
-        require(purchase > 0 && purchase / Price.STANDARD.price == 0)
+        require(purchase > 0 && (purchase % Price.STANDARD.price) == 0)
         require(bonusNumber in NumberRange.START.number..NumberRange.END.number)
         require(bonusNumber !in lotteryNumbers.getList())
         this.quickPicksGenerator()
