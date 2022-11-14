@@ -39,9 +39,9 @@
 - **컴퓨터 6자리 수 로또 난수** : `@datatype : List<Int>`
 
 1. **6자리수 생성.**
-    - [ ] 숫자 범위는 1~45까지이다.
-    - [ ] 난수생성 `camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()`
-    - [ ] 서로 다른 수
+    - [x] 숫자 범위는 1~45까지이다.
+    - [x] 난수생성 `camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()`
+    - [x] 서로 다른 수
 2. **구입 금액만큼 로또 발행한다.**
    - [ ] @repeat **6자리수 생성**
 3. **발행한 로또 수량 및 번호를 출력**
