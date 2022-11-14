@@ -1,12 +1,11 @@
 package lotto.domain
 
 class LottoGenerator {
-
     fun createLottoNumber(priceString:String){
         val price = checkPriceInt(priceString)
         checkPriceUnderZero(price)
         checkPriceThousandsUnit(price)
-
+        val lottoCount = getLottoCountValue(price)
     }
     private fun checkPriceInt(price:String): Int {
         try {
@@ -32,7 +31,9 @@ class LottoGenerator {
             throw e
         }
     }
-
+    fun getLottoCountValue(price: Int): Int {
+        return price / UNIT
+    }
     companion object {
         const val UNIT = 1000
         const val MIN_PRICE = 0
