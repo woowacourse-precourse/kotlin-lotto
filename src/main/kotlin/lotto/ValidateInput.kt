@@ -21,25 +21,9 @@ class ValidateInput {
         return true
     }
 
-//    fun validateLengthAndDuplication(winningNumbers: List<Int>): Boolean {
-//        if (winningNumbers.distinct().size != 6) {
-//            OutputView().printErrorMessage(ERROR_DUPLICATION)
-//            throw IllegalArgumentException()
-//        }
-//        return true
-//    }
-
     fun validateDuplicationBonusNum(lottoNumber: Lotto, bonusNum: Int): Boolean {
         if (lottoNumber.getNumbers().contains(bonusNum)) {
             OutputView().printErrorMessage(ERROR_DUPLICATION)
-            throw IllegalArgumentException()
-        }
-        return true
-    }
-
-    fun validateMoney(money: Int): Boolean {
-        if ((money % 1000 != 0) || (money == 0)) {
-            OutputView().printErrorMessage(ERROR_WRONG_MONEY)
             throw IllegalArgumentException()
         }
         return true

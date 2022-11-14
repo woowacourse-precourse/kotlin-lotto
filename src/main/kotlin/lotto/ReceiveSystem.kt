@@ -11,8 +11,7 @@ class ReceiveSystem {
     fun receiveMoney(): Money {
         OutputView().printStartMessage()
         val money = Console.readLine()
-        if (validator.validateNumber(money)
-            && validator.validateMoney(money.toInt()))
+        if (validator.validateNumber(money))
             return Money(money.toInt())
         return Money()
     }
