@@ -7,10 +7,19 @@ package lotto
 //때로는 if/else, when문을 사용하는 것이 더 깔끔해 보일 수 있다. 어느 경우에 쓰는 것이 적절할지 스스로 고민해 본다.
 //Enum 클래스를 적용해 프로그래밍을 구현한다.
 
+//제공된 Lotto 클래스를 활용해 구현해야 한다.
+//Lotto에 매개 변수가 없는 생성자를 추가할 수 없다.
+//numbers의 접근 제어자인 private을 변경할 수 없다.
+//Lotto에 필드를 추가할 수 없다. // 변수 사용금지
+//Lotto의 패키지 변경은 가능하다.
+
+import camp.nextstep.edu.missionutils.Randoms
+
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6)
+        require(numbers.size == 6){"[ERROR] : 숫자가 6개가 아닙니다."}
+        require(numbers.distinct().size==6){"[ERROR] : 숫자가 중복되어 있습니다."}
+        require(numbers[5] <= 45){"[ERROR] : 숫자가 45를 초과했습니다."}
+        require(numbers[0] >= 1){"[ERROR] : 숫자가 1보다 작습니다."}
     }
-
-    // TODO: 추가 기능 구현
 }
