@@ -6,6 +6,7 @@ package lotto
 //힌트: if 조건절에서 값을 return하는 방식으로 구현하면 else를 사용하지 않아도 된다.
 //때로는 if/else, when문을 사용하는 것이 더 깔끔해 보일 수 있다. 어느 경우에 쓰는 것이 적절할지 스스로 고민해 본다.
 //Enum 클래스를 적용해 프로그래밍을 구현한다.
+//도메인 로직에 단위 테스트를 구현해야 한다. 단, UI(System.out, System.in, Scanner) 로직은 제외한다.
 
 //제공된 Lotto 클래스를 활용해 구현해야 한다.
 //Lotto에 매개 변수가 없는 생성자를 추가할 수 없다.
@@ -13,7 +14,7 @@ package lotto
 //Lotto에 필드를 추가할 수 없다. // 변수 사용금지
 //Lotto의 패키지 변경은 가능하다.
 
-class Lotto(private val numbers: List<Int>) {
+class Lotto(private val numbers: List<Int>) { // 리스트와 관련된 도매인
     init {
         require(numbers.size == 6){"[ERROR] : 숫자가 6개가 아닙니다."}
         require(numbers.distinct().size==6){"[ERROR] : 숫자가 중복되어 있습니다."}
