@@ -26,4 +26,8 @@ class Bank(private val lottos: List<List<Int>>) {
         }
         return totalIncome
     }
+
+    fun getRateOfReturn(totalIncome: Long, purchasingAmount: Long): Double {
+        return totalIncome.toDouble() / purchasingAmount * 100
+    }
 }
