@@ -9,10 +9,11 @@ class LottoGame private constructor(){
     private var expenditure: Int = 0
 
     private val myLotto: MutableList<Lotto> = mutableListOf()
-
+    private val winNumbers: MutableList<Int> = mutableListOf()
     init{
         this.purchaseLotto()
         this.showMyLotto()
+        this.setWinNumbers()
     }
 
     private fun addLotto(){
@@ -41,6 +42,17 @@ class LottoGame private constructor(){
             this.addLotto()
         }
         this.expenditure = input
+    }
+    private fun setWinNumbers(){
+        println("당첨 번호를 입력해 주세요.")
+        var input: String = Console.readLine().replace(" ","")
+        var _input: Int
+        input.split(",").forEach{
+            _input=inputToInt(it)
+            this.winNumbers.add(_input)
+        }
+        if(this.winNumbers.size!=6) throw IllegalArgumentException("[ERROR]잘못된 입력입니다.")
+        winNumbers.sorted()
     }
     private fun showMyLotto(){
         println("${this.myLotto.size}개를 구매했습니다.")
