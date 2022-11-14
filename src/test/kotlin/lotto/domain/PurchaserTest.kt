@@ -7,7 +7,7 @@ class PurchaserTest {
     @Test
     fun `수익률 테스트`() {
         assertThat(
-            Purchaser().calculateRateOfReturn(6200, 5000) == 6200 * 10000 / (5000) / 100.0F
+            Purchaser.calculateRateOfReturn(6200, 5000) == 6200 * 10000 / (5000) / 100.0F
         )
     }
 
@@ -19,7 +19,7 @@ class PurchaserTest {
             Lotto(listOf(1, 2, 3, 4, 5, 7))
         )
         assertThat(
-            Purchaser().calculateResult(winningLotto, tickets) == listOf(1, 1, 0, 0, 0, 0)
+            Purchaser.calculateResult(winningLotto, tickets) == listOf(1, 1, 0, 0, 0, 0)
         )
     }
 }
