@@ -23,7 +23,7 @@ class Lotto(private val numbers: List<Int>) {
         try {
             require(numbers.distinct().size == CONSTANT.LOTTO.LOTTO_COUNT.params)
         } catch (e: IllegalArgumentException){
-            println(CONSTANT.ERRORMESSAGE.LOTTONUMBERDUPLICATED.message)
+            println(CONSTANT.ERRORMESSAGE.LOTTONUMBERDUPLICATEDERROR.message)
             throw e
         }
     }
@@ -31,7 +31,7 @@ class Lotto(private val numbers: List<Int>) {
         try{
             require(number in CONSTANT.LOTTO.MIN_LOTTO_NUMBER.params..CONSTANT.LOTTO.MAX_LOTTO_NUMBER.params)
         }catch (e: IllegalArgumentException){
-            println(CONSTANT.ERRORMESSAGE.LOTTONUMBERRANGE.message)
+            println(CONSTANT.ERRORMESSAGE.LOTTONUMBERRANGEERROR.message)
             throw e
         }
     }
