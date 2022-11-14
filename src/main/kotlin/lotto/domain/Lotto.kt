@@ -4,6 +4,7 @@ class Lotto(private val numbers: List<Int>) {
     init {
         checkLottoNumberCountException()
         checkNumberRangeException()
+        checkDuplicateNumberException()
     }
 
     fun checkLottoNumberCountException(){
@@ -14,6 +15,10 @@ class Lotto(private val numbers: List<Int>) {
         this.numbers.forEach{number->
             if(number< MIN_NUMBER || number> MAX_NUMBER) throw IllegalArgumentException(LOTTO_NUMBER_RANGE_ERROR_MESSAGE)
         }
+    }
+
+    fun checkDuplicateNumberException(){
+        if(this.numbers.distinct()!=this.numbers) throw IllegalArgumentException(LOTTO_DUPLICATE_NUMBER_ERROR_MESSAGE)
     }
 
     companion object{
