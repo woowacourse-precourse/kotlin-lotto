@@ -4,14 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms
 import kotlin.math.round
 
 
-enum class Rank(var match:Int, var prize : Int){
-    FIRST(6, 2000000000),
-    SECOND(7, 30000000),
-    THIRD(5, 1500000),
-    FOURTH(4, 50000),
-    FIFTH(3, 5000)
-
-}
 fun createLottoNum(): List<Int> {
     return Randoms.pickUniqueNumbersInRange(1, 45, 6)
 }
@@ -100,20 +92,11 @@ fun getWinRatio(money:Int,ranks: Array<Int>):Double{
 fun printWinRatio(winRatio:Double){
     println("총 수익률은 ${winRatio}%입니다.")
 }
-fun gameStart(){
-    var table: List<List<Int>>
-    val money = inputMoney()
-    var bonusNum :Int
-    table = publishLotto(money)
-    printLottos(table)
-    var winNum :List<Int> = inputWinNum()
-    bonusNum = inputBonusNum(winNum)
-    printWinningHistory(getWinningHistory(table,winNum,bonusNum))
-    printWinRatio(getWinRatio(money,getWinningHistory(table,winNum,bonusNum)))
-}
+
 fun main() {
     try {
-        gameStart()
+        val game = GameStart()
+        game.gameStart()
     }
     catch(error:Exception){
         println(error.message)
