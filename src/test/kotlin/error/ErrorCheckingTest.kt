@@ -7,21 +7,21 @@ class ErrorCheckingTest {
     @Test
     fun `로또 번호의 개수가 6개가 아니면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
-            ErrorChecking(listOf(1, 2, 3, 4, 5, 6, 7)).checkNumOfLotto()
+            LottoError.checkNumOfLotto(listOf(1, 2, 3, 4, 5, 6, 7))
         }
     }
 
     @Test
     fun `로또 번호가 범위 밖이면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
-            ErrorChecking(listOf(1, 2, 3, 4, 5, 50)).checkOutOfRange()
+            LottoError.checkOutOfRange(listOf(1, 2, 3, 4, 5, 50))
         }
     }
 
     @Test
     fun `로또 번호에 중복된 숫자가 있으면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
-            ErrorChecking(listOf(1, 2, 3, 4, 5, 5)).checkDuplicate()
+            LottoError.checkDuplicate(listOf(1, 2, 3, 4, 5, 5))
         }
     }
 }
