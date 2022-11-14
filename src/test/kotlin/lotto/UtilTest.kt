@@ -10,9 +10,6 @@ class UtilTest {
     @Test
     fun isNumIntTest(){
         assertThat(util.isNumInt("1000")).isEqualTo(true)
-        assertThrows<IllegalArgumentException> {
-            util.isNumInt("abcd")
-        }
     }
 
     @Test
