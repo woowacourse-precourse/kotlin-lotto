@@ -3,7 +3,10 @@ package lotto
 import lotto.view.Message
 
 
-class EarningsRate(private val finalMoney: Int, private val inputPrice: Int) {
+class EarningsRate(
+    private val finalMoney: Int,
+    private val inputPrice: Int
+) {
     fun result() {
         Message.showRate(calculateRate())
     }

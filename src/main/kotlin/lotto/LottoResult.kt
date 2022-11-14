@@ -4,8 +4,7 @@ import lotto.utils.Print
 import lotto.view.Message
 
 class LottoResult(
-    private val createNumbers: MutableList<List<Int>>,
-    private val inputPrice: Int
+    private val createNumbers: MutableList<List<Int>>, private val inputPrice: Int
 ) {
     fun result(inputNumbers: List<String>, bonusNumber: String) {
         Message.showTitle()
@@ -38,9 +37,10 @@ class LottoResult(
     }
 
     companion object {
-        val lottoCount =
-            with(Print) {
-                mutableMapOf(THREE to ZERO, FOUR to ZERO, FIVE to ZERO, FIVE_BONUS to ZERO, SIX to ZERO)
-            }
+        val lottoCount = with(Print) {
+            mutableMapOf(
+                THREE to ZERO, FOUR to ZERO, FIVE to ZERO, FIVE_BONUS to ZERO, SIX to ZERO
+            )
+        }
     }
 }
