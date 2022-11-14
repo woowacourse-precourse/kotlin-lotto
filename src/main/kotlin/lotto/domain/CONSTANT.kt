@@ -1,6 +1,10 @@
 package lotto.domain
 
 class CONSTANT() {
+    enum class STAGE(val message: String){
+        PRICEINPUT("구입금액을 입력해 주세요."),
+        LOTTOCOUNTOUPUT("개를 구매했습니다.")
+    }
     enum class ERRORMESSAGE(val message:String) {
         CHECKPRICEINTERROR("[ERROR] 로또 구입 금액이 정수가 아닙니다."),
         CHECKPRICEUNDERZEROERROR("[ERROR] 로또 구입 금액이 0 이하입니다."),

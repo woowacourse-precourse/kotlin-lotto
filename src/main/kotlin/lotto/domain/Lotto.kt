@@ -8,6 +8,9 @@ class Lotto(private val numbers: List<Int>) {
             checkLottoNumberRange(number)
         }
     }
+    fun printLotto(): List<Int> {
+        return numbers
+    }
     private fun checkLottoNumberCount(){
         try {
             require(numbers.size == CONSTANT.LOTTO.LOTTO_COUNT.params)
