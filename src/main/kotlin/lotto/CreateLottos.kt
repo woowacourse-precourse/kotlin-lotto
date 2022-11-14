@@ -20,6 +20,14 @@ class CreateLottos {
             return numbers
         }
 
+        fun getLottoNumsWithCount(lottoCount : Int) : List<List<Int>>{
+            val lottoNums : MutableList<List<Int>> = ArrayList()
+            for(i in 0..lottoCount){
+                lottoNums.add(getLottoNums())
+            }
+            return lottoNums
+        }
+
     }
 
 }
