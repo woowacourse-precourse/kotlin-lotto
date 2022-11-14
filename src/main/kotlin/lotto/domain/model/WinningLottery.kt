@@ -6,8 +6,9 @@ import lotto.domain.model.Prize.*
 
 class WinningLottery(private val winningNum: List<Int>, private val bonus: Int) {
 
-    fun compareLotto(lotto: Lotto) {
-        // TODO 로또와 winnningLotto를 비교
+    fun compareLotto(lotto: Lotto): Rank {
+        val count = winningNum.count { lotto.contains(it) }
+        return Rank.valueOf(count, lotto.contains(bonus))
     }
 
 }

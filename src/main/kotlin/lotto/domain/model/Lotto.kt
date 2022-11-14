@@ -13,6 +13,8 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.toString()
     }
 
+    fun contains(number: Int) = numbers.contains(number)
+
     private fun checkValidation() {
         require(numbers.size == 6) {
             "$ERROR_MESSAGE 로또의 길이는 6이여야 합니다."

@@ -1,6 +1,7 @@
 package lotto.domain.repository
 
 import lotto.domain.model.Lotto
+import lotto.domain.model.Rank
 import lotto.domain.model.WinningLottery
 import java.math.RoundingMode
 import java.text.DecimalFormat
@@ -22,10 +23,9 @@ class LottoRepository {
         )
     }
 
-    fun calStatistics(winningLottery: WinningLottery, purchaseLottos: List<Lotto>) {
-        purchaseLottos.forEach { lotto ->
+    fun calStatistics(winningLottery: WinningLottery, purchaseLottos: List<Lotto>): List<Rank> {
+        return purchaseLottos.map { lotto ->
             winningLottery.compareLotto(lotto)
-
         }
     }
 }
