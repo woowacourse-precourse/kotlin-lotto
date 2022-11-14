@@ -10,6 +10,7 @@ fun main() {
 fun lotto() {
     val lottoCount = inputMoney()
     val winningNumber = inputWinningNumber()
+    val bonusNumber = inputBonusNumber()
 }
 
 fun inputMoney(): Int {
@@ -24,4 +25,10 @@ fun inputWinningNumber(): List<Int> {
     println("당첨 번호를 입력해 주세요.")
     val userInput = Console.readLine()
     return userInput.split(',').map { it.toInt() }
+}
+
+fun inputBonusNumber(): Int {
+    println("보너스 번호를 입력해 주세요.")
+    val userInput = Console.readLine()
+    return userInput.toInt()
 }
