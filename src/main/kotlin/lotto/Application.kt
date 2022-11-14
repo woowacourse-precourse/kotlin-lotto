@@ -10,6 +10,12 @@ var myLottos = ArrayList<Array<Int>>()
 lateinit var lottoWinNum: IntArray
 var bonusNum = 0
 
+var threeWin = 0
+var fourWin = 0
+var fiveWin = 0
+var fiveBonusWin = 0
+var sixWin = 0
+
 fun main() {
 
 }
