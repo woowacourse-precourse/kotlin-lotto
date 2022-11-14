@@ -31,17 +31,12 @@ class LottoShop(
     }
 
     private fun getMoney() {
-        guideInputMoney()
-        val userInput = input.get()
+        val userInput = input.getMoney()
     }
 
     private fun <T> checkInputValid(input: T, verifiers: List<Verifier<T>>) {
         val inputValidator = InputValidator(verifiers)
         inputValidator.validate(input)
-    }
-
-    private fun guideInputMoney() {
-        output.guideInputMoney()
     }
 
     private fun printTickets() {}
