@@ -1,5 +1,8 @@
 package lotto.domain
 
+import lotto.Prizes
+import lotto.Ranks
+
 class Calculator {
     fun sumPrizes(rankingCounts:HashMap<Int,Int>):Int {
         var sumPrizes = 0
@@ -12,11 +15,11 @@ class Calculator {
     private fun prizeMoney(rank:Int): Int {
         var prize = 0
         when (rank) {
-            1 -> prize = 2_000_000_000
-            2 -> prize = 30_000_000
-            3 -> prize = 1_500_000
-            4 -> prize = 50_000
-            5 -> prize = 5000
+            Ranks.FIRST.rank -> prize = Prizes.FIRST.money
+            Ranks.SECOND.rank -> prize = Prizes.SECOND.money
+            Ranks.THIRD.rank -> prize = Prizes.THIRD.money
+            Ranks.FOURTH.rank -> prize = Prizes.FOURTH.money
+            Ranks.FIFTH.rank -> prize = Prizes.FIFTH.money
         }
         return prize
     }

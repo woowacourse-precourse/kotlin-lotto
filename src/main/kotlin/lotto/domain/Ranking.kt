@@ -1,12 +1,15 @@
 package lotto.domain
 
+import lotto.Count
+import lotto.Ranks
+
 class Ranking {
     fun checkRanking(winning:Int,bonus:Boolean):Int{
         when (winning) {
-            6 -> return 1
-            5 -> return if (bonus) 2 else 3
-            4 -> return 4
-            3 -> return 5
+            Count.SIX.num -> return Ranks.FIRST.rank
+            Count.FIVE.num -> return if (bonus) Ranks.SECOND.rank else Ranks.THIRD.rank
+            Count.FOUR.num -> return Ranks.FOURTH.rank
+            Count.THREE.num -> return Ranks.FIFTH.rank
         }
         return 0
     }
