@@ -2,7 +2,7 @@ package resource
 
 const val RANGE_START = 1
 const val RANGE_END = 45
-const val LOTTO_LENGTH = 6
+const val Number_OF_LOTTO = 6
 const val LOTTO_PRICE = 1000
 
 const val PRIZE_FIRST = 2_000_000_000

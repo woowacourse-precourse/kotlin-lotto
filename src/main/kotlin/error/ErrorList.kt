@@ -11,7 +11,7 @@ object LottoError {
     }
 
     fun checkNumOfLotto(numbers: List<Int>) {
-        if(numbers.size != LOTTO_LENGTH) {
+        if(numbers.size != Number_OF_LOTTO) {
             makeError(ErrorMaking.INCORRECT_NUMBER)
         }
     }
