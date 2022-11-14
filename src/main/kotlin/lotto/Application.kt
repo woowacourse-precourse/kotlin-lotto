@@ -7,7 +7,7 @@ import java.util.Locale
 fun main() {
     LottoGame().buyPriceInquireMessage()
     val inputPrice = LottoGame().inputNum()
-    if (inputPrice == -1){
+    if (inputPrice == -1) {
         return
     }
     val numberOfLotto = LottoGame().calculateNumberOfLotto(inputPrice)
