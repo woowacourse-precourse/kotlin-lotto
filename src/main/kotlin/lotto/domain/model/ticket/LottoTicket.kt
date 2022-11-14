@@ -6,6 +6,6 @@ data class LottoTicket (
     var lottos: List<Lotto>
 ) {
     companion object {
-        fun emptyLottoTicket() = LottoTicket(-1, -1, listOf())
+        fun emptyLottoTicket() = LottoTicket(ticketMoney = -1, ticketCount = -1, listOf())
     }
 }

@@ -62,12 +62,12 @@ class BuyTicketController(
     }
 
     private fun makeLottoTicket() {
-        repeat(_ticketCount) {
+        repeat(lottoTicket.ticketCount) {
             val numbers = Randoms.pickUniqueNumbersInRange(
                 START_LOTTO_NUMBER,
                 END_LOTTO_NUMBER,
                 LOTTO_NUMBER_COUNT
-            )
+            ).sorted()
             val lotto = Lotto(numbers = numbers)
             _lottos.add(lotto)
         }

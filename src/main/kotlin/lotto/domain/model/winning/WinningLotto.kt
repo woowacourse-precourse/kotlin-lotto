@@ -5,6 +5,6 @@ data class WinningLotto (
     var bonusNumber: Int
 ) {
     companion object {
-        fun emptyWinningLotto() = WinningLotto(listOf(), -1)
+        fun emptyWinningLotto() = WinningLotto(winningNumbers = listOf(), bonusNumber = -1)
     }
 }
