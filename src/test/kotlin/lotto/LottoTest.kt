@@ -96,11 +96,11 @@ class LottoTest {
 
     @Test
     fun `수익률 테스트`() {
-        val `yield` = calculateYield(
+        val yieldPercentage = calculateYield(
             mapOf(
                 LottoRank.FIFTH to 1
             ), 8000
         )
-        assertThat(`yield`).isEqualTo(62.5f)
+        assertThat(yieldPercentage).isEqualTo(62.5f)
     }
 }

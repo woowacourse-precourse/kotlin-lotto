@@ -108,8 +108,8 @@ fun main() {
         val winRanks = calculateWinRanks(lottos, winNumber, bonusNumber)
         println(formatWinRanks(winRanks))
 
-        val `yield` = calculateYield(winRanks, lottoMoney)
-        println(formatYield(`yield`))
+        val yieldPercentage = calculateYield(winRanks, lottoMoney)
+        println(formatYield(yieldPercentage))
     } catch (e: IllegalArgumentException) {
         println("[ERROR] " + e.message)
     }
