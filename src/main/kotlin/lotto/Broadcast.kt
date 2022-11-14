@@ -19,6 +19,7 @@ class Broadcast() {
         bonusCount = bonusWinningNumber(lottery, bonusNumber)
         winLottery[5] = winLottery[5] - bonusCount
         statistics(winLottery, bonusCount)
+        profits(winLottery, bonusCount)
     }
 
     private fun winningLotto(): List<Int> {
@@ -76,4 +77,15 @@ class Broadcast() {
         println("6개 일치 (2,000,000,000원) - ${winningNumber[6]}개")
     }
 
+    fun profits(winLottery: List<Int>, bonusNumber: Int) {
+        var sales = winLottery.sum() * 1000
+        var list = listOf(0, 0, 0, 5000, 50000, 1500000, 2000000000)
+        var prize = 0
+        for (i in 0..6) {
+            prize += winLottery[i] * list[i]
+        }
+        prize += bonusNumber * 30000000
+        var profit = "%.1f".format(prize.toDouble() / sales * 100)
+        println("총 수익률은 ${profit}%입니다.")
+    }
 }
