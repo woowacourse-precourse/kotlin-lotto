@@ -47,11 +47,6 @@ class Lotto(private val numbers: List<Int>) {
         return true
     }
 
-    //4. 1~45까지의 숫자 중 중복되지 않는 6개의 숫자를 뽑는다
-    fun getLottoNums() : List<Int> {
-        val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
-        return numbers
-    }
 
     //3-2. 로또 발행 번호를 오름차순으로 정렬
     fun arrangePublishNums(publishNums : List<Int>) : List<Int>{
