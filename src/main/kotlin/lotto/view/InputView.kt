@@ -1,6 +1,7 @@
 package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.domain.Lotto
 import lotto.exception.Validator
 
 private enum class InputMessage(val message: String) {
@@ -16,6 +17,13 @@ object InputView {
         val input = Console.readLine()
         println()
         return Validator.checkMoneyInput(input)
+    }
+
+    fun getWinningLotto(): Lotto {
+        println(InputMessage.WINNING_NUMBER.message)
+        val input = Console.readLine()
+        println()
+        return Lotto(Validator.checkWinningNumberInput(input))
     }
 
 }
