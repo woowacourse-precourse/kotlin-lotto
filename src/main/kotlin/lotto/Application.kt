@@ -49,3 +49,14 @@ fun checknum02(i : Int, j : Int) : Int
     }
     return checker
 }
+fun  getnumber2(count: MutableList<Int>, prizemoney : Int) : Int{
+    var prizemoney = prizemoney
+    when  {
+        (count[6] != 0) -> prizemoney += 2000000000
+        (count[5] != 0) -> prizemoney += 1500000//3µî
+        (count[4] != 0) -> prizemoney += 50000
+        (count[3] != 0) -> prizemoney += 5000
+        else -> prizemoney += 0
+    }
+    return prizemoney
+}
