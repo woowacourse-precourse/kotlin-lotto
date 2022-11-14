@@ -1,15 +1,16 @@
 package lotto
 
 fun main() {
-    val lotto = Lotto(List(6) { 0 })
+    val control = Controller()
     val amount = getInputLotteryAmount()
-    lotto.getLotteryPaper(amount)
-    val winningNumber = getWinningNumber()
+    control.getLotteryPaper(amount)
+    val lotto = Lotto(getWinningNumber())
+    val winningNumber = lotto.changeToElement()
     val bonusNumber = getBonusNumber(winningNumber)
-    lotto.winningStatistics(winningNumber, bonusNumber)
-    lotto.resultCorrect()
-    lotto.resultPrint()
-    lotto.getYield(amount)
+    control.winningStatistics(winningNumber, bonusNumber)
+    control.resultCorrect()
+    control.resultPrint()
+    control.getYield(amount)
 }
 
 fun getInputLotteryAmount(): Int {
