@@ -20,6 +20,13 @@ class WinningTest {
         assertRank(4, Rank.FOURTH)
     }
 
+    @Test
+    fun `번호가 5개 일치할 때 THIRD 반환`() {
+        assertRank(5, Rank.THIRD)
+    }
+
+
+
 
     private fun assertRank(matchCount: Int, expectedRank: Rank) {
         val winning = Winning()
