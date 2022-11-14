@@ -22,11 +22,13 @@ data class __Lotto__(val repeats: Int) {
     public fun printBuyLotto() {
         println("${idx.size}개를 구매했습니다.")
         idx.forEach { Lotto(it).printLotto() }
+        println("")
     }
 }
 
-class Lotto(private val numbers: List<Int>) {
+class Lotto(private val numbers: List<Int?>) {
     init {
+        require(0 !in numbers) { "[ERROR] : 양식을 지켜주세요. ex 1,2,3,4,5" }
         require(numbers.size == 6) { "[ERROR] : 길이가 6이 아닙니다" }
         require(numbers.distinct().size == numbers.size) { "[ERROR] : 중복된 숫자가 있습니다" }
         require(numbers.all { it in 1..45 }) { "[ERROR] : 1~45 사이의 숫자가 아닙니다" }
@@ -39,7 +41,9 @@ class Service() {
 
     init {
         __Lotto__(buyLotto()).printBuyLotto()
+        correctLotto()
     }
+
     public fun buyLotto(): Int {
         println("구입금액을 입력해 주세요.")
         // val lotto = Console.readLine("구입금액을 입력해 주세요.")
@@ -49,5 +53,13 @@ class Service() {
         require(pay % 1000 == 0) { "[ERROR] : 1000원 단위로 입력해주세요" }
         println("")
         return pay / 1000
+    }
+
+    public fun correctLotto(): List<Int> {
+        println("당첨 번호를 입력해 주세요.")
+        val correctLotto = readLine()?.split(",")?.map { it.toIntOrNull() ?: 0 } ?: listOf()
+        Lotto(correctLotto)
+        println("")
+        return correctLotto
     }
 }

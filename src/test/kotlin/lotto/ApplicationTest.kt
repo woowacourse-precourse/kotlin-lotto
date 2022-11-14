@@ -8,15 +8,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
-    @Test
-    fun `사용자 구매 입력 테스트`(){
-        assertSimpleTest{
-            run("1000")
-            assertThat(output()).contains(
-                "1개를 구매했습니다."
-            )
-        }
-    }
 
     @Test
     fun `사용자 구매 입력 예외 테스트`() {
@@ -39,6 +30,64 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `사용자 구매 입력 테스트 그리고 당첨 번호 입력 테스트 정상`() {
+        assertSimpleTest {
+            run("1000", "1,2,3,4,5,6")
+            assertThat(output()).contains(
+                "1개를 구매했습니다."
+            )
+        }
+    }
+
+    @Test
+    fun `당첨 번호 입력 테스트 예외 문자`() {
+        assertThrows<IllegalArgumentException> {
+            runException("1000", "1,2,3,4,5,6j")
+        }
+    }
+
+    @Test
+    fun `당첨 번호 입력 테스트 예외 숫자 범위`() {
+        assertThrows<IllegalArgumentException> {
+            runException("1000", "1,2,3,4,5,46")
+        }
+    }
+
+    @Test
+    fun `당첨 번호 입력 테스트 예외 중복`() {
+        assertThrows<IllegalArgumentException> {
+            runException("1000", "1,2,3,4,5,5")
+        }
+    }
+
+    @Test
+    fun `당첨 번호 입력 테스트 예외 개수`() {
+        assertThrows<IllegalArgumentException> {
+            runException("1000", "1,2,3,4,5,6,7")
+        }
+    }
+
+    @Test
+    fun `당첨 번호 입력 테스트 예외 공백`() {
+        assertThrows<IllegalArgumentException> {
+            runException("1000", "1,2,3,4,5,6 ")
+        }
+    }
+
+    @Test
+    fun `당첨 번호 입력 테스트 예외 콤마`() {
+        assertThrows<IllegalArgumentException> {
+            runException("1000", "1,2,3,4,5,6,")
+        }
+    }
+
+    @Test
+    fun `당첨 번호 입력 테스트 예외 구분자`() {
+        assertThrows<IllegalArgumentException> {
+            runException("1000", "1.2.3.4.5.6.")
+        }
+    }
 //    @Test
 //    fun `기능 테스트`() {
 //        assertRandomUniqueNumbersInRangeTest(

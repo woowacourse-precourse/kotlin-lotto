@@ -11,15 +11,15 @@
         - [x] 에러 문구는 "[ERROR]"로 시작해야 한다.
     
 2. **당첨번호를 입력받는다.**
-   - [ ] 입력 안내문 : `당첨 번호를 입력해 주세요.`
-   - [ ] 콘솔입력 `camp.nextstep.edu.missionutils.Console의 readLine()`
+   - [x] 입력 안내문 : `당첨 번호를 입력해 주세요.`
+   - [x] 콘솔입력 `camp.nextstep.edu.missionutils.Console의 readLine()`
      -  번호는 쉼표(,)를 기준으로 구분한다.
      -  **예외처리** `IllegalArgumentException`
-          - [ ] 숫자 범위는 1~45까지이다.
-          - [ ] 중복 숫자 확인
-          - [ ] 입력된 숫자의 길이가 6인지 확인한다
-          - [ ] 구분자가 `,`가 아닌 경우
-          - [ ] 에러 문구는 "[ERROR]"로 시작해야 한다.
+          - [x] 숫자 범위는 1~45까지이다.
+          - [x] 중복 숫자 확인
+          - [x] 입력된 숫자의 길이가 6인지 확인한다
+          - [x] 구분자가 `,`가 아닌 경우
+          - [x] 에러 문구는 "[ERROR]"로 시작해야 한다.
 3. **보너스 번호를 입력받는다.**
    - [ ] 입력 안내문 : `보너스 번호를 입력해 주세요.`
    - [ ] 콘솔입력 `camp.nextstep.edu.missionutils.Console의 readLine()`
