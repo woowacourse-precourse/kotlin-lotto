@@ -9,9 +9,10 @@ fun main() {
 }
 
 enum class ErrorCode(val message: String) {
-    NUMERIC_REQUIRED("숫자만 입력해주세요"),
-    COMMA_REQUIRED("쉼표로 숫자를 구분해주세요"),
-    PRICE_UNQUALIFIED("1000원 단위로 입력해주세요")
+    NUMERIC_REQUIRED("[ERROR] 숫자만 입력해주세요"),
+    COMMA_REQUIRED("[ERROR] 쉼표로 숫자를 구분해주세요"),
+    PRICE_UNQUALIFIED("[ERROR] 1000원 단위로 입력해주세요"),
+    NUMBER_RANGE_UNQUALIFIED("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
 }
 
 fun issueLotto(): List<Int> {
