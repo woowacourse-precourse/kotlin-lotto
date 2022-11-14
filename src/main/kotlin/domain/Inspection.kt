@@ -1,8 +1,8 @@
-package lotto
+package domain
 
 import data.*
 
-class ValueInspection {
+class Inspection {
 
     fun price(input: String) {
         if (input.all { it !in '0'..'9' }) {

@@ -2,10 +2,10 @@ package ui
 
 import camp.nextstep.edu.missionutils.Console
 import data.*
-import lotto.ValueInspection
+import domain.*
 
 class Input {
-    private val inspection: ValueInspection = ValueInspection()
+    private val inspection: Inspection = Inspection()
 
     fun price(): Int {
         val input: String = Console.readLine()

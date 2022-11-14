@@ -1,7 +1,6 @@
 package lotto
 
-import data.ERROR_MESSAGE_NOT_DUPLICATION
-import data.ERROR_MESSAGE_NUMBER_OUT_RANGE
+import data.*
 
 class Lotto(private val numbers: List<Int>) {
     init {
