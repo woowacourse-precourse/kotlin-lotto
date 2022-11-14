@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
 
@@ -56,5 +57,10 @@ class ApplicationTest : NsTest() {
 
     companion object {
         private const val ERROR_MESSAGE = "[ERROR]"
+    }
+
+    @Test
+    fun `1000원 단위가 아닌 숫자를 구매 금액으로 입력받았을 경우`() {
+        assertThrows<IllegalArgumentException> { runException("1100") }
     }
 }
