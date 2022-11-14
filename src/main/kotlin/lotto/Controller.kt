@@ -34,19 +34,7 @@ class Controller {
                     cnt = 7
                 }
             }
-            countNumber.add(cnt)
-        }
-    }
-
-    fun resultCorrect() {
-        countNumber.forEach {
-            when (it) {
-                3 -> three++
-                4 -> four++
-                5 -> five++
-                6 -> six++
-                7 -> fivePlus++
-            }
+            resultCorrect(cnt)
         }
     }
 
@@ -66,9 +54,20 @@ class Controller {
         Output.resultYield(resultTotalYield)
     }
 
+    private fun resultCorrect(count: Int) {
+        when (count) {
+            3 -> three++
+            4 -> four++
+            5 -> five++
+            6 -> six++
+            7 -> fivePlus++
+        }
+    }
+
     private fun moneySum(): Int {
         return three * 5_000 + four * 50_000 + five * 1_500_000 + fivePlus * 30_000_000 + six * 2_000_000_000
     }
+
     private fun getRandomNumber(): List<Int> {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6)
     }

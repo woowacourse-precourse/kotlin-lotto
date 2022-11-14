@@ -8,7 +8,6 @@ fun main() {
     val winningNumber = lotto.changeToElement()
     val bonusNumber = getBonusNumber(winningNumber)
     control.winningStatistics(winningNumber, bonusNumber)
-    control.resultCorrect()
     control.resultPrint()
     control.getYield(amount)
 }
