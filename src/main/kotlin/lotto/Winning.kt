@@ -1,18 +1,22 @@
 package lotto
 
 enum class Rank(val reward: Int) {
-    LAST(0)
+    LAST(0),
+    FIFTH(5000)
 }
 
 class Winning {
     // Rank 반환,, 돈 추가
-    fun updateRank(matchCount: Int): Rank {
+    fun updateRank(matchCount: Int): Any {
 /*        val lottoNumber = Lotto(listOf(1,2,3,4,5,6))
         val matchCountList = lottoNumber.createNumber()*/
-        when (matchCount) {
+        val rankResult = when (matchCount) {
             0,1,2 -> Rank.LAST
+            3 -> Rank.FIFTH
+            else -> matchCount
         }
 
-        return Rank.LAST
+        return rankResult
+
     }
 }
