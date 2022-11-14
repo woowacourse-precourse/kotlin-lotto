@@ -2,8 +2,8 @@ package lotto
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6)
-        require(numbers.toSet().size == 6)
+        require(numbers.size == 6){ Error.SixNumber.message }
+        require(numbers.toSet().size == 6){ Error.DuplicateNumber.message }
     }
 
     // TODO: 추가 기능 구현
