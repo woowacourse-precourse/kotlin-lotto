@@ -87,6 +87,14 @@ fun lottoCompareNormal(answer: List<Int>, uncheckedLotto : List<Int>) : Int{
     return coincidence
 }
 
+fun lottoCompareSpecial(special : List<Int>, uncheckedLotto : List<Int>) : Int{
+    var specialCoincidence = 0
+    if(uncheckedLotto.contains(special[0])){
+        specialCoincidence += 1
+    }
+    return specialCoincidence
+}
+
 fun main() {
     TODO("프로그램 구현")
 }
