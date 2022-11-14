@@ -10,6 +10,13 @@ class ErrorChecking(
     fun checkLottoNumbers() {
         checkOutOfRange()
         checkDuplicate()
+        checkNumOfLotto()
+    }
+
+    fun checkNumOfLotto() {
+        if(numbers.size != LOTTO_LENGTH) {
+            ErrorMaking.makeError(ErrorMaking.INCORRECT_NUMBER)
+        }
     }
 
     fun checkOutOfRange() {
