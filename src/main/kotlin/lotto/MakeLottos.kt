@@ -21,7 +21,7 @@ class MakeLottos {
     }
 
     fun winningNumber(): List<Int>{
-        println("당첨 번호를 입력해 주세요.")
+        println(Output.WinningNumber)
         var input = Console.readLine()
             .split(",")
             .map { number -> number.toInt() }
