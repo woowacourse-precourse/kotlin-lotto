@@ -61,7 +61,7 @@ class LottoShop() {
         return processedBonusLottoNumber
     }
 
-    private fun isInputTypeNumber(input: String): Boolean = Pattern.matches("^[0-9]+$", input)
+    private fun isInputTypeNumber(input: String): Boolean = Pattern.matches("^[-]?[0-9]+$", input)
 
     private fun convertToInt(input: String): Int = input.toInt()
 
