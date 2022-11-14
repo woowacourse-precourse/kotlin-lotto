@@ -21,6 +21,10 @@ object Output {
         println(State.SECOND.printResult(result[1]))
         println(State.FIRST.printResult(result[0]))
     }
+
+    fun printRatio(number: String) {
+        println("총 수익률은 ${number}%입니다.")
+    }
 }
 
 enum class State (val message: String) {

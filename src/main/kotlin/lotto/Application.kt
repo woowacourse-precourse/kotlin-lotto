@@ -18,7 +18,7 @@ fun main() {
 
     val result = getResult(lottoLog, lottoNumber, bonusNumber)
 
-
+    getRatio(price, result)
 }
 
 fun getMoney(): Int {
@@ -59,4 +59,10 @@ fun getResult(lottoLog: ArrayList<Lotto>, lottoNumber: Lotto, bonusNumber: Int):
     Output.printResult(result)
 
     return result
+}
+
+fun getRatio(price: Int, result: List<Int>) {
+    val ratio = Result.calculateRatio(price, result)
+
+    Output.printRatio(String.format("%.1f", ratio))
 }

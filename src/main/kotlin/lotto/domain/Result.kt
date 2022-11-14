@@ -37,4 +37,17 @@ object Result {
         return setA.intersect(setB)
     }
 
+    fun calculateRatio(price: Int, result: List<Int>): Float {
+        val reward = listOf<Int>(2000000000, 30000000, 1500000, 50000, 5000)
+        var income = 0
+
+        for (i in 0 until 5) {
+            income += reward[i]*result[i]
+        }
+
+        val ratio:Float = (income.toFloat())/(price.toFloat())*100
+
+        return ratio
+    }
+
 }
