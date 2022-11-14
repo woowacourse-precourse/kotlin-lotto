@@ -53,7 +53,6 @@ fun main() {
 }
 fun chkNum(str: String) {
     var temp: Char
-    var result = false
 
     for (i in 0 until str.length) {
         temp = str.elementAt(i)

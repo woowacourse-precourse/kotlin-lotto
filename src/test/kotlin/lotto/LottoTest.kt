@@ -19,6 +19,23 @@ class LottoTest {
             Lotto(listOf(1, 2, 3, 4, 5, 5))
         }
     }
+    @Test
+    fun `로또 번호의 개수가 6개보다 적으면 예외가 발생한다`(){
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(1, 2, 3, 4, 5))
+        }
+    }
+    @Test
+    fun `로또 번호가 1보다 작다면 예외가 발생한다`(){
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(0, 1, 3, 4, 5,6))
+        }
+    }
 
-    // 아래에 추가 테스트 작성 가능
+    @Test
+    fun `로또 번호가 45보다 크다면 예외가 발생한다`(){
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(0, 1, 3, 4, 5,46))
+        }
+    }
 }
