@@ -7,8 +7,8 @@ import message.Message
 var winnings: List<String> = listOf()
 
 fun main() {
-    val money = inputMoney()
-    val lottoCount = Print().printLottoConut(money)
+    val money = LottoCount().inputMoney()
+    val lottoCount = LottoCount().printLottoConut(money)
     val allLotto = publishLotto(lottoCount)
     winnings = inputWinningNumber()
     val bonusNum = inputBonusNumber()
@@ -20,25 +20,6 @@ fun main() {
 
     Print().printWinningScore(winningCounts)
     Print().printWinningRate(winningCounts, money)
-}
-
-fun inputMoney(): Int {
-    println(Message.INPUT_MONEY.message)
-    var money = try {
-        Console.readLine().toInt()
-    } catch (e: NumberFormatException) {
-        print("[ERROR] 숫자만 입력해 주세요.")
-        println("구입금액을 입력해 주세요.")
-        Console.readLine().toInt()
-    }
-    checkInputMoneyIs1000(money)
-    return money
-}
-
-fun checkInputMoneyIs1000(money: Int) {
-    if ((money % 1000) != 0) {
-        throw IllegalArgumentException("[ERROR] 1000원 단위의 금액을 입력해 주세요.")
-    }
 }
 
 fun publishLotto(lottoCount: Int): Array<IntArray> {

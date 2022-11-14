@@ -4,11 +4,6 @@ import message.Message
 import message.ScoreMessage
 
 class Print {
-    fun printLottoConut(money: Int): Int {
-        var lottoCount = money / 1000
-        println("\n${lottoCount}${Message.COUNT.message}")
-        return lottoCount
-    }
 
     fun printWinningScore(winningCounts: MutableList<Int>) {
         println(ScoreMessage.SCORE_TITLE.message)
