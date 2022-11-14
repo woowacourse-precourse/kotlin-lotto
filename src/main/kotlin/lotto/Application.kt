@@ -2,9 +2,11 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import kotlin.math.round
 
 const val LOTTO_PRICE = 1_000
 const val PERCENT = 100
+const val ROUND_DIGITS = 10
 
 fun main() {
     try {
@@ -132,5 +134,10 @@ fun calculateEarningsRate(lottoCount: Int): Double {
     listOf(Result.FIFTH, Result.FOURTH, Result.THIRD, Result.SECOND, Result.FIRST).forEach { result ->
         totalEarning += result.getEarningRate()
     }
-    return totalEarning / (lottoCount.toDouble() * LOTTO_PRICE) * PERCENT
+    val earningRate = totalEarning / (lottoCount.toDouble() * LOTTO_PRICE) * PERCENT
+    return roundEarningRate(earningRate)
+}
+
+fun roundEarningRate(earningRate: Double): Double {
+    return round(earningRate * ROUND_DIGITS) / ROUND_DIGITS
 }
