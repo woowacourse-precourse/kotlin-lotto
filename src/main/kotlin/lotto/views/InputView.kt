@@ -17,7 +17,7 @@ object InputView {
         return winningNumbers
     }
 
-    fun inputBonusNumber(): Int {
-        return Console.readLine().toInt()
+    fun inputBonusNumber(): String {
+        return Console.readLine()
     }
 }
