@@ -1,5 +1,8 @@
 package lotto
 
+import data.LOTTO_TEN_QUANTITY
+import data.TEN_THOUS
+import data.TWO_THOUS_FIVE_HUND
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -22,8 +25,12 @@ class PurchaseTest {
         val lottoQuantity = purchase.updateLottoQuantity(TEN_THOUS)
         assertThat(LOTTO_TEN_QUANTITY).isEqualTo(lottoQuantity)
     }
-}
 
-const val TWO_THOUS_FIVE_HUND = 2500
-const val LOTTO_TEN_QUANTITY = 10
-const val TEN_THOUS = 10_000
+/*    @Test
+    fun `로또 지불 비용에 잘못된 값을 입력했을 때 예외 반환`() {
+        assertThrows<IllegalArgumentException> {
+            val invalidMoney = purchase.checkInvalidMoney()
+            assertThat(true).isEqualTo(invalidMoney)
+        }
+    }*/
+}

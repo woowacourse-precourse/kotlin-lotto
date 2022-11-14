@@ -1,13 +1,6 @@
 package lotto
 
-enum class Rank(val reward: Int) {
-    LAST(NONE),
-    FIFTH(FIVE_THOUS),
-    FOURTH(FIFTY_THOUS),
-    THIRD(ONE_MILLI_FIVE_HUND_THOUS),
-    SECOND(THIRTY_MILLI),
-    FIRST(TWO_BILLI)
-}
+import data.*
 
 class Winning {
 
@@ -43,7 +36,7 @@ class Winning {
     private fun updateRank(): HashMap<Rank, Int> {
         val rankList = createRankList(0)
         val rankCountHashMap = createRankCountHashMap(rankList)
-        println("\n당첨 통계\n---")
+        println(StringResource.TOTAL.resource)
         println("3개 일치 (5,000원) - ${rankCountHashMap[Rank.FIFTH]}개")
         println("4개 일치 (50,000원) - ${rankCountHashMap[Rank.FOURTH]}개")
         println("5개 일치 (1,500,000원) - ${rankCountHashMap[Rank.THIRD]}개")
@@ -74,16 +67,6 @@ class Winning {
         val rewardYield =  (totalReward / purchase) * PERCENTAGE
         println("총 수익률은 %.1f%%입니다.".format(rewardYield))
     }
-
-
-
 }
-const val NONE = 0
-const val FIVE_THOUS = 5_000
-const val FIFTY_THOUS = 50_000
-const val ONE_MILLI_FIVE_HUND_THOUS = 1_500_000
-const val THIRTY_MILLI = 30_000_000
-const val TWO_BILLI = 2_000_000_000
 
-const val PERCENTAGE = 100
 

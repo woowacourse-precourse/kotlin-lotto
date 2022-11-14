@@ -1,6 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import data.*
 
 class Lotto(private val numbers: List<Int>) {
     init {
@@ -13,7 +14,7 @@ class Lotto(private val numbers: List<Int>) {
         val purchase = Purchase()
         val expense = purchase.createExpense()
         val lottoQuantity = purchase.updateLottoQuantity(expense)
-        println("\n${lottoQuantity}개를 구매했습니다.")
+        println("\n${lottoQuantity}" + StringResource.TICKETS.resource)
 
         for (item in 0 until lottoQuantity) {
             val numberList = Randoms.pickUniqueNumbersInRange(START_NUMBER_ONE, END_NUMBER_FORTY_FIVE, numbers.size)
@@ -43,13 +44,13 @@ class Lotto(private val numbers: List<Int>) {
         numbers.forEach { number ->
             when (number) {
                 in START_NUMBER_ONE..END_NUMBER_FORTY_FIVE -> number
-                else -> throw IllegalArgumentException("[Error] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+                else -> throw IllegalArgumentException(StringResource.INVALID.resource)
             }
         }
     }
 
     private fun createWinningNumber(): List<Int> {
-        println("\n당첨 번호를 입력해 주세요")
+        println(StringResource.WINNING.resource)
         val winningNumberList = readLine()!!.split(",")
         return winningNumberList.map { winningNumber ->
             winningNumber.toInt()
@@ -58,7 +59,7 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     private fun createBonusNumber(): Int {
-        println("\n보너스 번호를 입력해 주세요")
+        println(StringResource.BONUS.resource)
         return readLine()!!.toInt()
     }
     
@@ -72,16 +73,3 @@ class Lotto(private val numbers: List<Int>) {
     }
 }
 
-const val START_NUMBER_ONE = 1
-const val END_NUMBER_FORTY_FIVE = 45
-
-const val NONE_MATCH = 0
-const val ONE_MATCH = 1
-const val TWO_MATCH = 2
-const val THREE_MATCH = 3
-const val FOUR_MATCH = 4
-const val FIVE_MATCH = 5
-const val SIX_MATCH = 6
-const val FIVE_BONUS_MATCH = 7
-
-const val TWO = 2

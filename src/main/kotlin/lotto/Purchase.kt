@@ -1,9 +1,12 @@
 package lotto
 
+import data.LOTTERY_PRICE
+import data.StringResource
+
 class Purchase {
 
     fun createExpense(): Int {
-        println("구입금액을 입력해 주세요.")
+        println(StringResource.PURCHASE.resource)
         val expense = readLine()!!.toInt()
         checkMoney(expense)
         return expense
@@ -12,7 +15,7 @@ class Purchase {
     fun checkMoney(money: Int) {
         val haveWrongMoney = (money % LOTTERY_PRICE != 0)
         if (haveWrongMoney) {
-            throw IllegalArgumentException("[ERROR] 잘못된 값을 입력했습니다.")
+            throw IllegalArgumentException(StringResource.ERROR.resource)
         }
     }
 
@@ -21,5 +24,3 @@ class Purchase {
     }
 
 }
-
-const val LOTTERY_PRICE = 1000
