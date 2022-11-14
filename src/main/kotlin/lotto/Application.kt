@@ -1,9 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.domain.CONSTANT
-import lotto.domain.LottoGenerator
-import lotto.domain.PriceChecker
+import lotto.domain.*
 import java.lang.IllegalArgumentException
 
 fun stage1(): Int {
@@ -23,7 +21,7 @@ fun stage2(price:Int): Any {
         val lottos = LottoGenerator().createLottoNumber(lottoCnt)
         for(lotto in lottos)
             println(lotto.returnLottoNumbers())
-        return lottos
+        lottos
     } catch (_: IllegalArgumentException) {
         -1
     }
@@ -35,7 +33,18 @@ fun stage3(): Any {
     return try {
         val winning = LottoGenerator().checkUserInputLotto(inputWinningList)
         println(winning.returnLottoNumbers())
-        return winning
+        winning
+    } catch (_: IllegalArgumentException) {
+        -1
+    }
+}
+fun stage4(winning : Lotto): Int {
+    println(CONSTANT.STAGE.BONUSINPUT.message)
+    val inputBonus = Console.readLine()
+    return try {
+        BonusChecker(winning,inputBonus)
+        println(inputBonus)
+        inputBonus.toInt()
     } catch (_: IllegalArgumentException) {
         -1
     }
@@ -48,5 +57,7 @@ fun main() {
     if (lottos == -1) return
     val winning = stage3()
     if (winning == -1) return
+    val bonus = stage4(winning as Lotto)
+    if (bonus == -1) return
 
 }
