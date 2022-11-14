@@ -14,7 +14,7 @@ class CreateLottos {
 
         //4. 1~45까지의 숫자 중 중복되지 않는 6개의 숫자를 뽑는다
         fun getLottoNums() : List<Int> {
-            val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+            val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
             return numbers
         }
 
