@@ -24,6 +24,13 @@ class LottoShop() {
     }
 
     fun getValidateMainLottoNumbers(mainLottoNumbers: List<String>): List<Int> {
+
+    }
+
+    private fun isInputTypeNumber(input: List<String>) :Boolean {
+        var hasOnlyInt = true
+        for (mainLottoNumber in input) if(!isInputTypeNumber(mainLottoNumber)) hasOnlyInt = false
+        return hasOnlyInt
     }
 
     fun getValidateBonusLottoNumber(bonusLottoNumber: String): Int {
