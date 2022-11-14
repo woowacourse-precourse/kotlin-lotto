@@ -26,4 +26,10 @@ object InputView {
         return Lotto(Validator.checkWinningNumberInput(input))
     }
 
+    fun getBonusNumber(winningLotto: Lotto): Int {
+        println(InputMessage.BONUS_NUMBER.message)
+        val input = Console.readLine()
+        println()
+        return Validator.checkBonusNumberInput(winningLotto, input)
+    }
 }
