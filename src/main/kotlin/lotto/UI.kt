@@ -9,6 +9,11 @@ class UI {
         return purchasingAmount
     }
 
+    fun inputWinNumbers(): List<Int> {
+        val winNumbers = Console.readLine().split(",").map { it.toInt() }
+        return winNumbers
+    }
+
     companion object {
         const val REQUEST_INPUT_PURCHASING_AMOUNT = "구입금액을 입력해 주세요."
         const val PURCHASING_LOTTO = "%d개를 구매했습니다."
