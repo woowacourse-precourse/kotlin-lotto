@@ -24,10 +24,13 @@ fun main() {
 fun askUserMoney(): Int {
     println(MONEY_INPUT_MSG)
     val money = Console.readLine()
+    return getUserMoney(money)
+}
 
-    // todo: 문자가 섞여있는지 검사하기
-    // MIXED_CHAR_ERROR_MSG
-
+fun getUserMoney(money: String): Int {
+    for(item in money){
+        if(!Character.isDigit(item)) handleException(MIXED_CHAR_ERROR_MSG)
+    }
     if (money.toInt() % MONEY_UNIT != 0) handleException(DIVISION_ERROR_MSG)
     return money.toInt()
 }
@@ -56,10 +59,14 @@ fun askWinningNumbers(): List<Int> {
 fun getWinningNumbers(input: String): List<Int> {
     val numbers = mutableListOf<Int>()
     input.split(",").map {
-        val item = it.toInt()
-        if (item !in MIN_VALUE..MAX_VALUE) handleException(RANGE_BOUNDS_ERROR_MSG)
-        if (numbers.contains(item)) handleException(DUPLICATE_ERROR_MSG)
-        numbers.add(item)
+        for(item in it){
+            if(!Character.isDigit(item))
+                handleException(MIXED_CHAR_ERROR_MSG)
+        }
+        val ele = it.toInt()
+        if (ele !in MIN_VALUE..MAX_VALUE) handleException(RANGE_BOUNDS_ERROR_MSG)
+        if (numbers.contains(ele)) handleException(DUPLICATE_ERROR_MSG)
+        numbers.add(ele)
     }
     if (numbers.size != LOTTO_NUM_LIMIT) handleException(SIZE_BOUNDS_ERROR_MSG)
     return numbers
@@ -68,14 +75,17 @@ fun getWinningNumbers(input: String): List<Int> {
 // 보너스 번호를 입력 받아서 리턴한다.
 fun askBonusNumber(): Int {
     println(BONUS_INPUT_MSG)
-    val input = Console.readLine().toInt()
+    val input = Console.readLine()
+    return getBonusNumber(input)
+}
 
-    // todo: 문자가 섞여있는지 검사하기
-    // MIXED_CHAR_ERROR_MSG
-
-    if (input !in MIN_VALUE..MAX_VALUE)
-        handleException(DUPLICATE_ERROR_MSG)
-    return input
+fun getBonusNumber(input: String): Int {
+    for(item in input){
+        if(!Character.isDigit(item)) handleException(MIXED_CHAR_ERROR_MSG)
+    }
+    if (input.toInt() !in MIN_VALUE..MAX_VALUE)
+        handleException(RANGE_BOUNDS_ERROR_MSG)
+    return input.toInt()
 }
 
 // 유저의 잘못된 입력값을 예외 처리한다.
