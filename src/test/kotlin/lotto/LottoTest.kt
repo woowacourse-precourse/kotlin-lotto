@@ -44,10 +44,9 @@ class LottoTest {
     }
 
     @Test
-    fun `1부터 45사이 이외의 범위 수 입력`() {
-        val winningNumber = listOf(1, 2, 3, 4, 5, 46)
+    fun `1부터 45사이 이외의 범위 수 입력하면 예외발생`() {
         assertThrows<IllegalArgumentException> {
-            ExceptionHandler.checkWinningNumber(winningNumber)
+            Lotto(listOf(1, 2, 3, 4, 5, 46))
         }
     }
 
