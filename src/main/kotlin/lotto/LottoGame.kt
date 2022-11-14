@@ -1,41 +1,26 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
-import utils.Messages.ANSWER_NUMBERS_MESSAGE
-import utils.Messages.BONUS_NUMBER_MESSAGE
-import utils.Messages.BUY_PRICE_INQUIRE_MESSAGE
 import utils.Messages.ERROR_PREFIX_MESSAGE
-import utils.Messages.ERROR_LOTTO_INPUT
-import utils.Messages.BUY_AMOUNT_MESSAGE
 import utils.Messages.ERROR_ANSWER_COMMA
 import utils.Messages.ERROR_BONUS_ONE
-import utils.Messages.STATICS_SPLITTER_MESSAGE
-import utils.Messages.STATICS_TITLE_MESSAGE
-import lotto.Ranking.Rank
-import utils.Messages.STATICS_REVENUE_PREFIX_MESSAGE
-import utils.Messages.STATICS_REVENUE_SUFFIX_MESSAGE
-import java.lang.Math.round
+import utils.Messages
 import kotlin.NumberFormatException
 
 class LottoGame {
-
-    fun buyPriceInquireMessage() {
-        println(BUY_PRICE_INQUIRE_MESSAGE)
-    }
-
     fun inputNum(): Int {
         val input = readLine()!!.trim()
         try {
             if (!checkRightLotto(input.toInt())) {
-                println(ERROR_PREFIX_MESSAGE + ERROR_LOTTO_INPUT)
+                println(Messages.ERROR_PREFIX_MESSAGE + Messages.ERROR_LOTTO_INPUT)
                 return -1
             }
             if (input.length < 4) {
-                println(ERROR_PREFIX_MESSAGE + ERROR_LOTTO_INPUT)
+                println(Messages.ERROR_PREFIX_MESSAGE + Messages.ERROR_LOTTO_INPUT)
                 return -1
             }
         } catch (e: NumberFormatException) {
-            println(ERROR_PREFIX_MESSAGE + ERROR_LOTTO_INPUT)
+            println(Messages.ERROR_PREFIX_MESSAGE + Messages.ERROR_LOTTO_INPUT)
             return -1
         }
         return input.toInt()
@@ -53,10 +38,6 @@ class LottoGame {
         return true
     }
 
-    fun tellNumOfLotto(numOfLotto: Int) {
-        println("$numOfLotto" + BUY_AMOUNT_MESSAGE)
-    }
-
     fun generateRandomLottos(numOfLotto: Int): MutableList<List<Int>> {
         val lottos = mutableListOf<Int>()
         for (i in 1..numOfLotto) {
@@ -65,16 +46,6 @@ class LottoGame {
         }
         val doubleLottos: MutableList<List<Int>> = lottos.chunked(6).toMutableList()
         return doubleLottos
-    }
-
-    fun printEachLotto(doubleLottos: MutableList<List<Int>>) {
-        for (i in 0 until doubleLottos.size) {
-            println(doubleLottos[i])
-        }
-    }
-
-    fun answerNumbersMessage() {
-        println(ANSWER_NUMBERS_MESSAGE)
     }
 
     fun inputAnswerNumbers(): MutableList<Int> {
@@ -88,24 +59,10 @@ class LottoGame {
         return inputAnswerNumbersList
     }
 
-    fun bonusNumberMessage() {
-        println(BONUS_NUMBER_MESSAGE)
-    }
-
     fun checkinputBonus(inputBonus: String): Boolean {
         if (inputBonus.length != 1 && inputBonus.length != 2) throw IllegalArgumentException(ERROR_PREFIX_MESSAGE + ERROR_BONUS_ONE)
         // 같은 숫자가 있는 지 체크하는 로직 추가
         return true
-    }
-
-    fun printStatsRank(winList: MutableList<Int>) {
-        println(STATICS_TITLE_MESSAGE)
-        println(STATICS_SPLITTER_MESSAGE)
-        Rank.FIFTH.print(winList)
-        Rank.FOURTH.print(winList)
-        Rank.THIRD.print(winList)
-        Rank.SECOND.print(winList)
-        Rank.FIRST.print(winList)
     }
 
     fun computeRank(
@@ -149,10 +106,6 @@ class LottoGame {
         countResultList[0] = countNormal
         countResultList[1] = countBonus
         return countResultList
-    }
-
-    fun printStatsRevenue(revenuePercent: Float) {
-        println(STATICS_REVENUE_PREFIX_MESSAGE + "$revenuePercent" + STATICS_REVENUE_SUFFIX_MESSAGE) // 여기에 수익률 수치 넣기
     }
 
     fun statsRevenue(
