@@ -5,7 +5,8 @@ class CONSTANT() {
         PRICEINPUT("구입금액을 입력해 주세요."),
         LOTTOCOUNTOUPUT("개를 구매했습니다."),
         WINNINGINPUT("당첨 번호를 입력해 주세요."),
-        BONUSINPUT("보너스 번호를 입력해 주세요.")
+        BONUSINPUT("보너스 번호를 입력해 주세요."),
+        STATISTICSOUPUT("당첨 통계\n ---")
     }
     enum class ERRORMESSAGE(val message:String) {
         PRICEINTERROR("[ERROR] 로또 구입 금액이 정수가 아닙니다."),
@@ -27,5 +28,21 @@ class CONSTANT() {
         MIN_LOTTO_NUMBER(1),
         MAX_LOTTO_NUMBER(45),
         LOTTO_COUNT(6)
+    }
+    enum class RANKING(val params:Int){
+        FIRST(6),
+        SECOND(5),
+        THIRD(5),
+        FOURTH(4),
+        FIFTH(3),
+        NONE(0)
+    }
+    enum class RANKINGMESSAGE(val message:String){
+        FIRST("6개 일치 (2,000,000,000원) - "),
+        SECOND("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
+        THIRD("5개 일치 (1,500,000원) - "),
+        FOURTH("4개 일치 (50,000원) - "),
+        FIFTH("3개 일치 (5,000원) - "),
+        UNIT("개")
     }
 }
