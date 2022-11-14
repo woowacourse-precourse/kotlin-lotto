@@ -8,7 +8,7 @@ fun main() {
     val lottoList = makeLottoList(money)
     printLottoList(lottoList)
     val winningNumber = getWinningNumber()
-    println(getBonusNumber(winningNumber))
+    val bonusNumber = getBonusNumber(winningNumber)
 }
 
 fun getMoney(): Int {
@@ -62,4 +62,14 @@ fun getBonusNumber(winningNumber: List<Int>): Int {
     ExceptionHandler.checkBonusNumber(number, winningNumber)
 
     return number.toInt()
+}
+
+fun countInWinningNumber(winningNumber: List<Int>, lotto: Lotto): Int {
+    var cnt = 0
+    for (number in lotto.numberList) {
+        if (winningNumber.contains(number)) {
+            cnt += 1
+        }
+    }
+    return cnt
 }
