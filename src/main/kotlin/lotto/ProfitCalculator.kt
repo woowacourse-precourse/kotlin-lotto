@@ -5,7 +5,7 @@ class ProfitCalculator {
         var profit = 0
 
         for (i in 1..5) {
-            profit = calcProfit(i) * winningList[i]
+            profit += calcProfit(i) * winningList[i]
         }
         return (profit.toDouble() / money.toDouble()) * 100
     }
