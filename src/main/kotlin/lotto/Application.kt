@@ -11,7 +11,7 @@ fun main() {
 
     val answerNumbers = Controller().answerLottoNum() // 정답 로또 번호 받기
 
-    val inputBonusPrice = Controller().bonusLottoNum() // 보너스 번호 받기
+    val inputBonusPrice = Controller().bonusLottoNum(answerNumbers) // 보너스 번호 받기
 
     Controller().winLotto(lottos, answerNumbers, inputBonusPrice, inputPrice) // 통계 결과 내기
 }
