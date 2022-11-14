@@ -4,5 +4,10 @@ import lotto.service.LottoService
 
 fun main() {
     val lottoService = LottoService()
-    lottoService.start()
+
+    runCatching {
+        lottoService.start()
+    }.onFailure { exception ->
+        println(exception.message)
+    }
 }
