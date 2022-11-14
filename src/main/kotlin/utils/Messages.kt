@@ -26,7 +26,8 @@ object Messages {
     const val ERROR_ANSWER_SIX = " 숫자 6개를 입력해주세요"
     const val ERROR_ANSWER_DIFFERENT = " 서로 다른 숫자 6개를 입력해주세요"
     const val ERROR_BONUS_ONE = " 숫자 1개를 입력해주세요"
-    const val ERROR_RANGE = "1부터 45 범위 내의 숫자를 입력해주세요"
+    const val ERROR_RANGE = " 1부터 45 범위 내의 숫자를 입력해주세요"
+    const val ERROR_BONUS_DIFFERENT = " 앞선 로또 번호와 다른 숫자 1개를 입력해주세요"
 
     // 숫자 벨류
     const val END_INDEX = 6
