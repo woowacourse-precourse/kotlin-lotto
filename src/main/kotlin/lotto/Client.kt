@@ -2,6 +2,10 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console.readLine
 import camp.nextstep.edu.missionutils.Randoms
+import utils.Constants
+import utils.Constants.ERROR_NOT_1000WON_MESSAGE
+import utils.Constants.ERROR_NOT_NUMBER_MESSAGE
+import kotlin.system.exitProcess
 
 class Client {
     private val rule = Rule()
@@ -9,13 +13,20 @@ class Client {
     var purchaseAmount = 0
     var purchaseCount = 0
 
-    fun inputPurchaseAmount() {
+    fun inputPurchaseAmount(): Int {
         val input = readLine()
-        rule.checkPurchaseAmount(input)
+        try {
+            rule.checkPurchaseAmount(input)
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+            return 0
+        }
 
         this.purchaseAmount = input.toInt()
         this.purchaseCount = this.purchaseAmount / 1000
+        return purchaseAmount
     }
+
 
     fun purchaseLotto() {
         for (i in 0 until this.purchaseCount) {

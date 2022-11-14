@@ -18,6 +18,7 @@ class Rule {
         if (amount % STANDARD_WON != 0) throw IllegalArgumentException(ERROR_NOT_1000WON_MESSAGE)
     }
 
+
     fun checkWinningNumbers(numbers: List<String>) {
         require(numbers.size == 6) { ERROR_OVER_COUNT_MESSAGE }
         require(!isReduplicateNumber(numbers)) { ERROR_REDUPLICATED_NUMBER_MESSAGE }

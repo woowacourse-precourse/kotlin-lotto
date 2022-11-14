@@ -22,14 +22,13 @@ class LottoStatistics {
 
     fun matchingCalculator(client: Client) {
         val lottos = client.lottos
-        val purchaseAmount = client.purchaseAmount
         for (lotto in lottos) {
             val lottoNumbers = lotto.getNumbers()
             val matchingCount = calculateMatchingCount(lottoNumbers)
             val containsBonusNumber = lottoNumbers.contains(bonusNumber)
 
             setMatchingCounts(matchingCount, containsBonusNumber)
-            calculateProfit(purchaseAmount)
+            calculateProfit(client.purchaseAmount)
         }
     }
 

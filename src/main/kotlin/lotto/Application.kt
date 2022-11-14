@@ -6,7 +6,8 @@ fun main() {
     val statistics = LottoStatistics()
     display.printRequirePurchaseAmount()
 
-    client.inputPurchaseAmount()
+    if (client.inputPurchaseAmount() == 0)
+        return
     client.purchaseLotto()
 
     // 발행한 로또 수량 및 번호 출력
