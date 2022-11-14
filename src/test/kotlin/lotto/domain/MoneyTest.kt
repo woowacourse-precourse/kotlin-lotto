@@ -8,14 +8,14 @@ import java.lang.IllegalArgumentException
 
 internal class MoneyTest {
 
-    @DisplayName("구입 금액이 숫자가 아닌 input 값이 들어올 경우")
+    @DisplayName("구입 금액이 숫자가 아닌 문자 값이 들어올 경우")
     @Test
     fun inputPurchasingAmountNotNumber() {
         val input = "123k안"
         assertThatThrownBy {
             val money = Money(input)
         }.isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageContaining(ErrorMessage.INPUT_NOT_NUMBERS)
+            .hasMessageContaining(ErrorMessage.ERROR_NOT_NUMBERS)
     }
 
     @DisplayName("1,000으로 나누었을 시에 나머지가 존재할 경우")
@@ -25,7 +25,7 @@ internal class MoneyTest {
         assertThatThrownBy {
             val money = Money(input)
         }.isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageContaining(ErrorMessage.INPUT_NOT_REMAINING_MONEY)
+            .hasMessageContaining(ErrorMessage.ERROR_REMAINING_MONEY)
     }
 
     @DisplayName("첫 글자가 0이 포함될 경우")
@@ -35,6 +35,6 @@ internal class MoneyTest {
         assertThatThrownBy {
             val money = Money(input)
         }.isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageContaining(ErrorMessage.INPUT_EXIST_FIRST_WORD_ZERO)
+            .hasMessageContaining(ErrorMessage.ERROR_EXIST_FIRST_WORD_ZERO)
     }
 }

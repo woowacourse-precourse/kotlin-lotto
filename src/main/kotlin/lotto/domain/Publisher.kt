@@ -1,6 +1,5 @@
 package lotto.domain
 
-import lotto.Lotto
 import lotto.utils.Constants.LOTTO_PRICE
 import lotto.view.OutputView
 
