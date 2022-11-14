@@ -7,13 +7,15 @@ import kotlin.IllegalArgumentException
 lateinit var consumer: Consumer
 lateinit var lottoCalculator: LottoCalculator
 var programException = false
+lateinit var winningNumbers : Pair<List<Int>,Int>
 fun main() {
     orderLotto()
     if (programException) {
         return
     }
     printConsumerLotto()
-    pickWinningNumbers()
+    winningNumbers = pickWinningNumbers()
+    printCompareResult()
 }
 
 private fun orderLotto() {
@@ -34,16 +36,12 @@ private fun printConsumerLotto() {
     }
 }
 
-private fun pickWinningNumbers() {
+private fun pickWinningNumbers() :Pair<List<Int>,Int> {
     println("당첨 번호를 입력해 주세요.")
     val inputWinningNumbers = convertStringToIntList(Console.readLine())
     println("\n보너스 번호를 입력해 주세요.")
     val inputWinningBonusNumber = convertStringToInt(Console.readLine())
-    lottoCalculator = LottoCalculator(
-        consumer.myLotto,
-        inputWinningNumbers,
-        inputWinningBonusNumber
-    )
+    return Pair(inputWinningNumbers,inputWinningBonusNumber)
 }
 
 private fun convertStringToIntList(input: String): List<Int> {
@@ -63,4 +61,28 @@ private fun convertStringToInt(input: String): Int {
         println("[ERROR] 입력값이 올바르지 않습니다.")
         throw IllegalArgumentException()
     }
+}
+
+private fun printCompareResult(){
+    val compareLottoResult = compareLotto()
+    printWinnings(compareLottoResult)
+    printYield(compareLottoResult)
+}
+
+private fun compareLotto() : List<Int>{
+    return consumer.compareLotto(Lotto(winningNumbers.first), winningNumbers.second)
+}
+
+private fun printWinnings(winnings : List<Int>){
+    println("당첨 통계")
+    println("---")
+    println(Winnings.FIFTH_PLACE.toString(winnings[FIFTH_PLACE_INDEX]))
+    println(Winnings.FOURTH_PLACE.toString(winnings[FOURTH_PLACE_INDEX]))
+    println(Winnings.THIRD_PLACE.toString(winnings[THIRD_PLACE_INDEX]))
+    println(Winnings.SECOND_PLACE.toString(winnings[SECOND_PLACE_INDEX]))
+    println(Winnings.FIRST_PLACE.toString(winnings[FIRST_PLACE_INDEX]))
+}
+
+private fun printYield(winnings: List<Int>){
+    print("총 수익률은 ${consumer.calculateYield(winnings)}%입니다.")
 }
