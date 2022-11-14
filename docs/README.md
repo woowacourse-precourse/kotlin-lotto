@@ -59,7 +59,7 @@
 9. isOverlap : 로또 번호가 중복되는 경우[O] - Class Util
 10. inputBonusNum : 사용자가 보너스 번호를 입력받는 기능[ ] - Class LottoGame
 11. checkBonusNum : 사용자가 보너스 번호를 맞게 입력했는지 검사하는 기능[ ] -Class Util
-   1. 2번 is NumInt 재사용 : 보너스 번호가 정수인지 체크[ ]
+   1. 2번 isNumInt 재사용 : 보너스 번호가 정수인지 체크[ ]
    2. 6.2번 isRightNumCount 재사용 : 보너스 번호를 1개만 입력했는지 체크[ ]
    3. 6.3번 isRightRange 재사용 : 보너스 번호가 1~45 범위의 값인지 체크[ ]
    4. 6.4 isOverlap 재사용 : 보너스 번호가 로또 번호와 겹치는지 검사[ ]

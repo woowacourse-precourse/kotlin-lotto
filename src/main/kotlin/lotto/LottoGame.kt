@@ -12,6 +12,18 @@ class LottoGame {
         return util.changeInputToLotto(input)
     }
 
+    fun inputBonusNum():Int{
+        println("보너스 번호를 입력해 주세요.")
+        var input = Console.readLine()
+        util.isNumInt(input)
+        var bonus = input.toInt()
+        util.isRightRange(listOf(bonus))
+        var numbers = lottoNum.getLottoNum().toMutableList<Int>()
+        numbers.add(bonus)
+        util.isOverlap(numbers.toList())
+        return bonus
+    }
+
     fun playGame(){
 
     }
