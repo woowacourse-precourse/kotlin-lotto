@@ -13,7 +13,7 @@ class Message {
         const val SECOND_PLACE = 3
     }
 
-    enum class winGroup(val prize: String, val sameNumber: Int, val bonus: String, val winning: Int) {
+    enum class WinGroup(val prize: String, val sameNumber: Int, val bonus: String, val winning: Int) {
         FifthPlace("5,000", 3, "", 0),
         FourthPlace("50,000", 4, "", 1),
         ThirdPlace("1,500,000", 5, "", 2),
@@ -29,10 +29,11 @@ class Message {
     fun printStatistics(winningResult: List<Int>) {
         print(STATISTICS_MASSAGE)
 
-        winGroup.values().forEachIndexed { index, it ->
+        WinGroup.values().forEachIndexed { index, it ->
             println("${it.sameNumber}개 일치${it.bonus} (${it.prize}원) - ${winningResult[index]}개")
         }
     }
+
     fun printProfit(profitRate: Double) {
         print("총 수익률은 ${profitRate}%입니다.")
     }

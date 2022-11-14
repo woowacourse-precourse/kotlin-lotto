@@ -12,13 +12,12 @@ class Money {
             println("[ERROR] 입력 금액이 올바르지 않습니다.")
             money = "ERROR"
         }
-
-
     }
 
-    fun countLotteryTickets(): Int{
-        return money.toInt()/1000
+    fun countLotteryTickets(): Int {
+        return money.toInt() / 1000
     }
+
     fun getProfitRate(winningResult: List<Int>): Double {
         val prize = getPrize(winningResult)
         return roundOff(calculateProfitRate(prize))
