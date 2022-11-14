@@ -64,7 +64,16 @@ fun lottoBonusNumber() : List<Int>?{
 }
 
 fun earningsRatio (payment : Int, earnings : Int) {
-
+    try {
+        val ratio = (earnings / payment * 100)!!
+        print("총 수익률은 ")
+        print(String.format("%.2f",ratio))
+        println("입니다.")
+    }  catch (e : NullPointerException){
+        println("[ERROR] 값을 입력하지 않았습니다.")
+    } catch (e : IllegalArgumentException){
+        println("[ERROR] 비정상적인 값입니다.")
+    }
 }
 
 
