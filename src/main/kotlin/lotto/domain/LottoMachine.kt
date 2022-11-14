@@ -32,6 +32,34 @@ class LottoMachine(
         return result.toList()
     }
 
+    // 수익률은 소수점 둘째 자리에서 반올림
+    fun yieldLottoResult(money: String): String {
+        val rate = rateLottoResult(money)
+        return String.format(String.format("%.1f", rate))
+    }
+
+    // 로또의 수익률
+    private fun rateLottoResult(money: String): Double {
+        val result = compareNumber()
+        val prize = mutableListOf(
+            Rating.SIX.winningAmount,
+            Rating.FIVE.winningAmount,
+            Rating.FIVE_AND_BONUS.winningAmount,
+            Rating.FOUR.winningAmount,
+            Rating.THREE.winningAmount
+        )
+        return (sumOfWinningMoney(result, prize) / money.toDouble()) * 100
+    }
+
+    private fun sumOfWinningMoney(result: List<Int>, prize: MutableList<Int>): Double {
+        var sumOfWinningMoney = 0.0
+        for (index in result.indices) {
+            sumOfWinningMoney += result[index] * prize[index]
+        }
+        return sumOfWinningMoney
+    }
+
+
     // 로또의 번호 매칭 결과
     private fun resultOfLotto(lotto: Lotto): Rating {
         var matches = 0
@@ -53,7 +81,7 @@ class LottoMachine(
             val winningNumber = isValidWinningNumber(numberSplit)
             isValidRangeWinningNumber(winningNumber)
             require(winningNumber.size == 6) {
-                throw IllegalArgumentException(Messages.ERROR_MESSAGE + Messages.ERROR_LOTTO_SIZE)
+                throw IllegalArgumentException(Messages.ERROR_LOTTO_SIZE)
             }
             hasDuplicateNumbers(winningNumber)
         }
