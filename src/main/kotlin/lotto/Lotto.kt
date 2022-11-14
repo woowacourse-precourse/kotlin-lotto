@@ -13,8 +13,6 @@ package lotto
 //Lotto에 필드를 추가할 수 없다. // 변수 사용금지
 //Lotto의 패키지 변경은 가능하다.
 
-import camp.nextstep.edu.missionutils.Randoms
-
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6){"[ERROR] : 숫자가 6개가 아닙니다."}

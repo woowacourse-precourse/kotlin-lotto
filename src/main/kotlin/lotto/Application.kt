@@ -31,15 +31,17 @@ enum class outputMes(val message: String) {
 }
 
 fun inputMoney() : Int{ // 돈 입력
-    val money = readLine().toInt()
-    return money
+    val money = readLine()
+    if (money.toIntOrNull() == null) {
+        throw IllegalArgumentException("[ERROR] : 잘못된 금액을 입력했습니다.")
+    }
+    return money.toInt()
 }
 
 fun outputCount(money : Int): Int { // 갯수 구하기 예외처리
     val count = money / 1000
     if (money % 1000 != 0) {
-        println("[ERROR] : 숫자가 45를 초과했습니다.")
-        throw IllegalArgumentException()
+        throw IllegalArgumentException("[ERROR] : 로또 구매후 잔액이 존재합니다.")
     }
     return count
 }
