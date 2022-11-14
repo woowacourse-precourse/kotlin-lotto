@@ -7,4 +7,5 @@ fun main() {
     val lottoWinNumber = LottoSeller().inputPrizeNumber(lottoWinningNumbers)//당첨 번호
     val lottoBonus = LottoSeller().inputBonusNumber()//보너스 번호
     val lottoPrizeMoney = LottoWin().calPrize(purchasedLotto, lottoWinNumber, lottoBonus)
+    LottoWin().printProfitRate(lottoMoney, lottoPrizeMoney)
 }
