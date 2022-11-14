@@ -9,12 +9,13 @@ class LottoSimulator {
             val customer = Customer(input)
             val lottoNumberMaker = LottoNumberMaker()
             val lottoAnswerNumberInputHandler = LottoAnswerNumberInputHandler()
-            lottoNumberMaker.setLottoCount(customer.getCustomerMoney())
-            customer.setSelectedLottoList(lottoNumberMaker.makeLottoList())
             val answer= lottoAnswerNumberInputHandler.getLottoAnswer()
             val bonusNumber =  LottoBonusNumberInputHandler(answer).getBonusNumber()
+            lottoNumberMaker.setLottoCount(customer.getCustomerMoney())
+            customer.setSelectedLottoList(lottoNumberMaker.makeLottoList())
             val lotto = Lotto(answer)
-            val lottoResult =  lotto.checkLottoAnswer(customer.getSelectedLottoList())
+            val lottoResult =  lotto.checkLottoAnswer(customer.getSelectedLottoList(), bonusNumber)
+            customer.setReward(RewardChecker(lottoResult).checkRank())
         }
     }
 }
