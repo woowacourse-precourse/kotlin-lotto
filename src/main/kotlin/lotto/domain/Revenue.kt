@@ -1,4 +1,4 @@
-package lotto.logic
+package lotto.domain
 
 class Revenue {
 

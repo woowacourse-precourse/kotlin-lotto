@@ -1,6 +1,6 @@
 package lotto.view
 
-import lotto.logic.Rank
+import lotto.domain.Rank
 
 class LottoView {
 

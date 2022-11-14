@@ -1,10 +1,10 @@
 package lotto
 
-import lotto.logic.Rank
-import lotto.logic.Revenue
+import lotto.domain.Rank
+import lotto.domain.Revenue
 import lotto.util.ExceptionChecker
 import lotto.util.LottoGenerator
-import lotto.logic.WinLotto
+import lotto.domain.WinLotto
 import lotto.view.LottoView
 import kotlin.properties.Delegates
 

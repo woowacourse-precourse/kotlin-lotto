@@ -1,4 +1,4 @@
-package lotto.logic
+package lotto.domain
 
 enum class Rank() {
     First,

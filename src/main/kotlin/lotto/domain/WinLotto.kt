@@ -1,4 +1,4 @@
-package lotto.logic
+package lotto.domain
 
 class WinLotto {
 
@@ -40,19 +40,19 @@ class WinLotto {
         return lotto.contains(bonusNum)
     }
 
-    private fun addToRankResult(cntSame: Int, rankResult2: MutableMap<Rank, Int>, isBonus: Boolean): MutableMap<Rank, Int>{
+    private fun addToRankResult(cntSame: Int, rankResult: MutableMap<Rank, Int>, isBonus: Boolean): MutableMap<Rank, Int>{
         when(cntSame){
-            3 -> rankResult2[Rank.Fifth] = rankResult2[Rank.Fifth]!! + 1
-            4 -> rankResult2[Rank.Fourth] = rankResult2[Rank.Fourth]!! + 1
+            3 -> rankResult[Rank.Fifth] = rankResult[Rank.Fifth]!! + 1
+            4 -> rankResult[Rank.Fourth] = rankResult[Rank.Fourth]!! + 1
             5 -> {
                 if(!isBonus)
-                    rankResult2[Rank.Third] = rankResult2[Rank.Third]!! + 1
+                    rankResult[Rank.Third] = rankResult[Rank.Third]!! + 1
                 else
-                    rankResult2[Rank.Second] = rankResult2[Rank.Second]!! + 1
+                    rankResult[Rank.Second] = rankResult[Rank.Second]!! + 1
             }
-            6 -> rankResult2[Rank.First] = rankResult2[Rank.First]!! + 1
+            6 -> rankResult[Rank.First] = rankResult[Rank.First]!! + 1
         }
 
-        return rankResult2
+        return rankResult
     }
 }
