@@ -2,6 +2,10 @@ package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.domain.Lottos
+import lotto.domain.Ranking
+import java.text.DecimalFormat
+import java.util.*
+import kotlin.collections.LinkedHashMap
 
 class LottoView {
 
@@ -61,9 +65,37 @@ class LottoView {
 
     private fun isValidNumberRange(bonusNumber: Int): Boolean {
         if (bonusNumber < MINIMUM_LOTTO_NUMBER || bonusNumber > MAXIMUM_LOTTO_NUMBER) {
-                throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+            throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
         }
         return true
+    }
+
+    fun printResult(lottoResult: MutableMap<Ranking, Int>) {
+        println("\n당첨 통계")
+        println("---")
+        val entries = LinkedList(lottoResult.entries)
+        entries.reverse()
+        val result = LinkedHashMap<Ranking, Int>()
+        for (entry in entries) {
+            result[entry.key] = entry.value
+        }
+        for (i in result) {
+            printWinningReward(i.key, i.value)
+        }
+    }
+
+    private fun printWinningReward(reward: Ranking, numOfRightLotto: Int) {
+        val moneyPrintFormat = DecimalFormat("#,###")
+        if (reward == Ranking.FAIL) {
+            return
+        }
+
+        if (reward.matchBonusNumber) {
+            println("${reward.count}개 일치, 보너스 볼 일치 (" + moneyPrintFormat.format(reward.prize) + "원) - " + numOfRightLotto + "개")
+            return
+        }
+
+        println("${reward.count}개 일치 (" + moneyPrintFormat.format(reward.prize) + "원) - " + numOfRightLotto + "개")
     }
 
     companion object {
