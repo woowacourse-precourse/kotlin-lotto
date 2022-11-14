@@ -4,5 +4,7 @@ enum class Answer {
     THREE,
     FOUR,
     FIVE,
-    SIX;
+    BONUS,
+    SIX,
+    NONE;
 }
