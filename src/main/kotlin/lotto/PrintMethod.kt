@@ -42,7 +42,6 @@ class PrintMethod {
         rank.reverse()
         for (idx in rank.indices) {
             `yield` += rankReward[idx] * rank[idx]
-            println(`yield`)
         }
         println(yieldMessage + "%.1f".format(`yield`.toDouble() / buyAmount * percent) + yieldEndMessage)
     }
