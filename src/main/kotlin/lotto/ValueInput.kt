@@ -1,6 +1,9 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
+import data.REQUIRE_MESSAGE_BONUS_NUMBER
+import data.REQUIRE_MESSAGE_JACKPOT_NUMBER
+import data.REQUIRE_MESSAGE_LOTTO_PRICE
 
 class ValueInput {
     private val input: String = Console.readLine()

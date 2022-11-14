@@ -1,5 +1,7 @@
 package lotto
 
+import data.*
+
 class ValueInspection {
 
     fun price(input: String) {

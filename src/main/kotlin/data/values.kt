@@ -1,4 +1,4 @@
-package lotto
+package data
 
 // Error Message
 const val ERROR_MESSAGE_ONLY_NUMBER = "[ERROR] 숫자만 입력할 수 있습니다."
@@ -12,6 +12,10 @@ const val ERROR_MESSAGE_NOT_DUPLICATION = "[ERROR] 로또의 번호는 중복될
 const val REQUIRE_MESSAGE_LOTTO_PRICE = "구입금액을 입력해 주세요."
 const val REQUIRE_MESSAGE_JACKPOT_NUMBER = "당첨 번호를 입력해 주세요."
 const val REQUIRE_MESSAGE_BONUS_NUMBER = "보너스 번호를 입력해 주세요."
+
+// Print Message
+var purchasesNumber: Int = 0
+var PRINT_MESSAGE_PURCHASES_NUMBER = "${purchasesNumber}개를 구매했습니다."
 
 // Coincidence List Index
 const val INDEX_THREE_COINCIDENCE: Int = 0

@@ -1,6 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import data.*
 import kotlin.math.round
 
 class LottoCalculation {
