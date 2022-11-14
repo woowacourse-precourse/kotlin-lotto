@@ -1,6 +1,5 @@
 package lotto.domain.money
 
-import org.junit.jupiter.params.shadow.com.univocity.parsers.common.Format
 import java.text.DecimalFormat
 
 class Money(private val money: String) {
