@@ -31,6 +31,11 @@ class LottoShop(
         val userInput = input.get()
     }
 
+    private fun <T> checkInputValid(input: T, verifiers: List<Verifier<T>>) {
+        val inputValidator = InputValidator(verifiers)
+        inputValidator.validate(input)
+    }
+
     private fun guideInputMoney() {
         output.guideInputMoney()
     }
