@@ -44,7 +44,7 @@ class Display {
             println(contents[i].content + matchingCounts[i] + "개")
         }
 
-        println("총 수익률은 ${profit}입니다.")
+        println("총 수익률은 ${profit}%입니다.")
     }
 }
 

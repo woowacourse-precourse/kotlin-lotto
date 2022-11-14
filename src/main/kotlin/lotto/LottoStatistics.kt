@@ -64,7 +64,7 @@ class LottoStatistics {
             prizeAmount += matching[i].prize * matchingCounts[i]
         }
 
-        profit = 100 + (prizeAmount - purchaseAmount) / purchaseAmount * 100.0
+        profit = 100 + (prizeAmount - purchaseAmount) / purchaseAmount.toDouble() * 100
         profit = round(profit * 10) / 10
     }
 
