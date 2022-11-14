@@ -16,6 +16,8 @@ class WinningStatistics(lotteries: List<Lotto>, winningNumber: WinningNumber) {
         this.yields = calculateYields()
     }
 
+    fun winningCounts() = winningCounts.toMap()
+
     companion object {
         private fun calculateYields(): BigDecimal {
             return BigDecimal("0")
