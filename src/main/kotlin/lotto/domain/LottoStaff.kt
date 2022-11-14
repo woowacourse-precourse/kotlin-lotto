@@ -33,13 +33,20 @@ class LottoStaff() {
         return lottoNumbers.contains(bonusNUmber)
     }
 
-    fun checkPrize(matchingNumber: Int, isBonusNumberMatch: Boolean):Prize {
+    fun checkPrize(matchingNumber: Int, isBonusNumberMatch: Boolean): Prize {
         if (matchingNumber == 6) return Prize.FIRST
         if (matchingNumber == 5 && isBonusNumberMatch) return Prize.SECOND
         if (matchingNumber == 5 && !isBonusNumberMatch) return Prize.THIRD
         if (matchingNumber == 4) return Prize.FOURTH
         if (matchingNumber == 3) return Prize.FIFTH
         return Prize.NOTHING
+    }
+
+    fun getProfit(totalPrizeMoney: Int, lottoCount: Int)
+    = roundDouble(totalPrizeMoney.toDouble() / lottoCount)
+
+    fun roundDouble(value: Double): Double {
+        return String.format("%.1f", value).toDouble()
     }
 
     companion object {
