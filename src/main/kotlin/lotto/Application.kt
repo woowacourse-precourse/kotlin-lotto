@@ -51,7 +51,22 @@ fun throwMoneyUnitException(userInput: String) {
 fun inputWinningNumber(): List<Int> {
     println("당첨 번호를 입력해 주세요.")
     val userInput = Console.readLine()
+    checkWinningNumberThrowException(userInput)
     return userInput.split(',').map { it.toInt() }
+}
+
+fun checkWinningNumberThrowException(userInput: String) {
+    throwLottoNumberRangeException(userInput)
+}
+
+fun throwLottoNumberRangeException(userInput: String) {
+    val numbers = userInput.split(',').map { it.toInt() }
+    for (number in numbers) {
+        if(number !in 1..45) {
+            println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+            throw IllegalArgumentException()
+        }
+    }
 }
 
 fun inputBonusNumber(): Int {
