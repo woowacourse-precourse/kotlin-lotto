@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
 
@@ -56,5 +57,34 @@ class ApplicationTest : NsTest() {
 
     companion object {
         private const val ERROR_MESSAGE = "[ERROR]"
+    }
+
+    @Test
+    fun `1000원 단위가 아닌 숫자를 구매 금액으로 입력받았을 경우`() {
+        assertThrows<IllegalArgumentException> { runException("1100") }
+    }
+
+    @Test
+    fun `범위에서 벗어나거나 숫자가 아닌 값을 입력한 경우`() {
+        assertThrows<IllegalArgumentException> {
+            lottoWinNum = arrayListOf(1,2,3,4,5,1100).toIntArray()
+            winNumInputCheck()
+            runException("hello2023")
+        }
+        assertThrows<IllegalArgumentException> {
+            var lottoWinNumTest = arrayListOf(1,2,3,4,5,"hello2023")
+            for (num in lottoWinNumTest) {
+                if (!checkDigit(num.toString())) throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+            }
+        }
+    }
+
+    @Test
+    fun `보너스 번호와 당첨 번호가 중복되는 경우`() {
+        assertThrows<IllegalArgumentException> {
+            lottoWinNum = arrayListOf(1,2,3,4,5,6).toIntArray()
+            bonusNum = 3
+            bonusNumInputCheck()
+        }
     }
 }
