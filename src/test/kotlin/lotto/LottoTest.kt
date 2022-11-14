@@ -12,6 +12,12 @@ class LottoTest {
     }
 
     @Test
+    fun `로또 번호 수 6개 생성 유닛테스트 repeat`() {
+        val lotto = __Lotto__(10)
+        println(lotto.idx)
+    }
+
+    @Test
     fun `로또 번호의 개수가 6개가 넘어가면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
             Lotto(listOf(1, 2, 3, 4, 5, 6, 7))
