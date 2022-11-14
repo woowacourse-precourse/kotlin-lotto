@@ -21,16 +21,16 @@ object UserInterface {
     }
 
     private fun validatePurchaseAmount(readValue: String) {
-        require(readValue.all { it.isDigit() }) { PURCHASE_AMOUNT_IS_NOT_DIGIT }
+        require(readValue.all { it.isDigit() }) { PURCHASE_AMOUNT_MUST_BE_A_NUMBER }
         val purchaseAmount = BigInteger(readValue)
         require(purchaseAmount <= BigInteger(PURCHASE_AMOUNT_LIMIT.toString())) {
             String.format(
-                PURCHASE_AMOUNT_EXCESS_LIMIT, decimalFormat.format(PURCHASE_AMOUNT_LIMIT)
+                PURCHASE_AMOUNT_MUST_NOT_EXCEED_LIMIT, decimalFormat.format(PURCHASE_AMOUNT_LIMIT)
             )
         }
         require(
             purchaseAmount.mod(BigInteger("1000")).equals(BigInteger.ZERO)
-        ) { PURCHASE_AMOUNT_IS_NOT_DIVISIBLE_BY_1000 }
+        ) { PURCHASE_AMOUNT_MUST_BE_DIVIDED_BY_1000 }
     }
 
     fun showPurchaseResult(lotteries: List<LottoDto>) {
@@ -46,17 +46,17 @@ object UserInterface {
     }
 
     private fun validateWinningNumbers(readValue: String) {
-        require(readValue.split(",").size == 6) { WINNING_NUMBERS_SIZE_IS_NOT_6 }
+        require(readValue.split(",").size == 6) { WINNING_NUMBERS_SIZE_MUST_BE_6 }
         val splitValues = readValue.split(",").map { it.trim() }
-        require(splitValues.all { it.matches(Regex("\\d{1,2}")) && it.toInt() in 1..45 }) { WINNING_NUMBERS_ARE_NOT_IN_BETWEEN_1_AND_45 }
-        require(splitValues.toSet().size == splitValues.size) { WINNING_NUMBERS_ARE_DUPLICATED }
+        require(splitValues.all { it.matches(Regex("\\d{1,2}")) && it.toInt() in 1..45 }) { WINNING_NUMBERS_MUST_BE_BETWEEN_1_AND_45 }
+        require(splitValues.toSet().size == splitValues.size) { WINNING_NUMBERS_MUST_NOT_BE_DUPLICATED }
     }
 
     fun askBonusNumberNotIn(winningNumbers: List<Int>): Int {
         println(REQUEST_BONUS_NUMBER)
         val readValue = Console.readLine()
-        require(readValue.matches(Regex("\\d{1,2}")) && readValue.toInt() in 1..45) { BONUS_NUMBER_IS_NOT_IN_BETWEEN_1_AND_45 }
-        require(readValue.toInt() !in winningNumbers) { BONUS_NUMBER_IS_INCLUDED_IN_WINNING_NUMBERS }
+        require(readValue.matches(Regex("\\d{1,2}")) && readValue.toInt() in 1..45) { BONUS_NUMBER_MUST_BE_BETWEEN_1_AND_45 }
+        require(readValue.toInt() !in winningNumbers) { BONUS_NUMBER_MUST_NOT_BE_INCLUDED_IN_WINNING_NUMBERS }
         return readValue.toInt()
     }
 
