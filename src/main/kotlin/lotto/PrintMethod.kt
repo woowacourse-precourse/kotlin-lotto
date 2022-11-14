@@ -28,30 +28,17 @@ class PrintMethod {
     }
 
     fun printRanking(rank: MutableList<Int>) {
+        val rankMessage = listOf<String>(firstRewardMessage, secondRewardMessage, thirdRewardMessage, fourthRewardMessage, fifthRewardMessage)
+
         println(printRankMessage)
-        for (idx in rank.indices) {
-            when (idx) {
-                0 -> println(firstRewardMessage + rank[idx] + count)
-                1 -> println(secondRewardMessage + rank[idx] + count)
-                2 -> println(thirdRewardMessage + rank[idx] + count)
-                3 -> println(fourthRewardMessage + rank[idx] + count)
-                4 -> println(fifthRewardMessage + rank[idx] + count)
-            }
-        }
+        for (idx in rank.indices) println(rankMessage[idx] + rank[idx] + count)
     }
 
     fun printYield(rank: MutableList<Int>, lottoPrice: Int) {
         var yield = 0
+        val rankReward = listOf<Int>(fifthReward, secondReward, thirdReward, fourthReward, fifthReward)
 
-        for (idx in rank.indices) {
-            when (idx) {
-                0 -> `yield` += firstReward * rank[idx]
-                1 -> `yield` += secondReward * rank[idx]
-                2 -> `yield` += thirdReward * rank[idx]
-                3 -> `yield` += fourthReward * rank[idx]
-                4 -> `yield` += fifthReward * rank[idx]
-            }
-        }
+        for (idx in rank.indices) `yield` += rankReward[idx] * rank[idx]
         println(yieldMessage + "%.1f".format(`yield`.toFloat() / lottoPrice * percent) + yieldEndMessage)
     }
 }
