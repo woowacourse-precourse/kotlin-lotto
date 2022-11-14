@@ -20,6 +20,7 @@ fun lottoGame() {
     for (lotto in lottos) {
         checkLottoWin(lotto, winningNumbers, bonusNumber)
     }
+    showResult()
 }
 
 fun generateLottoCount(): Int {
@@ -139,4 +140,15 @@ fun checkLottoWin(lotto: Lotto, winningNumbers: Lotto, bonusNumber: Int) {
         count == 5 && lotto.isContainedNumber(bonusNumber) -> Result.SECOND.count++
         count == 6 -> Result.FIRST.count++
     }
+}
+
+fun showResult() {
+    println("당첨 통계")
+    println("---")
+
+    Result.FIFTH.print()
+    Result.FOURTH.print()
+    Result.THIRD.print()
+    Result.SECOND.print()
+    Result.FIRST.print()
 }
