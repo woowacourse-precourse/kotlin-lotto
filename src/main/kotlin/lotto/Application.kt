@@ -10,45 +10,44 @@ enum class LottoValue(val earning : Int, val correctNumbers : Int, open var amou
 }
 
 fun firstPay() : Int?{
-    var pay = 0
-    println("구입금액을 입력해 주세요.")
     try {
-        pay = readLine()!!.toInt()
-        pay/1000 != 0
+        val pay = readLine()!!.toInt()
+        if((pay / 1000) != 0) {
+            throw (NumberFormatException("[ERROR] 입력된 금액이 올바른 금액이 아닙니다."))
+        }
         return pay
     } catch (e : NumberFormatException){
-        println("[ERROR] 입력된 금액이 올바른 금액이 아닙니다.")
+        throw (NumberFormatException("[ERROR] 입력된 금액이 올바른 금액이 아닙니다."))
     } catch (e : NullPointerException){
-        println("[ERROR] 값을 입력하지 않았습니다.")
+        throw (NullPointerException("[ERROR] 값을 입력하지 않았습니다."))
     }
-    return null
 }
 
 fun lottoGenerator(amount : Int) : List<Lotto>{
     val lottoBundle = mutableListOf<Lotto>()
     for (lotto in 1..amount){
-        val lottoPaper : List<Int> = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
+        val lottoPaper  = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
         lottoBundle.add(Lotto(lottoPaper))
     }
     return lottoBundle
 }
 
-fun lottoWinningNumber() : List<Int>?{
-    println("당첨 번호를 입력해 주세요.")
+fun lottoWinningNumber() : List<Int>{
     try {
         val numbers = readLine()?.split(",")
         val winningNumbers = numbers!!.map { it.toInt() }
+        if (winningNumbers.distinct().size != 6){
+            throw (NumberFormatException("[ERROR] 올바르지 않은 당첨 번호입니다."))
+        }
         return winningNumbers.toList().sorted()
     } catch (e : NumberFormatException){
-        println("[ERROR] 올바르지 않은 당첨 번호입니다.")
+        throw (NumberFormatException("[ERROR] 올바르지 않은 당첨 번호입니다."))
     } catch (e : NullPointerException){
-        println("[ERROR] 값을 입력하지 않았습니다.")
+        throw (NullPointerException("[ERROR] 값을 입력하지 않았습니다."))
     }
-    return null
 }
 
-fun lottoBonusNumber(normalNumber: List<Int>) : List<Int>?{
-    println("보너스 번호를 입력해 주세요")
+fun lottoBonusNumber(normalNumber: List<Int>) : List<Int>{
     try{
         val bonus = readLine()!!.toInt()
         val bonusNumber = mutableListOf<Int>()
@@ -65,19 +64,21 @@ fun lottoBonusNumber(normalNumber: List<Int>) : List<Int>?{
 
 
 
-fun lottoCompareNormal(answer: List<Int>, uncheckedLotto : List<Int>) : Int{
+fun lottoCompareNormal(answer: List<Int>, uncheckedLotto :Lotto) : Int{
     var coincidence = 0
+    val unchecked = mutableListOf(uncheckedLotto.toString().toInt())
     for (lottoNumber in 0..5){
-        if (answer.contains(uncheckedLotto[lottoNumber])){
+        if (answer.contains(unchecked[lottoNumber])){
             coincidence+=1
         }
     }
     return coincidence
 }
 
-fun lottoCompareSpecial(special : List<Int>, uncheckedLotto : List<Int>) : Int{
+fun lottoCompareSpecial(special : List<Int>, uncheckedLotto : Lotto) : Int{
     var specialCoincidence = 0
-    if(uncheckedLotto.contains(special[0])){
+    val unchecked = mutableListOf(uncheckedLotto.toString().toInt())
+    if(unchecked.contains(special[0])){
         specialCoincidence += 1
     }
     return specialCoincidence
@@ -130,5 +131,34 @@ fun receipt(earningRatio : String){
 }
 
 fun main() {
-    TODO("프로그램 구현")
+    println("구입금액을 입력해 주세요.")
+    val paidMoney = firstPay()
+    val lottoPapers = paidMoney!! / 1000
+    val lottoBundles = lottoGenerator(lottoPapers)
+    println("")
+
+    print(lottoPapers)
+    println("개를 구매했습니다.")
+    println(lottoBundles)
+    println("")
+
+    println("당첨 번호를 입력해 주세요.")
+    val winningNumber = lottoWinningNumber()
+    println("")
+
+    println("보너스 번호를 입력해 주세요")
+    val bonusNumber = lottoBonusNumber(winningNumber)
+    println("")
+
+    for (count in 0 until lottoPapers){
+        val normalCoincidence = lottoCompareNormal(winningNumber, lottoBundles[count])
+        val specialCoincidence = lottoCompareSpecial(bonusNumber, lottoBundles[count])
+        val lottoValues = findValue(normalCoincidence, specialCoincidence)
+        calculatePrize(lottoValues)
+    }
+    
+    val earnedPrize = calculateEarns()
+    val ratio: String = earningsRatio(paidMoney, earnedPrize)
+    
+    receipt(ratio)
 }
