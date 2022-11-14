@@ -23,7 +23,6 @@ fun getInputLotteryAmount(): Int {
 fun getWinningNumber(): List<Int> {
     Output.winningNumber()
     val winningNumber = ExceptionHandler.checkNumbers()
-    ExceptionHandler.checkWinningNumber(winningNumber)
     println()
     return winningNumber
 }
