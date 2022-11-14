@@ -8,7 +8,7 @@ class Lotto(private val numbers: List<Int>) {
             checkLottoNumberRange(number)
         }
     }
-    fun printLotto(): List<Int> {
+    fun returnLottoNumbers(): List<Int> {
         return numbers
     }
     private fun checkLottoNumberCount(){

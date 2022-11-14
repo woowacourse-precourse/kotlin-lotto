@@ -22,7 +22,7 @@ fun stage2(price:Int): Any {
     return try {
         val lottos = LottoGenerator().createLottoNumber(lottoCnt)
         for(lotto in lottos)
-            println(lotto.printLotto())
+            println(lotto.returnLottoNumbers())
         return lottos
     } catch (_: IllegalArgumentException) {
         -1
