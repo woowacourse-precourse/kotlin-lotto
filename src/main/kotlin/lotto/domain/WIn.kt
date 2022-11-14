@@ -1,13 +1,32 @@
 package lotto.domain
 
-enum class Win(
-    val matchBall: Int,
-    val bonusBall: Boolean
-) {
-    FIRST_PLACE(6, false),
-    SECOND_PLACE(5, true),
-    THIRD_PLACE(5, false),
-    FOURTH_PLACE(4, false),
-    FIFTH_PLACE(3, false),
-    NO_LUCK(0, false);
+enum class Win {
+    FIRST_PLACE,
+    SECOND_PLACE,
+    THIRD_PLACE,
+    FOURTH_PLACE,
+    FIFTH_PLACE,
+    NO_LUCK;
+
+    companion object {
+        fun getMyPlace(matchedBall: Int, isMatchedBonusBall: Boolean): Win {
+            if (matchedBall == 6 && !isMatchedBonusBall) {
+                return FIRST_PLACE
+            }
+            if (matchedBall == 5 && isMatchedBonusBall) {
+                return SECOND_PLACE
+            }
+            if (matchedBall == 5) {
+                return THIRD_PLACE
+            }
+            if (matchedBall == 4 && !isMatchedBonusBall) {
+                return FOURTH_PLACE
+            }
+            if (matchedBall == 3 && !isMatchedBonusBall) {
+                return FIFTH_PLACE
+            }
+            return NO_LUCK
+        }
+
+    }
 }
