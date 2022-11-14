@@ -1,16 +1,16 @@
 package lotto
 
-class Customer {
+import camp.nextstep.edu.missionutils.Console
+import lotto.data.InputErrorMessage
 
+class Customer() {
     fun payMoney(): Int {
-        return readLine()!!.toInt()
+        val payment = Console.readLine().toInt()
+        throwPaymentException(payment)
+        return payment
     }
 
-    fun getLotto() {
-        Seller().setLotto()
-    }
-
-    fun checkLotto() {
-
+    fun throwPaymentException(payment: Int) {
+        if ((payment % 1000) != 0) throw IllegalArgumentException(InputErrorMessage.PAYMENT_RULE.message)
     }
 }
