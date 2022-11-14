@@ -14,4 +14,13 @@ object LottoPhrases {
     const val LOTTO_COUNT_PHRASES = "개를 구매했습니다."
     const val MAIN_LOTTO_NUMBERS_PHRASES = "당첨 번호를 입력해 주세요."
     const val BONUS_LOTTO_NUMBER_PHRASES = "보너스 번호를 입력해 주세요."
+    const val PRIZE_STATISTICS_PHRASES = "당첨 통계\n___"
+    const val PRIZE_GRADE_FIFTH = "3개 일치 (5,000원) - "
+    const val PRIZE_GRADE_FOURTH = "(50,000원) - "
+    const val PRIZE_GRADE_THIRD = "(1,500,000원) - "
+    const val PRIZE_GRADE_SECOND = "5개 일치, 보너스 볼 일치 (30,000,000원) - "
+    const val PRIZE_GRADE_FIRST = "6개 일치 (2,000,000,000원) - "
+    const val PRIZE_GRADE_UNIT = "개"
+    const val EARNING_RATE = "총 수익률은 "
+    const val EARNING_RATE_END = "%입니다."
 }
