@@ -22,7 +22,7 @@ fun main() {
     println("당첨 번호를 입력해 주세요.")
 
     //5등,4등,3등,2등,1등 티켓 종류 세기
-    var TicketTypeCount = mutableListOf<Int>(0,0,0,0,0)
+    var ticketTypeCount= mutableListOf<Int>(0,0,0,0,0)
     var resultLotto = 0
 
     var userNum= Console.readLine().split(",").map{it.toInt()}
@@ -38,17 +38,17 @@ fun main() {
         throw IllegalArgumentException()
     }
     for (i in 0 until lotto.size)
-        playLottery(lotto[i], userNum,TicketTypeCount,userBonus)
+        playLottery(lotto[i], userNum,ticketTypeCount,userBonus)
 
-    resultLotto = TicketTypeCount[0] * 5000 + TicketTypeCount[1] * 50000 + TicketTypeCount[2] * 1500000 + TicketTypeCount[3] * 3000000 + TicketTypeCount[4] * 2000000000
+    resultLotto = ticketTypeCount[0] * 5000 + ticketTypeCount[1] * 50000 + ticketTypeCount[2] * 1500000 + ticketTypeCount[3] * 3000000 + ticketTypeCount[4] * 2000000000
     var lottoProfit = round(resultLotto / lottoPay.toFloat() * 1000) /10
     println("당첨 통계")
     println("---")
-    println("3개 일치 (5,000원) - ${TicketTypeCount[0]}개 ")
-    println("4개 일치 (50,000원) - ${TicketTypeCount[1]}개 ")
-    println("5개 일치 (1,500,000원) - ${TicketTypeCount[2]}개 ")
-    println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${TicketTypeCount[3]}개 ")
-    println("6개 일치 (2,000,000,000원) - ${TicketTypeCount[4]}개")
+    println("3개 일치 (5,000원) - ${ticketTypeCount[0]}개 ")
+    println("4개 일치 (50,000원) - ${ticketTypeCount[1]}개 ")
+    println("5개 일치 (1,500,000원) - ${ticketTypeCount[2]}개 ")
+    println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${ticketTypeCount[3]}개 ")
+    println("6개 일치 (2,000,000,000원) - ${ticketTypeCount[4]}개")
     println("총 수익률은 ${lottoProfit}%입니다.")
 }
 fun chkNum(str: String) {
@@ -69,20 +69,20 @@ fun playLottery(lotto : List<Int>, userNum : List<Int>,TicketTypeCount : Mutable
     val union = lotto+userNum
     val intersection = union.groupBy { it }.filter { it.value.size > 1 }.flatMap { it.value }.distinct()
     if (intersection.count() == 3)
-        TicketTypeCount[0]++
+        TicketTypeCount[0]++//5000원
     if (intersection.count() == 4)
-        TicketTypeCount[1]++
+        TicketTypeCount[1]++//50000원
     if ((intersection.count() == 5) && !(lotto.contains(userBonus)))
-        TicketTypeCount[2]++
+        TicketTypeCount[2]++//1,500,000원
     if ((intersection.count() == 5) && (lotto.contains(userBonus)))
-        TicketTypeCount[3]++
+        TicketTypeCount[3]++//30,000,000원
     if (intersection.count() == 6)
-        TicketTypeCount[4]++
+        TicketTypeCount[4]++//2,000,000,000원
 }
 
 fun playTicket( lottoTicket : Int, lotto: MutableList<List<Int>>){
     for(i in 0 until lottoTicket){
-        val numbers = Randoms.pickUniqueNumbersInRange(1,46,6).sorted()
+        val numbers = Randoms.pickUniqueNumbersInRange(1,46,6)
         println(numbers)
         lotto.add(numbers)
     }
