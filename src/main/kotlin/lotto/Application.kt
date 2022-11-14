@@ -18,9 +18,9 @@ fun lottoGame() {
     val lottoCount = generateLottoCount()
     val winningNumbers = generateWinningNumbers()
     val bonusNumber = generateBonusNumber(winningNumbers)
-    val lottos = generateLottos(lottoCount)
+    val lotteries = generateLotteries(lottoCount)
 
-    for (lotto in lottos) {
+    for (lotto in lotteries) {
         checkLottoWin(lotto, winningNumbers, bonusNumber)
     }
     showResult(lottoCount)
@@ -119,14 +119,14 @@ fun generateLotto(): Lotto {
     return Lotto(numbers)
 }
 
-fun generateLottos(lottoCount: Int): List<Lotto> {
-    val lottos = mutableListOf<Lotto>()
+fun generateLotteries(lottoCount: Int): List<Lotto> {
+    val lotteries = mutableListOf<Lotto>()
     repeat(lottoCount) {
         val lotto = generateLotto()
         lotto.print()
-        lottos.add(lotto)
+        lotteries.add(lotto)
     }
-    return lottos
+    return lotteries
 }
 
 fun checkLottoWin(lotto: Lotto, winningNumbers: Lotto, bonusNumber: Int) {
