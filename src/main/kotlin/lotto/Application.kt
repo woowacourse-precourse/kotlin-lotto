@@ -55,7 +55,7 @@ fun printLottoWinNumbers() {
 fun printResult() {
     println(WIN_RESULT_MSG)
     for (i in 0 until 5) {
-        println(LottoWinCaseString.getMsg(i)+ winCase[i] + "개")
+        println(LottoWinCaseString.getMsg(i) + winCase[i] + "개")
     }
     println(earningRateMSG((earningMoney.toDouble() / user.purchaseMoney) * 100))
 
