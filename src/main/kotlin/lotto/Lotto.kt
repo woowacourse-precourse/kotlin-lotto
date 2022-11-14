@@ -5,10 +5,11 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.size == 6)
     }
 
-    private var _correctCount = 0
-    val correctCount get() = _correctCount
+    private var _winningsMoney = 0
+    val winningsMoney get() = _winningsMoney
 
     val lottoStats = mutableListOf<Int>(0, 0, 0, 0, 0)
+    val winningsTable = listOf(5_000, 50_000, 1_500_000, 30_000_000, 2_000_000_000)
 
     fun calculateProfit(money: Int, winnings: Int): Float = (winnings.toFloat() / money.toFloat())
 
@@ -19,9 +20,17 @@ class Lotto(private val numbers: List<Int>) {
     fun checkBonusNumber(bonus: Int): Boolean = numbers.contains(bonus)
 
     fun checkCorrectCount(lottoTicket: List<Int>, bonus: Int) {
-        _correctCount = countWinningNumbers(lottoTicket)
-        if (checkBonusNumber(bonus)) _correctCount += 1
-        lottoStats[_correctCount]++
+        var count = countWinningNumbers(lottoTicket)
+        if (checkBonusNumber(bonus)) count += 1
+        lottoStats[count]++
+    }
+
+    fun winningsTotal(): Int {
+        var sum = 0
+        lottoStats.forEachIndexed { index, cnt ->
+            sum += winningsTable[index] * cnt
+        }
+        return sum
     }
 
     fun printProfit(profit: Float) = println("총 수익률은 ${"%.2f".format(profit)}입니다.")
