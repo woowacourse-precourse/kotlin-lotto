@@ -7,14 +7,14 @@
 - [x] 당첨 여부를 가른다.
     - [x] 사용자가 구매한 로또 번호와 당첨 번호를 비교한다. Lotto#getWinnerList
         - [x] 일치하는 번호의 개수를 반환한다. - Judgement#countMatchNumber
-        - [x] 5개가 일치하는 경우, 보너스 번호도 비교한다. - Lotto#checkBonusBall
+        - [x] 5개가 일치하는 경우, 보너스 번호도 비교한다. - Judgement#checkBonusBall
     - [x] 당첨 내역을 출력한다. (5등에서 1등까지 당첨된 개수 출력)
         - 3개 일치 (5,000원) - x개
         - 4개 일치 (50,000원) - x개
         - 5개 일치 (1,500,000원) - x개
         - 5개 일치, 보너스 볼 일치 (30,000,000원) - x개
         - 6개 일치 (2,000,000,000원) - x개
-    - [x] 수익률을 출력한다.- Lotto#getEarningRate
+    - [x] 수익률을 출력한다.
     - [x] 로또 게임을 종료한다.
 
 ## UI 로직 (System.out, System.in, Scanner)

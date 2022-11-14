@@ -6,7 +6,7 @@ import kotlin.math.round
 
 fun main() {
     val paidAmount = askUserMoney()
-    val tryNumber = paidAmount / 1000
+    val tryNumber = paidAmount / MONEY_UNIT
 
     println("\n${tryNumber}를 구매했습니다.")
     val lottoNumbers = get2DLottoList(tryNumber)
@@ -37,7 +37,7 @@ fun get2DLottoList(tryNumber: Int): List<List<Int>> {
 fun askUserMoney(): Int {
     println(MONEY_INPUT_MSG)
     val money = Console.readLine().toInt()
-    if (money % 1000 != 0) handleException(DIVISION_EXCEPTION_MSG)
+    if (money % MONEY_UNIT != 0) handleException(DIVISION_EXCEPTION_MSG)
     return money
 }
 
@@ -53,11 +53,11 @@ fun getWinningNumbers(input: String): List<Int> {
     val numbers = mutableListOf<Int>()
     input.split(",").map {
         val item = it.toInt()
-        if (item !in 1..45) handleException(RANGE_BOUNDS_EXCEPTION_MSG)
+        if (item !in MIN_VALUE..MAX_VALUE) handleException(RANGE_BOUNDS_EXCEPTION_MSG)
         if (numbers.contains(item)) handleException(DUPLICATE_EXCEPTION_MSG)
         numbers.add(item)
     }
-    if (numbers.size != 6) handleException(SIZE_BOUNDS_EXCEPTION_MGS)
+    if (numbers.size != LOTTO_NUM_LIMIT) handleException(SIZE_BOUNDS_EXCEPTION_MGS)
     return numbers
 }
 
@@ -65,7 +65,8 @@ fun getWinningNumbers(input: String): List<Int> {
 fun askBonusNumber(): Int {
     println(BONUS_INPUT_MSG)
     val input = Console.readLine().toInt()
-    if (input !in 1..45) handleException(DUPLICATE_EXCEPTION_MSG)
+    if (input !in MIN_VALUE..MAX_VALUE)
+        handleException(DUPLICATE_EXCEPTION_MSG)
     return input
 }
 
@@ -77,8 +78,7 @@ fun handleException(message: String) {
 
 // 당첨 내역을 출력한다.
 fun printWinnerList(winners: List<Int>) {
-    println("\n당첨 통계")
-    println("---")
+    println(WINNER_RESULT_MGS)
     println("$WINNER_5_MSG - ${winners[0]}개")
     println("$WINNER_4_MSG - ${winners[1]}개")
     println("$WINNER_3_MSG - ${winners[2]}개")
@@ -106,7 +106,7 @@ fun calcProfits(winners: List<Int>): Int {
 // 수익률을 계산한다.
 fun calcEarningRate(profits: Int, paidAmount: Int): Double {
     val earningRate = (profits.toDouble() / paidAmount.toDouble()) * 100
-    return roundDigit(earningRate, 2)
+    return roundDigit(earningRate, ROUND_CRITERIA)
 }
 
 // 소수점 n번째 자리에서 반올림 한 결과를 리턴한다.
