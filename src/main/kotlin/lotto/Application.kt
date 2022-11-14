@@ -8,7 +8,7 @@ fun main() {
     val amountPaid = cs.readLine()
     val quantity = validateAmount(amountPaid)
     println()
-    println("${quantity}개를 구매했습니다")
+    println("${quantity}개를 구매했습니다.")
 
     val purchasedLotto = mutableListOf<Lotto>()
     for (lottoQuantity in 1..quantity) {
@@ -47,4 +47,23 @@ fun validateAmount(amountPaid: String): Int{
     }
 
     return price/1000
+}
+
+fun validateWinningNum(pickedNum: String): Lotto {
+    val winnerNum = mutableListOf<Int>()
+    val inputNumbers = pickedNum.split(",")
+
+    for (valueIndex in inputNumbers.indices) {
+        val inputValue = inputNumbers[valueIndex]
+        if (inputValue.toIntOrNull() == null) {
+            throw IllegalArgumentException(ErrorCode.NUMERIC_REQUIRED.message)
+        }
+        if (inputValue.toInt() > 45 || inputValue.toInt() < 1) {
+            throw IllegalArgumentException(ErrorCode.NUMBER_RANGE_UNQUALIFIED.message)
+        }
+        winnerNum.add(inputValue.toInt())
+    }
+    winnerNum.sort()
+
+    return Lotto(winnerNum)
 }
