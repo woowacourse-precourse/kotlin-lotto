@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersI
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
 class ApplicationTest : NsTest() {
@@ -42,11 +43,48 @@ class ApplicationTest : NsTest() {
         )
     }
 
-    @Test
-    fun `예외 테스트`() {
-        assertSimpleTest {
-            runException("1000j")
-            assertThat(output()).contains(ERROR_MESSAGE)
+    @Nested
+    inner class PurchaseTest{
+        @Test
+        fun `구입금액 숫자 외 값 예외 테스트`() {
+            assertSimpleTest {
+                runException("1000j")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            }
+        }
+
+        @Test
+        fun `구입금액 1,000원 단위 예외 테스트`() {
+            assertSimpleTest {
+                runException("8001")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            }
+        }
+
+        @Test
+        fun `구입금액 미입력 예외 테스트`() {
+            assertSimpleTest {
+                runException("")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            }
+        }
+
+        @Test
+        fun `구입 금액 정상 구동 테스트`() {
+            assertSimpleTest{
+                val purchase = Purchase("5000")
+                val result = 5000
+                assertThat(purchase.price).isEqualTo(result)
+            }
+        }
+
+        @Test
+        fun `구입 개수 정상 구동 테스트`() {
+            assertSimpleTest{
+                val purchase = Purchase("5000")
+                val result = 5
+                assertThat(purchase.count).isEqualTo(result)
+            }
         }
     }
 
