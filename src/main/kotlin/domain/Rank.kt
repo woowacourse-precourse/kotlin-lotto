@@ -1,6 +1,7 @@
 package domain
 
 import java.util.*
+import kotlin.streams.toList
 
 enum class Rank(val rank: Int, val reward: Int) {
     FIRST_PLACE(6, 2_000_000_000), SECOND_PLACE(5, 30_000_000),
@@ -19,6 +20,11 @@ enum class Rank(val rank: Int, val reward: Int) {
                 return THIRD_PLACE
             }
             return checkRank
+        }
+
+        fun getValues(): List<Rank> {
+            return Arrays.stream(values())
+                .filter { it !== NOTHING }.toList()
         }
     }
 }
