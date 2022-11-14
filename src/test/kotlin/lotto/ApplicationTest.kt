@@ -5,10 +5,11 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
 
-    @Test
+  /*  @Test
     fun `기능 테스트`() {
         assertRandomUniqueNumbersInRangeTest(
             {
@@ -40,15 +41,29 @@ class ApplicationTest : NsTest() {
             listOf(2, 13, 22, 32, 38, 45),
             listOf(1, 3, 5, 14, 22, 45)
         )
+    }*/
+ @Test
+    fun errorUserMoney1() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("1234") }
+        }
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun errorUserMoney2() {
         assertSimpleTest {
-            runException("1000j")
-            assertThat(output()).contains(ERROR_MESSAGE)
+            assertThrows<IllegalArgumentException> { runException("1000j") }
         }
     }
+
+    @Test
+    fun checkUserMoneyTest() {
+        assertSimpleTest {
+            runException("1000j")
+            assertThat(output()).contains("[ERROR]")
+        }
+    }
+
 
     override fun runMain() {
         main()
