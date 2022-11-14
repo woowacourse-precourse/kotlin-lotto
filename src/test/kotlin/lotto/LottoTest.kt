@@ -34,6 +34,7 @@ class LottoTest : NsTest(){
 
     @Test
     fun `로또 번호 정상 작동`() {
+        Lotto.lottoes.clear()
         assertDoesNotThrow {
             Lotto(listOf(1, 2, 3, 4, 5, 6))
         }
@@ -41,6 +42,7 @@ class LottoTest : NsTest(){
 
     @Test
     fun `로또 번호 오름차순`() {
+        Lotto.lottoes.clear()
         Lotto(listOf(1, 2, 3, 6, 5, 4))
         val result = listOf(1,2,3,4,5,6)
         assertThat(Lotto.lottoes[0]).isEqualTo(result)
@@ -48,6 +50,7 @@ class LottoTest : NsTest(){
 
     @Test
     fun `로또 목록 출력`() {
+        Lotto.lottoes.clear()
         Lotto(listOf(1, 2, 3, 4, 5, 6))
         Lotto(listOf(1, 2, 3, 4, 5, 7))
         Lotto.printCount()
@@ -60,6 +63,7 @@ class LottoTest : NsTest(){
 
     @Test
     fun `랜덤 발행`() {
+        Lotto.lottoes.clear()
         Assertions.assertRandomUniqueNumbersInRangeTest(
             {
                 Lotto.publish(3)
