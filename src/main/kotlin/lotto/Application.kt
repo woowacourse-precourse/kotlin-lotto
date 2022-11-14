@@ -1,5 +1,12 @@
 package lotto
 
+import data.StringResource
+
 fun main() {
-    TODO("프로그램 구현")
+    try {
+        Winning().createYield(8000)
+    } catch (exception: IllegalArgumentException) {
+        println(StringResource.ERROR.resource)
+    }
+
 }
