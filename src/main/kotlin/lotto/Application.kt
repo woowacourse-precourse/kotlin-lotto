@@ -53,8 +53,8 @@ fun lottoBonusNumber(normalNumber: List<Int>) : List<Int>?{
     try{
         val bonus = readLine()!!.toInt()
         val bonusNumber = mutableListOf<Int>()
-        bonus in 1..45
-        !normalNumber.contains(bonus)
+        if (bonus !in 1..45) throw (IllegalArgumentException("[ERROR] 올바르지 않은 보너스 번호입니다."))
+        if (!normalNumber.contains(bonus)) throw (IllegalArgumentException("[ERROR] 올바르지 않은 보너스 번호입니다."))
         bonusNumber.add(bonus)
         return bonusNumber
     } catch (e : NumberFormatException){
@@ -94,6 +94,17 @@ fun lottoCompareSpecial(special : List<Int>, uncheckedLotto : List<Int>) : Int{
         specialCoincidence += 1
     }
     return specialCoincidence
+}
+
+fun findValue(normalCoincidence : Int, specialCoincidence : Int): MutableList<Int> {
+    val prize = mutableListOf<Int>(0,0,0,0,0)
+    when(normalCoincidence){
+        LottoValue.FIRST.correctNumbers -> prize[4]+=1
+        LottoValue.SECOND.correctNumbers -> if (specialCoincidence==1) prize[3]+=1 else prize[2]+=1
+        LottoValue.FOURTH.correctNumbers -> prize[1]+=1
+        LottoValue.FIFTH.correctNumbers -> prize[0]+=1
+    }
+    return prize
 }
 
 fun main() {
