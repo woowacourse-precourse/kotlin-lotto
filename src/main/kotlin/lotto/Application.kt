@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Console
 lateinit var purchaseSum: String
 var numOfLotto = 0
 lateinit var selectedNum: Array<Int>
+var myLottos = ArrayList<Array<Int>>()
 
 fun main() {
 
@@ -33,4 +34,14 @@ fun pickLottoNum(): Array<Int> {
     selectedNum.sort()
 
     return selectedNum
+}
+
+fun printLottoNum() {
+    println("%d개를 구매했습니다.".format(numOfLotto))
+    for (i in 1..numOfLotto) {
+        val lottos = pickLottoNum()
+        println(java.util.Arrays.toString(lottos))
+        myLottos.add(lottos)
+    }
+    println()
 }
