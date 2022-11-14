@@ -1,14 +1,26 @@
 package lotto.domain
 
-class LottoGenerator {
-    fun createLottoNumber(price:Int){
-        val lottoCount = getLottoCountValue(price)
-    }
+import camp.nextstep.edu.missionutils.Randoms
 
+class LottoGenerator {
     fun getLottoCountValue(price: Int): Int {
-        return price / UNIT
+        return price / CONSTANT.PRICE.UNIT.params
     }
-    companion object {
-        const val UNIT = 1000
+    fun createLottoNumber(count:Int): MutableList<Lotto> {
+        val lottos = mutableListOf<Lotto>()
+        var insertCount = 0
+        while (insertCount < count){
+            val lotto = getLottoNumber()
+            if(lottos.contains(lotto))
+                continue
+            lottos.add(lotto)
+            insertCount ++
+        }
+        return lottos
+    }
+    fun getLottoNumber(): Lotto {
+        val numbers = Randoms.pickUniqueNumbersInRange(CONSTANT.LOTTO.MIN_LOTTO_NUMBER.params, CONSTANT.LOTTO.MAX_LOTTO_NUMBER.params, CONSTANT.LOTTO.LOTTO_COUNT.params)
+        numbers.sort()
+        return Lotto(numbers)
     }
 }
