@@ -3,10 +3,11 @@ package lotto
 class Lotto(private val numbers: List<Int>) {
 
     enum class functions {
-        checkResult()
+        checkResult(), checkLottoNumRepeat()
     }
     init {
         require(numbers.size == 6)
+        checkLottoNumRepeat()
     }
 
     fun checkResult(lottoNums: Array<Int>) {
@@ -20,5 +21,9 @@ class Lotto(private val numbers: List<Int>) {
             else fiveWin += 1
         }
         if (winCount == 6) sixWin += 1
+    }
+
+    fun checkLottoNumRepeat() {
+        if (numbers.size > numbers.toSet().size) throw IllegalArgumentException()
     }
 }
