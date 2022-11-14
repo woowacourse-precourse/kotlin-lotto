@@ -1,5 +1,14 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Randoms
+
+/*
+* Return: unique한 1~45 사이의 6자리를 담은 리스트의 Lotto
+* Do: Lotto 생성자 생성
+* */
+fun generateLotto(): Lotto {
+    return Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6))
+}
 
 
 fun main() {
