@@ -52,4 +52,11 @@ class BankTest {
             .isEqualTo(listOf(0, 1, 0, 0, 0))
     }
 
+    @Test
+    fun `수익률 계산 함수 테스트`() {
+        val prizeGrades = listOf(1, 1, 1, 1, 1)
+        bank.calcEarningRate(5000, prizeGrades)
+        assertThat(bank.earningRate)
+            .isEqualTo((2000000000 + 30000000 + 1500000 + 50000 + 5000).toFloat() / 5000)
+    }
 }
