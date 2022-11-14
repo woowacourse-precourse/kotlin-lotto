@@ -6,38 +6,36 @@ import java.text.DecimalFormat
 /**
  * 로또의 판매부터 모든 과정을 여기서 진행하게 된다.
  */
-class LottoProcessor(private val seller: LottoSeller) {
+class LottoProcessor(private val seller: LottoSeller, private val printer: Printer) {
     fun processLotto() {
-        try {
-            val purchasedLotto = processPurchasingLotto()
-            val winningNumber = processGeneratingWinningNumber()
-            val bonusNumber = processGeneratingBonusNumber(winningNumber)
-            val result = processExtractingResult(purchasedLotto, winningNumber, bonusNumber)
-            processCalculateProfit(purchasedLotto.size * LOTTO_PRICE, result)
-        } catch (e: java.lang.IllegalArgumentException) {
-            println(e)
-        }
+        printer.printWord(REQUEST_MONEY)
+        val inputMoney = processInputMoney()
+        val purchasedLotto = seller.sellLotto(inputMoney)
+        printer.printPurchasedLotto(purchasedLotto)
+        printer.printWord(PURCHASED_LOTTO_COUNT.format(purchasedLotto.size))
+
+        printer.printWord(REQUEST_WINNING_NUMBER)
+        val winningNumber = processGeneratingWinningNumber()
+        printer.printWord(REQUEST_BONUS_NUMBER)
+        val bonusNumber = processGeneratingBonusNumber(winningNumber)
+
+        val result = ResultExtractor.extractResult(purchasedLotto, winningNumber, bonusNumber)
+        printer.printResult(result)
+        val profit = ResultExtractor.calcProfit(inputMoney.toDouble(), result)
+        printer.printWord(PROFIT_RESULT.format(profit))
     }
 
-    private fun processPurchasingLotto(): List<Lotto> {
-        println(REQUEST_MONEY)
+    private fun processInputMoney(): Int {
         val money = Console.readLine()
         val isErrorOccurred = InputValidator.validateMoney(money)
 
         require(isErrorOccurred == Error.NO_ERROR) {
             isErrorOccurred.errorText
         }
-        val purchasedLotto = seller.sellLotto(money.toInt())
-
-        println(PURCHASED_LOTTO_COUNT.format(purchasedLotto.size))
-        purchasedLotto.forEach { eachLotto ->
-            eachLotto.printLottoNumbers()
-        }
-        return purchasedLotto
+        return money.toInt()
     }
 
     private fun processGeneratingWinningNumber(): List<Int> {
-        println(REQUEST_WINNING_NUMBER)
         val winningNumber = Console.readLine().split(",")
         val isErrorOccurred = InputValidator.validateWinningNumber(winningNumber)
 
@@ -48,7 +46,6 @@ class LottoProcessor(private val seller: LottoSeller) {
     }
 
     private fun processGeneratingBonusNumber(winningNumber: List<Int>): Int {
-        println(REQUEST_BONUS_NUMBER)
         val bonusNumber = Console.readLine()
         val isErrorOccurred = InputValidator.validateBonusNumber(bonusNumber, winningNumber)
 
@@ -57,36 +54,4 @@ class LottoProcessor(private val seller: LottoSeller) {
         }
         return WinningNumberGenerator.generateBonusNumber(bonusNumber)
     }
-
-    private fun processExtractingResult(
-        purchasedLotto: List<Lotto>,
-        winningNumber: List<Int>,
-        bonusNumber: Int,
-    ): Map<LottoPrice, Int> {
-        val result = ResultExtractor.extractResult(purchasedLotto, winningNumber, bonusNumber)
-
-        result.printResult()
-        return result
-    }
-
-    private fun processCalculateProfit(usedMoney: Int, result: Map<LottoPrice, Int>) {
-        val profit = ResultExtractor.calcProfit(usedMoney.toDouble(), result)
-        println(PROFIT_RESULT.format(profit))
-    }
-
-    private fun Map<LottoPrice, Int>.printResult() {
-        LottoPrice.values().forEach { eachLottoStatus ->
-            var eachStatusCount = 0
-
-            this[eachLottoStatus]?.let { eachStatusCount = it }
-            val msg = when (eachLottoStatus) {
-                LottoPrice.NONE -> return@forEach
-                LottoPrice.SECOND_PLACE -> SECOND_PLACE_MSG.format(eachStatusCount)
-                else -> PLACE_MSG.format(eachLottoStatus.catchCount, eachLottoStatus.price.withComma(), eachStatusCount)
-            }
-            println(msg)
-        }
-    }
-
-    private fun Int.withComma() = DecimalFormat("#,###").format(this)
 }
