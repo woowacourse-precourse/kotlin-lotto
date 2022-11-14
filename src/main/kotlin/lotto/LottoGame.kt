@@ -6,14 +6,18 @@ class LottoGame {
 
     fun start() {
         val inputView = InputView()
+
         val money = inputView.getInputMoney()
+        println()
+
         val winningLotto = inputView.getInputWinningNumber()
+        println()
+
         val bonus = inputView.getInputBonus()
+        println()
 
         val lottoGenerate = LottoGenerate()
-        val lotto = lottoGenerate.createLottos(money / LOTTO_PRICE)
-
-        val lottos = Lottos(lotto)
+        val lottos = Lottos(lottoGenerate.createLottos(money / LOTTO_PRICE))
         lottos.printLottos()
         lottos.printWinningResult(winningLotto, bonus, money)
 
