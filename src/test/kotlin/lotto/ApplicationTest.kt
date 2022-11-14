@@ -48,48 +48,60 @@ class ApplicationTest : NsTest() {
     @Test
     fun `예외 테스트`() {
         assertSimpleTest {
-            runException("1000j")
-            assertThat(output()).contains(ERROR_MESSAGE)
+            assertThrows<IllegalArgumentException> {
+                runException("1000j")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            }
         }
     }
 
     @Test
     fun `예외 테스트 1000 단위 오입력`() {
         assertSimpleTest {
-            runException("10001")
-            assertThat(output()).contains(ERROR_MESSAGE)
+            assertThrows<IllegalArgumentException> {
+                runException("10001")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            }
         }
     }
 
     @Test
     fun `예외 테스트 문자 입력`() {
         assertSimpleTest {
-            runException("가나rk")
-            assertThat(output()).contains(ERROR_MESSAGE)
+            assertThrows<IllegalArgumentException> {
+                runException("가나rk")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            }
         }
     }
 
     @Test
     fun `예외 테스트 보너스 번호 허용 범위 초과 입력`() {
         assertSimpleTest {
-            runException("1000", "1,2,3,4,5,6", "0")
-            assertThat(output()).contains(ERROR_MESSAGE)
+            assertThrows<IllegalArgumentException> {
+                runException("1000", "1,2,3,4,5,6", "0")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            }
         }
     }
 
     @Test
     fun `예외 테스트 보너스 번호 문자 입력`() {
         assertSimpleTest {
-            runException("1000", "1,2,3,4,5,6", "암닝")
-            assertThat(output()).contains(ERROR_MESSAGE)
+            assertThrows<IllegalArgumentException> {
+                runException("1000", "1,2,3,4,5,6", "암닝")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            }
         }
     }
 
     @Test
     fun `예외 테스트 보너스 번호 중복 입력`() {
         assertSimpleTest {
-            runException("1000", "1,2,3,4,5,6", "1")
-            assertThat(output()).contains(ERROR_MESSAGE)
+            assertThrows<IllegalArgumentException> {
+                runException("1000", "1,2,3,4,5,6", "1")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            }
         }
     }
 
