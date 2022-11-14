@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 
 class LottoGeneratorTest {
 
-    private val lottoNumbers : List<Int>
+    private val lottoNumbers: List<Int>
 
     init {
         lottoNumbers = LottoGenerator().generate()
