@@ -80,4 +80,42 @@ class LottoTest {
             LottoAnswerNumberInputHandler().inputValidation(input)
         }
     }
+
+    @Test
+    fun `로도 정답 카운트 테스트`(){
+        val answer = listOf(1,2,3,4,5,6)
+        val bonusNumber = 7
+        val lotto = Lotto(answer)
+        assertThat(lotto.countCorrectNumber(listOf(1,2,3,8,9,10), bonusNumber)).isEqualTo(3)
+    }
+
+    @Test
+    fun `로도 정답 카운트 테스트2`(){
+        val answer = listOf(1,2,3,4,5,6)
+        val bonusNumber = 7
+        val lotto = Lotto(answer)
+        assertThat(lotto.countCorrectNumber(listOf(1,2,3,4,5,7), bonusNumber)).isEqualTo(6)
+    }
+
+    @Test
+    fun `로도 정답 카운트 테스트3`(){
+        val answer = listOf(1,2,3,4,5,6)
+        val bonusNumber = 7
+        val lotto = Lotto(answer)
+        assertThat(lotto.countCorrectNumber(listOf(1,2,3,4,5,6), bonusNumber)).isEqualTo(7)
+    }
+    @Test
+    fun `로또 상여금 계산 테스트`(){
+        val input = listOf(0,0,0,6,7)
+        val checker = RewardChecker(input)
+        assertThat(checker.checkRank()).isEqualTo(2030000000)
+    }
+
+    @Test
+    fun `수익률 계산 테스트`(){
+        val reward = 10000
+        val spendMoney = 5000
+        val checker = EarningRateCalculator(reward, spendMoney)
+        assertThat(checker.calculateEarningRate()).isEqualTo(200.0)
+    }
 }

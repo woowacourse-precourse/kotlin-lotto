@@ -4,6 +4,7 @@ class LottoSimulator {
     companion object{
 
         fun run(){
+            try{
             val moneyInputHandler = MoneyInputHandler()
             val input = moneyInputHandler.getInputMoney().toInt()
             val customer = Customer(input)
@@ -16,6 +17,12 @@ class LottoSimulator {
             val lotto = Lotto(answer)
             val lottoResult =  lotto.checkLottoAnswer(customer.getSelectedLottoList(), bonusNumber)
             customer.setReward(RewardChecker(lottoResult).checkRank())
+            val earningRateCalculator = EarningRateCalculator(customer.getReward(), customer.getCustomerMoney())
+            customer.setEarningRatio(earningRateCalculator.calculateEarningRate())
+            }catch (e: IllegalArgumentException){
+                println(e.message)
+                return
+            }
         }
     }
 }

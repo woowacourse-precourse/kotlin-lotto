@@ -14,21 +14,22 @@ class Lotto(private val numbers: List<Int>) {
         return res
     }
 
-    private fun countCorrectNumber(values: List<Int>,bonusNumber: Int): Int {
+    fun countCorrectNumber(values: List<Int>,bonusNumber: Int): Int {
         var count = 0
         for(i in values.indices){
             if(numbers.any {it==values[i]}){
                 count++
             }
         }
+        if(count ==6){
+            count++
+        }
         if(count ==5){
             if(checkBonusNumber(bonusNumber, values)){
                 count++
             }
         }
-        if(count ==6){
-            count++
-        }
+
         return count
     }
 

@@ -3,7 +3,7 @@ package lotto
 class Customer (private val spendMoney: Int){
 
     private var reward = 0
-    private var earningRatio  = 0.0f
+    private var earningRatio  = 0.0
     private var selectedLottoList = listOf(listOf(0))
 
     fun getCustomerMoney():Int{
@@ -14,7 +14,7 @@ class Customer (private val spendMoney: Int){
         this.reward = value
     }
 
-    fun setEarningRatio(value: Float){
+    fun setEarningRatio(value: Double){
         this.earningRatio = value
     }
 
@@ -24,5 +24,9 @@ class Customer (private val spendMoney: Int){
 
     fun getSelectedLottoList():List<List<Int>>{
         return this.selectedLottoList
+    }
+
+    fun getReward():Int{
+        return this.reward
     }
 }
