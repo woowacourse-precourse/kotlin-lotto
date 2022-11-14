@@ -1,6 +1,5 @@
 package lotto
 import camp.nextstep.edu.missionutils.Randoms
-import org.mockito.stubbing.Answer
 
 enum class LottoValue(val earning : Int, val correctNumbers : Int, open var amount : Int){
     FIRST(2000000000,6, 0),
@@ -64,14 +63,7 @@ fun lottoBonusNumber(normalNumber: List<Int>) : List<Int>?{
     }
 }
 
-fun earningsRatio (payment : Int, earnings : Int) : String {
-    try {
-        val ratio = String.format("%.2f",(earnings / payment * 1000))!!
-        return ratio
-    }  catch (e : NullPointerException){
-        throw (NullPointerException("[ERROR] 값을 입력하지 않았습니다."))
-    }
-}
+
 
 fun lottoCompareNormal(answer: List<Int>, uncheckedLotto : List<Int>) : Int{
     var coincidence = 0
@@ -109,6 +101,20 @@ fun calculatePrize(prize : MutableList<Int>){
         prize[2] -> LottoValue.THIRD.amount+=1
         prize[3] -> LottoValue.SECOND.amount+=1
         prize[4] -> LottoValue.FIRST.amount+=1
+    }
+}
+
+fun calculateEarns() : Int{
+    val earnings = ((LottoValue.FIFTH.amount * LottoValue.FIFTH.earning)+(LottoValue.FOURTH.amount * LottoValue.FOURTH.earning)+(LottoValue.THIRD.amount * LottoValue.THIRD.earning)+(LottoValue.SECOND.amount * LottoValue.SECOND.earning)+(LottoValue.FIRST.amount * LottoValue.FIRST.earning))
+    return earnings
+}
+
+fun earningsRatio (payment : Int, earnings : Int) : String {
+    try {
+        val ratio = String.format("%.2f",(earnings / payment * 1000))!!
+        return ratio
+    }  catch (e : NullPointerException){
+        throw (NullPointerException("[ERROR] 값을 입력하지 않았습니다."))
     }
 }
 
