@@ -1,12 +1,21 @@
 package lotto.error
 
 import lotto.data.Lotto
+import lotto.domain.LottoShop
 
 object ErrorMessages {
 
     private const val PREFIX = "[ERROR]"
 
     private fun String.applyPrefix(): String = "$PREFIX $this"
+
+    enum class LottoShopEnum(private val message: String) {
+
+        OutOfRangeNumbers("${LottoShop.MoneyRange} 범위 내의 숫자여야 합니다."),
+        NotMultiple("${LottoShop.UNIT_PRICE} 의 배수 숫자여야 합니다."),;
+
+        override fun toString(): String = message.applyPrefix()
+    }
 
     enum class LottoEnum(private val message: String) {
 
