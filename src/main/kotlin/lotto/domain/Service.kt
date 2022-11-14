@@ -6,56 +6,81 @@ import lotto.domain.InputExceptionHandler.checkInputWinningNumbers
 import kotlin.math.round
 
 class Service {
+    companion object {
+        const val PURCHASING_AMOUNT_EXCEPTION_MESSAGE = "[ERROR] 구입금액은 1000원 단위로 입력해야 합니다."
+        const val WINNING_NUMBERS_EXCEPTION_MESSAGE = "[ERROR] 당첨 번호는 1 ~ 45 숫자 6개를 중복되지 않게 ,로 구분하여 입력해야 합니다."
+        const val BONUS_NUMBER_EXCEPTION_MESSAGE = "[ERROR] 보너스 번호는 1 ~ 45 숫자 1개를 당첨 번호와 중복되지 않게 입력해야 합니다."
+    }
+
     /**
      * 구입금액을 입력 받고 구매 갯수를 리턴하는 함수
      * */
     fun getPurchasingAmount(): Int {
+        Messages.showInputPurchasingAmount()
         val inputPurchasingAmount = Util.readLine()
-        checkInputPurchasingAmount(inputPurchasingAmount)
-        return (inputPurchasingAmount.toInt() / 1000)
+        return try {
+            checkInputPurchasingAmount(inputPurchasingAmount)
+            (inputPurchasingAmount.toInt() / 1000)
+        } catch (e: IllegalArgumentException) {
+            println(PURCHASING_AMOUNT_EXCEPTION_MESSAGE)
+            0
+        }
     }
 
     /**
      * 구매 갯수 만큼 로또 번호를 생성해 리턴하는 함수
      * */
     fun getLottoNumbers(countOfLotto: Int): MutableList<Lotto> {
+        Messages.showCountOfLotto(countOfLotto)
         val lottoNumbers: MutableList<Lotto> = mutableListOf()
         for (i in 0 until countOfLotto) {
             lottoNumbers.add(Lotto(Util.createLottoNumbers().sorted()))
         }
-        return lottoNumbers
+        return lottoNumbers.also { Messages.showPurchasedLottoNumbers(lottoNumbers) }
     }
 
     /**
      * 당첨 번호를 입력받고 예외 처리 후 리턴하는 함수
      * */
-    fun getWinningNumbers(): Lotto {
+    fun getWinningNumbers(): Lotto? {
+        Messages.showInputWinningNumber()
         val inputWinningNumber = Util.readLine()
-        checkInputWinningNumbers(inputWinningNumber)
-        return Lotto(inputWinningNumber
-            .split(",")
-            .map { it.toInt() })
+        return try {
+            checkInputWinningNumbers(inputWinningNumber)
+            Lotto(inputWinningNumber
+                .split(",")
+                .map { it.toInt() })
+        } catch (e: IllegalArgumentException) {
+            println(WINNING_NUMBERS_EXCEPTION_MESSAGE)
+            null
+        }
     }
 
     /**
      * 보너스 번호를 입력받고 예외 처리 후 리턴하는 함수
      * */
     fun getBonusNumber(winningNumbers: Lotto): Int {
+        Messages.showInputBonusNumber()
         val inputBonusNumber = Util.readLine()
-        checkInputBonusNumber(winningNumbers, inputBonusNumber)
-        return inputBonusNumber.toInt()
+        return try {
+            checkInputBonusNumber(winningNumbers, inputBonusNumber)
+            inputBonusNumber.toInt()
+        } catch (e: IllegalArgumentException) {
+            println(BONUS_NUMBER_EXCEPTION_MESSAGE)
+            0
+        }
     }
 
     /**
      * 당첨 여부 정보를 리턴하는 함수
      * */
     fun isWinningLotto(lottoNumbers: MutableList<Lotto>, winningNumbers: Lotto, bonusNumber: Int): MutableList<Rating> {
-        val grades: MutableList<Rating> = mutableListOf()
+        val ranks: MutableList<Rating> = mutableListOf()
         for (lottoNumber in lottoNumbers) {
             val (hit, bonus) = compareNumbers(lottoNumber, winningNumbers, bonusNumber)
-            grades.add(getGrade(hit to bonus))
+            ranks.add(getRank(hit to bonus))
         }
-        return grades
+        return ranks
     }
 
     /**
@@ -88,7 +113,7 @@ class Service {
     /**
      * 당첨 번호와 일치하는 수, 보너스 번호 일치 여부에 맞춰 등수를 반환하는 함수
      * */
-    private fun getGrade(hitAndBonus: Pair<Int, Boolean>): Rating {
+    private fun getRank(hitAndBonus: Pair<Int, Boolean>): Rating {
         when (hitAndBonus) {
             6 to false -> return Rating.FIRST
             5 to true -> return Rating.SECOND
