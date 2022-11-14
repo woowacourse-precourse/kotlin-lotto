@@ -19,7 +19,21 @@ class UtilsTest {
     }
 
     @Test
+    fun `아무 것도 없으면 에러 발생`() {
+        assertThrows<IllegalArgumentException> {
+            "".splitToIntList()
+        }
+    }
+
+    @Test
     fun `checkNull 정상 작동 확인`() {
         assertThat("0".toIntOrError())
+    }
+
+    @Test
+    fun `checkNull 에러 발생`() {
+        assertThrows<IllegalArgumentException> {
+            "a".toIntOrError()
+        }
     }
 }
