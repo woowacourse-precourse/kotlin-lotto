@@ -4,10 +4,13 @@ import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
 
 class Seller {
+    companion object {
+        var winningNumber = mutableListOf<Int>()
+        var bonusNumber = ""
+        var allRandomRotto = mutableListOf<List<Int>>()
+    }
+
     var judgment = Judgment()
-    var winningNumber = mutableListOf<Int>()
-    var bonusNumber = ""
-    var allRandomRotto = mutableListOf<List<Int>>()
 
     fun generateLotto(LottoCnt: Int) {
         println("\n${LottoCnt}개를 구입했습니다.")
@@ -34,6 +37,7 @@ class Seller {
     fun getBonusNumber() {
         println("\n보너스 번호를 입력해 주세요.")
         bonusNumber = Console.readLine()
-        judgment.checkBonusNumber(bonusNumber,winningNumber)
+        judgment.checkBonusNumber(bonusNumber, winningNumber)
     }
 }
+

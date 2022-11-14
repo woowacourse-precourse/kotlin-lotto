@@ -24,8 +24,7 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     fun matchBonusNumber(randLotto: List<Int>): String{
-        var seller = Seller()
-        if (seller.bonusNumber in randLotto.joinToString("")) {
+        if (Seller.bonusNumber.toInt() in randLotto) {
             return "5bonus"
         }
         return "5"
