@@ -18,7 +18,7 @@ class Lotto(private val numbers: List<Int>) {
         return matchingResult
     }
 
-    fun matchBonusNumber(randLotto: List<Int>): String{
+    fun matchBonusNumber(randLotto: List<Int>): String {
         if (Seller.bonusNumber.toInt() in randLotto) {
             return "5 보너스"
         }
@@ -27,7 +27,7 @@ class Lotto(private val numbers: List<Int>) {
 
     fun getWinningLotto() {
         var rewardInfo = RewardInfo()
-        var matchingResult =  getMatchingNumber(Seller.allRandomRotto)
+        var matchingResult = getMatchingNumber(Seller.allRandomRotto)
 
         rewardInfo.resultInit()
 
@@ -40,6 +40,22 @@ class Lotto(private val numbers: List<Int>) {
                 "6" -> RewardInfo.rewardResult[Reward.First] = RewardInfo.rewardResult[Reward.First]!! + 1
             }
         }
-        println(RewardInfo.rewardResult)
+    }
+
+    fun showLottoResult() {
+        println("\n당첨 통계")
+        println("- - -")
+
+        getWinningLotto()
+        for (reward in RewardInfo.rewardResult.keys) {
+            var rewardCount = RewardInfo.rewardResult[reward]
+
+            if (reward == Reward.Second) {
+                var count = reward.correctNum.split(" ")[0]
+                println("${count}개 일치, 보너스 볼 일치 (${reward.rewardMoney}원) - ${rewardCount}개")
+            } else {
+                println("${reward.correctNum}개 일치 (${reward.rewardMoney}원) - ${rewardCount}개")
+            }
+        }
     }
 }

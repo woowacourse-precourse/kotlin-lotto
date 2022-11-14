@@ -19,7 +19,6 @@ class Seller {
             println(randLotto)
             allRandomRotto.add(randLotto)
         }
-
     }
 
     fun getWinningNumber() {

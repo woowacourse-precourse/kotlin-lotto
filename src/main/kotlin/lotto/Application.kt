@@ -12,5 +12,5 @@ fun main() {
     seller.getWinningNumber()
 
     var lotto = Lotto(Seller.winningNumber)
-    lotto.getWinningLotto()
+    lotto.showLottoResult()
 }
