@@ -7,4 +7,7 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     // TODO: 추가 기능 구현
+    fun getLottoNumber(): List<Int> {
+        return numbers
+    }
 }
