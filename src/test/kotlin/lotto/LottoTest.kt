@@ -25,7 +25,8 @@ class LottoTest {
     fun `로또 일치하는 숫자 개수 확인`() {
         val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
         val numbers = listOf(1, 2, 3, 10, 11, 12)
-        val result = lotto.getMatchingNumberCount(numbers)
+        val bonusNumber = 7
+        val result = lotto.getMatchingNumberCount(numbers, bonusNumber)
         assertThat(result).isEqualTo(3)
     }
 

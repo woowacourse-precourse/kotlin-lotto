@@ -12,9 +12,9 @@ fun main() {
         throw IllegalArgumentException("[ERROR]")
     }
 
-    val lotto = getLotto(price)
-    println("\n${lotto.size}개를 구매했습니다.")
-    lotto.forEach { numbers ->
+    val myLotto = getLotto(price)
+    println("\n${myLotto.size}개를 구매했습니다.")
+    myLotto.forEach { numbers ->
         println(numbers.toString())
     }
 
@@ -23,6 +23,7 @@ fun main() {
     if (isValidWinningNumbers(winningNumbers).not()) {
         throw IllegalArgumentException("[ERROR]")
     }
+    val numbers = winningNumbers.split(',').map { it.toInt() }
 
     println("\n보너스 번호를 입력해 주세요.")
     val bonusNumber = Console.readLine().toInt()
@@ -30,9 +31,30 @@ fun main() {
         throw IllegalArgumentException("[ERROR]")
     }
 
+    val lotto = Lotto(numbers)
+    var threeCount = 0
+    var fourCount = 0
+    var fiveCount = 0
+    var fiveBonusCount = 0
+    var sixCount = 0
+    myLotto.forEach {
+        when (lotto.getMatchingNumberCount(it, bonusNumber)) {
+            LottoMatchingCount.THREE -> threeCount += 1
+            LottoMatchingCount.FOUR -> fourCount += 1
+            LottoMatchingCount.FIVE -> fiveCount += 1
+            LottoMatchingCount.FIVE_BONUS -> fiveBonusCount += 1
+            LottoMatchingCount.SIX -> sixCount += 1
+            LottoMatchingCount.ETC -> Unit
+        }
+    }
+
     println("\n당첨 통계")
     println("---")
-
+    println("3개 일치 (5,000원) - ${threeCount}개")
+    println("4개 일치 (50,000원) - ${fourCount}개")
+    println("5개 일치 (1,500,000원) - ${fiveCount}개")
+    println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${fiveBonusCount}개")
+    println("6개 일치 (2,000,000,000원) - ${sixCount}개")
 }
 
 fun isValidPrice(price: Int): Boolean = (price % 1000 == 0)
