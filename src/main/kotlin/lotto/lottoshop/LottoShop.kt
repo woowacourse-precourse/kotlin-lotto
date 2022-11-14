@@ -1,9 +1,11 @@
 package lotto.lottoshop
 
+import lotto.LottoPhrases.MAIN_LOTTO_NUMBER_INPUT_SIZE_ERROR
 import lotto.LottoPhrases.MAIN_LOTTO_NUMBER_INPUT_TYPE_ERROR
 import lotto.LottoPhrases.PURCHASE_AMOUNT_INPUT_TYPE_ERROR
 import lotto.LottoPhrases.PURCHASE_AMOUNT_MINIMUM_ERROR
 import lotto.LottoPhrases.PURCHASE_AMOUNT_UNIT_ERROR
+import lotto.LottoRule.LOTTO_SIZE
 import java.util.regex.Pattern
 
 class LottoShop() {
@@ -27,6 +29,7 @@ class LottoShop() {
     fun getValidateMainLottoNumbers(mainLottoNumbers: List<String>): List<Int> {
         if (!isInputTypeNumber(mainLottoNumbers)) printErrorMessage(MAIN_LOTTO_NUMBER_INPUT_TYPE_ERROR)
         val processedMainLottoNumbers = convertToInt(mainLottoNumbers)
+        checkCorrectSizeMainLottoNumbers(processedMainLottoNumbers)
     }
 
     private fun isInputTypeNumber(input: List<String>): Boolean {
@@ -39,6 +42,10 @@ class LottoShop() {
         val processedMainLottoNumbers = mutableListOf<Int>()
         for (mainLottoNumber in input) processedMainLottoNumbers.add(mainLottoNumber.toInt())
         return processedMainLottoNumbers
+    }
+
+    private fun checkCorrectSizeMainLottoNumbers(mainLottoNumbers: List<Int>) {
+        if (mainLottoNumbers.size != LOTTO_SIZE) printErrorMessage(MAIN_LOTTO_NUMBER_INPUT_SIZE_ERROR)
     }
 
     fun getValidateBonusLottoNumber(bonusLottoNumber: String): Int {
