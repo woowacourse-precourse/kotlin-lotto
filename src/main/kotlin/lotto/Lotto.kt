@@ -21,6 +21,10 @@ class Lotto(private val numbers: List<Int>) {
         }
     }
 
+    fun getPrize(winningNum: List<Int>, bonusNum: Int): Int {
+
+    }
+
 
     companion object {
         private const val ERROR_MESSAGE = "[ERROR]"
