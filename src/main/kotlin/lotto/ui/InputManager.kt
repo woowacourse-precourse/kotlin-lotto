@@ -1,6 +1,7 @@
 package lotto.ui
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.dto.DrawnNumbers
 import lotto.enum.InputString
 
 class InputManager(private val inputValidator: InputValidator) {
@@ -25,11 +26,11 @@ class InputManager(private val inputValidator: InputValidator) {
         return input.toInt()
     }
 
-    fun askDrawnNumbers(): Pair<List<Int>, Int> {
+    fun askDrawnNumbers(): DrawnNumbers {
         val winningNumber = askWinningNumbers()
         println()
         val bonusNumber = askBonusNumber()
         inputValidator.validateDrawnNumber(winningNumber, bonusNumber)
-        return winningNumber to bonusNumber
+        return DrawnNumbers(winningNumber, bonusNumber)
     }
 }
