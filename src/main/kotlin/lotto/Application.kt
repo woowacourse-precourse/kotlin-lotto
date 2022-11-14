@@ -109,3 +109,10 @@ fun showWinningStatistics(result: List<Int>){
             "6개 일치 (2,000,000,000원) - ${result[4]}개\n"
     )
 }
+
+fun calculateEarningRate(earnedMoney: Int, amountPaid: String){
+    val paidFee = amountPaid.toDouble()
+    val earningRate = (earnedMoney/paidFee)*100
+    val earningRateRounded = String.format("%.1f", earningRate)
+    println("총 수익률은 ${earningRateRounded}%입니다.")
+}
