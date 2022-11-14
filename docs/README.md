@@ -58,17 +58,14 @@
 8. isRightRange : 사용자가 1~45 범위의 값을 입력했는지 검사하는 기능[O]- Class Util
 9. isOverlap : 로또 번호가 중복되는 경우[O] - Class Util
 10. inputBonusNum : 사용자가 보너스 번호를 입력받는 기능[O] - Class LottoGame
-11. checkBonusNum : 사용자가 보너스 번호를 맞게 입력했는지 검사하는 기능[ ] -Class Util
-   1. 2번 isNumInt 재사용 : 보너스 번호가 정수인지 체크[ ]
-   2. 6.2번 isRightNumCount 재사용 : 보너스 번호를 1개만 입력했는지 체크[ ]
-   3. 6.3번 isRightRange 재사용 : 보너스 번호가 1~45 범위의 값인지 체크[ ]
-   4. 6.4 isOverlap 재사용 : 보너스 번호가 로또 번호와 겹치는지 검사[ ]
-12. compareLottoNum : 로또 번호와 당첨 번호를 비교해서 결과를 생성하는 기능[ ] - Class Calculator
+11. checkBonusNum : 사용자가 보너스 번호를 맞게 입력했는지 검사하는 기능[O] -Class Util
+12. compareLottoNum : 로또 번호와 당첨 번호를 비교해서 결과를 생성하는 기능[O] - Class Calculator
 13. calculateYield : 수익률을 계산해주는 기능[ ] - Class Calculator 
-14. 14printResult : 당첨 현황과 수익률을 출력해주는 기능[ ] - Class LottoGame 
+14. printResult : 당첨 현황과 수익률을 출력해주는 기능[ ] - Class LottoGame 
 15. playLottoGame : 로또 게임 실행[ ] - Class LottoGame
 16. changeInputToLotto : 로또 입력을 리스트로 바꿔주는 기능 [O] - Util
 17. playGame : 로또 게임을 진행하는 기능 [ ] - LottoGame
+18. checkLotto : 로또번호와 당첨 번호를 비교하는 기능 [ ] - Class Calculator
 
 ## 📦️ 생성 클래스
 1. Application : 메인 클래스
