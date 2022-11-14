@@ -67,6 +67,7 @@
 13. calculateYield : 수익률을 계산해주는 기능[ ] - Class Calculator 
 14. 14printResult : 당첨 현황과 수익률을 출력해주는 기능[ ] - Class LottoGame 
 15. playLottoGame : 로또 게임 실행[ ] - Class LottoGame
+16. changeInputToLotto : 로또 입력을 리스트로 바꿔주는 기능 [ ] - Util
 
 ## 📦️ 생성 클래스
 1. Application : 메인 클래스

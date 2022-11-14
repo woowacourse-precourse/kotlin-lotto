@@ -23,9 +23,9 @@ class Util {
         return true
     }
 
-//    fun changeInputToLotto(input:String):List<Int>{
-//
-//    }
+    fun changeInputToLotto(input:String):List<Int>{
+
+    }
 
     fun isRightNumCount() {
 
