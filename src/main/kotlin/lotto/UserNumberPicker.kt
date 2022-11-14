@@ -18,6 +18,7 @@ class UserNumberPicker {
     fun userBonusInput() {
         val input = Console.readLine()
         checkBonusException(input)
+        _bonusNumber = input.toInt()
     }
 
     private fun checkBonusException(input: String) {
