@@ -10,6 +10,9 @@ fun main() {
     println()
 
     val winningNumber = MakeLottos().winningNumber()
+    println()
+
+    val bonusNumber = MakeLottos().bonusNumber(winningNumber)
 }
 
 fun printStart() {

@@ -11,7 +11,7 @@ class MakeLottos {
     fun getLottos(count: Int): List<Lotto> {
         val lottos = mutableListOf<Lotto>()
 
-        repeat(count){
+        repeat(count) {
             val lotto = getRandomNumber()
             lottos.add(Lotto(lotto))
             println(lotto)
@@ -20,12 +20,18 @@ class MakeLottos {
         return lottos
     }
 
-    fun winningNumber(): List<Int>{
+    fun winningNumber(): List<Int> {
         println(Output.WinningNumber.message)
-        var input = Console.readLine()
+        val input = Console.readLine()
             .split(",")
             .map { number -> number.toInt() }
         Lotto(input)
+        return input
+    }
+
+    fun bonusNumber(winningNumber: List<Int>): Int {
+        println(Output.BonusNumber.message)
+        val input = Console.readLine().toInt()
         return input
     }
 }
