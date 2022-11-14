@@ -23,4 +23,10 @@ class LottoGenerator {
         numbers.sort()
         return Lotto(numbers)
     }
+    fun checkUserInputLotto(inputs:List<String>): Lotto {
+        val inputToINT = mutableListOf<Int>()
+        for (input in inputs)
+            inputToINT.add(input.toInt())
+        return Lotto(inputToINT)
+    }
 }
