@@ -21,4 +21,7 @@ class WinningLotto(numbers: List<Int>, bonusNumber: Int) {
         return lotto.matches(this.lotto) to lotto.contains(bonus)
     }
 
+    override fun toString(): String {
+        return "$lotto [$bonus]"
+    }
 }
