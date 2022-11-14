@@ -23,4 +23,11 @@ enum class LottoRank(
         append(" (${DecimalFormat("#,###").format(prize)}원)")
     }
 
+    companion object {
+        private val ranks: List<LottoRank> = values().toList()
+
+        fun valueOf(hitCount: Int, isBonusHit: Boolean): LottoRank? {
+            return ranks.find { it.hitCount == hitCount && it.isBonusHit == isBonusHit }
+        }
+    }
 }
