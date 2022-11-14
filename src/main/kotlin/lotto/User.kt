@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 
 class User {
     fun userInput() : Lotto{
-        println("\n당첨 번호를 입력해 주세요.")
+        println(Lotto.INPUTWINMONEY)
         var user = Console.readLine()
         var token = user.split(",")
         val userInputNum = mutableListOf<Int>()
@@ -17,7 +17,7 @@ class User {
     }
 
     fun userBonusInput(userNum: List<Int>): Int{
-        println("\n보너스 번호를 입력해 주세요.")
+        println(Lotto.INPUTBONUSNUM)
 
         var bonusNum = Console.readLine()
 
@@ -27,8 +27,7 @@ class User {
     }
 
     fun makeStatistics(money : Int, lottery : MutableList<MutableList<Int>>, userNum : List<Int>, bonusNum : Int){
-        println("\n당첨 통계")
-        println("---")
+        Lotto.SHOWSTATISTICS
 
         var winLottery : HashMap<Int, Int> = mutableMapOf(
                 LotteryResult.THREE.correct to 0,
