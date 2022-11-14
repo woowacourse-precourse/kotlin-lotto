@@ -15,14 +15,14 @@ class UtilTest {
         }
     }
 
-//    @Test
-//    fun isRightFormTest(){
-//        assertThat(isRightForm("1,2,3,4,5,6")).isEqualTo(true)
-//        assertThrows<IllegalArgumentException> {
-//            isRightForm("123,456")
-//        }
-//    }
-//
+    @Test
+    fun isRightFormTest(){
+        assertThat(util.isRightForm("1,2,3,4,5,6")).isEqualTo(true)
+        assertThrows<IllegalArgumentException> {
+            util.isRightForm("123,456")
+        }
+    }
+
 //    @Test
 //    fun isRightNumCountTest(){
 //        assertThat(isRightNumCOunt(1,2,3,4,5,6)).isEqualTo(true)
