@@ -98,8 +98,23 @@ class LottoView {
         println("${reward.count}개 일치 (" + moneyPrintFormat.format(reward.prize) + "원) - " + numOfRightLotto + "개")
     }
 
+    fun printYieldRate(inputMoney: Int, lottoResult: MutableMap<Ranking, Int>) {
+        val totalAmount = calculateEarningAmount(lottoResult)
+        val earningRate = (totalAmount / inputMoney.toDouble()) * YIELD_RATE_PERCENTAGE
+        println("총 수익률은 ${String.format("%.1f",earningRate)}%입니다.")
+    }
+
+    private fun calculateEarningAmount(lottoResult: MutableMap<Ranking, Int>): Int {
+        var totalAmount = 0
+        for (rank in lottoResult) {
+            totalAmount += rank.key.prize * rank.value
+        }
+        return totalAmount
+    }
+
     companion object {
         const val PRICE_PER_LOTTO = 1000
+        const val YIELD_RATE_PERCENTAGE = 100
         const val MINIMUM_LOTTO_NUMBER = 1
         const val MAXIMUM_LOTTO_NUMBER = 45
     }
