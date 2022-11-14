@@ -15,33 +15,36 @@ enum class CORRECTCNT(val message: String) {
 
 fun main() {
     try {
-        println("구입금액을 입력해 주세요.")
-        val buyAmount = userInput().toInt()
-        buyAmountException(buyAmount)
-
-        val lottoCnt = lottoCnt(buyAmount)
-        println("\n${lottoCnt}개를 구매했습니다.")
-
-        val myLotto = getLotto(lottoCnt)
-        printLotto(myLotto)
-
-        println("\n당첨 번호를 입력해 주세요.")
-        val lottoResult = userInput().split(",").map { it.toInt() }
-        lottoException(lottoResult)
-
-        println("\n보너스 번호를 입력해 주세요.")
-        val bonusNumber = userInput().toInt()
-        bonusNumberException(lottoResult, bonusNumber)
-
-        val win = checkLotto(lottoResult, myLotto, bonusNumber)
-        printWin(win)
-
-        profitRate(buyAmount, win)
+        playLotto()
     }
     catch (e: NumberFormatException) {
         println("[ERROR] 숫자만 입력 가능합니다.")
-        throw NoSuchElementException("[ERROR] 숫자만 입력 가능합니다.")
     }
+}
+
+fun playLotto() {
+    println("구입금액을 입력해 주세요.")
+    val buyAmount = userInput().toInt()
+    buyAmountException(buyAmount)
+
+    val lottoCnt = lottoCnt(buyAmount)
+    println("\n${lottoCnt}개를 구매했습니다.")
+
+    val myLotto = getLotto(lottoCnt)
+    printLotto(myLotto)
+
+    println("\n당첨 번호를 입력해 주세요.")
+    val lottoResult = userInput().split(",").map { it.toInt() }
+    lottoException(lottoResult)
+
+    println("\n보너스 번호를 입력해 주세요.")
+    val bonusNumber = userInput().toInt()
+    bonusNumberException(lottoResult, bonusNumber)
+
+    val win = checkLotto(lottoResult, myLotto, bonusNumber)
+    printWin(win)
+
+    profitRate(buyAmount, win)
 }
 
 fun userInput(): String = Console.readLine()
