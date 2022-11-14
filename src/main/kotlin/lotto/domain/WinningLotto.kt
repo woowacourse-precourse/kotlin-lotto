@@ -10,22 +10,22 @@ class WinningLotto(private val winningNumbers: Lotto, private val bonusNumber: I
         }
     }
 
-    private fun getResult(guessNumbers: List<Int>): Pair<Int, Boolean> {
+    private fun getResult(guessNumbers: Lotto): Pair<Int, Boolean> {
         return Pair(
-            winningNumbers.toList().countSameNumbers(guessNumbers),
-            bonusNumber in guessNumbers
+            winningNumbers.countSameNumbers(guessNumbers),
+            bonusNumber in guessNumbers.toList()
         )
     }
 
-    fun getPrize(guessNumbers: List<Int>): Int {
+    fun getPrize(guessNumbers: Lotto): Int {
         val (countSame, bonus) = getResult(guessNumbers)
         return LottoRank.of(countSame, bonus).prize
     }
 
-    fun getRank(guessNumbers: List<Int>): Int {
+    fun getRank(guessNumbers: Lotto): Int {
         val (countSame, bonus) = getResult(guessNumbers)
         return LottoRank.of(countSame, bonus).ordinal + 1
     }
 
-    private fun List<Int>.countSameNumbers(guess: List<Int>) = this.filter { it in guess }.size
+    private fun Lotto.countSameNumbers(guess: Lotto) = this.toList().filter { it in guess.toList() }.size
 }

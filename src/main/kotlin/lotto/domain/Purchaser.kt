@@ -9,8 +9,8 @@ object Purchaser {
         val resultRank = MutableList(LOTTO_NUMBER_COUNT) { 0 }
         var totalPrize = 0
         tickets.forEach {
-            resultRank[winningLotto.getRank(it.toList()) - 1] += 1
-            totalPrize += winningLotto.getPrize(it.toList())
+            resultRank[winningLotto.getRank(it) - 1] += 1
+            totalPrize += winningLotto.getPrize(it)
         }
         return Pair(resultRank, totalPrize)
     }
