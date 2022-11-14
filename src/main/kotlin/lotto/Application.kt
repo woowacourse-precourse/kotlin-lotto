@@ -3,6 +3,7 @@ package lotto
 import lotto.domain.Calculator
 import lotto.domain.CountRankings
 import lotto.domain.RandomGenerator
+import lotto.ui.PrintUi
 
 fun main() {
     val lottos = mutableListOf<Lotto>()
@@ -19,4 +20,5 @@ fun main() {
     val num= calculator.sumPrizes(CountRankings().countRankings(winningNumber,bonusNumber,lottos))
     println(num)
     println("수익률:"+ String.format("%.1f",calculator.calculateYield(count*1000,num)*100)+"%")
+    PrintUi().printLottos(lottos)
 }
