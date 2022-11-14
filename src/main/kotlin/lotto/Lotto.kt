@@ -1,5 +1,7 @@
 package lotto
 
+import javax.swing.JOptionPane.ERROR_MESSAGE
+
 class Lotto(private val numbers: List<Int>) {
 
     enum class Sizes(val size: Int) {
@@ -8,15 +10,21 @@ class Lotto(private val numbers: List<Int>) {
         LOTTO_RANGE_START(1);
     }
 
+    enum class Errors(val message : String){
+        LOTTO_SIZE_ERROR("로또 번호는 총 6개여야 합니다."),
+        LOTTO_RANGE_ERROR("로또 번호는 1부터 45 사이의 숫자여야 합니다."),
+        LOTTO_DUPLICATE_ERROR("로또 번호는 서로 중복되는 숫자가 아니어야 합니다.")
+    }
+
     init {
         require(numbers.size == Sizes.valueOf("LOTTO_NUMBER_SIZE").size) {
-            throw IllegalArgumentException("[ERROR] 로또 번호는 총 6개여야 합니다.")
+            throw IllegalArgumentException(ERROR_MESSAGE.toString() + Errors.LOTTO_SIZE_ERROR)
         }
         require(checkLottoRange(numbers) == true) {
-            throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+            throw IllegalArgumentException(ERROR_MESSAGE.toString() + Errors.LOTTO_RANGE_ERROR)
         }
         require(checkLottoDuplicated(numbers) == true) {
-            throw IllegalArgumentException("[ERROR] 로또 번호는 서로 중복되는 숫자가 아니어야 합니다.")
+            throw IllegalArgumentException(ERROR_MESSAGE.toString() + Errors.LOTTO_DUPLICATE_ERROR)
         }
     }
 
