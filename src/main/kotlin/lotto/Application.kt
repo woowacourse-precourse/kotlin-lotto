@@ -80,11 +80,10 @@ fun throwWinningNumberFormException(userInput: String) {
     }
 }
 
-fun generateBonusNumber(winningNumbers: Lotto): Int {
+fun generateBonusNumber(winningNumbers: Lotto): BonusNumber {
     println("보너스 번호를 입력해 주세요.")
     val userInput = Console.readLine()
-    val bonusNumber = BonusNumber(userInput, winningNumbers)
-    return bonusNumber.getBonusNumber()
+    return BonusNumber(userInput, winningNumbers)
 }
 
 fun generateLotto(): Lotto {
@@ -102,7 +101,7 @@ fun generateLotteries(lottoCount: Int): List<Lotto> {
     return lotteries
 }
 
-fun checkLottoWin(lotto: Lotto, winningNumbers: Lotto, bonusNumber: Int) {
+fun checkLottoWin(lotto: Lotto, winningNumbers: Lotto, bonusNumber: BonusNumber) {
     var count = 0
     for (number in lotto.getNumbers()) {
         if (winningNumbers.isContainedNumber(number)) count++

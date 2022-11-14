@@ -14,4 +14,6 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     fun isContainedNumber(number: Int) = numbers.contains(number)
+
+    fun isContainedNumber(bonusNumber: BonusNumber) = numbers.contains(bonusNumber.getBonusNumber())
 }
