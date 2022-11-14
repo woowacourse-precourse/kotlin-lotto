@@ -1,21 +1,24 @@
 package lotto
 
+import Util.Game
+import Util.Ranking
+
 class WinningPrinter(private val winningList: List<Int>) {
     fun printWinning() {
-        println("당첨 통계")
-        println("---")
-        for (rank in 5 downTo 1) {
+        println(Game.WINNING_LIST_OUTPUT.message)
+        println(Game.LINE_OUTPUT.message)
+        for (rank in Ranking.FIFTH.ranking downTo Ranking.FIRST.ranking) {
             printWinningList(rank)
         }
     }
 
     private fun printWinningList(rank: Int) {
-        when(rank) {
-            5 -> println("3개 일치 (5,000원) - ${winningList[rank]}개")
-            4 -> println("4개 일치 (50,000원) - ${winningList[rank]}개")
-            3 -> println("5개 일치 (1,500,000원) - ${winningList[rank]}개")
-            2 -> println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${winningList[rank]}개")
-            1 -> println("6개 일치 (2,000,000,000원) - ${winningList[rank]}개")
+        when (rank) {
+            Ranking.FIFTH.ranking -> println(Game.FIFTH_RANKING_OUTPUT.message.format(winningList[rank]))
+            Ranking.FOURTH.ranking -> println(Game.FORTH_RANKING_OUTPUT.message.format(winningList[rank]))
+            Ranking.THIRD.ranking -> println(Game.THIRD_RANKING_OUTPUT.message.format(winningList[rank]))
+            Ranking.SECOND.ranking -> println(Game.SECOND_RANKING_OUTPUT.message.format(winningList[rank]))
+            Ranking.FIRST.ranking -> println(Game.FIRST_RANKING_OUTPUT.message.format(winningList[rank]))
         }
     }
 }

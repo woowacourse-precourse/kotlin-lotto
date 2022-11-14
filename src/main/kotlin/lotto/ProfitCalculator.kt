@@ -1,23 +1,26 @@
 package lotto
 
+import Util.Constants
+import Util.Ranking
+
 class ProfitCalculator {
     fun calcRateOfProfit(winningList: List<Int>, money: Int): Double {
-        var profit = 0
+        var profit = Constants.ZERO.constant
 
-        for (i in 1..5) {
+        for (i in Ranking.FIRST.ranking..Ranking.FIFTH.ranking) {
             profit += calcProfit(i) * winningList[i]
         }
-        return (profit.toDouble() / money.toDouble()) * 100
+        return (profit.toDouble() / money.toDouble()) * Constants.PERCENT.constant
     }
 
     private fun calcProfit(rank: Int): Int {
         when (rank) {
-            1 -> return 2_000_000_000
-            2 -> return 30_000_000
-            3 -> return 1_500_000
-            4 -> return 50_000
-            5 -> return 5000
+            Ranking.FIRST.ranking -> return Ranking.FIRST.profit
+            Ranking.SECOND.ranking -> return Ranking.SECOND.profit
+            Ranking.THIRD.ranking -> return Ranking.THIRD.profit
+            Ranking.FOURTH.ranking -> return Ranking.FOURTH.profit
+            Ranking.FIFTH.ranking -> return Ranking.FIFTH.profit
         }
-        return 0
+        return Constants.ZERO.constant
     }
 }

@@ -1,8 +1,19 @@
 package lotto
 
+import Util.Constants
+import Util.Ranking
+
 class WinningCalculator() {
 
-    private val winningList = mutableListOf<Int>(0, 0, 0, 0, 0, 0)
+    private val winningList =
+        mutableListOf<Int>(
+            Constants.ZERO.constant,
+            Constants.ZERO.constant,
+            Constants.ZERO.constant,
+            Constants.ZERO.constant,
+            Constants.ZERO.constant,
+            Constants.ZERO.constant
+        )
 
     fun getResult(lottoNumbers: List<List<Int>>, winningNumber: List<Int>, bonusNumber: Int): MutableList<Int> {
         for (i in lottoNumbers.indices) {
@@ -17,11 +28,11 @@ class WinningCalculator() {
 
     private fun getWinningList(winningResult: Int, bonusResult: Boolean) {
         when (winningResult) {
-            3 -> winningList[5]++
-            4 -> winningList[4]++
-            5 -> if (bonusResult) winningList[2]++ else winningList[3]++
-            6 -> winningList[1]++
-            else -> winningList[0]++
+            Ranking.FIFTH.match -> winningList[Ranking.FIFTH.ranking]++
+            Ranking.FOURTH.match -> winningList[Ranking.FOURTH.ranking]++
+            Ranking.THIRD.match -> if (bonusResult) winningList[Ranking.SECOND.ranking]++ else winningList[Ranking.THIRD.ranking]++
+            Ranking.FIRST.match -> winningList[Ranking.FIRST.ranking]++
+            else -> winningList[Constants.ZERO.constant]++
         }
     }
 }

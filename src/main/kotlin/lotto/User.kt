@@ -1,13 +1,17 @@
 package lotto
 
+import Util.Constants
+import Util.Error
+import Util.Game
+
 class User {
     fun getMoney(): Int {
-        println("구입금액을 입력해 주세요.")
+        println(Game.USER_INPUT.message)
         val input = readLine()
 
         checkMoneyException(input)
 
-        return input?.toInt() ?: 0
+        return input?.toInt() ?: Constants.ZERO.constant
     }
 
     private fun checkMoneyException(input: String?) {
@@ -19,15 +23,17 @@ class User {
         try {
             input?.toInt()
         } catch (e: NumberFormatException) {
-            throw IllegalArgumentException("[ERROR] 숫자 형식으로 입력해야 합니다.")
+            require(false) {
+                Error.NUMBER_FORMAT_ERROR.message
+            }
         }
     }
 
     private fun checkMoney(input: String?) {
         val inputToInt = input?.toInt()
         if (inputToInt != null) {
-            require(inputToInt % 1000 == 0 && inputToInt != 0) {
-                "[ERROR] 1000원 단위로 입력해야 합니다."
+            require(inputToInt % Constants.UNIT_OF_MONEY.constant == Constants.ZERO.constant && inputToInt != Constants.ZERO.constant) {
+                Error.MONEY_UNIT_ERROR.message
             }
         }
     }

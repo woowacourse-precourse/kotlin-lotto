@@ -1,9 +1,13 @@
 package lotto
 
+import Util.Constants
+import Util.Error
+import Util.Game
+
 class WinningNumber {
     fun getWinningNumber(): List<Int> {
-        println("당첨 번호를 입력해 주세요.")
-        val input = readLine()?.split(',')
+        println(Game.WINNING_NUMBER_INPUT.message)
+        val input = readLine()?.split(Game.SPLIT.message)
 
         checkWinningNumberException(input)
 
@@ -18,8 +22,8 @@ class WinningNumber {
     }
 
     private fun checkSize(input: List<String>?) {
-        require(input?.size == 6) {
-            "[ERROR] 숫자 6개를 입력해야 합니다."
+        require(input?.size == Constants.NUMBER_OF_LOTTO.constant) {
+            Error.NUMBER_OF_LOTTO_ERROR.message
         }
     }
 
@@ -29,7 +33,9 @@ class WinningNumber {
                 it.toInt()
             }
         } catch (e: NumberFormatException) {
-            throw IllegalArgumentException("[ERROR] 숫자 형식으로 입력해야 합니다.")
+            require(false) {
+                Error.NUMBER_FORMAT_ERROR.message
+            }
         }
     }
 
@@ -37,15 +43,15 @@ class WinningNumber {
         val inputNumber = changeIntList(input)
 
         inputNumber.forEach { it ->
-            require(it in 1..45) {
-                "[ERROR] 1~45까지의 숫자로 입력해야 합니다."
+            require(it in Constants.LOTTO_NUMBER_MIN.constant..Constants.LOTTO_NUMBER_MAX.constant) {
+                Error.LOTTO_RANGE_ERROR.message
             }
         }
     }
 
     private fun checkDuplication(input: List<String>?) {
         require(input?.distinct() == input) {
-            "[ERROR] 중복되는 숫자가 없어야 합니다."
+            Error.LOTTO_DUPLICATION_ERROR.message
         }
     }
 
