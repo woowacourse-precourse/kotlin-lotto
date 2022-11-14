@@ -7,6 +7,7 @@ object LottoShop {
     fun lottoPrice() = LOTTO_PRICE
 
     fun purchaseLotteries(purchaseAmount: Int): List<Lotto> {
+        require(purchaseAmount % LOTTO_PRICE == 0)
         val purchaseCount = purchaseAmount / LOTTO_PRICE
         return (1..purchaseCount).map { LottoFactory.createRandomLotto() }
     }
