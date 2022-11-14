@@ -18,7 +18,7 @@ enum class ErrorCode(val message: String) {
     NUMBER_RANGE_UNQUALIFIED("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
 }
 
-fun issueLotto(): List<Int> {
+fun issueLotto(): Lotto {
     val lottoNum = mutableListOf<Int>()
     while (lottoNum.size < 6) {
         val randomNumber = Randoms.pickNumberInRange(1, 45)
@@ -26,8 +26,9 @@ fun issueLotto(): List<Int> {
             lottoNum.add(randomNumber)
         }
     }
-
-    return lottoNum
+    lottoNum.sort()
+    println(lottoNum)
+    return Lotto(lottoNum)
 }
 fun validateAmount(amountPaid: String): Int{
     if(amountPaid.toIntOrNull() == null){
