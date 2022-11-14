@@ -57,4 +57,27 @@ class LottoTest {
         assertThat(lottoNumberMaker.getLottoCount()).isEqualTo(8)
     }
 
+    @Test
+    fun `로또 정답 음수 테스트`(){
+        val input = listOf("1","2","3","-1","5")
+        assertThrows<IllegalArgumentException>(Constants.ERROR_MINUS_LOTTO_INPUT){
+            LottoAnswerNumberInputHandler().inputValidation(input)
+        }
+    }
+
+    @Test
+    fun `로또 정답 문자 테스트`(){
+        val input = listOf("1","a","3","-1","5")
+        assertThrows<IllegalArgumentException>(Constants.ERROR_ONLY_NUMBER){
+            LottoAnswerNumberInputHandler().inputValidation(input)
+        }
+    }
+
+    @Test
+    fun `로또 정답 범위 테스트`(){
+        val input = listOf("1","2","3","49","5")
+        assertThrows<IllegalArgumentException>(Constants.ERROR_OUT_OF_RANGE){
+            LottoAnswerNumberInputHandler().inputValidation(input)
+        }
+    }
 }
