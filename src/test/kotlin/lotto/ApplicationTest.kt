@@ -63,4 +63,12 @@ class ApplicationTest : NsTest() {
     fun `1000원 단위가 아닌 숫자를 구매 금액으로 입력받았을 경우`() {
         assertThrows<IllegalArgumentException> { runException("1100") }
     }
+
+    @Test
+    fun `범위에서 벗어나거나 숫자가 아닌 값을 입력한 경우`() {
+        assertThrows<IllegalArgumentException> {
+            runException("1100")
+            runException("hello2023")
+        }
+    }
 }
