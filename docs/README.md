@@ -11,9 +11,9 @@
 
 1. 로또 구입 금액 입력
     - 조건: 로또 구입 금액은 1,000원 단위
-    - 예외 1) 금액이 0 이하일 경우 예외 처리 (ex. 0원, -100원) - LottoGenerator#checkPriceUnderZero()
-    - 예외 2) 금액이 1,000원 단위로 안 떨어질 경우 예외 처리 (ex. 1,700원) - LottoGenerator#checkPriceThousandsUnit()
-    - 예외 3) 금액이 숫자 이외의 문자가 있을 경우 예외 처리 (ex. 1000j 원) - LottoGenerator#checkPriceInt()
+    - 예외 1) 금액이 0 이하일 경우 예외 처리 (ex. 0원, -100원) - PriceChecker#checkPriceUnderZero()
+    - 예외 2) 금액이 1,000원 단위로 안 떨어질 경우 예외 처리 (ex. 1,700원) - PriceChecker#checkPriceThousandsUnit()
+    - 예외 3) 금액이 숫자 이외의 문자가 있을 경우 예외 처리 (ex. 1000j 원) - PriceChecker#checkPriceInt()
 
 
 2. 로또 수량 확인
