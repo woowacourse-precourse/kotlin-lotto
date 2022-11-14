@@ -15,7 +15,7 @@ class LottoConsole {
         val amount: Int
         try {
             amount = Console.readLine().toInt()
-        } catch (e: Exception) {
+        } catch (e: IllegalArgumentException) {
             throw IllegalArgumentException(ERROR_CODE + ERROR_DEFAULT)
         }
 
@@ -33,7 +33,7 @@ class LottoConsole {
         } catch (e:Exception){
             throw IllegalArgumentException(ERROR_CODE + ERROR_DEFAULT)
         }
-        if(validChecker.checkRagne(winningNum)||validChecker.checkSize(winningNum)||validChecker.checkDuplicate(winningNum)){
+        if(validChecker.checkSize(winningNum)||validChecker.checkDuplicate(winningNum)||validChecker.checkRagne(winningNum)){
             throw IllegalArgumentException(ERROR_CODE+ ERROR_WINNING_NUBMER)
         }
         return Lotto(winningNum)
