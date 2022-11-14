@@ -11,6 +11,8 @@ fun main() {
     val winningNumber = changeNumberList(winning)
     Lotto(winningNumber)
     val bonusNumber = inputBonus()
+    calculateSame(lottoNumber,winningNumber,bonusNumber)
+
 
 
 }
@@ -77,10 +79,30 @@ fun inputBonus(): Int {
     return bonusNumber!!.toInt()
 }
 
-fun calculateSame(lottoNumber: MutableList<MutableList<Int>>, winningNumber:  List<Int>){
+fun calculateSame(lottoNumber: MutableList<MutableList<Int>>, winningNumber:  List<Int>, bonusNumber: Int){
     for(i:Int in lottoNumber.indices){
         val difference = lottoNumber[i].toSet().minus(winningNumber.toSet())
         val duplicationCount = lottoNumber.size - difference.size
+        calculateReward(duplicationCount,bonusNumber,winningNumber)
     }
 }
 
+fun calculateReward(duplicationCount: Int, bonusNumber:Int, winningNumber: List<Int>): MutableList<Int> {
+    val countReward:MutableList<Int> = mutableListOf(0,0,0,0,0)
+    when(duplicationCount){
+        3 -> countReward[0]=+1
+        4 -> countReward[1]=+1
+        5 -> whenCountFive(countReward, bonusNumber, winningNumber)
+        6 -> countReward[4]+=1
+    }
+    return countReward
+}
+
+fun whenCountFive(countReward: MutableList<Int>, bonusNumber: Int, winningNumber: List<Int>): MutableList<Int> {
+    if(winningNumber.contains(bonusNumber)){
+        countReward[3] =+ 1
+        return countReward
+    }
+    countReward[2] =+ 1
+    return  countReward
+}
