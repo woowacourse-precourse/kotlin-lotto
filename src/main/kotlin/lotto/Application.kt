@@ -1,5 +1,9 @@
 package lotto
 
 fun main() {
-    InputLottoPrice().input()
+    try {
+        InputLottoPrice().input()
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+    }
 }
