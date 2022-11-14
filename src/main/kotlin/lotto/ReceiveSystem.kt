@@ -21,9 +21,9 @@ class ReceiveSystem {
         val input = Console.readLine()
         val winningNumber = input.split(",")
         val result = mutableListOf<Int>()
-        for (i in winningNumber)
-            if (validator.validateNumber(i))
-                result.add(i.toInt())
+        for (num in winningNumber)
+            if (validator.validateNumber(num))
+                result.add(num.toInt())
         return Lotto(result.sorted())
     }
 

@@ -13,7 +13,7 @@ class LottoController {
         OutputView().printBuyMessage(moneyCount)
 
         val lottoList = mutableListOf<Lotto>()
-        for (i in 0 until moneyCount) {
+        for (index in 0 until moneyCount) {
             val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
             lottoList.add(Lotto(numbers.sorted()))
         }

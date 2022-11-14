@@ -28,4 +28,24 @@ class ValidateInput {
         }
         return true
     }
+
+    fun validateLottoLength() {
+        OutputView().printErrorMessage(ERROR_LENGTH)
+        throw IllegalArgumentException()
+    }
+
+    fun validateDuplication(winningNumbers: List<Int>) {
+        if (winningNumbers.distinct().size != 6) {
+            OutputView().printErrorMessage(ERROR_DUPLICATION)
+            throw IllegalArgumentException()
+        }
+    }
+
+    fun validateMoney(money: Int): Boolean {
+        if ((money % 1000 != 0) || (money == 0)) {
+            OutputView().printErrorMessage(ERROR_WRONG_MONEY)
+            throw IllegalArgumentException()
+        }
+        return true
+    }
 }
