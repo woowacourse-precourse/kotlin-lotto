@@ -46,4 +46,15 @@ object Validator {
         return numbers
     }
 
+    fun checkBonusNumberInput(lotto: Lotto, number: String): Int {
+        val number = number.toIntOrNull() ?: throw IllegalArgumentException(ErrorMessage.NOT_NUMBER.message)
+        if (lotto.getNumbers().contains(number)) {
+            throw IllegalArgumentException(ErrorMessage.BONUS_NUMBER_DUPLICATE.message)
+        }
+        if ((number < 1) or (number > 45)) {
+            throw IllegalArgumentException(ErrorMessage.OUT_OF_RANGE.message)
+        }
+        return number
+    }
+
 }
