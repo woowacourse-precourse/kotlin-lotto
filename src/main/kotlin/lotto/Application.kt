@@ -8,6 +8,7 @@ lateinit var consumer: Consumer
 var programException = false
 lateinit var winningNumbers : Pair<List<Int>,Int>
 fun main() {
+    programException=false
     orderLotto()
     if (programException) {
         return
