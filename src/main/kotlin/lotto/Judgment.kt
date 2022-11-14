@@ -25,11 +25,13 @@ class Judgment {
         return true
     }
 
-    fun checkBonusNumber(bonusNumber: String) {
+    fun checkBonusNumber(bonusNumber: String, winningNumber: MutableList<Int>) {
         if (bonusNumber.toIntOrNull() == null) {
             throw IllegalArgumentException("[ERROR] 숫자 형태로 입력해주세요.")
         } else if (bonusNumber.toInt() !in 1..45) {
             throw IllegalArgumentException("[ERROR] 1~45 범위 내 숫자를 입력해주세요.")
+        } else if (bonusNumber.toInt() in winningNumber){
+            throw IllegalArgumentException("[ERROR] 당첨 번호에 이미 존재하는 숫자입니다.")
         }
     }
 }

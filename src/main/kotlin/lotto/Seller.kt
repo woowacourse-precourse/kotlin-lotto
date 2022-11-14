@@ -34,6 +34,6 @@ class Seller {
     fun getBonusNumber() {
         println("\n보너스 번호를 입력해 주세요.")
         bonusNumber = Console.readLine()
-        judgment.checkBonusNumber(bonusNumber)
+        judgment.checkBonusNumber(bonusNumber,winningNumber)
     }
 }
