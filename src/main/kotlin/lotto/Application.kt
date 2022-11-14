@@ -5,9 +5,12 @@ import camp.nextstep.edu.missionutils.Console
 import java.lang.NullPointerException
 import java.lang.NumberFormatException
 
+
+
 fun main() {
 
-    val money = inputMoney()
+    val inputView = InputView()
+    val money = inputView.getInputMoney()
     val winningLotto = inputWinningLotto()
     val bonus = inputBonusNum()
 
@@ -17,12 +20,6 @@ fun main() {
     val lottos = Lottos(lotto)
     lottos.printLottos()
     lottos.printWinningResult(winningLotto!!, bonus.bonus, money.money)
-}
-
-fun inputMoney() : Money {
-    println("구입금액을 입력해 주세요.")
-    val money = Console.readLine()
-    return Money(money)
 }
 
 fun inputWinningLotto(): Lotto? {
@@ -44,7 +41,10 @@ fun inputWinningLotto(): Lotto? {
 fun inputBonusNum(): Bonus {
     println("보너스 번호를 입력해 주세요.")
 
-    val bonus = Console.readLine()
-
-    return Bonus(bonus)
+    try {
+        return Bonus(Console.readLine())
+    } catch (e : IllegalArgumentException) {
+        e.printStackTrace()
+        throw NoSuchElementException()
+    }
 }
