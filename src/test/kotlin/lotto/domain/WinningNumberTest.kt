@@ -72,7 +72,7 @@ internal class WinningNumberTest {
         }
 
         @Nested
-        inner class `당첨 번호와 로또 번호가 5개 일치하고 보너스 번호가 로또 번호 중 한 개와 일치하면` {
+        inner class `당첨 번호와 로또 번호가 5개 일치하고 보너스 번호가 일치하면` {
             private val winningNumber = WinningNumber(listOf(1, 2, 3, 4, 5, 6), 7)
             private val lotto = Lotto(listOf(1, 2, 3, 4, 5, 7))
 
