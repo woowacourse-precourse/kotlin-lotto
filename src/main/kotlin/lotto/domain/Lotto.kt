@@ -10,7 +10,7 @@ class Lotto(private val winningNumber: List<Int>) {
 
     // 당첨 번호 vs 로또 번호
     // 5개 일치하는 경우, 보너스 번호 vs 로또 번호
-    fun compare(lottoNumbers: List<List<Int>>, bonusNumber: Int) {
+    fun getWinnerList(lottoNumbers: List<List<Int>>, bonusNumber: Int): List<Int> {
         val winners = mutableListOf(0, 0, 0, 0, 0)
         for(lottoNumber in lottoNumbers){
             val judgement = Judgement()
@@ -26,7 +26,7 @@ class Lotto(private val winningNumber: List<Int>) {
                 3 -> winners[FIFTH_WINNER_INDEX]++
             }
         }
-        println(winners)
+        return winners
     }
 
     private fun checkBonusBall(lottoNumber: List<Int>, bonusNumber: Int): Boolean {
