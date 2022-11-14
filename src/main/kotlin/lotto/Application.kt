@@ -6,6 +6,8 @@ import kotlin.system.exitProcess
 fun main() {
     val size = getTotalLottoPrice()
     val lottos = createLottos(size)
+    val answer = getAnswerLotto()
+    val bonus = getBonusLotto()
 }
 
 fun getTotalLottoPrice(): Int {
@@ -30,4 +32,34 @@ fun createLottos(size: Int): List<Lotto> {
         lottos.add(Lotto(numbers))
     }
     return lottos
+}
+
+fun getAnswerLotto(): List<Int> {
+    try {
+        println("당첨 번호를 입력해주세요.")
+        val answer = readLine()
+            ?.split(',')
+            ?.map { it.toInt() }
+            ?.toMutableList() ?: throw IllegalArgumentException()
+        if (answer.size != 6 || answer.distinct().size != 6
+            || !answer.all { it in 1..46 }) throw IllegalArgumentException()
+        println()
+        return answer
+    } catch (e: IllegalArgumentException) {
+        println("[ERROR] 로또 당첨 번호가 잘못 입력되었습니다.")
+        exitProcess(0)
+    }
+}
+fun getBonusLotto(): Int {
+    try {
+        println("보너스 번호를 입력해주세요.")
+        val bonus = readLine()?.toInt() ?: throw IllegalArgumentException()
+        if (bonus < 0 || bonus > 45)
+            throw IllegalArgumentException()
+        println()
+        return bonus
+    } catch (e: IllegalArgumentException) {
+        println("[ERROR] 로또 보너스 번호가 잘못 입력되었습니다.")
+        exitProcess(0)
+    }
 }
