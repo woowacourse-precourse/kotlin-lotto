@@ -9,13 +9,12 @@ enum class Reward(val rewardMoney: String, var correctNum: String) {
 }
 
 class RewardInfo {
-    companion object {
-        var rewardResult = LinkedHashMap<Reward, Int>()
-    }
-
     fun resultInit() {
         for (reward in Reward.values()){
             rewardResult[reward] = 0
         }
+    }
+    companion object {
+        var rewardResult = LinkedHashMap<Reward, Int>()
     }
 }
