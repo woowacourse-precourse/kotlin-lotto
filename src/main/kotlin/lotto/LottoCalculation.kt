@@ -4,12 +4,38 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class LottoCalculation {
 
-//    fun classifyJackpotType(jackpotNumber: List<Int>, lottoList: List<List<Int>>): List<Int> {
-//        var count: Int = 0
-//
-//    }
+    fun countJackpot(lottoList: List<List<Int>>, jackpotNumber: List<Int>, bonusNumber: Int): List<Int> {
+        val countJackpotList: MutableList<Int> = List(6) { 0 }.toMutableList()
 
-    fun countDuplicationTwoList(list1: List<Int>, list2: List<Int>): Int {
+        for(lottoListIndex in lottoList.indices) {
+            val lottoListElement = lottoList[lottoListIndex]
+            val countCoincidence: Int = countDuplicationTwoList(lottoListElement, jackpotNumber)
+            val jackpotType = classifyJackpotType(lottoListElement, countCoincidence, bonusNumber)
+
+            if(jackpotType != -1) countJackpotList[jackpotType]++
+        }
+
+        return countJackpotList
+    }
+
+    private fun classifyJackpotType(lotto: List<Int>, countCoincidence: Int, bonusNumber: Int): Int {
+        if (countCoincidence == 5 &&
+            lotto.contains(bonusNumber)
+        ) {
+            return INDEX_FIVE_AND_BONUS_COINCIDENCE
+        }
+
+        when (countCoincidence) {
+            3 -> return INDEX_THREE_COINCIDENCE
+            4 -> return INDEX_FOUR_COINCIDENCE
+            5 -> return INDEX_FIVE_COINCIDENCE
+            6 -> return INDEX_SIX_COINCIDENCE
+        }
+
+        return -1
+    }
+
+    private fun countDuplicationTwoList(list1: List<Int>, list2: List<Int>): Int {
         var count: Int = 0
 
         if (list1.find { list2.contains(it) } != null) {
