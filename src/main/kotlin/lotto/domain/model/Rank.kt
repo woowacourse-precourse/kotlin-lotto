@@ -13,13 +13,13 @@ enum class Rank(private val correctCnt: Int) {
         override val prize: Int = 50_000
     },
     CORRECT_FIVE(5) {
-        override val prize: Int = 50_000
+        override val prize: Int = 1_500_000
     },
     CORRECT_FIVE_BONUS(5) {
-        override val prize: Int = 50_000
+        override val prize: Int = 30_000_000
     },
     CORRECT_SIX(6) {
-        override val prize: Int = 50_000
+        override val prize: Int = 2_000_000_000
     };
 
     abstract val prize: Int
