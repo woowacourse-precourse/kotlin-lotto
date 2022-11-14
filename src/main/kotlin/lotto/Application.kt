@@ -2,42 +2,44 @@ package lotto
 
 import lotto.domain.Lotto
 import lotto.domain.View.showResultOfLotto
-import lotto.domain.Service
+import lotto.domain.ApplicationService
+import lotto.domain.DomainService
 
 fun main() {
     playLotto()
 }
 
 fun playLotto() {
-    val service = Service()
-    val countOfLotto = retryGetPurchasingAmount(service)
-    val lottoNumbers = service.getLottoNumbers(countOfLotto)
-    val winningNumbers = retryGetWinningNumbers(service)
-    val bonusNumber = retryGetBonusNumber(service, winningNumbers)
-    val resultOfLotto = service.isWinningLotto(lottoNumbers, winningNumbers, bonusNumber)
+    val applicationService = ApplicationService()
+    val domainService = DomainService()
+    val countOfLotto = retryGetPurchasingAmount(applicationService)
+    val lottoNumbers = applicationService.getLottoNumbers(countOfLotto)
+    val winningNumbers = retryGetWinningNumbers(applicationService)
+    val bonusNumber = retryGetBonusNumber(applicationService, winningNumbers)
+    val resultOfLotto = domainService.isWinningLotto(lottoNumbers, winningNumbers, bonusNumber)
     showResultOfLotto(resultOfLotto, countOfLotto)
 }
 
-fun retryGetPurchasingAmount(service: Service): Int {
+fun retryGetPurchasingAmount(applicationService: ApplicationService): Int {
     var countOfLotto: Int
     do {
-        countOfLotto = service.getPurchasingAmount()
+        countOfLotto = applicationService.getPurchasingAmount()
     } while (countOfLotto == 0)
     return countOfLotto
 }
 
-fun retryGetWinningNumbers(service: Service): Lotto {
+fun retryGetWinningNumbers(applicationService: ApplicationService): Lotto {
     var winningNumbers: Lotto?
     do {
-        winningNumbers = service.getWinningNumbers()
+        winningNumbers = applicationService.getWinningNumbers()
     } while (winningNumbers == null)
     return winningNumbers
 }
 
-fun retryGetBonusNumber(service: Service, winningNumbers: Lotto): Int {
+fun retryGetBonusNumber(applicationService: ApplicationService, winningNumbers: Lotto): Int {
     var bonusNumber: Int
     do {
-        bonusNumber = service.getBonusNumber(winningNumbers)
+        bonusNumber = applicationService.getBonusNumber(winningNumbers)
     } while (bonusNumber == 0)
     return bonusNumber
 }

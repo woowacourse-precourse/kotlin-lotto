@@ -46,14 +46,14 @@ object View {
      * 당첨 통계를 출력하는 함수
      * */
     fun showResultOfLotto(resultOfLotto: MutableList<Rating>, countOfLotto: Int) {
-        val service = Service()
+        val domainService = DomainService()
         println("당첨 통계")
         println("---")
-        println("3개 일치 (5,000원) - ${service.countRank(resultOfLotto, Rating.FIFTH)}개")
-        println("4개 일치 (50,000원) - ${service.countRank(resultOfLotto, Rating.FOURTH)}개")
-        println("5개 일치 (1,500,000원) - ${service.countRank(resultOfLotto, Rating.THIRD)}개")
-        println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${service.countRank(resultOfLotto, Rating.SECOND)}개")
-        println("6개 일치 (2,000,000,000원) - ${service.countRank(resultOfLotto, Rating.FIRST)}개")
-        println("총 수익률은 ${service.calculateIncome(resultOfLotto, countOfLotto)}%입니다.")
+        println("3개 일치 (5,000원) - ${domainService.countRank(resultOfLotto, Rating.FIFTH)}개")
+        println("4개 일치 (50,000원) - ${domainService.countRank(resultOfLotto, Rating.FOURTH)}개")
+        println("5개 일치 (1,500,000원) - ${domainService.countRank(resultOfLotto, Rating.THIRD)}개")
+        println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${domainService.countRank(resultOfLotto, Rating.SECOND)}개")
+        println("6개 일치 (2,000,000,000원) - ${domainService.countRank(resultOfLotto, Rating.FIRST)}개")
+        println("총 수익률은 ${domainService.calculateIncome(resultOfLotto, countOfLotto)}%입니다.")
     }
 }
