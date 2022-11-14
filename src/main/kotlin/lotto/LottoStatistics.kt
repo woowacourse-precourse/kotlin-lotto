@@ -22,7 +22,7 @@ class LottoStatistics {
                 else -> MatchResult.SIX.money * statistics[i]
             }
         }
-        val tmp: Double = sum / (lotteryNum * LottoSeller.LOTTO_SELL_PRICE) * 100
-        return round(tmp * 10) / 10
+        val statisticsResult: Double = sum / (lotteryNum * LottoSeller.LOTTO_SELL_PRICE) * 100
+        return round(statisticsResult * 10) / 10
     }
 }
