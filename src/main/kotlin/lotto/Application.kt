@@ -14,4 +14,5 @@ fun main() {
     val rateOfProfit = ProfitCalculator().calcRateOfProfit(winningList, money)
     println()
     WinningPrinter(winningList).printWinning()
+    ProfitPrinter().printProfit(rateOfProfit)
 }
