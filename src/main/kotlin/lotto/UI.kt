@@ -19,6 +19,10 @@ class UI {
         return bonusNumber
     }
 
+    fun printBlankLine() {
+        println()
+    }
+
     companion object {
         const val REQUEST_INPUT_PURCHASING_AMOUNT = "구입금액을 입력해 주세요."
         const val PURCHASING_LOTTO = "%d개를 구매했습니다."
