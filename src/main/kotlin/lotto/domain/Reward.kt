@@ -56,3 +56,18 @@ fun calculateReward(result: Pair<Int, Boolean>): Reward {
     }
     return Reward.MISS
 }
+
+fun countReward(rewards: MutableList<Reward>): MutableList<Int> {
+    var count = mutableListOf<Int>(0, 0, 0, 0, 0)
+    for (reward in rewards) {
+        when (reward) {
+            Reward.FIRST -> count[0]++
+            Reward.SECOND -> count[1]++
+            Reward.THIRD -> count[2]++
+            Reward.FOURTH -> count[3]++
+            Reward.FIFTH -> count[4]++
+            else -> continue
+        }
+    }
+    return count
+}
