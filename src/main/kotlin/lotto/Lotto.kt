@@ -8,18 +8,15 @@ class Lotto(private val numbers: List<Int>) { //당첨번호 로또를 넣고
         require(numbers.size == 6)
         mutipleException(numbers)
     }
+
     fun compare(lotto: List<Int>, bonusNumber: Int)  : Int{
         var coincidence = 0
-
         for (i in numbers){
-            if (lotto.contains(i)){
-                coincidence += 1
-            }
+            if (lotto.contains(i)){ coincidence += 1 }
         }
         if (coincidence == 5){
             coincidence = bonusCoincidence(lotto, bonusNumber)
         }
-
         return coincidence
     }
 
