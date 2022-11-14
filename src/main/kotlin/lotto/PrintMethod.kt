@@ -36,7 +36,7 @@ class PrintMethod {
 
     fun printYield(rank: MutableList<Int>, lottoPrice: Int) {
         var yield = 0
-        val rankReward = listOf<Int>(fifthReward, secondReward, thirdReward, fourthReward, fifthReward)
+        val rankReward = listOf<Int>(firstReward, secondReward, thirdReward, fourthReward, fifthReward)
 
         for (idx in rank.indices) `yield` += rankReward[idx] * rank[idx]
         println(yieldMessage + "%.1f".format(`yield`.toFloat() / lottoPrice * percent) + yieldEndMessage)
