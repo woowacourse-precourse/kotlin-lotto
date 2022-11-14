@@ -4,20 +4,15 @@ import lotto.domain.WinningResult
 import lotto.domain.WinningStatistics
 import java.math.BigDecimal
 
-class WinningStatisticsDto(winningStatistics: WinningStatistics) {
-
-    private val winningCounts: Map<WinningResult, Int>
-    private val yields: BigDecimal
-
-    init {
-        winningCounts = winningStatistics.winningCounts()
-        yields = winningStatistics.yields()
-    }
+data class WinningStatisticsDto(val winningCounts: Map<WinningResult, Int>, val yields: BigDecimal) {
 
     fun winningCount(winningResult: WinningResult): Int {
         return winningCounts.getOrDefault(winningResult, 0)
     }
 
-    fun yields() = yields
-
+    companion object {
+        fun createFrom(winningStatistics: WinningStatistics): WinningStatisticsDto {
+            return WinningStatisticsDto(winningStatistics.winningCounts(), winningStatistics.yields())
+        }
+    }
 }

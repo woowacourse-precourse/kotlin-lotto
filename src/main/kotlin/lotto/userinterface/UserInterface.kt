@@ -2,7 +2,6 @@ package lotto.userinterface
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.domain.WinningResult
-import lotto.domain.WinningStatistics
 import lotto.service.dto.LottoDto
 import lotto.service.dto.WinningStatisticsDto
 import java.math.BigInteger
@@ -36,7 +35,7 @@ object UserInterface {
 
     fun showPurchaseResult(lotteries: List<LottoDto>) {
         println(String.format(PURCHASE_RESULT, lotteries.size))
-        lotteries.forEach { println(it.numbers()) }
+        lotteries.forEach { println(it.numbers) }
     }
 
     fun askWinningNumbers(): List<Int> {
@@ -69,6 +68,6 @@ object UserInterface {
         println("5개 일치 (${decimalFormat.format(WinningResult.THIRD.winnings)}원) - ${winningStatistics.winningCount(WinningResult.THIRD)}개")
         println("5개 일치, 보너스 볼 일치 (${decimalFormat.format(WinningResult.SECOND.winnings)}원) - ${winningStatistics.winningCount(WinningResult.SECOND)}개")
         println("6개 일치 (${decimalFormat.format(WinningResult.FIRST.winnings)}원) - ${winningStatistics.winningCount(WinningResult.FIRST)}개")
-        println("총 수익률은 ${winningStatistics.yields()}%입니다.")
+        println("총 수익률은 ${winningStatistics.yields}%입니다.")
     }
 }

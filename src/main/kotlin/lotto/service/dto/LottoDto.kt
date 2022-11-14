@@ -2,13 +2,11 @@ package lotto.service.dto
 
 import lotto.domain.Lotto
 
-class LottoDto(lotto: Lotto) {
+data class LottoDto(val numbers: List<Int>) {
 
-    private val numbers: List<Int>
-
-    init {
-        numbers = lotto.numbers().sorted()
+    companion object {
+        fun createFrom(lotto: Lotto): LottoDto {
+            return LottoDto(lotto.numbers().sorted())
+        }
     }
-
-    fun numbers() = numbers
 }
