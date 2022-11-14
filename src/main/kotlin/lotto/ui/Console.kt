@@ -1,8 +1,11 @@
 package lotto.ui
 
 import lotto.data.Lotto
+import lotto.data.WinningTable
 import lotto.error.ErrorMessages
 import java.text.DecimalFormat
+import kotlin.math.pow
+import kotlin.math.roundToLong
 import camp.nextstep.edu.missionutils.Console as ConsoleUtil
 
 private typealias ConsoleError = ErrorMessages.ConsoleEnum
@@ -31,8 +34,23 @@ object Console {
         println(lotteries.joinToString("\n") + "\n")
     }
 
+    fun print(table: WinningTable) {
+        println(buildString {
+            val messages = Message.ShowWinningStatistics.messages
+
+            appendLine(messages[0])
+            appendLine(messages[1])
+            appendLine(table.records.joinToString("\n"))
+            appendLine("${messages[2]}${table.returnOfRate.roundAt(-2)}${messages[3]}")
+        })
+    }
+
     private fun String.toIntOrThrow(): Int {
         return requireNotNull(toIntOrNull()) { ConsoleError.NotValidInteger }
+    }
+
+    private fun Double.roundAt(n: Int): Double {
+        return (this * 10.0.pow(-n - 1)).roundToLong() / 10.0.pow(-n - 1)
     }
 
     private fun readLine(): String {
