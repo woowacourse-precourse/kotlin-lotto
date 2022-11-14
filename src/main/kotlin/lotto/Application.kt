@@ -5,13 +5,13 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     try {
-        lotto()
+        lottoGame()
     } catch (e: IllegalArgumentException) {
 
     }
 }
 
-fun lotto() {
+fun lottoGame() {
     val lottoCount = generateLottoCount()
     val winningNumbers = generateWinningNumbers()
     val bonusNumber = generateBonusNumber(winningNumbers)
