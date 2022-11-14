@@ -12,6 +12,11 @@ object Console {
         return readLine().replace(",", "").toIntOrThrow()
     }
 
+    fun requestWinningNumbers(): List<Int> {
+        println(Message.InputWinningNumbers)
+        return readLine().split(',').map { it.trim().toIntOrThrow() }
+    }
+
     private fun String.toIntOrThrow(): Int {
         return requireNotNull(toIntOrNull()) { ConsoleError.NotValidInteger }
     }
