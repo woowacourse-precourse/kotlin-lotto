@@ -110,9 +110,22 @@ fun showWinningStatistics(result: List<Int>){
     )
 }
 
-fun calculateEarningRate(earnedMoney: Int, amountPaid: String){
+fun calculateEarningRate(earnedMoney: Int, amountPaid: String) {
     val paidFee = amountPaid.toDouble()
     val earningRate = (earnedMoney/paidFee)*100
     val earningRateRounded = String.format("%.1f", earningRate)
     println("총 수익률은 ${earningRateRounded}%입니다.")
+}
+
+fun bonusMatchCheck(bonusNum: Int, lotto: Lotto): Int {
+    var numOfMatch = 5
+
+    for (numberOrder in 0..5) {
+        val targetNumber = lotto.getLottoNumber(numberOrder)
+        if (bonusNum == targetNumber) {
+            numOfMatch += 1
+            break
+        }
+    }
+    return numOfMatch
 }
