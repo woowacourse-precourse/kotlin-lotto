@@ -16,4 +16,12 @@ class Lotto(private val numbers: List<Int>) {
             ErrorString.OUT_OF_BOUND
         }
     }
+
+    private fun contains(number: Int) = numbers.contains(number)
+
+    fun compare(winningLotto: Lotto, bonusNumber: BonusNumber): Pair<Int, Boolean> {
+        return numbers.count { number ->
+            winningLotto.contains(number)
+        } to bonusNumber.isMatched(numbers)
+    }
 }
