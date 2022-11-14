@@ -102,7 +102,6 @@ fun generateLotteries(lottoCount: Int): List<Lotto> {
 
 fun checkLottoWin(lotto: Lotto, winningNumbers: Lotto, bonusNumber: Int) {
     var count = 0
-    lotto.print()
     for (number in lotto.getNumbers()) {
         if (winningNumbers.isContainedNumber(number)) count++
     }
