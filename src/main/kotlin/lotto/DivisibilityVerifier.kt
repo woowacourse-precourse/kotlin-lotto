@@ -1,6 +1,6 @@
 package lotto
 
-class MoneyUnitVerifier(private val divisor: Int) : Verifier<Int>() {
+class DivisibilityVerifier(private val divisor: Int) : Verifier<Int>() {
     override fun verify(input: Int) {
         require(input % divisor == 0) {
             println("$ERROR_HEADER $ERROR_MESSAGE")
