@@ -1,15 +1,14 @@
-package lotto.domain
+package lotto.ui
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.domain.*
 import kotlin.math.pow
 import kotlin.math.round
 
 fun main() {
     val paidAmount = askUserMoney()
     val tryNumber = paidAmount / MONEY_UNIT
-
-    println("\n${tryNumber}를 구매했습니다.")
-    val lottoNumbers = get2DLottoList(tryNumber)
+    val lottoNumbers = getLottoNumbers(tryNumber)
 
     val winningNumbers = askWinningNumbers()
     val bonusNumber = askBonusNumber()
@@ -21,8 +20,21 @@ fun main() {
     printEarningRate(winners, paidAmount)
 }
 
-// 구입 금액 만큼 로또를 추첨한 결과를 출력한다.
-fun get2DLottoList(tryNumber: Int): List<List<Int>> {
+// 1000원 단위의 구입 금액을 입력 받는다.
+fun askUserMoney(): Int {
+    println(MONEY_INPUT_MSG)
+    val money = Console.readLine()
+
+    // todo: 문자가 섞여있는지 검사하기
+    // MIXED_CHAR_ERROR_MSG
+
+    if (money.toInt() % MONEY_UNIT != 0) handleException(DIVISION_ERROR_MSG)
+    return money.toInt()
+}
+
+// 발행한 로또 수량 및 번호를 출력한다. (로또 번호는 오름차순 정렬)
+fun getLottoNumbers(tryNumber: Int): List<List<Int>> {
+    println("\n${tryNumber}개를 구매했습니다.")
     val generator = NumberGenerator()
     val lottoNumbers = mutableListOf<List<Int>>()
     for(i in 0 until tryNumber){
@@ -31,14 +43,6 @@ fun get2DLottoList(tryNumber: Int): List<List<Int>> {
         println(lottoNumber)
     }
     return lottoNumbers
-}
-
-// 1000원 단위의 구입 금액을 입력 받는다.
-fun askUserMoney(): Int {
-    println(MONEY_INPUT_MSG)
-    val money = Console.readLine().toInt()
-    if (money % MONEY_UNIT != 0) handleException(DIVISION_EXCEPTION_MSG)
-    return money
 }
 
 // 쉼표로 구분된 당첨 번호를 입력 받아서 정수 리스트를 반환한다.
@@ -53,11 +57,11 @@ fun getWinningNumbers(input: String): List<Int> {
     val numbers = mutableListOf<Int>()
     input.split(",").map {
         val item = it.toInt()
-        if (item !in MIN_VALUE..MAX_VALUE) handleException(RANGE_BOUNDS_EXCEPTION_MSG)
-        if (numbers.contains(item)) handleException(DUPLICATE_EXCEPTION_MSG)
+        if (item !in MIN_VALUE..MAX_VALUE) handleException(RANGE_BOUNDS_ERROR_MSG)
+        if (numbers.contains(item)) handleException(DUPLICATE_ERROR_MSG)
         numbers.add(item)
     }
-    if (numbers.size != LOTTO_NUM_LIMIT) handleException(SIZE_BOUNDS_EXCEPTION_MGS)
+    if (numbers.size != LOTTO_NUM_LIMIT) handleException(SIZE_BOUNDS_ERROR_MSG)
     return numbers
 }
 
@@ -65,8 +69,12 @@ fun getWinningNumbers(input: String): List<Int> {
 fun askBonusNumber(): Int {
     println(BONUS_INPUT_MSG)
     val input = Console.readLine().toInt()
+
+    // todo: 문자가 섞여있는지 검사하기
+    // MIXED_CHAR_ERROR_MSG
+
     if (input !in MIN_VALUE..MAX_VALUE)
-        handleException(DUPLICATE_EXCEPTION_MSG)
+        handleException(DUPLICATE_ERROR_MSG)
     return input
 }
 
@@ -90,7 +98,7 @@ fun printWinnerList(winners: List<Int>) {
 fun printEarningRate(winners: List<Int>, paidAmount: Int) {
     val profits = calcProfits(winners)
     val earningRate = calcEarningRate(profits, paidAmount)
-    println("총 수익률은 ${earningRate}% 입니다.")
+    println("총 수익률은 ${earningRate}%입니다.")
 }
 
 // 수익금을 계산한다.

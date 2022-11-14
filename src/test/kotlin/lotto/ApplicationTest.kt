@@ -3,11 +3,11 @@ package lotto
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
+import lotto.ui.main
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class ApplicationTest : NsTest() {
-
     @Test
     fun `기능 테스트`() {
         assertRandomUniqueNumbersInRangeTest(
@@ -50,11 +50,11 @@ class ApplicationTest : NsTest() {
         }
     }
 
-    override fun runMain() {
-        main()
-    }
-
     companion object {
         private const val ERROR_MESSAGE = "[ERROR]"
+    }
+
+    override fun runMain() {
+        main()
     }
 }
