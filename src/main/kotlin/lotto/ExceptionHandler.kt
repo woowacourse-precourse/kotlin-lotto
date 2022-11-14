@@ -3,8 +3,8 @@ package lotto
 object ExceptionHandler {
     fun checkLotto(lotto: Lotto): Boolean {
         if (isDuplicate(lotto.numberList)
-                || isOverLength(lotto.numberList)
-                || isInRange(lotto.numberList)) {
+                || !isOverLength(lotto.numberList)
+                || !isInRange(lotto.numberList)) {
             throw IllegalArgumentException("checkLotto : 잘못된 입력입니다.")
         }
         return true
@@ -12,8 +12,8 @@ object ExceptionHandler {
 
     fun checkNumberList(list: List<Int>): Boolean {
         if (isDuplicate(list)
-                || isOverLength(list)
-                || isInRange(list)) {
+                || !isOverLength(list)
+                || !isInRange(list)) {
             throw IllegalArgumentException("checkNumberList : 잘못된 입력입니다.")
         }
         return true
