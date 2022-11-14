@@ -1,6 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.Prize.*
 
 class Lotto(private val numbers: List<Int>) {
     init {
@@ -22,12 +23,17 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     fun getPrize(winningNum: List<Int>, bonusNum: Int): Int {
-
+        val correctCnt = numbers.count { winningNum.contains(it) }
+        return when (Prize.create(correctCnt)) {
+            CORRECT_THREE -> 5_000
+            CORRECT_FOUR -> 50_000
+            CORRECT_FIVE -> if (numbers.contains(bonusNum)) 30_000_000 else 1_500_000
+            CORRECT_SIX -> 2_000_000_000
+        }
     }
 
-
     companion object {
-        private const val ERROR_MESSAGE = "[ERROR]"
+        const val ERROR_MESSAGE = "[ERROR]"
         fun newInstance(): Lotto {
             return Lotto(makeRandomNum())
         }
