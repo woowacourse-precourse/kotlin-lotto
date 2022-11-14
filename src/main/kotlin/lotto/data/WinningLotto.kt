@@ -18,7 +18,9 @@ class WinningLotto(numbers: List<Int>, bonusNumber: Int) {
     }
 
     fun matches(lotto: Lotto): Pair<Int, Boolean> {
-        return lotto.matches(this.lotto) to lotto.contains(bonus)
+        val hitCount = lotto.matches(this.lotto)
+        val isBonusHit = lotto.contains(this.bonus)
+        return hitCount to (hitCount == 5 && isBonusHit)
     }
 
     override fun toString(): String {
