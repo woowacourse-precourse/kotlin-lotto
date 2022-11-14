@@ -25,12 +25,12 @@ internal class WinningStatisticsTest {
 
                 val winningCounts = winningStatistics.winningCounts()
 
-                assertThat(winningCounts[WinningResult.FIRST]).isEqualTo(1)
-                assertThat(winningCounts[WinningResult.SECOND]).isEqualTo(1)
-                assertThat(winningCounts[WinningResult.THIRD]).isEqualTo(1)
-                assertThat(winningCounts[WinningResult.FOURTH]).isEqualTo(1)
-                assertThat(winningCounts[WinningResult.FIFTH]).isEqualTo(1)
-                assertThat(winningCounts[WinningResult.NO_LUCK]).isEqualTo(0)
+                assertThat(winningCounts[Rank.FIRST]).isEqualTo(1)
+                assertThat(winningCounts[Rank.SECOND]).isEqualTo(1)
+                assertThat(winningCounts[Rank.THIRD]).isEqualTo(1)
+                assertThat(winningCounts[Rank.FOURTH]).isEqualTo(1)
+                assertThat(winningCounts[Rank.FIFTH]).isEqualTo(1)
+                assertThat(winningCounts[Rank.NO_LUCK]).isEqualTo(0)
             }
         }
         @Nested

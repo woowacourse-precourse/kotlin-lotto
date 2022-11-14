@@ -1,7 +1,7 @@
 package lotto.userinterface
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.domain.WinningResult
+import lotto.domain.Rank
 import lotto.service.dto.LottoDto
 import lotto.service.dto.WinningStatisticsDto
 import java.math.BigInteger
@@ -67,11 +67,11 @@ object UserInterface {
     fun showWinningStatistics(winningStatistics: WinningStatisticsDto) {
         println("당첨 통계")
         println("---")
-        println("3개 일치 (${decimalFormat.format(WinningResult.FIFTH.winnings)}원) - ${winningStatistics.winningCount(WinningResult.FIFTH)}개")
-        println("4개 일치 (${decimalFormat.format(WinningResult.FOURTH.winnings)}원) - ${winningStatistics.winningCount(WinningResult.FOURTH)}개")
-        println("5개 일치 (${decimalFormat.format(WinningResult.THIRD.winnings)}원) - ${winningStatistics.winningCount(WinningResult.THIRD)}개")
-        println("5개 일치, 보너스 볼 일치 (${decimalFormat.format(WinningResult.SECOND.winnings)}원) - ${winningStatistics.winningCount(WinningResult.SECOND)}개")
-        println("6개 일치 (${decimalFormat.format(WinningResult.FIRST.winnings)}원) - ${winningStatistics.winningCount(WinningResult.FIRST)}개")
+        println("3개 일치 (${decimalFormat.format(Rank.FIFTH.winnings)}원) - ${winningStatistics.winningCount(Rank.FIFTH)}개")
+        println("4개 일치 (${decimalFormat.format(Rank.FOURTH.winnings)}원) - ${winningStatistics.winningCount(Rank.FOURTH)}개")
+        println("5개 일치 (${decimalFormat.format(Rank.THIRD.winnings)}원) - ${winningStatistics.winningCount(Rank.THIRD)}개")
+        println("5개 일치, 보너스 볼 일치 (${decimalFormat.format(Rank.SECOND.winnings)}원) - ${winningStatistics.winningCount(Rank.SECOND)}개")
+        println("6개 일치 (${decimalFormat.format(Rank.FIRST.winnings)}원) - ${winningStatistics.winningCount(Rank.FIRST)}개")
         println("총 수익률은 ${winningStatistics.yields}%입니다.")
     }
 }

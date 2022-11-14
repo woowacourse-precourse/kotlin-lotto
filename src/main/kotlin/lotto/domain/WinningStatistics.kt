@@ -5,14 +5,14 @@ import java.math.RoundingMode
 
 class WinningStatistics(lotteries: List<Lotto>, winningNumber: WinningNumber) {
 
-    private val winningCounts = mutableMapOf<WinningResult, Int>()
+    private val winningCounts = mutableMapOf<Rank, Int>()
     private val yields: BigDecimal
 
     init {
-        WinningResult.values().forEach { winningCounts[it] = 0 }
+        Rank.values().forEach { winningCounts[it] = 0 }
         lotteries.forEach {
-            winningCounts[winningNumber.getWinningResult(it)] =
-                winningCounts[winningNumber.getWinningResult(it)]!! + 1
+            winningCounts[winningNumber.getRank(it)] =
+                winningCounts[winningNumber.getRank(it)]!! + 1
         }
         this.yields = calculateYields(lotteries)
     }
