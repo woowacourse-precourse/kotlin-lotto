@@ -64,7 +64,7 @@ class LottoWin {
 
     fun printWinStats(wonLotto: List<Int>) {
         val dec = DecimalFormat("#,###")
-        print("\n당첨 통계\n" + "---\n")
+        print(ConstMessage.WIN_STATS)
         var i = 0
         LottoPrize.values().forEachIndexed { index, winStats ->
             if(index < 5) {

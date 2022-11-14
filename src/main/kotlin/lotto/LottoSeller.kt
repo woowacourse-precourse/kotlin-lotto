@@ -39,7 +39,7 @@ class LottoSeller {
     }
 
     fun inputPrizeNumber(lottoWinningNumbers: ArrayList<String>): List<Int> {
-        println("당첨 번호를 입력해 주세요.")
+        println(ConstMessage.ENTER_WIN_NUMBER)
         val inputPrizeNumber = Console.readLine().split(",")
         inputPrizeNumberException(inputPrizeNumber)
         for(i in 0 until inputPrizeNumber.size){
@@ -50,12 +50,12 @@ class LottoSeller {
 
     fun inputPrizeNumberException(inputPrizeNumber: List<String>) {
         val distinctPrizeNumber = inputPrizeNumber.distinct()
-        if(distinctPrizeNumber.size != inputPrizeNumber.size) return throw IllegalArgumentException("[ERROR] 로또 번호에 중복된 숫자가 있습니다.")
-        if(inputPrizeNumber.size > 6) return throw IllegalArgumentException("[ERROR] 로또 번호의 개수가 6개 보다 많습니다.")
+        if(distinctPrizeNumber.size != inputPrizeNumber.size) return throw IllegalArgumentException(ConstMessage.ENTER_DUPLICATION_NUMBER_EXCEPTION)
+        if(inputPrizeNumber.size > 6) return throw IllegalArgumentException(ConstMessage.ENTER_MORE_NUMBER_EXCEPTION)
     }
 
     fun inputBonusNumber(): Int {//보너스 번호 입력
-        println("보너스 번호를 입력해 주세요.")
+        println(ConstMessage.ENTER_BONUS_NUMBER)
         val inputBonusNumber = Console.readLine()
         inputBonusNumberException(inputBonusNumber.toInt())
         return inputBonusNumber.toInt()
@@ -63,9 +63,9 @@ class LottoSeller {
 
     fun inputBonusNumberException(inputBonusNumber: Int) {
         when {
-            inputBonusNumber < 1 -> return throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
-            inputBonusNumber > 45 -> return throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
-            chkNum(inputBonusNumber.toString()) -> return throw IllegalArgumentException("[ERROR] 숫자가 아닙니다.")
+            inputBonusNumber < 1 -> return throw IllegalArgumentException(ConstMessage.OUT_OF_RANGE_EXCEPTION)
+            inputBonusNumber > 45 -> return throw IllegalArgumentException(ConstMessage.OUT_OF_RANGE_EXCEPTION)
+            chkNum(inputBonusNumber.toString()) -> return throw IllegalArgumentException(ConstMessage.NON_NUMBER_EXCEPTION)
         }
     }
 
