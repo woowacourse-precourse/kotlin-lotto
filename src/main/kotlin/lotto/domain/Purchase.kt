@@ -6,8 +6,10 @@ import lotto.constants.Constant.Companion.MAXIMUM_LOTTO_NUMBER
 import lotto.constants.Constant.Companion.MINIMUM_LOTTO_NUMBER
 import lotto.constants.Constant.Companion.MONEY_UNIT
 import lotto.constants.Constant.Companion.START_INDEX
+import lotto.constants.Exception.Companion.EXCEPTION_INVALID_CHARACTER
 import lotto.constants.Exception.Companion.EXCEPTION_INVALID_MONEY
 import lotto.views.InputView.inputMoney
+import lotto.views.OutputView
 import lotto.views.OutputView.printInputMoney
 
 class Purchase {
@@ -18,11 +20,16 @@ class Purchase {
     fun buyLotto(): Int {
         val money = inputMoney()
         validateMoney(money)
-        return money / MONEY_UNIT
+        return money.toInt() / MONEY_UNIT
     }
 
-    fun validateMoney(money: Int) {
-        if (money % MONEY_UNIT != 0) {
+    fun validateMoney(money: String) {
+        if (!money.all { Character.isDigit(it) }) {
+            OutputView.printExceptionMessage(EXCEPTION_INVALID_CHARACTER)
+            throw IllegalArgumentException(EXCEPTION_INVALID_CHARACTER)
+        }
+        if (money.toInt() % MONEY_UNIT != 0) {
+            OutputView.printExceptionMessage(EXCEPTION_INVALID_MONEY)
             throw IllegalArgumentException(EXCEPTION_INVALID_MONEY)
         }
     }
