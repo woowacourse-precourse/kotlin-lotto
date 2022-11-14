@@ -39,12 +39,15 @@
 
 5. 보너스 번호 입력
     - 조건: 보너스 번호 범위 -> 1~ 45
-    - 예외 1) 보너스 번호가 1 ~ 45 범위가 아닌 경우 예외 처리 (ex. 0)
+    - 예외 1) 보너스 번호가 1 ~ 45 범위가 아닌 경우 예외 처리 (ex. 0) - BonusChecker#checkBonusValidRange()
+    - 예외 2) 보너스 번호가 숫자가 아닐 경우 예외 처리 (ex. a) - BonusChecker#checkBonusValidNumber() 
+    - 예외 3) 보너스 번호가 당첨 번호와 중복될 경우 예외 처리 - BonusChecker#checkBonusValidWithWinning()
 
 
 6. 로또 번호와 당첨 번호 비교
-    - 각 개수가 몇개 일치 하는지 확인
-    - 개수 일치가 5개 인 경우엔, 일치된 숫자에 보너스 숫자가 있는지 확인
+    - 각 개수가 몇개 일치 하는지 확인 - CalculatingRanking#countSameNumber()
+    - 개수 일치가 5개 인 경우엔, 일치된 숫자에 보너스 숫자가 있는지 확인 - CalculatingRanking#checkBonusInLotto()
+    - 비교로 얻은 순위로 최종 결과값 출력 - Application#stage5
 
 
 7. 수익률 계산
