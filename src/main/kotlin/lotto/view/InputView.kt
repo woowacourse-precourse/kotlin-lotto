@@ -21,6 +21,6 @@ fun inputBonusNumber(): Int {
     return inputInt()
 }
 
-private fun inputInt() = Console.readLine().toIntOrNull().toIntOrError()
+private fun inputInt() = Console.readLine().toIntOrError()
 
 private fun input() = Console.readLine()
