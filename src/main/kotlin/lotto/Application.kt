@@ -1,7 +1,7 @@
 package lotto
 
 import lotto.domain.Lotto
-import lotto.domain.Messages.showResultOfLotto
+import lotto.domain.View.showResultOfLotto
 import lotto.domain.Service
 
 fun main() {

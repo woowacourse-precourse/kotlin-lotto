@@ -1,6 +1,6 @@
 package lotto.domain
 
-object Messages {
+object View {
     private const val INPUT_PURCHASING_AMOUNT = "구입금액을 입력해 주세요."
     private const val INPUT_WINNING_NUMBERS = "당첨 번호를 입력해 주세요."
     private const val INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요."
@@ -56,6 +56,4 @@ object Messages {
         println("6개 일치 (2,000,000,000원) - ${service.countRank(resultOfLotto, Rating.FIRST)}개")
         println("총 수익률은 ${service.calculateIncome(resultOfLotto, countOfLotto)}%입니다.")
     }
-
-
 }

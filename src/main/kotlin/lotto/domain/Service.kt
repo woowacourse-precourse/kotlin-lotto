@@ -16,7 +16,7 @@ class Service {
      * 구입금액을 입력 받고 구매 갯수를 리턴하는 함수
      * */
     fun getPurchasingAmount(): Int {
-        Messages.showInputPurchasingAmount()
+        View.showInputPurchasingAmount()
         val inputPurchasingAmount = Util.readLine()
         return try {
             checkInputPurchasingAmount(inputPurchasingAmount)
@@ -31,19 +31,19 @@ class Service {
      * 구매 갯수 만큼 로또 번호를 생성해 리턴하는 함수
      * */
     fun getLottoNumbers(countOfLotto: Int): MutableList<Lotto> {
-        Messages.showCountOfLotto(countOfLotto)
+        View.showCountOfLotto(countOfLotto)
         val lottoNumbers: MutableList<Lotto> = mutableListOf()
         for (i in 0 until countOfLotto) {
             lottoNumbers.add(Lotto(Util.createLottoNumbers().sorted()))
         }
-        return lottoNumbers.also { Messages.showPurchasedLottoNumbers(lottoNumbers) }
+        return lottoNumbers.also { View.showPurchasedLottoNumbers(lottoNumbers) }
     }
 
     /**
      * 당첨 번호를 입력받고 예외 처리 후 리턴하는 함수
      * */
     fun getWinningNumbers(): Lotto? {
-        Messages.showInputWinningNumber()
+        View.showInputWinningNumber()
         val inputWinningNumber = Util.readLine()
         return try {
             checkInputWinningNumbers(inputWinningNumber)
@@ -60,7 +60,7 @@ class Service {
      * 보너스 번호를 입력받고 예외 처리 후 리턴하는 함수
      * */
     fun getBonusNumber(winningNumbers: Lotto): Int {
-        Messages.showInputBonusNumber()
+        View.showInputBonusNumber()
         val inputBonusNumber = Util.readLine()
         return try {
             checkInputBonusNumber(winningNumbers, inputBonusNumber)
