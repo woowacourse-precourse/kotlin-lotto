@@ -7,7 +7,7 @@ import lotto.domain.RandomGenerator
 fun main() {
     val lottos = mutableListOf<Lotto>()
     val calculator = Calculator()
-    val count = 100
+    val count = 80
     val winningNumber = listOf(11,22,24,6,35,42)
     val bonusNumber = 7
     for (index in 0 until count){
@@ -18,5 +18,5 @@ fun main() {
     println(CountRankings().countRankings(winningNumber,bonusNumber,lottos))
     val num= calculator.sumPrizes(CountRankings().countRankings(winningNumber,bonusNumber,lottos))
     println(num)
-    println("수익률:"+calculator.calculateYield(count*1000,num))
+    println("수익률:"+ String.format("%.1f",calculator.calculateYield(count*1000,num)*100)+"%")
 }

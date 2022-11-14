@@ -1,13 +1,21 @@
 ## 기능 목록
 - [ ] 구매 금액 1000원당 1개의 로또를 발행한다 - createPerThousand()
 - [x] 로또 발행 시 1 ~ 45까지 중복되지 않는 6개의 숫자를 생성한다. - RandomGenerator#createRandomNumbers()
-  - [x] 당첨 번호가 몇 개 일치하는지 확인한다. Compare#checkWinningNumbers()
-  - [x] 보너스 번호가 일치하는지 확인한다. Compare#checkBonusNumber()
-- [x] 번호 일치 개수로 몇 등 인지 확인한다. Ranking#checkRanking()
-- [x] 각 등수가 몇 개 인지 확인한다. CountRankings#countRankings()
-  - [x] 총 당첨 금액을 계산한다. Calculator#sumPrizes()
-  - - [x] 등수에 따른 당첨 금액을 반환한다. Calculator#prizeMoney()
-  - [ ] 구매 금액과 총 당첨 금액을 비교하여 수익률을 계산한다. Calculator#calculateYield()
+  - [x] 당첨 번호가 몇 개 일치하는지 확인한다. - Compare#checkWinningNumbers()
+  - [x] 보너스 번호가 일치하는지 확인한다. - Compare#checkBonusNumber()
+- [x] 번호 일치 개수로 몇 등 인지 확인한다. - Ranking#checkRanking()
+- [x] 각 등수가 몇 개 인지 확인한다. - CountRankings#countRankings()
+  - [x] 총 당첨 금액을 계산한다. - Calculator#sumPrizes()
+  - [x] 등수에 따른 당첨 금액을 반환한다. - Calculator#prizeMoney()
+  - [x] 구매 금액과 총 당첨 금액을 비교하여 수익률을 계산한다. - Calculator#calculateYield()
+
+## 입춢력 목록
+- [ ] 구입금액 입력 받기 InputUi#inputMoney()
+- [ ] 당첨 번호 입력 받기 InputUi#inputWinningNumbers()
+- [ ] 보너스 번호 InputUi#inputBonusNumber()
+- [ ] 구매 개수 출력 PrintUi#printPurchaseNum()
+- [ ] 로또 목록 출력 PrintUi#printLottos()
+- [ ] 당첨 통계 출력 PrintUi#printWinningStats()
 
 ## 기능 요구 사항
 
