@@ -3,6 +3,14 @@ package lotto.domain
 import camp.nextstep.edu.missionutils.Randoms
 
 class LottoMarket {
+    private val lottos = mutableListOf<List<Int>>()
+
+    fun buyLottos(numberOfLotto: Long): List<List<Int>> {
+        for (index in 0 until numberOfLotto) {
+            lottos.add(createLotto())
+        }
+        return lottos.toList()
+    }
 
     private fun createLotto(): List<Int> {
         return Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, THE_NUMBER_OF_LOTTO_NUMBERS).sorted()
