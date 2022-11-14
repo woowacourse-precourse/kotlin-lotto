@@ -10,6 +10,9 @@ fun main() {
 
     val lottoLog = purchaseLotto(price)
 
+    val lottoNumber = getLottoNumber()
+
+    val bonusNumber = getBonusNumber(lottoNumber)
 }
 
 fun getMoney(): Int {
@@ -30,4 +33,16 @@ fun purchaseLotto(price: Int): ArrayList<Lotto> {
     }
 
     return lottoLog
+}
+
+fun getLottoNumber(): Lotto {
+    val lottoString = Input.getLottoNumbers()
+
+    return GenerateLotto.stringToList(lottoString)
+}
+
+fun getBonusNumber(lotto: Lotto): Int {
+    val bonusString = Input.getBonusNumber()
+
+    return GenerateLotto.bonusNumber(bonusString, lotto)
 }
