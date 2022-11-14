@@ -8,6 +8,20 @@ class Validator {
         checkMoneyValueValidation(input)
     }
 
+    fun checkWinnigNumberInput(input : String) {
+        checkInputNullValidation(input)
+        checkWinnigNumberToIntValidation(input)
+    }
+
+    fun checkWinnigNumberToIntValidation(input : String) {
+        try {
+            val nums = input.split(",")
+            nums.map { it.toInt() }
+        } catch(e : NumberFormatException) {
+            throw IllegalArgumentException(INPUT_VALUE_ERROR_MSG)
+        }
+    }
+
     fun checkInputNullValidation(input: String) {
         require(input != null) { INPUT_NULL_ERROR_MSG }
     }
