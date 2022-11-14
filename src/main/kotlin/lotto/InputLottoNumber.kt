@@ -36,14 +36,16 @@ class InputLottoNumber {
     }
 
     private fun inputBonusNumber(inputNumbers: List<String>): String {
-        val bonusNumber = Console.readLine().trim()
-        if (bonusNumber.all { it.isDigit() } &&
-            !inputNumbers.contains(bonusNumber) &&
-            bonusNumber.toInt() in Print.START_NUMBER..Print.END_NUMBER) {
+        try {
+            val bonusNumber = Console.readLine().trim()
+            require(bonusNumber.all { it.isDigit() } &&
+                    !inputNumbers.contains(bonusNumber) &&
+                    bonusNumber.toInt() in Print.START_NUMBER..Print.END_NUMBER)
             return bonusNumber
-        } else {
+        } catch (e: IllegalArgumentException) {
             throw exception(Print.ERROR_BONUS)
         }
+
     }
 
     private fun exception(error: String) = IllegalArgumentException(error)
