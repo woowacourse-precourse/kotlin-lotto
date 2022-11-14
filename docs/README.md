@@ -26,7 +26,7 @@
   - [ ] `lottoRateOfReturn` : 수익률
 
 ### `LottoLogic` _클래스_
-  - [ ] `lottoGenerator` : 로또 생성기
+  - [x] `lottoGenerator` : 로또 생성기
   - [ ] `lottoPurchaseAmount` : 로또 구입 금액
   - [ ] `lottoCreateLists` : 구입한 수만큼 로또 생성
   - [ ] `lottoMatchList` : 로또 당첨 여부  
@@ -34,7 +34,10 @@
 
 ### `LottoStats` _클래스(Enum)_
   - [ ] `lottoStats` : 당첨 통계 및 수익률
-  
+
+### `Lotto` _클래스_
+  - [ ] `lottoAnwer` : 로또 당첨 번호
+  - [ ] `lottoBouns` : 로또 보너스 번호
 ---
 ## 프로그래밍 요구 사항
   - [ ] `ApplicatinTest`의 모든 테스트가 성공하는가?
