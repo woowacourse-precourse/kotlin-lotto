@@ -1,19 +1,15 @@
 package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.controller.LottoController.Companion.ERROR_MESSAGE
+import lotto.utils.Constants.INPUT_BONUS_NUMBER_TEXT
+import lotto.utils.Constants.INPUT_PURCHASE_PRIZE_TEXT
+import lotto.utils.Constants.INPUT_WINNING_NUMBER_TEXT
 
 object InputView {
 
-    private const val INPUT_PURCHASE_PRIZE_TEXT = "구매금액을 입력해 주세요."
-    private const val INPUT_WINNING_NUMBER_TEXT = "당첨 번호를 입력해 주세요."
-    private const val INPUT_BONUS_NUMBER_TEXT = "보너스 번호를 입력해 주세요."
-
-    fun inputMoney(): Int {
+    fun inputMoney(): String {
         println(INPUT_PURCHASE_PRIZE_TEXT)
-        val userInput = Console.readLine()!!
-        validatePurchaseNum(userInput)
-        return userInput.toInt()
+        return Console.readLine()
     }
 
     fun inputWinningNum(): String {
@@ -21,29 +17,9 @@ object InputView {
         return Console.readLine()
     }
 
-    fun inputBonusNum(): Int {
+    fun inputBonusNum(): String {
         println(INPUT_BONUS_NUMBER_TEXT)
-        val userInput = Console.readLine()!!
-        validateBonusNum(userInput)
-        return userInput.toInt()
-    }
-
-
-    private fun validatePurchaseNum(userInput: String) {
-        require(userInput.isNotBlank() && userInput.all { Character.isDigit(it) }) {
-            "$ERROR_MESSAGE 로또 구입 금액은 숫자로 입력해 주세요."
-        }
-        require(userInput.toInt() % 1000 == 0) {
-            "$ERROR_MESSAGE 1,000원 단위로 입력해 주세요."
-        }
-    }
-    
-
-    private fun validateBonusNum(userInput: String) {
-        require(userInput.isNotBlank() &&
-                userInput.all { Character.isDigit(it) }) {
-            "$ERROR_MESSAGE 보너스 번호는 숫자로 입력해 주세요."
-        }
+        return Console.readLine()
     }
 
 }
