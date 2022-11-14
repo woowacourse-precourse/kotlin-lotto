@@ -27,6 +27,10 @@ fun main() {
     val bonusNum = cs.readLine()
     validateBonusNum(bonusNum)
 
+    val lottoResult = getLottoResult(winningNum, bonusNum.toInt(), purchasedLotto)
+    showWinningStatistics(lottoResult)
+    val earnedMoney = calculateEarning(lottoResult)
+    calculateEarningRate(earnedMoney, amountPaid)
 }
 
 enum class ErrorCode(val message: String) {
@@ -93,7 +97,7 @@ fun validateBonusNum(bonusNum: String) {
     }
 }
 
-fun showWinningStatistics(result: List<Int>){
+fun showWinningStatistics(result: List<Int>) {
     print("\n당첨 통계\n" +
             "---\n" +
             "3개 일치 (5,000원) - ${result[0]}개\n" +
