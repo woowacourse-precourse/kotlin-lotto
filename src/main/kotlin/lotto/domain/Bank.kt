@@ -19,4 +19,11 @@ class Bank(private val lottos: List<List<Int>>) {
         }
     }
 
+    fun getTotalIncome(): Long {
+        var totalIncome = 0L
+        for (place in winStatistic.keys) {
+            totalIncome += Win.getIncome(place) * winStatistic[place]!!
+        }
+        return totalIncome
+    }
 }
