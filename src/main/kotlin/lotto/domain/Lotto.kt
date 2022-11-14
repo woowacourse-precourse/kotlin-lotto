@@ -6,7 +6,7 @@ class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == LOTTO_NUMBER_COUNT) { ERROR_INPUT_VALUE_SIX_ONLY }
         require(numbers.toSet().size == LOTTO_NUMBER_COUNT) { ERROR_INPUT_VALUE_NO_DUPLICATES }
-        require(numbers.filter { it in LOTTO_START_NUMBER..LOTTO_END_NUMBER }.size == LOTTO_NUMBER_COUNT) {
+        require(numbers.firstOrNull { it !in LOTTO_START_NUMBER..LOTTO_END_NUMBER } == null) {
             ERROR_INPUT_VALUE_ONE_OR_FORTY_FIVE_ONLY
         }
     }
