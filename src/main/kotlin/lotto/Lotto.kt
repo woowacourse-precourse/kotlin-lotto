@@ -37,7 +37,7 @@ class Lotto(private val numbers: List<Int>) {
 
 
     private fun compareBonusNumber(bonus: String): Int {
-        if (bonus.contentEquals(numbers.toString()))
+        if (numbers.any { it == bonus.toInt() })
             return WinningGroup.SecondPlace.Winning
         return WinningGroup.ThirdPlace.Winning
     }
