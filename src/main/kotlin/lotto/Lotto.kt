@@ -6,7 +6,7 @@ class Lotto(private val numbers: List<Int>) {
         require(!numbers.map { it.toString() }.hasOverLappedNumber())
     }
 
-    fun printLottoNumbers() = println(numbers)
+    fun printLottoNumbers() = println(numbers.sorted())
 
     fun checkLotto(winningNumber: List<Int>, bonusNumber: Int): LottoPrice {
         val catchCount = numbers.filter { number -> winningNumber.contains(number) }.size
