@@ -3,6 +3,8 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 
 class User {
+
+    // 당첨번호 입력
     fun userInput() : Lotto{
         println(Lotto.INPUTWINMONEY)
         var user = Console.readLine()
@@ -16,6 +18,7 @@ class User {
         return Lotto(userInputNum.toList())
     }
 
+    // 보너스 번호 입력
     fun userBonusInput(userNum: List<Int>): Int{
         println(Lotto.INPUTBONUSNUM)
 
@@ -26,6 +29,7 @@ class User {
         return bonusNum.toInt()
     }
 
+    // 통계
     fun makeStatistics(money : Int, lottery : MutableList<MutableList<Int>>, userNum : List<Int>, bonusNum : Int){
         Lotto.SHOWSTATISTICS
 
@@ -63,6 +67,7 @@ class User {
         println("총 수익률은 $result%입니다.")
     }
 
+    // 맞춘 개수 별 금액 계산
     private fun calculateSum(winLottery: HashMap<Int, Int>, i: Int, sum: Long): Long {
         var tmpSum = sum
         if (winLottery[i] != 0) {
@@ -71,6 +76,7 @@ class User {
         return tmpSum
     }
 
+    // 맞춘 개수 카운팅
     private fun counting(lottery: MutableList<MutableList<Int>>, i: Int, userNum: List<Int>): Int {
         var cnt = 0
         for (j in 0 until 6) {
