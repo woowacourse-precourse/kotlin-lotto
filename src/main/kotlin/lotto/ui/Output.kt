@@ -2,7 +2,7 @@ package lotto.ui
 
 import lotto.Lotto
 
-object Output {
+class Output {
 
     fun printLotto(lotto: Lotto) {
         lotto.print()
@@ -25,14 +25,15 @@ object Output {
     fun printRatio(number: String) {
         println("총 수익률은 ${number}%입니다.")
     }
+
+    enum class State (val message: String) {
+        FIRST("6개 일치 (2,000,000,000원) - "),
+        SECOND("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
+        THIRD("5개 일치 (1,500,000원) - "),
+        FOURTH("4개 일치 (50,000원) - "),
+        FIFTH("3개 일치 (5,000원) - ");
+
+        fun printResult(n: Int) = message+"${n}개"
+    }
 }
 
-enum class State (val message: String) {
-    FIRST("6개 일치 (2,000,000,000원) - "),
-    SECOND("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
-    THIRD("5개 일치 (1,500,000원) - "),
-    FOURTH("4개 일치 (50,000원) - "),
-    FIFTH("3개 일치 (5,000원) - ");
-
-    fun printResult(n: Int) = message+"${n}개"
-}

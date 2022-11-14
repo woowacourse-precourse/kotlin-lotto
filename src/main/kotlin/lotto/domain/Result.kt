@@ -2,7 +2,7 @@ package lotto.domain
 
 import lotto.Lotto
 
-object Result {
+class Result {
 
     fun compare(lottoLog: ArrayList<Lotto>, lottoNumber: Lotto, bonusNumber: Int): List<Int> {
         val result = mutableListOf<Int>(0, 0, 0, 0, 0)

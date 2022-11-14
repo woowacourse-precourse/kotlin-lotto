@@ -1,6 +1,6 @@
 package lotto.domain
 
-object GetPrice {
+class GetPrice {
 
     fun getNum(strPrice: String): Int{
         isInt(strPrice)

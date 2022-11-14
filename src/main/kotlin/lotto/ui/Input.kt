@@ -2,7 +2,7 @@ package lotto.ui
 
 import camp.nextstep.edu.missionutils.Console.readLine
 
-object Input {
+class Input {
 
     fun getPrice(): String {
         println("구입금액을 입력해 주세요.")
