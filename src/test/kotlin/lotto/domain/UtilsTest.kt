@@ -22,9 +22,4 @@ class UtilsTest {
     fun `checkNull 기능 테스트`() {
         assertThat("0".toIntOrError())
     }
-
-    @Test
-    fun `checkNull 에러 테스트`() {
-        assertThrows<IllegalArgumentException> { null.toIntOrError() }
-    }
 }
