@@ -60,7 +60,7 @@ class Lotto(private var numbers: List<Int>) {
         println("보너스 번호를 입력해 주세요.")
         bonusNumber = Console.readLine().toInt()
 
-        LottoBonus(bonusNumber)
+        LottoBonus(bonusNumber, winningNumber)
 
         println()
     }
