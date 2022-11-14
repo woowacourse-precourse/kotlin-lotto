@@ -7,7 +7,7 @@ class LottoResult {
         var winCount = 0
         val commonNums = publishNums.filter { it in winNums.map { item -> item } }
         winCount = commonNums.size
-        if(publishNums.any{ it == bonusNums}) winCount += 1
+        if(winCount == 5 && publishNums.any{ it == bonusNums }) winCount += 1
         return winCount
     }
 
