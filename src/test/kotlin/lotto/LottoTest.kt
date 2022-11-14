@@ -30,7 +30,7 @@ class LottoTest {
     }
 
     @Nested
-    inner class GetPrizeTest() {
+    inner class `당첨금 계산 테스트` {
         @Test
         fun `당첨 번호와 로또번호를 비교하여 당첨금액을 계산한다`() {
             val winningNum = listOf(1, 2, 3, 4, 5, 6)
@@ -65,29 +65,33 @@ class LottoTest {
         }
     }
 
+    @Nested
+    inner class `수익률 계산 테스트` {
 
-    @Test
-    fun `구입 금액과 당첨 금액을 비교하여 수익률을 계산한다`{
-        val purchasePrize = listOf(8_000, 10_000)
-        val winningPrize = listOf(5_000, 5_000)
-        val earningRate = listOf(62.5, 50.0)
-        purchasePrize.forEachIndexed { idx, _ ->
-            assertThat(
-                calEarningRate(purchasePrize[idx], winningPrize[idx])
-            ).isEqualTo(earningRate[idx])
+        @Test
+        fun `구입 금액과 당첨 금액을 비교하여 수익률을 계산한다`{
+            val purchasePrize = listOf(8_000, 10_000)
+            val winningPrize = listOf(5_000, 5_000)
+            val earningRate = listOf(62.5, 50.0)
+            purchasePrize.forEachIndexed { idx, _ ->
+                assertThat(
+                    calEarningRate(purchasePrize[idx], winningPrize[idx])
+                ).isEqualTo(earningRate[idx])
+            }
+        }
+
+        @Test
+        fun `수익률이 정상적인 범위로 반환되는지 체크한다`{
+            val purchasePrize = listOf(8_000, 10_000)
+            val winningPrize = listOf(0, 5_000_000)
+            purchasePrize.forEachIndexed { idx, _ ->
+                val earningRate = calEarningRate(purchasePrize[idx], winningPrize[idx])
+                // 소수점 한 자리 이하인지
+                assertThat(earningRate.toString().split(".").last().length).isLessThan(1)
+                assertThat(earningRate).isGreaterThanOrEqualTo(0.0)
+            }
         }
     }
 
-    @Test
-    fun `수익률이 정상적인 범위로 반환되는지 체크한다`{
-        val purchasePrize = listOf(8_000, 10_000)
-        val winningPrize = listOf(0, 5_000_000)
-        purchasePrize.forEachIndexed { idx, _ ->
-            val earningRate = calEarningRate(purchasePrize[idx], winningPrize[idx])
-            // 소수점 한 자리 이하인지
-            assertThat(earningRate.toString().split(".").last().length).isLessThan(1)
-            assertThat(earningRate).isGreaterThanOrEqualTo(0.0)
-        }
-    }
 
 }
