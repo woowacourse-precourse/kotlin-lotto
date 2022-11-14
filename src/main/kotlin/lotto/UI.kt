@@ -1,6 +1,8 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.domain.Win
+import lotto.domain.Win.*
 
 class UI {
 
@@ -43,6 +45,17 @@ class UI {
 
     fun printRequestBonusNumber() {
         println(REQUEST_INPUT_BONUS_NUMBER)
+    }
+
+    fun printTotalWinStatistic(winStatistics: Map<Win, Int>) {
+        val totalWinList = TOTAL_WIN_STATISTIC.format(
+            winStatistics[FIFTH_PLACE],
+            winStatistics[FOURTH_PLACE],
+            winStatistics[THIRD_PLACE],
+            winStatistics[SECOND_PLACE],
+            winStatistics[FIRST_PLACE]
+        )
+        println(totalWinList)
     }
 
     companion object {
