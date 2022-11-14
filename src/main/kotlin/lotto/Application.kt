@@ -12,18 +12,25 @@ fun main() {
     // 출력 뷰
     val outputView = OutputView()
 
+    outputView.outputHowMuchBuy()
+
     // 구매 티켓 개수
     val availableTickets = inputView.inputMoney()
+
+    outputView.newLine()
 
     // 구매 가능한 티켓 출력
     outputView.outputAvailableTickets(availableTickets)
 
     // 로또 숫자 출력
     outputView.outputListOfLotto(availableTickets)
-
+    outputView.newLine()
+    outputView.outputWinningNumber()
     // 담청 번호 입력
     val winningNumber = inputView.inputWinningNumber()
 
+    outputView.newLine()
+    outputView.outputBonusNumber()
     // 보너스 번호 입력
     val bonusNumber = inputView.inputBonusNumber()
 
