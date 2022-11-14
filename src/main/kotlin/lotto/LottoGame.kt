@@ -12,6 +12,11 @@ class LottoGame private constructor(){
 
     init{
         this.purchaseLotto()
+        this.showMyLotto()
+    }
+
+    private fun addLotto(){
+        this.myLotto.add(Lotto.newLotto())
     }
     private fun inputToInt(input: String): Int{
         var temp: Int
@@ -23,6 +28,7 @@ class LottoGame private constructor(){
         }
         return temp
     }
+
     private fun purchaseLotto(){
         println("구입금액을 입력해 주세요.")
         val _input: String = Console.readLine()
@@ -36,8 +42,13 @@ class LottoGame private constructor(){
         }
         this.expenditure = input
     }
-    private fun addLotto(){
-        this.myLotto.add(Lotto.newLotto())
+    private fun showMyLotto(){
+        println("${this.myLotto.size}개를 구매했습니다.")
+        if(this.myLotto.isNotEmpty()){
+            this.myLotto.forEach{
+                println(it.getter())
+            }
+        }
     }
     companion object{
         fun start(): LottoGame {
