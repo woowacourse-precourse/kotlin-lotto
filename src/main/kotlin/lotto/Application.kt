@@ -34,8 +34,10 @@ fun printLottos(table : List<List<Int>>){
 fun inputMoney() : Int{
     println("구입금액을 입력해 주세요.")
     var money = Console.readLine()
-    require(money.all{it.isDigit()}){"[ERROR] 숫자만 입력해야 합니다."}
-    require(money.toInt()%1000 == 0){"[ERROR] 금액은 1000으로 나누어 떨어져야 합니다."}
+    //require(money.all{it.isDigit()}){"[ERROR] : 숫자만 입력해야 합니다."}
+    if (!money.all{it.isDigit()})
+        throw IllegalArgumentException("[ERROR] : 숫자만 입력해야 합니다.")
+    require(money.toInt()%1000 == 0){"[ERROR] : 금액은 1000으로 나누어 떨어져야 합니다."}
 
     return money.toInt()
 }
@@ -44,8 +46,8 @@ fun inputWinNum() : List<Int> {
     var nums = (Console.readLine().split(","))
     require(nums.size == 6){"[ERROR] : 숫자가 6개가 아닙니다."}
     require(nums.distinct().size==6){"[ERROR] : 중복된 숫자가 있습니다"}
-    require(nums.all{it.all{it.isDigit()}}){"[ERROR] 숫자만 입력해야 합니다."}
-    require(nums.all{it.toInt() in 1..45}){"[ERROR] 1부터 45까지의 숫자를 입력해야 합니다."}
+    require(nums.all{it.all{it.isDigit()}}){"[ERROR] : 숫자만 입력해야 합니다."}
+    require(nums.all{it.toInt() in 1..45}){"[ERROR] : 1부터 45까지의 숫자를 입력해야 합니다."}
 
     return nums.map{it.toInt()}
 }
@@ -57,8 +59,8 @@ fun inputBonusNum(winNum:List<Int>):Int{
             remainder.remove(i.toInt())
     }
     var ret :String = Console.readLine()
-    require(ret.isNotEmpty()){"[ERROR] 값을 입력해야 합니다."}
-    require(ret.all{it.isDigit()}){"[ERROR] 숫자만 입력해야 합니다."}
+    require(ret.isNotEmpty()){"[ERROR] : 값을 입력해야 합니다."}
+    require(ret.all{it.isDigit()}){"[ERROR] : 숫자만 입력해야 합니다."}
     require(remainder.contains(ret.toInt())){"[ERROR] : 올바른 숫자가 아닙니다."}
     return ret.toInt()
 }
@@ -101,26 +103,14 @@ fun printWinRatio(winRatio:Double){
     println("총 수익률은 ${winRatio}%입니다.")
 }
 fun main() {
-    val numbers = createLottoNum()
-    var table = mutableListOf<List<Int>>()
-    var table2 = listOf<List<Int>>()
+    var table: List<List<Int>>
     val money = inputMoney()
-    var winNum :List<Int>
     var bonusNum :Int
-    table = publishLotto(money) as MutableList<List<Int>>
-    table2=listOf(listOf(8, 21, 23, 41, 42, 43),
-    listOf(3, 5, 11, 16, 32, 38),
-    listOf(7, 11, 16, 35, 36, 44),
-    listOf(1, 8, 11, 31, 41, 42),
-    listOf(13, 14, 16, 38, 42, 45),
-    listOf(7, 11, 30, 40, 42, 43),
-    listOf(2, 13, 22, 32, 38, 45),
-    listOf(1, 3, 5, 14, 22, 45))
-    printLottos(table2)
-    winNum = inputWinNum()
+    table = publishLotto(money)
+    printLottos(table)
+    var winNum :List<Int> = inputWinNum()
     bonusNum = inputBonusNum(winNum)
-    printWinningHistory(getWinningHistory(table2,winNum,bonusNum))
-    printWinRatio(getWinRatio(money,getWinningHistory(table2,winNum,bonusNum)))
-
+    printWinningHistory(getWinningHistory(table,winNum,bonusNum))
+    printWinRatio(getWinRatio(money,getWinningHistory(table,winNum,bonusNum)))
 
 }
