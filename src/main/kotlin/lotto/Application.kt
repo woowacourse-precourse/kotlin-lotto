@@ -5,10 +5,10 @@ val LOTTO_SIZE = 6
 
 fun main() {
     var buyer = Buyer()
-    var lottoCnt = buyer.getPurchaseAmount()
+    var lottoPurchaseCount = buyer.getPurchaseAmount()
 
     var seller = Seller()
-    seller.generateLotto(lottoCnt)
+    seller.generateLotto(lottoPurchaseCount)
     seller.getWinningNumber()
 
     var lotto = Lotto(Seller.winningNumber)

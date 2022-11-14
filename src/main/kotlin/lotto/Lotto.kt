@@ -1,5 +1,6 @@
 package lotto
 
+import kotlin.math.roundToInt
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6)
@@ -42,6 +43,30 @@ class Lotto(private val numbers: List<Int>) {
         }
     }
 
+    fun calcReturnRate(purchaseAmount: Int): String {
+        var totalReward = getTotalReward()
+        println("totalReward: ${totalReward}")
+        if (totalReward == 0) {
+            return "0"
+        }
+
+        var useMoney = purchaseAmount
+        println("useMoney: ${useMoney}")
+        var returnRate = ((totalReward / useMoney) * 100).toDouble()
+        println("returnRate : ${returnRate}")
+        return String.format("%,.1f",returnRate)
+    }
+
+    fun getTotalReward(): Int {
+        var rewardResult = RewardInfo.rewardResult.filterValues { it > 0 }
+        var totalReward = 0
+        for (reward in rewardResult) {
+            var rewardMoney = reward.key.rewardMoney.split(",").joinToString("").toInt()
+            totalReward +=  rewardMoney * reward.value
+        }
+        return totalReward
+    }
+
     fun showLottoResult() {
         println("\n당첨 통계")
         println("- - -")
@@ -57,5 +82,7 @@ class Lotto(private val numbers: List<Int>) {
                 println("${reward.correctNum}개 일치 (${reward.rewardMoney}원) - ${rewardCount}개")
             }
         }
+        var returnRate = calcReturnRate(Buyer.payMoney.toInt())
+        println("총 수익률은 ${returnRate}%입니다.")
     }
 }
