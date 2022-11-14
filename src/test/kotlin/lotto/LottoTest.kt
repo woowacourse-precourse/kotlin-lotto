@@ -44,8 +44,33 @@ class LottoTest {
     @Test
     fun `당첨 번호가 6자리가 아니면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
-            var lottoNumber  = mutableListOf<Int>(1,2,23,23,50,18)
+            var lottoNumber  = mutableListOf<Int>(1,2,18,23,25)
             judgment.checkWinningNumber(lottoNumber)
+        }
+    }
+
+    @Test
+    fun `당첨 번호가 1~45 사이 숫자가 아니면 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            var lottoNumber  = mutableListOf<Int>(1,2,18,23,44,50)
+            judgment.checkWinningNumber(lottoNumber)
+        }
+    }
+
+    @Test
+    fun `중복된 당첨 번호를 입력하면 예외가 발생한다`(){
+        assertThrows<IllegalArgumentException> {
+            var lottoNumber  = mutableListOf<Int>(1,2,18,23,23,40)
+            judgment.checkWinningNumber(lottoNumber)
+        }
+    }
+
+
+    @Test
+    fun `보너스 번호가 당첨 번호에 이미 있다면 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            var lottoNumber  = mutableListOf<Int>(1,2,18,23,40,45)
+            judgment.checkBonusNumber("23",lottoNumber)
         }
     }
 }

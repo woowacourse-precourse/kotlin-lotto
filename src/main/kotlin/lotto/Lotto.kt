@@ -45,15 +45,12 @@ class Lotto(private val numbers: List<Int>) {
 
     fun calcReturnRate(purchaseAmount: Int): String {
         var totalReward = getTotalReward()
-        println("totalReward: ${totalReward}")
         if (totalReward == 0) {
             return "0"
         }
 
         var useMoney = purchaseAmount
-        println("useMoney: ${useMoney}")
         var returnRate = ((totalReward / useMoney) * 100).toDouble()
-        println("returnRate : ${returnRate}")
         return String.format("%,.1f",returnRate)
     }
 
@@ -74,7 +71,6 @@ class Lotto(private val numbers: List<Int>) {
         getWinningLotto()
         for (reward in RewardInfo.rewardResult.keys) {
             var rewardCount = RewardInfo.rewardResult[reward]
-
             if (reward == Reward.Second) {
                 var count = reward.correctNum.split(" ")[0]
                 println("${count}개 일치, 보너스 볼 일치 (${reward.rewardMoney}원) - ${rewardCount}개")

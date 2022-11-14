@@ -20,7 +20,7 @@ class Judgment {
     fun checkWinningNumber(lottoNumber: MutableList<Int>): Boolean {
         var winningNumber = lottoNumber.distinct().filter { it in 1..45 }
         if (winningNumber.size != LOTTO_SIZE) {
-            throw IllegalArgumentException("[ERROR] 6개의 숫자를 입력해주세요.")
+            throw IllegalArgumentException("[ERROR] 6개의 숫자를 콤마로 구분하여 입력해주세요.")
         }
         return true
     }

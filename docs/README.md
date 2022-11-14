@@ -15,4 +15,4 @@
   - [x] 사용자가 구매한 로또와 당첨 번호를 비교하여 몇 개의 수가 일치하는지 알 수 있다. -Lotto#getMatchingNumber
   - [x] 5개가 일치했을 때 보너스 번호가 일치하는지 판단할 수 있다. -Lotto#matchBonusNumber
   - [x] 일치하는 번호 개수에 따른 당첨 내역을 알 수 있다. -Lotto#getWinningLotto
-- [ ] 로또 수익과 구매 비용을 통해 수익률을 계산할 수 있다. -Lotto#calcReturnRate
+- [x] 로또 수익과 구매 비용을 통해 수익률을 계산할 수 있다. -Lotto#calcReturnRate
