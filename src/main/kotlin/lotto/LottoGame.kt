@@ -23,10 +23,16 @@ class LottoGame {
         println()
         val count = lottos.size
         OutputView().printLottoPurchaseCount(count)
-        lottos.forEach { lotto ->
-            println(lotto.toString())
-        }
+        printLottoNumbers(0, lottos)
         println()
+    }
+
+    private tailrec fun printLottoNumbers(index: Int, lottos: List<List<Int>>) {
+        if (index == lottos.size) {
+            return
+        }
+        println(lottos[index])
+        printLottoNumbers(index + 1, lottos)
     }
 
     private fun inputLottoNumbers(): List<Int> {
