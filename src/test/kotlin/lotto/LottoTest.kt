@@ -1,12 +1,10 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.Console
-import lotto.model.Lotto
-import lotto.view.Input
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
+import lotto.controller.Lotto
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 
 class LottoTest {
@@ -45,11 +43,22 @@ class LottoTest {
 
     @Test
     fun `당첨 번호를 6개 입력 했는지 확인`() {
-        var num = listOf<String>("1","2","3","4","5")
+        var num = listOf<Int>(1,2,3,4,5)
 
         assertThrows<IllegalArgumentException> {
             check.checkListSize(num)
         }
+    }
+
+    @Test
+    fun `당첨 번호를 개수 확인`() {
+        var winning = listOf<Int>(1,2,3,4,5,6)
+        var lotto = listOf<Int>(4,5,6,7,8,9)
+
+        val lottocount = Lotto(lotto)
+        assertEquals(lottocount.countSameLotto(winning,lotto),3)
+
+
     }
 
 }

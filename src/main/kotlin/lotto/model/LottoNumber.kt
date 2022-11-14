@@ -8,7 +8,7 @@ class LottoNumber {
     var myLotto = ArrayList<List<Int>>()
 
 
-    fun noticeLottoNumber(money: String): ArrayList<List<Int>> {
+    fun getLottoNumber(money: String): ArrayList<List<Int>> {
         val count = countLotto(money)
 
         for (i in 0 until count) {
