@@ -9,9 +9,16 @@ class UserNumberPicker {
     private var _bonusNumber = 0
     val bonusNumber get() = _bonusNumber
 
-    fun userInput() {
+    fun userNumbersInput() {
         val input = Console.readLine().split(',')
+        checkNumberException(input)
+
+    }
+
+    private fun checkNumberException(input: List<String>) {
         checkNumberType(input)
+        checkNumberOverlap(input)
+        checkNumberLength(input)
     }
 
     private fun checkNumberType(input: List<String>) {
