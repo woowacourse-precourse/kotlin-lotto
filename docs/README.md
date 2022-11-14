@@ -45,6 +45,7 @@
 ### Method
 - addLotto : Lotto를 lottos에 추가하는 메소드
 - printLottos : 로또 번호 리스트를 모두 출력하는 메소드
+- matchLottos : 인자로 받은 로또 번호와 비교하여 총 등수와 일치 개수를 계산하는 메소드
 
 ## Lotto
 ### Field
@@ -53,12 +54,6 @@
 - init
 - printLotto : 로또 번호를 출력하는 메소드
 - matchLotto : 인자로 받은 로또 번호와 비교하여 몇개 일치하는지 반환하는 메소드
-
-## WinningLotto : Lotto
-### Field
-- bonusNumber
-### Method
-- init
 
 ## Error
 ### Method
