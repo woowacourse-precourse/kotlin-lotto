@@ -3,7 +3,11 @@ package lotto.view
 import camp.nextstep.edu.missionutils.Console
 import lotto.controller.LottoController.Companion.ERROR_MESSAGE
 
-class InputView {
+object InputView {
+
+    private const val INPUT_PURCHASE_PRIZE_TEXT = "구매금액을 입력해 주세요."
+    private const val INPUT_WINNING_NUMBER_TEXT = "당첨 번호를 입력해 주세요."
+    private const val INPUT_BONUS_NUMBER_TEXT = "보너스 번호를 입력해 주세요."
 
     fun inputMoney(): Int {
         println(INPUT_PURCHASE_PRIZE_TEXT)
@@ -53,12 +57,6 @@ class InputView {
                 userInput.length == 1) {
             "$ERROR_MESSAGE 보너스 번호는 한 자리 숫자로 입력해 주세요."
         }
-    }
-
-    companion object {
-        const val INPUT_PURCHASE_PRIZE_TEXT = "구매금액을 입력해 주세요."
-        const val INPUT_WINNING_NUMBER_TEXT = "당첨 번호를 입력해 주세요."
-        const val INPUT_BONUS_NUMBER_TEXT = "보너스 번호를 입력해 주세요."
     }
 
 }
