@@ -32,6 +32,13 @@ class LottoTest {
     }
 
     @Test
+    fun `로또 번호의 개수가 6개 미만이라면 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(1, 2, 3, 4, 5))
+        }
+    }
+
+    @Test
     fun `로또 구입 금액 예외`() {
         assertThrows<IllegalArgumentException> {
             Money(2200)
@@ -41,7 +48,7 @@ class LottoTest {
         }
     }
 
-    class LottoResultTest() {
+    class LottoResultTest {
         private val winningNumber = Lotto(listOf(1, 2, 3, 4, 5, 6))
         private val bonusNumber = 7
 
@@ -63,5 +70,4 @@ class LottoTest {
             assertThat(lotto.calculateWinningResult(winningNumber, bonusNumber)).isEqualTo(Rank.Fifth)
         }
     }
-
 }
