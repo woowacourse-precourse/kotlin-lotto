@@ -6,10 +6,12 @@ class ui {
     fun moneyInput() : Int{
         var money  = 0
         var control = 0
+
         try {
             println("구입금액을 입력해 주세요.")
             money = Console.readLine().toInt()
-        } catch (e : Exception){
+            MoneyTypeException(money.toString())
+        } catch (e : IllegalArgumentException){
             println("[ERROR] 올바른 입력이 아닙니다.")
             control = 1
         }
@@ -23,6 +25,7 @@ class ui {
 
         var correctNumberNew = mutableListOf<Int>()
         var correctNumberOld = Console.readLine().split(",")
+        correctNumberTypeException(correctNumberOld)
 
         for (i in 0..correctNumberOld.size-1){
             correctNumberNew.add(correctNumberOld[i].toInt())
@@ -36,6 +39,7 @@ class ui {
     fun bonusNumber() : Int {
         println("보너스 번호를 입력해 주세요.")
         var bonusNumber = Console.readLine()
+        bonusNumberTypeException(bonusNumber)
         bonusNumberRangeOverException(bonusNumber.toInt())
         return bonusNumber.toInt()
     }
@@ -90,3 +94,19 @@ fun bonusNumberRangeOverException(bonusNumber: Int){
     }
 }
 
+fun MoneyTypeException(money : String){
+    money.toIntOrNull()
+        ?: throw IllegalArgumentException("[ERROR] 올바른 입력이 아닙니다.")
+}
+
+fun correctNumberTypeException(correctNumber: List<String>){
+    for (i in correctNumber) {
+        i.toIntOrNull()
+            ?: throw IllegalArgumentException("[ERROR] 올바른 입력이 아닙니다.")
+    }
+}
+
+fun bonusNumberTypeException(bonusNumber: String){
+    bonusNumber.toIntOrNull()
+        ?: throw IllegalArgumentException("[ERROR] 올바른 입력이 아닙니다.")
+}
