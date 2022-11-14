@@ -28,6 +28,7 @@ class LottoShop(
 
     private fun getMoney() {
         guideInputMoney()
+        val userInput = input.get()
     }
 
     private fun guideInputMoney() {
