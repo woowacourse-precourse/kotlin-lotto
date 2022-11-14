@@ -41,6 +41,12 @@ class ApplicationTest : NsTest() {
             listOf(1, 3, 5, 14, 22, 45)
         )
     }
+    @Test
+    fun `기능 테스트1`() {
+        assertSimpleTest {
+            run("10000")
+        }
+    }
 
     @Test
     fun `예외 테스트`() {
