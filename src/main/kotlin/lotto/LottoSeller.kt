@@ -29,10 +29,17 @@ class LottoSeller {
     fun inputPrizeNumber(lottoWinningNumbers: ArrayList<String>): List<Int> {
         println("당첨 번호를 입력해 주세요.")
         val inputPrizeNumber = Console.readLine().split(",")
+        inputPrizeNumberException(inputPrizeNumber)
         for(i in 0 until inputPrizeNumber.size){
             lottoWinningNumbers.add(inputPrizeNumber[i])
         }
         return inputPrizeNumber.map { it.toInt() }
+    }
+
+    fun inputPrizeNumberException(inputPrizeNumber: List<String>) {
+        val distinctPrizeNumber = inputPrizeNumber.distinct()
+        if(distinctPrizeNumber.size != inputPrizeNumber.size) return throw IllegalArgumentException("[ERROR] 로또 번호에 중복된 숫자가 있습니다.")
+        if(inputPrizeNumber.size > 6) return throw IllegalArgumentException("[ERROR] 로또 번호의 개수가 6개 보다 많습니다.")
     }
 
 }
