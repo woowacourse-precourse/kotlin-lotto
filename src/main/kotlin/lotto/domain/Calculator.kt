@@ -20,4 +20,8 @@ class Calculator {
         }
         return prize
     }
+
+    fun calculateYield(purchase:Int,sumPrizes:Int):Double{
+        return sumPrizes.toDouble()/purchase
+    }
 }
