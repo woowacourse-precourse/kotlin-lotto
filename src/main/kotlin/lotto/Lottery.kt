@@ -14,22 +14,23 @@ class Lottery (
     private var winningNumber: MutableList<Int> = mutableListOf()
     private var winningResult = HashMap<String, Int>(5)
 
-
     fun start(){
-
-        setLotto(lottos, sell)
-        getWinningNumber(winningNumber)
-        var bonusNumber = getBonusNumber(winningNumber)
-        getWinningResult(lottos, winningNumber, bonusNumber, winningResult)
-        var earningRate = getEarningRate(sell, winningResult)
-        printer.printWinningResult(winningResult)
-        printer.printYieldResult(earningRate)
+        if(sell != 0){
+            setLotto(lottos, sell)
+            getWinningNumber(winningNumber)
+            var bonusNumber = getBonusNumber(winningNumber)
+            getWinningResult(lottos, winningNumber, bonusNumber, winningResult)
+            var earningRate = getEarningRate(sell, winningResult)
+            printer.printWinningResult(winningResult)
+            printer.printYieldResult(earningRate)
+        }
     }
 
-    private fun getSellLottoCount() : Int {
+    private fun getSellLottoCount() : Int{
 
         printer.printGetPurchaseAmountMessage()
 
+        var lottoAmount = 0
         val input = readLine()!!
 
         try {
@@ -37,14 +38,14 @@ class Lottery (
                 throw IllegalArgumentException()
             }
             else {
-                val lottoAmount = input.toInt() / AMOUNT
+                lottoAmount = input.toInt() / AMOUNT
                 println("\n${lottoAmount}개를 구매했습니다.")
-                return lottoAmount
             }
         } catch (e: IllegalArgumentException) {
             println("[ERROR] 정확한 로또 금액을 입력해 주세요.")
-            return 0
         }
+
+        return lottoAmount
     }
 
     private fun setLotto(lottos : MutableList<Lotto>, count: Int) {
@@ -71,6 +72,7 @@ class Lottery (
             else {
                 var checkedNumber : MutableList<Int> = checkWinningNumberInputOvervalueException(checkWinningNumberInputOverlapException(input))
                 winningNumber.addAll(checkedNumber)
+                winningNumber.sort()
             }
 
         } catch (e: IllegalArgumentException) {

@@ -7,9 +7,7 @@ import java.util.regex.Pattern
 import kotlin.math.*
 
 fun main() {
-
     Lottery(Printer()).start()
-
 }
 
 
