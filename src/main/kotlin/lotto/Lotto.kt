@@ -1,6 +1,6 @@
 package lotto
 
-import Util.Constants
+import util.Constants
 
 class Lotto(private val numbers: List<Int>) {
     init {

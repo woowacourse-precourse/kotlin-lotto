@@ -1,6 +1,6 @@
 package lotto
 
-import Util.Game
+import util.Game
 
 class LottoPrinter {
     fun printLotto(lotto: List<List<Int>>) {

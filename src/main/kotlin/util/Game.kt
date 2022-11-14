@@ -1,4 +1,4 @@
-package Util
+package util
 
 enum class Game(val message: String) {
     USER_INPUT("구입금액을 입력해 주세요."),

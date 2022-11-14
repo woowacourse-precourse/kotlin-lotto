@@ -1,6 +1,13 @@
 package lotto
 
-import Util.Constants
+import util.Constants
+import profit.ProfitCalculator
+import profit.ProfitPrinter
+import user.User
+import winning.BonusNumber
+import winning.WinningCalculator
+import winning.WinningNumber
+import winning.WinningPrinter
 
 fun main() {
     val money = User().getMoney()

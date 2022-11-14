@@ -1,7 +1,7 @@
-package lotto
+package profit
 
-import Util.Constants
-import Util.Ranking
+import util.Constants
+import util.Ranking
 
 class ProfitCalculator {
     fun calcRateOfProfit(winningList: List<Int>, money: Int): Double {

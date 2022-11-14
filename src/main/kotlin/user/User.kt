@@ -1,8 +1,8 @@
-package lotto
+package user
 
-import Util.Constants
-import Util.Error
-import Util.Game
+import util.Constants
+import util.Game
+import util.Error
 
 class User {
     fun getMoney(): Int {

@@ -1,4 +1,4 @@
-package Util
+package util
 
 enum class Ranking(val ranking: Int, val match: Int, val profit: Int) {
     FIRST(1, 6, 2_000_000_000),

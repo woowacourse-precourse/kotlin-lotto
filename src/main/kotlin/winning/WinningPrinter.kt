@@ -1,7 +1,7 @@
-package lotto
+package winning
 
-import Util.Game
-import Util.Ranking
+import util.Game
+import util.Ranking
 
 class WinningPrinter(private val winningList: List<Int>) {
     fun printWinning() {

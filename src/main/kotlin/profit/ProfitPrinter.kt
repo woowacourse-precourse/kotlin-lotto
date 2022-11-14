@@ -1,6 +1,6 @@
-package lotto
+package profit
 
-import Util.Game
+import util.Game
 
 class ProfitPrinter {
     fun printProfit(rateOfProfit: Double) {

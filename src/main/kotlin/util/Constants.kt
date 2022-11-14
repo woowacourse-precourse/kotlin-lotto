@@ -1,4 +1,4 @@
-package Util
+package util
 
 enum class Constants(val constant: Int) {
     ZERO(0),

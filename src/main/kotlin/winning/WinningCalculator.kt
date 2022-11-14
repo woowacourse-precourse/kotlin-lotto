@@ -1,7 +1,8 @@
-package lotto
+package winning
 
-import Util.Constants
-import Util.Ranking
+import util.Constants
+import util.Ranking
+import lotto.Lotto
 
 class WinningCalculator() {
 

@@ -1,6 +1,6 @@
 package lotto
 
-import Util.Constants
+import util.Constants
 import camp.nextstep.edu.missionutils.Randoms
 
 class LottoGenerator {

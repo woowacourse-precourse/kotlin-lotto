@@ -1,4 +1,4 @@
-package Util
+package util
 
 enum class Error(val message: String) {
     NUMBER_FORMAT_ERROR("[ERROR] 숫자 형식으로 입력해야 합니다."),
