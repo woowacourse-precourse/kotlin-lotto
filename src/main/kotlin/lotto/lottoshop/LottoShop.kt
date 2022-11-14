@@ -7,9 +7,7 @@ class LottoShop() {
 
     fun getValidatePurchaseAmount(purchaseAmount: String): Int {
         if (!isInputTypeNumber(purchaseAmount)) printErrorMessage(PURCHASE_AMOUNT_INPUT_TYPE_ERROR)
-        else {
-            val processedPurchaseAmount = convertToInt(purchaseAmount)
-        }
+        val processedPurchaseAmount = convertToInt(purchaseAmount)
     }
 
     fun getValidateMainLottoNumbers(mainLottoNumbers: List<String>): List<Int> {
