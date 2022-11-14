@@ -25,7 +25,7 @@ fun main() {
 }
 private fun getSellLottoCount() : Int {
 
-    println("구입금액을 입력해 주세요.")
+    // println("구입금액을 입력해 주세요.")
 
     val input = readLine()!!
 
@@ -53,7 +53,7 @@ private fun setLotto(lottos : MutableList<Lotto>, count: Int) {
 // 로또 번호 오름차순
 private fun getWinningNumber(winningNumber : MutableList<Int>){
 
-    println("\n당첨 번호를 입력해 주세요.")
+    // println("\n당첨 번호를 입력해 주세요.")
 
     val input = readLine()!!
 
@@ -100,7 +100,7 @@ private fun checkWinningNumberInputOvervalueException(input : MutableSet<String>
 // 예외처리 리팩토링 필요
 private fun getBonusNumber(winningNumber: MutableList<Int>) : Int {
 
-    println("\n보너스 번호를 입력해 주세요.")
+    //println("\n보너스 번호를 입력해 주세요.")
 
     val input = readLine()!!
 
@@ -171,7 +171,7 @@ private fun roundDigit(num : Double, digits : Int) : Double {
 }
 
 private fun printWinningResult(winningResult: HashMap<String, Int>){
-    println("\n당첨 통계\n---")
+    // println("\n당첨 통계\n---")
     println("3개 일치 (5,000원) - ${winningResult.getValue("threeWin")}개")
     println("4개 일치 (50,000원) - ${winningResult.getValue("fourWin")}개")
     println("5개 일치 (1,500,000원) - ${winningResult.getValue("fiveWin")}개")
