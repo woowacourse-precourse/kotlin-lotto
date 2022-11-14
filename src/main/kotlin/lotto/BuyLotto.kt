@@ -22,6 +22,8 @@ class BuyLotto() {
 
     fun moneyToLotto(money: Int) = money / 1000
 
+    fun printBuyLotto(count: Int) = println("${count}를 구매했습니다.")
+
     private fun checkInputType(input: String) {
         try {
             input.toInt()
