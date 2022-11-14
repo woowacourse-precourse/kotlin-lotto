@@ -5,7 +5,8 @@
   - [x] 보너스 번호가 일치하는지 확인한다. Compare#checkBonusNumber()
 - [x] 번호 일치 개수로 몇 등 인지 확인한다. Ranking#checkRanking()
 - [x] 각 등수가 몇 개 인지 확인한다. CountRankings#countRankings()
-  - [ ] 총 당첨 금액을 계산한다. Calculator#sumPrizes()
+  - [x] 총 당첨 금액을 계산한다. Calculator#sumPrizes()
+  - - [x] 등수에 따른 당첨 금액을 반환한다. Calculator#prizeMoney()
   - [ ] 구매 금액과 총 당첨 금액을 비교하여 수익률을 계산한다. Calculator#calculateYield()
 
 ## 기능 요구 사항

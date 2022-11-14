@@ -9,7 +9,7 @@ fun main() {
     val count = 4
     val winningNumber = listOf(11,22,24,6,35,42)
     val bonusNumber = 7
-    for (index in 0..10){
+    for (index in 0..100){
         val lotto = Lotto(RandomGenerator().createRandomNumbers())
         lottos.add(lotto)
         println(lotto.getNumbers())
