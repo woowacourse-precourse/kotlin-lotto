@@ -10,6 +10,7 @@ import org.junit.jupiter.api.assertThrows
 class WinningStatisticsTest : NsTest(){
     @Test
     fun `당첨 통계 출력 테스트`() {
+        WinningStatistics.clear()
         assertSimpleTest {
             WinningStatistics.WIN3.count++
             WinningStatistics.print(20000)
@@ -29,6 +30,7 @@ class WinningStatisticsTest : NsTest(){
 
     @Test
     fun `당첨 통계 출력 테스트2`() {
+        WinningStatistics.clear()
         assertSimpleTest {
             WinningStatistics.WIN3.count+=2
             WinningStatistics.WIN4.count++
@@ -48,6 +50,7 @@ class WinningStatisticsTest : NsTest(){
 
     @Test
     fun `수익률 음수 예외 테스트`() {
+        WinningStatistics.clear()
         assertThrows<IllegalArgumentException> {
             WinningStatistics.WIN3.count--
             WinningStatistics.print(13000)
@@ -55,6 +58,7 @@ class WinningStatisticsTest : NsTest(){
     }
     @Test
     fun `수익률 소수 자릿수 예외 테스트`() {
+        WinningStatistics.clear()
         assertThrows<IllegalArgumentException> {
             WinningStatistics.WIN3.count++
             WinningStatistics.roundUnit=100
@@ -64,6 +68,7 @@ class WinningStatisticsTest : NsTest(){
 
     @Test
     fun `당첨 개수 세기 테스트`(){
+        WinningStatistics.clear()
         LottoWin.NUM1.number=1
         LottoWin.NUM2.number=2
         LottoWin.NUM3.number=3
@@ -80,6 +85,7 @@ class WinningStatisticsTest : NsTest(){
 
     @Test
     fun `당첨 개수 세기 테스트2`(){
+        WinningStatistics.clear()
         LottoWin.NUM1.number=1
         LottoWin.NUM2.number=2
         LottoWin.NUM3.number=3
