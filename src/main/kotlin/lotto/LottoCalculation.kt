@@ -1,6 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import kotlin.math.round
 
 class LottoCalculation {
 
@@ -51,6 +52,7 @@ class LottoCalculation {
 
     fun calculatePrize(countJackpotList: List<Int>): Long {
         var prize: Long = 0
+
         prize += countJackpotList[INDEX_THREE_COINCIDENCE] * PRIZE_THREE_COINCIDENCE.toLong()
         prize += countJackpotList[INDEX_FOUR_COINCIDENCE] * PRIZE_FOUR_COINCIDENCE.toLong()
         prize += countJackpotList[INDEX_FIVE_COINCIDENCE] * PRIZE_FIVE_COINCIDENCE.toLong()
@@ -58,6 +60,10 @@ class LottoCalculation {
         prize += countJackpotList[INDEX_SIX_COINCIDENCE] * PRIZE_SIX_COINCIDENCE.toLong()
 
         return prize
+    }
+
+    fun rateOfReturn(price: Int, prize: Long): Double {
+        return round(((prize / price) * 100).toDouble()) / 100
     }
 
     fun generateRandomLotto(generateNumber: Int): List<List<Int>> {
