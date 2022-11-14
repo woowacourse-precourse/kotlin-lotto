@@ -1,11 +1,12 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 
-class LottoTest {
+class LottoTest : NsTest() {
     @Test
     fun `로또 번호의 개수가 6개가 넘어가면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
@@ -37,5 +38,15 @@ class LottoTest {
         val testLotto = lg.lottoGenerator()
         assertThat(testLotto.size == testLotto.distinct().size).isEqualTo(true)
         println(testLotto)
+    }
+
+    @Test
+    fun `구매금액 입력에 문자가 있는가` (){
+        assertThrows<IllegalArgumentException>{
+            run("ab000")
+        }
+    }
+    override fun runMain() {
+        main()
     }
 }
