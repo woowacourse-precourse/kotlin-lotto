@@ -4,7 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
 
 data class __Lotto__(val repeats: Int) {
-    var idx: MutableList<MutableList<Int>> = mutableListOf()
+    private var idx: MutableList<MutableList<Int>> = mutableListOf()
+    private var correctCount = mutableListOf<Int>(8)
 
     init {
         repeat(repeats) {
@@ -24,6 +25,12 @@ data class __Lotto__(val repeats: Int) {
         idx.forEach { Lotto(it).printLotto() }
         println("")
     }
+
+    public fun calculateCorrectCount(winningNumbers: List<Int>, bonus: Int): MutableList<Int> {
+        idx.forEach { correctCount[Lotto(it).calculateCorrectCount(winningNumbers, bonus)] += 1 }
+        return correctCount
+    }
+
 }
 
 class Lotto(private val numbers: List<Int?>) {
@@ -34,15 +41,22 @@ class Lotto(private val numbers: List<Int?>) {
         require(numbers.all { it in 1..45 }) { "[ERROR] : 1~45 사이의 숫자가 아닙니다" }
     }
 
-    fun printLotto() = println(numbers)
+    public fun printLotto() = println(numbers)
+
+    public fun calculateCorrectCount(winningNumbers: List<Int>, bonus: Int): Int {
+        var correctCount = 0
+        numbers.forEach { if (it in winningNumbers) correctCount++ }
+        if (correctCount == 5 && bonus in numbers) correctCount = 7
+        return correctCount
+    }
 }
 
 class Service() {
 
     init {
-        __Lotto__(buyLotto()).printBuyLotto()
-        getCorrectLotto()
-        getBonusLotto()
+        var lottos = __Lotto__(buyLotto())
+        lottos.printBuyLotto()
+        lottos.calculateCorrectCount(winningNumbers(), bonus())
     }
 
     public fun buyLotto(): Int {
@@ -56,19 +70,19 @@ class Service() {
         return pay / 1000
     }
 
-    public fun getCorrectLotto(): List<Int> {
+    public fun winningNumbers(): List<Int> {
         println("당첨 번호를 입력해 주세요.")
-        val correctLotto = readLine()?.split(",")?.map { it.toIntOrNull() ?: 0 } ?: listOf()
-        Lotto(correctLotto)
+        val winningNumbers = readLine()?.split(",")?.map { it.toIntOrNull() ?: 0 } ?: listOf()
+        Lotto(winningNumbers)
         println("")
-        return correctLotto
+        return winningNumbers
     }
 
-    public fun getBonusLotto(): Int {
+    public fun bonus(): Int {
         println("보너스 번호를 입력해 주세요.")
-        val bonusLotto = readLine()?.toIntOrNull() ?: 0
-        require(bonusLotto in 1..45) { "[ERROR] : 1~45 사이의 숫자가 아닙니다" }
+        val bonus = readLine()?.toIntOrNull() ?: 0
+        require(bonus in 1..45) { "[ERROR] : 1~45 사이의 숫자가 아닙니다" }
         println("")
-        return bonusLotto
+        return bonus
     }
 }
