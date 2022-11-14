@@ -12,4 +12,8 @@ class Lotto(private val numbers: List<Int>) {
     fun checkBonusNumberMatching(bonusNumber: Int): Boolean {
         return numbers.contains(bonusNumber)
     }
+
+    fun printNumbers() {
+        println(numbers)
+    }
 }
