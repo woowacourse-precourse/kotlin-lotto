@@ -7,6 +7,7 @@ class WinningTable(
 ) {
 
     val records: List<Record> = getRecords(lotteries, winning)
+    val returnOfRate: Double = calculateReturnOfRate(money, records)
 
     private fun getRecords(
         lotteries: List<Lotto>,
@@ -19,6 +20,10 @@ class WinningTable(
             .plus(LottoRank.values().map { Record(it, 0) })
             .distinctBy { it.info.rank }
             .sortedDescending()
+    }
+
+    private fun calculateReturnOfRate(money: Int, records: List<Record>): Double {
+        return records.sumOf { it.info.prize * it.count } / money.toDouble() * 100
     }
 
     data class Record(val info: LottoRank, var count: Int) : Comparable<Record> {
