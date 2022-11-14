@@ -76,3 +76,11 @@ fun inputBonus(): Int {
     val bonusNumber = readLine()
     return bonusNumber!!.toInt()
 }
+
+fun calculateSame(lottoNumber: MutableList<MutableList<Int>>, winningNumber:  List<Int>){
+    for(i:Int in lottoNumber.indices){
+        val difference = lottoNumber[i].toSet().minus(winningNumber.toSet())
+        val duplicationCount = lottoNumber.size - difference.size
+    }
+}
+
