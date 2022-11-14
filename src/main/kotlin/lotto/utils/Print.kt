@@ -1,4 +1,4 @@
-package lotto.constants
+package lotto.utils
 
 object Print {
     const val INPUT_PRICE = "구입금액을 입력해 주세요."

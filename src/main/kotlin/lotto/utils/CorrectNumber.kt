@@ -1,4 +1,4 @@
-package lotto
+package lotto.utils
 
 enum class CorrectNumber(
     private val money: Int
