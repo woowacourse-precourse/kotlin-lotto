@@ -4,7 +4,9 @@ import lotto.utils.CorrectNumber
 import lotto.utils.Print
 import lotto.view.Message
 
-class CalculateMoney(private val winLotto: MutableMap<Int, Int>) {
+class CalculateMoney(
+    private val winLotto: MutableMap<Int, Int>
+) {
     fun result(): Int = calculateMoney()
 
     private fun calculateMoney(): Int {
