@@ -14,9 +14,9 @@
    - [x] 당첨 번호 검증
    - [x] 보너스 번호 검증
 3. 당첨 검증 기능
-   - [ ] 등급별 당첨 개수 검증
+   - [x] 등급별 당첨 개수 검증
 4. 수익률 계산 기능
-   - [ ] 총 수익률 계산(자릿수까지) 검증
+   - [x] 총 수익률 계산(자릿수까지) 검증
 
 # 클래스 분리
 1. 로또 클래스(Lotto)
@@ -37,9 +37,9 @@
    - 랜덤 배열 출력 함수(printQuickPick)
    - ~~당첨 내역 출력 함수(printWinnings)~~ 당첨 내역 저장하는 함수(getWinnings)
    - ~~로또 구입 금액 입력 함수(getAmount)~~ 기능 분리로 삭제
-   - 당첨 번호 입력 함수(getLotteryNumbers)
-   - 랜덤 로또 생성 함수(getQuickPicks)
-   - 보너스 번호 입력 함수(getBounsNumber)
+   - ~~당첨 번호 입력 함수(getLotteryNumbers)~~ 기능 삭제
+   - ~~랜덤 로또 생성 함수(getQuickPicks)~~ 기능 삭제
+   - ~~보너스 번호 입력 함수(getBounsNumber)~~ 기능 삭제
    - 수익 계산 함수(getIncomeRatio)
    - 수익 출력 함수(printIncomeRatio)
 
