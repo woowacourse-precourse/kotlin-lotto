@@ -9,4 +9,6 @@ object LottoPhrases {
     const val LOTTO_NUMBER_NOT_IN_CORRECT_RANGE_ERROR = "[ERROR] 입력하신 당첨 번호가 1~45 사이 숫자가 아닙니다."
     const val BONUS_LOTTO_NUMBER_INPUT_TYPE_ERROR = "[ERROR] 입력하신 보너스 번호가 숫자가 아닙니다."
     const val DUPLICATE_LOTTO_NUMBER_ERROR = "[ERROR] 입력하신 로또 번호에 중복이 있습니다."
+
+    const val PURCHASE_AMOUNT_PHRASES = "구입금액을 입력해 주세요."
 }

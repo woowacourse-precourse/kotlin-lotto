@@ -12,8 +12,11 @@ class Customer() {
 
     companion object {
         var mainLottoNumbers = listOf<Int>()
+            private set
         var bonusLottoNumber by Delegates.notNull<Int>()
+            private set
         var purchaseAmount by Delegates.notNull<Int>()
+            private set
 
         fun updateMainLottoNumbers(mainLottoNumbers: List<Int>) {
             this.mainLottoNumbers = mainLottoNumbers
