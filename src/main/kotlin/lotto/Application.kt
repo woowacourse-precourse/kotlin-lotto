@@ -88,3 +88,13 @@ fun bonusNumInputCheck() {
         throw IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복돼서는 안됩니다.")
     }
 }
+
+fun printResult() {
+    println("당첨 통계")
+    println("---")
+    println("3개 일치 (5,000원) - %d개".format(threeWin))
+    println("4개 일치 (50,000원) - %d개".format(fourWin))
+    println("5개 일치 (1,500,000원) - %d개".format(fiveWin))
+    println("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개".format(fiveBonusWin))
+    println("6개 일치 (2,000,000,000원) - %d개".format(sixWin))
+}
