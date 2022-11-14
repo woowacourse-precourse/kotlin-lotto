@@ -1,6 +1,7 @@
 package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.domain.splitToIntList
 import lotto.domain.toIntOrError
 import lotto.resources.INPUT_BONUS_NUMBER
 import lotto.resources.INPUT_PURCHASE_AMOUNT
@@ -11,9 +12,9 @@ fun inputPurchaseAmount(): Int {
     return inputInt()
 }
 
-fun inputLottoWinningNumbers(): String {
+fun inputLottoWinningNumbers(): List<Int> {
     println(INPUT_WINNING_NUMBERS)
-    return input()
+    return input().splitToIntList()
 }
 
 fun inputBonusNumber(): Int {

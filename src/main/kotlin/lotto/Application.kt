@@ -26,7 +26,7 @@ fun purchaseTickets(amount: Int): List<Lotto> {
 }
 
 fun registerWinningLotto(): WinningLotto {
-    val winningNumbers = inputLottoWinningNumbers().splitToIntList()
+    val winningNumbers = inputLottoWinningNumbers()
     printWinningNumbers(winningNumbers)
 
     val bonusNumber = inputBonusNumber()
