@@ -4,8 +4,8 @@ import camp.nextstep.edu.missionutils.Console
 import lotto.constants.Constant
 
 object InputView {
-    fun inputMoney(): Int {
-        return Console.readLine().toInt()
+    fun inputMoney(): String {
+        return Console.readLine()
     }
 
     fun inputWinningNumber(): MutableList<Int> {
