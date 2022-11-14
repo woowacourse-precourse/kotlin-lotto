@@ -25,12 +25,12 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     fun compareBonus(lotteryNumbers: Lotto, bonusNumber: Int): Int {
-        val quickPick = lotteryNumbers.getList().toMutableList()
-        quickPick.add(bonusNumber)
+        val tmp = lotteryNumbers.getList().toMutableList()
+        tmp.add(bonusNumber)
+        val answer = tmp.toSet()
+        val quickPick = this.numbers.toSet()
 
-        val compare = quickPick.toSet()
-        val answer = this.numbers.toSet()
-        return answer.intersect(compare).size
+        return answer.intersect(quickPick).size
 
     }
 
