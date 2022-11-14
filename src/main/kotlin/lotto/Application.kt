@@ -5,5 +5,9 @@ import java.math.RoundingMode
 import java.text.DecimalFormat
 
 fun main() {
-    LottoController().play()
+    try {
+        LottoController().play()
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+    }
 }
