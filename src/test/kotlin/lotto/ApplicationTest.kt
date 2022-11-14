@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
 
@@ -43,9 +44,76 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `기능 테스트 등급별 당첨 개수 검증`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("5000", "1,2,3,4,5,6", "7")
+                assertThat(output()).contains(
+                    "5개를 구매했습니다.",
+                    "[1, 2, 3, 4, 5, 6]",
+                    "[1, 2, 3, 4, 5, 7]",
+                    "[1, 2, 3, 4, 5, 8]",
+                    "[1, 2, 3, 4, 8, 9]",
+                    "[1, 2, 3, 8, 9, 10]",
+                    "3개 일치 (5,000원) - 1개",
+                    "4개 일치 (50,000원) - 1개",
+                    "5개 일치 (1,500,000원) - 1개",
+                    "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개",
+                    "6개 일치 (2,000,000,000원) - 1개",
+                    "총 수익률은 40631100.0%입니다."
+                )
+            },
+            listOf(1, 2, 3, 4, 5, 6),
+            listOf(1, 2, 3, 4, 5, 7),
+            listOf(1, 2, 3, 4, 5, 8),
+            listOf(1, 2, 3, 4, 8, 9),
+            listOf(1, 2, 3, 8, 9, 10)
+        )
+    }
+
+    @Test
     fun `예외 테스트`() {
         assertSimpleTest {
             runException("1000j")
+            assertThat(output()).contains(ERROR_MESSAGE) }
+    }
+
+    @Test
+    fun `예외 테스트 1000 단위 오입력`() {
+        assertSimpleTest {
+            runException("10001")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `예외 테스트 문자 입력`() {
+        assertSimpleTest {
+            runException("가나rk")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `예외 테스트 보너스 번호 허용 범위 초과 입력`() {
+        assertSimpleTest {
+            runException("1000", "1,2,3,4,5,6", "0")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `예외 테스트 보너스 번호 문자 입력`() {
+        assertSimpleTest {
+            runException("1000", "1,2,3,4,5,6", "암닝")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `예외 테스트 보너스 번호 중복 입력`() {
+        assertSimpleTest {
+            runException("1000", "1,2,3,4,5,6", "1")
             assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
