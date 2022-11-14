@@ -79,6 +79,14 @@ class LottoTest {
         }
     }
 
+    @Test
+    fun `로또당첨번호_비교`() {
+        val lotto = Lotto(listOf(15, 7, 3, 24, 32, 37))
+        val winning = WinningLotto(listOf(24, 9, 37, 32, 3, 15), 7)
+        val (hitCount, isBonusHit) = winning.matches(lotto)
+        Assertions.assertThat(hitCount).isEqualTo(5)
+        Assertions.assertThat(isBonusHit).isEqualTo(true)
+    }
 
     private inline fun assertSimpleThrows(executable: () -> Unit) {
         val thrown = assertThrows<IllegalArgumentException>(executable)
