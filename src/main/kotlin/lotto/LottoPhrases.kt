@@ -11,4 +11,5 @@ object LottoPhrases {
     const val DUPLICATE_LOTTO_NUMBER_ERROR = "[ERROR] 입력하신 로또 번호에 중복이 있습니다."
 
     const val PURCHASE_AMOUNT_PHRASES = "구입금액을 입력해 주세요."
+    const val LOTTO_COUNT_PHRASES = "개를 구매했습니다."
 }
