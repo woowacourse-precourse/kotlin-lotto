@@ -5,7 +5,6 @@ import java.lang.NumberFormatException
 import kotlin.IllegalArgumentException
 
 lateinit var consumer: Consumer
-lateinit var lottoCalculator: LottoCalculator
 var programException = false
 lateinit var winningNumbers : Pair<List<Int>,Int>
 fun main() {
