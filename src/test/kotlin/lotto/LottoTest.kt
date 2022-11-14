@@ -45,4 +45,12 @@ class LottoTest {
             WinningLotto(Lotto(listOf(1, 2, 3, 4, 5, 6)), 1)
         }
     }
+
+    @Test
+    fun `로또 번호가 유효한 범위 내의 숫자가 아니라면 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(-1, 2, 3, 4, 5, 6))
+            Lotto(listOf(1, 2, 3, 4, 5, 46))
+        }
+    }
 }
