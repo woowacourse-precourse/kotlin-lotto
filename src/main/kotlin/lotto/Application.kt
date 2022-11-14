@@ -86,3 +86,35 @@ fun comparlotto2(inputlotto : List<Int>, lottonum : MutableList<MutableList<Int>
     }
     return Pair(prizemoney2, count2)
 }
+fun main() {
+    var lottonum : MutableList<MutableList<Int>> = mutableListOf()
+    var howmany   = userbuy()
+    println("${howmany}개를 구매했습니다.")
+
+    for(i : Int in 0..howmany-1 step(1)){
+        lottonum.add(getComputerInput())
+        println("${lottonum[i]}")
+    }
+    var inputlottonum = inputnum()
+    var(prizemoney2, count2) = comparlotto2(inputlottonum, lottonum)
+    var (prizemoney, count) = comparlotto(inputlottonum, lottonum)
+
+    for(i in 0 .. lottonum.size -1 step(1)) {
+        //if (inputlottonum[6] in lottonum[i] ) {
+        if (lottonum[i].contains(inputlottonum[6])) {
+           // var(prizemoney2, count2) = comparlotto2(inputlottonum, lottonum)
+            prizemoney += prizemoney2
+            count[1] += count2
+        }
+    }
+    var tmp = count[4]
+    if(count[1] > 0) count[5] -=count[1]
+    println("당첨 통계")
+    println("3개 일치 (5,000원) - ${count[3]}개")
+    println("4개 일치 (50,000원) - ${count[4]}개")
+    println("5개 일치 (1,500,000원) - ${count[5]}개")
+//    println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${count2}개")
+    println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${count[1]}개")
+    println("6개 일치 (2,000,000,000원) - ${count[6]}개")
+    println("총 수익률은 ${prizemoney / (howmany*10)}%입니다.")
+}
