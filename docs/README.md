@@ -10,13 +10,13 @@
   - [x] 구매 금액과 총 당첨 금액을 비교하여 수익률을 계산한다. - Calculator#calculateYield()
 
 ## 입춢력 목록
-- [ ] 구입금액 입력 받기 - InputUi#inputMoney()
-- [ ] 당첨 번호 입력 받기 - InputUi#inputWinningNumbers()
-- [ ] 보너스 번호 - InputUi#inputBonusNumber()
-- [ ] 구매 개수 출력 - PrintUi#printPurchaseNum()
+- [x] 구입금액 입력 받기 - InputUi#inputMoney()
+- [x] 당첨 번호 입력 받기 - InputUi#inputWinningNumbers()
+- [x] 보너스 번호 - InputUi#inputBonusNumber()
+- [x] 구매 개수 출력 - PrintUi#printPurchaseNum()
 - [ ] 로또 목록 출력 - PrintUi#printLottos()
 - [ ] 당첨 통계 출력 - PrintUi#printWinningStats()
-- [ ] 입력 요구 메세지 출력 - PrintUi#pleaseInput()
+- [x] 입력 요구 메세지 출력 - PrintUi#pleaseInput()
 
 ## 기능 요구 사항
 

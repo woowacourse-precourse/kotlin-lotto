@@ -3,7 +3,7 @@ package lotto.ui
 import camp.nextstep.edu.missionutils.Console
 
 class InputUi {
-    val printUi = PrintUi()
+    private val printUi = PrintUi()
     fun inputMoney(): Int {
         printUi.pleaseInput("구입금액을")
         return Console.readLine().toInt()
