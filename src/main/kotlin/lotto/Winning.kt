@@ -27,7 +27,20 @@ class Winning {
         return rankList
     }
 
-    fun updateRank(): HashMap<Rank, Int> {
+
+    private fun createRankCountHashMap(rankList: List<Rank>): HashMap<Rank, Int> {
+        val rankCountHashMap: HashMap<Rank, Int> = HashMap()
+
+        rankCountHashMap[Rank.FIFTH] = rankList.count { it == Rank.FIFTH }
+        rankCountHashMap[Rank.FOURTH] = rankList.count { it == Rank.FOURTH }
+        rankCountHashMap[Rank.THIRD] = rankList.count { it == Rank.THIRD }
+        rankCountHashMap[Rank.SECOND] = rankList.count { it == Rank.SECOND }
+        rankCountHashMap[Rank.FIRST] = rankList.count { it == Rank.FIRST }
+
+        return rankCountHashMap
+    }
+
+    private fun updateRank(): HashMap<Rank, Int> {
         val rankList = createRankList(0)
         val rankCountHashMap = createRankCountHashMap(rankList)
         println("\n당첨 통계\n---")
@@ -40,25 +53,37 @@ class Winning {
         return rankCountHashMap
     }
 
-    private fun createRankCountHashMap(rankList: List<Rank>): HashMap<Rank, Int> {
-
-        val rankCountHashMap: HashMap<Rank, Int> = HashMap()
-
-        rankCountHashMap[Rank.FIFTH] = rankList.count { it == Rank.FIFTH }
-        rankCountHashMap[Rank.FOURTH] = rankList.count { it == Rank.FOURTH }
-        rankCountHashMap[Rank.THIRD] = rankList.count { it == Rank.THIRD }
-        rankCountHashMap[Rank.SECOND] = rankList.count { it == Rank.SECOND }
-        rankCountHashMap[Rank.FIRST] = rankList.count { it == Rank.FIRST }
-
-        return rankCountHashMap
+    private fun updateTotalReward(): Int {
+        val rankCountHashMap = updateRank()
+        val totalReward = rankCountHashMap.map { it
+            when (it.key) {
+                Rank.FIFTH -> Rank.FIFTH.reward * it.value
+                Rank.FOURTH -> Rank.FOURTH.reward * it.value
+                Rank.THIRD -> Rank.THIRD.reward * it.value
+                Rank.SECOND -> Rank.SECOND.reward * it.value
+                else -> Rank.FIRST.reward * it.value
+            }
+        }.sum()
+        return totalReward
     }
 
-}
+    fun createYield(expense: Int) {
+        val winning = Winning()
+        val totalReward = winning.updateTotalReward()
+        val purchase = (expense).toDouble()
+        val rewardYield =  (totalReward / purchase) * PERCENTAGE
+        println("총 수익률은 %.1f%%입니다.".format(rewardYield))
+    }
 
+
+
+}
 const val NONE = 0
 const val FIVE_THOUS = 5_000
 const val FIFTY_THOUS = 50_000
 const val ONE_MILLI_FIVE_HUND_THOUS = 1_500_000
 const val THIRTY_MILLI = 30_000_000
 const val TWO_BILLI = 2_000_000_000
+
+const val PERCENTAGE = 100
 
