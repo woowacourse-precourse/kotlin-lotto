@@ -10,7 +10,8 @@ class LottoController {
 
     fun start() {
         val inputMoney = lottoView.getInputMoney()
-        val numberOfIssueLotto = numberOfLotto(inputMoney)
+        val lottoMoneyManager = LottoMoney(inputMoney)
+        val numberOfIssueLotto = lottoMoneyManager.getPurchaseLottoAmount()
         val issuedLottoList = lottoGenerator.issueLottos(numberOfIssueLotto)
         lottoView.printIssuedLottos(issuedLottoList, numberOfIssueLotto)
         val inputWinningLottoNumber = lottoView.getWinningLotto()
@@ -22,13 +23,5 @@ class LottoController {
         val lottoResult = LottoWinResult().getLottoResult(lottoRankingResultList)
         lottoView.printResult(lottoResult)
         lottoView.printYieldRate(inputMoney, lottoResult)
-    }
-
-    private fun numberOfLotto(money: Int): Int {
-        return money / PRICE_PER_LOTTO
-    }
-
-    companion object {
-        const val PRICE_PER_LOTTO = 1000
     }
 }
