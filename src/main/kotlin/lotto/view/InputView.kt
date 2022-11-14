@@ -43,7 +43,7 @@ object InputView {
     private fun validateWinningNum(userInput: String) {
         val splitedNum = userInput.split(',')
         val numRegex = Regex("[^0-9]")
-        require(userInput.isNotBlank() && splitedNum.all { numRegex.matches(it) }) {
+        require(userInput.isNotBlank() && splitedNum.joinToString("").all { it.isDigit() }) {
             "$ERROR_MESSAGE 로또 번호는 숫자로 입력해 주세요."
         }
         require(splitedNum.all { it.toInt() in 1..45 }) {
@@ -53,9 +53,8 @@ object InputView {
 
     private fun validateBonusNum(userInput: String) {
         require(userInput.isNotBlank() &&
-                userInput.all { Character.isDigit(it) } &&
-                userInput.length == 1) {
-            "$ERROR_MESSAGE 보너스 번호는 한 자리 숫자로 입력해 주세요."
+                userInput.all { Character.isDigit(it) }) {
+            "$ERROR_MESSAGE 보너스 번호는 숫자로 입력해 주세요."
         }
     }
 
