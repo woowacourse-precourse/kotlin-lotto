@@ -1,15 +1,13 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.Randoms
-import camp.nextstep.edu.missionutils.Console
-
 fun main() {
     val money = Money()
     val message = Message()
     val lottoList = LottoList()
+    val input = Input()
 
     println(Message.INPUT_MONEY_MASSAGE)
-    money.inputMoney()
+    money.money = input.inputMoney()
     if (money.money == "ERROR") {
         return
     }
@@ -18,12 +16,11 @@ fun main() {
     message.printLottoList(lottoList.getAllLottoNumber())
 
     println(Message.INPUT_WINNING_MASSAGE)
-    val winningNumber = inputWinningNumber()
-    Exceptions.checkWiningNumber(winningNumber)
+    val winningNumber = input.inputWinningNumber()
 
     println(Message.INPUT_BONUS_MASSAGE)
-    val bonus = inputBonusNumber()
-    Exceptions.checkBonus(winningNumber, bonus)
+    val bonus = input.inputBonusNumber(winningNumber)
+
 
     var winningResult = lottoList.getWinningResult(winningNumber, bonus)
     message.printStatistics(winningResult)
@@ -33,12 +30,3 @@ fun main() {
 
 }
 
-fun inputWinningNumber(): List<String> {
-    return Console.readLine()
-        .replace(" ", "")
-        .split(",")
-}
-
-fun inputBonusNumber(): String {
-    return Console.readLine().trim()
-}
