@@ -4,13 +4,14 @@ import lotto.domain.lotto.Lotto
 import lotto.domain.prize.LottoPrize
 
 class WinningLotto(private val lottoNumbers: List<Lotto>, private val bonusNumber: Int) {
-    fun countWinningLotto(otherNumbers: List<Int>): Map<Int, Int> {
+    fun countWinningLotto(otherNumbers: List<Int>): Map<LottoPrize, Int> {
         val lottoPrizes = lottoNumbers
             .map { lotto ->
                 winLotto(lotto, otherNumbers)
             }
+            .filter { lottoPrize -> lottoPrize != LottoPrize.NO_WINNING_AMOUNT }
             .groupingBy { lottoPrize ->
-                lottoPrize.winPrize()
+                lottoPrize
             }
             .eachCount()
         return lottoPrizes.mapValues { it.value }
