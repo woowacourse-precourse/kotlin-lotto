@@ -1,30 +1,37 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.Console
-
 class Money {
     var money: String = ""
 
+    enum class WinMoney(private val prize: Int){
+        FifthPlace(5000),
+        FourthPlace(50000),
+        ThirdPlace(1500000),
+        SecondPlace(30000000),
+        FirstPlace(2000000000);
+        fun getPrize(): Int {
+            return prize
+        }
+    }
 
     fun getNumberOfPurchases(): Int {
         return money.toInt() / 1000
     }
 
     fun getProfitRate(winningResult: List<Int>): Double {
-        val prize = getPrize(winningResult)
-        return roundOff(calculateProfitRate(prize))
+        val totalPrize = getTotalPrize(winningResult)
+        return roundOff(calculateProfitRate(totalPrize))
     }
 
-    private fun getPrize(winningResult: List<Int>): Int {
-        val winMoney = listOf(5000, 50000, 1500000, 30000000, 2000000000)
-        var prize = 0
-        winningResult.forEachIndexed { index, it -> prize += winMoney[index] * it }
+    private fun getTotalPrize(winningResult: List<Int>): Int {
+        var totalPrize = 0
+        winningResult.forEachIndexed { index, it -> totalPrize += WinMoney.values()[index].getPrize() * it }
 
-        return prize
+        return totalPrize
     }
 
-    private fun calculateProfitRate(prize: Int): Double {
-        return (prize / money.toDouble() * 100)
+    private fun calculateProfitRate(totalPrize: Int): Double {
+        return (totalPrize / money.toDouble() * 100)
     }
 
 
