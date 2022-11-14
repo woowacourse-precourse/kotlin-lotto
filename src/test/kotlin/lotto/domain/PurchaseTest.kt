@@ -31,5 +31,11 @@ class PurchaseTest {
         OutputView.printLottos(lottos)
     }
 
+    @Test
+    fun `랜덤 로또 번호 생성 테스트`() {
+        val lottos = Purchase().createLottos(1)
+        OutputView.printLottos(lottos)
+    }
+
 
 }
