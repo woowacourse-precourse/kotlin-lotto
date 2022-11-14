@@ -22,6 +22,7 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    // TODO: printLotto Test
     @Test
     fun `1등 당첨 번호와 비교`() {
         val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
