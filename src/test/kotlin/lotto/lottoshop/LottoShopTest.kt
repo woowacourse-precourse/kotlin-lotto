@@ -109,4 +109,48 @@ class LottoShopTest {
             }
         }
     }
+
+    @Nested
+    inner class TestBonusLottoNumber {
+        @Test
+        fun `로또 보너스 번호 테스트 정상`() {
+            val input = "1"
+            assertThat(lottoShop.getValidateBonusLottoNumber(input)).isEqualTo(1)
+        }
+
+        @Test
+        fun `로또 보너스번호 테스트 1~45범위 아닌 번호 포함`() {
+            assertThrows<IllegalArgumentException> {
+                lottoShop.getValidateBonusLottoNumber("67")
+            }
+        }
+
+        @Test
+        fun `로또 보너스번호 테스트 1~45범위 아닌 번호 포함(음수 포함)`() {
+            assertThrows<IllegalArgumentException> {
+                lottoShop.getValidateBonusLottoNumber("-1")
+            }
+        }
+
+        @Test
+        fun `로또 보너스번호 테스트 알파벳인경우`() {
+            assertThrows<IllegalArgumentException> {
+                lottoShop.getValidateBonusLottoNumber("abc")
+            }
+        }
+
+        @Test
+        fun `로또 보너스번호 테스트 한글인경우`() {
+            assertThrows<IllegalArgumentException> {
+                lottoShop.getValidateBonusLottoNumber("ㅁ")
+            }
+        }
+
+        @Test
+        fun `로또 당첨번호 테스트 기호인경우`() {
+            assertThrows<IllegalArgumentException> {
+                lottoShop.getValidateBonusLottoNumber("-")
+            }
+        }
+    }
 }
