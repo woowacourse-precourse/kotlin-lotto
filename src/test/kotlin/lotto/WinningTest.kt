@@ -25,7 +25,15 @@ class WinningTest {
         assertRank(5, Rank.THIRD)
     }
 
+    @Test
+    fun `번호가 6개 일치할 때 FIRST 반환`() {
+        assertRank(6, Rank.FIRST)
+    }
 
+    @Test
+    fun `번호 5개, 보너스 번호 일치할 때 THIRD 반환`() {
+        assertRank(7, Rank.SECOND)
+    }
 
 
     private fun assertRank(matchCount: Int, expectedRank: Rank) {
