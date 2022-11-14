@@ -11,4 +11,9 @@ class Judgement {
         }
         return result
     }
+
+    // 로또 번호에 보너스 번호가 포함되어 있는지 검사한다.
+    fun checkBonusBall(lottoNumber: List<Int>, bonusNumber: Int): Boolean {
+        return lottoNumber.contains(bonusNumber)
+    }
 }
