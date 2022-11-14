@@ -36,5 +36,5 @@
 - [ ] priceToCount() : 지불된 가격에 맞추어 발급할 로또 개수를 계산한다.
 - [ ] matchJackpot: 당첨 종류와 그에 따른 당첨 금액을 계산한다.
 - [ ] rateOfReturn() : 지불 금액과 당첨 금액을 활용해 수익률을 계산한다.
-- [ ] generateRandomLotto() : 로또 번호들을 발행한다.
+- [x] generateRandomLotto() : 로또 번호들을 발행한다.
  
