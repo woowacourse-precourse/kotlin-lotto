@@ -18,6 +18,7 @@ class Broadcast() {
         winLotto(lottery)
         bonusCount = bonusWinningNumber(lottery, bonusNumber)
         winLottery[5] = winLottery[5] - bonusCount
+        statistics(winLottery, bonusCount)
     }
 
     private fun winningLotto(): List<Int> {
@@ -63,6 +64,16 @@ class Broadcast() {
             if (lottery.contains(it)) winningNumberCounter++
         }
         return winningNumberCounter
+    }
+
+    fun statistics(winningNumber: List<Int>, bonusNumber: Int) {
+        println("당첨 통계")
+        println("---")
+        println("3개 일치 (5,000원) - ${winningNumber[3]}개")
+        println("4개 일치 (50,000원) - ${winningNumber[4]}개")
+        println("5개 일치 (1,500,000원) - ${winningNumber[5]}개")
+        println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${bonusNumber}개")
+        println("6개 일치 (2,000,000,000원) - ${winningNumber[6]}개")
     }
 
 }
