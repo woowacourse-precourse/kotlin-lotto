@@ -8,4 +8,11 @@ class Lotto(private val numbers: List<Int>) {
     fun getLottoNumber(numberIndex: Int): Int {
         return numbers[numberIndex]
     }
+
+    fun doMatchCheck(targetNumber: Int): Boolean {
+        if (numbers.contains(targetNumber)) {
+            return true
+        }
+        return false
+    }
 }
