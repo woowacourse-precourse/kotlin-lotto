@@ -10,7 +10,7 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     fun printLottoWinNum() {
-        println(numbers.joinToString(", ", "[", "]"))
+        println(numbers.sorted().joinToString(", ", "[", "]"))
     }
 
     fun calcWin(lottoWinNums: LottoWinNums): Int {
