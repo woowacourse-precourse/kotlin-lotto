@@ -59,6 +59,7 @@ fun checkWinningNumberThrowException(userInput: String) {
     throwWinningNumberFormException(userInput)
     throwLottoSizeException(userInput)
     throwLottoNumberRangeException(userInput)
+    throwLottoNumberDuplicationException(userInput)
 }
 
 fun throwWinningNumberFormException(userInput: String) {
@@ -85,6 +86,15 @@ fun throwLottoNumberRangeException(userInput: String) {
             println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
             throw IllegalArgumentException()
         }
+    }
+}
+
+fun throwLottoNumberDuplicationException(userInput: String) {
+    val numbers = userInput.split(',').map { it.toInt() }
+    val distinctNumbers = numbers.distinct()
+    if(numbers.size != distinctNumbers.size) {
+        println("[ERROR] 로또 번호는 중복이 불가능 합니다.")
+        throw IllegalArgumentException()
     }
 }
 
