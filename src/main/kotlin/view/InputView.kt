@@ -21,6 +21,9 @@ class InputView {
         throw IllegalArgumentException("$ERROR_MESSAGE_BUY_TICKET 입력 값: $money")
     }
 
+    // 당첨 번호 입력
+    fun inputWinningNumber(){
 
+    }
 
 }
