@@ -1,5 +1,6 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 class LottoSeller {
@@ -23,6 +24,15 @@ class LottoSeller {
             saveLottoNumbers.add(Lotto(randomLottoNumbers))
         }
         return saveLottoNumbers
+    }
+
+    fun inputPrizeNumber(lottoWinningNumbers: ArrayList<String>): List<Int> {
+        println("당첨 번호를 입력해 주세요.")
+        val inputPrizeNumber = Console.readLine().split(",")
+        for(i in 0 until inputPrizeNumber.size){
+            lottoWinningNumbers.add(inputPrizeNumber[i])
+        }
+        return inputPrizeNumber.map { it.toInt() }
     }
 
 }
