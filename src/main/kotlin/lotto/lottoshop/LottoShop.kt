@@ -1,10 +1,13 @@
 package lotto.lottoshop
 
+import lotto.LottoPhrases.LOTTO_NUMBER_NOT_IN_CORRECT_RANGE_ERROR
 import lotto.LottoPhrases.MAIN_LOTTO_NUMBER_INPUT_SIZE_ERROR
 import lotto.LottoPhrases.MAIN_LOTTO_NUMBER_INPUT_TYPE_ERROR
 import lotto.LottoPhrases.PURCHASE_AMOUNT_INPUT_TYPE_ERROR
 import lotto.LottoPhrases.PURCHASE_AMOUNT_MINIMUM_ERROR
 import lotto.LottoPhrases.PURCHASE_AMOUNT_UNIT_ERROR
+import lotto.LottoRule.LOTTO_NUMBER_RANGE_END
+import lotto.LottoRule.LOTTO_NUMBER_RANGE_START
 import lotto.LottoRule.LOTTO_SIZE
 import java.util.regex.Pattern
 
@@ -30,6 +33,8 @@ class LottoShop() {
         if (!isInputTypeNumber(mainLottoNumbers)) printErrorMessage(MAIN_LOTTO_NUMBER_INPUT_TYPE_ERROR)
         val processedMainLottoNumbers = convertToInt(mainLottoNumbers)
         checkCorrectSizeMainLottoNumbers(processedMainLottoNumbers)
+        for (mainLottoNumber in processedMainLottoNumbers) checkCorrectNumberRange(mainLottoNumber)
+        return processedMainLottoNumbers
     }
 
     private fun isInputTypeNumber(input: List<String>): Boolean {
@@ -58,5 +63,11 @@ class LottoShop() {
     private fun printErrorMessage(errorMessage: String) {
         println(errorMessage)
         throw IllegalArgumentException(errorMessage)
+    }
+
+    private fun checkCorrectNumberRange(lottoNumber: Int) {
+        if (lottoNumber !in LOTTO_NUMBER_RANGE_START..LOTTO_NUMBER_RANGE_END) printErrorMessage(
+            LOTTO_NUMBER_NOT_IN_CORRECT_RANGE_ERROR
+        )
     }
 }
