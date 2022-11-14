@@ -16,4 +16,12 @@ object ErrorMessages {
 
         override fun toString(): String = message.applyPrefix()
     }
+
+    enum class WinningLottoEnum(private val message: String) {
+
+        NotDuplicated("중복된 숫자가 있으면 안됩니다."),
+        OutOfRangeNumbers("${Lotto.Range} 범위 내의 숫자여야 합니다."),;
+
+        override fun toString(): String = message.applyPrefix()
+    }
 }
