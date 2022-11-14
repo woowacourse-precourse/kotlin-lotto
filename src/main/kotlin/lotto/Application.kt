@@ -81,37 +81,8 @@ fun throwWinningNumberFormException(userInput: String) {
 fun generateBonusNumber(winningNumbers: Lotto): Int {
     println("보너스 번호를 입력해 주세요.")
     val userInput = Console.readLine()
-    checkBonusNumberThrowException(userInput, winningNumbers)
-    return userInput.toInt()
-}
-
-fun checkBonusNumberThrowException(userInput: String, winningNumbers: Lotto) {
-    throwBonusNumberFormException(userInput)
-    throwBonusNumberRangeException(userInput)
-    throwBonusNumberDuplicationException(userInput, winningNumbers)
-}
-
-fun throwBonusNumberFormException(number: String) {
-    number.forEach { char ->
-        if (char !in '0'..'9') {
-            println("[ERROR] 보너스 번호는 숫자만 입력 해야 합니다.")
-            throw IllegalArgumentException()
-        }
-    }
-}
-
-fun throwBonusNumberRangeException(number: String) {
-    if (number in "1".."45") {
-        println("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.")
-        throw IllegalArgumentException()
-    }
-}
-
-fun throwBonusNumberDuplicationException(number: String, winningNumbers: Lotto) {
-    if (winningNumbers.getNumbers().contains(number.toInt())) {
-        println("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.")
-        throw IllegalArgumentException()
-    }
+    val bonusNumber = BonusNumber(userInput, winningNumbers)
+    return bonusNumber.getBonusNumber()
 }
 
 fun generateLotto(): Lotto {
