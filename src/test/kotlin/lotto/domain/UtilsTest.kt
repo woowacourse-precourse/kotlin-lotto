@@ -6,20 +6,20 @@ import org.junit.jupiter.api.assertThrows
 
 class UtilsTest {
     @Test
-    fun `splitToIntList 기능 테스트`() {
+    fun `splitToIntList 잘 작동한다`() {
         assertThat("1,2,3,4,5".splitToIntList() == listOf(1, 2, 3, 4, 5))
         assertThat("1".splitToIntList() == listOf(1))
     }
 
     @Test
-    fun `splitToIntList separator 이외에 숫자가 없으면 에러를 발생`() {
+    fun `숫자가 아니면 에러발생`() {
         assertThrows<IllegalArgumentException> {
             "1,2,3,4,a".splitToIntList()
         }
     }
 
     @Test
-    fun `checkNull 기능 테스트`() {
+    fun `checkNull 정상 작동 확인`() {
         assertThat("0".toIntOrError())
     }
 }
