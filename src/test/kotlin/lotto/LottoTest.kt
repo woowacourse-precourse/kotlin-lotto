@@ -1,6 +1,7 @@
 package lotto
 
 import lotto.data.Lotto
+import lotto.data.WinningLotto
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -73,13 +74,11 @@ class LottoTest {
 
     @Test
     fun `당첨번호_중복보너스숫자_에러`() {
-        TODO()
+        assertSimpleThrows {
+            WinningLotto(listOf(1, 2, 3, 4, 5, 6), 3)
+        }
     }
 
-    @Test
-    fun `로또당첨번호_비교`() {
-        TODO()
-    }
 
     private inline fun assertSimpleThrows(executable: () -> Unit) {
         val thrown = assertThrows<IllegalArgumentException>(executable)
