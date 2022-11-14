@@ -14,13 +14,33 @@ fun checkUserMoney(userMoney:String):Int{
         throw IllegalArgumentException()}
     return userMoney
 }
+fun bonusSame(numbers: List<Int>, bonus: Int):Int{
+    for(i in 0 until 6){
+        if(numbers[i].toInt() == bonus) return 1
+    }
+    return 0
+}
 
+fun checkGrade(numbers:List<Int>,userNum:List<String>,bonus: Int):Int{
+    var count = 0
+    for(i in 0 until 6) {
+        if(numbers[i] == userNum[i].toInt()) count++
+    }
+    if(count==6) return 1
+    else if(count == 5){
+        if(bonusSame(numbers,bonus) == 1) return 2
+        else return 3
+    }
+    else if(count == 4) return 4
+    else if(count == 3) return 5
+    return 0
+}
 
-fun pickNum(Num:Int,userNum:List<String>){
+fun pickNum(Num:Int,userNum:List<String>,bonus:Int){
     var ok = arrayOf(0,0,0,0,0)
     for(i in 1 until Num+1){
     val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
-
+    var grade = checkGrade(numbers,userNum,bonus)
     }
 }
 
@@ -33,7 +53,8 @@ fun main() {
     val userString = Console.readLine()!!.toString()
     val userNum = userString.split(",")
     println("보너스 점수를 입력하세요")
+    var bonus = Console.readLine()!!.toInt()
 
-    pickNum(LottoNum,userNum)
+    pickNum(LottoNum,userNum,bonus)
 
 }
