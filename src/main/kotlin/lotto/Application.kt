@@ -6,17 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main() {
     val money = inputMoney()
     val lottoCount = printLottoConut(money)
-
-    var allLotto = Array<IntArray>(lottoCount) { IntArray(6) }
-
-    for (i in 0 until lottoCount) {
-        val numbers = Randoms.pickUniqueNumbersInRange(1, 20, 6)
-
-        var lotto = Lotto(numbers)
-
-        println(numbers.sorted())
-        allLotto[i] = numbers.toIntArray()
-    }
+    val allLotto = publishLotto(lottoCount)
 
     println("\n당첨 번호를 입력해 주세요.")
     var answerNum = Console.readLine().split(",")
@@ -102,4 +92,15 @@ fun printLottoConut(money: Int): Int {
     var lottoCount = money / 1000
     println("\n${lottoCount}개를 구매했습니다.")
     return lottoCount
+}
+
+fun publishLotto(lottoCount: Int): Array<IntArray> {
+    var allLotto = Array<IntArray>(lottoCount) { IntArray(6) }
+    for (i in 0 until lottoCount) {
+        val numbers = Randoms.pickUniqueNumbersInRange(1, 20, 6)
+        Lotto(numbers)
+        println(numbers.sorted())
+        allLotto[i] = numbers.toIntArray()
+    }
+    return allLotto
 }
