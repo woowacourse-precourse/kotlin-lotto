@@ -9,7 +9,7 @@ enum class Winnings {
     SECOND_PLACE {
         override val winnings = 3000000
         override fun toString(value: Int) = "5개 일치, 보너스 볼 일치 (30,000,000원) - ${value}개"
-        override fun sum(value: Int) = 3000000 * value
+        override fun sum(value: Int) = winnings * value
     },
     THIRD_PLACE {
         override val winnings = 1500000
