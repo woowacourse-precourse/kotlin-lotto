@@ -1,5 +1,6 @@
 package lotto
 
+import lotto.controller.LottoController
 import java.lang.Math.pow
 import java.math.RoundingMode
 import java.text.DecimalFormat

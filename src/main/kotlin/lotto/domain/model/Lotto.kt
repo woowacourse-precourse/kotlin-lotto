@@ -1,7 +1,7 @@
-package lotto
+package lotto.domain.model
 
 import camp.nextstep.edu.missionutils.Randoms
-import lotto.Prize.*
+import lotto.domain.model.Prize.*
 
 class Lotto(private val numbers: List<Int>) {
     init {
