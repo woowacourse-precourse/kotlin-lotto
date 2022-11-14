@@ -1,5 +1,6 @@
-package lotto
+package lotto.domain
 
+import lotto.ui.ConstMessage
 import java.text.DecimalFormat
 
 class LottoWin {

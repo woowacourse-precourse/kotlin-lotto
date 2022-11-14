@@ -1,4 +1,4 @@
-package lotto
+package lotto.ui
 
 object ConstMessage {
     //EXCEPTION

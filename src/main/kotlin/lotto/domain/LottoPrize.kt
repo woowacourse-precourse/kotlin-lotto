@@ -1,4 +1,4 @@
-package lotto
+package lotto.domain
 
 enum class LottoPrize(val matchCount : Int, val bonusBall : String, val prize : Int) {
     FIFTH(3, "",5000,),

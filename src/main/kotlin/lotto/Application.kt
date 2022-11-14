@@ -1,5 +1,9 @@
 package lotto
 
+import lotto.domain.LottoWin
+import lotto.ui.LottoBuyer
+import lotto.ui.LottoSeller
+
 fun main() {
     var lottoWinningNumbers = arrayListOf<String>()
     val lottoMoney = LottoBuyer().inputLottoPurchasePrice()//구입 금액 입력
