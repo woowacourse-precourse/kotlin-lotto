@@ -1,5 +1,12 @@
 package lotto
 
-fun main() {
-    TODO("프로그램 구현")
+fun main()  {
+    val customer = Customer()
+    try {
+        val input = customer.getInputMoney()
+    }catch (e: IllegalArgumentException){
+        println(e.message)
+        return
+    }
+
 }
