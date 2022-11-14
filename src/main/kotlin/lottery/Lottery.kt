@@ -6,18 +6,21 @@ import data.NumberRange
 import data.Price
 import data.WinningAmount
 
-class Lottery {
+class Lottery(private val purchase: Int, private val lotteryNumbers: Lotto, private val bonusNumber: Int) {
     private val winningCounter: MutableMap<String, Int> = mutableMapOf<String, Int>().withDefault { 0 }
-    lateinit var lotteryNumbers: Lotto
     private val quickPicks: MutableList<Lotto> = mutableListOf()
-    private var bonusNumber: Int = 0
-    private var purchase: Int = 0
     private var income: Double = 0.0
     private var incomeRatio: Double = 0.0
 
-    fun printQuickPick(input: String) {
-        this.purchase = input.toInt()
+    init {
+        require(purchase > 0)
+        require(bonusNumber in NumberRange.START.number..NumberRange.END.number)
         this.quickPicksGenerator()
+        this.getWinnings()
+        this.getIncomeRatio()
+    }
+
+    fun printQuickPick() {
         println("${this.quickPicks.size}개를 구매했습니다.")
 
         this.quickPicks.forEach {
@@ -36,18 +39,7 @@ class Lottery {
 
     }
 
-    fun getLotteryNumbers(input: String) {
-        val lotteryNumbers = input.split(",").map { it.toInt() }
-        this.lotteryNumbers = Lotto(lotteryNumbers)
-    }
-
-    fun getBonusNumber(bonusNumber: String) {
-        this.bonusNumber = bonusNumber.toInt()
-    }
-
     fun printWinnings() {
-        this.getWinnings()
-
         println("3개 일치 (5,000원) - ${this.winningCounter.getValue("3")}개")
         println("4개 일치 (50,000원) - ${this.winningCounter.getValue("4")}개")
         println("5개 일치 (1,500,000원) - ${this.winningCounter.getValue("5_0")}개")
@@ -73,7 +65,6 @@ class Lottery {
     }
 
     fun printIncomeRatio() {
-        this.getIncomeRatio()
         this.incomeRatio = (this.income / this.purchase) * 100
         println("총 수익률은 ${String.format("%.1f", this.incomeRatio)}%입니다.")
     }

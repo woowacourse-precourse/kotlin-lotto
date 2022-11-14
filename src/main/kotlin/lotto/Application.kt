@@ -5,71 +5,57 @@ import data.NumberRange
 import data.Price
 import lottery.Lottery
 
-fun purchaseChecker(input: String): Boolean {
+fun purchaseChecker(): Int {
+    println("구입 금액을 입력해주세요.")
+    val purchase = readLine().trim()
     try {
-        if (input.toInt() % Price.STANDARD.price != 0) {
-            println("[ERROR] ${Price.STANDARD.price}원 단위로 입력하세요.")
-            return false
-        }
-
+        if (purchase.toInt() % Price.STANDARD.price != 0)
+            throw IllegalArgumentException("[ERROR] ${Price.STANDARD.price}원 단위로 입력하세요.")
     } catch (e: NumberFormatException) {
-        println("[ERROR] 숫자가 아닙니다.")
-        return false
-    }
-    return true
-}
-
-fun lotteryChecker(input: String): Boolean {
-    val splitInput = input.split(",")
-    splitInput.forEach {
-        if (it.toIntOrNull() == null) {
-            println("[ERROR] 숫자가 아닙니다.")
-            return false
-        }
+        throw IllegalArgumentException("[ERROR] 숫자가 아닙니다.")
     }
 
-    return true
+    return purchase.toInt()
 }
 
-fun bonusChecker(input: String, lotteryNumbers: String): Boolean {
+fun lotteryChecker(): List<Int> {
+    println("당첨 번호를 입력해 주세요.")
+    val input = readLine().trim().split(",")
+    val lotteryNumbers = mutableListOf<Int>()
+    input.forEach {
+        if (it.toIntOrNull() == null)
+            throw IllegalArgumentException("[ERROR] 숫자가 아닙니다.")
+        lotteryNumbers.add(it.toInt())
+    }
+
+    return lotteryNumbers
+}
+
+fun bonusChecker(lotteryNumbers: List<Int>): Int {
+    println("보너스 번호를 입력해 주세요.")
+    val bonusNumber: Int
     try {
-        if (lotteryNumbers.split(",").contains(input)) {
-            println("[ERROR] 중복된 숫자를 입력할 수 없습니다.")
-            return false
-        }
-        val bonusNumber = input.toInt()
+        bonusNumber = readLine().trim().toInt()
+        if (lotteryNumbers.contains(bonusNumber))
+            throw IllegalArgumentException("[ERROR] 중복된 숫자를 입력할 수 없습니다.")
+
         if (bonusNumber !in NumberRange.START.number..NumberRange.END.number) {
-            println("[ERROR] ${NumberRange.START.number}와 ${NumberRange.END.number} 사이 숫자를 입력하세요.")
-            return false
+            throw IllegalArgumentException(
+                "[ERROR] ${NumberRange.START.number}와 ${NumberRange.END.number} 사이 숫자를 입력하세요.")
         }
     } catch (e: NumberFormatException) {
-        println("[ERROR] 숫자가 아닙니다.")
-        return false
+        throw IllegalArgumentException("[ERROR] 숫자가 아닙니다.")
     }
-    return true
+    return bonusNumber
 }
 
 fun main() {
-    val lotto = Lottery()
+    val purchase = purchaseChecker()
+    val lotteryNumbers = lotteryChecker()
+    val bonusNumber = bonusChecker(lotteryNumbers)
+    val lotto = Lottery(purchase, Lotto(lotteryNumbers), bonusNumber)
 
-    println("구입 금액을 입력해주세요.")
-    val purchase = readLine().trim()
-    if (!purchaseChecker(purchase))
-        return
-    lotto.printQuickPick(purchase)
-
-    println("당첨 번호를 입력해 주세요.")
-    val lotteryNumbers = readLine().trim()
-    if (!lotteryChecker(lotteryNumbers))
-        return
-    lotto.getLotteryNumbers(lotteryNumbers)
-
-    println("보너스 번호를 입력해 주세요.")
-    val bonusNumber = readLine().trim()
-    if (!bonusChecker(bonusNumber, lotteryNumbers))
-        return
-    lotto.getBonusNumber(bonusNumber)
-
+    lotto.printQuickPick()
     lotto.printWinnings()
     lotto.printIncomeRatio()
 
