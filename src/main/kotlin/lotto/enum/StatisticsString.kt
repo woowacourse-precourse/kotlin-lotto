@@ -28,4 +28,16 @@ enum class StatisticsString(val string: String) {
     };
 
     abstract fun print(number: Int = 0)
+
+    companion object{
+        fun printStatics(winningList: List<Int>, earningsRate: Int){
+            HEADER.print()
+            WINNING_FIFTH.print(winningList[0])
+            WINNING_FOURTH.print(winningList[1])
+            WINNING_THIRD.print(winningList[2])
+            WINNING_SECOND.print(winningList[3])
+            WINNING_FIRST.print(winningList[4])
+            EARNINGS_RATE.print(earningsRate)
+        }
+    }
 }
