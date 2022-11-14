@@ -37,7 +37,6 @@
 ### Method
 - calculateLottoCount : 입력받은 로또 구입 금액 -> 로또 장수 계산하는 메소드
 - calculateYield : 수익률 계산하는 메소드
-- calculateWinningStats : 발행받은 로또 번호와 당첨 번호를 비교하여 당첨 통계를 계산하는 메소드
 
 ## Lottos
 ### Field
