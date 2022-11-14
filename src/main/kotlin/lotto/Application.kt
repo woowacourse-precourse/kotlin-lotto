@@ -9,7 +9,6 @@ enum class Rank(val match:Int, val prize : Int){
     THIRD(5, 1500000),
     FOURTH(4, 50000),
     FIFTH(3, 5000),
-    MISS(0, 0)
 }
 fun createLottoNum(): List<Int> {
     return Randoms.pickUniqueNumbersInRange(1, 45, 6)
@@ -85,11 +84,11 @@ fun getWinningHistory(table: List<List<Int>>, winNum: List<Int>,bonusNum:Int) : 
     return ranks
 }
 fun printWinningHistory(ranks:Array<Int>){
-    println("3개 일치 (5,000)원 - " + ranks[3] + "개")
-    println("4개 일치 (5,0000)원 - " + ranks[4]+"개")
-    println("5개 일치 (1,500,000)원 - " + ranks[5]+"개")
-    println("5개 일치 (30,000,000)원 - " + ranks[7]+"개")
-    println("6개 일치 (2,000,000,000)원 - " + ranks[6]+"개")
+    println("3개 일치 (5,000원) - " + ranks[3] + "개")
+    println("4개 일치 (50,000원) - " + ranks[4]+ "개")
+    println("5개 일치 (1,500,000원) - " + ranks[5]+ "개")
+    println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + ranks[7]+ "개")
+    println("6개 일치 (2,000,000,000원) - " + ranks[6]+ "개")
 }
 fun main() {
     val numbers = createLottoNum()
