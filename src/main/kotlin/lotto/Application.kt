@@ -61,29 +61,29 @@ fun main() {
 //    return readLine()?.toInt()
 //}
 
-//4. 1~45까지의 숫자 중 중복되지 않는 6개의 숫자를 뽑는다
-fun getLottoNums() : List<Int> {
-    val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
-    return numbers
-}
+////4. 1~45까지의 숫자 중 중복되지 않는 6개의 숫자를 뽑는다
+//fun getLottoNums() : List<Int> {
+//    val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+//    return numbers
+//}
+//
+////3-2. 로또 발행 번호를 오름차순으로 정렬
+//fun arrangePublishNums(publishNums : List<Int>) : List<Int>{
+//    val arrangedNums = publishNums.sorted()
+//    return arrangedNums
+//}
 
-//3-2. 로또 발행 번호를 오름차순으로 정렬
-fun arrangePublishNums(publishNums : List<Int>) : List<Int>{
-    val arrangedNums = publishNums.sorted()
-    return arrangedNums
-}
-
-//6-1. 당첨 숫자를 게산하는 함수 생성
-fun getWinCount(publishNums: List<Int>, winNums : List<Int>) : Int{
-    var winCount = 0
-    val commonNums = publishNums.filter { it in winNums.map { item -> item } }
-    winCount = commonNums.size
-    return winCount
-}
-
-//7. 수익률 계산하는 함수 생성
-fun getEarningRate(inputPrice : Int, winPrice : Int) : String {
-    val earningRate = (winPrice.toDouble() / inputPrice) * 100
-    val earnRatePercent = String.format("%.2f", earningRate)
-    return earnRatePercent
-}
+////6-1. 당첨 숫자를 게산하는 함수 생성
+//fun getWinCount(publishNums: List<Int>, winNums : List<Int>) : Int{
+//    var winCount = 0
+//    val commonNums = publishNums.filter { it in winNums.map { item -> item } }
+//    winCount = commonNums.size
+//    return winCount
+//}
+//
+////7. 수익률 계산하는 함수 생성
+//fun getEarningRate(inputPrice : Int, winPrice : Int) : String {
+//    val earningRate = (winPrice.toDouble() / inputPrice) * 100
+//    val earnRatePercent = String.format("%.2f", earningRate)
+//    return earnRatePercent
+//}
