@@ -22,8 +22,8 @@ class LottoMachine(
         lotteries.forEach { lotto ->
             when (resultOfLotto(lotto)) {
                 Rating.SIX -> result[0]++
-                Rating.FIVE -> result[1]++
-                Rating.FIVE_AND_BONUS -> result[2]++
+                Rating.FIVE_AND_BONUS -> result[1]++
+                Rating.FIVE -> result[2]++
                 Rating.FOUR -> result[3]++
                 Rating.THREE -> result[4]++
                 else -> Unit
@@ -43,8 +43,8 @@ class LottoMachine(
         val result = compareNumber()
         val prize = mutableListOf(
             Rating.SIX.winningAmount,
-            Rating.FIVE.winningAmount,
             Rating.FIVE_AND_BONUS.winningAmount,
+            Rating.FIVE.winningAmount,
             Rating.FOUR.winningAmount,
             Rating.THREE.winningAmount
         )
