@@ -46,6 +46,12 @@ class LottoTest : NsTest() {
             run("ab000")
         }
     }
+    @Test
+    fun `구매금액 입력이 1,000원 이상인가` (){
+        assertThrows<IllegalArgumentException>{
+            run("500")
+        }
+    }
     override fun runMain() {
         main()
     }
