@@ -2,6 +2,7 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import message.Message
 
 fun main() {
     val money = inputMoney()
@@ -12,14 +13,6 @@ fun main() {
     val answerList = calculateLottoWin(lottoCount, allLotto, answerNum, bonusNum)
     printWinningScore(answerList)
     printWinningRate(answerList, money)
-}
-
-enum class Message(val message: String) {
-    INPUT_MONEY("구입금액을 입력해 주세요."),
-    COUNT("개를 구매했습니다."),
-    INPUT_WINNING_NUM("당첨 번호를 입력해 주세요."),
-    INPUT_BONUS_NUM("보너스 번호를 입력해 주세요."),
-    RATE("당첨 통계");
 }
 
 fun inputMoney(): Int {
