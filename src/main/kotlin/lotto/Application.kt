@@ -3,13 +3,12 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import message.Message
-import message.ScoreMessage
 
 var winnings: List<String> = listOf()
 
 fun main() {
     val money = inputMoney()
-    val lottoCount = printLottoConut(money)
+    val lottoCount = Print().printLottoConut(money)
     val allLotto = publishLotto(lottoCount)
     winnings = inputWinningNumber()
     val bonusNum = inputBonusNumber()
@@ -19,8 +18,8 @@ fun main() {
         winningCounts = Lotto(it.toList()).calculateLottoWin(lottoCount, allLotto, bonusNum)
     }
 
-    printWinningScore(winningCounts)
-    printWinningRate(winningCounts, money)
+    Print().printWinningScore(winningCounts)
+    Print().printWinningRate(winningCounts, money)
 }
 
 fun inputMoney(): Int {
@@ -40,12 +39,6 @@ fun checkInputMoneyIs1000(money: Int) {
     if ((money % 1000) != 0) {
         throw IllegalArgumentException("[ERROR] 1000원 단위의 금액을 입력해 주세요.")
     }
-}
-
-fun printLottoConut(money: Int): Int {
-    var lottoCount = money / 1000
-    println("\n${lottoCount}${Message.COUNT.message}")
-    return lottoCount
 }
 
 fun publishLotto(lottoCount: Int): Array<IntArray> {
@@ -86,21 +79,4 @@ fun checkNumberScope(num: Int) {
     if (num < 1 || num > 45) {
         throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
     }
-}
-
-fun printWinningScore(winningCounts: MutableList<Int>) {
-    println(ScoreMessage.SCORE_TITLE.message)
-    println(ScoreMessage.SCORE_LINE.message)
-    println("${ScoreMessage.SCORE_THREE.message}${winningCounts[3]}개")
-    println("${ScoreMessage.SCORE_FOUR.message}${winningCounts[4]}개")
-    println("${ScoreMessage.SCORE_FIVE.message}${winningCounts[5]}개")
-    println("${ScoreMessage.SCORE_FIVE_BONUS.message}${winningCounts[7]}개")
-    println("${ScoreMessage.SCORE_SIX.message}${winningCounts[6]}개")
-}
-
-fun printWinningRate(winningCounts: MutableList<Int>, money: Int) {
-    var totalPrice = 5000 * winningCounts[3] + 50000 * winningCounts[4] + 1500000 * winningCounts[5]
-    +2000000000 * winningCounts[6] + 30000000 * winningCounts[7]
-    var percent = totalPrice / money.toFloat() * 100
-    println("총 수익률은 " + "%.1f".format(percent) + "%입니다.")
 }
