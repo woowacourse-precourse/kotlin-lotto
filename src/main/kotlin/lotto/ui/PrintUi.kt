@@ -20,8 +20,7 @@ class PrintUi {
     }
 
     fun printWinningStats(rankingCounts:HashMap<Int,Int>){
-        println("당첨 통계")
-        println("---")
+        println("당첨 통계\n---")
         for(rank in 5..1){
             when(rank){
                 Ranks.FIRST.rank -> print("6개 일치 ")
@@ -30,8 +29,14 @@ class PrintUi {
                 Ranks.FOURTH.rank -> print("4개 일치 ")
                 Ranks.FIFTH.rank -> print("3개 일치 ")
             }
-            print("(${Calculator().prizeMoney(rank)}원) - ")
+            print("("+String.format("#,###.0")+"원) - ")
             println("${rankingCounts[rank]}개")
         }
     }
+
+    fun printYield( _yield : Double){
+        println("수익률:"+ String.format("#,###.0", _yield *100 )+"%")
+    }
+
+
 }
