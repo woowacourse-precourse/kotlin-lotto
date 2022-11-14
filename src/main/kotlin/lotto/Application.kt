@@ -34,9 +34,7 @@ fun printLottos(table : List<List<Int>>){
 fun inputMoney() : Int{
     println("구입금액을 입력해 주세요.")
     var money = Console.readLine()
-    //require(money.all{it.isDigit()}){"[ERROR] : 숫자만 입력해야 합니다."}
-    if (!money.all{it.isDigit()})
-        throw IllegalArgumentException("[ERROR] : 숫자만 입력해야 합니다.")
+    require(money.all{it.isDigit()}){"[ERROR] : 숫자만 입력해야 합니다."}
     require(money.toInt()%1000 == 0){"[ERROR] : 금액은 1000으로 나누어 떨어져야 합니다."}
 
     return money.toInt()
@@ -102,7 +100,7 @@ fun getWinRatio(money:Int,ranks: Array<Int>):Double{
 fun printWinRatio(winRatio:Double){
     println("총 수익률은 ${winRatio}%입니다.")
 }
-fun main() {
+fun gameStart(){
     var table: List<List<Int>>
     val money = inputMoney()
     var bonusNum :Int
@@ -112,5 +110,12 @@ fun main() {
     bonusNum = inputBonusNum(winNum)
     printWinningHistory(getWinningHistory(table,winNum,bonusNum))
     printWinRatio(getWinRatio(money,getWinningHistory(table,winNum,bonusNum)))
-
+}
+fun main() {
+    try {
+        gameStart()
+    }
+    catch(error:Exception){
+        println(error.message)
+    }
 }
