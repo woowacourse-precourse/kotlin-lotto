@@ -48,8 +48,10 @@ object InputExceptionHandler {
      * */
     fun checkInputWinningNumbers(inputWinningNumbers: String) {
         val winningNumbers = inputWinningNumbers.split(",")
-        if (!isNumberOfWinningNumbers(winningNumbers)
-            or !hasElementOfWinningNumbers(winningNumbers)
+        if (!isNumberOfWinningNumbers(winningNumbers)) {
+            throw IllegalArgumentException(WINNING_NUMBERS_EXCEPTION_MESSAGE)
+        }
+        if (!hasElementOfWinningNumbers(winningNumbers)
             or !isCorrectRangeOfWinningNumbers(winningNumbers)
             or !isUniqueOfWinningNumbers(winningNumbers)
         ) {
