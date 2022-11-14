@@ -15,7 +15,7 @@ class LottoRepository {
     }
 
     fun calEarningRate(purchasePrize: Money, totalPrice: Long): Double {
-        return (totalPrice / purchasePrize.getMoney() * 100.0)
+        return (totalPrice / purchasePrize.getMoney().toDouble() * 100.0)
     }
 
     fun calStatistics(winningLottery: WinningLottery, purchaseLottos: List<Lotto>): List<Rank> {
