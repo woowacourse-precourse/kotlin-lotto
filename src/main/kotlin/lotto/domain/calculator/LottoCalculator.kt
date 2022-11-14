@@ -4,6 +4,7 @@ import lotto.domain.model.statistics.WinningTotalStatistics
 import lotto.domain.model.statistics.enums.LottoWinningResult
 import lotto.domain.model.ticket.LottoTicket
 import lotto.domain.model.winning.WinningLotto
+import kotlin.math.roundToInt
 
 object LottoCalculator {
     fun getWinningTotalStatistics(lottoTicket: LottoTicket, winningLotto: WinningLotto): WinningTotalStatistics {
@@ -23,8 +24,11 @@ object LottoCalculator {
             totalProfit += lottoWinningResult.profit * ticketCount
         }
 
-        return ((totalProfit / lottoTicket.ticketMoney) * 100)
+        return roundProfitRate(((totalProfit / lottoTicket.ticketMoney) * 100))
     }
+
+    private fun roundProfitRate(profitRate: Double): Double =
+        ((profitRate * 100).roundToInt() / 100f).toDouble()
 
     private fun calculateWinningHistories(
         lottoTicket: LottoTicket,
