@@ -12,7 +12,6 @@ class Lotto(private val numbers: List<Int>) {
     fun printLotto() {
         println(numbers)
     }
-
     fun matchLotto(winningNumbers: List<Int>, bonusNumber: Int): WinningType {
         var hit = 0
         for(i in 0..5) {
