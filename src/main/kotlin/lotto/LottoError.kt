@@ -5,18 +5,18 @@ object LottoError {
     private val costValidNum = "^[0-9]+$".toRegex()
     private val validNum = "^[1-9]$|^[1-3][0-9]$|^4[0-5]$".toRegex()
 
+    fun checkIsNum(num : String){
+        if(!num.matches(costValidNum)){
+            throw IllegalArgumentException("[ERROR] 양수 형식에 맞게 입력해주세요.")
+        }
+    }
+
     fun checkMoneyError(money : String){
         if (!money.matches(costValidNum)){
             throw IllegalArgumentException("[ERROR] 숫자만 입력해주세요.")
         }
         if (money.toInt() % 1000 != 0 || money.toInt() < 1000) {
             throw IllegalArgumentException("[ERROR] 로또 1장의 가격은 1000원입니다.")
-        }
-    }
-
-    fun checkIsNum(num : String){
-        if(!num.matches(costValidNum)){
-            throw IllegalArgumentException("[ERROR] 양수 형식에 맞게 입력해주세요.")
         }
     }
 

@@ -11,6 +11,7 @@ fun main() {
         val inputLotto = user.userInput()
         val inputBonusNum = user.userBonusInput(inputLotto.getList())
 
+        user.makeStatistics(money, lottery, inputLotto.getList(), inputBonusNum)
     } catch (e : IllegalArgumentException){
         println(e.message)
     }
