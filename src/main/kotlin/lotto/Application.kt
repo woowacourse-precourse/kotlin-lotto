@@ -33,3 +33,19 @@ fun makeLottonumber(frLottonum : MutableList <Int>) : MutableList <Int> {
     frLottonum.removeAt(6)
     return (frLottonum)
 }
+
+fun checknum(inputnum : List<Int>, frLottonum : MutableList <Int>) : Int
+{
+    var checker = 0
+    for (i in 0..5 step(1))
+        for (j in 0..5 step(1)) checker += checknum02(inputnum[i], frLottonum[j])
+    return checker
+}
+fun checknum02(i : Int, j : Int) : Int
+{
+    var checker = 0
+    if (i == j){
+        checker++;
+    }
+    return checker
+}
