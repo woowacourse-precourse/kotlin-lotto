@@ -29,9 +29,5 @@ enum class LotteryResult(val correct: Int, val cost: String) {
                 else -> {throw IllegalArgumentException()}
             }
         }
-
-        fun checkBonus(correct: Int, isContainsBonus : Boolean){
-
-        }
     }
 }
