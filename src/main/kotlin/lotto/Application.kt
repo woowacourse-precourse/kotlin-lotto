@@ -13,8 +13,8 @@ fun main() {
 
 fun lotto() {
     val lottoCount = generateLottoCount()
-    val winningNumber = generateWinningNumbers()
-    val bonusNumber = inputBonusNumber()
+    val winningNumbers = generateWinningNumbers()
+    val bonusNumber = generateBonusNumber()
 }
 
 fun generateLottoCount(): Int {
@@ -69,7 +69,7 @@ fun throwWinningNumberFormException(userInput: String) {
     }
 }
 
-fun inputBonusNumber(): Int {
+fun generateBonusNumber(): Int {
     println("보너스 번호를 입력해 주세요.")
     val userInput = Console.readLine()
     return userInput.toInt()
