@@ -10,6 +10,10 @@ class Lotto(private val numbers: List<Int>) {
 
     val lottoStats = mutableListOf<Int>(0, 0, 0, 0, 0)
 
+    fun calculateProfit(money: Int, winnings: Int): Float = (winnings.toFloat() / money.toFloat())
+
+    fun printProfit(profit: Float) = println("총 수익률은 ${"%.2f".format(profit)}입니다.")
+
 
     fun printStats() = println("\n당첨 통계\n---")
 
@@ -20,7 +24,6 @@ class Lotto(private val numbers: List<Int>) {
         }
     }
 
-    fun printProfit(profit: Float) = println("총 수익률은 ${"%.2f".format(profit)}입니다.")
 
     companion object {
         const val FIVTH = "3개 일치 (5,000원) - "
