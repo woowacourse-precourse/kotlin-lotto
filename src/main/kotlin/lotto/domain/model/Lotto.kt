@@ -1,6 +1,7 @@
 package lotto.domain.model
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.controller.LottoController.Companion.ERROR_MESSAGE
 import lotto.domain.model.Prize.*
 
 class Lotto(private val numbers: List<Int>) {
@@ -33,7 +34,6 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     companion object {
-        const val ERROR_MESSAGE = "[ERROR]"
         fun newInstance(): Lotto {
             return Lotto(makeRandomNum())
         }

@@ -1,6 +1,6 @@
 package lotto.domain.model
 
-import lotto.domain.model.Lotto.Companion.ERROR_MESSAGE
+import lotto.controller.LottoController.Companion.ERROR_MESSAGE
 
 enum class Prize {
     CORRECT_THREE,
