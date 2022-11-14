@@ -5,13 +5,15 @@ import camp.nextstep.edu.missionutils.Randoms
 import message.Message
 import message.ScoreMessage
 
+var winnings: List<String> = listOf()
+
 fun main() {
     val money = inputMoney()
     val lottoCount = printLottoConut(money)
     val allLotto = publishLotto(lottoCount)
-    val winnings = inputWinningNumber()
+    winnings = inputWinningNumber()
     val bonusNum = inputBonusNumber()
-    val winningCounts = calculateLottoWin(lottoCount, allLotto, winnings, bonusNum)
+    val winningCounts = calculateLottoWin(lottoCount, allLotto, bonusNum)
     printWinningScore(winningCounts)
     printWinningRate(winningCounts, money)
 }
@@ -84,7 +86,6 @@ fun checkNumberScope(num: Int) {
 fun calculateLottoWin(
     lottoCount: Int,
     allLotto: Array<IntArray>,
-    winnings: List<String>,
     bonusNum: Int,
 ): MutableList<Int> {
     var bonusCount = 0
@@ -94,15 +95,8 @@ fun calculateLottoWin(
         val lottos = allLotto[i].toList()
         var answerCount = 0
         for (j in 0..5) {
-            val lottoNum = lottos[j]
-            for (k in 0..5) {
-                if (winnings[k].toInt() == lottoNum) {
-                    answerCount++
-                }
-                if (bonusNum == lottoNum) {
-                    bonusCount = 1
-                }
-            }
+            answerCount = compareWithLottoNum(lottos[j], bonusNum, answerCount)[0]
+            bonusCount = compareWithLottoNum(lottos[j], bonusNum, answerCount)[1]
         }
         if (answerCount != 0) {
             winningCounts[answerCount] = winningCounts[answerCount] + 1
@@ -113,6 +107,21 @@ fun calculateLottoWin(
     }
 
     return winningCounts
+}
+
+fun compareWithLottoNum(lottoNum: Int, bonusNum: Int, answerCount: Int): List<Int> {
+    var answerCount = answerCount
+    var bonusCount = 0
+
+    for (k in 0..5) {
+        if (winnings[k].toInt() == lottoNum) {
+            answerCount++
+        }
+        if (bonusNum == lottoNum) {
+            bonusCount = 1
+        }
+    }
+    return (listOf(answerCount, bonusCount))
 }
 
 fun printWinningScore(winningCounts: MutableList<Int>) {
