@@ -25,6 +25,6 @@ class Calculator {
     }
 
     fun calculateYield(purchase:Int,sumPrizes:Int):Double{
-        return sumPrizes.toDouble()/purchase
+        return sumPrizes.toDouble()/purchase * 100
     }
 }

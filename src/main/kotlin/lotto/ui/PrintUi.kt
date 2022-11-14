@@ -11,7 +11,7 @@ class PrintUi {
     }
 
     fun printPurchaseNum(count:Int){
-        println("${count}개를 구매했습니다.\n")
+        println("${count}개를 구매했습니다.")
     }
 
     fun printLottos(lottos:List<Lotto>){
@@ -37,8 +37,8 @@ class PrintUi {
     }
 
     fun printYield( yield : Double){
-        val decimal = DecimalFormat("#,###.0")
-        println("수익률:"+ decimal.format(`yield`)+"%")
+        val decimal = DecimalFormat("#,##0.0")
+        println("총 수익률은 "+ decimal.format(`yield`)+"%입니다.")
     }
 
 
