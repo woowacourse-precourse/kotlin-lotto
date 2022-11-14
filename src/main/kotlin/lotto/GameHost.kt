@@ -109,6 +109,6 @@ class GameHost(
     }
 
     private fun printEarningRate() {
-        println(EARNING_RATE + String.format("%.2f", bank.earningRate) + EARNING_RATE_END)
+        println(EARNING_RATE + String.format("%.1f", bank.earningRate) + EARNING_RATE_END)
     }
 }
