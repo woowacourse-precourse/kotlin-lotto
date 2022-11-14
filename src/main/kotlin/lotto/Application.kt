@@ -15,6 +15,7 @@ fun lottoGame() {
     val lottoCount = generateLottoCount()
     val winningNumbers = generateWinningNumbers()
     val bonusNumber = generateBonusNumber(winningNumbers)
+    val lottos = generateLottos(lottoCount)
 }
 
 fun generateLottoCount(): Int {
@@ -108,4 +109,14 @@ fun throwBonusNumberDuplicationException(number: String, winningNumbers: Lotto) 
 fun generateLotto(): Lotto {
     val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
     return Lotto(numbers)
+}
+
+fun generateLottos(lottoCount: Int): List<Lotto> {
+    val lottos = mutableListOf<Lotto>()
+    repeat(lottoCount) {
+        val lotto = generateLotto()
+        lotto.print()
+        lottos.add(lotto)
+    }
+    return lottos
 }
