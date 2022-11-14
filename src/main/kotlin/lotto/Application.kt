@@ -3,6 +3,9 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
+const val LOTTO_PRICE = 1_000
+const val PERCENT = 100
+
 fun main() {
     try {
         lottoGame()
@@ -27,7 +30,7 @@ fun generateLottoCount(): Int {
     println("구입금액을 입력해 주세요.")
     val money = Console.readLine()
     checkMoneyThrowException(money)
-    val lottoCount = money.toInt() / 1000
+    val lottoCount = money.toInt() / LOTTO_PRICE
     println("${lottoCount}개를 구매했습니다.")
     return lottoCount
 }
@@ -48,7 +51,7 @@ fun throwIsMoneyNumberException(userInput: String) {
 }
 
 fun throwMoneyUnitException(userInput: String) {
-    if (userInput.toInt() % 1000 != 0) {
+    if (userInput.toInt() % LOTTO_PRICE != 0) {
         println("[ERROR] 구입 금액은 1,000원 단위여야 합니다.")
         throw IllegalArgumentException()
     }
@@ -162,5 +165,5 @@ fun calculateEarningsRate(lottoCount: Int): Double {
     +Result.SECOND.price * Result.SECOND.count
     +Result.FIRST.price * Result.FIRST.count
 
-    return earningsRate / (lottoCount.toDouble() * 1000) * 100
+    return earningsRate / (lottoCount.toDouble() * LOTTO_PRICE) * PERCENT
 }
