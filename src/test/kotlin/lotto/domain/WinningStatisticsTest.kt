@@ -1,12 +1,9 @@
 package lotto.domain
 
-import lotto.service.LottoService
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import java.math.BigDecimal
-import java.math.RoundingMode
 
 internal class `WinningStatistics 클래스의` {
     @Nested

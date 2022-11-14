@@ -1,6 +1,5 @@
 package lotto.service
 
-import lotto.domain.Lotto
 import lotto.domain.LottoShop
 import lotto.repository.LottoRepository
 import lotto.service.dto.LottoDto
