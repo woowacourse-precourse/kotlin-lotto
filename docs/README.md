@@ -41,3 +41,7 @@
    - 예외처리하는 클래스에 throw하기 전에 println으로 출력 -실패
    - error가 생기면 println으로 출력하고 함수로 프로세스 닫기 -실패
    - 메인이 되는 함수 전체를 try catch문으로 감싸고 메세지 출력 -성공
+
+
+- 순서도
+![img.png](img.png)
