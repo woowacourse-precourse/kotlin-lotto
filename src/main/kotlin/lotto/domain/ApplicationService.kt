@@ -11,18 +11,18 @@ class ApplicationService {
         const val BONUS_NUMBER_EXCEPTION_MESSAGE = "[ERROR] 보너스 번호는 1 ~ 45 숫자 1개를 당첨 번호와 중복되지 않게 입력해야 합니다."
     }
 
+    private val view = View
+
     /**
      * 구입금액을 입력 받고 구매 갯수를 리턴하는 함수
      * */
     fun getPurchasingAmount(): Int {
-        View.showInputPurchasingAmount()
+        view.showInputPurchasingAmount()
         val inputPurchasingAmount = Util.readLine()
         return try {
             checkInputPurchasingAmount(inputPurchasingAmount)
             (inputPurchasingAmount.toInt() / 1000)
-                .also {
-                    View.showCountOfLotto(it)
-                }
+                .also { view.showCountOfLotto(it) }
         } catch (e: IllegalArgumentException) {
             println(PURCHASING_AMOUNT_EXCEPTION_MESSAGE)
             0
@@ -46,14 +46,14 @@ class ApplicationService {
         for (i in 0 until countOfLotto) {
             lottoNumbers.add(Lotto(Util.createLottoNumbers().sorted()))
         }
-        return lottoNumbers.also { View.showPurchasedLottoNumbers(it) }
+        return lottoNumbers.also { view.showPurchasedLottoNumbers(it) }
     }
 
     /**
      * 당첨 번호를 입력받고 예외 처리 후 리턴하는 함수
      * */
     fun getWinningNumbers(): Lotto? {
-        View.showInputWinningNumber()
+        view.showInputWinningNumber()
         val inputWinningNumber = Util.readLine()
         return try {
             checkInputWinningNumbers(inputWinningNumber)
@@ -82,7 +82,7 @@ class ApplicationService {
      * 보너스 번호를 입력받고 예외 처리 후 리턴하는 함수
      * */
     fun getBonusNumber(winningNumbers: Lotto): Int {
-        View.showInputBonusNumber()
+        view.showInputBonusNumber()
         val inputBonusNumber = Util.readLine()
         return try {
             checkInputBonusNumber(winningNumbers, inputBonusNumber)
