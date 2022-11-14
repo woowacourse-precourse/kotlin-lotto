@@ -3,6 +3,7 @@ package lotto.ui
 import lotto.Lotto
 import lotto.data.Ranks
 import lotto.domain.Calculator
+import java.text.DecimalFormat
 
 class PrintUi {
     fun pleaseInput(message:String){
@@ -10,18 +11,19 @@ class PrintUi {
     }
 
     fun printPurchaseNum(count:Int){
-        println("${count}개를 구매했습니다.")
+        println("${count}개를 구매했습니다.\n")
     }
 
     fun printLottos(lottos:List<Lotto>){
         for(index in lottos.indices){
             println(lottos[index].getNumbers())
         }
+        println("")
     }
 
     fun printWinningStats(rankingCounts:HashMap<Int,Int>){
-        println("당첨 통계\n---")
-        for(rank in 5..1){
+        println("\n당첨 통계\n---")
+        for(rank in 5 downTo 1){
             when(rank){
                 Ranks.FIRST.rank -> print("6개 일치 ")
                 Ranks.SECOND.rank -> print("5개 일치, 보너스 볼 일치 ")
@@ -29,13 +31,14 @@ class PrintUi {
                 Ranks.FOURTH.rank -> print("4개 일치 ")
                 Ranks.FIFTH.rank -> print("3개 일치 ")
             }
-            print("("+String.format("#,###.0")+"원) - ")
+            print("("+DecimalFormat("#,###").format(Calculator().prizeMoney(rank))+"원) - ")
             println("${rankingCounts[rank]}개")
         }
     }
 
-    fun printYield( _yield : Double){
-        println("수익률:"+ String.format("#,###.0", _yield *100 )+"%")
+    fun printYield( yield : Double){
+        val decimal = DecimalFormat("#,###.0")
+        println("수익률:"+ decimal.format(`yield`)+"%")
     }
 
 
