@@ -8,4 +8,6 @@ class Lotto(private val numbers: List<Int>) {
     override fun toString(): String {
         return numbers.toString()
     }
+
+    val numberList get() = this.numbers
 }
