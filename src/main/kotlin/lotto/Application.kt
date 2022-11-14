@@ -13,7 +13,7 @@ fun main() {
 
 fun lotto() {
     val lottoCount = inputMoney()
-    val winningNumber = inputWinningNumber()
+    val winningNumber = generateWinningNumbers()
     val bonusNumber = inputBonusNumber()
 }
 
@@ -48,18 +48,16 @@ fun throwMoneyUnitException(userInput: String) {
     }
 }
 
-fun inputWinningNumber(): List<Int> {
+fun generateWinningNumbers(): Lotto {
     println("당첨 번호를 입력해 주세요.")
     val userInput = Console.readLine()
-    checkWinningNumberThrowException(userInput)
-    return userInput.split(',').map { it.toInt() }
+    val winningNumbers = convertWinningNumbersStringToIntList(userInput)
+    return Lotto(winningNumbers)
 }
 
-fun checkWinningNumberThrowException(userInput: String) {
+fun convertWinningNumbersStringToIntList(userInput: String): List<Int> {
     throwWinningNumberFormException(userInput)
-    throwLottoSizeException(userInput)
-    throwLottoNumberRangeException(userInput)
-    throwLottoNumberDuplicationException(userInput)
+    return userInput.split(',').map { it.toInt() }
 }
 
 fun throwWinningNumberFormException(userInput: String) {
