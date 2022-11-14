@@ -16,4 +16,9 @@ class WinningLotto(numbers: List<Int>, bonusNumber: Int) {
         lotto = Lotto(numbers)
         bonus = bonusNumber
     }
+
+    fun matches(lotto: Lotto): Pair<Int, Boolean> {
+        return lotto.matches(this.lotto) to lotto.contains(bonus)
+    }
+
 }
