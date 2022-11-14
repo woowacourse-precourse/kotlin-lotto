@@ -16,6 +16,10 @@ fun lottoGame() {
     val winningNumbers = generateWinningNumbers()
     val bonusNumber = generateBonusNumber(winningNumbers)
     val lottos = generateLottos(lottoCount)
+
+    for (lotto in lottos) {
+        checkLottoWin(lotto, winningNumbers, bonusNumber)
+    }
 }
 
 fun generateLottoCount(): Int {
@@ -119,4 +123,20 @@ fun generateLottos(lottoCount: Int): List<Lotto> {
         lottos.add(lotto)
     }
     return lottos
+}
+
+fun checkLottoWin(lotto: Lotto, winningNumbers: Lotto, bonusNumber: Int) {
+    var count = 0
+    lotto.print()
+    for (number in lotto.getNumbers()) {
+        if (winningNumbers.isContainedNumber(number)) count++
+    }
+
+    when {
+        count == 3 -> Result.FIFTH.count++
+        count == 4 -> Result.FOURTH.count++
+        count == 5 && !lotto.isContainedNumber(bonusNumber) -> Result.THIRD.count++
+        count == 5 && lotto.isContainedNumber(bonusNumber) -> Result.SECOND.count++
+        count == 6 -> Result.FIRST.count++
+    }
 }

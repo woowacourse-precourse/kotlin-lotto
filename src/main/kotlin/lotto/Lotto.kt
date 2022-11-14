@@ -12,4 +12,6 @@ class Lotto(private val numbers: List<Int>) {
     fun print() {
         println(numbers.toString())
     }
+
+    fun isContainedNumber(number: Int) = numbers.contains(number)
 }
