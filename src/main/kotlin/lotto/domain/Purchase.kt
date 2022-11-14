@@ -38,21 +38,10 @@ class Purchase {
     }
 
     private fun createLottoNumber(): MutableList<Int> {
-        val numbers = mutableListOf<Int>()
-        while (numbers.size < LOTTO_SIZE) {
-            var randomNumber = Randoms.pickNumberInRange(
-                MINIMUM_LOTTO_NUMBER,
-                MAXIMUM_LOTTO_NUMBER
-            )
-            addLottoNumber(randomNumber, numbers)
-        }
-        return numbers
-    }
-
-    // 뽑은 랜덤 숫자의 중복 여부를 확인하고 아닐 시 리스트에 추가하는 메소드
-    private fun addLottoNumber(randomNumber: Int, numbers: MutableList<Int>) {
-        if (!numbers.contains(randomNumber)) {
-            numbers.add(randomNumber)
-        }
+        return Randoms.pickUniqueNumbersInRange(
+            MINIMUM_LOTTO_NUMBER,
+            MAXIMUM_LOTTO_NUMBER,
+            LOTTO_SIZE
+        )
     }
 }
