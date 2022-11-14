@@ -9,7 +9,9 @@ fun main() {
     var money = try {
         Console.readLine().toInt()
     } catch (e: NumberFormatException) {
-        throw IllegalArgumentException("[ERROR] 숫자만 입력해 주세요.")
+        print("[ERROR] 숫자만 입력해 주세요.")
+        println("구입금액을 입력해 주세요.")
+        Console.readLine().toInt()
     }
 
     if ((money % 1000) != 0) {
