@@ -12,9 +12,12 @@ class CONSTANT() {
         PRICEUNDERZEROERROR("[ERROR] 로또 구입 금액이 0 이하입니다."),
         PRICETHOUSANDSUNITERROR("[ERROR] 로또 구입 금액이 1,000원 단위가 아닙니다."),
         LOTTONUMBERCONUTERROR("[ERROR] 로또 번호 개수는 6개입니다."),
-        LOTTONUMBERDUPLICATED("[ERROR] 로또 번호는 중복을 허용하지 않습니다."),
-        LOTTONUMBERRANGE("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."),
-        LOTTONUMBERINTERROR("[ERROR] 로또 번호는 숫자여야 합니다.")
+        LOTTONUMBERDUPLICATEDERROR("[ERROR] 로또 번호는 중복을 허용하지 않습니다."),
+        LOTTONUMBERRANGEERROR("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."),
+        LOTTONUMBERINTERROR("[ERROR] 로또 번호는 숫자여야 합니다."),
+        BONUSNUMBERINTERROR("[ERROR] 보너스 번호는 숫자여야 합니다."),
+        BONUSNUMBERRANGEERROR("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다."),
+        BONUSNUMBERDUPLICATEDERROR("[ERROR] 보너스 번호가 이미 당첨 번호에 포함돼 있습니다.")
     }
     enum class PRICE(val params:Int){
         MIN_PRICE(0),
