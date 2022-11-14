@@ -1,11 +1,15 @@
 package lotto.ui
 
+import lotto.data.Lotto
 import lotto.error.ErrorMessages
+import java.text.DecimalFormat
 import camp.nextstep.edu.missionutils.Console as ConsoleUtil
 
 private typealias ConsoleError = ErrorMessages.ConsoleEnum
 
 object Console {
+
+    private val numberFormatter = DecimalFormat("#,###")
 
     fun requestPurchaseAmount(): Int {
         println(Message.InputPurchaseAmount)
@@ -20,6 +24,11 @@ object Console {
     fun requestBonusNumber(): Int {
         println(Message.InputBonusNumber)
         return readLine().toIntOrThrow()
+    }
+
+    fun print(lotteries: List<Lotto>) {
+        println("${numberFormatter.format(lotteries.size)}${Message.ShowLotto}")
+        println(lotteries.joinToString("\n") + "\n")
     }
 
     private fun String.toIntOrThrow(): Int {
