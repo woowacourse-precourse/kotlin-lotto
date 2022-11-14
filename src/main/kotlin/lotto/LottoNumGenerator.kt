@@ -6,6 +6,7 @@ class LottoNumGenerator {
         var lottoList = mutableListOf<List<Int>>()
         for(order in 1..amount){
             val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+            println(numbers)
             lottoList.add(numbers)
         }
         return lottoList.toList()

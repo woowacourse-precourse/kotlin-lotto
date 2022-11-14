@@ -1,10 +1,15 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.Util
+
 class LottoGame {
     lateinit var lottoNum : Lotto
+    var bonus : Int = 0
     val util = Util()
+    val generator = LottoNumGenerator()
+    val vendingMachine = LottoVendingMachine()
+    val calculator = Calculator()
+
     fun inputLottoNum():List<Int>{
         println("당첨 번호를 입력해 주세요.")
         var input = Console.readLine()
@@ -28,9 +33,17 @@ class LottoGame {
         println("5개 일치 (1,500,000원) - ${score[2]}개")
         println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${score[3]}개")
         println("6개 일치 (2,000,000,000원) - ${score[4]}개")
-        println("총 수익률은 ${profit}%입니다.")
+        println("총 수익률은 " + String.format("%.1f", profit) + "%입니다.")
     }
     fun playLottoGame(){
-
+        val amount = vendingMachine.countMoney(vendingMachine.inputMoney())
+        if(amount==-1)
+            return
+        val lottoList = generator.makeLottoNum(amount)
+        lottoNum = Lotto(inputLottoNum())
+        bonus = inputBonusNum()
+        val score = calculator.compareLottoNum(lottoList, lottoNum, bonus)
+        val profit = calculator.calculateYield(amount, score)
+        printResult(score, profit)
     }
 }

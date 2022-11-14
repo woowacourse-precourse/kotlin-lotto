@@ -61,7 +61,7 @@
 11. checkBonusNum : 사용자가 보너스 번호를 맞게 입력했는지 검사하는 기능[O] -Class Util
 12. compareLottoNum : 로또 번호와 당첨 번호를 비교해서 결과를 생성하는 기능[O] - Class Calculator
 13. calculateYield : 수익률을 계산해주는 기능[O] - Class Calculator 
-14. printResult : 당첨 현황과 수익률을 출력해주는 기능[ ] - Class LottoGame 
+14. printResult : 당첨 현황과 수익률을 출력해주는 기능[O] - Class LottoGame 
 15. playLottoGame : 로또 게임 실행[ ] - Class LottoGame
 16. changeInputToLotto : 로또 입력을 리스트로 바꿔주는 기능 [O] - Util
 18. checkLotto : 로또번호와 당첨 번호를 비교하는 기능 [O] - Class Calculator
