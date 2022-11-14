@@ -31,11 +31,11 @@ class BankImpl : Bank {
     override fun calcWinningBonusLottoNumber(receivedBonusLottoNumber: Int, lotto: Lotto): Boolean =
         receivedBonusLottoNumber in lotto.getLottoNumbers()
 
-    override fun calcEarningRate(purchaseAmount: Int) {
-        TODO("Not yet implemented")
+    override fun calcEarningRate(purchaseAmount: Int, prizeGrades: List<Int>) {
+        earningRate = calcTotalPrizeMoney(prizeGrades).toFloat() / purchaseAmount
     }
 
-    override fun calcTotalPrizeMoney(): Int {
+    override fun calcTotalPrizeMoney(prizeGrades: List<Int>): Int {
         var totalPrizeMoney = 0
         for ((prizeGrade, prizeGradeCount) in prizeGrades.withIndex()) {
             when (prizeGrade + 1) {

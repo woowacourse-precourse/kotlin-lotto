@@ -12,7 +12,7 @@ interface Bank {
 
     fun calcWinningBonusLottoNumber(receivedBonusLottoNumber: Int, lotto: Lotto): Boolean
 
-    fun calcEarningRate(purchaseAmount: Int)
+    fun calcEarningRate(purchaseAmount: Int, prizeGrades: List<Int>)
 
-    fun calcTotalPrizeMoney(): Int
+    fun calcTotalPrizeMoney(prizeGrades: List<Int>): Int
 }
