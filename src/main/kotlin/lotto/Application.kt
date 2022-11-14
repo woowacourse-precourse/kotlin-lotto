@@ -40,6 +40,10 @@ fun main() {
     Lotto(userNum)
     println("보너스 번호를 입력해주세요")
     var userBonus = Console.readLine().toInt()
+    if(userNum.contains(userBonus)){
+        println("[ERROR] 보너스 번호가 당첨 번호의 숫자와 겹칩니다.")
+        throw IllegalArgumentException()
+    }
     for (i in 0 until lotto.size){
         val union = lotto[i]+userNum
         val intersection = union.groupBy { it }.filter { it.value.size > 1 }.flatMap { it.value }.distinct()
