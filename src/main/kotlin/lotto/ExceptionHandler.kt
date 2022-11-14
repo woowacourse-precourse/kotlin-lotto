@@ -43,6 +43,13 @@ object ExceptionHandler {
         return true
     }
 
+    private fun isInRange(number: String): Boolean {
+        if (number.toInt() < 0 || number.toInt() > 45) {
+            return false
+        }
+        return true
+    }
+
     fun checkInputMoney(money: String): Boolean {
         if (!isOnlyInt(money) || !isDivideBy1000(money.toInt())) {
             throw IllegalArgumentException("checkInputMoney 잘못된 입력입니다.")
@@ -61,5 +68,12 @@ object ExceptionHandler {
             }
         }
         return true
+    }
+
+    fun checkBonusNumber(number: String) {
+        if(!isOnlyInt(number)
+                || !isInRange(number)){
+            throw IllegalArgumentException("checkBonusNumber 잘못된 입력입니다.")
+        }
     }
 }
