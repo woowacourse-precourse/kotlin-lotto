@@ -43,14 +43,23 @@ enum class Prize(val message: String) {
 }
 
 enum class Error(val message: String){
+    onlyNumberInput("[ERROR] 숫자만 입력해야 합니다"),
     sameNumberInBonus("[ERROR] 로또 번호와 겹칩니다"),
     wrongNumber("[ERROR] 보너스 번호는 1~45 사이")
 
 }
 
 fun howMuchDoYouHave() : Int{
-    var money = readLine().toInt()
-    return money
+    val usermoney = readLine()
+    var temp=""
+    for (cash in 0 until usermoney.length){
+        if (usermoney[cash].isDigit()){
+            temp+=usermoney[cash]
+        }else if (!usermoney[cash].isDigit()){
+            throw IllegalArgumentException(Error.onlyNumberInput.message)
+        }
+    }
+    return temp.toInt()
 }
 
 
