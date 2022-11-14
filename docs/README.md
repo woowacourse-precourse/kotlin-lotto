@@ -27,6 +27,7 @@
 
 ### `LottoLogic` _클래스_
   - [ ] `lottoGenerator` : 로또 생성기
+  - [ ] `lottoPurchaseAmount` : 로또 구입 금액
   - [ ] `lottoCreateLists` : 구입한 수만큼 로또 생성
   - [ ] `lottoMatchList` : 로또 당첨 여부  
   - [ ] `lottoRateOfReturn` : 수익률 계산
