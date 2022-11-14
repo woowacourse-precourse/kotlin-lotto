@@ -10,7 +10,7 @@ class PriceChecker(priceString:String) {
         try {
             return Integer.parseInt(price)
         } catch (e: IllegalArgumentException){
-            println(CONSTANT.ERRORMESSAGE.CHECKPRICEINTERROR.message)
+            println(CONSTANT.ERRORMESSAGE.PRICEINTERROR.message)
             throw e
         }
     }
@@ -18,7 +18,7 @@ class PriceChecker(priceString:String) {
         try {
             require(price > CONSTANT.PRICE.MIN_PRICE.params)
         } catch (e: IllegalArgumentException){
-            println(CONSTANT.ERRORMESSAGE.CHECKPRICEUNDERZEROERROR.message)
+            println(CONSTANT.ERRORMESSAGE.PRICEUNDERZEROERROR.message)
             throw e
         }
     }
@@ -26,7 +26,7 @@ class PriceChecker(priceString:String) {
         try {
             require(price % CONSTANT.PRICE.UNIT.params == 0)
         } catch (e: IllegalArgumentException){
-            println(CONSTANT.ERRORMESSAGE.CHECKPRICETHOUSANDSUNITERROR.message)
+            println(CONSTANT.ERRORMESSAGE.PRICETHOUSANDSUNITERROR.message)
             throw e
         }
     }
