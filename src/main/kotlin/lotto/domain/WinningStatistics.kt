@@ -1,6 +1,7 @@
 package lotto.domain
 
 import java.math.BigDecimal
+import java.math.RoundingMode
 
 class WinningStatistics(lotteries: List<Lotto>, winningNumber: WinningNumber) {
 
@@ -13,17 +14,15 @@ class WinningStatistics(lotteries: List<Lotto>, winningNumber: WinningNumber) {
             winningCounts[winningNumber.winningResult(it)] =
                 winningCounts[winningNumber.winningResult(it)]!! + 1
         }
-        this.yields = calculateYields()
+        this.yields = totalRevenue().multiply(BigDecimal(100))
+            .divide(BigDecimal(lotteries.size * LottoShop.lottoPrice()), 1, RoundingMode.HALF_EVEN)
     }
+
+    private fun totalRevenue() =
+        winningCounts.entries.sumOf { BigDecimal(it.key.winnings).multiply(BigDecimal(it.value)) }
 
     fun winningCounts() = winningCounts.toMap()
 
     fun yields() = yields
-
-    companion object {
-        private fun calculateYields(): BigDecimal {
-            return BigDecimal("0")
-        }
-    }
 
 }
