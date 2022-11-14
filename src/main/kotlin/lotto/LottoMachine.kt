@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console.readLine
 private const val INPUT_NOT_NATURAL_NUMBER = "[ERROR] 로또번호는 자연수여야합니다."
 private const val INVALID_NUMBER_RANGE = "[ERROR] 입력된 숫자가 1에서 45사이가 아닙니다."
 private const val INVALID_NUMBER_OF_WINNING_NUMBERS = "[ERROR] 당첨 번호는 6개여야합니다."
+private const val BONUS_DUPLICATED = "[ERROR] 보너스 번호가 당첨 번호와 중복되었습니다."
 private const val LOTTO_SIZE = 6
 
 class LottoMachine {
@@ -25,14 +26,21 @@ class LottoMachine {
         _winningNumbers.addAll(numbers)
     }
 
-    fun publishBonusNumber(number: String = readLine()) {
-        checkInputValid(number)
-        _bonusNumber = number.toInt()
-    }
-
     private fun checkNumberOfWinningNumbers(numbers: List<Int>) {
         if (numbers.size != LOTTO_SIZE) {
             throw IllegalArgumentException(INVALID_NUMBER_OF_WINNING_NUMBERS)
+        }
+    }
+
+    fun publishBonusNumber(number: String = readLine()) {
+        checkInputValid(number)
+        checkDuplication(number)
+        _bonusNumber = number.toInt()
+    }
+
+    private fun checkDuplication(number: String) {
+        if (!winningNumbers.contains(number.toInt())) {
+            throw IllegalArgumentException(BONUS_DUPLICATED)
         }
     }
 
