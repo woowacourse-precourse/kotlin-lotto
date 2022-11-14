@@ -1,6 +1,8 @@
 package lotto.Model
 
 import lotto.ValidateInput
+import lotto.View.OutputView
+import lotto.constants.ERROR_DUPLICATION
 
 class Lotto(private val numbers: List<Int>) {
     init {
@@ -9,7 +11,7 @@ class Lotto(private val numbers: List<Int>) {
         val validator = ValidateInput()
         for (i in numbers)
             validator.validateRange(i)
-        validator.validateDuplication(numbers)
+        validateLengthAndDuplication(numbers)
     }
 
     fun getNumbers(): List<Int> {
@@ -44,6 +46,13 @@ class Lotto(private val numbers: List<Int>) {
             4 -> return Rank.Fourth
             3 -> return Rank.Fifth
             else -> return Rank.None
+        }
+    }
+
+    private fun validateLengthAndDuplication(winningNumbers: List<Int>){
+        if (winningNumbers.distinct().size != 6) {
+            OutputView().printErrorMessage(ERROR_DUPLICATION)
+            throw IllegalArgumentException()
         }
     }
 }
