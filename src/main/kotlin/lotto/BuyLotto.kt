@@ -2,7 +2,7 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 
-class InputLotto() {
+class BuyLotto() {
 
     //todo 로또 구매할 금액
     //todo 로또 몇장이 살 수 있는지 확인
