@@ -29,6 +29,22 @@ fun buyLotto(userAmountTobuy: Int): List<Lotto> {
     return lottoList
 }
 
+/*
+* Parameters: 로또 리스트, 당첨 번호, 보너스 숫자
+* Returns: 전체 당첨 금액
+* Do: 결과 출력
+* */
+
+fun returnLottoResult(lottoList: List<Lotto>, winLottoNumber: List<Int>, bonusNumber: Int): Int {
+    var totalWinMoney = 0
+    // 로또 리스트를 돌면서 각 로또의 당첨 금액 계산
+    lottoList.forEach { lotto ->
+        val result = lotto.generateResult(winLottoNumber, bonusNumber)
+        println(result)
+    }
+
+    return totalWinMoney
+}
 
 fun main() {
     // 1. 사용자 입력 받기
