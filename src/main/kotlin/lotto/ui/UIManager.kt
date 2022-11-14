@@ -1,13 +1,14 @@
 package lotto.ui
 
-import lotto.dto.DrawnNumbers
+import lotto.domain.BonusNumber
+import lotto.domain.Lotto
 
 class UIManager(private val inputManager: InputManager, private val outputManager: OutputManager) {
     fun askPurchaseAmount(): Int {
         return inputManager.askPurchaseAmount()
     }
 
-    fun askDrawnNumbers(): DrawnNumbers {
+    fun askDrawnNumbers(): Pair<Lotto, BonusNumber> {
         return inputManager.askDrawnNumbers()
     }
 

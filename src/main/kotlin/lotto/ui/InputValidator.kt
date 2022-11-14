@@ -1,40 +1,34 @@
 package lotto.ui
 
+import lotto.domain.BonusNumber
+import lotto.domain.Lotto
 import lotto.enum.Configuration
 import lotto.enum.ErrorString
 
 class InputValidator {
     private fun String.isNumberString() = this.all { it.isDigit() }
 
-    fun validateWinningNumbers(input: List<String>){
-        when{
-            input.any{ !it.isNumberString() || it.toInt() !in 1..45 } ->
-                throw IllegalArgumentException(ErrorString.OUT_OF_BOUND.string)
-            input.size != 6 ->
-                throw IllegalArgumentException(ErrorString.LOTTO_SIZE.string)
-        }
+    fun validateWinningNumbers(input: List<String>) {
+        if (input.any { !it.isNumberString() })
+            throw IllegalArgumentException(ErrorString.NOT_DIGIT.string)
     }
 
     fun validatePurchaseAmount(input: String) {
         when {
             !input.isNumberString() ->
                 throw IllegalArgumentException(ErrorString.NOT_DIGIT.string)
-            input.toInt() % 1000 != 0 ->
+            input.toInt() % Configuration.LOTTO_PRICE.number != 0 ->
                 throw IllegalArgumentException(ErrorString.PURCHASE_AMOUNT_UNIT.string)
         }
     }
 
-    fun validateBonusNumber(input: String){
-        when{
-            !input.isNumberString() || input.toInt() !in 1..45 ->
-                throw IllegalArgumentException(ErrorString.OUT_OF_BOUND.string)
-        }
+    fun validateBonusNumber(input: String) {
+        if(!input.isNumberString())
+            throw IllegalArgumentException(ErrorString.NOT_DIGIT.string)
     }
 
-    fun validateDrawnNumber(winningNumber: List<Int>, bonusNumber: Int){
-        val uniqueNumbers = winningNumber.toMutableSet()
-        uniqueNumbers.add(bonusNumber)
-        if(uniqueNumbers.size != Configuration.LOTTO_SIZE.number + 1)
+    fun validateDrawnNumber(winningNumbers: List<Int>, bonusNumber: BonusNumber) {
+        if(bonusNumber.isMatched(winningNumbers))
             throw IllegalArgumentException(ErrorString.DUPLICATED_DRAWN_NUMBERS.string)
     }
 }
