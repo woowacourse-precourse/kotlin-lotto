@@ -7,6 +7,7 @@ lateinit var purchaseSum: String
 var numOfLotto = 0
 lateinit var selectedNum: Array<Int>
 var myLottos = ArrayList<Array<Int>>()
+lateinit var lottoWinNum: IntArray
 
 fun main() {
 
@@ -43,5 +44,11 @@ fun printLottoNum() {
         println(java.util.Arrays.toString(lottos))
         myLottos.add(lottos)
     }
+    println()
+}
+
+fun winNumInput() {
+    println("당첨 번호를 입력해주세요.")
+    lottoWinNum = Console.readLine().split(",").map { it.toInt() }.toIntArray()
     println()
 }
