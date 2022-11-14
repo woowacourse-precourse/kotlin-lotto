@@ -1,7 +1,7 @@
 package lotto.domain
 
-import lotto.Prizes
-import lotto.Ranks
+import lotto.data.Prizes
+import lotto.data.Ranks
 
 class Calculator {
     fun sumPrizes(rankingCounts:HashMap<Int,Int>):Int {

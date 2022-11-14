@@ -1,7 +1,7 @@
 package lotto.domain
 
-import lotto.Count
-import lotto.Ranks
+import lotto.data.Count
+import lotto.data.Ranks
 
 class Ranking {
     fun checkRanking(winning:Int,bonus:Boolean):Int{

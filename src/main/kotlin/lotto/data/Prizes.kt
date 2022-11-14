@@ -1,4 +1,4 @@
-package lotto
+package lotto.data
 
 enum class Prizes (val money:Int){
     FIRST(2_000_000_000),

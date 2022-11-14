@@ -1,4 +1,4 @@
-package lotto
+package lotto.data
 
 enum class Ranks(val rank:Int){
     FIRST(1),

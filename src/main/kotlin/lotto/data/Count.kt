@@ -1,4 +1,4 @@
-package lotto
+package lotto.data
 
 enum class Count(val num:Int){
     SIX(6),
