@@ -1,9 +1,11 @@
 package lotto
 
+import lotto.domain.Result
 import lotto.domain.GenerateLotto
 import lotto.domain.GetPrice
 import lotto.ui.Input
 import lotto.ui.Output
+
 
 fun main() {
     val price = getMoney()
@@ -13,6 +15,10 @@ fun main() {
     val lottoNumber = getLottoNumber()
 
     val bonusNumber = getBonusNumber(lottoNumber)
+
+    val result = getResult(lottoLog, lottoNumber, bonusNumber)
+
+
 }
 
 fun getMoney(): Int {
@@ -45,4 +51,12 @@ fun getBonusNumber(lotto: Lotto): Int {
     val bonusString = Input.getBonusNumber()
 
     return GenerateLotto.bonusNumber(bonusString, lotto)
+}
+
+fun getResult(lottoLog: ArrayList<Lotto>, lottoNumber: Lotto, bonusNumber: Int): List<Int> {
+    val result = Result.compare(lottoLog, lottoNumber, bonusNumber)
+
+    Output.printResult(result)
+
+    return result
 }
