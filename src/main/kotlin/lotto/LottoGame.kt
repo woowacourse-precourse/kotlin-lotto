@@ -7,6 +7,7 @@ class LottoGame private constructor(){
     private val RANGE_MAX =45
     private val MONEY_UNIT=1000
 
+    private var bonusNumber: Int = 0
     private var expenditure: Int = 0
 
     private val myLotto: MutableList<Lotto> = mutableListOf()
@@ -53,6 +54,13 @@ class LottoGame private constructor(){
             this.addLotto()
         }
         this.expenditure = input
+    }
+    private fun setBonusNumber(){
+        println("보너스 번호를 입력해 주세요.")
+        var input: String = Console.readLine().replace(" ", "")
+        this.bonusNumber=inputToInt(input)
+        checkNumberRange(this.bonusNumber)
+        checkOverlapping(this.bonusNumber,this.winNumbers)
     }
     private fun setWinNumbers(){
         println("당첨 번호를 입력해 주세요.")
