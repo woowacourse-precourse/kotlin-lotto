@@ -1,5 +1,10 @@
 package lotto
 
 fun main() {
-    TODO("프로그램 구현")
+    val machine = Machine()
+    val broadcast = Broadcast()
+
+    machine.operate()
+    broadcast.broadcast(machine.issuedLottery)
+
 }
