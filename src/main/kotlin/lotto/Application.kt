@@ -7,23 +7,7 @@ fun main() {
     val money = inputMoney()
     val lottoCount = printLottoConut(money)
     val allLotto = publishLotto(lottoCount)
-
-    println("\n당첨 번호를 입력해 주세요.")
-    var answerNum = Console.readLine().split(",")
-    answerNum.forEach {
-        if (it.toInt() < 1 || it.toInt() > 45) {
-            throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
-        }
-    }
-
-    for (i in 0..4) {
-        for (j in i + 1..5) {
-            if (answerNum[i] == answerNum[j]) {
-                //예외처리
-                throw IllegalArgumentException("[ERROR] numbers에 중복된 숫자가 포함되어 있습니다.")
-            }
-        }
-    }
+    val answerNum = inputWinningNumber()
 
     println("\n보너스 번호를 입력해 주세요.")
     var bonusNum = Console.readLine().toInt()
@@ -103,4 +87,23 @@ fun publishLotto(lottoCount: Int): Array<IntArray> {
         allLotto[i] = numbers.toIntArray()
     }
     return allLotto
+}
+
+fun inputWinningNumber(): List<String> {
+    println("\n당첨 번호를 입력해 주세요.")
+    var answerNum = Console.readLine().split(",")
+    answerNum.forEach {
+        if (it.toInt() < 1 || it.toInt() > 45) {
+            throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+        }
+    }
+    for (i in 0..4) {
+        for (j in i + 1..5) {
+            if (answerNum[i] == answerNum[j]) {
+                //예외처리
+                throw IllegalArgumentException("[ERROR] numbers에 중복된 숫자가 포함되어 있습니다.")
+            }
+        }
+    }
+    return answerNum
 }
