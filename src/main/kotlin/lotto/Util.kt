@@ -38,8 +38,13 @@ class Util {
         return true
     }
 
-    fun isRightRange() {
-
+    fun isRightRange(numList: List<Int>) : Boolean {
+        for(i in 0 until numList.size){
+            if(numList[i]<1 || numList[i]>45){
+                throw IllegalArgumentException("[ERROR] 로또 번호의 범위가 잘못되었습니다.")
+            }
+        }
+        return true
     }
 
     fun isOverlap() {

@@ -36,13 +36,13 @@ class UtilTest {
         }
     }
 
-//    @Test
-//    fun isRightRangeTest(){
-//        assertThat(isRightNumCOunt(1,2,3,4,5,6)).isEqualTo(true)
-//        assertThrows<IllegalArgumentException> {
-//            isRightNumCOunt(1,2,3,4,5,46)
-//        }
-//    }
+    @Test
+    fun isRightRangeTest(){
+        assertThat(util.isRightRange(listOf(1,2,3,4,5,6))).isEqualTo(true)
+        assertThrows<IllegalArgumentException> {
+            util.isRightRange(listOf(1,2,3,4,5,46))
+        }
+    }
 //    @Test
 //    fun isOverlapTest(){
 //        assertThat(isOverlap(1,2,3,4,5,6)).isEqualTo(false)
