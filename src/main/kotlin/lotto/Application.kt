@@ -61,7 +61,6 @@ fun inputWinningNumber(): List<String> {
     for (i in 0..4) {
         for (j in i + 1..5) {
             if (answerNum[i] == answerNum[j]) {
-                //예외처리
                 throw IllegalArgumentException("[ERROR] numbers에 중복된 숫자가 포함되어 있습니다.")
             }
         }
