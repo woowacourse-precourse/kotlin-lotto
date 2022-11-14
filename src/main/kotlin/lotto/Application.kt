@@ -1,6 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import kotlin.math.roundToInt
 import kotlin.system.exitProcess
 
 fun main() {
@@ -66,12 +67,16 @@ fun getBonusLotto(): Int {
     }
 }
 fun compareLottos(lottos: List<Lotto>, correct: List<Int>, bonus: Int){
+    var totalPrice = 0
     for (lotto in lottos){
         lotto.compareLotto(correct, bonus)
+        totalPrice += lotto.getTotalPrice()
     }
     println("당첨통계\n---")
     for (i in LottoEnum.values()){
         println("${i.message} - ${i.count}개")
     }
+    var profitRate = totalPrice/(lottos.size*1000.0)
+    profitRate = (profitRate*10.0.roundToInt())/10.0
+    println("총 수익률은 ${profitRate}%입니다.")
 }
-
