@@ -1,9 +1,11 @@
 package lotto.view
 
+import lotto.domain.model.Lotto
+
 object OutputView {
     // TODO 출력을 담당하는 뷰
 
-    fun purchasingLottos(lottos: List<List<Int>>) {
+    fun purchasingLottos(lottos: List<Lotto>) {
         println("${lottos.size}개를 구매했습니다.")
         lottos.forEach {
             println(it.toString())

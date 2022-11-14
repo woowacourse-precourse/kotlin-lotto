@@ -9,6 +9,10 @@ class Lotto(private val numbers: List<Int>) {
         checkValidation()
     }
 
+    override fun toString(): String {
+        return numbers.toString()
+    }
+
     private fun checkValidation() {
         require(numbers.size == 6) {
             "$ERROR_MESSAGE 로또의 길이는 6이여야 합니다."
@@ -34,6 +38,8 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     companion object {
+
+        const val LOTTO_PRIZE = 1000
         fun newInstance(): Lotto {
             return Lotto(makeRandomNum())
         }
