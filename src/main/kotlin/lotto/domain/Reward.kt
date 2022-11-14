@@ -1,7 +1,7 @@
 package lotto.domain
 
-import lotto.constants.Constant
 import lotto.constants.Constant.Companion.MONEY_UNIT
+import lotto.constants.Constant.Companion.START_INDEX
 import kotlin.math.round
 
 enum class Reward(val hit: Int, val prize: Int, val isBonus: Boolean) {
@@ -19,7 +19,7 @@ fun getReward(
     bonusNumber: Int
 ): MutableList<Reward> {
     val rewards = mutableListOf<Reward>()
-    for (index in Constant.START_INDEX until lottoWrapper.size()) {
+    for (index in START_INDEX until lottoWrapper.size()) {
         var result = compare(lottoWrapper.get(index), winningLotto, bonusNumber)
         rewards.add(calculateReward(result))
     }
