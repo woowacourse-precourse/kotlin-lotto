@@ -4,7 +4,11 @@ class LottoGame(private val theNumberOfLotto: Int) {
     private lateinit var lotteries: Lotteries
     private lateinit var winningLottery: WinningLottery
 
-    fun createLotto() {
+    init {
+        createLotto()
+    }
+
+    private fun createLotto() {
         val lottoNumber = mutableListOf<List<Int>>()
         for (i in 0 until theNumberOfLotto) {
             lottoNumber.add(RandomLottoGenerator().getRandomLotto())
@@ -35,4 +39,6 @@ class LottoGame(private val theNumberOfLotto: Int) {
         }
         return incomeRate.toDouble() / (theNumberOfLotto * 1000)
     }
+
+    fun getLotteries() = lotteries.getRandomLotteries()
 }
