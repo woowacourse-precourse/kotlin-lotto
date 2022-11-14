@@ -1,6 +1,7 @@
 package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.domain.lotto.BonusNumber
 import lotto.domain.lotto.LottoNumber
 import lotto.domain.money.Money
 
@@ -21,9 +22,10 @@ class InputView {
         return winningNumbers
     }
 
-    fun inputBonusNumber(): Int {
+    fun inputBonusNumber(winningNumbers: List<Int>): Int {
         val bonusNumber = Console.readLine().toInt()
         LottoNumber(bonusNumber)
+        BonusNumber(winningNumbers, bonusNumber)
         return bonusNumber
     }
 

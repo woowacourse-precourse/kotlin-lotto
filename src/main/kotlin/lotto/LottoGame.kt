@@ -14,7 +14,7 @@ class LottoGame {
         val lottos = LottoMachine(money).createLottos()
         buyLotto(lottos)
         val winningLotto = inputLottoNumbers()
-        val bonusNumber = inputBonusNumber()
+        val bonusNumber = inputBonusNumber(winningLotto)
         printStatistics(lottos, winningLotto, bonusNumber, money)
     }
 
@@ -36,9 +36,9 @@ class LottoGame {
         return winningLotto
     }
 
-    private fun inputBonusNumber(): Int {
+    private fun inputBonusNumber(winningLotto: List<Int>): Int {
         OutputView().printBonusNumber()
-        val bonusNumber = InputView().inputBonusNumber()
+        val bonusNumber = InputView().inputBonusNumber(winningLotto)
         println()
         return bonusNumber
     }
