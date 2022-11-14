@@ -37,6 +37,21 @@ fun lottoWinningNumber() : List<Int>?{
     return null
 }
 
+fun lottoBonusNumber() : List<Int>?{
+    println("보너스 번호를 입력해 주세요")
+    try{
+        val bonus = readLine()!!.toInt()
+        val bonusNumber = mutableListOf<Int>()
+        bonus in 1..45
+        bonusNumber.add(bonus)
+        return bonusNumber
+    } catch (e : NumberFormatException){
+        println("[ERROR] 올바르지 않은 보너스 번호입니다.")
+    } catch (e : NullPointerException){
+        println("[ERROR] 값을 입력하지 않았습니다.")
+    }
+    return null
+}
 fun main() {
     TODO("프로그램 구현")
 }
