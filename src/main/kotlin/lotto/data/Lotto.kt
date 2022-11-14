@@ -1,11 +1,15 @@
 package lotto.data
 
+import lotto.error.ErrorMessages
+
+private typealias LottoError = ErrorMessages.LottoEnum
+
 class Lotto(private val numbers: List<Int>) {
 
     init {
-        require(numbers.size == LENGTH)
-        require(numbers.distinct().size == LENGTH)
-        require(numbers.all { it in Range })
+        require(numbers.size == LENGTH) { LottoError.RequiredSixLength }
+        require(numbers.distinct().size == LENGTH) { LottoError.NotDuplicated }
+        require(numbers.all { it in Range }) { LottoError.OutOfRangeNumbers }
     }
 
     fun contains(number: Int): Boolean {
