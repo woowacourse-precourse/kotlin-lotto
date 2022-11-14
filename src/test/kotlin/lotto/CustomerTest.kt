@@ -56,6 +56,27 @@ class CustomerTest : NsTest() {
         assertThat(customer.getBonusLottoNumber()).isEqualTo("ㅂ")
     }
 
+    @Test
+    fun `구매금액 입력 함수 확인`() {
+        val input = "1000"
+        run(input)
+        assertThat(customer.getPurchaseAmount()).isEqualTo("1000")
+    }
+
+    @Test
+    fun `구매금액 입력 추후 오류사항(알파벳 입력)`() {
+        val input = "a"
+        run(input)
+        assertThat(customer.getPurchaseAmount()).isEqualTo("a")
+    }
+
+    @Test
+    fun `구매금액 입력 함수 추후 오류사항(한글 입력)`() {
+        val input = "ㅂ"
+        run(input)
+        assertThat(customer.getPurchaseAmount()).isEqualTo("ㅂ")
+    }
+
     override fun runMain() {
     }
 }
