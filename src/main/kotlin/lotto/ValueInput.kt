@@ -1,7 +1,9 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Console
+
 class ValueInput {
-    private val input: String = readln()
+    private val input: String = Console.readLine()
     private val inspection: ValueInspection = ValueInspection()
 
     fun price(): Int {
