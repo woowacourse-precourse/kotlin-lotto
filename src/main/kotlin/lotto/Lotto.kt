@@ -42,6 +42,7 @@ class Service() {
     init {
         __Lotto__(buyLotto()).printBuyLotto()
         getCorrectLotto()
+        getBonusLotto()
     }
 
     public fun buyLotto(): Int {
@@ -61,5 +62,13 @@ class Service() {
         Lotto(correctLotto)
         println("")
         return correctLotto
+    }
+
+    public fun getBonusLotto(): Int {
+        println("보너스 번호를 입력해 주세요.")
+        val bonusLotto = readLine()?.toIntOrNull() ?: 0
+        require(bonusLotto in 1..45) { "[ERROR] : 1~45 사이의 숫자가 아닙니다" }
+        println("")
+        return bonusLotto
     }
 }

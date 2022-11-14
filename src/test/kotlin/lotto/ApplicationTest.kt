@@ -31,16 +31,6 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `사용자 구매 입력 테스트 그리고 당첨 번호 입력 테스트 정상`() {
-        assertSimpleTest {
-            run("1000", "1,2,3,4,5,6")
-            assertThat(output()).contains(
-                "1개를 구매했습니다."
-            )
-        }
-    }
-
-    @Test
     fun `당첨 번호 입력 테스트 예외 문자`() {
         assertThrows<IllegalArgumentException> {
             runException("1000", "1,2,3,4,5,6j")
@@ -86,6 +76,30 @@ class ApplicationTest : NsTest() {
     fun `당첨 번호 입력 테스트 예외 구분자`() {
         assertThrows<IllegalArgumentException> {
             runException("1000", "1.2.3.4.5.6.")
+        }
+    }
+
+    @Test
+    fun `보너스 번호 입력 테스트 예외 문자`() {
+        assertThrows<IllegalArgumentException> {
+            runException("1000", "1,2,3,4,5,6", "j")
+        }
+    }
+
+    @Test
+    fun `보너스 번호 입력 테스트 예외 숫자 범위`() {
+        assertThrows<IllegalArgumentException> {
+            runException("1000", "1,2,3,4,5,6", "46")
+        }
+    }
+
+    @Test
+    fun `사용자 구매 입력 테스트 그리고 당첨 번호 그리고 보너스 입력 테스트 정상`() {
+        assertSimpleTest {
+            run("1000", "1,2,3,4,5,6", "7")
+            assertThat(output()).contains(
+                "1개를 구매했습니다."
+            )
         }
     }
 //    @Test
