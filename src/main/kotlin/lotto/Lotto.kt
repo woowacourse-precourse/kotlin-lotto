@@ -21,15 +21,15 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.toString()
     }
 
-    fun compareDrawing(winningNumber: List<String>, bonus: String): Int {
-        val winning = compareWinningNumber(winningNumber)
-        if (winning == 5) {
+    fun compareWinningNumber(winningNumber: List<String>, bonus: String): Int {
+        val sameNumber = countSameNumber(winningNumber)
+        if (sameNumber == 5) {
             return compareBonusNumber(bonus)
         }
-        return WinningGroup.values().find { it.same == winning }?.Winning ?: return NOTHING
+        return WinningGroup.values().find { it.same == sameNumber }?.Winning ?: return NOTHING
     }
 
-    private fun compareWinningNumber(winningNumber: List<String>): Int {
+    private fun countSameNumber(winningNumber: List<String>): Int {
         return numbers.count {
             winningNumber.contains(it.toString())
         }

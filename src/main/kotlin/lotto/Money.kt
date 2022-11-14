@@ -14,7 +14,7 @@ class Money {
         }
     }
 
-    fun countLotteryTickets(): Int {
+    fun getNumberOfPurchases(): Int {
         return money.toInt() / 1000
     }
 
