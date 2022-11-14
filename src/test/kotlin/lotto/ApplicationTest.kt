@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
 
@@ -48,6 +49,16 @@ class ApplicationTest : NsTest() {
             runException("1000j")
             assertThat(output()).contains(ERROR_MESSAGE)
         }
+    }
+
+    @Test
+    fun `입력값이 1000원으로 나누어 떨어지지 않을 때`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException>("$ERROR_MESSAGE 구입금액은 1000원 단위로 입력해야 합니다.") {
+                runException("8001")
+            }
+        }
+
     }
 
     override fun runMain() {
