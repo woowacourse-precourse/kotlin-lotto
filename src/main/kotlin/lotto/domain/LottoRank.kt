@@ -16,10 +16,9 @@ enum class LottoRank(
 
     companion object {
         fun of(numberOfSame: Int, bonus: Boolean): LottoRank {
-            return values().filter {
-                it.numberOfSame == numberOfSame &&
-                it.bonus == bonus
-            }.getOrElse(0) { NONE }
+            return values().firstOrNull {
+                it.numberOfSame == numberOfSame && it.bonus == bonus
+            } ?: NONE
         }
     }
 }
