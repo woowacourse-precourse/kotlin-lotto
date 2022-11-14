@@ -35,21 +35,36 @@ internal class `WinningStatistics 클래스의` {
                 assertThat(winningCounts[WinningResult.FIFTH]).isEqualTo(1)
                 assertThat(winningCounts[WinningResult.NO_LUCK]).isEqualTo(0)
             }
-
+        }
+        @Nested
+        inner class `로또 구입 금액이 당첨 금액의 3배라면` {
+            private val lotteries = listOf(
+                Lotto(listOf(1, 2, 3, 4, 5, 6)),
+                Lotto(listOf(11,12,13,14,15,16)),
+                Lotto(listOf(11,12,13,14,15,16)),
+                Lotto(listOf(11,12,13,14,15,16)),
+                Lotto(listOf(11,12,13,14,15,16)),
+                Lotto(listOf(11,12,13,14,15,16)),
+                Lotto(listOf(11,12,13,14,15,16)),
+                Lotto(listOf(11,12,13,14,15,16)),
+                Lotto(listOf(11,12,13,14,15,16)),
+                Lotto(listOf(11,12,13,14,15,16)),
+                Lotto(listOf(11,12,13,14,15,16)),
+                Lotto(listOf(11,12,13,14,15,16)),
+                Lotto(listOf(11,12,13,14,15,16)),
+                Lotto(listOf(11,12,13,14,15,16)),
+                Lotto(listOf(11,12,13,14,15,16)),
+            )
+            private val winningNumber = WinningNumber(listOf(4,5,6,7,8,9), 10)
             @Test
-            fun `소수점 2의 자리에서 반올림한 수익률을 저장한다`() {
+            fun `수익률을 33점3으로 저장한다`() {
                 val winningStatistics = WinningStatistics(lotteries, winningNumber)
-                val totalRevenue = BigDecimal(WinningResult.FIRST.winnings)
-                    .plus(BigDecimal(WinningResult.SECOND.winnings))
-                    .plus(BigDecimal(WinningResult.THIRD.winnings))
-                    .plus(BigDecimal(WinningResult.FOURTH.winnings))
-                    .plus(BigDecimal(WinningResult.FIFTH.winnings))
-                val purchaseAmount = BigDecimal(lotteries.size).multiply(BigDecimal(LottoShop.lottoPrice()))
 
                 val yields = winningStatistics.yields()
 
-                assertThat(yields).isEqualTo(totalRevenue.multiply(BigDecimal(100)).divide(purchaseAmount, 1, RoundingMode.HALF_EVEN))
+                assertThat(yields).isEqualTo(BigDecimal("33.3"))
             }
+
         }
     }
 }

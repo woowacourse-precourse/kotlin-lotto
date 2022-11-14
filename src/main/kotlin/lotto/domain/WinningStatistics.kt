@@ -15,7 +15,7 @@ class WinningStatistics(lotteries: List<Lotto>, winningNumber: WinningNumber) {
                 winningCounts[winningNumber.winningResult(it)]!! + 1
         }
         this.yields = totalRevenue().multiply(BigDecimal(100))
-            .divide(BigDecimal(lotteries.size * LottoShop.lottoPrice()), 1, RoundingMode.HALF_EVEN)
+            .divide(BigDecimal(lotteries.size).multiply(BigDecimal(LottoShop.lottoPrice())), 1, RoundingMode.HALF_EVEN)
     }
 
     private fun totalRevenue() =
