@@ -1,25 +1,46 @@
 package lotto
 
 object ExceptionHandler {
-    /**
-     * 중복 여부 확인
-     */
-    fun isDuplicate(): Boolean {
+    fun checkLotto(lotto: Lotto): Boolean {
+        if (isDuplicate(lotto.numberList)
+                || isOverLength(lotto.numberList)
+                || isInRange(lotto.numberList)) {
+            return false
+        }
         return true
     }
 
-    /**
-     * 길이가 6을 넘는지 확인
-     */
-    fun isOverLength() {
-
+    fun checkNumberList(list: List<Int>): Boolean {
+        if (isDuplicate(list)
+                || isOverLength(list)
+                || isInRange(list)) {
+            return false
+        }
+        return true
     }
 
-    /**
-     * 1~45사이 숫자인지 확인
-     */
-    fun isInRange() {
+    private fun isDuplicate(list: List<Int>): Boolean {
+        val distinctList = list.distinct()
+        if (distinctList.size == 6) {
+            return false
+        }
+        return true
+    }
 
+    private fun isOverLength(list: List<Int>): Boolean {
+        if (list.size > 6) {
+            return false
+        }
+        return true
+    }
+
+    private fun isInRange(list: List<Int>): Boolean {
+        for (i in list) {
+            if (i < 0 || i > 45) {
+                return false
+            }
+        }
+        return true
     }
 
     /**
@@ -34,11 +55,11 @@ object ExceptionHandler {
         return false
     }
 
-    fun isDivideBy1000(money: Int): Boolean {
+    private fun isDivideBy1000(money: Int): Boolean {
         return (money % 1000) == 0
     }
 
-    fun isOnlyInt(money: String): Boolean {
+    private fun isOnlyInt(money: String): Boolean {
         for (i in money) {
             if (i.digitToIntOrNull() == null) {
                 return false
