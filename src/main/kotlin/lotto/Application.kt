@@ -2,12 +2,12 @@ package lotto
 import camp.nextstep.edu.missionutils.Randoms
 import org.mockito.stubbing.Answer
 
-enum class LottoValue(val earning : Int, val correctNumbers : Int){
-    FIRST(2000000000,6),
-    SECOND( 3000000,5),
-    THIRD(1500000,5),
-    FOURTH(50000,4),
-    FIFTH(5000,3)
+enum class LottoValue(val earning : Int, val correctNumbers : Int, var amount : Int){
+    FIRST(2000000000,6, 0),
+    SECOND( 3000000,5, 0),
+    THIRD(1500000,5, 0),
+    FOURTH(50000,4, 0),
+    FIFTH(5000,3, 0)
 }
 
 fun firstPay() : Int?{
@@ -105,6 +105,16 @@ fun findValue(normalCoincidence : Int, specialCoincidence : Int): MutableList<In
         LottoValue.FIFTH.correctNumbers -> prize[0]+=1
     }
     return prize
+}
+
+fun calculatePrize(prize : MutableList<Int>){
+    when(1){
+        prize[0] -> LottoValue.FIFTH.amount+=1
+        prize[1] -> LottoValue.FOURTH.amount+=1
+        prize[2] -> LottoValue.THIRD.amount+=1
+        prize[3] -> LottoValue.SECOND.amount+=1
+        prize[4] -> LottoValue.FIRST.amount+=1
+    }
 }
 
 fun main() {
