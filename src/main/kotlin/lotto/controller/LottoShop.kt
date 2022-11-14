@@ -4,8 +4,7 @@ import lotto.domain.Generator
 import lotto.domain.Lotto
 import lotto.domain.ProfitCalculator
 import lotto.domain.Rank
-import lotto.utils.validation.InputValidator
-import lotto.utils.validation.Verifier
+import lotto.utils.validation.*
 import lotto.view.Input
 import lotto.view.Output
 
@@ -32,6 +31,17 @@ class LottoShop(
 
     private fun getMoney() {
         val userInput = input.getMoney()
+        val userInputVerifiers = listOf(
+            IntegerVerifier()
+        )
+        checkInputValid(userInput, userInputVerifiers)
+
+        val moneyVerifiers = listOf(
+            PositiveNumberVerifier(),
+            DivisibilityVerifier(DIVISOR)
+        )
+        checkInputValid(userInput.toInt(), moneyVerifiers)
+        money = userInput.toInt()
     }
 
     private fun <T> checkInputValid(input: T, verifiers: List<Verifier<T>>) {
@@ -48,4 +58,8 @@ class LottoShop(
     private fun setBonusNumber() {}
 
     private fun setWinningNumbers() {}
+
+    companion object {
+        const val DIVISOR = 1000
+    }
 }
