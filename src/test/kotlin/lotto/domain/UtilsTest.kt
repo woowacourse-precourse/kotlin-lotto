@@ -20,7 +20,7 @@ class UtilsTest {
 
     @Test
     fun `checkNull 기능 테스트`() {
-        assertThat(0.toIntOrError())
+        assertThat("0".toIntOrError())
     }
 
     @Test
