@@ -1,9 +1,8 @@
 package lotto.domain
 
-import lotto.Lotto
 import camp.nextstep.edu.missionutils.Randoms
 
-class LottoGenerator{
+class LottoGenerator {
 
     fun generate(count: Int): List<Lotto> {
         val result = mutableListOf<Lotto>()
