@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console
 
 data class __Lotto__(val repeats: Int) {
     private var idx: MutableList<MutableList<Int>> = mutableListOf()
-    private var correctCount = mutableListOf<Int>(7)
+    private var correctCount: MutableList<Int> = MutableList(8) { 0 }
 
     init {
         repeat(repeats) {
@@ -43,7 +43,7 @@ data class __Lotto__(val repeats: Int) {
                 else -> 0
             }
         }
-        return kotlin.math.round(profit / (idx.size * 1000) * 1000) / 10000
+        return kotlin.math.round(profit / (idx.size * 1000) * 1000) / 10000 * 100
     }
     public fun printResult() {
         println("당첨 통계")
@@ -53,7 +53,7 @@ data class __Lotto__(val repeats: Int) {
         println("5개 일치 (1,500,000원)- ${correctCount[5]}개")
         println("5개 일치, 보너스 볼 일치(30,000,000원)- ${correctCount[7]}개")
         println("6개 일치 (2,000,000,000원)- ${correctCount[6]}개")
-        println("총 수익률은" + String.format("%.2f", calculateProfit()) + "입니다.")
+        println("총 수익률은 " + String.format("%.2f", calculateProfit()) + "%입니다.")
     }
 }
 
