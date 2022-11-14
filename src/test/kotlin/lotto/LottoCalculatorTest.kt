@@ -22,5 +22,4 @@ class LottoCalculatorTest {
         val result = lottoCalculator.calculateLotto()
         Assertions.assertThat(result).isEqualTo(mutableListOf(0,0,0,0,1))
     }
-
 }
