@@ -106,8 +106,10 @@ object InputExceptionHandler {
      * 3. 당첨 번호와 중복일 때
      * */
     fun checkInputBonusNumber(winningNumbers: Lotto, bonusNumber: String) {
-        if (!isNumberOfBonusNumber(bonusNumber)
-            or !isCorrectRangeOfBonusNumber(bonusNumber)
+        if (!isNumberOfBonusNumber(bonusNumber)) {
+            throw IllegalArgumentException(BONUS_NUMBER_EXCEPTION_MESSAGE)
+        }
+        if (!isCorrectRangeOfBonusNumber(bonusNumber)
             or !isUniqueOfBonusNumber(winningNumbers, bonusNumber)
         ) {
             throw IllegalArgumentException(BONUS_NUMBER_EXCEPTION_MESSAGE)
@@ -129,11 +131,9 @@ object InputExceptionHandler {
     }
 
     private fun isUniqueOfBonusNumber(winningNumbers: Lotto, bonusNumber: String): Boolean {
-        if (winningNumbers
-                .getLottoNumbers()
+        if (winningNumbers.getLottoNumbers()
                 .contains(
-                    bonusNumber
-                        .toInt()
+                    bonusNumber.toInt()
                 )
         ) {
             return false
