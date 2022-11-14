@@ -23,6 +23,11 @@ class UtilTest {
         }
     }
 
+    @Test
+    fun changeInputToLottoTest(){
+        assertThat(util.changeInputToLotto("1,2,3,4,5,6")).isEqualTo(listOf(1,2,3,4,5,6))
+    }
+
 //    @Test
 //    fun isRightNumCountTest(){
 //        assertThat(isRightNumCOunt(1,2,3,4,5,6)).isEqualTo(true)

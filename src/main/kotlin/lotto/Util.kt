@@ -24,7 +24,12 @@ class Util {
     }
 
     fun changeInputToLotto(input:String):List<Int>{
-
+        val inputSlice = input.split(",")
+        var lottoNum = mutableListOf<Int>()
+        for (i in 0..5){
+            lottoNum.add(inputSlice[i].toInt())
+        }
+        return lottoNum.toList()
     }
 
     fun isRightNumCount() {
