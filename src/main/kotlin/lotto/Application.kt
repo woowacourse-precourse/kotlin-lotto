@@ -23,21 +23,22 @@ fun isSatisfyPriceConditions(string: String) =
         isPositiveNumber(string) &&
         isNotWhiteSpace(string)
 
-fun printEnterPriceMessage() = print("구매금액을 입력해주세요.\n")
+fun printEnterPriceMessage() = println("구매금액을 입력해주세요.")
 
 fun enterPurchasePrice(): Int {
     val purchasePrice = Console.readLine()
 
-    when (isSatisfyPriceConditions(purchasePrice)) {
-        true -> return purchasePrice.toInt()
+    if (!isSatisfyPriceConditions(purchasePrice)) {
+        throw IllegalArgumentException()
+        println("[ERROR] 구매 금액은 공백 없이 천 단위의 수를 입력해주세요.")
     }
-    return if (isSatisfyPriceConditions(purchasePrice)) purchasePrice.toInt()
-    else throw IllegalArgumentException("[ERROR] 구매 금액은 공백 없이 천 단위의 수여야 합니다.")
+
+    return purchasePrice.toInt()
 }
 
 fun getLottoCount(price: Int) = price / 1000
 
-fun printLottoPurchaseCountMessage(price: Int) = print("${getLottoCount(price)}개를 구매했습니다.")
+fun printLottoPurchaseCountMessage(price: Int) = println("${getLottoCount(price)}개를 구매했습니다.")
 
 fun purchaseLotto() {
     printEnterPriceMessage()
@@ -57,7 +58,7 @@ fun generateLottoNumbers(price: Int): ArrayList<MutableList<Int>> {
 }
 
 fun printNumbersByAscending(numbers: ArrayList<MutableList<Int>>) {
-    for (i in numbers.indices) print("${numbers[i].sorted()}\n")
+    for (i in numbers.indices) println("${numbers[i].sorted()}")
 }
 
 fun publishLottoNumbers(price: Int): ArrayList<MutableList<Int>> {
@@ -67,6 +68,4 @@ fun publishLottoNumbers(price: Int): ArrayList<MutableList<Int>> {
 
     return lottoNumbers
 }
-
-
 
