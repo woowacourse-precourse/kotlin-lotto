@@ -17,7 +17,21 @@ class UserNumberPicker {
 
     fun userBonusInput() {
         val input = Console.readLine()
+        checkBonusException(input)
+    }
+
+    private fun checkBonusException(input: String) {
         checkBonusType(input)
+        checkBonusOverlap(input.toInt())
+        checkBonusRange(input.toInt())
+    }
+
+    private fun checkBonusRange(bonus: Int) {
+        if (bonus !in 1..45) invalidInputValue(VALUE_ERROR)
+    }
+
+    private fun checkBonusOverlap(bonus: Int) {
+        if (_numbers.contains(bonus)) invalidInputValue(VALUE_ERROR)
     }
 
     private fun checkNumberException(input: List<String>) {
