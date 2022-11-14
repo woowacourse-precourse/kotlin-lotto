@@ -53,4 +53,12 @@ class LottoMachineTest {
             lottoMachine.publishBonusNumber("70")
         }
     }
+
+    @Test
+    fun `보너스번호가 당첨번호와 중복되면 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            lottoMachine.publishWinningNumber("1,2,3,4,5,6")
+            lottoMachine.publishWinningNumber("6")
+        }
+    }
 }
