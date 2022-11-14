@@ -1,0 +1,40 @@
+기능 구현 목록
+- [x] 로또를 구매하는 사용자를 클래스로 의인화 한다 - Person()
+  - [x] 사용자의 입력을 받아야 한다. - Person#input()
+- [x] 사용자가 입력한 것을 질문에 맞게 알맞은 타입으로 변환해줘야 함 - InputConverter()
+  - [x] 사용자가 금액을 입력한 것을 정수로 변환해줘야 함 - convertToInt()
+  - [x] 사용자가 당첨번호를 입력한 것을 ,를 기준으로 변환해줘야 함 - separateComma()
+  - [x] 사용자가 보너스 번호를 입력한 것을 정수로 변환해줘야 함 - convertToInt()
+- [x] 사용자의 구입금액을 입력받은 것을 정수한개 입력받은거 맞는지 검사해야함 - InputCheck()
+  - [x] 사용자가 금액을 제대로 입력했는지 검사한다 - InputCheck#checkInputLotteryPurchase
+  - [x] 사용자가 당첨 번호를 제대로 입력했는지 검사한다 - InputCheck#checkInputWinningLottery
+  - [x] 사용자가 보너스 번호를 정수로 입력했는지 검사한다 - InputCheck#checkInputBonusInteger
+- [x] 로또 발급을 해주는 역할을 클래스로 의인화한다 - LottoSeller()
+    - [x] 사용자가 입력한 금액만큼 로또를 발행해야 함
+        - [x] 사용자가 입력한 금액을 보고 몇개를 발급해주는지 알아야 한다 - LottoSeller#sellLottoCount()
+        - [x] 그 개수만큼 발급해줘야 한다. - LottoSeller#sellLotto()
+- [x] 로또 당첨 결과에 대해 통계 내주는 역할을 클래스로 의인화 한다 - LottoStatistics
+  - [x] 로또 당첨 결과를 통계 내줘야 한다 -  LottoStatistics#statisticsLotto()
+  - [x] 로또 결과에 대해 수익률을 구해줘야 한다 - LottoStatistics#yield()
+- [x] 로또 진행을 위해 메시지 출력을 해주는 역할을 클래스로 의인화 한다 - MessageMaker()
+  - [x] 로또 진행을 위해 메시지를 출력해준다 - MessageMake()#printMessage()
+  - [x] 사용자의 입력이 잘못될 경우 에러문구를 출력해줘야 한다 - Person#inputError()
+- [x] 로또 객체는 결과와 자신을 비교해서 결과를 리턴 해줘야 한다  - Lotto#matchResult()
+- [x] 로또 객체는 자신이 보너스에 당첨됐는지 확인해줘야 한다 - Lotto#isMatchBonus()
+- [x] 이 프로그램을 총괄해서 진행할 컨트롤러가 필요하다 - Controller()
+  - [x] 사용자의 입력이 잘못될 경우 에러를 발생해야 한다. - Controller#throwError()
+  - [x] 로또 게임을 시작하는 기능 - Controller#run()
+    - [x] 로또 게임 진행시 구입 금액 입력 단계를 수행하는 기능 - Controller#purchaseMoneyStep()
+    - [x] 로또 게임 진행시 로또를 발행받는 단계를 수행하는 기능 - Controller#issueLotteryStep()
+    - [x] 로또 게임 진행시 당첨 번호 입력 단계를 수행하는 기능 - Controller#winningLotteryStep()
+    - [x] 로또 게임 진행시 보너스 번호 입력 단계를 수행하는 기능 - Controller#bonusStep()
+    - [x] 로또 게임 진행시 최종 통계 단계를 수행하는 기능 - Controller#statisticsStep()
+
+예외 상황 정리
+- [x] 예외 상황 경우 추가 - enum class Error
+  - [x] 구입 금액에서 숫자 한개를 입력하지 않는 경우
+  - [x] 구입 금액으로 1000원 단위가 아닌 값을 입력하는 경우
+  - [x] 로또 당첨 번호를 입력할 때, 1~45의 범위를 벗어난 경우
+  - [x] 로또 당첨 번호 입력 시 콤마로 제대로 구분을 안하거나 로또 당첨 번호 입력 시 숫자 6개를 입력하지 않는 경우
+  - [x] 당첨 번호에 이미 포함되어 있는 번호를 보너스 번호로 입력하는 경우
+  - [x] 보너스 번호의 값 범위가 1~45를 벗어난 경우
