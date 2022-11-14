@@ -6,7 +6,7 @@ object Messages {
     const val BUY_AMOUNT_MESSAGE = "개를 구매했습니다."
     const val ANSWER_NUMBERS_MESSAGE = "당첨 번호를 입력해 주세요."
     const val BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요."
-    
+
     // 통계를 위한 메세지
     const val STATICS_TITLE_MESSAGE = "당첨 통계"
     const val STATICS_SPLITTER_MESSAGE = "---"
