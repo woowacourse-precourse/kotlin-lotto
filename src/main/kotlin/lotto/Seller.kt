@@ -7,13 +7,16 @@ class Seller {
     var judgment = Judgment()
     var winningNumber = mutableListOf<Int>()
     var bonusNumber = ""
+    var allRandomRotto = mutableListOf<List<Int>>()
 
     fun generateLotto(LottoCnt: Int) {
         println("\n${LottoCnt}개를 구입했습니다.")
         for (cnt in 0 until LottoCnt) {
             var randLotto = Randoms.pickUniqueNumbersInRange(1, 45, LOTTO_SIZE).sorted()
             println(randLotto)
+            allRandomRotto.add(randLotto)
         }
+
     }
 
     fun getWinningNumber() {
@@ -31,8 +34,6 @@ class Seller {
     fun getBonusNumber() {
         println("\n보너스 번호를 입력해 주세요.")
         bonusNumber = Console.readLine()
-        if (judgment.checkBonusNumber(bonusNumber)) {
-            println("보너스 번호 입력 성공")
-        }
+        judgment.checkBonusNumber(bonusNumber)
     }
 }

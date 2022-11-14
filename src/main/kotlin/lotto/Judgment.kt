@@ -2,7 +2,7 @@ package lotto
 
 class Judgment {
 
-    fun checkPurchaseAmount(input: String) : Int{
+    fun checkPurchaseAmount(input: String): Int {
         if (input.toIntOrNull() == null) {
             throw IllegalArgumentException("[ERROR] 구매 금액을 숫자 형태로 입력해야 합니다.")
         }
@@ -19,19 +19,17 @@ class Judgment {
 
     fun checkWinningNumber(lottoNumber: MutableList<Int>): Boolean {
         var winningNumber = lottoNumber.distinct().filter { it in 1..45 }
-        println(winningNumber)
         if (winningNumber.size != LOTTO_SIZE) {
             throw IllegalArgumentException("[ERROR] 6개의 숫자를 입력해주세요.")
         }
         return true
     }
 
-    fun checkBonusNumber(bonusNumber: String): Boolean {
+    fun checkBonusNumber(bonusNumber: String) {
         if (bonusNumber.toIntOrNull() == null) {
             throw IllegalArgumentException("[ERROR] 숫자 형태로 입력해주세요.")
         } else if (bonusNumber.toInt() !in 1..45) {
             throw IllegalArgumentException("[ERROR] 1~45 범위 내 숫자를 입력해주세요.")
         }
-        return true
     }
 }

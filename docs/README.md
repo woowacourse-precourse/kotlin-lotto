@@ -12,6 +12,6 @@
 - [x] 사용자가 구매한 로또 개수만큼 로또를 생성한다. -Seller#generateLotto
   - [x] 로또 번호를 오름차순으로 정렬한다.
 - [ ] 사용자의 로또 당첨 내역을 출력한다. -Lotto#showLottoResult
-  - [ ] 사용자의 로또와 발행한 로또와 비교하여 몇 개의 수가 일치하는지 알 수 있다. -Lotto#getMatchingNumber
+  - [x] 사용자가 구매한 로또와 당첨 번호를 비교하여 몇 개의 수가 일치하는지 알 수 있다. -Lotto#getMatchingNumber
   - [ ] 일치하는 번호 개수에 따른 당첨 내역을 알 수 있다. -Lotto#getWinningLotto
 - [ ] 로또 수익과 구매 비용을 통해 수익률을 계산할 수 있다. -Judgment#calcReturnRate

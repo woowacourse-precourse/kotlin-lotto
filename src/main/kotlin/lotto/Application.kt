@@ -10,4 +10,7 @@ fun main() {
     var seller = Seller()
     seller.generateLotto(lottoCnt)
     seller.getWinningNumber()
+
+    var lotto = Lotto(seller.winningNumber)
+    lotto.getMatchingNumber(seller.allRandomRotto)
 }
