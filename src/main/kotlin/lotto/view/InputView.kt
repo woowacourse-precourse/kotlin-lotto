@@ -18,9 +18,12 @@ object InputView {
 
     fun inputWinningNum(): List<Int> {
         println(INPUT_WINNING_NUMBER_TEXT)
-        val userInput = Console.readLine()!!
-        validateWinningNum(userInput)
-        return userInput.map { it.code - '0'.code }
+        val userInput = validateWinningNum(Console.readLine())
+        val numbers = mutableListOf<Int>()
+        userInput.forEach {
+            numbers.add(it.toInt())
+        }
+        return numbers
     }
 
     fun inputBonusNum(): Int {
@@ -40,7 +43,7 @@ object InputView {
         }
     }
 
-    private fun validateWinningNum(userInput: String) {
+    private fun validateWinningNum(userInput: String): List<String> {
         val splitedNum = userInput.split(',')
         val numRegex = Regex("[^0-9]")
         require(userInput.isNotBlank() && splitedNum.joinToString("").all { it.isDigit() }) {
@@ -49,6 +52,7 @@ object InputView {
         require(splitedNum.all { it.toInt() in 1..45 }) {
             "$ERROR_MESSAGE 로또 번호는 1부터 45 사이의 숫자여야 합니다."
         }
+        return splitedNum
     }
 
     private fun validateBonusNum(userInput: String) {

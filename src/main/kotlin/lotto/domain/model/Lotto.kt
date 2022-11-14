@@ -46,6 +46,6 @@ class Lotto(private val numbers: List<Int>) {
             return Lotto(makeRandomNum())
         }
 
-        private fun makeRandomNum(): List<Int> = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+        private fun makeRandomNum(): List<Int> = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
     }
 }

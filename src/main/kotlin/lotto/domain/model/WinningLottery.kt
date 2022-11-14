@@ -7,7 +7,10 @@ import lotto.domain.model.Prize.*
 class WinningLottery(private val winningNum: List<Int>, private val bonus: Int) {
 
     fun compareLotto(lotto: Lotto): Rank {
-        val count = winningNum.count { lotto.contains(it) }
+        var count = 0
+        winningNum.forEach {
+            if (lotto.contains(it)) count += 1
+        }
         return Rank.valueOf(count, lotto.contains(bonus))
     }
 
