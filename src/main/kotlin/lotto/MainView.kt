@@ -19,13 +19,11 @@ class MainView {
         return winNums
     }
 
-    fun showLottoNums(lottoNums : Int){
-
-        val lottos = Lotto()
+    fun showLottoNums(lottoNums : Int, createdLottos : Array<Array<Int>>){
 
         println(lottoNums.toString() + "개를 구매했습니다.")
         for(i in 0..lottoNums){
-
+            println(createdLottos[i])
         }
     }
 
