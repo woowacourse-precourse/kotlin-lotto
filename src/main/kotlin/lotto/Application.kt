@@ -104,3 +104,8 @@ fun throwBonusNumberDuplicationException(number: String, winningNumbers: Lotto) 
         throw IllegalArgumentException()
     }
 }
+
+fun generateLotto(): Lotto {
+    val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+    return Lotto(numbers)
+}
