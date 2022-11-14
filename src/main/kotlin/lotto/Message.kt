@@ -18,24 +18,23 @@ class Message {
         const val NOT_DIGIT_ERROR = "[ERROR] 숫자를 입력해야 합니다."
     }
 
-    enum class WinGroup(val prize: String, val sameNumber: Int, val bonus: String, val winning: Int) {
-        FifthPlace("5,000", 3, "", 0),
-        FourthPlace("50,000", 4, "", 1),
-        ThirdPlace("1,500,000", 5, "", 2),
-        SecondPlace("30,000,000", 5, ", 보너스 볼 일치", 3),
-        FirstPlace("2,000,000,000", 6, "", 4)
+    enum class WinGroup(val message: List<String>) {
+        FifthPlace(listOf("3", "", "5,000")),
+        FourthPlace(listOf("4", "", "50,000")),
+        ThirdPlace(listOf("5", "", "1,500,000")),
+        SecondPlace(listOf("5", ", 보너스 볼 일치", "30,000,000")),
+        FirstPlace(listOf("6", "", "2,000,000,000"))
     }
 
-    fun printLottoList(lotteryTickets: List<String>) {
-        println("${lotteryTickets.size}" + COUNT_MASSAGE)
-        lotteryTickets.forEach { println(it) }
+    fun printLottoList(lottoList: List<String>) {
+        println("${lottoList.size}" + COUNT_MASSAGE)
+        lottoList.forEach { println(it) }
     }
 
     fun printStatistics(winningResult: List<Int>) {
         print(STATISTICS_MASSAGE)
-
         WinGroup.values().forEachIndexed { index, it ->
-            println("${it.sameNumber}개 일치${it.bonus} (${it.prize}원) - ${winningResult[index]}개")
+            println("${it.message[0]}개 일치${it.message[1]} (${it.message[2]}원) - ${winningResult[index]}개")
         }
     }
 

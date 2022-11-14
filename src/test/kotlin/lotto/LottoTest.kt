@@ -3,7 +3,6 @@ package lotto
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.Arguments.arguments
@@ -49,8 +48,6 @@ class LottoTest {
                 arguments(listOf("1", "2", "3", "31", "24", "34"), "7", 0),
                 arguments(listOf("1", "2", "31", "41", "15", "16"), "7", -1)
             )
-
         }
     }
-
 }

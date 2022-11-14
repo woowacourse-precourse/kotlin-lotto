@@ -32,8 +32,7 @@ class Input {
             val bonus = Console.readLine().replace(" ", "")
             Exceptions.checkBonus(winningNumber, bonus)
             bonus
-        }
-        catch (e :IllegalArgumentException){
+        } catch (e: IllegalArgumentException) {
             println("$e")
             ""
         }
