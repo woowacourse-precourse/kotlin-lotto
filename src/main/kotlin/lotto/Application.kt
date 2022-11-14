@@ -12,6 +12,7 @@ fun main() {
     Lotto(winningNumber)
     val bonusNumber = inputBonus()
     val countReward = calculateSame(lottoNumber,winningNumber,bonusNumber)
+    val money = calculateMoney(countReward)
 }
 
 enum class Message {
@@ -77,14 +78,14 @@ fun inputBonus(): Int {
 }
 
 fun calculateSame(lottoNumber: MutableList<MutableList<Int>>, winningNumber:  List<Int>, bonusNumber: Int): MutableList<Int> {
-    var countReward: MutableList<Int> = mutableListOf(0,0,0,0,0)
+    val countReward: MutableList<Int> = mutableListOf(0,0,0,0,0)
     for(i:Int in lottoNumber.indices){
         val difference = winningNumber.toSet().minus(lottoNumber[i].toSet())
         val duplicationCount = winningNumber.size - difference.size
         print(duplicationCount)
         val countWinning = calculateReward(duplicationCount,bonusNumber,winningNumber)
-        for(i in 0 until countReward.size){
-            countReward[i] = countReward[i] + countWinning[i]
+        for(index:Int in 0 until countReward.size){
+            countReward[index] = countReward[index] + countWinning[index]
         }
     }
     println(countReward)
@@ -112,7 +113,7 @@ fun whenCountFive(countReward: MutableList<Int>, bonusNumber: Int, winningNumber
 }
 
 fun calculateMoney(countReward: MutableList<Int>): Int {
-    var money:Int = 0
+    var money = 0
     for(index:Int in 0 until countReward.size) {
         when (index) {
             0 -> money += countReward[0] * 5000
