@@ -6,7 +6,7 @@ object Purchaser {
     fun calculateResult(winningLotto: WinningLotto, tickets: List<Lotto>): Pair<MutableList<Int>, Int> {
         val resultRank = mutableListOf(0, 0, 0, 0, 0, 0)
         var totalPrize = 0
-        tickets.map {
+        tickets.forEach {
             resultRank[winningLotto.getRank(it.toList()) - 1] += 1
             totalPrize += winningLotto.getPrize(it.toList())
         }
