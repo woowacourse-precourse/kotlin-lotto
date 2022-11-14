@@ -12,5 +12,5 @@ fun main() {
     seller.getWinningNumber()
 
     var lotto = Lotto(Seller.winningNumber)
-    lotto.getMatchingNumber(Seller.allRandomRotto)
+    lotto.getWinningLotto()
 }
