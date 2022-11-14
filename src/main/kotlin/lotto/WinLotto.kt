@@ -10,11 +10,6 @@ class WinLotto {
             return removeCommaNums.map { it.toInt() }
         }
 
-        // 3. 보너스 번호 입력 받기
-        fun getBonusNum(): Int? {
-            //보너스 번호가 양식에 맞게 입력되지 않았을 때의 예외 사항 처리 필요
-            return readLine()?.toInt()
-        }
     }
 
 }

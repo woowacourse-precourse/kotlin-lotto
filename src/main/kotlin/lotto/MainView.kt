@@ -1,5 +1,7 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Randoms
+
 //UI 로직 포함하는 클래스 생성
 class MainView {
 
@@ -25,6 +27,13 @@ class MainView {
         for(i in 0..lottoNums){
             println(createdLottos[i])
         }
+    }
+
+    // 3. 보너스 번호 입력 받기
+    fun getBonusNum(): Int? {
+        println("보너스 번호를 입력해 주세요.")
+        //보너스 번호가 양식에 맞게 입력되지 않았을 때의 예외 사항 처리 필요
+        return readLine()?.toInt()
     }
 
 }
