@@ -7,7 +7,7 @@ object LottoError {
 
     fun checkIsNum(num : String){
         if(!num.matches(costValidNum)){
-            throw IllegalArgumentException("[ERROR] 양수 형식에 맞게 입력해주세요.")
+            throw IllegalArgumentException("[ERROR] 형식에 맞게 입력해주세요.")
         }
     }
 
