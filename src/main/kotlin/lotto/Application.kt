@@ -13,7 +13,12 @@ fun main() {
     val allLotto = publishLotto(lottoCount)
     winnings = inputWinningNumber()
     val bonusNum = inputBonusNumber()
-    val winningCounts = calculateLottoWin(lottoCount, allLotto, bonusNum)
+
+    var winningCounts = mutableListOf<Int>()
+    allLotto.forEach {
+        winningCounts = Lotto(it.toList()).calculateLottoWin(lottoCount, allLotto, bonusNum)
+    }
+
     printWinningScore(winningCounts)
     printWinningRate(winningCounts, money)
 }
@@ -81,57 +86,6 @@ fun checkNumberScope(num: Int) {
     if (num < 1 || num > 45) {
         throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
     }
-}
-
-fun calculateLottoWin(
-    lottoCount: Int,
-    allLotto: Array<IntArray>,
-    bonusNum: Int,
-): MutableList<Int> {
-    var bonusCount = 0
-    var winningCounts = mutableListOf<Int>(0, 0, 0, 0, 0, 0, 0, 0)
-
-    for (i in 0 until lottoCount) {
-        val lottos = allLotto[i].toList()
-        var answerCount = 0
-        for (j in 0..5) {
-            answerCount = compareWithLottoNum(lottos[j], bonusNum, answerCount)[0]
-            bonusCount = compareWithLottoNum(lottos[j], bonusNum, answerCount)[1]
-        }
-        winningCounts = addWinningCounts(answerCount, winningCounts)
-        winningCounts = addWinningBonusCounts(answerCount, bonusCount, winningCounts)
-    }
-
-    return winningCounts
-}
-
-fun compareWithLottoNum(lottoNum: Int, bonusNum: Int, answerCount: Int): List<Int> {
-    var answerCount = answerCount
-    var bonusCount = 0
-
-    for (k in 0..5) {
-        if (winnings[k].toInt() == lottoNum) {
-            answerCount++
-        }
-        if (bonusNum == lottoNum) {
-            bonusCount = 1
-        }
-    }
-    return (listOf(answerCount, bonusCount))
-}
-
-fun addWinningCounts(answerCount: Int, winningCounts: MutableList<Int>): MutableList<Int> {
-    if (answerCount != 0) {
-        winningCounts[answerCount] = winningCounts[answerCount] + 1
-    }
-    return winningCounts
-}
-
-fun addWinningBonusCounts(answerCount: Int, bonusCount: Int, winningCounts: MutableList<Int>): MutableList<Int> {
-    if (answerCount == 5 && bonusCount == 1) {
-        winningCounts[7] = winningCounts[7] + 1
-    }
-    return winningCounts
 }
 
 fun printWinningScore(winningCounts: MutableList<Int>) {
