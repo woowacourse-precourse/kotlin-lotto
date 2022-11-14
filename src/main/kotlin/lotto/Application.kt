@@ -31,17 +31,12 @@ fun main() {
     buyTicketController.run()
     makeWinningNumberController.run()
 
-    // LottoCalculator.lottoTicket = lottoTicket
-    // LottoCalculator.winningLotto = winningLotto
-
-    LottoCalculator.calculateWinningTicketCount(lottoTicket, winningLotto)
-
     val showStatisticsView = ShowStatisticsView()
-    val winningTotalStatistics = WinningTotalStatistics.emptyWinningTotalStatistics()
+    val winningTotalStatistics = LottoCalculator.getWinningTotalStatistics(lottoTicket = lottoTicket, winningLotto = winningLotto)
     val showStatisticsController = ShowStatisticsController(
         showStatisticsView = showStatisticsView,
         winningTotalStatistics = winningTotalStatistics
     )
 
-    // showStatisticsController.run()
+    showStatisticsController.run()
 }
