@@ -20,7 +20,7 @@ fun main() {
 fun purchaseTickets(amount: Int): List<Lotto> {
     val tickets = Purchaser.purchase(amount)
     printNumberOfTickets(tickets.size)
-    printNumbersOfLottos(tickets)
+    printNumbersOfTickets(tickets)
 
     return tickets
 }

@@ -7,8 +7,8 @@ fun printNumberOfTickets(ticket: Int) {
     println(OUTPUT_BOUGHT_TICKETS.format(ticket))
 }
 
-fun printNumbersOfLottos(lottos: List<Lotto>) {
-    lottos.forEach {
+fun printNumbersOfTickets(tickets: List<Lotto>) {
+    tickets.forEach {
         println(it.toList())
     }
 }
