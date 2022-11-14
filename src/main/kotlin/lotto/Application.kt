@@ -1,35 +1,17 @@
 package lotto
 
-import java.util.Locale
-
-/* import lotto.LottoGame */
-
 fun main() {
-    LottoGame().buyPriceInquireMessage()
+    view.View().buyPriceInquireMessage() // 구매 로또 금액 받기
     val inputPrice = LottoGame().inputNum()
-    if (inputPrice == -1) {
-        return
-    }
-    val numberOfLotto = LottoGame().calculateNumberOfLotto(inputPrice)
-    LottoGame().tellNumOfLotto(numberOfLotto)
-    val lottos = LottoGame().generateRandomLottos(numberOfLotto)
-    LottoGame().printEachLotto(lottos)
+    if (inputPrice == -1) { return }
+    val numberOfLotto = Controller().GetLottoPrice(inputPrice)
 
-    // 정답 로또 번호 받기
-    LottoGame().answerNumbersMessage()
-    val answerNumbers = LottoGame().inputAnswerNumbers()
-    Lotto(answerNumbers).checkinputAnswer()
+    val lottos = LottoGame().generateRandomLottos(numberOfLotto) // 생성된 로또들 print해서 보여주기
+    view.View().printEachLotto(lottos)
 
-    // 보너스 번호 받기
-    LottoGame().bonusNumberMessage()
-    val inputBonusPrice = LottoGame().inputNum().toString()
-    LottoGame().checkinputBonus(inputBonusPrice)
+    val answerNumbers = Controller().AnswerLottoNum() // 정답 로또 번호 받기
 
-    // 통계 결과 내기
-    val winList = LottoGame().computeRank(lottos, answerNumbers, inputBonusPrice.toInt())
-    LottoGame().printStatsRank(winList)
-    val revenuePercent = LottoGame().statsRevenue(inputPrice, winList)
-    LottoGame().printStatsRevenue(revenuePercent)
+    val inputBonusPrice = Controller().BonusLottoNum() // 보너스 번호 받기
 
-
+    Controller().winLotto(lottos, answerNumbers, inputBonusPrice, inputPrice) // 통계 결과 내기
 }
