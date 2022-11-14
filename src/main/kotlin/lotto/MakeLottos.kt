@@ -32,6 +32,13 @@ class MakeLottos {
     fun bonusNumber(winningNumber: List<Int>): Int {
         println(Output.BonusNumber.message)
         val input = Console.readLine().toInt()
+        checkBonusNumber(winningNumber, input)
         return input
+    }
+
+    private fun checkBonusNumber(winningNumber: List<Int>, bonusNumber: Int): Boolean {
+        if(winningNumber.contains(bonusNumber))
+            throw IllegalArgumentException(Error.BonusNumber.message)
+        return true
     }
 }
