@@ -43,7 +43,17 @@ data class __Lotto__(val repeats: Int) {
                 else -> 0
             }
         }
-        return profit / (idx.size * 1000) * 100
+        return kotlin.math.round(profit / (idx.size * 1000) * 1000) / 10000
+    }
+    public fun printResult() {
+        println("당첨 통계")
+        println("---------")
+        println("3개 일치 (5,000원)- ${correctCount[3]}개")
+        println("4개 일치 (50,000원)- ${correctCount[4]}개")
+        println("5개 일치 (1,500,000원)- ${correctCount[5]}개")
+        println("5개 일치, 보너스 볼 일치(30,000,000원)- ${correctCount[7]}개")
+        println("6개 일치 (2,000,000,000원)- ${correctCount[6]}개")
+        println("총 수익률은" + String.format("%.2f", calculateProfit()) + "입니다.")
     }
 }
 
@@ -72,6 +82,7 @@ class Service() {
         lottos.printBuyLotto()
         lottos.calculateCorrectCount(winningNumbers(), bonus())
         lottos.calculateProfit()
+        lottos.printResult()
     }
 
     public fun buyLotto(): Int {
