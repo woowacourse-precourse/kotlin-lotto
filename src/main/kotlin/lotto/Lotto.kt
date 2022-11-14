@@ -2,6 +2,8 @@ package lotto
 
 class Lotto(private val numbers: List<Int>) {
     init {
+        val distinctedNumbers = numbers.distinct()
+        require(distinctedNumbers.size==6) { "[ERROR] 로또에는 중복되는 값이 없어야 합니다." }
         require(numbers.size == 6)
         for (number in 0..5){
             if (numbers[number] !in 1..45){
@@ -9,6 +11,4 @@ class Lotto(private val numbers: List<Int>) {
             }
         }
     }
-
-    // TODO: 추가 기능 구현
 }
