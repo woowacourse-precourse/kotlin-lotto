@@ -1,6 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import kotlin.math.round
 
 fun main() {
     val price = inputPrice()
@@ -13,6 +14,8 @@ fun main() {
     val bonusNumber = inputBonus()
     val countReward = calculateSame(lottoNumber,winningNumber,bonusNumber)
     val money = calculateMoney(countReward)
+    val revenue = calculateRevenue(money, price)
+    printReward(countReward, revenue)
 }
 
 enum class Message {
@@ -123,5 +126,23 @@ fun calculateMoney(countReward: MutableList<Int>): Int {
             4 -> money += countReward[4] * 2000000000
         }
     }
+    println(money)
     return money
+}
+
+fun printReward(countReward: MutableList<Int>, revenue:Float){
+    println("3개 일치 (5,000원) - "+ countReward[0] +"개\n" +
+            "4개 일치 (50,000원) - "+countReward[1] +"개\n" +
+            "5개 일치 (1,500,000원) - "+ countReward[2] +"개\n" +
+            "5개 일치, 보너스 볼 일치 (30,000,000원) - "+ countReward[3] +"개\n" +
+            "6개 일치 (2,000,000,000원) - "+ countReward[4] +"개\n"+
+            "총 수익률은 "+revenue+"%입니다.")
+}
+
+fun calculateRevenue(money:Int, price:Int): Float {
+    val revenue: Float =(money.toFloat()/price.toFloat())*100
+    println(money)
+    println(price)
+    println(revenue)
+    return round(revenue*10)/10
 }
