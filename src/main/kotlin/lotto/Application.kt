@@ -15,6 +15,11 @@ fun main() {
         val newLotto = issueLotto()
         purchasedLotto.add(newLotto)
     }
+
+    println()
+    println("당첨 번호를 입력해 주세요.")
+    val pickedNum = cs.readLine()
+    val winningNum = validateWinningNum(pickedNum)
 }
 
 enum class ErrorCode(val message: String) {
