@@ -28,6 +28,7 @@ fun inputMoney(): Int {
 
 fun checkMoneyThrowException(userInput: String) {
     throwIsMoneyNumberException(userInput)
+    throwMoneyUnitException(userInput)
 }
 
 fun throwIsMoneyNumberException(userInput: String) {
@@ -36,6 +37,13 @@ fun throwIsMoneyNumberException(userInput: String) {
     }
     if (numbers.size != userInput.length) {
         println("[ERROR] 구입 금액은 숫자여야 합니다.")
+        throw IllegalArgumentException()
+    }
+}
+
+fun throwMoneyUnitException(userInput: String) {
+    if (userInput.toInt() % 1000 != 0) {
+        println("[ERROR] 구입 금액은 1,000원 단위여야 합니다.")
         throw IllegalArgumentException()
     }
 }
