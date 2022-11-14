@@ -11,15 +11,36 @@ class LottoGame private constructor(){
     private var expenditure: Int = 0
 
     private val myLotto: MutableList<Lotto> = mutableListOf()
+    private val winChart: MutableList<Int> = mutableListOf(0,0,0,0,0)
     private val winNumbers: MutableList<Int> = mutableListOf()
+
     init{
         this.purchaseLotto()
         this.showMyLotto()
         this.setWinNumbers()
+        this.setBonusNumber()
+        this.compareLottosWithWinNumber()
     }
 
     private fun addLotto(){
         this.myLotto.add(Lotto.newLotto())
+    }
+    private fun checkNumber(lotto: List<Int>): Int{
+        var count: Int = 0
+        var lottoPointer:Int = 0
+        var winNumberPointer:Int = 0
+        var sameFlag:Int
+        while(lottoPointer<6&&winNumberPointer<6){
+            sameFlag = lotto[lottoPointer]-this.winNumbers[winNumberPointer]
+            if(sameFlag == 0){
+                count++
+                lottoPointer++
+                winNumberPointer++
+            }
+            if(sameFlag>0)winNumberPointer++
+            if(sameFlag<0)lottoPointer++
+        }
+        return count
     }
     private fun checkNumberRange(number: Int){
         if(number<RANGE_MIN || number>RANGE_MAX){
@@ -30,6 +51,22 @@ class LottoGame private constructor(){
         if(number in numbers){
             throw IllegalArgumentException("[ERROR]잘못된 입력입니다.")
         }
+    }
+    private fun compareLottosWithWinNumber(){
+        var count: Int
+        myLotto.forEach{
+            count = checkNumber(it.getter())
+            if(count>=3) winNumberCount(count,bonusNumber in it.getter())
+        }
+    }
+    private fun countToIndex(rank: Int,bonus: Boolean):Int{
+        when(rank){
+            3 -> return 4
+            4 -> return 3
+            5 -> return if(bonus) 1 else 2
+            6 -> return 0
+        }
+        return 5
     }
     private fun inputToInt(input: String): Int{
         var temp: Int
@@ -81,6 +118,12 @@ class LottoGame private constructor(){
             this.myLotto.forEach{
                 println(it.getter())
             }
+        }
+    }
+    private fun winNumberCount(count: Int,flag: Boolean){
+        val rankIndex: Int = countToIndex(count,flag)
+        if(rankIndex!=5){
+            winChart[rankIndex]++
         }
     }
     companion object{
