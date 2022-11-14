@@ -129,3 +129,19 @@ fun bonusMatchCheck(bonusNum: Int, lotto: Lotto): Int {
     }
     return numOfMatch
 }
+
+fun matchCheck(winningNum: Lotto, bonusNum: Int, lotto: Lotto): Int {
+    var numOfMatch = 0
+    for (numberOrder in 0..5) {
+        val targetNumber = lotto.getLottoNumber(numberOrder)
+        val matchResult = winningNum.doMatchCheck(targetNumber)
+        if (matchResult) { numOfMatch += 1 }
+    }
+    if (numOfMatch == 6) {
+        return 7 //보너스 번호 포함하여 6개 일치하는 경우와 구별하기 위함
+    }
+    if (numOfMatch == 5) { //보너스 번호 일치여부 검사
+        numOfMatch = bonusMatchCheck(bonusNum, lotto)
+    }
+    return numOfMatch
+}
