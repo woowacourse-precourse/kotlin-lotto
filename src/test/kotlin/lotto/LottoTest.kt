@@ -3,6 +3,7 @@ package lotto
 import lotto.data.Lotto
 import lotto.data.WinningLotto
 import lotto.domain.LottoGenerator
+import lotto.domain.LottoShop
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.RepeatedTest
 import org.junit.jupiter.api.Test
@@ -12,12 +13,14 @@ class LottoTest {
 
     @Test
     fun `로또판매점_가격에맞는수량_정상`() {
-        TODO()
+        Assertions.assertThat(LottoShop.buy(25000)).hasSize(25)
     }
 
     @Test
     fun `로또판매점_단위가격의배수가아님_에러`() {
-        TODO()
+        assertSimpleThrows {
+            Assertions.assertThat(LottoShop.buy(10500))
+        }
     }
 
     @Test
