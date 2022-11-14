@@ -57,6 +57,6 @@ class BankTest {
         val prizeGrades = listOf(1, 1, 1, 1, 1)
         bank.calcEarningRate(5000, prizeGrades)
         assertThat(bank.earningRate)
-            .isEqualTo((2000000000 + 30000000 + 1500000 + 50000 + 5000).toFloat() / 5000)
+            .isEqualTo((2000000000 + 30000000 + 1500000 + 50000 + 5000).toFloat() / 5000 * 100)
     }
 }

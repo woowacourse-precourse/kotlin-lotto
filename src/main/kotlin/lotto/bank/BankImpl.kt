@@ -32,7 +32,7 @@ class BankImpl : Bank {
         receivedBonusLottoNumber in lotto.getLottoNumbers()
 
     override fun calcEarningRate(purchaseAmount: Int, prizeGrades: List<Int>) {
-        earningRate = calcTotalPrizeMoney(prizeGrades).toFloat() / purchaseAmount
+        earningRate = calcTotalPrizeMoney(prizeGrades).toFloat() / purchaseAmount * 100
     }
 
     override fun calcTotalPrizeMoney(prizeGrades: List<Int>): Int {
