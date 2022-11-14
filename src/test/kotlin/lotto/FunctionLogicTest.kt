@@ -7,13 +7,13 @@ import kotlin.math.round
 class FunctionLogicTest {
     @Test
     fun `입력받은 당첨 번호를 쉼표 기준으로 나눠 정수 리스트로 변경한다`() {
-        assertThat(listOf(1, 2, 3, 4, 5)).isEqualTo(changeToIntList("1,2,3,4,5"))
+        assertThat(listOf(1, 2, 3, 4, 5)).isEqualTo(LottoViewModel.changeToIntList("1,2,3,4,5"))
     }
 
     @Test
     fun `당첨 번호와 발행된 번호를 리스트로 합친다`() {
         assertThat(listOf(1, 2, 3, 4, 5, 1, 2, 3, 11, 12)).isEqualTo(
-            mergeList(
+            getMergeList(
                 listOf(1, 2, 3, 4, 5),
                 listOf(1, 2, 3, 11, 12)
             )
@@ -22,7 +22,7 @@ class FunctionLogicTest {
 
     @Test
     fun `당첨 번호와 발행된 번호를 합친 리스트에서 중복된 숫자를 출력한다`() {
-        assertThat(listOf(1, 2, 3)).isEqualTo(matchedNumbers(listOf(1, 2, 3, 4, 5, 1, 2, 3)))
+        assertThat(listOf(1, 2, 3)).isEqualTo(LottoViewModel.getMatchedNumbers(listOf(1, 2, 3, 4, 5, 1, 2, 3)))
     }
 
     @Test
@@ -30,17 +30,8 @@ class FunctionLogicTest {
         assertThat(62.5).isEqualTo(getProfit(62.46))
     }
 
-    private fun changeToIntList(winningNumber: String): List<Int> = winningNumber.split(",").toList().map { it.toInt() }
-
-    private fun mergeList(winningNumberList: List<Int>, issuedNumbers: List<Int>): List<Int> =
+    private fun getMergeList(winningNumberList: List<Int>, issuedNumbers: List<Int>): List<Int> =
         listOf(winningNumberList, issuedNumbers).flatMap { it.orEmpty() }
-
-    private fun matchedNumbers(list: List<Int>): List<Int> {
-        return list.groupBy { it }
-            .filter { it.value.size > 1 }
-            .flatMap { it.value }
-            .distinct()
-    }
 
     private fun getProfit(profit: Double): Double = round(profit * 10) / 10
 }

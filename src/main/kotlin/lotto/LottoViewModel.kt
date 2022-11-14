@@ -10,17 +10,15 @@ class LottoViewModel {
 
     fun div(purchaseAmount: String) = purchaseAmount.toInt().div(1000)
 
-    fun pickRandomNumber(): List<Int> = Randoms.pickUniqueNumbersInRange(1, 45, 6)
-
     fun compareNumbers(purchaseAmount: String, winningNumber: String, bonusNumber: Int) {
-        val winningNumberList = winningNumber.split(",").toList().map { it.toInt() }
+        val winningNumberList = changeToIntList(winningNumber)
 
         for (i in 0 until div(purchaseAmount)) {
-            val unionOfWinning = listOf(winningNumberList, issuedNumbers[i]).flatMap { it.orEmpty() }
-            matchedWinningNumbers = matchedNumbers(unionOfWinning)
+            val unionOfWinning = getMergeList(winningNumberList, issuedNumbers[i])
+            matchedWinningNumbers = getMatchedNumbers(unionOfWinning)
 
             issuedNumbers[i]?.add(bonusNumber)
-            matchedBonusNumbers = matchedNumbers(issuedNumbers[i]!!.toList())
+            matchedBonusNumbers = getMatchedNumbers(issuedNumbers[i]!!.toList())
 
             calculateWinning()
         }
@@ -28,12 +26,8 @@ class LottoViewModel {
 
     fun getProfit(purchaseAmount: String): Double = round(calculateProfit(purchaseAmount) * 10) / 10
 
-    private fun matchedNumbers(list: List<Int>): List<Int> {
-        return list.groupBy { it }
-            .filter { it.value.size > 1 }
-            .flatMap { it.value }
-            .distinct()
-    }
+    private fun getMergeList(winningNumberList: List<Int>, issuedNumbers: MutableList<Int>?): List<Int> =
+        listOf(winningNumberList, issuedNumbers).flatMap { it.orEmpty() }
 
     private fun calculateWinning() {
         when (matchedWinningNumbers.size) {
@@ -58,4 +52,17 @@ class LottoViewModel {
             Winning.SIX.getAmount()
 
     private fun calculateProfit(purchaseAmount: String): Double = (getWinningAmount().toDouble() / purchaseAmount.toDouble()) * 100
+
+    companion object{
+        fun pickRandomNumber(): List<Int> = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+
+        fun changeToIntList(winningNumber: String): List<Int> = winningNumber.split(",").toList().map { it.toInt() }
+
+        fun getMatchedNumbers(list: List<Int>): List<Int> {
+            return list.groupBy { it }
+                .filter { it.value.size > 1 }
+                .flatMap { it.value }
+                .distinct()
+        }
+    }
 }

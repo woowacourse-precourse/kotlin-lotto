@@ -1,7 +1,9 @@
 package exception
 
+import lotto.LottoViewModel
+
 class LottoWinning(number: String) {
-    private val winningNumberList = number.split(",").toList().map { it.toInt() }
+    private val winningNumberList = LottoViewModel.changeToIntList(number)
     var isBetween1And45 = true
 
     init {

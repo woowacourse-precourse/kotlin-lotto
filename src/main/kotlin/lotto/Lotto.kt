@@ -41,7 +41,7 @@ class Lotto(private var numbers: List<Int>) {
         for (i in 0 until numberOfPurchase) {
             viewModel.issuedNumbers[i] = numbers.sorted().toMutableList()
             println(viewModel.issuedNumbers[i])
-            numbers = viewModel.pickRandomNumber()
+            numbers = LottoViewModel.pickRandomNumber()
         }
 
         println()
