@@ -44,14 +44,17 @@ class LottoViewModel {
         }
     }
 
-    private fun getWinningAmount(): Int =
-        Winning.THREE.getAmount() +
-            Winning.FOUR.getAmount() +
-            Winning.FIVE.getAmount() +
-            Winning.FIVEWITHBONUS.getAmount() +
-            Winning.SIX.getAmount()
+    private fun getWinningAmount(): Double {
+        var winningAmount = 0
 
-    private fun calculateProfit(purchaseAmount: String): Double = (getWinningAmount().toDouble() / purchaseAmount.toDouble()) * 100
+        Winning.values().forEach {
+            winningAmount += it.getAmount()
+        }
+
+        return winningAmount.toDouble()
+    }
+
+    private fun calculateProfit(purchaseAmount: String): Double = (getWinningAmount() / purchaseAmount.toDouble()) * 100
 
     companion object{
         fun pickRandomNumber(): List<Int> = Randoms.pickUniqueNumbersInRange(1, 45, 6)
