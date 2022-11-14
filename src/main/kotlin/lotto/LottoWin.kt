@@ -13,7 +13,7 @@ enum class LottoWin(var number: Int) {
         private const val ERROR_WIN_SIZE = "[ERROR] 당첨 로또 번호는 6개의 숫자로 구분지어 입력해야 합니다."
         private const val ERROR_WIN_RANGE = "[ERROR] 당첨 로또 번호는 1부터 45 사이의 숫자여야 합니다."
         private const val ERROR_WIN_DUPLICATE = "[ERROR] 당첨 로또 번호는 중복되면 안됩니다."
-        private const val ERROR_BONUS = "보너스 번호는 1부터 45사이의 숫자여야 합니다."
+        private const val ERROR_BONUS = "[ERROR] 보너스 번호는 1부터 45사이의 숫자여야 합니다."
 
         private val regex = "[0-9]{1,2}".toRegex()
 
