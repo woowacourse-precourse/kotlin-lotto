@@ -11,7 +11,7 @@ fun main() {
         Lotto.publish(purchase.count)
         Lotto.printCount()
         LottoWin.input()
-        WinningStatistics.calculateWin(Lotto.lottoes)
+        WinningStatistics.calculateWin(Lotto.lottos)
         WinningStatistics.print(purchase.price)
     } catch (exception: IllegalArgumentException) {
 

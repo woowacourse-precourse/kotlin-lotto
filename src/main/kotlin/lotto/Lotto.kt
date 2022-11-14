@@ -13,7 +13,7 @@ class Lotto(private val numbers: List<Int>) {
         require(inRange(numbers)) {
             println(ERROR_OUT_RANGE)
         }
-        lottoes.add(numbers.sorted())
+        lottos.add(numbers.sorted())
     }
 
     private fun notDuplicate(numbers: List<Int>): Boolean {
@@ -29,11 +29,11 @@ class Lotto(private val numbers: List<Int>) {
         const val ERROR_DUPLICATE = "[ERROR] 로또 번호는 서로 중복돼서는 안됩니다."
         const val ERROR_OUT_RANGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."
 
-        val lottoes = mutableListOf<List<Int>>()
+        val lottos = mutableListOf<List<Int>>()
 
         fun printCount() {
-            println("\n${lottoes.size}개를 구매했습니다.")
-            for (lotto in lottoes) {
+            println("\n${lottos.size}개를 구매했습니다.")
+            for (lotto in lottos) {
                 println(lotto)
             }
         }
