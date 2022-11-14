@@ -20,7 +20,7 @@ class Lotto(private val numbers: List<Int>) {
     // 당첨 내역을 출력한다. (5등부터 1등까지 몇개 당첨)
     fun getWinningList(matchCount: Int): List<Int> {
         val winners = mutableListOf(0, 0, 0, 0, 0)
-        when(matchCount){
+        when (matchCount) {
             3 -> winners[0]++
             4 -> winners[1]++
             6 -> winners[4]++

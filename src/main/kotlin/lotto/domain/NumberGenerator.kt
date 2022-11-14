@@ -8,4 +8,12 @@ class NumberGenerator {
         val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
         return numbers.sorted()
     }
+
+    // 구입 금액 만큼 로또를 추첨한 결과를 출력한다.
+    fun printLottoList(tryNumber: Int) {
+        println("${tryNumber}를 구매했습니다.")
+        for(i in 0 until tryNumber){
+            println(createLottoNumbers())
+        }
+    }
 }
