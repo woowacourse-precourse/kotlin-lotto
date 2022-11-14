@@ -1,17 +1,19 @@
 package lotto
 
+import lotto.domain.calculator.LottoCalculator
+import lotto.domain.controller.statistics.ShowStatisticsController
 import lotto.domain.controller.ticket.BuyTicketController
 import lotto.domain.controller.winning.MakeWinningNumberController
+import lotto.domain.model.statistics.WinningTotalStatistics
 import lotto.domain.model.ticket.LottoTicket
 import lotto.domain.model.winning.WinningLotto
+import lotto.ui.view.statistics.ShowStatisticsView
 import lotto.ui.view.ticket.BuyTicketView
 import lotto.ui.view.winning.MakeWinningNumberView
 
 fun main() {
-    // TODO: 알아야하는 값 -> 티켓정보, 당첨번호 정보
-
     val buyTicketView = BuyTicketView()
-    val lottoTicket = LottoTicket.emptyLottoTicket()
+    val lottoTicket = LottoTicket.emptyLottoTicket() // 구매한 로또 티켓 데이터
     val buyTicketController =
         BuyTicketController(
             buyTicketView = buyTicketView,
@@ -19,7 +21,7 @@ fun main() {
         )
 
     val makeWinningNumberView = MakeWinningNumberView()
-    val winningLotto = WinningLotto.emptyWinningLotto()
+    val winningLotto = WinningLotto.emptyWinningLotto() // 당첨 로또 번호 데이터
     val makeWinningNumberController =
         MakeWinningNumberController(
             makeWinningNumberView = makeWinningNumberView,
@@ -28,4 +30,18 @@ fun main() {
 
     buyTicketController.run()
     makeWinningNumberController.run()
+
+    // LottoCalculator.lottoTicket = lottoTicket
+    // LottoCalculator.winningLotto = winningLotto
+
+    LottoCalculator.calculateWinningHistory(lottoTicket, winningLotto)
+
+    val showStatisticsView = ShowStatisticsView()
+    val winningTotalStatistics = WinningTotalStatistics.emptyWinningTotalStatistics()
+    val showStatisticsController = ShowStatisticsController(
+        showStatisticsView = showStatisticsView,
+        winningTotalStatistics = winningTotalStatistics
+    )
+
+    // showStatisticsController.run()
 }

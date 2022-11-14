@@ -1,6 +1,6 @@
 package lotto.ui.view.statistics
 
-import lotto.domain.model.statistics.LottoMatchType
+import lotto.domain.model.statistics.enums.LottoMatchType
 import lotto.domain.model.statistics.WinningHistory
 
 class ShowStatisticsView {

@@ -1,12 +1,15 @@
 package lotto.domain.model.statistics
 
+import lotto.domain.model.statistics.enums.LottoMatchType
+
 data class WinningHistory(
-    val matchNumberCount: Int,
-    val profit: Int,
-    val matchTicketCount: Int,
-    val matchType: LottoMatchType
+    var matchNumberCount: Int,
+    var profit: Int,
+    var matchTicketCount: Int,
+    var matchType: LottoMatchType
 ) {
     companion object {
-        fun emptyWinningHistory() = WinningHistory(matchNumberCount = -1, profit = -1, matchTicketCount = -1, matchType = LottoMatchType.NORMAL)
+        fun emptyWinningHistory() =
+            WinningHistory(matchNumberCount = 0, profit = 0, matchTicketCount = 0, matchType = LottoMatchType.NORMAL)
     }
 }
