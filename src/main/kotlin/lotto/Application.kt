@@ -11,4 +11,5 @@ fun main() {
     println()
     val bonusNumber = BonusNumber().getBonusNumber(winningNumber)
     val winningList = WinningCalculator().getResult(lottoNumbers, winningNumber, bonusNumber)
+    val rateOfProfit = ProfitCalculator().calcRateOfProfit(winningList, money)
 }
