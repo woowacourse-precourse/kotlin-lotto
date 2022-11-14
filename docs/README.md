@@ -37,7 +37,7 @@
 - [x] countJackpot() : 당첨 종류에 따라 당첨 개수를 계산한다. 
     - [x] countDuplicationTwoList() : 두 리스트 간의 중복 원소 개수를 계산한다.
     - [x] classifyJackpotType() : 일치하는 중복 개수에 맞춰 당첨 종류를 구분한다.
-- [ ] calculatePrize() : 당첨 종류에 따른 당첨 금액을 계산한다.
+- [x] calculatePrize() : 당첨 종류에 따른 당첨 금액을 계산한다.
 - [ ] rateOfReturn() : 지불 금액과 당첨 금액을 활용해 수익률을 계산한다.
 - [x] generateRandomLotto() : 로또 번호들을 발행한다.
  

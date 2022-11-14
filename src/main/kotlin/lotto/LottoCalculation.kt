@@ -4,8 +4,12 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class LottoCalculation {
 
+    fun priceToCount(price: Int): Int {
+        return price / 1000
+    }
+
     fun countJackpot(lottoList: List<List<Int>>, jackpotNumber: List<Int>, bonusNumber: Int): List<Int> {
-        val countJackpotList: MutableList<Int> = List(6) { 0 }.toMutableList()
+        val countJackpotList: MutableList<Int> = List(5) { 0 }.toMutableList()
 
         for(lottoListIndex in lottoList.indices) {
             val lottoListElement = lottoList[lottoListIndex]
@@ -16,6 +20,16 @@ class LottoCalculation {
         }
 
         return countJackpotList
+    }
+
+    private fun countDuplicationTwoList(list1: List<Int>, list2: List<Int>): Int {
+        var count: Int = 0
+
+        if (list1.find { list2.contains(it) } != null) {
+            count++
+        }
+
+        return count
     }
 
     private fun classifyJackpotType(lotto: List<Int>, countCoincidence: Int, bonusNumber: Int): Int {
@@ -35,14 +49,15 @@ class LottoCalculation {
         return -1
     }
 
-    private fun countDuplicationTwoList(list1: List<Int>, list2: List<Int>): Int {
-        var count: Int = 0
+    fun calculatePrize(countJackpotList: List<Int>): Long {
+        var prize: Long = 0
+        prize += countJackpotList[INDEX_THREE_COINCIDENCE] * PRIZE_THREE_COINCIDENCE.toLong()
+        prize += countJackpotList[INDEX_FOUR_COINCIDENCE] * PRIZE_FOUR_COINCIDENCE.toLong()
+        prize += countJackpotList[INDEX_FIVE_COINCIDENCE] * PRIZE_FIVE_COINCIDENCE.toLong()
+        prize += countJackpotList[INDEX_FIVE_AND_BONUS_COINCIDENCE] * PRIZE_FIVE_AND_BONUS_COINCIDENCE.toLong()
+        prize += countJackpotList[INDEX_SIX_COINCIDENCE] * PRIZE_SIX_COINCIDENCE.toLong()
 
-        if (list1.find { list2.contains(it) } != null) {
-            count++
-        }
-
-        return count
+        return prize
     }
 
     fun generateRandomLotto(generateNumber: Int): List<List<Int>> {
@@ -55,10 +70,6 @@ class LottoCalculation {
         }
 
         return lottoList
-    }
-
-    fun priceToCount(price: Int): Int {
-        return price / 1000
     }
 
 }
