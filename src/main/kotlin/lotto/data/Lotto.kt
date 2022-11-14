@@ -8,6 +8,10 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.all { it in Range })
     }
 
+    fun contains(number: Int): Boolean {
+        return numbers.contains(number)
+    }
+
     companion object {
         const val LENGTH = 6
         const val MIN_NUMBER = 1
