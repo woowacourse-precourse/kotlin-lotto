@@ -11,7 +11,9 @@ class Lotto(private val numbers: List<Int>) {
 
     fun createNumber(): List<Int> {
         val purchase = Purchase()
-        val lottoQuantity = purchase.createExpense()
+        val expense = purchase.createExpense()
+        val lottoQuantity = purchase.updateLottoQuantity(expense)
+        println("\n${lottoQuantity}개를 구매했습니다.")
 
         for (item in 0 until lottoQuantity) {
             val numberList = Randoms.pickUniqueNumbersInRange(START_NUMBER_ONE, END_NUMBER_FORTY_FIVE, numbers.size)
