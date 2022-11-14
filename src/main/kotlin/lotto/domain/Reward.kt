@@ -1,6 +1,8 @@
 package lotto.domain
 
 import lotto.constants.Constant
+import lotto.constants.Constant.Companion.MONEY_UNIT
+import kotlin.math.round
 
 enum class Reward(val hit: Int, val prize: Int, val isBonus: Boolean) {
     FIRST(6, 2000000000, false),
@@ -70,4 +72,14 @@ fun countReward(rewards: MutableList<Reward>): MutableList<Int> {
         }
     }
     return count
+}
+
+fun calculateYield(rewards: MutableList<Reward>, amount: Int): Double {
+    var sum = 0
+    val divisor = amount * MONEY_UNIT
+    for (reward in rewards) {
+        sum += reward.prize
+    }
+    var result = (sum.toDouble() / divisor) * 100
+    return round((result * 10)) / 10 // 소수점 둘째 자리에서 반올림
 }
