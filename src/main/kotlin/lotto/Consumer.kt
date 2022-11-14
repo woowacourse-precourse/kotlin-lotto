@@ -15,4 +15,7 @@ class Consumer(private val money: Int) {
         }
     }
 
+    fun compareLotto(winningNumbers : Lotto, bonusNumber : Int) : List<Int>{
+        return LottoCalculator(myLotto, winningNumbers,bonusNumber).calculateLotto()
+    }
 }
