@@ -1,6 +1,6 @@
 package lotto
 
-import data.*
+import values.*
 
 class Lotto(private val numbers: List<Int>) {
     init {

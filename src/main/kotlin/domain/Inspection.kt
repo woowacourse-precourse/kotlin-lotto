@@ -1,6 +1,6 @@
 package domain
 
-import data.*
+import values.*
 
 class Inspection {
 

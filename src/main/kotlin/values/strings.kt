@@ -1,4 +1,4 @@
-package data
+package values
 
 // Error Message
 const val ERROR_MESSAGE_ONLY_NUMBER = "[ERROR] 숫자만 입력할 수 있습니다."
@@ -16,17 +16,3 @@ const val REQUIRE_MESSAGE_BONUS_NUMBER = "보너스 번호를 입력해 주세�
 // Print Message
 var purchasesNumber: Int = 0
 var PRINT_MESSAGE_PURCHASES_NUMBER = "${purchasesNumber}개를 구매했습니다."
-
-// Coincidence List Index
-const val INDEX_THREE_COINCIDENCE: Int = 0
-const val INDEX_FOUR_COINCIDENCE: Int = 1
-const val INDEX_FIVE_COINCIDENCE: Int = 2
-const val INDEX_FIVE_AND_BONUS_COINCIDENCE: Int = 3
-const val INDEX_SIX_COINCIDENCE: Int = 4
-
-// Jackpot Prize
-const val PRIZE_THREE_COINCIDENCE: Int = 5000
-const val PRIZE_FOUR_COINCIDENCE: Int = 50000
-const val PRIZE_FIVE_COINCIDENCE: Int = 1500000
-const val PRIZE_FIVE_AND_BONUS_COINCIDENCE: Int = 30000000
-const val PRIZE_SIX_COINCIDENCE: Int = 2000000000

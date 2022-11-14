@@ -1,7 +1,7 @@
 package ui
 
 import camp.nextstep.edu.missionutils.Console
-import data.*
+import values.*
 import domain.*
 
 class Input {

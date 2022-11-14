@@ -1,6 +1,6 @@
 package lotto
 
-import data.*
+import values.*
 import ui.Input
 
 fun main() {
@@ -8,7 +8,7 @@ fun main() {
     val input = Input()
 
     val price: Int = input.price()
-    purchasesNumber = price / 1000
+    purchasesNumber = calc.priceToCount(price)
     val lottoList: List<List<Int>> = LottoCalculation().generateRandomLotto(purchasesNumber)
     println(PRINT_MESSAGE_PURCHASES_NUMBER)
     println(lottoList)
