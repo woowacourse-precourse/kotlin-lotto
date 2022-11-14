@@ -8,12 +8,7 @@ fun main() {
     val lottoCount = printLottoConut(money)
     val allLotto = publishLotto(lottoCount)
     val answerNum = inputWinningNumber()
-
-    println("\n보너스 번호를 입력해 주세요.")
-    var bonusNum = Console.readLine().toInt()
-    if (bonusNum < 1 || bonusNum > 45) {
-        throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
-    }
+    val bonusNum = inputBonusNumber()
 
     var bonusCount = 0
 
@@ -106,4 +101,13 @@ fun inputWinningNumber(): List<String> {
         }
     }
     return answerNum
+}
+
+fun inputBonusNumber(): Int {
+    println("\n보너스 번호를 입력해 주세요.")
+    var bonusNum = Console.readLine().toInt()
+    if (bonusNum < 1 || bonusNum > 45) {
+        throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+    }
+    return bonusNum
 }
