@@ -1,24 +1,71 @@
 package lotto
 
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
-
 
 class LottoTest {
+
     @Test
-    fun `로또 번호의 개수가 6개가 넘어가면 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, 6, 7))
-        }
+    fun `로또판매점_가격에맞는수량_정상`() {
+        TODO()
     }
 
-    // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
     @Test
-    fun `로또 번호에 중복된 숫자가 있으면 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, 5))
-        }
+    fun `로또판매점_단위가격의배수가아님_에러`() {
+        TODO()
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @Test
+    fun `로또생성기_생성_길이6`() {
+        TODO()
+    }
+
+    @Test
+    fun `로또생성기_생성_중복X`() {
+        TODO()
+    }
+
+    @Test
+    fun `로또생성기_생성_1to45`() {
+        TODO()
+    }
+
+    @Test
+    fun `로또_길이6_정상`() {
+        TODO()
+    }
+
+    @Test
+    fun `로또_길이6아님_에러`() {
+        TODO()
+    }
+
+    @Test
+    fun `로또_중복X_정상`() {
+        TODO()
+    }
+
+    @Test
+    fun `로또_중복O_에러`() {
+        TODO()
+    }
+
+    @Test
+    fun `로또_숫자범위1to45_정상`() {
+        TODO()
+    }
+
+    @Test
+    fun `로또_숫자범위벗어남_에러`() {
+        TODO()
+    }
+
+    @Test
+    fun `당첨번호_중복보너스숫자_에러`() {
+        TODO()
+    }
+
+    @Test
+    fun `로또당첨번호_비교`() {
+        TODO()
+    }
 }
