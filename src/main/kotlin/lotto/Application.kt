@@ -7,14 +7,13 @@ import kotlin.math.round
 fun main() {
     println("구입금액을 입력해주세요")
     var lottoPay = Console.readLine()
-    var lottoTicket : Int
     chkNum(lottoPay)
     if(lottoPay.toInt()%1000 != 0){
         println("[ERROR] 금액을 1000원 단위로 입력해주세요")
         throw IllegalArgumentException()
     }
 
-    lottoTicket = lottoPay.toInt()/1000
+    var lottoTicket : Int = lottoPay.toInt()/1000
 
     println("${lottoTicket}개를 구매했습니다.")
     var lotto = mutableListOf<List<Int>>()
@@ -68,9 +67,9 @@ fun playLottery(lotto : List<Int>, userNum : List<Int>,TicketTypeCount : Mutable
     val union = lotto+userNum
     val intersection = union.groupBy { it }.filter { it.value.size > 1 }.flatMap { it.value }.distinct()
     if (intersection.count() == 3)
-        TicketTypeCount[0]++//5000원
+        TicketTypeCount[0]++//5,000원
     if (intersection.count() == 4)
-        TicketTypeCount[1]++//50000원
+        TicketTypeCount[1]++//50,000원
     if ((intersection.count() == 5) && !(lotto.contains(userBonus)))
         TicketTypeCount[2]++//1,500,000원
     if ((intersection.count() == 5) && (lotto.contains(userBonus)))
