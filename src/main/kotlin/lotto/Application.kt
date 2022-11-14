@@ -6,6 +6,9 @@ import lotto.domain.RandomNumberGenerator
 import lotto.domain.Rank
 import lotto.view.Input
 import lotto.view.Output
+import java.lang.IllegalArgumentException
+
+const val ERROR_HEADER = "[ERROR]"
 
 fun main() {
     val input = Input()
@@ -15,7 +18,11 @@ fun main() {
     val profitCalculator = ProfitCalculator()
     val lottoShop = LottoShop(input, output, generator, ranks, profitCalculator)
 
-    lottoShop.publish()
-    lottoShop.announceWinners()
-    lottoShop.announceYield()
+    try {
+        lottoShop.publish()
+        lottoShop.announceWinners()
+        lottoShop.announceYield()
+    }catch (e: IllegalArgumentException) {
+        println("$ERROR_HEADER ${e.message}")
+    }
 }

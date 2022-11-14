@@ -2,10 +2,7 @@ package lotto.utils.validation
 
 class PositiveNumberVerifier : Verifier<Int>() {
     override fun verify(input: Int) {
-        require(input > 0) {
-            println("$ERROR_HEADER $ERROR_MESSAGE")
-            ERROR_MESSAGE
-        }
+        require(input > 0) { ERROR_MESSAGE }
     }
 
     companion object {
