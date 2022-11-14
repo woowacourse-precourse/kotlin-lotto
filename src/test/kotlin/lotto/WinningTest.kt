@@ -7,23 +7,24 @@ import org.junit.jupiter.api.Test
 class WinningTest {
     @Test
     fun `번호가 0,1,2개 일치할 때 LAST 반환`() {
-        val winning = Winning()
-        val resultRank = winning.updateRank(0)
-        assertThat(Rank.LAST).isEqualTo(resultRank)
-
+        assertRank(0, Rank.LAST)
     }
 
     @Test
     fun `번호가 3개 일치할 때 FIFTH 반환`() {
-        val winning = Winning()
-        val resultRank = winning.updateRank(3)
-        assertThat(Rank.FIFTH).isEqualTo(resultRank)
+        assertRank(3, Rank.FIFTH)
     }
 
     @Test
     fun `번호가 4개 일치할 때 FOURTH 반환`() {
+        assertRank(4, Rank.FOURTH)
+    }
+
+
+    private fun assertRank(matchCount: Int, expectedRank: Rank) {
         val winning = Winning()
-        val resultRank = winning.updateRank(4)
-        assertThat(Rank.FOURTH).isEqualTo(resultRank)
+        val resultRank = winning.updateRank(matchCount)
+        assertThat(expectedRank).isEqualTo(resultRank)
+
     }
 }
