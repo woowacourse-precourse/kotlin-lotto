@@ -10,6 +10,8 @@ fun firstPay() : Int?{
         return pay
     } catch (e : NumberFormatException){
         println("[ERROR] 입력된 금액이 올바른 금액이 아닙니다.")
+    } catch (e : NullPointerException){
+        println("[ERROR] 값을 입력하지 않았습니다.")
     }
     return null
 }
@@ -51,6 +53,10 @@ fun lottoBonusNumber() : List<Int>?{
         println("[ERROR] 값을 입력하지 않았습니다.")
     }
     return null
+}
+
+fun earningsRatio (payment : Int, ) {
+
 }
 fun main() {
     TODO("프로그램 구현")
