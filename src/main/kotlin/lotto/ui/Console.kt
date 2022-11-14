@@ -17,6 +17,11 @@ object Console {
         return readLine().split(',').map { it.trim().toIntOrThrow() }
     }
 
+    fun requestBonusNumber(): Int {
+        println(Message.InputBonusNumber)
+        return readLine().toIntOrThrow()
+    }
+
     private fun String.toIntOrThrow(): Int {
         return requireNotNull(toIntOrNull()) { ConsoleError.NotValidInteger }
     }
