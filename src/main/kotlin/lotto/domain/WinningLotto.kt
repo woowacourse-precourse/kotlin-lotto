@@ -2,7 +2,10 @@ package lotto.domain
 
 import lotto.resources.*
 
-class WinningLotto(private val winningNumbers: Lotto, private val bonusNumber: Int) {
+class WinningLotto(
+    winningNumbers: List<Int>,
+    private val bonusNumber: Int
+) : Lotto(winningNumbers) {
     init {
         require(bonusNumber !in winningNumbers.toList()) { ERROR_INPUT_VALUE_NO_DUPLICATES }
         require(bonusNumber in LOTTO_START_NUMBER..LOTTO_END_NUMBER) {
@@ -12,7 +15,7 @@ class WinningLotto(private val winningNumbers: Lotto, private val bonusNumber: I
 
     private fun getResult(guessNumbers: Lotto): Pair<Int, Boolean> {
         return Pair(
-            winningNumbers.countSameNumbers(guessNumbers),
+            this.countSameNumbers(guessNumbers),
             bonusNumber in guessNumbers.toList()
         )
     }

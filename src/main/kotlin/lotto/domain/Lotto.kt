@@ -2,7 +2,7 @@ package lotto.domain
 
 import lotto.resources.*
 
-class Lotto(private val numbers: List<Int>) {
+open class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == LOTTO_NUMBER_COUNT) { ERROR_INPUT_VALUE_SIX_ONLY }
         require(numbers.toSet().size == LOTTO_NUMBER_COUNT) { ERROR_INPUT_VALUE_NO_DUPLICATES }

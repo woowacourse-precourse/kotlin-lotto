@@ -32,5 +32,5 @@ fun registerWinningLotto(): WinningLotto {
     val bonusNumber = inputBonusNumber()
     printBonusNumber(bonusNumber)
 
-    return WinningLotto(Lotto(winningNumbers), bonusNumber)
+    return WinningLotto(winningNumbers, bonusNumber)
 }
