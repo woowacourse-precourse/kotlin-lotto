@@ -36,7 +36,6 @@ object LottoExceptionHandler {
     }
 
     private fun throwException(errorMessage: String) {
-        println(errorMessage)
         throw IllegalArgumentException(errorMessage)
     }
 }
