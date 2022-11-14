@@ -98,12 +98,8 @@ fun calculateLottoWin(
             answerCount = compareWithLottoNum(lottos[j], bonusNum, answerCount)[0]
             bonusCount = compareWithLottoNum(lottos[j], bonusNum, answerCount)[1]
         }
-        if (answerCount != 0) {
-            winningCounts[answerCount] = winningCounts[answerCount] + 1
-        }
-        if (answerCount == 5 && bonusCount == 1) {
-            winningCounts[7] = winningCounts[7] + 1
-        }
+        winningCounts = addWinningCounts(answerCount, winningCounts)
+        winningCounts = addWinningBonusCounts(answerCount, bonusCount, winningCounts)
     }
 
     return winningCounts
@@ -122,6 +118,20 @@ fun compareWithLottoNum(lottoNum: Int, bonusNum: Int, answerCount: Int): List<In
         }
     }
     return (listOf(answerCount, bonusCount))
+}
+
+fun addWinningCounts(answerCount: Int, winningCounts: MutableList<Int>): MutableList<Int> {
+    if (answerCount != 0) {
+        winningCounts[answerCount] = winningCounts[answerCount] + 1
+    }
+    return winningCounts
+}
+
+fun addWinningBonusCounts(answerCount: Int, bonusCount: Int, winningCounts: MutableList<Int>): MutableList<Int> {
+    if (answerCount == 5 && bonusCount == 1) {
+        winningCounts[7] = winningCounts[7] + 1
+    }
+    return winningCounts
 }
 
 fun printWinningScore(winningCounts: MutableList<Int>) {
