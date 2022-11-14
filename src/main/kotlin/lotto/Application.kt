@@ -145,3 +145,18 @@ fun matchCheck(winningNum: Lotto, bonusNum: Int, lotto: Lotto): Int {
     }
     return numOfMatch
 }
+
+fun getLottoResult(winningNum: Lotto, bonusNum: Int, purchasedLotto: List<Lotto>): List<Int> {
+    val lottoResult = mutableListOf<Int>(0, 0, 0, 0, 0) //3개, 4개, 5개, 5개+보너스, 6개 일치하는 로또 수
+
+    for (userLotto in purchasedLotto.indices) {
+        val lottoInfo = purchasedLotto[userLotto]
+        val matchResult = matchCheck(winningNum, bonusNum, lottoInfo)
+        if (matchResult >= 3) {
+            val resultIndex = matchResult - 3
+            lottoResult[resultIndex] += 1
+        }
+    }
+
+    return lottoResult
+}
