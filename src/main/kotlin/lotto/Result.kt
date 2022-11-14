@@ -4,7 +4,7 @@ import java.text.DecimalFormat
 
 enum class Result(
     private val match: Int,
-    private val price: Int,
+    val price: Int,
     var count: Int = 0,
     private val extra: String = ""
 ) {

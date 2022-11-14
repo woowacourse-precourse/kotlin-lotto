@@ -20,7 +20,7 @@ fun lottoGame() {
     for (lotto in lottos) {
         checkLottoWin(lotto, winningNumbers, bonusNumber)
     }
-    showResult()
+    showResult(lottoCount)
 }
 
 fun generateLottoCount(): Int {
@@ -142,7 +142,7 @@ fun checkLottoWin(lotto: Lotto, winningNumbers: Lotto, bonusNumber: Int) {
     }
 }
 
-fun showResult() {
+fun showResult(lottoCount: Int) {
     println("당첨 통계")
     println("---")
 
@@ -151,4 +151,16 @@ fun showResult() {
     Result.THIRD.print()
     Result.SECOND.print()
     Result.FIRST.print()
+
+    println("총 수익률은 ${calculateEarningsRate(lottoCount)}%입니다.")
+}
+
+fun calculateEarningsRate(lottoCount: Int): Double {
+    val earningsRate = Result.FIFTH.price * Result.FIFTH.count
+    +Result.FOURTH.price * Result.FOURTH.count
+    +Result.THIRD.price * Result.THIRD.count
+    +Result.SECOND.price * Result.SECOND.count
+    +Result.FIRST.price * Result.FIRST.count
+
+    return earningsRate / (lottoCount.toDouble() * 1000) * 100
 }
