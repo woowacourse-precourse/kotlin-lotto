@@ -9,7 +9,6 @@ class Message {
         const val INPUT_WINNING_MASSAGE = "당첨 번호를 입력해 주세요."
         const val INPUT_BONUS_MASSAGE = "보너스 번호를 입력해 주세요."
         const val STATISTICS_MASSAGE = "당첨 통계\n" + "---\n"
-        const val SECOND_PLACE = 3
         const val UNIT_ERROR = "[ERROR] 1000 단위로 입력해야 합니다."
         const val MIN_VALUE_ERROR = "[ERROR] 로또 가격 이상 입력해야 합니다."
         const val SIZE_ERROR = "[ERROR] 사이즈는 6 이여야 합니다."

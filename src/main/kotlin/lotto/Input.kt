@@ -9,23 +9,34 @@ class Input {
             Exceptions.checkMoney(money)
             money
         } catch (e: IllegalArgumentException) {
-            println("[ERROR] 입력 금액이 올바르지 않습니다.")
+            println("$e")
             "ERROR"
         }
     }
 
     fun inputWinningNumber(): List<String> {
-        val winningNumber = Console.readLine()
-            .replace(" ", "")
-            .split(",")
-        Exceptions.checkWiningNumber(winningNumber)
-        return winningNumber
+        return try {
+            val winningNumber = Console.readLine()
+                .replace(" ", "")
+                .split(",")
+            Exceptions.checkWiningNumber(winningNumber)
+            winningNumber
+        } catch (e: IllegalArgumentException) {
+            println("$e")
+            emptyList()
+        }
     }
 
-    fun inputBonusNumber(winningNumber : List<String>): String {
-        val bonus = Console.readLine().replace(" ", "")
-        Exceptions.checkBonus(winningNumber, bonus)
-        return bonus
+    fun inputBonusNumber(winningNumber: List<String>): String {
+        return try {
+            val bonus = Console.readLine().replace(" ", "")
+            Exceptions.checkBonus(winningNumber, bonus)
+            bonus
+        }
+        catch (e :IllegalArgumentException){
+            println("$e")
+            ""
+        }
     }
 
 }

@@ -17,10 +17,15 @@ fun main() {
 
     println(Message.INPUT_WINNING_MASSAGE)
     val winningNumber = input.inputWinningNumber()
+    if (winningNumber.isEmpty()) {
+        return
+    }
 
     println(Message.INPUT_BONUS_MASSAGE)
     val bonus = input.inputBonusNumber(winningNumber)
-
+    if (bonus == "") {
+        return
+    }
 
     var winningResult = lottoList.getWinningResult(winningNumber, bonus)
     message.printStatistics(winningResult)
