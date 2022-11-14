@@ -21,6 +21,10 @@ private enum class OutputMessage(val message: String) {
         return (this.message + number.toString() + "개")
     }
 
+    fun getYieldMessage(value: Double): String {
+        return (this.message + value.toString() + "%입니다.")
+    }
+
 }
 
 object OutputView {
@@ -47,6 +51,10 @@ object OutputView {
                 4 -> println(OutputMessage.FIRST_PLACE.getRankMessage(rank[0]))
             }
         }
+    }
+
+    fun printYield(value: Double) {
+        println(OutputMessage.YIELD.getYieldMessage(value))
     }
 
 }
