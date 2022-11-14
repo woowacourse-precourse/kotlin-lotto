@@ -4,7 +4,6 @@ import error.ErrorMaking.Companion.makeError
 import resource.*
 
 object LottoError {
-
     fun checkLottoNumbers(numbers: List<Int>) {
         checkOutOfRange(numbers)
         checkDuplicate(numbers)
@@ -31,4 +30,15 @@ object LottoError {
             makeError(ErrorMaking.NUMBER_DUPLICATED)
         }
     }
+}
+
+object InputError {
+    fun checkInteger(value: String?) {
+        try {
+            value!!.toInt()
+        } catch (e: Exception) {
+            makeError(ErrorMaking.NOT_INTEGER_VALUE)
+        }
+    }
+
 }

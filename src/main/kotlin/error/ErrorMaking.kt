@@ -15,6 +15,9 @@ enum class ErrorMaking {
     },
     MONEY_UNIT_INCORRECT {
         override fun getErrorMessage() = "입력한 금액이 로또 값으로 나누어 떨어지지 않습니다."
+    },
+    NOT_INTEGER_VALUE {
+        override fun getErrorMessage() = "숫자를 입력해야 합니다."
     };
 
     abstract fun getErrorMessage(): String

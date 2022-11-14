@@ -24,4 +24,11 @@ class ErrorCheckingTest {
             LottoError.checkDuplicate(listOf(1, 2, 3, 4, 5, 5))
         }
     }
+
+    @Test
+    fun `숫자가 아닌 값이면 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            InputError.checkInteger("a")
+        }
+    }
 }
