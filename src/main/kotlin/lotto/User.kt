@@ -38,12 +38,8 @@ class User {
         ) as HashMap<Int, Int>
 
         for (i in 0 until lottery.size) {
-            var cnt = 0
-            for (j in 0 until 6) {
-                if (lottery[i].contains(userNum[j])) {
-                    cnt++
-                }
-            }
+            var cnt = counting(lottery, i, userNum)
+
             if (cnt == 5 && lottery[i].contains(bonusNum)) {
                 cnt = LotteryResult.FIVEANDBONUS.correct
             }
@@ -54,14 +50,10 @@ class User {
         for (i in winLottery.keys) {
             if (i == LotteryResult.FIVEANDBONUS.correct) {
                 println("5개 일치" + LotteryResult.printCost(i) + " - " + "${winLottery[i]}개")
-                if(winLottery[i] != 0){
-                    sum += LotteryResult.getCost(i)
-                }
+                sum = calculateSum(winLottery, i, sum)
             } else if(i > 2){
                 println("$i" + "개 일치" + LotteryResult.printCost(i) + " - " + "${winLottery[i]}개")
-                if(winLottery[i] != 0){
-                    sum += LotteryResult.getCost(i)* winLottery[i]!!
-                }
+                sum = calculateSum(winLottery, i, sum)
             }
         }
 
@@ -69,5 +61,23 @@ class User {
 
         val result = String.format("%.1f", earningsRate)
         println("총 수익률은 $result%입니다.")
+    }
+
+    private fun calculateSum(winLottery: HashMap<Int, Int>, i: Int, sum: Long): Long {
+        var tmpSum = sum
+        if (winLottery[i] != 0) {
+            tmpSum += LotteryResult.getCost(i) * winLottery[i]!!
+        }
+        return tmpSum
+    }
+
+    private fun counting(lottery: MutableList<MutableList<Int>>, i: Int, userNum: List<Int>): Int {
+        var cnt = 0
+        for (j in 0 until 6) {
+            if (lottery[i].contains(userNum[j])) {
+                cnt++
+            }
+        }
+        return cnt
     }
 }
