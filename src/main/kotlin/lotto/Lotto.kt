@@ -3,6 +3,7 @@ package lotto
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6)
+        require(numbers.distinct() == numbers)
     }
 
     fun compareWinningNumber(winningNumber: List<Int>): Int {
