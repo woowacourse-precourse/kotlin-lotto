@@ -10,7 +10,7 @@ class LottoTest {
     lateinit var machine:LottoMachine
     @BeforeEach
     fun setUp(){
-        machine= LottoMachine()
+        machine= LottoMachine(LottoPrinter(), LottoConsole())
     }
     @Test
     fun `로또 번호의 개수가 6개가 넘어가면 예외가 발생한다`() {
@@ -33,28 +33,40 @@ class LottoTest {
     // 아래에 추가 테스트 작성 가능
     @Test
     fun `로또 랜덤 생성_6개의 수인지 테스트`() {
-        var result= listOf<Int>()
+        var result: Lotto
         for(idx in 0 .. 1000){
             result=machine.makeRandomNumber()
-            Assertions.assertEquals(6,result.size)
-            println(result)
+            Assertions.assertEquals(result.getNumbers().size,6)
         }
     }
     @Test
     fun `로또 랜덤 생성_중복되는지 테스트`() {
-        var result= listOf<Int>()
-        for(idx in 0 .. 1000){
+        var result: Lotto
+        for(idx in 0 .. 1000) {
             result=machine.makeRandomNumber()
-            Assertions.assertEquals(6,result.distinct().size)
+            Assertions.assertEquals(result.getNumbers().distinct().size,6)
         }
     }
+
     @Test
     fun `로또 랜덤 생성_1부터 45인지 테스트`() {
-        var result= listOf<Int>()
+        var result:Lotto
         for(idx in 0 .. 1000){
             result=machine.makeRandomNumber()
-            Assertions.assertEquals(true,result[5]<=45)
-            Assertions.assertEquals(true,result[0]>=1)
+            Assertions.assertEquals(true,result.getNumbers()[0]>=1)
+            Assertions.assertEquals(true,result.getNumbers()[5]<=45)
+
         }
+    }
+
+    @Test
+    fun `금액에 맞는 로또 갯수 생성하기`(){
+        var count = 6000
+        var lottoTickets=machine.makeUserLottoTickets(count)
+
+        for(idx in 0 until lottoTickets.size){
+            println(lottoTickets[idx].getNumbers())
+        }
+
     }
 }
