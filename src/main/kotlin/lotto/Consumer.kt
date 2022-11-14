@@ -23,11 +23,11 @@ class Consumer(private val money: Int) {
 
     fun calculateYield(winnings : List<Int>) : String{
         var sum = 0
-        sum=Winnings.FIRST_PLACE.sum(winnings[0])+
-                Winnings.SECOND_PLACE.sum(winnings[1])+
-                Winnings.THIRD_PLACE.sum(winnings[2])+
-                Winnings.FOURTH_PLACE.sum(winnings[3])+
-                Winnings.FIFTH_PLACE.sum(winnings[4])
-        return String.format("%.1f",round(((sum*100).toDouble()/money)* ROUND_POSITION)/ ROUND_POSITION)
+        sum=Winnings.FIRST_PLACE.sum(winnings[FIRST_PLACE_INDEX])+
+                Winnings.SECOND_PLACE.sum(winnings[SECOND_PLACE_INDEX])+
+                Winnings.THIRD_PLACE.sum(winnings[THIRD_PLACE_INDEX])+
+                Winnings.FOURTH_PLACE.sum(winnings[FOURTH_PLACE_INDEX])+
+                Winnings.FIFTH_PLACE.sum(winnings[FIFTH_PLACE_INDEX])
+        return String.format("%.1f",round(((sum* PERCENT_VALUE).toDouble()/money)* ROUND_POSITION)/ ROUND_POSITION)
     }
 }
