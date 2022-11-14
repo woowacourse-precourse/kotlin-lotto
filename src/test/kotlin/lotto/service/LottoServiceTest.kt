@@ -23,12 +23,11 @@ internal class `LottoService 클래스의` {
             }
             @Test
             fun `구입한 로또를 모두 LottoRepository에 저장한다`() {
-                val initLotteries = LottoRepository.findAll()
                 LottoService.purchaseLotteries(purchaseAmount)
 
                 val findLotteries = LottoRepository.findAll()
 
-                assertThat(findLotteries.size - initLotteries.size).isEqualTo(purchaseAmount / LottoShop.lottoPrice())
+                assertThat(findLotteries.size).isEqualTo(purchaseAmount / LottoShop.lottoPrice())
             }
         }
     }

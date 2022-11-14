@@ -4,13 +4,13 @@ import lotto.domain.Lotto
 
 object LottoRepository {
 
-    private val repository = mutableListOf<Lotto>()
+    private var repository = listOf<Lotto>()
 
     fun saveAll(lotteries: List<Lotto>) {
-        repository.addAll(lotteries)
+        repository = lotteries
     }
 
     fun findAll(): List<Lotto> {
-        return repository.toList()
+        return repository
     }
 }
