@@ -2,25 +2,25 @@ package lotto
 
 class Validator {
 
-    fun checkMoneyInput(input : String) {
+    fun checkMoneyInput(input : String?) {
         checkInputNullValidation(input)
-        checkStringToIntValidation(input)
+        checkStringToIntValidation(input!!)
         checkMoneyValueValidation(input)
     }
 
-    fun checkWinnigNumberInput(input : String) {
+    fun checkWinnigNumberInput(input : String?) {
         checkInputNullValidation(input)
-        checkWinnigNumberToIntValidation(input)
+        checkWinnigNumberToIntValidation(input!!)
     }
 
-    fun checkBonusInput(input : String) {
+    fun checkBonusInput(input : String?) {
         checkInputNullValidation(input)
-        checkStringToIntValidation(input)
-        checkBonusNumberRagngeValidation(input)
+        checkStringToIntValidation(input!!)
+        checkBonusNumberRagngeValidation(input!!)
     }
 
     fun checkBonusNumberRagngeValidation(input : String) {
-        require(input.toInt() >= LOTTO_MIN_NUM && input.toInt() <= 45) { BONUS_RANGE_ERROR_MSG }
+        require(input.toInt() >= LOTTO_MIN_NUM && input.toInt() <= LOTTO_MAX_NUM) { BONUS_RANGE_ERROR_MSG }
     }
 
     fun checkWinnigNumberToIntValidation(input : String) {
@@ -32,7 +32,7 @@ class Validator {
         }
     }
 
-    fun checkInputNullValidation(input: String) {
+    fun checkInputNullValidation(input: String?) {
         require(input != null) { INPUT_NULL_ERROR_MSG }
     }
     fun checkStringToIntValidation(input : String) {
