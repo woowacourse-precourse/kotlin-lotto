@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import java.math.BigDecimal
 
-internal class `WinningStatistics 클래스의` {
+internal class WinningStatisticsTest {
     @Nested
     inner class `생성자는` {
         @Nested

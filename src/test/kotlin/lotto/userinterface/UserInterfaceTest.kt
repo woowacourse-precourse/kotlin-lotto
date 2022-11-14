@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.io.ByteArrayInputStream
 
-internal class `UserInterface 클래스의` {
+internal class UserInterfaceTest {
     @Nested
     inner class `askPurchaseAmount 메소드는`: NsTest() {
         @Nested

@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 
 
-class `Lotto 클래스의` {
+class LottoTest {
 
     @Nested
     inner class `생성자는` {

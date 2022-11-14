@@ -7,7 +7,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
-internal class `LottoService 클래스의` {
+internal class LottoServiceTest {
     @Nested
     inner class `purchaseLotteries 메소드는` {
         @Nested
