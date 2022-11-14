@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 
-class LottoWinTest :NsTest(){
+class LottoWinTest : NsTest() {
     @Test
     fun `당첨 번호의 개수가 6개가 아니다`() {
         assertThrows<IllegalArgumentException> {
