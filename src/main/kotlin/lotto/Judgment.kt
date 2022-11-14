@@ -1,13 +1,22 @@
 package lotto
 
+import lotto.Constant.Companion.ERROR_1_45_RANGE
+import lotto.Constant.Companion.ERROR_ALREADY_IN
+import lotto.Constant.Companion.ERROR_INT_OR_NULL
+import lotto.Constant.Companion.ERROR_NUMERIC
+import lotto.Constant.Companion.ERROR_SIX_LENGTH
+import lotto.Constant.Companion.ERROR_THOUSAND
+import lotto.Constant.Companion.LOTTO_PRICE
+import lotto.Constant.Companion.LOTTO_SIZE
+
 class Judgment {
 
     fun checkPurchaseAmount(input: String): Int {
         if (input.toIntOrNull() == null) {
-            throw IllegalArgumentException("[ERROR] 구매 금액을 숫자 형태로 입력해야 합니다.")
+            throw IllegalArgumentException("$ERROR_INT_OR_NULL")
         }
         if (input.toInt() % LOTTO_PRICE != 0) {
-            throw IllegalArgumentException("[ERROR] 구매 금액을 1000원 단위로 입력하세요.")
+            throw IllegalArgumentException("$ERROR_THOUSAND")
         }
         return getPurchaseNumber(input)
     }
@@ -20,18 +29,18 @@ class Judgment {
     fun checkWinningNumber(lottoNumber: MutableList<Int>): Boolean {
         var winningNumber = lottoNumber.distinct().filter { it in 1..45 }
         if (winningNumber.size != LOTTO_SIZE) {
-            throw IllegalArgumentException("[ERROR] 6개의 숫자를 콤마로 구분하여 입력해주세요.")
+            throw IllegalArgumentException("$ERROR_SIX_LENGTH")
         }
         return true
     }
 
     fun checkBonusNumber(bonusNumber: String, winningNumber: MutableList<Int>) {
         if (bonusNumber.toIntOrNull() == null) {
-            throw IllegalArgumentException("[ERROR] 숫자 형태로 입력해주세요.")
+            throw IllegalArgumentException("$ERROR_NUMERIC")
         } else if (bonusNumber.toInt() !in 1..45) {
-            throw IllegalArgumentException("[ERROR] 1~45 범위 내 숫자를 입력해주세요.")
+            throw IllegalArgumentException("$ERROR_1_45_RANGE")
         } else if (bonusNumber.toInt() in winningNumber){
-            throw IllegalArgumentException("[ERROR] 당첨 번호에 이미 존재하는 숫자입니다.")
+            throw IllegalArgumentException("$ERROR_ALREADY_IN")
         }
     }
 }

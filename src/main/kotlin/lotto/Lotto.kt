@@ -1,6 +1,9 @@
 package lotto
 
-import kotlin.math.roundToInt
+import lotto.Constant.Companion.LOTTO_RESULT
+import lotto.Constant.Companion.LOTTO_SIZE
+import lotto.Constant.Companion.SEPERATOR
+
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6)
@@ -65,8 +68,8 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     fun showLottoResult() {
-        println("당첨 통계")
-        println("- - -")
+        println("$LOTTO_RESULT")
+        println("$SEPERATOR")
 
         getWinningLotto()
         for (reward in RewardInfo.rewardResult.keys) {

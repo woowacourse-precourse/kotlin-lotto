@@ -2,12 +2,16 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
+import lotto.Constant.Companion.BONUS_NUMBER
+import lotto.Constant.Companion.BUY_LOTTO
+import lotto.Constant.Companion.LOTTO_SIZE
+import lotto.Constant.Companion.WINNING_LOTTO
 
 class Seller {
     var judgment = Judgment()
 
     fun generateLotto(LottoCnt: Int) {
-        println("${LottoCnt}개를 구매했습니다.")
+        println("${LottoCnt}${BUY_LOTTO}")
         for (cnt in 0 until LottoCnt) {
             var randLotto = Randoms.pickUniqueNumbersInRange(1, 45, LOTTO_SIZE).sorted()
             println(randLotto)
@@ -16,10 +20,10 @@ class Seller {
     }
 
     fun getWinningNumber() {
-        println("당첨 번호를 입력해 주세요.")
+        println("$WINNING_LOTTO")
         var winningLottoNumber = Console.readLine()
         winningLottoNumber.split(",").forEach() {
-            it.toIntOrNull()?.let { it -> winningNumber.add(it) }
+            it.toIntOrNull()?.let { winningNumber.add(it) }
         }
         winningNumber.sort()
         if (judgment.checkWinningNumber(winningNumber)) {
@@ -28,7 +32,7 @@ class Seller {
     }
 
     fun getBonusNumber() {
-        println("보너스 번호를 입력해 주세요.")
+        println("$BONUS_NUMBER")
         bonusNumber = Console.readLine()
         judgment.checkBonusNumber(bonusNumber, winningNumber)
     }
