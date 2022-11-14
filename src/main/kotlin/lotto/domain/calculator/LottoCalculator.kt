@@ -5,7 +5,7 @@ import lotto.domain.model.ticket.LottoTicket
 import lotto.domain.model.winning.WinningLotto
 
 object LottoCalculator {
-    val winningResult = hashMapOf(
+    val winningTicketCount = mutableMapOf(
         LottoWinningResult.FIFTH to 0,
         LottoWinningResult.FOURTH to 0,
         LottoWinningResult.THIRD to 0,
@@ -13,20 +13,29 @@ object LottoCalculator {
         LottoWinningResult.FIRST to  0,
     )
 
+    fun calculateTotalProfitRate() {
+        var totalRate = 0.0
+
+    }
+
     fun calculateWinningTicketCount(
         lottoTicket: LottoTicket,
         winningLotto: WinningLotto
     ) {
-        lottoTicket.lottos.forEach {
-            val lottoResult = checkLottoResult(lottoNumbers = it.getLottoNumbers(), winningLotto = winningLotto)
-            winningResult[lottoResult]?.plus(1)
+        lottoTicket.lottos.forEach { lotto ->
+            val lottoResult = checkLottoResult(lottoNumbers = lotto.getLottoNumbers(), winningLotto = winningLotto)
+
+            if (winningTicketCount.containsKey(lottoResult))
+                winningTicketCount[lottoResult] = winningTicketCount[lottoResult]!! + 1
         }
     }
 
     private fun checkLottoResult(lottoNumbers: List<Int>, winningLotto: WinningLotto): LottoWinningResult {
             val (winningNumbers, bonusNumber) = winningLotto
             val isBonusMatch = lottoNumbers.contains(bonusNumber)
-            val matchNumberCount = lottoNumbers.count{ number -> winningNumbers.contains(number) }
+            var matchNumberCount = lottoNumbers.count{ number -> winningNumbers.contains(number) }
+
+            if (isBonusMatch) matchNumberCount += 1
 
             val lottoResult = when (matchNumberCount) {
                 6 -> LottoWinningResult.FIRST

@@ -34,7 +34,7 @@ fun main() {
     // LottoCalculator.lottoTicket = lottoTicket
     // LottoCalculator.winningLotto = winningLotto
 
-    LottoCalculator.calculateWinningHistory(lottoTicket, winningLotto)
+    LottoCalculator.calculateWinningTicketCount(lottoTicket, winningLotto)
 
     val showStatisticsView = ShowStatisticsView()
     val winningTotalStatistics = WinningTotalStatistics.emptyWinningTotalStatistics()
