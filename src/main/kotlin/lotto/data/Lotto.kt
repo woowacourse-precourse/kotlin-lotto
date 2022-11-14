@@ -16,6 +16,10 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.count { other.contains(it) }
     }
 
+    override fun toString(): String {
+        return numbers.sorted().toString()
+    }
+
     companion object {
         const val LENGTH = 6
         const val MIN_NUMBER = 1
