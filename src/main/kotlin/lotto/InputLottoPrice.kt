@@ -16,7 +16,7 @@ class InputLottoPrice {
     private fun inputPrice(): Int {
         try {
             val realPrice = Console.readLine().trim()
-            require(realPrice.all { it.isDigit() } && realPrice.toInt() % 1000 == 0)
+            require(realPrice.all { it.isDigit() } && (realPrice.toInt() % Print.MIN_PRICE) == Print.ZERO)
             return realPrice.toInt()
         } catch (e: IllegalArgumentException) {
             throw IllegalArgumentException(Print.ERROR_PRICE)
