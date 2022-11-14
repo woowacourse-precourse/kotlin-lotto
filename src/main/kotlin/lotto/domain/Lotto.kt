@@ -10,25 +10,25 @@ class Lotto(private val numbers: List<Int>) {
     }
     private fun checkLottoNumberCount(){
         try {
-            require(numbers.size == Constant.Lotto.LOTTO_COUNT.params)
+            require(numbers.size == CONSTANT.LOTTO.LOTTO_COUNT.params)
         } catch (e: IllegalArgumentException){
-            println(Constant.ErrorMessage.CheckLottoNumberCountError.message)
+            println(CONSTANT.ERRORMESSAGE.CHECKLOTTONUMBERCONUTERROR.message)
             throw e
         }
     }
     private fun checkLottoNumberDuplicated(){
         try {
-            require(numbers.distinct().size == Constant.Lotto.LOTTO_COUNT.params)
+            require(numbers.distinct().size == CONSTANT.LOTTO.LOTTO_COUNT.params)
         } catch (e: IllegalArgumentException){
-            println(Constant.ErrorMessage.CheckLottoNumberDuplicated.message)
+            println(CONSTANT.ERRORMESSAGE.CHECKLOTTONUMBERDUPLICATED.message)
             throw e
         }
     }
     private fun checkLottoNumberRange(number: Int){
         try{
-            require(number in Constant.Lotto.MIN_LOTTO_NUMBER.params..Constant.Lotto.MAX_LOTTO_NUMBER.params)
+            require(number in CONSTANT.LOTTO.MIN_LOTTO_NUMBER.params..CONSTANT.LOTTO.MAX_LOTTO_NUMBER.params)
         }catch (e: IllegalArgumentException){
-            println(Constant.ErrorMessage.CheckLottoNumberRange.message)
+            println(CONSTANT.ERRORMESSAGE.CHECKLOTTONUMBERRANGE.message)
             throw e
         }
     }
