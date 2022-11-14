@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import java.lang.IllegalArgumentException
 
-class UITest : NsTest() {
+class ExceptionTest : NsTest() {
     @Test
     fun `구매 금액이 1000원으로 떨어지지 않을 때`(){
         Assertions.assertSimpleTest {
