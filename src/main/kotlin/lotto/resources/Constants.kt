@@ -16,12 +16,13 @@ const val OUTPUT_SECOND_PLACE = "5개 일치, 보너스 볼 일치 (30,000,000�
 const val OUTPUT_FIRST_PLACE = "6개 일치 (2,000,000,000원) - %d개"
 
 // FOR ERROR HANDLING
-const val ERROR_INPUT_VALUE_SIX_ONLY = "[ERROR] 입력은 6개만 있어야합니다."
-const val ERROR_INPUT_VALUE_NO_DUPLICATES = "[ERROR] 중복된 숫자가 있으면 안됩니다."
-const val ERROR_INPUT_VALUE_ONE_OR_FORTY_FIVE_ONLY = "[ERROR] 입력은 6개만 있어야합니다."
-const val ERROR_INPUT_VALUE_NUMBER_ONLY = "[ERROR] 숫자만 입력해주세요."
-const val ERROR_INPUT_VALUE_MULTIPLE_OF_THOUSAND_ONLY = "[ERROR] 천원 단위로만 입력해주세요."
-const val ERROR_INPUT_VALUE_POSITIVE_NUMBER_ONLY = "[ERROR] 자연수만 입력해주세요."
+private const val ERROR_MESSAGE_PREFIX = "[ERROR] "
+const val ERROR_INPUT_VALUE_SIX_ONLY = ERROR_MESSAGE_PREFIX + "입력은 6개만 있어야합니다."
+const val ERROR_INPUT_VALUE_NO_DUPLICATES = ERROR_MESSAGE_PREFIX + "중복된 숫자가 있으면 안됩니다."
+const val ERROR_INPUT_VALUE_ONE_OR_FORTY_FIVE_ONLY = ERROR_MESSAGE_PREFIX + "입력은 6개만 있어야합니다."
+const val ERROR_INPUT_VALUE_NUMBER_ONLY = ERROR_MESSAGE_PREFIX + "숫자만 입력해주세요."
+const val ERROR_INPUT_VALUE_MULTIPLE_OF_THOUSAND_ONLY = ERROR_MESSAGE_PREFIX + "천원 단위로만 입력해주세요."
+const val ERROR_INPUT_VALUE_POSITIVE_NUMBER_ONLY = ERROR_MESSAGE_PREFIX + "자연수만 입력해주세요."
 
 // FOR LOTTO LOGIC
 const val LOTTO_START_NUMBER = 1
