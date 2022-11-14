@@ -1,6 +1,14 @@
 package lotto
 import camp.nextstep.edu.missionutils.Randoms
 
+enum class lottoScore(val earning : Int){
+    FIRST(2000000000),
+    SECOND( 3000000),
+    THIRD(1500000),
+    FOURTH(50000),
+    FIFTH(5000)
+}
+
 fun firstPay() : Int?{
     var pay = 0
     println("구입금액을 입력해 주세요.")
@@ -55,9 +63,11 @@ fun lottoBonusNumber() : List<Int>?{
     return null
 }
 
-fun earningsRatio (payment : Int, ) {
+fun earningsRatio (payment : Int, earnings : Int) {
 
 }
+
+
 fun main() {
     TODO("프로그램 구현")
 }
