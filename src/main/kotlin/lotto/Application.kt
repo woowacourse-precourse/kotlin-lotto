@@ -18,7 +18,7 @@ fun bonusSame(numbers: List<Int>, bonus: Int):Int{
     for(i in 0 until 6){
         if(numbers[i].toInt() == bonus) return 1
     }
-    return 0
+    return -1
 }
 
 fun checkGrade(numbers:List<Int>,userNum:List<String>,bonus: Int):Int{
