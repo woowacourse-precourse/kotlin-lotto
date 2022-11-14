@@ -44,12 +44,12 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     fun calcReturnRate(purchaseAmount: Int): String {
-        var totalReward = getTotalReward()
-        if (totalReward == 0) {
+        var totalReward = getTotalReward().toDouble()
+        if (totalReward == 0.0) {
             return "0"
         }
 
-        var useMoney = purchaseAmount
+        var useMoney = purchaseAmount.toDouble()
         var returnRate = ((totalReward / useMoney) * 100).toDouble()
         return String.format("%,.1f",returnRate)
     }
@@ -65,7 +65,8 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     fun showLottoResult() {
-        println("\n당첨 통계")
+        //println("\n당첨 통계")
+        println("당첨 통계")
         println("- - -")
 
         getWinningLotto()
