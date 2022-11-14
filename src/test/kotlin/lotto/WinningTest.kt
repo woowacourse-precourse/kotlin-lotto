@@ -12,4 +12,11 @@ class WinningTest {
         assertThat(Rank.LAST).isEqualTo(resultRank)
 
     }
+
+    @Test
+    fun `번호가 3개 일치할 때 FIFTH 반환`() {
+        val winning = Winning()
+        val resultRank = winning.updateRank(3)
+        assertThat(Rank.FIFTH).isEqualTo(resultRank)
+    }
 }
