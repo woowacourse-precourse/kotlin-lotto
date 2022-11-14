@@ -2,8 +2,10 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console.readLine
 
-const val INVALID_NUMBER_RANGE = "입력된 숫자가 1에서 45사이가 아닙니다."
-const val INVALID_NUMBER_OF_WINNING_NUMBERS = "당첨 번호는 6개여야합니다."
+private const val INPUT_NOT_NATURAL_NUMBER = "[ERROR] 로또번호는 자연수여야합니다."
+private const val INVALID_NUMBER_RANGE = "[ERROR] 입력된 숫자가 1에서 45사이가 아닙니다."
+private const val INVALID_NUMBER_OF_WINNING_NUMBERS = "[ERROR] 당첨 번호는 6개여야합니다."
+private const val LOTTO_SIZE = 6
 
 class LottoMachine {
     private val _winningNumbers = mutableListOf<Int>()
@@ -13,10 +15,12 @@ class LottoMachine {
     val bonusNumber: Int get() = _bonusNumber
 
     fun publishWinningNumber(input: String = readLine()) {
-        val numbers = input.split(",").map { number ->
-            checkInputValid(number)
-            number.toInt()
-        }
+        val numbers: List<Int> = input
+            .split(",")
+            .map { number ->
+                checkInputValid(number)
+                number.toInt()
+            }
         checkNumberOfWinningNumbers(numbers)
         _winningNumbers.addAll(numbers)
     }
@@ -27,7 +31,7 @@ class LottoMachine {
     }
 
     private fun checkNumberOfWinningNumbers(numbers: List<Int>) {
-        if (numbers.size != 6) {
+        if (numbers.size != LOTTO_SIZE) {
             throw IllegalArgumentException(INVALID_NUMBER_OF_WINNING_NUMBERS)
         }
     }
@@ -39,7 +43,7 @@ class LottoMachine {
 
     private fun isNumber(number: String) {
         if (!number.all { Character.isDigit(it) }) {
-            throw IllegalArgumentException(MONEY_NOT_NATURAL_NUMBER)
+            throw IllegalArgumentException(INPUT_NOT_NATURAL_NUMBER)
         }
     }
 
