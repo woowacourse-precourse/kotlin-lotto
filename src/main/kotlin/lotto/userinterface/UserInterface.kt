@@ -55,9 +55,13 @@ object UserInterface {
     fun askBonusNumberNotIn(winningNumbers: List<Int>): Int {
         println(REQUEST_BONUS_NUMBER)
         val readValue = Console.readLine()
+        validateBonusNumber(readValue, winningNumbers)
+        return readValue.toInt()
+    }
+
+    private fun validateBonusNumber(readValue: String, winningNumbers: List<Int>) {
         require(readValue.matches(Regex("\\d{1,2}")) && readValue.toInt() in 1..45) { BONUS_NUMBER_MUST_BE_BETWEEN_1_AND_45 }
         require(readValue.toInt() !in winningNumbers) { BONUS_NUMBER_MUST_NOT_BE_INCLUDED_IN_WINNING_NUMBERS }
-        return readValue.toInt()
     }
 
     fun showWinningStatistics(winningStatistics: WinningStatisticsDto) {
