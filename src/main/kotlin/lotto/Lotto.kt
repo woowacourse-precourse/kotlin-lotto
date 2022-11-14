@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console
 
 data class __Lotto__(val repeats: Int) {
     private var idx: MutableList<MutableList<Int>> = mutableListOf()
-    private var correctCount = mutableListOf<Int>(8)
+    private var correctCount = mutableListOf<Int>(7)
 
     init {
         repeat(repeats) {
@@ -31,6 +31,20 @@ data class __Lotto__(val repeats: Int) {
         return correctCount
     }
 
+    public fun calculateProfit(): Double {
+        var profit = 0.0
+        correctCount.forEachIndexed { index, count ->
+            profit += when (index) {
+                3 -> count * 5_000
+                4 -> count * 50_000
+                5 -> count * 1_500_000
+                6 -> count * 2_000_000_000
+                7 -> count * 30_000_000
+                else -> 0
+            }
+        }
+        return profit / (idx.size * 1000) * 100
+    }
 }
 
 class Lotto(private val numbers: List<Int?>) {
@@ -57,6 +71,7 @@ class Service() {
         var lottos = __Lotto__(buyLotto())
         lottos.printBuyLotto()
         lottos.calculateCorrectCount(winningNumbers(), bonus())
+        lottos.calculateProfit()
     }
 
     public fun buyLotto(): Int {
