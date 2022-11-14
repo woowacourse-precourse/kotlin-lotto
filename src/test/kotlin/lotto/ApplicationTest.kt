@@ -70,10 +70,6 @@ class ApplicationTest : NsTest() {
                 runException("")
                 assertThat(output()).contains(ERROR_MESSAGE)
             }
-//            assertThrows<IllegalArgumentException> {
-//                runException("")
-//                assertThat(output()).contains(ERROR_MESSAGE)
-//            }
         }
 
         @Test
