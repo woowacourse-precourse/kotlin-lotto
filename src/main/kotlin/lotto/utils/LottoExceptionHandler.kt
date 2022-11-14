@@ -4,7 +4,7 @@ import lotto.domain.LottoNumber
 
 object LottoExceptionHandler {
     fun validateIntType(amount: String) {
-        amount.toIntOrNull() ?: throwException(INTEGER_TYPE_EXCEPTION_MESSAGE)
+        requireNotNull(amount.toIntOrNull()) { INTEGER_TYPE_EXCEPTION_MESSAGE }
     }
 
     fun validateNotNegative(amount: Int) {
