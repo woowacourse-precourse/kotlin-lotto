@@ -1,5 +1,6 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 class MakeLottos {
@@ -17,5 +18,14 @@ class MakeLottos {
         }
 
         return lottos
+    }
+
+    fun winningNumber(): List<Int>{
+        println("당첨 번호를 입력해 주세요.")
+        var input = Console.readLine()
+            .split(",")
+            .map { number -> number.toInt() }
+        Lotto(input)
+        return input
     }
 }

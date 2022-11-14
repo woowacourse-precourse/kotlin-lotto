@@ -8,6 +8,8 @@ fun main() {
     printCount(numberOfLotto)
     val lottos = MakeLottos().getLottos(numberOfLotto)
     println()
+
+    val winningNumber = MakeLottos().winningNumber()
 }
 
 fun printStart() {
