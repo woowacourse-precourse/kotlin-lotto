@@ -39,8 +39,8 @@ class LottoResult(
 
     private fun countLotto(count: Int, isBonus: Boolean, lottoCount: MutableMap<Int, Int>) {
         val countOne = 1
-        if (count == 5 && isBonus) {
-            lottoCount[577] = lottoCount.getValue(577) + countOne
+        if (count == Print.FIVE && isBonus) {
+            lottoCount[Print.FIVE_BONUS] = lottoCount.getValue(Print.FIVE_BONUS) + countOne
         } else {
             lottoCount[count] = lottoCount.getValue(count) + countOne
         }
