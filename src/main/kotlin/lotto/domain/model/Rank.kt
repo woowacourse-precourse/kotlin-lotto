@@ -7,6 +7,7 @@ import lotto.utils.Constants.PRIZE_FOUR
 import lotto.utils.Constants.PRIZE_SIX
 import lotto.utils.Constants.PRIZE_THREE
 import lotto.utils.Constants.ZERO
+import java.text.DecimalFormat
 
 enum class Rank(private val correctCnt: Int) {
     CORRECT_ZERO(0) {
@@ -29,12 +30,15 @@ enum class Rank(private val correctCnt: Int) {
     };
 
     abstract val prize: Int
+    fun getFormatedPrize(): String = String.format(dec.format(this.prize))
 
     fun compareCnt(cnt: Int): Boolean = this.correctCnt == cnt
 
     fun getCount(): Int = this.correctCnt
 
     companion object {
+        val dec = DecimalFormat("#,###")
+
         private const val MIN_CORRECT_COUNT = 3
         fun valueOf(correctCnt: Int, checkBonus: Boolean): Rank {
             if (correctCnt < MIN_CORRECT_COUNT) {
