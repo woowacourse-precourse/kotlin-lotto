@@ -10,4 +10,24 @@ class Util {
         }
         return true
     }
+
+    fun isRightForm(input: String){
+
+    }
+
+    fun changeInputToLotto(input:String):List<Int>{
+
+    }
+
+    fun isRightNumCount() {
+
+    }
+
+    fun isRightRange() {
+
+    }
+
+    fun isOverlap() {
+
+    }
 }
