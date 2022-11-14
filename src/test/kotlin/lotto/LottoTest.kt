@@ -5,6 +5,9 @@ import org.junit.jupiter.api.assertThrows
 
 
 class LottoTest {
+    val fixedLottoNumbers = Lotto(listOf(1, 3, 20, 26, 37, 43))
+    val fixedBonusNumber = 5
+
     @Test
     fun `로또 번호의 개수가 6개가 넘어가면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
@@ -21,24 +24,4 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
-    @Test
-    fun `로또 구입 금액이 1000원으로 나누어 떨어지지 않으면 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(14500))
-        }
-    }
-
-    @Test
-    fun `당첨번호가 제대로 입력되지 않으면 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5))
-        }
-    }
-
-    @Test
-    fun `보너스 번호가 제대로 입력되지 않으면 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2))
-        }
-    }
 }
