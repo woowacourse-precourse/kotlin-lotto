@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Console
 lateinit var purchaseSum: String
 var numOfLotto = 0
 lateinit var selectedNum: Array<Int>
-var myLottos = ArrayList<Array<Int>>()
+var myLottos = ArrayList<Array<Int>>() // 선정된 숫자의 배열들이 들어가있는 배열
 lateinit var lottoWinNum: IntArray
 var bonusNum = 0
 
@@ -17,7 +17,22 @@ var fiveBonusWin = 0
 var sixWin = 0
 
 fun main() {
+    costInput()
+    checkCostInput()
 
+    printLottoNum()
+
+    winNumInput()
+    winNumInputCheck()
+
+    bonusNumInput()
+    bonusNumInputCheck()
+    for (lotto in myLottos) {
+        Lotto(lotto.toList()).checkResult(lotto)
+    }
+
+    printResult()
+    printProfit()
 }
 
 fun costInput() {
