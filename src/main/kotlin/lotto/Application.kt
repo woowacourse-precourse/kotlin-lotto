@@ -38,6 +38,7 @@ fun main() {
 
     var userNum= Console.readLine().split(",").map{it.toInt()}
     Lotto(userNum)
+    println("보너스 번호를 입력해주세요")
     var userBonus = Console.readLine().toInt()
     for (i in 0 until lotto.size){
         val union = lotto[i]+userNum
