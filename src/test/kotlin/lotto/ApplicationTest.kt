@@ -50,6 +50,22 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `예외 테스트 숫자 입력 개수 부족`() {
+        assertSimpleTest {
+            runException("1")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `예외 테스트 1000 단위 오입력`() {
+        assertSimpleTest {
+            runException("12345")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
     override fun runMain() {
         main()
     }
