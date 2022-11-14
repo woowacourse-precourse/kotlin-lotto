@@ -3,13 +3,6 @@ package lotto
 class WinLotto {
 
     companion object{
-        // 2. 당첨 번호 입력 받기
-        fun getWinNums() : String? {
-            println("당첨 번호를 입력해 주세요.")
-            val winNums = readLine()
-            //당첨 번호를 양식에 맞게 입력하지 않았을 때의 예외 사항 처리 필요
-            return winNums
-        }
 
         // 2-2. 당첨 번호를 쉼표 기준으로 구분하기
         fun removeWinNumsComma(winNums: String): List<Int> {

@@ -5,13 +5,6 @@ package lotto
 class CreateLottos {
 
     companion object{
-        // 1. 로또 구입 금액 입력 받기
-        fun getLottoPrice() : Int? {
-            println("구입금액을 입력해 주세요.")
-            val lottoPrice = readLine()?.toInt()
-            //구입 금액 입력 받을 때 생길 수 있는 예외 사항 처리 필요
-            return lottoPrice
-        }
 
         // 1-1. 로또 수량 계산
         fun getLottoCount(lottoPrice : Int) : Int{
