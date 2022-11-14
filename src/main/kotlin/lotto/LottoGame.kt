@@ -3,7 +3,8 @@ import camp.nextstep.edu.missionutils.Console
 import kotlin.math.round
 
 class LottoGame private constructor(){
-
+    private val RANGE_MIN = 1
+    private val RANGE_MAX =45
     private val MONEY_UNIT=1000
 
     private var expenditure: Int = 0
@@ -18,6 +19,16 @@ class LottoGame private constructor(){
 
     private fun addLotto(){
         this.myLotto.add(Lotto.newLotto())
+    }
+    private fun checkNumberRange(number: Int){
+        if(number<RANGE_MIN || number>RANGE_MAX){
+            throw IllegalArgumentException("[ERROR] 범위를 초과한 입력입니다.")
+        }
+    }
+    private fun checkOverlapping(number: Int,numbers: List<Int>){
+        if(number in numbers){
+            throw IllegalArgumentException("[ERROR]잘못된 입력입니다.")
+        }
     }
     private fun inputToInt(input: String): Int{
         var temp: Int
@@ -49,6 +60,8 @@ class LottoGame private constructor(){
         var _input: Int
         input.split(",").forEach{
             _input=inputToInt(it)
+            checkNumberRange(_input)
+            checkOverlapping(_input,this.winNumbers)
             this.winNumbers.add(_input)
         }
         if(this.winNumbers.size!=6) throw IllegalArgumentException("[ERROR]잘못된 입력입니다.")
