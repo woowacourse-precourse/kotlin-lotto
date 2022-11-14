@@ -1,6 +1,5 @@
 package lotto
 
-import java.lang.IllegalArgumentException
 import java.text.DecimalFormat
 import kotlin.math.round
 
@@ -32,7 +31,7 @@ enum class WinningStatistics(
         }
 
         private fun calculateReturn(allPrice: Int): Double {
-            var returnRate: Double = 0.0
+            var returnRate = 0.0
             for (win in enumValues<WinningStatistics>()) {
                 returnRate += win.price * win.count
             }
@@ -42,22 +41,20 @@ enum class WinningStatistics(
             return returnRate
         }
 
-        fun returnRateException(returnRate: Double) {
+        private fun returnRateException(returnRate: Double) {
             require(returnRate >= 0) {
                 println(ERROR_NEGATIVE)
-                throw IllegalArgumentException(ERROR_NEGATIVE)
             }
             val regex = "[0-9]+\\.[0-9]".toRegex()
             val returnRate = returnRate.toString()
             require(returnRate.matches(regex)) {
                 println(ERROR_ROUND_UNIT)
-                throw IllegalArgumentException(ERROR_ROUND_UNIT)
             }
         }
 
-        fun calculateWin(lottoes: List<List<Int>>) {
+        fun calculateWin(lottos: List<List<Int>>) {
             val winNumbers = makeWinNumbers()
-            for (lotto in lottoes) {
+            for (lotto in lottos) {
                 when (countEqual(lotto, winNumbers)) {
                     listOf(3, 0) -> WIN3.count++
                     listOf(4, 0) -> WIN4.count++
@@ -69,7 +66,7 @@ enum class WinningStatistics(
         }
 
         private fun countEqual(lotto: List<Int>, winNumbers: List<Int>): List<Int> {
-            var count = mutableListOf(0, 0)
+            val count = mutableListOf(0, 0)
             for (order in 0 until winNumbers.size - 1) {
                 if (lotto.contains(winNumbers[order])) {
                     count[0]++
@@ -81,7 +78,7 @@ enum class WinningStatistics(
             return count
         }
 
-        fun makeWinNumbers(): List<Int> {
+        private fun makeWinNumbers(): List<Int> {
             val winNumbers = mutableListOf<Int>()
             for (winNumber in LottoWin.values()) {
                 winNumbers.add(winNumber.number)
@@ -89,12 +86,12 @@ enum class WinningStatistics(
             return winNumbers
         }
 
-        fun clear(){
-            WIN3.count=0;
-            WIN4.count=0;
-            WIN5.count=0;
-            WIN5Bonus.count=0;
-            WIN6.count=0;
+        fun clear() {
+            WIN3.count = 0
+            WIN4.count = 0
+            WIN5.count = 0
+            WIN5Bonus.count = 0
+            WIN6.count = 0
         }
     }
 }
