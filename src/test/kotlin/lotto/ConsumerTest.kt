@@ -51,4 +51,11 @@ class ConsumerTest {
         val result = consumer.compareLotto(Lotto(mutableListOf(1, 2, 3, 9, 8, 7)),42)
         Assertions.assertThat(result[4]).isEqualTo(1)
     }
+
+    @Test
+    fun  `수익률 테스트`(){
+        consumer.myLotto.clear()
+        val result = consumer.calculateYield(mutableListOf(0,0,0,0,1))
+        Assertions.assertThat(result).isEqualTo("62.5")
+    }
 }
