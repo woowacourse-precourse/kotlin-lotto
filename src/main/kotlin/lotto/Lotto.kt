@@ -12,5 +12,20 @@ class Lotto(private val numbers: List<Int>) {
         println(numbers.joinToString(", ","[","]"))
     }
 
+    fun calcWin(lottoWinNums:LottoWinNums):Int{
+        val bonus=numbers.contains(lottoWinNums.bonusNum)
+        var numOfCorrect=numbers.count{lottoWinNums.winNums.contains(it)}
+
+        if(numOfCorrect==6){
+            numOfCorrect=7
+        }
+
+        if(numOfCorrect==5 && bonus){
+            numOfCorrect=6
+        }
+
+        return numOfCorrect-3
+    }
+
 
 }

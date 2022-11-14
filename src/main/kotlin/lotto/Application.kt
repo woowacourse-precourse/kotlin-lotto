@@ -8,7 +8,8 @@ import java.lang.IllegalArgumentException
 lateinit var user:User
 lateinit var lottoNums:List<Lotto>
 lateinit var lottoWinNums :LottoWinNums
-
+val winCase= MutableList(5){0}
+var earningMoney=0L
 
 fun inputPurchasingAmount():Int{
     println(INPUT_PURCHASE_AMOUNT_MSG)
@@ -51,11 +52,32 @@ fun printLottoWinNumbers(){
     for(case in lottoNums) case.printLottoWinNum()
 }
 
+fun printResult(){
+    println(WIN_RESULT_MSG)
+    for(i in 0 until 5){
+        println(WIN_CASE_MSG[i]+ winCase[i]+"개")
+    }
+    println(earningRateMSG((earningMoney.toDouble()/ user.purchaseMoney)*100))
+
+}
+fun calcResult(){
+    for(case in lottoNums){
+        val caseNum=case.calcWin(lottoWinNums)
+
+        if(caseNum<0){
+            continue
+        }
+
+        winCase[caseNum]++
+        earningMoney+= WIN_CASE_MONEY[caseNum]
+    }
+}
 
 fun main() {
     if(inputPurchasingAmount()==-1) return
     if(makeLottoWinNumbers()==-1)return
     printLottoWinNumbers()
     if(inputWinNumbers()==-1)return
-
+    calcResult()
+    printResult()
 }
