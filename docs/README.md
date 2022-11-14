@@ -64,7 +64,6 @@
 14. printResult : 당첨 현황과 수익률을 출력해주는 기능[ ] - Class LottoGame 
 15. playLottoGame : 로또 게임 실행[ ] - Class LottoGame
 16. changeInputToLotto : 로또 입력을 리스트로 바꿔주는 기능 [O] - Util
-17. playGame : 로또 게임을 진행하는 기능 [ ] - LottoGame
 18. checkLotto : 로또번호와 당첨 번호를 비교하는 기능 [O] - Class Calculator
 
 ## 📦️ 생성 클래스
