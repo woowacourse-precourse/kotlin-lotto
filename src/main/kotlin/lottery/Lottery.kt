@@ -23,8 +23,11 @@ class Lottery(private val purchase: Int, private val lotteryNumbers: Lotto, priv
     }
 
     fun printQuickPick() {
-        println(StringResource.TICKETS.resource.replace(
-            StringResource.UNDERBAR.resource, this.quickPicks.size.toString()))
+        println(
+            StringResource.TICKETS.resource.replace(
+                StringResource.UNDERBAR.resource, this.quickPicks.size.toString()
+            )
+        )
 
         this.quickPicks.forEach {
             println("[${it.getList().joinToString(separator = ", ")}]")
@@ -33,9 +36,10 @@ class Lottery(private val purchase: Int, private val lotteryNumbers: Lotto, priv
 
     private fun quickPicksGenerator() {
         val n = this.purchase / Price.STANDARD.price
-        for (i in 0 until n){
+        for (i in 0 until n) {
             val numbers = Randoms.pickUniqueNumbersInRange(
-                NumberRange.START.number, NumberRange.END.number, NumberRange.MAX.number)
+                NumberRange.START.number, NumberRange.END.number, NumberRange.MAX.number
+            )
             numbers.sort()
             this.quickPicks.add(Lotto(numbers))
         }
@@ -43,16 +47,14 @@ class Lottery(private val purchase: Int, private val lotteryNumbers: Lotto, priv
     }
 
     fun printWinnings() {
-        println(StringResource.FIFTH.resource.replace(
-            StringResource.UNDERBAR.resource, this.winningCounter.getValue("3").toString()))
-        println(StringResource.FOURTH.resource.replace(
-            StringResource.UNDERBAR.resource, this.winningCounter.getValue("4").toString()))
-        println(StringResource.THIRD.resource.replace(
-            StringResource.UNDERBAR.resource, this.winningCounter.getValue("5_0").toString()))
-        println(StringResource.SECOND.resource.replace(
-            StringResource.UNDERBAR.resource, this.winningCounter.getValue("5_1").toString()))
-        println(StringResource.FIRST.resource.replace(
-            StringResource.UNDERBAR.resource, this.winningCounter.getValue("6").toString()))
+        WinningAmount.values().reversed().forEach {
+            println(
+                it.resource.replace(
+                    StringResource.UNDERBAR.resource,
+                    this.winningCounter.getValue(it.keyName).toString()
+                )
+            )
+        }
     }
 
     private fun getWinnings() {
@@ -64,8 +66,11 @@ class Lottery(private val purchase: Int, private val lotteryNumbers: Lotto, priv
             }
 
             when (it.compareBonus(this.lotteryNumbers, this.bonusNumber)) {
-                5 -> this.winningCounter["5_0"] = this.winningCounter.getValue("5_0") + 1
-                6 -> this.winningCounter["5_1"] = this.winningCounter.getValue("5_1") + 1
+                5 -> this.winningCounter[WinningAmount.THIRD.keyName] =
+                    this.winningCounter.getValue(WinningAmount.THIRD.keyName) + 1
+
+                6 -> this.winningCounter[WinningAmount.SECOND.keyName] =
+                    this.winningCounter.getValue(WinningAmount.SECOND.keyName) + 1
             }
         }
 
@@ -73,18 +78,22 @@ class Lottery(private val purchase: Int, private val lotteryNumbers: Lotto, priv
 
     fun printIncomeRatio() {
         this.incomeRatio = (this.income / this.purchase) * 100
-        println(StringResource.RATIO.resource.replace(
-            StringResource.UNDERBAR.resource, String.format("%.1f", this.incomeRatio)))
+        println(
+            StringResource.RATIO.resource.replace(
+                StringResource.UNDERBAR.resource,
+                String.format("%.1f", this.incomeRatio)
+            )
+        )
     }
 
     private fun getIncomeRatio() {
         this.winningCounter.forEach { (k, _) ->
             when (k) {
-                "6" -> this.income += WinningAmount.FIRST.amount
-                "5_1" -> this.income += WinningAmount.SECOND.amount
-                "5_0" -> this.income += WinningAmount.THIRD.amount
-                "4" -> this.income += WinningAmount.FOURTH.amount
-                "3" -> this.income += WinningAmount.FIFTH.amount
+                WinningAmount.FIRST.keyName -> this.income += WinningAmount.FIRST.amount
+                WinningAmount.SECOND.keyName -> this.income += WinningAmount.SECOND.amount
+                WinningAmount.THIRD.keyName -> this.income += WinningAmount.THIRD.amount
+                WinningAmount.FOURTH.keyName -> this.income += WinningAmount.FOURTH.amount
+                WinningAmount.FIFTH.keyName -> this.income += WinningAmount.FIFTH.amount
             }
         }
 
