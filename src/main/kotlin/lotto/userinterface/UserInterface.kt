@@ -18,8 +18,7 @@ object UserInterface {
         println(REQUEST_PURCHASE_AMOUNT)
         val readValue = Console.readLine()
         validatePurchaseAmount(readValue)
-        val purchaseAmount = BigInteger(readValue)
-        return purchaseAmount.toInt()
+        return readValue.toInt()
     }
 
     private fun validatePurchaseAmount(readValue: String) {
