@@ -42,9 +42,9 @@ class ApplicationTest : NsTest() {
         )
     }
     @Test
-    fun `기능 테스트1`() {
+    fun `당첨숫자 기능, 보너스 숫자 기능 테스트`() {
         assertSimpleTest {
-            run("10000","1,2,3,4,5,6")
+            run("10000","1,2,3,4,5,6","7")
         }
     }
 
@@ -57,23 +57,44 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `예외 테스트1`() {
+    fun `당첨숫자 예외 테스트1`() {
         assertSimpleTest {
-            run("10000","1,2,3,4,5,6,7")
+            run("10000","1,2,3,4,5")
             assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
     @Test
-    fun `예외 테스트2`() {
+    fun `당첨숫자 예외 테스트2`() {
         assertSimpleTest {
             run("10000","1,2,3,4,5,46")
             assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
     @Test
-    fun `예외 테스트3`() {
+    fun `당첨 숫자 예외 테스트3`() {
         assertSimpleTest {
             run("10000","1,2,3,4,5,a")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+    @Test
+    fun `보너스 숫자 예외 테스트1`() {
+        assertSimpleTest {
+            run("10000","1,2,3,4,5,6","1")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+    @Test
+    fun `보너스 숫자 예외 테스트2`() {
+        assertSimpleTest {
+            run("10000","1,2,3,4,5,6","a")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+    @Test
+    fun `보너스 숫자 예외 테스트3`() {
+        assertSimpleTest {
+            run("10000","1,2,3,4,5,6","47")
             assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
