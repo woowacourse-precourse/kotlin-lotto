@@ -1,5 +1,15 @@
 package lotto
 
 fun main() {
-    TODO("프로그램 구현")
+    val price = Controller.getMoney()
+
+    val lottoLog = Controller.purchaseLotto(price)
+
+    val lottoNumber = Controller.getLottoNumber()
+
+    val bonusNumber = Controller.getBonusNumber(lottoNumber)
+
+    val result = Controller.getResult(lottoLog, lottoNumber, bonusNumber)
+
+    Controller.getRatio(price, result)
 }
