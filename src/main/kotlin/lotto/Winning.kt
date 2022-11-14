@@ -27,36 +27,31 @@ class Winning {
         return rankList
     }
 
-    fun updateRank() {
+    fun updateRank(): HashMap<Rank, Int> {
         val rankList = createRankList(0)
+        val rankCountHashMap = createRankCountHashMap(rankList)
         println("\n당첨 통계\n---")
-        println("3개 일치 (5,000원) - ${updateFifthCount(rankList)}개")
-        println("4개 일치 (50,000원) - ${updateFourthCount(rankList)}개")
-        println("5개 일치 (1,500,000원) - ${updateThirdCount(rankList)}개")
-        println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${updateSecondCount(rankList)}개")
-        println("6개 일치 (2,000,000,000원) - ${updateFirstCount(rankList)}개")
+        println("3개 일치 (5,000원) - ${rankCountHashMap[Rank.FIFTH]}개")
+        println("4개 일치 (50,000원) - ${rankCountHashMap[Rank.FOURTH]}개")
+        println("5개 일치 (1,500,000원) - ${rankCountHashMap[Rank.THIRD]}개")
+        println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${rankCountHashMap[Rank.SECOND]}개")
+        println("6개 일치 (2,000,000,000원) - ${rankCountHashMap[Rank.FIRST]}개")
+
+        return rankCountHashMap
     }
 
-    fun updateFifthCount(rankList: List<Rank>): Int {
-        return rankList.count { rank -> rank == Rank.FIFTH }
-    }
+    private fun createRankCountHashMap(rankList: List<Rank>): HashMap<Rank, Int> {
 
-    fun updateFourthCount(rankList: List<Rank>): Int {
-        return rankList.count { rank -> rank == Rank.FOURTH }
-    }
+        val rankCountHashMap: HashMap<Rank, Int> = HashMap()
 
-    fun updateThirdCount(rankList: List<Rank>): Int {
-        return rankList.count { rank -> rank == Rank.THIRD }
-    }
+        rankCountHashMap[Rank.FIFTH] = rankList.count { it == Rank.FIFTH }
+        rankCountHashMap[Rank.FOURTH] = rankList.count { it == Rank.FOURTH }
+        rankCountHashMap[Rank.THIRD] = rankList.count { it == Rank.THIRD }
+        rankCountHashMap[Rank.SECOND] = rankList.count { it == Rank.SECOND }
+        rankCountHashMap[Rank.FIRST] = rankList.count { it == Rank.FIRST }
 
-    fun updateSecondCount(rankList: List<Rank>): Int {
-        return rankList.count { rank -> rank == Rank.SECOND }
+        return rankCountHashMap
     }
-
-    fun updateFirstCount(rankList: List<Rank>): Int {
-        return rankList.count { rank -> rank == Rank.FIRST }
-    }
-
 
 }
 
