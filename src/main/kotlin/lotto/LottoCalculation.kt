@@ -2,7 +2,6 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 
-
 class LottoCalculation {
 
     fun generateRandomLotto(generateNumber: Int): List<List<Int>> {
@@ -14,6 +13,10 @@ class LottoCalculation {
         }
 
         return lottoList
+    }
+
+    fun priceToCount(price: Int): Int {
+        return price / 1000
     }
 
 }
