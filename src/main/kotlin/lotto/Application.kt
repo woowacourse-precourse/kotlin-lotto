@@ -52,3 +52,11 @@ fun winNumInput() {
     lottoWinNum = Console.readLine().split(",").map { it.toInt() }.toIntArray()
     println()
 }
+
+fun checkDigit(input: String): Boolean {
+    var digitFlag = true
+    for (s in input) {
+        if (!s.isDigit()) digitFlag = false
+    }
+    return digitFlag
+}
