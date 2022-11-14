@@ -6,7 +6,6 @@ import utils.Messages.ERROR_ANSWER_DIFFERENT
 import utils.Messages.ERROR_ANSWER_SIX
 import utils.Messages.ERROR_PREFIX_MESSAGE
 import utils.Messages.ERROR_RANGE
-import utils.Messages.FROM_INDEX
 import utils.Messages.START_NUM
 
 class Lotto(private val numbers: List<Int>) {
