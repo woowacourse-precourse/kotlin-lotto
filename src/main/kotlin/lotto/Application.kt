@@ -137,11 +137,11 @@ fun checkLottoWin(lotto: Lotto, winningNumbers: Lotto, bonusNumber: Int) {
     }
 
     when {
-        count == 3 -> Result.FIFTH.winCount++
-        count == 4 -> Result.FOURTH.winCount++
-        count == 5 && !lotto.isContainedNumber(bonusNumber) -> Result.THIRD.winCount++
-        count == 5 && lotto.isContainedNumber(bonusNumber) -> Result.SECOND.winCount++
-        count == 6 -> Result.FIRST.winCount++
+        count == 3 -> Result.FIFTH.addWinCount()
+        count == 4 -> Result.FOURTH.addWinCount()
+        count == 5 && !lotto.isContainedNumber(bonusNumber) -> Result.THIRD.addWinCount()
+        count == 5 && lotto.isContainedNumber(bonusNumber) -> Result.SECOND.addWinCount()
+        count == 6 -> Result.FIRST.addWinCount()
     }
 }
 
@@ -159,11 +159,9 @@ fun showResult(lottoCount: Int) {
 }
 
 fun calculateEarningsRate(lottoCount: Int): Double {
-    val earningsRate = Result.FIFTH.price * Result.FIFTH.winCount
-    +Result.FOURTH.price * Result.FOURTH.winCount
-    +Result.THIRD.price * Result.THIRD.winCount
-    +Result.SECOND.price * Result.SECOND.winCount
-    +Result.FIRST.price * Result.FIRST.winCount
-
-    return earningsRate / (lottoCount.toDouble() * LOTTO_PRICE) * PERCENT
+    var totalEarning = 0
+    listOf(Result.FIFTH, Result.FOURTH, Result.THIRD, Result.SECOND, Result.FIRST).forEach { result ->
+        totalEarning += result.getEarningRate()
+    }
+    return totalEarning / (lottoCount.toDouble() * LOTTO_PRICE) * PERCENT
 }

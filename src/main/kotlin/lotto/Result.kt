@@ -4,8 +4,8 @@ import java.text.DecimalFormat
 
 enum class Result(
     private val matchCount: Int,
-    val price: Int,
-    var winCount: Int = 0,
+    private val price: Int,
+    private var winCount: Int = 0,
     private val extraString: String = ""
 ) {
     FIFTH(3, 5_000),
@@ -17,5 +17,13 @@ enum class Result(
     fun print() {
         val decimal = DecimalFormat("#,###")
         println("${matchCount}개 일치${extraString} (${decimal.format(price)}원) - ${winCount}개")
+    }
+
+    fun getEarningRate(): Int {
+        return this.price * this.winCount
+    }
+
+    fun addWinCount() {
+        this.winCount++
     }
 }
