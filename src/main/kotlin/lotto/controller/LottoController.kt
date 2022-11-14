@@ -6,11 +6,12 @@ import lotto.view.LottoView
 class LottoController {
 
     private val lottoView = LottoView()
+    private val lottoGenerator = LottoGenerator()
 
     fun start() {
         val inputMoney = lottoView.getInputMoney()
         val numberOfIssueLotto = numberOfLotto(inputMoney)
-        val issuedLottoList = issueLottos(numberOfIssueLotto)
+        val issuedLottoList = lottoGenerator.issueLottos(numberOfIssueLotto)
         lottoView.printIssuedLottos(issuedLottoList, numberOfIssueLotto)
         val inputWinningLottoNumber = lottoView.getWinningLotto()
         val winningLottoNumList = Lotto(inputWinningLottoNumber)
@@ -21,10 +22,6 @@ class LottoController {
         val lottoResult = LottoWinResult().getLottoResult(lottoRankingResultList)
         lottoView.printResult(lottoResult)
         lottoView.printYieldRate(inputMoney, lottoResult)
-    }
-
-    private fun issueLottos(inputMoney: Int): Lottos {
-        return LottoGenerator().issueLottos(inputMoney)
     }
 
     private fun numberOfLotto(money: Int): Int {
