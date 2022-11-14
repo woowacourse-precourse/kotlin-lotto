@@ -1,6 +1,7 @@
 package lotto.ui.view.statistics
 
 import lotto.domain.model.statistics.LottoMatchType
+import lotto.domain.model.statistics.WinningHistory
 
 class ShowStatisticsView {
 
@@ -8,19 +9,22 @@ class ShowStatisticsView {
         println(OUTPUT_STATISTICS_TITLE_MESSAGE)
     }
 
-    fun printWinningMatchMessage(matchNumberCount: Int, reward: Int, matchTicketCount: Int, matchType: LottoMatchType) {
+    fun printWinningMatchMessage(winningHistory: WinningHistory) {
+        val winningMatchMessageFormat = when (winningHistory.matchType) {
+            LottoMatchType.NORMAL -> OUTPUT_WINNING_MATCH_NORMAL_MESSAGE
+            LottoMatchType.BONUS -> OUTPUT_WINNING_MATCH_BONUS_MESSAGE
+        }
 
-        if (matchType == LottoMatchType.NORMAL)
-            println(OUTPUT_WINNING_MATCH_NORMAL_MESSAGE.format(matchNumberCount, reward, matchTicketCount))
-
-        if (matchType == LottoMatchType.BONUS)
-            println(OUTPUT_WINNING_MATCH_BONUS_MESSAGE.format(matchNumberCount, reward, matchTicketCount))
+        println(winningMatchMessageFormat.format(
+            winningHistory.matchNumberCount,
+            winningHistory.profit,
+            winningHistory.matchTicketCount)
+        )
     }
 
     fun printTotalProfitRateMessage(totalRate: Double) {
         println(OUTPUT_TOTAL_PROFIT_RATE_MESSAGE.format(totalRate))
     }
-
 
     companion object {
         private const val OUTPUT_STATISTICS_TITLE_MESSAGE = "당첨 통계\n---"
