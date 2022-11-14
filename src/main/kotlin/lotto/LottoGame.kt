@@ -5,6 +5,9 @@ import utils.Messages.ERROR_PREFIX_MESSAGE
 import utils.Messages.ERROR_ANSWER_COMMA
 import utils.Messages.ERROR_BONUS_ONE
 import utils.Messages
+import utils.Messages.END_NUM
+import utils.Messages.ERROR_BONUS_DIFFERENT
+import utils.Messages.START_NUM
 import kotlin.NumberFormatException
 
 class LottoGame {
@@ -12,15 +15,15 @@ class LottoGame {
         val input = readLine()!!.trim()
         try {
             if (!checkRightLotto(input.toInt())) {
-                println(Messages.ERROR_PREFIX_MESSAGE + Messages.ERROR_LOTTO_INPUT)
+                println(ERROR_PREFIX_MESSAGE + Messages.ERROR_LOTTO_INPUT)
                 return -1
             }
             if (input.length < 4) {
-                println(Messages.ERROR_PREFIX_MESSAGE + Messages.ERROR_LOTTO_INPUT)
+                println(ERROR_PREFIX_MESSAGE + Messages.ERROR_LOTTO_INPUT)
                 return -1
             }
         } catch (e: NumberFormatException) {
-            println(Messages.ERROR_PREFIX_MESSAGE + Messages.ERROR_LOTTO_INPUT)
+            println(ERROR_PREFIX_MESSAGE + Messages.ERROR_LOTTO_INPUT)
             return -1
         }
         return input.toInt()
@@ -59,9 +62,10 @@ class LottoGame {
         return inputAnswerNumbersList
     }
 
-    fun checkinputBonus(inputBonus: String): Boolean {
+    fun checkinputBonus(inputBonus: String, answerNumbers: MutableList<Int>): Boolean {
         if (inputBonus.length != 1 && inputBonus.length != 2) throw IllegalArgumentException(ERROR_PREFIX_MESSAGE + ERROR_BONUS_ONE)
-        // 같은 숫자가 있는 지 체크하는 로직 추가
+        if (inputBonus.toInt() !in START_NUM..END_NUM) throw IllegalArgumentException(ERROR_PREFIX_MESSAGE + ERROR_BONUS_ONE)
+        if (answerNumbers.toString().contains(inputBonus)) throw IllegalArgumentException(ERROR_PREFIX_MESSAGE + ERROR_BONUS_DIFFERENT)
         return true
     }
 
