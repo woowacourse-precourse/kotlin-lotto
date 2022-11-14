@@ -57,7 +57,7 @@ internal class `WinningNumber 클래스의` {
     }
 
     @Nested
-    inner class `winningResult 메소드는` {
+    inner class `getWinningResult 메소드는` {
         @Nested
         inner class `당첨 번호와 로또 번호가 모두 일치하면` {
             private val winningNumber = WinningNumber(listOf(1, 2, 3, 4, 5, 6), 7)
@@ -65,7 +65,7 @@ internal class `WinningNumber 클래스의` {
 
             @Test
             fun `1등을 반환한다`() {
-                val winningResult = winningNumber.winningResult(lotto)
+                val winningResult = winningNumber.getWinningResult(lotto)
 
                 assertThat(winningResult).isEqualTo(WinningResult.FIRST)
             }
@@ -78,7 +78,7 @@ internal class `WinningNumber 클래스의` {
 
             @Test
             fun `2등을 반환한다`() {
-                val winningResult = winningNumber.winningResult(lotto)
+                val winningResult = winningNumber.getWinningResult(lotto)
 
                 assertThat(winningResult).isEqualTo(WinningResult.SECOND)
             }
@@ -91,7 +91,7 @@ internal class `WinningNumber 클래스의` {
 
             @Test
             fun `3등을 반환한다`() {
-                val winningResult = winningNumber.winningResult(lotto)
+                val winningResult = winningNumber.getWinningResult(lotto)
 
                 assertThat(winningResult).isEqualTo(WinningResult.THIRD)
             }
@@ -104,7 +104,7 @@ internal class `WinningNumber 클래스의` {
 
             @Test
             fun `4등을 반환한다`() {
-                val winningResult = winningNumber.winningResult(lotto)
+                val winningResult = winningNumber.getWinningResult(lotto)
 
                 assertThat(winningResult).isEqualTo(WinningResult.FOURTH)
             }
@@ -117,7 +117,7 @@ internal class `WinningNumber 클래스의` {
 
             @Test
             fun `5등을 반환한다`() {
-                val winningResult = winningNumber.winningResult(lotto)
+                val winningResult = winningNumber.getWinningResult(lotto)
 
                 assertThat(winningResult).isEqualTo(WinningResult.FIFTH)
             }
@@ -130,7 +130,7 @@ internal class `WinningNumber 클래스의` {
 
             @Test
             fun `꽝을 반환한다`() {
-                val winningResult = winningNumber.winningResult(lotto)
+                val winningResult = winningNumber.getWinningResult(lotto)
 
                 assertThat(winningResult).isEqualTo(WinningResult.NO_LUCK)
             }
