@@ -55,8 +55,8 @@
 5. inputLottoNum : 사용자에게 로또 번호를 입력받는 기능[O] - Class LottoGame
 6. isRightForm : 사용자가 입력 형식과 자료형을 맞췄는지 검사하는 기능[O] -Class Util
 7. isRightNumCount : 사용자가 맞는 개수를 입력했는지 검사하는 기능[O] - Class Util
-8. isRightRange : 사용자가 1~45 범위의 값을 입력했는지 검사하는 기능[ ]- Class Util
-9. isOverlap : 로또 번호가 중복되는 경우[ ] - Class Util
+8. isRightRange : 사용자가 1~45 범위의 값을 입력했는지 검사하는 기능[O]- Class Util
+9. isOverlap : 로또 번호가 중복되는 경우[O] - Class Util
 10. inputBonusNum : 사용자가 보너스 번호를 입력받는 기능[ ] - Class LottoGame
 11. checkBonusNum : 사용자가 보너스 번호를 맞게 입력했는지 검사하는 기능[ ] -Class Util
    1. 2번 is NumInt 재사용 : 보너스 번호가 정수인지 체크[ ]
