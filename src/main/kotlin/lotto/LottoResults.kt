@@ -2,8 +2,7 @@ package lotto
 
 import kotlin.math.round
 
-class LottoResults(private val userInputPrice : Int, private val prizeCountList: List<Int>) {
-
+class LottoResults(private val userInputPrice: Int, private val prizeCountList: List<Int>) {
     fun printPrizeResults() {
         for (i in prizeCountList.indices) {
             when (i) {
@@ -31,7 +30,7 @@ class LottoResults(private val userInputPrice : Int, private val prizeCountList:
         return setFloatRounds(totalWonPrice.toFloat() / userInputPrice.toFloat() * 100)
     }
 
-    private fun setFloatRounds(revenuePercent : Float) : Float {
+    private fun setFloatRounds(revenuePercent: Float): Float {
         return round(revenuePercent * 10) / 10
     }
 }

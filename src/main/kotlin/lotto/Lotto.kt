@@ -3,23 +3,21 @@ package lotto
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == numbers.distinct().size)
-        if(numbers.size != 6) {
+        if (numbers.size != 6) {
             Error.showError(ErrorType.NotMatchedToLottoLength)
         }
     }
-
     // TODO: 추가 기능 구현
-
-    fun getUserWinNumbers(list : List<Int>) : Int{
+    fun getUserWinNumbers(list: List<Int>): Int {
         val unionNumbers = numbers.intersect(list)
-        if(unionNumbers.size == 6) {
-            if(unionNumbers.contains(list.last())) {
+        if (unionNumbers.size == 6) {
+            if (unionNumbers.contains(list.last())) {
                 return second
             } else {
                 return first
             }
         }
-        return when(unionNumbers.size) {
+        return when (unionNumbers.size) {
             3 -> fifth
             4 -> fourth
             5 -> third

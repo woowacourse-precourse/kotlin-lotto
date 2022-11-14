@@ -1,7 +1,6 @@
 package lotto
 
 class UserInputPrice(private val userInput : String) {
-
     fun checkUserInputPriceRegexAndTranslateToInt(): Int {
         try {
             if (!Regex.checkItOnlyContainsNumber(userInput)) {
@@ -9,6 +8,9 @@ class UserInputPrice(private val userInput : String) {
             }
             if (!Regex.checkItCanDivideWithThousand(changeStringToInt(userInput))) {
                 Error.showError(ErrorType.NotDivideWithThousand)
+            }
+            if (!Regex.checkInputIsNull(userInput)) {
+                Error.showError(ErrorType.InputIsNull)
             }
         } catch (exception: IllegalArgumentException) {
             println(exception)

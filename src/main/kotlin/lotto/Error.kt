@@ -2,7 +2,6 @@ package lotto
 
 object Error {
     private const val errorHeader = "[ERROR]"
-
     fun showError(errorType: ErrorType) {
         finishWithError(errorType)
     }

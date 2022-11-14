@@ -3,7 +3,7 @@ package lotto
 import java.util.regex.Pattern
 
 object Regex {
-    private fun convertStringToList(input : String) : List<String> {
+    private fun convertStringToList(input: String): List<String> {
         return input.split(",").filter { it != "" }
     }
 
@@ -29,7 +29,7 @@ object Regex {
         return convertStringToList(userInput).size == 6
     }
 
-    fun checkUserWinNumberInputIsNotDuplicated(userInput: String) : Boolean {
+    fun checkUserWinNumberInputIsNotDuplicated(userInput: String): Boolean {
         val userWinNumberList = convertStringToList(userInput)
         return userWinNumberList.size == userWinNumberList.distinct().size
     }
@@ -48,7 +48,7 @@ object Regex {
         return WinNumbers.contains(BonusNumber)
     }
 
-    fun checkInputIsNull(userInput : String) : Boolean {
+    fun checkInputIsNull(userInput: String): Boolean {
         return userInput.isNotEmpty()
     }
 }
