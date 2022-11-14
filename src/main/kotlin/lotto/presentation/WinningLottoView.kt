@@ -16,7 +16,8 @@ object WinningLottoView {
 
     fun inputWinningLottoNumbers(): WinningLotto {
         val numbers = Console.readLine().trim()
-        val lottoNumbers = Separator.separateToInts(numbers, ',').map { number -> LottoNumber(number) }
+        val lottoNumbers = Separator.separateToInts(numbers, ',')
+            .map { number -> LottoNumber(number) }
             .sortedBy { lottoNumber -> lottoNumber.number }
 
         return WinningLotto(lottoNumbers)
