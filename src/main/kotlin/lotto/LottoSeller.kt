@@ -42,4 +42,12 @@ class LottoSeller {
         if(inputPrizeNumber.size > 6) return throw IllegalArgumentException("[ERROR] 로또 번호의 개수가 6개 보다 많습니다.")
     }
 
+    fun inputBonusNumber(): Int {//보너스 번호 입력
+        println("보너스 번호를 입력해 주세요.")
+        val inputBonusNumber = Console.readLine()
+        return inputBonusNumber.toInt()
+    }
+
+
+
 }
