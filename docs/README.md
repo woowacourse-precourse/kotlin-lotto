@@ -21,8 +21,11 @@
 
 
 3. 로또 번호 확인
-    - 조건: 로또 번호 범위 -> 1 ~ 45
-    - 로또 한개에 중복 제외 6개 숫자로 구성
+    - 로또 번호 범위 1 ~ 45 - Lotto#checkLottoNumberRange()
+    - 로또 번호 집단 1개에 중복 제외 - Lotto#checkLottoNumberDuplicated()
+    - 로또 번호 집단 1개에 6개 숫자 - Lotto#checkLottoNumberCount()
+    - 로또 수량에 맞춰서 중복없이 로또 번호 집단 생성
+    - 로또 수량 및 로또 개수 출력 
 
 
 4. 당첨 번호 입력
