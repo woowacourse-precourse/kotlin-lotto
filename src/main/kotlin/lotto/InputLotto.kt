@@ -8,10 +8,17 @@ class InputLotto() {
     //todo 로또 몇장이 살 수 있는지 확인
     //todo 입력 값 에러 검사
 
-    fun inputPrice() {
-        val input = Console.readLine()
+    private var _money: Int = 0
+    val money get() = _money
 
+    fun inputMoney(): Int {
+        val input = Console.readLine()
+        checkInputType(input)
+        _money = input.toInt()
+        checkAmount(_money)
+        return _money
     }
+
 
     fun moneyToLotto(money: Int) = money / 1000
 
@@ -24,8 +31,7 @@ class InputLotto() {
     }
 
     private fun checkAmount(amount: Int) {
-        if (amount % 1000 != 0)
-            invalidInputValue(VALUE_ERROR)
+        if (amount % 1000 != 0) invalidInputValue(VALUE_ERROR)
     }
 
     private fun invalidInputValue(message: String) {
