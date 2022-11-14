@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 class NumberGeneratorTest {
 
     @Test
-    fun `기능 테스트`() {
+    fun `정상적인 범주의 값이 나온다`() {
         val numberGenerator = NumberGenerator
         val randomNumbers = numberGenerator.createRandomNumbers()
         print(randomNumbers.toString())
@@ -19,7 +19,7 @@ class NumberGeneratorTest {
     }
 
     @Test
-    fun `정렬 테스트`() {
+    fun `정렬이 되서 반환된다`() {
         val numberGenerator = NumberGenerator
         assertRandomUniqueNumbersInRangeTest(
             {
