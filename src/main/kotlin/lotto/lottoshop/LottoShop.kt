@@ -1,5 +1,6 @@
 package lotto.lottoshop
 
+import lotto.LottoPhrases.BONUS_LOTTO_NUMBER_INPUT_TYPE_ERROR
 import lotto.LottoPhrases.LOTTO_NUMBER_NOT_IN_CORRECT_RANGE_ERROR
 import lotto.LottoPhrases.MAIN_LOTTO_NUMBER_INPUT_SIZE_ERROR
 import lotto.LottoPhrases.MAIN_LOTTO_NUMBER_INPUT_TYPE_ERROR
@@ -54,6 +55,10 @@ class LottoShop() {
     }
 
     fun getValidateBonusLottoNumber(bonusLottoNumber: String): Int {
+        if(!isInputTypeNumber(bonusLottoNumber)) printErrorMessage(BONUS_LOTTO_NUMBER_INPUT_TYPE_ERROR)
+        val processedBonusLottoNumber = convertToInt(bonusLottoNumber)
+        checkCorrectNumberRange(processedBonusLottoNumber)
+        return processedBonusLottoNumber
     }
 
     private fun isInputTypeNumber(input: String): Boolean = Pattern.matches("^[0-9]+$", input)
