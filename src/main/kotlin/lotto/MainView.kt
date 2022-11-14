@@ -13,7 +13,7 @@ class MainView {
         return lottoPrice
     }
 
-    fun showLottoNums(lottoNums : Int, createdLottos : Array<Array<Int>>){
+    fun showLottoNums(lottoNums : Int, createdLottos : List<List<Int>>){
 
         println(lottoNums.toString() + "개를 구매했습니다.")
         for(i in 0..lottoNums){

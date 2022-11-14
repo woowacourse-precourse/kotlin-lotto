@@ -2,8 +2,6 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 
-//Lotto를 생성할 때 필요한 기능들이 들어가야함
-
 class CreateLottos {
 
     companion object{

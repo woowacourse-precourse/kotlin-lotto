@@ -9,6 +9,7 @@ class buyLottos {
         val boughtPrice = userMainView.getLottoPrice()
         val createLottos = boughtPrice?.let { CreateLottos.getLottoCount(it) }
 
+
     }
 
 }
