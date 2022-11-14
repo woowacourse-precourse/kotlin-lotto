@@ -1,6 +1,7 @@
 package lotto
 
-import lotto.constants.Print
+import lotto.utils.Print
+import lotto.view.Message
 
 class Lotto(
     private val numbers: List<Int>
@@ -14,11 +15,7 @@ class Lotto(
     }
 
     fun show(): List<Int> {
-        showLottoNumber()
+        Message.showLottoNumber(numbers)
         return numbers
-    }
-
-    private fun showLottoNumber() {
-        println(numbers.sorted())
     }
 }

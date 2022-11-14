@@ -1,16 +1,13 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.constants.Print
+import lotto.utils.Print
+import lotto.view.Message
 
 class InputLottoPrice {
     fun input() {
-        showInputMessage()
+        Message.showInput()
         CreateLottoNumber(inputPrice()).create()
-    }
-
-    private fun showInputMessage() {
-        println(Print.INPUT_PRICE)
     }
 
     private fun inputPrice(): Int {

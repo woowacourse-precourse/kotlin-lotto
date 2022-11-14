@@ -1,19 +1,16 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.constants.Print
+import lotto.utils.Print
+import lotto.view.Message
 
 class InputLottoNumber {
     fun input(createNumbers: MutableList<List<Int>>, inputPrice: Int) {
-        showInputNumberMessage()
+        Message.showInputNumber()
         val inputNumbers = inputLotto()
-        showInputBonusMessage()
+        Message.showInputBonus()
         val bonusNumber = inputBonusNumber(inputNumbers)
         LottoResult(createNumbers, inputPrice).result(inputNumbers, bonusNumber)
-    }
-
-    private fun showInputNumberMessage() {
-        println(Print.INPUT_NUMBER)
     }
 
     private fun inputLotto(): List<String> {
@@ -29,10 +26,6 @@ class InputLottoNumber {
             }
         }
         return numbers
-    }
-
-    private fun showInputBonusMessage() {
-        println(Print.INPUT_BONUS)
     }
 
     private fun inputBonusNumber(inputNumbers: List<String>): String {

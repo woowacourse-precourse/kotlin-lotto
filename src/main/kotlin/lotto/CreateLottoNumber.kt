@@ -1,18 +1,15 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
-import lotto.constants.Print
+import lotto.utils.Print
+import lotto.view.Message
 
 class CreateLottoNumber(
     private val inputPrice: Int
 ) {
     fun create() {
-        showBuyMessage()
+        Message.showBuy(inputPrice)
         InputLottoNumber().input(createNumber(), inputPrice)
-    }
-
-    private fun showBuyMessage() {
-        println("\n${inputPrice / Print.MIN_PRICE}${Print.BUY_COUNT}")
     }
 
     private fun createNumber(): MutableList<List<Int>> {

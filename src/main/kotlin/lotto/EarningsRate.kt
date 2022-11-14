@@ -1,12 +1,11 @@
 package lotto
 
+import lotto.view.Message
+
+
 class EarningsRate(private val finalMoney: Int, private val inputPrice: Int) {
     fun result() {
-        showRateMessage(calculateRate())
-    }
-
-    private fun showRateMessage(rate: Double) {
-        println("총 수익률은 $rate%입니다.")
+        Message.showRate(calculateRate())
     }
 
     private fun calculateRate(): Double {
