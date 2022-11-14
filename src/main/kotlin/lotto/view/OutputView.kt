@@ -20,7 +20,7 @@ object OutputView {
             if (rank == Rank.CORRECT_ZERO) continue
             val rankCnt = statistics.count { it == rank }
             if (rank == Rank.CORRECT_FIVE_BONUS) {
-                println("${rank.getCount()}개 일치, 보너스 볼 일치 (${rank.getFormatedPrize()}) - ${rankCnt}개")
+                println("${rank.getCount()}개 일치, 보너스 볼 일치 (${rank.getFormatedPrize()}원) - ${rankCnt}개")
                 continue
             }
             println("${rank.getCount()}개 일치 (${rank.getFormatedPrize()}원) - ${rankCnt}개")
