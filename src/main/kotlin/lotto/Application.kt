@@ -29,4 +29,7 @@ fun inputnum() : List<Int>{
         if(!(inputlotto[i] > 0 && inputlotto[i] <46)) throw IllegalArgumentException ("[ERROR]")
     return (inputlotto)
     }
-    
+fun makeLottonumber(frLottonum : MutableList <Int>) : MutableList <Int> {
+    frLottonum.removeAt(6)
+    return (frLottonum)
+}
