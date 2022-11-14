@@ -3,8 +3,8 @@ package lotto.domain.lotto
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6)
-        require(hasNotDuplicateNumber()) { println(NOT_DUPLICATE_NUMBER)}
-        require(isVaildAscendingOrder()) { println(IS_ASCENDING_ORDER)}
+        require(hasNotDuplicateNumber()) { println(NOT_DUPLICATE_NUMBER) }
+        require(isVaildAscendingOrder()) { println(IS_ASCENDING_ORDER) }
     }
 
     fun getMachingLottoNumberCount(otherNumbers: List<Int>): Int =

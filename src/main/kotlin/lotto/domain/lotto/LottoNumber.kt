@@ -3,7 +3,7 @@ package lotto.domain.lotto
 class LottoNumber(private val lottoNumber: Int) {
 
     init {
-        require(isValidNumberRange()) { println(IS_NUMBER_RANGE)}
+        require(isValidNumberRange()) { println(IS_NUMBER_RANGE) }
     }
 
     private fun isValidNumberRange(): Boolean =
