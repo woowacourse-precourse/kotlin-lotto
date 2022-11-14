@@ -21,6 +21,12 @@ fun main() {
     val pickedNum = cs.readLine()
     val inputNumbers = validateWinningNum(pickedNum)
     val winningNum = getWinningNum(inputNumbers)
+
+    println()
+    println("보너스 번호를 입력해 주세요.")
+    val bonusNum = cs.readLine()
+    validateBonusNum(bonusNum)
+
 }
 
 enum class ErrorCode(val message: String) {
