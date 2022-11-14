@@ -1,10 +1,17 @@
 package lotto
 
 import lotto.domain.*
-import lotto.views.InputView
 import lotto.views.OutputView
+import java.lang.IllegalArgumentException
 
 fun main() {
+    try {
+        playLotto()
+    } catch (e: IllegalArgumentException) {
+    }
+}
+
+fun playLotto() {
     val purchase = Purchase()
     val amount = purchase.buyLotto()
     OutputView.printAmount(amount)
