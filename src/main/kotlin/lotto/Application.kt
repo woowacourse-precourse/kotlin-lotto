@@ -26,7 +26,8 @@ enum class ErrorCode(val message: String) {
     NUMERIC_REQUIRED("[ERROR] 숫자만 입력해주세요"),
     COMMA_REQUIRED("[ERROR] 쉼표로 숫자를 구분해주세요"),
     PRICE_UNQUALIFIED("[ERROR] 1000원 단위로 입력해주세요"),
-    NUMBER_RANGE_UNQUALIFIED("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+    NUMBER_RANGE_UNQUALIFIED("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."),
+    NUMBER_REPEATED("[ERROR] 중복된 숫자입니다")
 }
 
 fun issueLotto(): Lotto {
@@ -65,6 +66,9 @@ fun validateWinningNum(pickedNum: String): Lotto {
         }
         if (inputValue.toInt() > 45 || inputValue.toInt() < 1) {
             throw IllegalArgumentException(ErrorCode.NUMBER_RANGE_UNQUALIFIED.message)
+        }
+        if(winnerNum.contains(inputValue.toInt())){
+            throw IllegalArgumentException(ErrorCode.NUMBER_REPEATED.message)
         }
         winnerNum.add(inputValue.toInt())
     }
