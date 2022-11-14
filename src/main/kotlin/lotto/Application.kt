@@ -119,25 +119,16 @@ fun checkLottoWin(lotto: Lotto, winningNumbers: Lotto, bonusNumber: Int) {
 
 fun showResult(lottoCount: Int) {
     println("당첨 통계\n---")
-
-    Result.FIFTH.print()
-    Result.FOURTH.print()
-    Result.THIRD.print()
-    Result.SECOND.print()
-    Result.FIRST.print()
-
-    println("총 수익률은 ${calculateEarningsRate(lottoCount)}%입니다.")
+    val resultList = listOf(Result.FIFTH, Result.FOURTH, Result.THIRD, Result.SECOND, Result.FIRST)
+    resultList.forEach { result -> result.print() }
+    println("총 수익률은 ${calculateEarningsRate(lottoCount, resultList)}%입니다.")
 }
 
-fun calculateEarningsRate(lottoCount: Int): Double {
+fun calculateEarningsRate(lottoCount: Int, resultList: List<Result>): Double {
     var totalEarning = 0
-    listOf(Result.FIFTH, Result.FOURTH, Result.THIRD, Result.SECOND, Result.FIRST).forEach { result ->
-        totalEarning += result.getEarningRate()
-    }
+    resultList.forEach { result -> totalEarning += result.getEarningRate() }
     val earningRate = totalEarning / (lottoCount.toDouble() * LOTTO_PRICE) * PERCENT
     return roundEarningRate(earningRate)
 }
 
-fun roundEarningRate(earningRate: Double): Double {
-    return round(earningRate * ROUND_DIGITS) / ROUND_DIGITS
-}
+fun roundEarningRate(earningRate: Double) = round(earningRate * ROUND_DIGITS) / ROUND_DIGITS
