@@ -1,7 +1,6 @@
 package lotto
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -22,103 +21,21 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    private val lotto = Lotto(listOf(1, 2, 3, 4, 5, 30))
 
-    @Nested
-    inner class LottoMachineTest {
-        private val lottoMachine = LottoMachine()
+    @Test
+    fun `당첨번호와 일치율 확인`() {
+        val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
 
-        @Test
-        fun `당첨번호 생성 확인`() {
-            lottoMachine.publishWinningNumber("1,2,3,4,5,6")
-            assertThat(lottoMachine.winningNumbers).isEqualTo(listOf(1, 2, 3, 4, 5, 6))
-        }
-
-        @Test
-        fun `당첨번호가 숫자가 아닐 경우 예외가 발생한다`() {
-            assertThrows<IllegalArgumentException> {
-                lottoMachine.publishWinningNumber("1,2,3,가,나")
-            }
-        }
-
-        @Test
-        fun `당첨번호가 1~45가 아닐 경우 예외가 발생한다`() {
-            assertThrows<IllegalArgumentException> {
-                lottoMachine.publishWinningNumber("1,2,3,30,50")
-            }
-        }
-
-        @Test
-        fun `당첨번호가 6자리가 아닐 경우 예외가 발생한다`() {
-            assertThrows<IllegalArgumentException> {
-                lottoMachine.publishWinningNumber("1,2,3,4,5,6,7")
-            }
-        }
-
-        @Test
-        fun `보너스 번호 생성 확인`() {
-            lottoMachine.publishBonusNumber("30")
-            assertThat(lottoMachine.bonusNumber).isEqualTo(30)
-        }
-
-        @Test
-        fun `보너스 번호가 숫자가 아닐 경우 예외가 발생한다`() {
-            assertThrows<IllegalArgumentException> {
-                lottoMachine.publishWinningNumber("가나")
-            }
-        }
-
-        @Test
-        fun `보너스 번호가 1~45가 아닐 경우 예외가 발생한다`() {
-            assertThrows<IllegalArgumentException> {
-                lottoMachine.publishBonusNumber("70")
-            }
-        }
+        assertThat(lotto.checkWinningNumbersMatching(winningNumbers))
+            .isEqualTo(5)
     }
 
-    @Nested
-    inner class TicketingMachineTest {
-        private val ticketingMachine = TicketingMachine()
+    @Test
+    fun `보너스 번호와 일치하는지 확인`() {
+        val bonusNumber = 30
 
-        @Test
-        fun `개수만큼 로또 발행`() {
-            val result = ticketingMachine.createLottoNumbers(5)
-            assertThat(result).hasSize(5)
-        }
-    }
-
-    @Nested
-    inner class CacherTest {
-        private val cacher = Cacher()
-
-        @Test
-        fun `금액입력 형식 확인`() {
-            assertThat(cacher.enterPurchaseMoney("")).isEqualTo(123000)
-        }
-
-        @Test
-        fun `금액입력이 숫자가 아닐 경우 예외가 발생한다`() {
-            assertThrows<IllegalArgumentException> {
-                cacher.enterPurchaseMoney("123가나")
-            }
-        }
-
-        @Test
-        fun `금액입력이 자연수가 아닐 경우 예외가 발생한다`() {
-            assertThrows<IllegalArgumentException> {
-                cacher.enterPurchaseMoney("-12345")
-            }
-        }
-
-        @Test
-        fun `금액입력이 천원 단위로 나누어 떨어지지 않을 경우 예외가 발생한다`() {
-            assertThrows<IllegalArgumentException> {
-                cacher.enterPurchaseMoney("12300")
-            }
-        }
-
-        @Test
-        fun `로또의 개수를 계산한다`() {
-            assertThat(cacher.calculateNumberOfLottos(23000)).isEqualTo(23)
-        }
+        assertThat(lotto.checkBonusNumberMatching(bonusNumber))
+            .isEqualTo(true)
     }
 }
