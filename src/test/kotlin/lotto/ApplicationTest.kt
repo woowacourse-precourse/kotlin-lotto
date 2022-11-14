@@ -6,9 +6,6 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertDoesNotThrow
-import org.junit.jupiter.api.assertThrows
-import java.lang.IllegalArgumentException
 
 class ApplicationTest : NsTest() {
 
@@ -86,7 +83,7 @@ class ApplicationTest : NsTest() {
             assertSimpleTest{
                 val purchase = Purchase("5000")
                 val result = 5
-                assertThat(purchase.count).isEqualTo(5)
+                assertThat(purchase.count).isEqualTo(result)
             }
         }
     }
