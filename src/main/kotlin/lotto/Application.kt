@@ -146,8 +146,7 @@ fun checkLottoWin(lotto: Lotto, winningNumbers: Lotto, bonusNumber: Int) {
 }
 
 fun showResult(lottoCount: Int) {
-    println("당첨 통계")
-    println("---")
+    println("당첨 통계\n---")
 
     Result.FIFTH.print()
     Result.FOURTH.print()
