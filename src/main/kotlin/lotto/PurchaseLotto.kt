@@ -37,12 +37,8 @@ class PurchaseLotto {
     }
 
     private fun checkPrice(inputMoney: String) {
-        if(!isNumber(inputMoney)) {
-            throw IllegalArgumentException("[ERROR] 구입 금액은 숫자로 입력하셔야 됩니다.")
-        }
-        if(inputMoney.toInt() % 1000 != 0) {
-            throw IllegalArgumentException("[ERROR] 구매 금액은 1000원 단위로 입력해주세요.")
-        }
+        if(!isNumber(inputMoney)) throw IllegalArgumentException("[ERROR] 구입 금액은 숫자로 입력하셔야 됩니다.")
+        if(inputMoney.toInt() % 1000 != 0) throw IllegalArgumentException("[ERROR] 구매 금액은 1000원 단위로 입력해주세요.")
     }
 
 }
