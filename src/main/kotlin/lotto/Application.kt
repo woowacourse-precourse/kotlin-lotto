@@ -98,3 +98,11 @@ fun printResult() {
     println("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개".format(fiveBonusWin))
     println("6개 일치 (2,000,000,000원) - %d개".format(sixWin))
 }
+
+fun printProfit() {
+    val totalPrize =
+        (threeWin * 5000) + (fourWin * 50000) + (fiveWin * 1500000) + (fiveBonusWin * 30000000) + (sixWin * 2000000000)
+    val profit = (totalPrize.toFloat() / purchaseSum.toInt()) * 100
+    print("총 수익률은 %.1f".format(profit))
+    print("%입니다.")
+}
