@@ -10,20 +10,12 @@ enum class LottoValue(val earning : Int, val correctNumbers : Int, open var amou
     FIFTH(5000,3, 0)
 }
 
-fun firstPay() : Int?{
-    try {
-        val pay : Int = Console.readLine()!!.toInt()
-        if(pay % 1000 != 0) {
-            throw IllegalArgumentException("[ERROR] 입력된 금액이 올바른 금액이 아닙니다.")
-        }
-        return pay
-    } catch (e : NumberFormatException){
-        throw NumberFormatException("[ERROR] 입력된 금액이 올바른 금액이 아닙니다.")
-    } catch (e : NullPointerException){
-        throw NullPointerException("[ERROR] 값을 입력하지 않았습니다.")
-    }catch (e : IllegalArgumentException){
-        throw IllegalArgumentException("[ERROR] 입력된 금액이 올바른 금액이 아닙니다.")
+fun firstPay() : Int {
+    val pay = Console.readLine().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] 올바르지 않은 금액입니다.")
+    if (pay % 1000 != 0){
+        throw IllegalArgumentException("[ERROR] 올바르지 않은 금액입니다.")
     }
+    return pay
 }
 
 fun lottoGenerator(amount : Int) : MutableList<List<Int>>{
