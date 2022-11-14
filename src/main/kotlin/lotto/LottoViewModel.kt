@@ -26,9 +26,6 @@ class LottoViewModel {
 
     fun getProfit(purchaseAmount: String): Double = round(calculateProfit(purchaseAmount) * 10) / 10
 
-    private fun getMergeList(winningNumberList: List<Int>, issuedNumbers: MutableList<Int>?): List<Int> =
-        listOf(winningNumberList, issuedNumbers).flatMap { it.orEmpty() }
-
     private fun calculateWinning() {
         when (matchedWinningNumbers.size) {
             3 -> { Winning.THREE.calculate() }
@@ -67,5 +64,8 @@ class LottoViewModel {
                 .flatMap { it.value }
                 .distinct()
         }
+
+        fun getMergeList(winningNumberList: List<Int>, issuedNumbers: MutableList<Int>?): List<Int> =
+            listOf(winningNumberList, issuedNumbers).flatMap { it.orEmpty() }
     }
 }
