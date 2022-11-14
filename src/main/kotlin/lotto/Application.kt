@@ -1,5 +1,6 @@
 package lotto
 
 fun main() {
-    TODO("프로그램 구현")
+    var lottoWinningNumbers = arrayListOf<String>()
+    val lottoMoney = LottoBuyer().inputLottoPurchasePrice()//구입 금액 입력
 }
