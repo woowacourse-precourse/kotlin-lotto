@@ -1,5 +1,6 @@
 package lotto
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -21,4 +22,20 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+
+    @Test
+    fun `로또 숫자가 6개 인가` (){
+        val lg = LottoLogic()
+        val testLotto = lg.lottoGenerator()
+        assertThat(testLotto.size == 6).isEqualTo(true)
+        println(testLotto)
+    }
+
+    @Test
+    fun `로또의 숫자가 중복되지 않는가` (){
+        val lg = LottoLogic()
+        val testLotto = lg.lottoGenerator()
+        assertThat(testLotto.size == testLotto.distinct().size).isEqualTo(true)
+        println(testLotto)
+    }
 }
