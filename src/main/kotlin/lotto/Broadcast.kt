@@ -15,6 +15,7 @@ class Broadcast() {
         println()
         println("보너스 번호를 입력해주세요.")
         bonusNumber = winningBonusLotto()
+        winLotto(lottery)
 
     }
 
@@ -32,6 +33,23 @@ class Broadcast() {
             .toInt()
         if (winningNumbers.contains(bonus)) throw IllegalArgumentException("[ERROR] 당첨된 번호와 보너스번호가 중복입니다.")
         return bonus
+    }
+
+    fun winLotto(lottery: List<List<Int>>): List<Int> {
+        for (ticket in lottery) {
+            var count = 0
+            count = makeWinningNumber(ticket)
+            winLottery[count]++
+        }
+        return winLottery
+    }
+
+    private fun makeWinningNumber(lottery: List<Int>): Int {
+        var winningNumberCounter = 0
+        winningNumbers.forEach {
+            if (lottery.contains(it)) winningNumberCounter++
+        }
+        return winningNumberCounter
     }
 
 }
