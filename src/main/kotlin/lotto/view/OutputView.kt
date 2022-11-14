@@ -43,7 +43,6 @@ class OutputView {
 
     private fun getLottoPrizeValues(): List<LottoPrize> =
         LottoPrize.values()
-            .filter { prize ->
-                prize != LottoPrize.NO_WINNING_AMOUNT
-            }.reversed()
+            .filter { prize -> prize != LottoPrize.NO_WINNING_AMOUNT }
+            .reversed()
 }

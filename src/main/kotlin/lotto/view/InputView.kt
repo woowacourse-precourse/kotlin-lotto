@@ -15,9 +15,7 @@ class InputView {
     fun inputWinningNumber(): List<Int> {
         val winningNumbers = Console.readLine()
             .split(",")
-            .map { number ->
-                number.toInt()
-            }
+            .map { number -> number.toInt() }
         checkWinningNumbers(winningNumbers)
         return winningNumbers
     }
@@ -30,8 +28,6 @@ class InputView {
     }
 
     private fun checkWinningNumbers(winningNumbers: List<Int>) {
-        winningNumbers.map { number ->
-            LottoNumber(number)
-        }
+        winningNumbers.map { number -> LottoNumber(number) }
     }
 }

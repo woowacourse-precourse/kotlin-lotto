@@ -15,9 +15,7 @@ class Money(private val money: String) {
     }
 
     private fun isNumber(): Boolean =
-        money.all { number ->
-            number.isDigit()
-        }
+        money.all { number -> number.isDigit() }
 
     private fun canDividedMoney(): Boolean =
         money.toInt() % 1000 == 0

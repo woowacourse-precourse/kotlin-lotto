@@ -14,9 +14,7 @@ class LottoMachine(private val money: Int) {
 
     private fun createLotto(): List<Int> {
         val lotto = LottoGenerator().generate()
-        lotto.map { number ->
-            LottoNumber(number)
-        }
+        lotto.map { number -> LottoNumber(number) }
         Lotto(lotto)
         return lotto
     }
