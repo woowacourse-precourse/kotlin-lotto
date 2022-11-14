@@ -8,6 +8,7 @@ var numOfLotto = 0
 lateinit var selectedNum: Array<Int>
 var myLottos = ArrayList<Array<Int>>()
 lateinit var lottoWinNum: IntArray
+var bonusNum = 0
 
 fun main() {
 
@@ -65,4 +66,10 @@ fun winNumInputCheck() {
     for (num in lottoWinNum) {
         if (num < 1 || num > 45 || !checkDigit(num.toString())) throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
     }
+}
+
+fun bonusNumInput() {
+    println("보너스 번호를 입력해주세요.")
+    bonusNum = Console.readLine().toInt()
+    println()
 }
