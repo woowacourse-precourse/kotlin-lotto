@@ -5,7 +5,7 @@ import lotto.resources.LOTTO_END_NUMBER
 import lotto.resources.LOTTO_NUMBER_COUNT
 import lotto.resources.LOTTO_START_NUMBER
 
-class NumberGenerator {
+object NumberGenerator {
     fun createRandomNumbers(
         start: Int = LOTTO_START_NUMBER,
         end: Int = LOTTO_END_NUMBER,
