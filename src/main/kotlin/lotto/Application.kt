@@ -9,11 +9,11 @@ fun main() {
     val money = inputMoney()
     val lottoCount = printLottoConut(money)
     val allLotto = publishLotto(lottoCount)
-    val answerNum = inputWinningNumber()
+    val winningNum = inputWinningNumber()
     val bonusNum = inputBonusNumber()
-    val answerList = calculateLottoWin(lottoCount, allLotto, answerNum, bonusNum)
-    printWinningScore(answerList)
-    printWinningRate(answerList, money)
+    val winningList = calculateLottoWin(lottoCount, allLotto, winningNum, bonusNum)
+    printWinningScore(winningList)
+    printWinningRate(winningList, money)
 }
 
 fun inputMoney(): Int {
@@ -54,18 +54,18 @@ fun publishLotto(lottoCount: Int): Array<IntArray> {
 
 fun inputWinningNumber(): List<String> {
     println("\n${Message.INPUT_WINNING_NUM.message}")
-    var answerNum = Console.readLine().split(",")
-    answerNum.forEach {
+    var winningNum = Console.readLine().split(",")
+    winningNum.forEach {
         checkNumberScope(it.toInt())
     }
     for (i in 0..4) {
         for (j in i + 1..5) {
-            if (answerNum[i] == answerNum[j]) {
+            if (winningNum[i] == winningNum[j]) {
                 throw IllegalArgumentException("[ERROR] numbers에 중복된 숫자가 포함되어 있습니다.")
             }
         }
     }
-    return answerNum
+    return winningNum
 }
 
 fun inputBonusNumber(): Int {
@@ -84,11 +84,11 @@ fun checkNumberScope(num: Int) {
 fun calculateLottoWin(
     lottoCount: Int,
     allLotto: Array<IntArray>,
-    answerNum: List<String>,
+    winningNum: List<String>,
     bonusNum: Int,
 ): MutableList<Int> {
     var bonusCount = 0
-    var answerList = mutableListOf<Int>(0, 0, 0, 0, 0, 0, 0, 0)
+    var winningList = mutableListOf<Int>(0, 0, 0, 0, 0, 0, 0, 0)
 
     for (i in 0 until lottoCount) {
         val lottos = allLotto[i].toList()
@@ -96,7 +96,7 @@ fun calculateLottoWin(
         for (j in 0..5) {
             val lottoNum = lottos[j]
             for (k in 0..5) {
-                if (answerNum[k].toInt() == lottoNum) {
+                if (winningNum[k].toInt() == lottoNum) {
                     answerCount++
                 }
                 if (bonusNum == lottoNum) {
@@ -105,29 +105,29 @@ fun calculateLottoWin(
             }
         }
         if (answerCount != 0) {
-            answerList[answerCount] = answerList[answerCount] + 1
+            winningList[answerCount] = winningList[answerCount] + 1
         }
         if (answerCount == 5 && bonusCount == 1) {
-            answerList[7] = answerList[7] + 1
+            winningList[7] = winningList[7] + 1
         }
     }
 
-    return answerList
+    return winningList
 }
 
-fun printWinningScore(answerList: MutableList<Int>) {
+fun printWinningScore(winningList: MutableList<Int>) {
     println(ScoreMessage.SCORE_TITLE.message)
     println(ScoreMessage.SCORE_LINE.message)
-    println("${ScoreMessage.SCORE_THREE.message}${answerList[3]}개")
-    println("${ScoreMessage.SCORE_FOUR.message}${answerList[4]}개")
-    println("${ScoreMessage.SCORE_FIVE.message}${answerList[5]}개")
-    println("${ScoreMessage.SCORE_FIVE_BONUS.message}${answerList[7]}개")
-    println("${ScoreMessage.SCORE_SIX.message}${answerList[6]}개")
+    println("${ScoreMessage.SCORE_THREE.message}${winningList[3]}개")
+    println("${ScoreMessage.SCORE_FOUR.message}${winningList[4]}개")
+    println("${ScoreMessage.SCORE_FIVE.message}${winningList[5]}개")
+    println("${ScoreMessage.SCORE_FIVE_BONUS.message}${winningList[7]}개")
+    println("${ScoreMessage.SCORE_SIX.message}${winningList[6]}개")
 }
 
-fun printWinningRate(answerList: MutableList<Int>, money: Int) {
-    var totalPrice = 5000 * answerList[3] + 50000 * answerList[4] + 1500000 * answerList[5]
-    +2000000000 * answerList[6] + 30000000 * answerList[7]
+fun printWinningRate(winningList: MutableList<Int>, money: Int) {
+    var totalPrice = 5000 * winningList[3] + 50000 * winningList[4] + 1500000 * winningList[5]
+    +2000000000 * winningList[6] + 30000000 * winningList[7]
     var percent = totalPrice / money.toFloat() * 100
     println("총 수익률은 " + "%.1f".format(percent) + "%입니다.")
 }
