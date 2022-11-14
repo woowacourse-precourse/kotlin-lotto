@@ -3,10 +3,11 @@ package lotto
 class LottoResult {
 
     //6-1. 당첨 숫자를 게산하는 함수 생성
-    fun getWinCount(publishNums: List<Int>, winNums : List<Int>) : Int{
+    fun getWinCount(publishNums: List<Int>, winNums : List<Int>, bonusNums : Int) : Int{
         var winCount = 0
         val commonNums = publishNums.filter { it in winNums.map { item -> item } }
         winCount = commonNums.size
+        if(publishNums.any{ it == bonusNums}) winCount += 1
         return winCount
     }
 
