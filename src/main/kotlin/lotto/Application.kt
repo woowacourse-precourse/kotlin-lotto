@@ -26,20 +26,20 @@ fun main() {
 
 }
 
-// 1. 로또 구입 금액 입력 받기
-fun getLottoPrice() : Int? {
-    println("구입금액을 입력해 주세요.")
-    val lottoPrice = readLine()?.toInt()
-    //구입 금액 입력 받을 때 생길 수 있는 예외 사항 처리 필요
-    return lottoPrice
-}
+//// 1. 로또 구입 금액 입력 받기
+//fun getLottoPrice() : Int? {
+//    println("구입금액을 입력해 주세요.")
+//    val lottoPrice = readLine()?.toInt()
+//    //구입 금액 입력 받을 때 생길 수 있는 예외 사항 처리 필요
+//    return lottoPrice
+//}
 
-// 1-1. 로또 수량 계산
-fun getLottoCount(lottoPrice : Int) : Int{
-    val lottoCount = lottoPrice / 1000
-    //만약 나누어지지 않을 시에 발생하는 예외 사항 처리 필요
-    return lottoCount
-}
+//// 1-1. 로또 수량 계산
+//fun getLottoCount(lottoPrice : Int) : Int{
+//    val lottoCount = lottoPrice / 1000
+//    //만약 나누어지지 않을 시에 발생하는 예외 사항 처리 필요
+//    return lottoCount
+//}
 
 // 2. 당첨 번호 입력 받기
 fun getWinNums() : String? {
@@ -50,17 +50,15 @@ fun getWinNums() : String? {
 }
 
 // 2-2. 당첨 번호를 쉼표 기준으로 구분하기
-fun removeWinNumsComma(winNums : String) : List<Int>{
+fun removeWinNumsComma(winNums: String): List<Int> {
     val removeCommaNums = listOf<String>(*winNums.split(",").toTypedArray())
-    val _removeCommaNums = removeCommaNums.map { it.toInt() }
-    return _removeCommaNums
+    return removeCommaNums.map { it.toInt() }
 }
 
 // 3. 보너스 번호 입력 받기
-fun getBonusNum() : Int? {
-    val bonusNum = readLine()?.toInt()
+fun getBonusNum(): Int? {
     //보너스 번호가 양식에 맞게 입력되지 않았을 때의 예외 사항 처리 필요
-    return bonusNum
+    return readLine()?.toInt()
 }
 
 //4. 1~45까지의 숫자 중 중복되지 않는 6개의 숫자를 뽑는다
