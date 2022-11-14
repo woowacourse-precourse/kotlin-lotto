@@ -12,4 +12,6 @@ object LottoPhrases {
 
     const val PURCHASE_AMOUNT_PHRASES = "구입금액을 입력해 주세요."
     const val LOTTO_COUNT_PHRASES = "개를 구매했습니다."
+    const val MAIN_LOTTO_NUMBERS_PHRASES = "당첨 번호를 입력해 주세요."
+    const val BONUS_LOTTO_NUMBER_PHRASES = "보너스 번호를 입력해 주세요."
 }

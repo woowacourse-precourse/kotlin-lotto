@@ -1,6 +1,8 @@
 package lotto
 
+import lotto.LottoPhrases.BONUS_LOTTO_NUMBER_PHRASES
 import lotto.LottoPhrases.LOTTO_COUNT_PHRASES
+import lotto.LottoPhrases.MAIN_LOTTO_NUMBERS_PHRASES
 import lotto.LottoPhrases.PURCHASE_AMOUNT_PHRASES
 import lotto.LottoRule.LOTTO_PRICE
 import lotto.lottoshop.LottoShop
@@ -43,5 +45,30 @@ class GameHost(
 
     private fun printLottos(lottos: List<Lotto>) {
         for (lotto in lottos) println(lotto.getLottoNumbers())
+    }
+
+    fun progressMainLottoNumbers() {
+        printMainLottoNumbersPhrases()
+        val unprocessedMainLottoNumbers = customer.getMainLottoNumbers()
+        val processedMainLottoNumbers = lottoShop.getValidateMainLottoNumbers(unprocessedMainLottoNumbers)
+        Customer.updateMainLottoNumbers(processedMainLottoNumbers)
+        println()
+    }
+
+    private fun printMainLottoNumbersPhrases() {
+        println(MAIN_LOTTO_NUMBERS_PHRASES)
+    }
+
+    fun progressBonusLottoNumber() {
+        printBonusLottoNumberPhrases()
+        val unprocessedBonusLottoNumber = customer.getBonusLottoNumber()
+        val processedBonusLottoNumbers = lottoShop.getValidateBonusLottoNumber(unprocessedBonusLottoNumber)
+        Customer.updateBonusLottoNumber(processedBonusLottoNumbers)
+        lottoShop.checkLottoNumberDuplicate(Customer.mainLottoNumbers + Customer.bonusLottoNumber)
+        println()
+    }
+
+    private fun printBonusLottoNumberPhrases() {
+        println(BONUS_LOTTO_NUMBER_PHRASES)
     }
 }
