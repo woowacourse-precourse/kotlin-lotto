@@ -6,11 +6,6 @@ import lotto.resources.LOTTO_NUMBER_COUNT
 import lotto.resources.LOTTO_START_NUMBER
 
 object NumberGenerator {
-    fun createRandomNumbers(
-        start: Int = LOTTO_START_NUMBER,
-        end: Int = LOTTO_END_NUMBER,
-        count: Int = LOTTO_NUMBER_COUNT
-    ): List<Int> {
-        return Randoms.pickUniqueNumbersInRange(start, end, count).sorted()
-    }
+    fun createRandomNumbers() =
+        Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_NUMBER_COUNT).sorted()
 }
