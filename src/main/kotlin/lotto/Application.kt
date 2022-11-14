@@ -9,6 +9,12 @@ fun main() {
     val quantity = validateAmount(amountPaid)
     println()
     println("${quantity}개를 구매했습니다")
+
+    val purchasedLotto = mutableListOf<Lotto>()
+    for (lottoQuantity in 1..quantity) {
+        val newLotto = issueLotto()
+        purchasedLotto.add(newLotto)
+    }
 }
 
 enum class ErrorCode(val message: String) {
