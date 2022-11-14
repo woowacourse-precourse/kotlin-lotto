@@ -22,4 +22,7 @@ fun checkCostInput() {
     } catch (e: IllegalArgumentException) {
         println("[ERROR] 금액을 천원 단위의 숫자로 입력해주세요.")
     }
+    if (purchaseSum.toInt() % 1000 != 0) {
+        throw IllegalArgumentException("[ERROR] 금액을 천원 단위의 숫자로 입력해주세요.")
+    }
 }
