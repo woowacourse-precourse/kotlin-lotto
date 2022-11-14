@@ -60,3 +60,9 @@ fun checkDigit(input: String): Boolean {
     }
     return digitFlag
 }
+
+fun winNumInputCheck() {
+    for (num in lottoWinNum) {
+        if (num < 1 || num > 45 || !checkDigit(num.toString())) throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+    }
+}
