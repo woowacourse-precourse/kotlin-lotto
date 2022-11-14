@@ -2,7 +2,7 @@ package lotto
 import camp.nextstep.edu.missionutils.Randoms
 import org.mockito.stubbing.Answer
 
-enum class LottoValue(val earning : Int, val correctNumbers : Int, var amount : Int){
+enum class LottoValue(val earning : Int, val correctNumbers : Int, open var amount : Int){
     FIRST(2000000000,6, 0),
     SECOND( 3000000,5, 0),
     THIRD(1500000,5, 0),
@@ -58,23 +58,18 @@ fun lottoBonusNumber(normalNumber: List<Int>) : List<Int>?{
         bonusNumber.add(bonus)
         return bonusNumber
     } catch (e : NumberFormatException){
-        println("[ERROR] 올바르지 않은 보너스 번호입니다.")
+        throw (NumberFormatException("[ERROR] 올바르지 않은 보너스 번호입니다."))
     } catch (e : NullPointerException){
-        println("[ERROR] 값을 입력하지 않았습니다.")
+        throw (NullPointerException("[ERROR] 값을 입력하지 않았습니다."))
     }
-    return null
 }
 
-fun earningsRatio (payment : Int, earnings : Int) {
+fun earningsRatio (payment : Int, earnings : Int) : String {
     try {
-        val ratio = (earnings / payment * 100)!!
-        print("총 수익률은 ")
-        print(String.format("%.2f",ratio))
-        println("입니다.")
+        val ratio = String.format("%.2f",(earnings / payment * 1000))!!
+        return ratio
     }  catch (e : NullPointerException){
-        println("[ERROR] 값을 입력하지 않았습니다.")
-    } catch (e : IllegalArgumentException){
-        println("[ERROR] 비정상적인 값입니다.")
+        throw (NullPointerException("[ERROR] 값을 입력하지 않았습니다."))
     }
 }
 
@@ -115,6 +110,17 @@ fun calculatePrize(prize : MutableList<Int>){
         prize[3] -> LottoValue.SECOND.amount+=1
         prize[4] -> LottoValue.FIRST.amount+=1
     }
+}
+
+fun receipt(earningRatio : String){
+    println("당첨 통계")
+    println("---")
+    println("3개 일치 (5,000원) - " + LottoValue.FIFTH.amount + "개")
+    println("4개 일치 (50,000원) - " + LottoValue.FIFTH.amount + "개")
+    println("5개 일치 (1,500,000원) - " + LottoValue.FIFTH.amount + "개")
+    println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + LottoValue.FIFTH.amount + "개")
+    println("6개 일치 (2,000,000,000원) - " + LottoValue.FIFTH.amount + "개")
+    println("총 수익률은 " + earningRatio + "입니다.")
 }
 
 fun main() {
