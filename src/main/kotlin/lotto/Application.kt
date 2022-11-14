@@ -4,13 +4,17 @@ import lotto.domain.*
 import lotto.view.*
 
 fun main() {
-    val amount = inputPurchaseAmount().toIntOrError()
-    val tickets = purchaseTickets(amount)
-    val winningLotto = registerWinningLotto()
-    val (resultRank, totalPrize) = Purchaser().calculateResult(winningLotto, tickets)
+    try {
+        val amount = inputPurchaseAmount().toIntOrError()
+        val tickets = purchaseTickets(amount)
+        val winningLotto = registerWinningLotto()
+        val (resultRank, totalPrize) = Purchaser().calculateResult(winningLotto, tickets)
 
-    printPrizeResult(resultRank)
-    printRateOfReturn(Purchaser().calculateRateOfReturn(totalPrize, amount))
+        printPrizeResult(resultRank)
+        printRateOfReturn(Purchaser().calculateRateOfReturn(totalPrize, amount))
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+    }
 }
 
 fun purchaseTickets(amount: Int): List<Lotto> {
