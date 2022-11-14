@@ -166,16 +166,14 @@ class Lottery (
     }
 
     private fun getEarningRate(sell : Int, winningResult: HashMap<String, Int>) : Double {
-        // 총 수입
         var earn = 0
 
         var key = winningResult.filterValues { it != 0 }.keys
-        key.forEach{
+        key.forEach {
             earn += getEarnedMoney(it) * winningResult.getValue(it)
         }
 
-        // 수익률
-        return roundDigit(((earn / (sell * AMOUNT)) * 100).toDouble(), 2)
+        return ((earn.toFloat() / (sell * AMOUNT).toFloat()) * 100).toDouble()
     }
 
     private fun getEarnedMoney(grade: String) : Int {
@@ -190,9 +188,6 @@ class Lottery (
         }
 
         return money
-    }
-    private fun roundDigit(num : Double, digits : Int) : Double {
-        return (num * POW.pow(digits.toDouble())).roundToInt() / POW.pow(digits.toDouble())
     }
 
 }
