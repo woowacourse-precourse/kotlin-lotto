@@ -2,6 +2,7 @@ package lotto
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.assertj.core.api.Assertions.assertThat
 
 
 class LottoTest {
@@ -20,5 +21,15 @@ class LottoTest {
         }
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @Test
+    fun `포함하는 숫자가 있으면 true를 리턴한다`(){
+        val result = Lotto(listOf(1, 2, 3, 4, 5, 6)).contains(1)
+        assertThat(result).isEqualTo(true)
+    }
+
+    @Test
+    fun `포함하는 숫자가 없으면 false를 리턴한다`(){
+        val result = Lotto(listOf(1, 2, 3, 4, 5, 6)).contains(7)
+        assertThat(result).isEqualTo(false)
+    }
 }
