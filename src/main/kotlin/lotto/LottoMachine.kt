@@ -8,6 +8,7 @@ class LottoMachine {
     private val printer: LottoPrinter
     private val console: LottoConsole
     private lateinit var user: User
+    private lateinit var winningNum:Lotto
 
     constructor(printer: LottoPrinter, console: LottoConsole) {
         this.printer = printer
@@ -21,6 +22,9 @@ class LottoMachine {
     fun printMyLottoTickets(){
         printer.printTicketsCount(user.amount)
         printer.printMyTickets(user)
+    }
+    fun inputWinningNum(){
+        this.winningNum=console.inputWinningNumbers()
     }
 
 
@@ -58,6 +62,8 @@ class LottoMachine {
         initializeUser(amount,lottoTickets)
         printer.printTicketsCount(amount)
         printer.printMyTickets(user)
+        printer.printAskingWinningNumber()
+        console.inputWinningNumbers()
 
     }
 

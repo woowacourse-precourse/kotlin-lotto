@@ -3,8 +3,9 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 
 private const val ERROR_CODE = "[ERROR] "
-private const val ERROR_DEFAULT = "잘못된 입력입니다/"
+private const val ERROR_DEFAULT = "잘못된 입력입니다"
 private const val ERROR_DOLLAR = "1000원 단위로 입력해야합니다."
+private const val ERROR_WINNING_NUBMER="1부터 45사이의 중복되지 않은 수를 [,]로 구분하여 입력해야 합니다."
 
 class LottoConsole {
     private val validChecker = LottoValidCheker()
@@ -18,8 +19,22 @@ class LottoConsole {
         }
 
         if (validChecker.checkDollar(amount) || validChecker.checkPositive(amount)) {
-            throw java.lang.IllegalArgumentException(ERROR_CODE + ERROR_DOLLAR)
+            throw IllegalArgumentException(ERROR_CODE + ERROR_DOLLAR)
         }
         return amount
+    }
+
+    fun inputWinningNumbers():Lotto{
+        var winningNum: List<Int>
+        try {
+            var inputWinningNum = Console.readLine().split(',')
+            winningNum = inputWinningNum.map{ num -> num.toInt()}
+        } catch (e:Exception){
+            throw IllegalArgumentException(ERROR_CODE + ERROR_DEFAULT)
+        }
+        if(validChecker.checkRagne(winningNum)||validChecker.checkSize(winningNum)||validChecker.checkDuplicate(winningNum)){
+            throw IllegalArgumentException(ERROR_CODE+ ERROR_WINNING_NUBMER)
+        }
+        return Lotto(winningNum)
     }
 }
