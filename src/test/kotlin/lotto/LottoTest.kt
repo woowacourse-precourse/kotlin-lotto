@@ -2,7 +2,9 @@ package lotto
 
 import lotto.data.Lotto
 import lotto.data.WinningLotto
+import lotto.domain.LottoGenerator
 import org.assertj.core.api.Assertions
+import org.junit.jupiter.api.RepeatedTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -20,17 +22,23 @@ class LottoTest {
 
     @Test
     fun `로또생성기_생성_길이6`() {
-        TODO()
+        Assertions.assertThat(LottoGenerator.generate(1))
+            .flatExtracting("numbers")
+            .hasSize(6)
     }
 
-    @Test
+    @RepeatedTest(10)
     fun `로또생성기_생성_중복X`() {
-        TODO()
+        Assertions.assertThat(LottoGenerator.generate(1))
+            .flatExtracting("numbers")
+            .doesNotHaveDuplicates()
     }
 
-    @Test
+    @RepeatedTest(10)
     fun `로또생성기_생성_1to45`() {
-        TODO()
+        Assertions.assertThat(LottoGenerator.generate(1))
+            .flatExtracting("numbers")
+            .allMatch { it in 1..45 }
     }
 
     @Test
