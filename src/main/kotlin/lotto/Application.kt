@@ -12,12 +12,12 @@ fun main() {
 }
 
 fun lotto() {
-    val lottoCount = inputMoney()
+    val lottoCount = generateLottoCount()
     val winningNumber = generateWinningNumbers()
     val bonusNumber = inputBonusNumber()
 }
 
-fun inputMoney(): Int {
+fun generateLottoCount(): Int {
     println("구입금액을 입력해 주세요.")
     val money = Console.readLine()
     checkMoneyThrowException(money)
