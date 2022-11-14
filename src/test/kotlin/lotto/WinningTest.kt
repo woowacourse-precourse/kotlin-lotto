@@ -19,4 +19,11 @@ class WinningTest {
         val resultRank = winning.updateRank(3)
         assertThat(Rank.FIFTH).isEqualTo(resultRank)
     }
+
+    @Test
+    fun `번호가 4개 일치할 때 FOURTH 반환`() {
+        val winning = Winning()
+        val resultRank = winning.updateRank(4)
+        assertThat(Rank.FOURTH).isEqualTo(resultRank)
+    }
 }
