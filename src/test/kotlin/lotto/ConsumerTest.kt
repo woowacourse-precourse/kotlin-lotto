@@ -17,7 +17,6 @@ class ConsumerTest {
         consumer.myLotto.clear()
         consumer.myLotto.add(mutableListOf(8, 21, 23, 41, 42, 47))
         val result = consumer.compareLotto(Lotto(mutableListOf(8, 21, 23, 41, 42, 47)),7)
-        print(consumer.myLotto[0])
         Assertions.assertThat(result[0]).isEqualTo(1)
     }
 
@@ -26,7 +25,6 @@ class ConsumerTest {
         consumer.myLotto.clear()
         consumer.myLotto.add(mutableListOf(8, 21, 23, 41, 42, 43))
         val result = consumer.compareLotto(Lotto(mutableListOf(8, 21, 23, 41, 42, 47)),43)
-        print(consumer.myLotto[0])
         Assertions.assertThat(result[1]).isEqualTo(1)
     }
 
@@ -35,7 +33,6 @@ class ConsumerTest {
         consumer.myLotto.clear()
         consumer.myLotto.add(mutableListOf(1, 2, 3, 4, 5, 6))
         val result = consumer.compareLotto(Lotto(mutableListOf(1, 2, 3, 4, 5, 7)),42)
-        print(consumer.myLotto[0])
         Assertions.assertThat(result[2]).isEqualTo(1)
     }
 
@@ -44,7 +41,6 @@ class ConsumerTest {
         consumer.myLotto.clear()
         consumer.myLotto.add(mutableListOf(1, 2, 3, 4, 5, 6))
         val result = consumer.compareLotto(Lotto(mutableListOf(1, 2, 3, 4, 8, 7)),42)
-        print(consumer.myLotto[0])
         Assertions.assertThat(result[3]).isEqualTo(1)
     }
 
@@ -53,7 +49,6 @@ class ConsumerTest {
         consumer.myLotto.clear()
         consumer.myLotto.add(mutableListOf(1, 2, 3, 4, 5, 6))
         val result = consumer.compareLotto(Lotto(mutableListOf(1, 2, 3, 9, 8, 7)),42)
-        print(consumer.myLotto[0])
         Assertions.assertThat(result[4]).isEqualTo(1)
     }
 }
