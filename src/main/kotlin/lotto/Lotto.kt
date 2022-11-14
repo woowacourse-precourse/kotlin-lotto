@@ -1,9 +1,12 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
+
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6)
+        require(numbers.size == 6){"[ERROR] : 숫자가 6개가 아닙니다."}
+        require(numbers.distinct().size==6){"[ERROR] : 중복된 숫자가 있습니다"}
     }
 
-    // TODO: 추가 기능 구현
 }

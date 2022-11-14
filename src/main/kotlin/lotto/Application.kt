@@ -1,5 +1,19 @@
 package lotto
+import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
+import kotlin.math.round
+
+
+
+
+
 
 fun main() {
-    TODO("프로그램 구현")
+    try {
+        val game = GameStart()
+        game.gameStart()
+    }
+    catch(error:Exception){
+        println(error.message)
+    }
 }
