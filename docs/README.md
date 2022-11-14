@@ -17,7 +17,7 @@
 - [x] 구매 개수 출력 - PrintUi#printPurchaseNum()
 - [x] 로또 목록 출력 - PrintUi#printLottos()
 - [x] 당첨 통계 출력 - PrintUi#printWinningStats()
-- [ ] 수익률 출력 - PrintUi#printYield()
+- [x] 수익률 출력 - PrintUi#printYield()
 - [x] 입력 요구 메세지 출력 - PrintUi#pleaseInput()
 
 ## 기능 요구 사항
