@@ -38,13 +38,7 @@ enum class ErrorCode(val message: String) {
 }
 
 fun issueLotto(): Lotto {
-    val lottoNum = mutableListOf<Int>()
-    while (lottoNum.size < 6) {
-        val randomNumber = Randoms.pickNumberInRange(1, 45)
-        if (!lottoNum.contains(randomNumber)) {
-            lottoNum.add(randomNumber)
-        }
-    }
+    val lottoNum = Randoms.pickUniqueNumbersInRange(1, 45, 6)
     lottoNum.sort()
     println(lottoNum)
     return Lotto(lottoNum)
