@@ -15,5 +15,8 @@ class Message {
         const val MESSAGE_PRINT_COUNT_FIFTH = "3개 일치 (5,000원) - "
         const val MESSAGE_COUNT_UNIT = "개"
 
+        const val MESSAGE_PRINT_YIELD = "총 수익률은 "
+        const val MESSAGE_PRINT_YIELD_END = "%입니다."
+
     }
 }

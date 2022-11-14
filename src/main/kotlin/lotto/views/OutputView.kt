@@ -1,7 +1,6 @@
 package lotto.views
 
-import lotto.constants.Constant
-import lotto.constants.Message
+import lotto.constants.Constant.Companion.START_INDEX
 import lotto.constants.Message.Companion.MESSAGE_COUNT_UNIT
 import lotto.constants.Message.Companion.MESSAGE_INPUT_BONUS_NUMBER
 import lotto.constants.Message.Companion.MESSAGE_INPUT_MONEY
@@ -13,7 +12,8 @@ import lotto.constants.Message.Companion.MESSAGE_PRINT_COUNT_FOURTH
 import lotto.constants.Message.Companion.MESSAGE_PRINT_COUNT_SECOND
 import lotto.constants.Message.Companion.MESSAGE_PRINT_COUNT_THIRD
 import lotto.constants.Message.Companion.MESSAGE_PRINT_REWARD
-import lotto.domain.Lotto
+import lotto.constants.Message.Companion.MESSAGE_PRINT_YIELD
+import lotto.constants.Message.Companion.MESSAGE_PRINT_YIELD_END
 import lotto.domain.LottoWrapper
 
 object OutputView {
@@ -26,7 +26,7 @@ object OutputView {
     }
 
     fun printLottos(lottos: LottoWrapper) {
-        for (index in Constant.START_INDEX until lottos.size()) {
+        for (index in START_INDEX until lottos.size()) {
             val lotto = lottos.get(index)
             println(lotto.getNumbers())
         }
@@ -47,5 +47,9 @@ object OutputView {
         println(MESSAGE_PRINT_COUNT_THIRD + count[2] + MESSAGE_COUNT_UNIT)
         println(MESSAGE_PRINT_COUNT_SECOND + count[1] + MESSAGE_COUNT_UNIT)
         println(MESSAGE_PRINT_COUNT_FIRST + count[0] + MESSAGE_COUNT_UNIT)
+    }
+
+    fun printYield(result: Double) {
+        println(MESSAGE_PRINT_YIELD + "$result" + MESSAGE_PRINT_YIELD_END)
     }
 }
