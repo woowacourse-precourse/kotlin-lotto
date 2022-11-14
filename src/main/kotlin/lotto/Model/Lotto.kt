@@ -6,11 +6,9 @@ import lotto.constants.ERROR_DUPLICATION
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6)
-
+        require(numbers.size == 6) { validateLengthAndDuplication(numbers) }
         for (i in numbers)
             ValidateInput().validateRange(i)
-        validateLengthAndDuplication(numbers)
     }
 
     fun getNumbers(): List<Int> {
