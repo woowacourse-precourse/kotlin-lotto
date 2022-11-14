@@ -10,8 +10,8 @@ class WinningStatistics(lotteries: List<Lotto>, winningNumber: WinningNumber) {
     init {
         WinningResult.values().forEach { winningCounts[it] = 0 }
         lotteries.forEach {
-            winningCounts[it.winningResult(winningNumber)] =
-                winningCounts[it.winningResult(winningNumber)]!! + 1
+            winningCounts[winningNumber.winningResult(it)] =
+                winningCounts[winningNumber.winningResult(it)]!! + 1
         }
         this.yields = calculateYields()
     }

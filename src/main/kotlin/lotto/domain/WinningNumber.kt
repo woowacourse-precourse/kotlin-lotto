@@ -12,4 +12,8 @@ class WinningNumber(private val numbers: List<Int>, private val bonusNumber: Int
     fun numbers() = numbers
 
     fun bonusNumber() = bonusNumber
+
+    fun winningResult(lotto: Lotto): WinningResult {
+        return WinningResult.FIRST
+    }
 }

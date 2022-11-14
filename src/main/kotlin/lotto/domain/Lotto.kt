@@ -9,7 +9,4 @@ class Lotto(private val numbers: List<Int>) {
 
     fun numbers() = numbers
 
-    fun winningResult(winningNumber: WinningNumber): WinningResult {
-        return WinningResult.FIRST
-    }
 }
