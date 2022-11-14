@@ -8,10 +8,7 @@ fun main() {
     println("구입금액을 입력해주세요")
     var lottoPay = Console.readLine()
     var lottoTicket : Int
-    if(chkNum(lottoPay)){
-        print("[ERROR] 숫자만 입력해주세요")
-        throw NoSuchElementException()
-    }
+    chkNum(lottoPay)
     if(lottoPay.toInt()%1000 != 0){
         println("[ERROR] 금액을 1000원 단위로 입력해주세요")
         throw IllegalArgumentException()
@@ -21,19 +18,11 @@ fun main() {
 
     println("${lottoTicket}개를 구매했습니다.")
     var lotto = mutableListOf<List<Int>>()
-    while(lottoTicket > 0){
-        val numbers = Randoms.pickUniqueNumbersInRange(1,46,6).sorted()
-        println(numbers)
-        lotto.add(numbers)
-        lottoTicket = lottoTicket!! - 1
-    }
+    playTicket(lottoTicket,lotto)
     println("당첨 번호를 입력해 주세요.")
 
-    var won_5000 = 0
-    var won_50000 = 0
-    var won_1500000 = 0
-    var won_3000000 = 0
-    var won_2000000000 = 0
+    //5등,4등,3등,2등,1등 티켓 종류 세기
+    var TicketTypeCount = mutableListOf<Int>(0,0,0,0,0)
     var resultLotto = 0
 
     var userNum= Console.readLine().split(",").map{it.toInt()}
@@ -48,42 +37,53 @@ fun main() {
         println("[ERROR] 보너스 번호는 1~45 범위의 숫자여야 합니다.")
         throw IllegalArgumentException()
     }
-    for (i in 0 until lotto.size){
-        val union = lotto[i]+userNum
-        val intersection = union.groupBy { it }.filter { it.value.size > 1 }.flatMap { it.value }.distinct()
-        if (intersection.count() == 3)
-            won_5000++
-        if (intersection.count() == 4)
-            won_50000++
-        if ((intersection.count() == 5) && !(lotto[i].contains(userBonus)))
-            won_1500000++
-        if ((intersection.count() == 5) && (lotto[i].contains(userBonus)))
-            won_3000000++
-        if (intersection.count() == 6)
-            won_2000000000++
-    }
-    resultLotto = won_5000 * 5000 + won_50000 * 50000 + won_1500000 * 1500000 + won_3000000 * 3000000 + won_2000000000 * 2000000000
+    for (i in 0 until lotto.size)
+        playLottery(lotto[i], userNum,TicketTypeCount,userBonus)
+
+    resultLotto = TicketTypeCount[0] * 5000 + TicketTypeCount[1] * 50000 + TicketTypeCount[2] * 1500000 + TicketTypeCount[3] * 3000000 + TicketTypeCount[4] * 2000000000
     var lottoProfit = round(resultLotto / lottoPay.toFloat() * 1000) /10
     println("당첨 통계")
     println("---")
-    println("3개 일치 (5,000원) - ${won_5000}개 ")
-    println("4개 일치 (50,000원) - ${won_50000}개 ")
-    println("5개 일치 (1,500,000원) - ${won_1500000}개 ")
-    println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${won_3000000}개 ")
-    println("6개 일치 (2,000,000,000원) - ${won_2000000000}개")
+    println("3개 일치 (5,000원) - ${TicketTypeCount[0]}개 ")
+    println("4개 일치 (50,000원) - ${TicketTypeCount[1]}개 ")
+    println("5개 일치 (1,500,000원) - ${TicketTypeCount[2]}개 ")
+    println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${TicketTypeCount[3]}개 ")
+    println("6개 일치 (2,000,000,000원) - ${TicketTypeCount[4]}개")
     println("총 수익률은 ${lottoProfit}%입니다.")
 }
-fun chkNum(str: String) : Boolean {
+fun chkNum(str: String) {
     var temp: Char
-
     var result = false
 
     for (i in 0 until str.length) {
         temp = str.elementAt(i)
-        if (temp.toInt() < 48 || temp.toInt() > 57) {
-            result = true
+        if (!(temp.isDigit())) {
+            print("[ERROR] 숫자를 입력해주세요")
+            throw NoSuchElementException()
         }
     }
 
-    return result
+}
+
+fun playLottery(lotto : List<Int>, userNum : List<Int>,TicketTypeCount : MutableList<Int>,userBonus : Int){
+    val union = lotto+userNum
+    val intersection = union.groupBy { it }.filter { it.value.size > 1 }.flatMap { it.value }.distinct()
+    if (intersection.count() == 3)
+        TicketTypeCount[0]++
+    if (intersection.count() == 4)
+        TicketTypeCount[1]++
+    if ((intersection.count() == 5) && !(lotto.contains(userBonus)))
+        TicketTypeCount[2]++
+    if ((intersection.count() == 5) && (lotto.contains(userBonus)))
+        TicketTypeCount[3]++
+    if (intersection.count() == 6)
+        TicketTypeCount[4]++
+}
+
+fun playTicket( lottoTicket : Int, lotto: MutableList<List<Int>>){
+    for(i in 0 until lottoTicket){
+        val numbers = Randoms.pickUniqueNumbersInRange(1,46,6).sorted()
+        println(numbers)
+        lotto.add(numbers)
+    }
 }
