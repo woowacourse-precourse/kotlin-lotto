@@ -51,21 +51,37 @@ class ApplicationTest : NsTest() {
 //    }
 
     @Test
-    fun `countInWinningNumber 함수 테스트1`(){
-        val winningNumber = listOf(1,2,3,4,5,6)
-        val lotto = Lotto(listOf(1,2,7,8,9,10))
+    fun `countInWinningNumber 함수 테스트1`() {
+        val winningNumber = listOf(1, 2, 3, 4, 5, 6)
+        val lotto = Lotto(listOf(1, 2, 7, 8, 9, 10))
         val result = countInWinningNumber(winningNumber, lotto)
         assertThat(result).isEqualTo(2)
     }
 
     @Test
-    fun `compareWinningNumber 함수 테스트1`(){
-        val winningNumber = listOf(1,2,3,4,5,6)
-        val lotto1 = Lotto(listOf(1,2,3,4,5,6))
-        val lotto2 = Lotto(listOf(1,2,3,4,5,7))
+    fun `compareWinningNumber 함수 테스트1`() {
+        val winningNumber = listOf(1, 2, 3, 4, 5, 6)
+        val bonusNumber = 7
+        val lotto1 = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        val lotto2 = Lotto(listOf(1, 2, 3, 4, 5, 7))
         val lottos = mutableListOf(lotto1, lotto2)
-        val result = compareWinningNumber(winningNumber, lottos)
-        val expected = listOf(0,0,1,1)
+        val result = compareWinningNumber(winningNumber, lottos, bonusNumber)
+        val expected = listOf(0, 0, 0, 0, 0, 0, 1, 1)
+        assertThat(result).isEqualTo(expected)
+    }
+
+    @Test
+    fun `compareWinningNumber 함수 테스트2`() {
+        val winningNumber = listOf(1, 2, 3, 4, 5, 6)
+        val bonusNumber = 7
+        val lotto1 = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        val lotto2 = Lotto(listOf(1, 2, 3, 4, 5, 7))
+        val lotto3 = Lotto(listOf(1, 2, 3, 4, 5, 8))
+        val lotto4 = Lotto(listOf(11, 12, 13, 14, 15, 7))
+        val lotto5 = Lotto(listOf(1, 12, 13, 14, 15, 17))
+        val lottos = mutableListOf(lotto1, lotto2, lotto3, lotto4, lotto5)
+        val result = compareWinningNumber(winningNumber, lottos, bonusNumber)
+        val expected = listOf(1, 1, 0, 0, 0, 1, 1, 1)
         assertThat(result).isEqualTo(expected)
     }
 
