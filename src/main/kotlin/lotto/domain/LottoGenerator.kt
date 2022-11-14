@@ -24,11 +24,16 @@ class LottoGenerator {
         return Lotto(numbers)
     }
     fun checkUserInputLotto(inputs:List<String>): Lotto {
-        try {
-            val inputToINT = mutableListOf<Int>()
-            for (input in inputs)
-                inputToINT.add(input.toInt())
-            return Lotto(inputToINT)
+        checkUserInputLottoInt(inputs)
+        val inputToINT = mutableListOf<Int>()
+        for (input in inputs)
+            inputToINT.add(input.toInt())
+        return Lotto(inputToINT)
+    }
+    private fun checkUserInputLottoInt(inputs:List<String>){
+        try{
+            for(input in inputs)
+                input.toInt()
         }catch (e: IllegalArgumentException){
             println(CONSTANT.ERRORMESSAGE.LOTTONUMBERINTERROR.message)
             throw e
