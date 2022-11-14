@@ -4,6 +4,7 @@ import lotto.Lotto
 import camp.nextstep.edu.missionutils.Randoms
 import data.NumberRange
 import data.Price
+import data.StringResource
 import data.WinningAmount
 
 class Lottery(private val purchase: Int, private val lotteryNumbers: Lotto, private val bonusNumber: Int) {
@@ -21,7 +22,8 @@ class Lottery(private val purchase: Int, private val lotteryNumbers: Lotto, priv
     }
 
     fun printQuickPick() {
-        println("${this.quickPicks.size}개를 구매했습니다.")
+        println(StringResource.TICKETS.resource.replace(
+            StringResource.UNDERBAR.resource, this.quickPicks.size.toString()))
 
         this.quickPicks.forEach {
             println("[${it.getList().joinToString(separator = ", ")}]")
@@ -40,12 +42,16 @@ class Lottery(private val purchase: Int, private val lotteryNumbers: Lotto, priv
     }
 
     fun printWinnings() {
-        println("3개 일치 (5,000원) - ${this.winningCounter.getValue("3")}개")
-        println("4개 일치 (50,000원) - ${this.winningCounter.getValue("4")}개")
-        println("5개 일치 (1,500,000원) - ${this.winningCounter.getValue("5_0")}개")
-        println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${this.winningCounter.getValue("5_1")}개")
-        println("6개 일치 (2,000,000,000원) - ${this.winningCounter.getValue("6")}개")
-
+        println(StringResource.FIFTH.resource.replace(
+            StringResource.UNDERBAR.resource, this.winningCounter.getValue("3").toString()))
+        println(StringResource.FOURTH.resource.replace(
+            StringResource.UNDERBAR.resource, this.winningCounter.getValue("4").toString()))
+        println(StringResource.THIRD.resource.replace(
+            StringResource.UNDERBAR.resource, this.winningCounter.getValue("5_0").toString()))
+        println(StringResource.SECOND.resource.replace(
+            StringResource.UNDERBAR.resource, this.winningCounter.getValue("5_1").toString()))
+        println(StringResource.FIRST.resource.replace(
+            StringResource.UNDERBAR.resource, this.winningCounter.getValue("6").toString()))
     }
 
     private fun getWinnings() {
@@ -66,7 +72,8 @@ class Lottery(private val purchase: Int, private val lotteryNumbers: Lotto, priv
 
     fun printIncomeRatio() {
         this.incomeRatio = (this.income / this.purchase) * 100
-        println("총 수익률은 ${String.format("%.1f", this.incomeRatio)}%입니다.")
+        println(StringResource.RATIO.resource.replace(
+            StringResource.UNDERBAR.resource, String.format("%.1f", this.incomeRatio)))
     }
 
     private fun getIncomeRatio() {
