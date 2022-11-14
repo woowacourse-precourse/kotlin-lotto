@@ -11,10 +11,7 @@ fun main() {
     val winningNumber = changeNumberList(winning)
     Lotto(winningNumber)
     val bonusNumber = inputBonus()
-    calculateSame(lottoNumber,winningNumber,bonusNumber)
-
-
-
+    val countReward = calculateSame(lottoNumber,winningNumber,bonusNumber)
 }
 
 enum class Message {
@@ -79,12 +76,19 @@ fun inputBonus(): Int {
     return bonusNumber!!.toInt()
 }
 
-fun calculateSame(lottoNumber: MutableList<MutableList<Int>>, winningNumber:  List<Int>, bonusNumber: Int){
+fun calculateSame(lottoNumber: MutableList<MutableList<Int>>, winningNumber:  List<Int>, bonusNumber: Int): MutableList<Int> {
+    var countReward: MutableList<Int> = mutableListOf(0,0,0,0,0)
     for(i:Int in lottoNumber.indices){
-        val difference = lottoNumber[i].toSet().minus(winningNumber.toSet())
-        val duplicationCount = lottoNumber.size - difference.size
-        calculateReward(duplicationCount,bonusNumber,winningNumber)
+        val difference = winningNumber.toSet().minus(lottoNumber[i].toSet())
+        val duplicationCount = winningNumber.size - difference.size
+        print(duplicationCount)
+        val countWinning = calculateReward(duplicationCount,bonusNumber,winningNumber)
+        for(i in 0 until countReward.size){
+            countReward[i] = countReward[i] + countWinning[i]
+        }
     }
+    println(countReward)
+    return countReward
 }
 
 fun calculateReward(duplicationCount: Int, bonusNumber:Int, winningNumber: List<Int>): MutableList<Int> {
@@ -105,4 +109,18 @@ fun whenCountFive(countReward: MutableList<Int>, bonusNumber: Int, winningNumber
     }
     countReward[2] =+ 1
     return  countReward
+}
+
+fun calculateMoney(countReward: MutableList<Int>): Int {
+    var money:Int = 0
+    for(index:Int in 0 until countReward.size) {
+        when (index) {
+            0 -> money += countReward[0] * 5000
+            1 -> money += countReward[1] * 50000
+            2 -> money += countReward[2] * 1500000
+            3 -> money += countReward[3] * 30000000
+            4 -> money += countReward[4] * 2000000000
+        }
+    }
+    return money
 }
