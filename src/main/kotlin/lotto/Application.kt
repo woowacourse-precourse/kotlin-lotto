@@ -15,17 +15,6 @@ enum class Rank(var match:Int, var prize : Int){
 fun createLottoNum(): List<Int> {
     return Randoms.pickUniqueNumbersInRange(1, 45, 6)
 }
-fun createBonusNum(lottoNum:List<Int>):Int
-{
-    var remainder = (1..45).toMutableList()
-    var ret :Int
-    for(i in lottoNum) {
-        if (remainder.contains(i))
-            remainder.remove(i)
-    }
-    ret = Randoms.pickNumberInList(remainder)
-    return ret
-}
 
 fun publishLotto(money : Int):List<List<Int>>
 {
