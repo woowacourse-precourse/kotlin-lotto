@@ -12,8 +12,19 @@ class Lotto(private val numbers: List<Int>) {
 
     fun calculateProfit(money: Int, winnings: Int): Float = (winnings.toFloat() / money.toFloat())
 
-    fun printProfit(profit: Float) = println("총 수익률은 ${"%.2f".format(profit)}입니다.")
+    private fun countWinningNumbers(lottoTicket: List<Int>) = numbers.filter { number ->
+        lottoTicket.contains(number)
+    }.size
 
+    fun checkBonusNumber(bonus: Int): Boolean = numbers.contains(bonus)
+
+    fun checkCorrectCount(lottoTicket: List<Int>, bonus: Int) {
+        _correctCount = countWinningNumbers(lottoTicket)
+        if (checkBonusNumber(bonus)) _correctCount += 1
+        lottoStats[_correctCount]++
+    }
+
+    fun printProfit(profit: Float) = println("총 수익률은 ${"%.2f".format(profit)}입니다.")
 
     fun printStats() = println("\n당첨 통계\n---")
 
