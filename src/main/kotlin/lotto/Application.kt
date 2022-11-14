@@ -32,8 +32,8 @@ fun checkMoneyThrowException(userInput: String) {
 }
 
 fun throwIsMoneyNumberException(userInput: String) {
-    val numbers = userInput.toCharArray().filter { char ->
-        char in '0'..'9'
+    val numbers = userInput.toCharArray().filter { number ->
+        number in '0'..'9'
     }
     if (numbers.size != userInput.length) {
         println("[ERROR] 구입 금액은 숫자여야 합니다.")
