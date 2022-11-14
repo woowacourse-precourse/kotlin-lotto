@@ -45,8 +45,4 @@ class LottoResult(
             lottoCount[count] = lottoCount.getValue(count) + countOne
         }
     }
-
-    companion object {
-
-    }
 }
