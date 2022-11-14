@@ -57,4 +57,8 @@ object OutputView {
         println(OutputMessage.YIELD.getYieldMessage(value))
     }
 
+    fun printErrorMessage(message: String) {
+        println(message)
+        println(OutputMessage.PROGRAM_END.message)
+    }
 }
