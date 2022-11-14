@@ -21,8 +21,13 @@ fun main() {
 }
 
 fun setLotto(){
-    price = lottoIO.getPrice()
-    exceptionChecker.priceExceptionCheck(price)
+
+    price = try {
+        lottoIO.getPrice()
+    }catch (e: IllegalArgumentException){
+        return
+    }
+
     val n = price / 1000
 
     val lottos = ArrayList<List<Int>>()
@@ -36,11 +41,18 @@ fun setLotto(){
 }
 
 fun  computeLotto(lottos: ArrayList<List<Int>>){
-    val winnigNum = lottoIO.getWinningNumber()
-    exceptionChecker.validLottoNumExceptionCheck(winnigNum)
-    val bonusNum = lottoIO.getBonusNumber()
-    exceptionChecker.validBonusNumExceptionCheck(winnigNum, bonusNum)
-    val rankResult = win.getRankResult(lottos, winnigNum, bonusNum)
+    val winningNum = try {
+        lottoIO.getWinningNumber()
+    }catch (e: IllegalArgumentException){
+        return
+    }
+    val bonusNum = try {
+        lottoIO.getBonusNumber(winningNum)
+    }catch (e: IllegalArgumentException){
+        return
+    }
+    exceptionChecker.validBonusNumExceptionCheck(winningNum, bonusNum)
+    val rankResult = win.getRankResult(lottos, winningNum, bonusNum)
 
     printResultLotto(rankResult)
 }
