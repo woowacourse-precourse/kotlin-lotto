@@ -6,12 +6,12 @@ class Consumer(private val money: Int) {
     var myLotto = mutableListOf<List<Int>>()
 
     init {
-        require(money % 1000 == 0) { println("[ERROR] 1000원 단위가 아닙니다.") }
-        require(money >= 1000) { println("[ERROR] 돈이 부족합니다") }
+        require(money % WON_THOUSAND_UNIT == 0) { println("[ERROR] 1000원 단위가 아닙니다.") }
+        require(money >= WON_THOUSAND_UNIT) { println("[ERROR] 돈이 부족합니다") }
     }
 
     fun buyLotto(){
-        for(lottoCount in 0 until money/1000){
+        for(lottoCount in 0 until money/ WON_THOUSAND_UNIT){
             val lottoList = LottoShop().createLotto()
             myLotto.add(lottoList)
         }

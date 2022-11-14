@@ -11,7 +11,9 @@ const val FIFTH_PLACE_INDEX = 4
 const val FIRST_PLACE_COUNT = 6
 const val SECOND_PLACE_COUNT = 5
 const val WINNINGS_COUNT_MIN = 3
-const val LOTTO_SIZE=6
+const val LOTTO_SIZE = 6
 
 const val LOTTO_FIRST_VALUE = 1
 const val LOTTO_LAST_VALUE = 45
+
+const val WON_THOUSAND_UNIT = 1000

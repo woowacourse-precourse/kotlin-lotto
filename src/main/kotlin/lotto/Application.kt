@@ -23,7 +23,7 @@ private fun orderLotto() {
     try {
         consumer = Consumer(money.toInt())
         consumer.buyLotto()
-        println("${money.toInt() / 1000}개를 구매했습니다.")
+        println("${money.toInt() / WON_THOUSAND_UNIT}개를 구매했습니다.")
     } catch (e: IllegalArgumentException) {
         print("[ERROR] " + e.message)
         programException = true
