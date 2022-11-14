@@ -6,6 +6,9 @@ import camp.nextstep.edu.missionutils.Console as cs
 fun main() {
     println("구입금액을 입력해 주세요.")
     val amountPaid = cs.readLine()
+    val quantity = validateAmount(amountPaid)
+    println()
+    println("${quantity}개를 구매했습니다")
 }
 
 enum class ErrorCode(val message: String) {
@@ -25,4 +28,16 @@ fun issueLotto(): List<Int> {
     }
 
     return lottoNum
+}
+fun validateAmount(amountPaid: String): Int{
+    if(amountPaid.toIntOrNull() == null){
+        throw IllegalArgumentException(ErrorCode.NUMERIC_REQUIRED.message)
+    }
+
+    val price = amountPaid.toInt()
+    if(price%1000>0){
+        throw IllegalArgumentException(ErrorCode.PRICE_UNQUALIFIED.message)
+    }
+
+    return price/1000
 }
