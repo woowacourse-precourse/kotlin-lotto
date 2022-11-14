@@ -9,6 +9,8 @@ fun main() {
     printLottoList(lottoList)
     val winningNumber = getWinningNumber()
     val bonusNumber = getBonusNumber(winningNumber)
+    val result = compareWinningNumber(winningNumber, lottoList, bonusNumber)
+    println(result.toString())
 }
 
 fun getMoney(): Int {
@@ -72,4 +74,26 @@ fun countInWinningNumber(winningNumber: List<Int>, lotto: Lotto): Int {
         }
     }
     return cnt
+}
+
+fun compareWinningNumber(winningNumber: List<Int>, lottos: List<Lotto>, number: Int): List<Int> {
+    val matchCount = mutableListOf(0, 0, 0, 0, 0, 0, 0, 0)  // (0, 1, 2, 3, 4, 5, 6, 5+보너스)
+    for (lotto in lottos) {
+        val cnt = countInWinningNumber(winningNumber, lotto)
+
+        // 2등 확인
+        if (cnt == 5 && compareBonusNumber(number, lotto)) {
+            matchCount[7] += 1
+            continue
+        }
+        matchCount[cnt] += 1
+    }
+    return matchCount
+}
+
+fun compareBonusNumber(bonusNumber: Int, lotto: Lotto): Boolean {
+    if (lotto.contains(bonusNumber)) {
+        return true
+    }
+    return false
 }
