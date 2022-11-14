@@ -9,9 +9,12 @@ fun main() {
 
 fun getPurchaseMoney(): Int {
     println(INPUT_MONEY)
-    val money = readLine()
 
-    InputError.checkInteger(money)
+    val value = readLine()
+    InputError.checkInteger(value)
 
-    return money!!.toInt()
+    val money = value!!.toInt()
+    InputError.checkValidMoney(money)
+
+    return money
 }

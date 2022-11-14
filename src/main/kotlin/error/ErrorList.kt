@@ -41,4 +41,9 @@ object InputError {
         }
     }
 
+    fun checkValidMoney(money: Int) {
+        if(money % LOTTO_PRICE != 0) {
+            makeError(ErrorMaking.MONEY_UNIT_INCORRECT)
+        }
+    }
 }
