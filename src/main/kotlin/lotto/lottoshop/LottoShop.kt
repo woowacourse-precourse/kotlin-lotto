@@ -1,6 +1,7 @@
 package lotto.lottoshop
 
 import lotto.LottoPhrases.PURCHASE_AMOUNT_INPUT_TYPE_ERROR
+import lotto.LottoPhrases.PURCHASE_AMOUNT_MINIMUM_ERROR
 import java.util.regex.Pattern
 
 class LottoShop() {
@@ -8,6 +9,11 @@ class LottoShop() {
     fun getValidatePurchaseAmount(purchaseAmount: String): Int {
         if (!isInputTypeNumber(purchaseAmount)) printErrorMessage(PURCHASE_AMOUNT_INPUT_TYPE_ERROR)
         val processedPurchaseAmount = convertToInt(purchaseAmount)
+        checkMinimumPurchaseAmount(processedPurchaseAmount)
+    }
+
+    private fun checkMinimumPurchaseAmount(purchaseAmount: Int) {
+        if (purchaseAmount < 1000) printErrorMessage(PURCHASE_AMOUNT_MINIMUM_ERROR)
     }
 
     fun getValidateMainLottoNumbers(mainLottoNumbers: List<String>): List<Int> {
