@@ -7,7 +7,8 @@ fun main() {
 //    val money = getMoney()
 //    val lottoList = makeLottoList(money)
 //    printLottoList(lottoList)
-    println(getWinningNumber().toString())
+//    println(getWinningNumber().toString())
+    println(getBonusNumber())
 }
 
 fun getMoney(): Int {
@@ -53,4 +54,12 @@ fun getWinningNumber(): List<Int> {
 
     ExceptionHandler.checkNumberList(winningNumberList)
     return winningNumberList
+}
+
+fun getBonusNumber(): Int {
+    println("보너스 번호를 입력해 주세요.")
+    val number = Console.readLine().trim()
+    ExceptionHandler.checkBonusNumber(number)
+
+    return number.toInt()
 }
