@@ -1,10 +1,12 @@
 package lotto.domain
 
+import lotto.resources.LOTTO_NUMBER_COUNT
+
 object Purchaser {
     fun purchase(amount: Int) = Store().buyTickets(amount).map { Lotto(it) }
 
     fun calculateResult(winningLotto: WinningLotto, tickets: List<Lotto>): Pair<MutableList<Int>, Int> {
-        val resultRank = mutableListOf(0, 0, 0, 0, 0, 0)
+        val resultRank = MutableList(LOTTO_NUMBER_COUNT) { 0 }
         var totalPrize = 0
         tickets.forEach {
             resultRank[winningLotto.getRank(it.toList()) - 1] += 1
