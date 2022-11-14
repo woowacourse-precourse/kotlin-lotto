@@ -46,8 +46,8 @@ enum class WinningStatistics(
                 println(ERROR_NEGATIVE)
             }
             val regex = "[0-9]+\\.[0-9]".toRegex()
-            val returnRate = returnRate.toString()
-            require(returnRate.matches(regex)) {
+            val castingReturnRate = returnRate.toString()
+            require(castingReturnRate.matches(regex)) {
                 println(ERROR_ROUND_UNIT)
             }
         }
