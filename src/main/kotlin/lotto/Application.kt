@@ -1,63 +1,68 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
-import camp.nextstep.edu.missionutils.Randoms
+import lotto.domain.Lotto
+import lotto.domain.MatchingCount
+import lotto.domain.Shop
 
 private val winningNumbersRegex = "[0-9]{1,2}(,[0-9]{1,2}){5}".toRegex()
 
 fun main() {
-    println("구입금액을 입력해 주세요.")
-    val price = Console.readLine().toInt()
-    if (isValidPrice(price).not()) {
-        throw IllegalArgumentException("[ERROR]")
-    }
+    val price = inputPrice()
 
-    val myLotto = getLotto(price)
-    println("\n${myLotto.size}개를 구매했습니다.")
-    myLotto.forEach { numbers ->
-        println(numbers.toString())
-    }
+    val shop = Shop()
+    val myLotto = shop.buyLotto(price)
 
-    println("\n당첨번호를 입력해주세요.")
-    val winningNumbers = Console.readLine()
-    if (isValidWinningNumbers(winningNumbers).not()) {
-        throw IllegalArgumentException("[ERROR]")
-    }
-    val numbers = winningNumbers.split(',').map { it.toInt() }
+    val winningNumbers = inputWinningNumbers()
+    val bonusNumber = inputBonusNumber()
 
-    println("\n보너스 번호를 입력해 주세요.")
-    val bonusNumber = Console.readLine().toInt()
-    if (isValidBonusNumber(bonusNumber).not()) {
-        throw IllegalArgumentException("[ERROR]")
-    }
+    val lotto = Lotto(winningNumbers)
+    val matchingCount = lotto.getMatchingCount(bonusNumber, myLotto)
+    printMatchingCount(matchingCount)
 
-    val lotto = Lotto(numbers)
-    var threeCount = 0
-    var fourCount = 0
-    var fiveCount = 0
-    var fiveBonusCount = 0
-    var sixCount = 0
-    myLotto.forEach {
-        when (lotto.getMatchingNumberCount(it, bonusNumber)) {
-            LottoMatchingCount.THREE -> threeCount += 1
-            LottoMatchingCount.FOUR -> fourCount += 1
-            LottoMatchingCount.FIVE -> fiveCount += 1
-            LottoMatchingCount.FIVE_BONUS -> fiveBonusCount += 1
-            LottoMatchingCount.SIX -> sixCount += 1
-            LottoMatchingCount.ETC -> Unit
-        }
-    }
-
-    println("\n당첨 통계")
-    println("---")
-    println("3개 일치 (5,000원) - ${threeCount}개")
-    println("4개 일치 (50,000원) - ${fourCount}개")
-    println("5개 일치 (1,500,000원) - ${fiveCount}개")
-    println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${fiveBonusCount}개")
-    println("6개 일치 (2,000,000,000원) - ${sixCount}개")
+    val returnRate = lotto.getReturnRate(matchingCount, price)
+    println("총 수익률은 ${String.format("%.2f", returnRate)}%입니다.")
 }
 
-fun isValidPrice(price: Int): Boolean = (price % 1000 == 0)
+fun inputPrice(): Int {
+    println("구입금액을 입력해 주세요.")
+    val price = Console.readLine().toInt()
+    require(price % 1000 == 0) {
+        "[ERROR] 구입금액은 1000으로 나누어 떨어져야한다."
+    }
+
+    return price
+}
+
+fun inputWinningNumbers(): List<Int> {
+    println("\n당첨번호를 입력해주세요.")
+    val winningNumbers = Console.readLine()
+    require(isValidWinningNumbers(winningNumbers)) {
+        "[ERROR] 잘못된 로또 번호 형식을 입력하셨습니다."
+    }
+
+    return winningNumbers.split(',').map { it.toInt() }
+}
+
+fun inputBonusNumber(): Int {
+    println("\n보너스 번호를 입력해 주세요.")
+    val bonusNumber = Console.readLine().toInt()
+    require(isValidBonusNumber(bonusNumber)) {
+        "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."
+    }
+
+    return bonusNumber
+}
+
+fun printMatchingCount(matchingCount: MutableMap<MatchingCount, Int>) {
+    println("\n당첨 통계")
+    println("---")
+    println("3개 일치 (5,000원) - ${matchingCount[MatchingCount.THREE]}개")
+    println("4개 일치 (50,000원) - ${matchingCount[MatchingCount.FOUR]}개")
+    println("5개 일치 (1,500,000원) - ${matchingCount[MatchingCount.FIVE]}개")
+    println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${matchingCount[MatchingCount.FIVE_BONUS]}개")
+    println("6개 일치 (2,000,000,000원) - ${matchingCount[MatchingCount.SIX]}개")
+}
 
 fun isValidWinningNumbers(input: String): Boolean {
     if (input.matches(winningNumbersRegex).not()) {
@@ -73,14 +78,3 @@ fun isValidWinningNumbers(input: String): Boolean {
 }
 
 fun isValidBonusNumber(number: Int): Boolean = (number in 1..45)
-
-fun getRandomNumbers(): List<Int> = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
-
-fun getLotto(price: Int): List<List<Int>> {
-    val lotto = mutableListOf<List<Int>>()
-    repeat(price / 1000) {
-        lotto.add(getRandomNumbers())
-    }
-
-    return lotto.toList()
-}

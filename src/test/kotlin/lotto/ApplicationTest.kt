@@ -51,12 +51,6 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `유효한 구입 금액인지 확인`() {
-        val input = isValidPrice(5500)
-        assertThat(input).isFalse
-    }
-
-    @Test
     fun `유효한 당첨 번호인지 확인`() {
         val result = isValidWinningNumbers("0,1,2,3,4,5")
         assertThat(result).isFalse
@@ -66,20 +60,6 @@ class ApplicationTest : NsTest() {
     fun `유효한 보너스 번호인지 확인`() {
         val result = isValidBonusNumber(46)
         assertThat(result).isFalse
-    }
-
-    @Test
-    fun `중복되지 않는 6개의 숫자인지 확인`() {
-        val numbers = getRandomNumbers()
-        val result = numbers.toSet().size
-        assertThat(result).isEqualTo(6)
-    }
-
-    @Test
-    fun `금액에 따른 로또 개수 확인`() {
-        val lotto = getLotto(8000)
-        val result = lotto.size
-        assertThat(result).isEqualTo(8)
     }
 
     override fun runMain() {

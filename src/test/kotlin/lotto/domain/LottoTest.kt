@@ -1,5 +1,6 @@
-package lotto
+package lotto.domain
 
+import lotto.domain.Lotto
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.assertj.core.api.Assertions.assertThat
@@ -22,13 +23,11 @@ class LottoTest {
     }
 
     @Test
-    fun `로또 일치하는 숫자 개수 확인`() {
+    fun `로또 3개 일치하는 로또 개수 확인`() {
         val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
-        val numbers = listOf(1, 2, 3, 10, 11, 12)
+        val myLotto = listOf(listOf(1, 2, 3, 10, 11, 12))
         val bonusNumber = 7
-        val result = lotto.getMatchingNumberCount(numbers, bonusNumber)
-        assertThat(result).isEqualTo(3)
+        val result = lotto.getMatchingCount(bonusNumber, myLotto).getOrDefault(MatchingCount.THREE, 0)
+        assertThat(result).isEqualTo(1)
     }
-
-    // 아래에 추가 테스트 작성 가능
 }
