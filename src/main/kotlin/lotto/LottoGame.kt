@@ -20,10 +20,16 @@ class LottoGame private constructor(){
         this.setWinNumbers()
         this.setBonusNumber()
         this.compareLottosWithWinNumber()
+        this.printProfit()
     }
 
     private fun addLotto(){
         this.myLotto.add(Lotto.newLotto())
+    }
+    private fun calculateProfit(): Double{
+        val profit:Int = (this.winChart[4]*5)+(this.winChart[3]*50)+(this.winChart[2]*1500)+(this.winChart[1]*30000)+(this.winChart[0]*2000000)
+        val spended:Double = (this.expenditure/MONEY_UNIT).toDouble()
+        return round(((profit*100)/spended)*10.0)/10.0
     }
     private fun checkNumber(lotto: List<Int>): Int{
         var count: Int = 0
@@ -78,7 +84,16 @@ class LottoGame private constructor(){
         }
         return temp
     }
-
+    private fun printProfit(){
+        println("당첨 통계")
+        println("---")
+        println("3개 일치 (5,000원) - ${this.winChart[4]}개")
+        println("4개 일치 (50,000원) - ${this.winChart[3]}개")
+        println("5개 일치 (1,500,000원) - ${this.winChart[2]}개")
+        println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${this.winChart[1]}개")
+        println("6개 일치 (2,000,000,000원) - ${this.winChart[0]}개")
+        println("총 수익률은 ${calculateProfit()}%입니다.")
+    }
     private fun purchaseLotto(){
         println("구입금액을 입력해 주세요.")
         val _input: String = Console.readLine()
