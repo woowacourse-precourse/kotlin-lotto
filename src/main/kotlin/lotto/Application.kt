@@ -1,5 +1,17 @@
 package lotto
 
+import error.InputError
+import resource.*
+
 fun main() {
-    TODO("프로그램 구현")
+    val purchaseMoney = getPurchaseMoney()
+}
+
+fun getPurchaseMoney(): Int {
+    println(INPUT_MONEY)
+    val money = readLine()
+
+    InputError.checkInteger(money)
+
+    return money!!.toInt()
 }
