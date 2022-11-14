@@ -13,20 +13,20 @@ class MainView {
         return lottoPrice
     }
 
-    // 2. 당첨 번호 입력 받기
-    fun getWinNums() : String? {
-        println("당첨 번호를 입력해 주세요.")
-        val winNums = readLine()
-        //당첨 번호를 양식에 맞게 입력하지 않았을 때의 예외 사항 처리 필요
-        return winNums
-    }
-
     fun showLottoNums(lottoNums : Int, createdLottos : Array<Array<Int>>){
 
         println(lottoNums.toString() + "개를 구매했습니다.")
         for(i in 0..lottoNums){
             println(createdLottos[i])
         }
+    }
+
+    // 2. 당첨 번호 입력 받기
+    fun getWinNums() : String? {
+        println("당첨 번호를 입력해 주세요.")
+        val winNums = readLine()
+        //당첨 번호를 양식에 맞게 입력하지 않았을 때의 예외 사항 처리 필요
+        return winNums
     }
 
     // 3. 보너스 번호 입력 받기
