@@ -41,7 +41,7 @@ class Service() {
 
     init {
         __Lotto__(buyLotto()).printBuyLotto()
-        correctLotto()
+        getCorrectLotto()
     }
 
     public fun buyLotto(): Int {
@@ -55,7 +55,7 @@ class Service() {
         return pay / 1000
     }
 
-    public fun correctLotto(): List<Int> {
+    public fun getCorrectLotto(): List<Int> {
         println("당첨 번호를 입력해 주세요.")
         val correctLotto = readLine()?.split(",")?.map { it.toIntOrNull() ?: 0 } ?: listOf()
         Lotto(correctLotto)
