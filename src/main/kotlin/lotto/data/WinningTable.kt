@@ -6,6 +6,38 @@ class WinningTable(
     private val winning: WinningLotto,
 ) {
 
+    val records: List<Record> = getRecords(lotteries, winning)
 
-    data class Record(val info: LottoRank, var count: Int)
+    private fun getRecords(
+        lotteries: List<Lotto>,
+        winning: WinningLotto
+    ): List<Record> {
+        return lotteries.groupingBy { winning.matches(it) }
+            .eachCount()
+            .filterKeys { it.first >= 3 }
+            .mapNotNull { Record.newInstance(it.key.first, it.key.second, it.value) }
+            .plus(LottoRank.values().map { Record(it, 0) })
+            .distinctBy { it.info.rank }
+            .sortedDescending()
+    }
+
+    data class Record(val info: LottoRank, var count: Int) : Comparable<Record> {
+
+        override fun compareTo(other: Record): Int {
+            return info.rank - other.info.rank
+        }
+
+        override fun toString(): String {
+            return "$info - ${count}개"
+        }
+
+        companion object {
+
+            fun newInstance(hitCount: Int, isBonusHit: Boolean, count: Int): Record? {
+                return LottoRank.valueOf(hitCount, isBonusHit)?.let {
+                    Record(it, count)
+                }
+            }
+        }
+    }
 }
