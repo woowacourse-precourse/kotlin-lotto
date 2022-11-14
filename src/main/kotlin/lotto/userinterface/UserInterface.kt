@@ -1,7 +1,10 @@
 package lotto.userinterface
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.domain.WinningResult
+import lotto.domain.WinningStatistics
 import lotto.service.dto.LottoDto
+import lotto.service.dto.WinningStatisticsDto
 import java.math.BigInteger
 import java.text.DecimalFormat
 
@@ -57,5 +60,16 @@ object UserInterface {
         require(readValue.matches(Regex("\\d{1,2}")) && readValue.toInt() in 1..45) { BONUS_NUMBER_IS_NOT_IN_BETWEEN_1_AND_45 }
         require(readValue.toInt() !in winningNumbers) { BONUS_NUMBER_IS_INCLUDED_IN_WINNING_NUMBERS }
         return readValue.toInt()
+    }
+
+    fun showWinningStatistics(winningStatistics: WinningStatisticsDto) {
+        println("당첨 통계")
+        println("---")
+        println("3개 일치 (${decimalFormat.format(WinningResult.FIFTH.winnings)}원) - ${winningStatistics.winningCount(WinningResult.FIFTH)}개")
+        println("4개 일치 (${decimalFormat.format(WinningResult.FOURTH.winnings)}원) - ${winningStatistics.winningCount(WinningResult.FOURTH)}개")
+        println("5개 일치 (${decimalFormat.format(WinningResult.THIRD.winnings)}원) - ${winningStatistics.winningCount(WinningResult.THIRD)}개")
+        println("5개 일치, 보너스 볼 일치 (${decimalFormat.format(WinningResult.SECOND.winnings)}원) - ${winningStatistics.winningCount(WinningResult.SECOND)}개")
+        println("6개 일치 (${decimalFormat.format(WinningResult.FIRST.winnings)}원) - ${winningStatistics.winningCount(WinningResult.FIRST)}개")
+        println("총 수익률은 ${winningStatistics.yields()}%입니다.")
     }
 }

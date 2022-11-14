@@ -9,10 +9,6 @@ class WinningNumber(private val numbers: List<Int>, private val bonusNumber: Int
         require(bonusNumber !in numbers)
     }
 
-    fun numbers() = numbers
-
-    fun bonusNumber() = bonusNumber
-
     fun winningResult(lotto: Lotto): WinningResult {
         val matchCount = numbers.count { lotto.numbers().contains(it) }
         val matchedBonus = lotto.numbers().contains(bonusNumber)
