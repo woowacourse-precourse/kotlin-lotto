@@ -27,10 +27,10 @@ fun main() {
 
     bonusNumInput()
     bonusNumInputCheck()
+
     for (lotto in myLottos) {
         Lotto(lotto.toList()).checkResult(lotto)
     }
-
     printResult()
     printProfit()
 }
