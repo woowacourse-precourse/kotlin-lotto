@@ -37,4 +37,6 @@ class OutputView {
         println(listOfLotto.joinToString("\n"))
     }
 
+
+
 }
