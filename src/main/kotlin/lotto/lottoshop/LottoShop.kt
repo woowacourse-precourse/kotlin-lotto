@@ -17,4 +17,8 @@ class LottoShop() {
 
     fun convertToInt(input: String): Int = input.toInt()
 
+    fun printErrorMessage(errorMessage: String) {
+        println(errorMessage)
+        throw IllegalArgumentException(errorMessage)
+    }
 }
