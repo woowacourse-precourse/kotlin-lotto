@@ -1,6 +1,8 @@
 package lotto
 
+import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class LottoTest {
 
@@ -67,5 +69,14 @@ class LottoTest {
     @Test
     fun `로또당첨번호_비교`() {
         TODO()
+    }
+
+    private inline fun assertSimpleThrows(executable: () -> Unit) {
+        val thrown = assertThrows<IllegalArgumentException>(executable)
+        Assertions.assertThat(thrown.message).contains(ERROR_MESSAGE)
+    }
+
+    companion object {
+        private const val ERROR_MESSAGE = "[ERROR]"
     }
 }
