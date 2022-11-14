@@ -52,3 +52,5 @@
    - 구입 금액 입력 검증 함수(purchaseChecker)
    - 당첨 번호 입력 검증 함수(lotteryChecker)
    - 보너스 번호 입력 검증 함수(bonusChecker)
+   - 중복 검증 함수(rangeChecker)
+   - 입력 관리 함수(inputChecker)
