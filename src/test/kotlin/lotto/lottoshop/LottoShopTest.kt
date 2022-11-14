@@ -153,4 +153,16 @@ class LottoShopTest {
             }
         }
     }
+
+    @Test
+    fun `로또 번호 중복검사 정상 상황`() {
+        lottoShop.checkLottoNumberDuplicate(listOf(1,2,3,4,5,6,7))
+    }
+
+    @Test
+    fun `로또 번호 중복검사 중복된 숫자 있을경우`() {
+        assertThrows<IllegalArgumentException> {
+            lottoShop.checkLottoNumberDuplicate(listOf(1,1,2,3,4,5,6))
+        }
+    }
 }
