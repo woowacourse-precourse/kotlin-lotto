@@ -1,6 +1,7 @@
-package lotto.domain
+package lotto
 
-import lotto.ui.handleException
+import lotto.domain.*
+import lotto.utils.*
 
 /**
  * 클래스는 프로퍼티, init 블록, 부 생성자, 메서드, 동반 객체 순으로

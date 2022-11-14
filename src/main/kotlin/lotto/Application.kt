@@ -1,9 +1,9 @@
-package lotto.ui
+package lotto
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.domain.*
-import kotlin.math.pow
-import kotlin.math.round
+import lotto.utils.*
+import kotlin.math.*
 
 fun main() {
     val paidAmount = askUserMoney()
@@ -90,8 +90,8 @@ fun getBonusNumber(input: String): Int {
 
 // 유저의 잘못된 입력값을 예외 처리한다.
 fun handleException(message: String) {
-    println(message)
-    throw IllegalArgumentException()
+//    println(message)
+    throw IllegalArgumentException(message)
 }
 
 // 당첨 내역을 출력한다.

@@ -1,4 +1,4 @@
-package lotto.domain
+package lotto.utils
 
 const val MONEY_INPUT_MSG = "구입 금액을 입력해주세요."
 const val WINNING_INPUT_MSG = "\n당첨 번호를 입력해주세요."
