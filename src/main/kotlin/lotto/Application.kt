@@ -10,4 +10,5 @@ fun main() {
 
     val winningNumbers = UserInterface.askWinningNumbers()
     val bonusNumber = UserInterface.askBonusNumberNotIncludedInWinningNumbers(winningNumbers)
+    val winningStatistics = LottoService.getWinningStatistics(winningNumbers, bonusNumber)
 }

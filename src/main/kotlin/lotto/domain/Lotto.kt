@@ -9,5 +9,7 @@ class Lotto(private val numbers: List<Int>) {
 
     fun numbers() = numbers
 
-    // TODO: 추가 기능 구현
+    fun winningResult(winningNumbers: List<Int>, bonusNumber: Int): WinningResult {
+        return WinningResult.FIRST
+    }
 }
