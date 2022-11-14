@@ -209,11 +209,11 @@ internal class UserInterfaceTest {
         }
 
         @Nested
-        inner class `사용자가 당첨 번호를 입력하면` {
+        inner class `사용자가 보너스 번호를 입력하면` {
             private val bonusNumber = "7"
 
             @Test
-            fun `당첨 번호를 반환한다`() {
+            fun `보너스 번호를 반환한다`() {
                 System.setIn(ByteArrayInputStream(bonusNumber.toByteArray()))
 
                 val result = askBonusNumberNotIn(winningNumbers)
