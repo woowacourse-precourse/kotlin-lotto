@@ -56,8 +56,18 @@ fun inputWinningNumber(): List<Int> {
 }
 
 fun checkWinningNumberThrowException(userInput: String) {
+    throwWinningNumberFormException(userInput)
     throwLottoSizeException(userInput)
     throwLottoNumberRangeException(userInput)
+}
+
+fun throwWinningNumberFormException(userInput: String) {
+    userInput.forEach { char ->
+        if (!(char in '0'..'9' || char == ',')) {
+            println("[ERROR] 로또 번호는 숫자와 ,만 입력 해야 합니다.")
+            throw IllegalArgumentException()
+        }
+    }
 }
 
 fun throwLottoSizeException(userInput: String) {
@@ -71,7 +81,7 @@ fun throwLottoSizeException(userInput: String) {
 fun throwLottoNumberRangeException(userInput: String) {
     val numbers = userInput.split(',').map { it.toInt() }
     for (number in numbers) {
-        if(number !in 1..45) {
+        if (number !in 1..45) {
             println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
             throw IllegalArgumentException()
         }
