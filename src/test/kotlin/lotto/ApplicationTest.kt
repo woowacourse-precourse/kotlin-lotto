@@ -71,4 +71,13 @@ class ApplicationTest : NsTest() {
             runException("hello2023")
         }
     }
+
+    @Test
+    fun `보너스 번호와 당첨 번호가 중복되는 경우`() {
+        assertThrows<IllegalArgumentException> {
+            lottoWinNum = arrayListOf(1,2,3,4,5,6).toIntArray()
+            bonusNum = 3
+            bonusNumInputCheck()
+        }
+    }
 }
