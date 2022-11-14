@@ -5,7 +5,7 @@ object ExceptionHandler {
         if (isDuplicate(lotto.numberList)
                 || isOverLength(lotto.numberList)
                 || isInRange(lotto.numberList)) {
-            return false
+            throw IllegalArgumentException("checkLotto : 잘못된 입력입니다.")
         }
         return true
     }
@@ -14,7 +14,7 @@ object ExceptionHandler {
         if (isDuplicate(list)
                 || isOverLength(list)
                 || isInRange(list)) {
-            return false
+            throw IllegalArgumentException("checkNumberList : 잘못된 입력입니다.")
         }
         return true
     }
@@ -43,14 +43,9 @@ object ExceptionHandler {
         return true
     }
 
-    /**
-     * 구입금액에 대한 예외 확인(숫자가 아니거나 1000원으로 나누어지지 않는 경우)
-     */
     fun checkInputMoney(money: String): Boolean {
-        if (isOnlyInt(money)) {
-            if (isDivideBy1000(money.toInt())) {
-                return true
-            }
+        if (!isOnlyInt(money) || !isDivideBy1000(money.toInt())) {
+            throw IllegalArgumentException("checkInputMoney 잘못된 입력입니다.")
         }
         return false
     }
