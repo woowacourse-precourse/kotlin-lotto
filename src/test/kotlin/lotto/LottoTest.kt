@@ -1,5 +1,6 @@
 package lotto
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -46,6 +47,14 @@ class LottoTest {
         assertThrows<IllegalArgumentException>(Constants.ERROR_DIVIDE_UNIT) {
             MoneyInputHandler().inputValidation("1999")
         }
+    }
+
+    @Test
+    fun `로또 구매개수 테스트`(){
+        val input = 8000
+        val lottoNumberMaker = LottoNumberMaker()
+        lottoNumberMaker.setLottoCount(input)
+        assertThat(lottoNumberMaker.getLottoCount()).isEqualTo(8)
     }
 
 }
