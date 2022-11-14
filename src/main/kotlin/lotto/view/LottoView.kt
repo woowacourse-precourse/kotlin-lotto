@@ -2,6 +2,7 @@ package lotto.view
 
 import lotto.domain.Rank
 import lotto.util.ExceptionChecker
+import kotlin.math.round
 
 class LottoView {
 
@@ -44,6 +45,6 @@ class LottoView {
     }
 
     fun printRevenue(revenue: Float){
-        println("\n총 수익률은 " +String.format("%.1f", revenue) +"% 입니다.")
+        println("\n총 수익률은 ${round(revenue*10)/10}%입니다.")
     }
 }
