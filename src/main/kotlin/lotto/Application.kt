@@ -8,10 +8,24 @@ fun main() {
     val gameHost = GameHost(Customer(), LottoShop(), LottoMachineImpl(), BankImpl())
 
     gameHost.apply {
-        progressPurchaseAmount()
+        kotlin.runCatching { progressPurchaseAmount() }
+            .onFailure {
+                println(it.message)
+                return
+            }
         progressDrawLotto()
-        progressMainLottoNumbers()
-        progressBonusLottoNumber()
+        kotlin.runCatching {
+            progressMainLottoNumbers()
+        }.onFailure {
+            println(it.message)
+            return
+        }
+        kotlin.runCatching {
+            progressBonusLottoNumber()
+        }.onFailure {
+            println(it.message)
+            return
+        }
         progressBankService()
     }
 }
