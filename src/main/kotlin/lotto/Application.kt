@@ -33,7 +33,7 @@ fun buyLotto(userAmountTobuy: Int): List<Lotto> {
 
 /*
 * Parameters: 로또 리스트, 당첨 번호, 보너스 숫자
-* Returns: None
+* Returns: 각 해당 금액 당첨 횟수를 담은 리스트
 * Do: 결과 출력
 *   3개 일치 (5,000원) - 1개
     4개 일치 (50,000원) - 0개
@@ -42,7 +42,7 @@ fun buyLotto(userAmountTobuy: Int): List<Lotto> {
     6개 일치 (2,000,000,000원) - 0개
 * */
 
-fun returnLottoResult(lottoList: List<Lotto>, winLottoNumber: List<Int>, bonusNumber: Int) {
+fun returnLottoResult(lottoList: List<Lotto>, winLottoNumber: List<Int>, bonusNumber: Int): List<Int> {
     val winPlaceCount: MutableList<Int> = mutableListOf(0, 0, 0, 0, 0, 0)
 
     // 로또 리스트를 돌면서 각 로또의 당첨 결과 출력
@@ -64,6 +64,13 @@ fun returnLottoResult(lottoList: List<Lotto>, winLottoNumber: List<Int>, bonusNu
         }
     }
 
+    return winPlaceCount
+}
+
+/*
+*
+* */
+fun calculateRevenue(){
 
 }
 
