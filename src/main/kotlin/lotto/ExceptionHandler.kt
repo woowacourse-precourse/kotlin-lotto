@@ -6,7 +6,7 @@ object ExceptionHandler {
         if (isDuplicate(lotto.numberList)
                 || !isOverLength(lotto.numberList)
                 || !isInRange(lotto.numberList)) {
-            throw IllegalArgumentException("{$ERROR_MESSAGE} checkLotto : 잘못된 입력입니다.")
+            throw IllegalArgumentException("$ERROR_MESSAGE checkLotto : 잘못된 입력입니다.")
         }
         return true
     }
@@ -15,7 +15,7 @@ object ExceptionHandler {
         if (isDuplicate(list)
                 || !isOverLength(list)
                 || !isInRange(list)) {
-            throw IllegalArgumentException("{$ERROR_MESSAGE} checkNumberList : 잘못된 입력입니다.")
+            throw IllegalArgumentException("$ERROR_MESSAGE checkNumberList : 잘못된 입력입니다.")
         }
         return true
     }
@@ -53,7 +53,7 @@ object ExceptionHandler {
 
     fun checkInputMoney(money: String): Boolean {
         if (!isOnlyInt(money) || !isDivideBy1000(money.toInt())) {
-            throw IllegalArgumentException("{$ERROR_MESSAGE} checkInputMoney 잘못된 입력입니다.")
+            throw IllegalArgumentException("$ERROR_MESSAGE checkInputMoney 잘못된 입력입니다.")
         }
         return true
     }
@@ -75,7 +75,7 @@ object ExceptionHandler {
         if(!isOnlyInt(number)
                 || !isInRange(number)
                 || winningNumberList.contains(number.toInt())){
-            throw IllegalArgumentException("{$ERROR_MESSAGE} checkBonusNumber 잘못된 입력입니다.")
+            throw IllegalArgumentException("$ERROR_MESSAGE checkBonusNumber 잘못된 입력입니다.")
         }
         return true
     }
