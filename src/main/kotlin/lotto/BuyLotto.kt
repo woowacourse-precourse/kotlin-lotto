@@ -24,6 +24,8 @@ class BuyLotto() {
 
     fun printBuyLotto(count: Int) = println("${count}를 구매했습니다.")
 
+    fun printInputMessage() = println("구입 금액을 입력해 주세요.")
+
     private fun checkInputType(input: String) {
         try {
             input.toInt()
