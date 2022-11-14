@@ -1,6 +1,7 @@
 package lotto.lottoshop
 
 import lotto.LottoPhrases.BONUS_LOTTO_NUMBER_INPUT_TYPE_ERROR
+import lotto.LottoPhrases.DUPLICATE_LOTTO_NUMBER_ERROR
 import lotto.LottoPhrases.LOTTO_NUMBER_NOT_IN_CORRECT_RANGE_ERROR
 import lotto.LottoPhrases.MAIN_LOTTO_NUMBER_INPUT_SIZE_ERROR
 import lotto.LottoPhrases.MAIN_LOTTO_NUMBER_INPUT_TYPE_ERROR
@@ -55,7 +56,7 @@ class LottoShop() {
     }
 
     fun getValidateBonusLottoNumber(bonusLottoNumber: String): Int {
-        if(!isInputTypeNumber(bonusLottoNumber)) printErrorMessage(BONUS_LOTTO_NUMBER_INPUT_TYPE_ERROR)
+        if (!isInputTypeNumber(bonusLottoNumber)) printErrorMessage(BONUS_LOTTO_NUMBER_INPUT_TYPE_ERROR)
         val processedBonusLottoNumber = convertToInt(bonusLottoNumber)
         checkCorrectNumberRange(processedBonusLottoNumber)
         return processedBonusLottoNumber
@@ -74,5 +75,9 @@ class LottoShop() {
         if (lottoNumber !in LOTTO_NUMBER_RANGE_START..LOTTO_NUMBER_RANGE_END) printErrorMessage(
             LOTTO_NUMBER_NOT_IN_CORRECT_RANGE_ERROR
         )
+    }
+
+    fun checkLottoNumberDuplicate(lottoNumbers: List<Int>) {
+        if (lottoNumbers.size != lottoNumbers.toSet().size) printErrorMessage(DUPLICATE_LOTTO_NUMBER_ERROR)
     }
 }
