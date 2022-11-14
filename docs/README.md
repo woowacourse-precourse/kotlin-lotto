@@ -36,7 +36,7 @@
   - [ ] `lottoStats` : 당첨 통계 및 수익률
 
 ### `Lotto` _클래스_
-  - [ ] `lottoAnwer` : 로또 당첨 번호
+  - [ ] `lottoAnswer` : 로또 당첨 번호
   - [ ] `lottoBouns` : 로또 보너스 번호
 ---
 ## 프로그래밍 요구 사항
