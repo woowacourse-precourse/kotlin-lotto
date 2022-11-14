@@ -40,4 +40,12 @@ object LottoError {
         }
     }
 
+    fun checkBonusNum(bonusNum : String, userNum : MutableList<Int>){
+        if (!bonusNum.matches(validNum)) {
+            throw IllegalArgumentException("[ERROR] 1부터 45까지의 양수만 입력해주세요.")
+        }
+        if(userNum.contains(bonusNum.toInt())){
+            throw IllegalArgumentException("[ERROR] 당첨번호에 입력한 숫자는 불가능합니다.")
+        }
+    }
 }

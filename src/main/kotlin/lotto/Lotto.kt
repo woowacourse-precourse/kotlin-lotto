@@ -5,5 +5,9 @@ class Lotto(private val numbers: List<Int>) {
         LottoError.checkLottoNum(numbers)
     }
 
+    fun getList(): List<Int> {
+        return numbers
+    }
+
     // TODO: 추가 기능 구현
 }
