@@ -1,5 +1,7 @@
 package lotto
 
+import lotto.view.InputView
+
 class LottoGame {
 
     fun start() {

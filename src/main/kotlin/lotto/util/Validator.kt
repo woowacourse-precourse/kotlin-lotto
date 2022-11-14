@@ -1,4 +1,4 @@
-package lotto
+package lotto.util
 
 class Validator {
 
@@ -16,10 +16,10 @@ class Validator {
     fun checkBonusInput(input : String?) {
         checkInputNullValidation(input)
         checkStringToIntValidation(input!!)
-        checkBonusNumberRagngeValidation(input!!)
+        checkBonusNumberRangeValidation(input!!)
     }
 
-    fun checkBonusNumberRagngeValidation(input : String) {
+    fun checkBonusNumberRangeValidation(input : String) {
         require(input.toInt() >= LOTTO_MIN_NUM && input.toInt() <= LOTTO_MAX_NUM) { BONUS_RANGE_ERROR_MSG }
     }
 
@@ -49,7 +49,7 @@ class Validator {
     companion object {
         const val LOTTO_PRICE = 1000
         const val LOTTO_MIN_NUM = 1
-        const val LOTTO_MAX_NUM = 445
+        const val LOTTO_MAX_NUM = 45
 
         const val INPUT_NULL_ERROR_MSG = "[ERROR] 값이 입력되지 않았습니다."
         const val INPUT_VALUE_ERROR_MSG = "[ERROR] 값이 숫자로만 이루어져야합니다."

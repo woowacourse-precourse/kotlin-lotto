@@ -1,8 +1,8 @@
-package lotto
+package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
-import java.lang.NullPointerException
-import java.lang.NumberFormatException
+import lotto.Lotto
+import lotto.util.Validator
 
 class InputView {
 
