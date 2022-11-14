@@ -1,14 +1,16 @@
 package lotto
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import kotlin.math.round
 
 
-enum class Rank(val match:Int, val prize : Int){
+enum class Rank(var match:Int, var prize : Int){
     FIRST(6, 2000000000),
-    SECOND(5, 30000000),
+    SECOND(7, 30000000),
     THIRD(5, 1500000),
     FOURTH(4, 50000),
-    FIFTH(3, 5000),
+    FIFTH(3, 5000)
+
 }
 fun createLottoNum(): List<Int> {
     return Randoms.pickUniqueNumbersInRange(1, 45, 6)
@@ -90,6 +92,25 @@ fun printWinningHistory(ranks:Array<Int>){
     println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + ranks[7]+ "개")
     println("6개 일치 (2,000,000,000원) - " + ranks[6]+ "개")
 }
+fun getWinRatio(money:Int,ranks: Array<Int>):Double{
+    var prizeSum : Double = 0.00
+    for (i in 3..7) {
+        if (i == 3)
+            prizeSum += Rank.FIFTH.prize * ranks[i]
+        if (i == 4)
+            prizeSum += Rank.FOURTH.prize * ranks[i]
+        if (i == 5)
+            prizeSum += Rank.THIRD.prize * ranks[i]
+        if (i == 6)
+            prizeSum += Rank.FIRST.prize * ranks[i]
+        if (i == 7)
+            prizeSum += Rank.SECOND.prize * ranks[i]
+    }
+    return (prizeSum/money * 100)
+}
+fun printWinRatio(winRatio:Double){
+    println("총 수익률은 ${winRatio}%입니다.")
+}
 fun main() {
     val numbers = createLottoNum()
     var table = mutableListOf<List<Int>>()
@@ -110,5 +131,7 @@ fun main() {
     winNum = inputWinNum()
     bonusNum = inputBonusNum(winNum)
     printWinningHistory(getWinningHistory(table2,winNum,bonusNum))
+    printWinRatio(getWinRatio(money,getWinningHistory(table2,winNum,bonusNum)))
+
 
 }
