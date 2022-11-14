@@ -32,8 +32,10 @@ class Util {
         return lottoNum.toList()
     }
 
-    fun isRightNumCount() {
-
+    fun isRightNumCount(numList : List<Int>) : Boolean {
+        if(numList.size != 6)
+            throw IllegalArgumentException("[ERROR] 로또 개수가 잘못되었습니다.")
+        return true
     }
 
     fun isRightRange() {

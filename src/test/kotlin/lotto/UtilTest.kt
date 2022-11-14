@@ -1,6 +1,6 @@
 package lotto
 
-import lotto.Util
+
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -28,14 +28,14 @@ class UtilTest {
         assertThat(util.changeInputToLotto("1,2,3,4,5,6")).isEqualTo(listOf(1,2,3,4,5,6))
     }
 
-//    @Test
-//    fun isRightNumCountTest(){
-//        assertThat(isRightNumCOunt(1,2,3,4,5,6)).isEqualTo(true)
-//        assertThrows<IllegalArgumentException> {
-//            isRightNumCOunt(1,2,3,4,5)
-//        }
-//    }
-//
+    @Test
+    fun isRightNumCountTest(){
+        assertThat(util.isRightNumCount(listOf(1,2,3,4,5,6))).isEqualTo(true)
+        assertThrows<IllegalArgumentException> {
+            util.isRightNumCount(listOf(1,2,3,4,5))
+        }
+    }
+
 //    @Test
 //    fun isRightRangeTest(){
 //        assertThat(isRightNumCOunt(1,2,3,4,5,6)).isEqualTo(true)
