@@ -29,7 +29,7 @@ class Lotto(private val numbers: List<Int>) {
         }
     }
 
-    fun getReward(winningCount: Int, bonus: Boolean): Reward {
+    private fun getReward(winningCount: Int, bonus: Boolean): Reward {
         when (winningCount) {
             Reward.FIRST.winningCount -> return Reward.FIRST
             Reward.FOURTH.winningCount -> return Reward.FOURTH

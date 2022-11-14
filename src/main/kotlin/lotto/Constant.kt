@@ -8,11 +8,11 @@ class Constant {
         const val minLottoNumber = 1
         const val maxLottoNumber = 45
         const val lottoSize = 6
-        const val firstReward = 2000000000
-        const val secondReward = 30000000
-        const val thirdReward = 1500000
-        const val fourthReward = 50000
-        const val fifthReward = 5000
+        const val firstReward:Long = 2000000000
+        const val secondReward:Long = 30000000
+        const val thirdReward:Long = 1500000
+        const val fourthReward:Long = 50000
+        const val fifthReward:Long = 5000
         const val percent = 100
 
         const val inputAmountMessage = "구입금액을 입력해 주세요."
