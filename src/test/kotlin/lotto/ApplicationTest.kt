@@ -65,6 +65,18 @@ class ApplicationTest : NsTest() {
         }
 
         @Test
+        fun `구입금액 미입력 예외 테스트`() {
+            assertSimpleTest {
+                runException("")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            }
+//            assertThrows<IllegalArgumentException> {
+//                runException("")
+//                assertThat(output()).contains(ERROR_MESSAGE)
+//            }
+        }
+
+        @Test
         fun `구입 금액 정상 구동 테스트`() {
             assertSimpleTest{
                 val purchase = Purchase("5000")
@@ -80,14 +92,6 @@ class ApplicationTest : NsTest() {
                 val result = 5
                 assertThat(purchase.count).isEqualTo(5)
             }
-        }
-
-        @Test
-        fun `구입금액 미입력 예외 테스트`() {
-            assertThrows<IllegalArgumentException> {
-                runException("")
-            }
-            assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
 
