@@ -10,7 +10,7 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.distinct().size < LOTTO_SIZE
     }
 
-    fun contains(number : Int) : Boolean{
+    fun contains(number: Int): Boolean {
         return numbers.contains(number)
     }
 }

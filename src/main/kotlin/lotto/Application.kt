@@ -6,9 +6,9 @@ import kotlin.IllegalArgumentException
 
 lateinit var consumer: Consumer
 var programException = false
-lateinit var winningNumbers : Pair<List<Int>,Int>
+lateinit var winningNumbers: Pair<List<Int>, Int>
 fun main() {
-    programException=false
+    programException = false
     orderLotto()
     if (programException) {
         return
@@ -36,12 +36,12 @@ private fun printConsumerLotto() {
     }
 }
 
-private fun pickWinningNumbers() :Pair<List<Int>,Int> {
+private fun pickWinningNumbers(): Pair<List<Int>, Int> {
     println("당첨 번호를 입력해 주세요.")
     val inputWinningNumbers = convertStringToIntList(Console.readLine())
     println("\n보너스 번호를 입력해 주세요.")
     val inputWinningBonusNumber = convertStringToInt(Console.readLine())
-    return Pair(inputWinningNumbers,inputWinningBonusNumber)
+    return Pair(inputWinningNumbers, inputWinningBonusNumber)
 }
 
 private fun convertStringToIntList(input: String): List<Int> {
@@ -63,17 +63,17 @@ private fun convertStringToInt(input: String): Int {
     }
 }
 
-private fun printCompareResult(){
+private fun printCompareResult() {
     val compareLottoResult = compareLotto()
     printWinnings(compareLottoResult)
     printYield(compareLottoResult)
 }
 
-private fun compareLotto() : List<Int>{
+private fun compareLotto(): List<Int> {
     return consumer.compareLotto(Lotto(winningNumbers.first), winningNumbers.second)
 }
 
-private fun printWinnings(winnings : List<Int>){
+private fun printWinnings(winnings: List<Int>) {
     println("당첨 통계")
     println("---")
     println(Winnings.FIFTH_PLACE.toString(winnings[FIFTH_PLACE_INDEX]))
@@ -83,6 +83,6 @@ private fun printWinnings(winnings : List<Int>){
     println(Winnings.FIRST_PLACE.toString(winnings[FIRST_PLACE_INDEX]))
 }
 
-private fun printYield(winnings: List<Int>){
+private fun printYield(winnings: List<Int>) {
     print("총 수익률은 ${consumer.calculateYield(winnings)}%입니다.")
 }
