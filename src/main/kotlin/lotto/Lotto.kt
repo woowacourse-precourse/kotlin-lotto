@@ -9,4 +9,8 @@ class Lotto(private val numbers: List<Int>) {
     private fun checkDuplication(): Boolean {
         return numbers.distinct().size < 6
     }
+
+    fun contains(number : Int) : Boolean{
+        return numbers.contains(number)
+    }
 }
