@@ -1,7 +1,7 @@
 package lotto.userinterface
 
 import camp.nextstep.edu.missionutils.test.NsTest
-import lotto.userinterface.UserInterface.askBonusNumberNotIncludedInWinningNumbers
+import lotto.userinterface.UserInterface.askBonusNumberNotIn
 import lotto.userinterface.UserInterface.askPurchaseAmount
 import lotto.userinterface.UserInterface.askWinningNumbers
 import org.assertj.core.api.Assertions.*
@@ -143,7 +143,7 @@ internal class `UserInterface 클래스의` {
         }
     }
     @Nested
-    inner class `askBonusNumberNotIncludedInWinningNumbers 메소드는`: NsTest() {
+    inner class `askBonusNumberNotIn 메소드는`: NsTest() {
         private val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
         @Nested
         inner class `실행하면` {
@@ -185,13 +185,13 @@ internal class `UserInterface 클래스의` {
             fun `당첨 번호를 반환한다`() {
                 System.setIn(ByteArrayInputStream(bonusNumber.toByteArray()))
 
-                val result = askBonusNumberNotIncludedInWinningNumbers(winningNumbers)
+                val result = askBonusNumberNotIn(winningNumbers)
 
                 assertThat(result).isEqualTo(bonusNumber.toInt())
             }
         }
         override fun runMain() {
-            askBonusNumberNotIncludedInWinningNumbers(winningNumbers)
+            askBonusNumberNotIn(winningNumbers)
         }
     }
 

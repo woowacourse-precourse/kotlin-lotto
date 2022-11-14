@@ -51,7 +51,7 @@ object UserInterface {
         require(splitValues.toSet().size == splitValues.size) { WINNING_NUMBERS_ARE_DUPLICATED }
     }
 
-    fun askBonusNumberNotIncludedInWinningNumbers(winningNumbers: List<Int>): Int {
+    fun askBonusNumberNotIn(winningNumbers: List<Int>): Int {
         println(REQUEST_BONUS_NUMBER)
         val readValue = Console.readLine()
         require(readValue.matches(Regex("\\d{1,2}")) && readValue.toInt() in 1..45) { BONUS_NUMBER_IS_NOT_IN_BETWEEN_1_AND_45 }
