@@ -3,12 +3,10 @@ package lotto
 import camp.nextstep.edu.missionutils.Randoms
 
 class LottoNumberMaker() {
-    private var lottoCount  = 0
-
-
+    private var lottoCount = 0
     fun makeLottoList(): MutableList<List<Int>> {
-        var res :MutableList<List<Int>> = mutableListOf()
-        for(i in 0 until lottoCount){
+        var res: MutableList<List<Int>> = mutableListOf()
+        for (i in 0 until lottoCount) {
             res.add(makeNumberList())
         }
 
@@ -17,13 +15,14 @@ class LottoNumberMaker() {
 
     }
 
-    fun displayBuyNumbers(res: MutableList<List<Int>> ){
-        for(list in res){
+    private fun displayBuyNumbers(res: MutableList<List<Int>>) {
+        for (list in res) {
             println(list)
         }
     }
-    fun setLottoCount(value: Int){
-        this.lottoCount = value/1000
+
+    fun setLottoCount(value: Int) {
+        this.lottoCount = value / 1000
         println("${lottoCount}개를 구매했습니다.")
     }
 

@@ -23,7 +23,7 @@ class LottoTest {
     // 아래에 추가 테스트 작성 가능
     @Test
     fun `음수 입력 테스트`() {
-         assertThrows<IllegalArgumentException>(Constants.ERROR_MINUS_INPUT) {
+        assertThrows<IllegalArgumentException>(Constants.ERROR_MINUS_INPUT) {
             MoneyInputHandler().inputValidation("-0")
         }
     }
@@ -50,7 +50,7 @@ class LottoTest {
     }
 
     @Test
-    fun `로또 구매개수 테스트`(){
+    fun `로또 구매개수 테스트`() {
         val input = 8000
         val lottoNumberMaker = LottoNumberMaker()
         lottoNumberMaker.setLottoCount(input)
@@ -58,61 +58,62 @@ class LottoTest {
     }
 
     @Test
-    fun `로또 정답 음수 테스트`(){
-        val input = listOf("1","2","3","-1","5")
-        assertThrows<IllegalArgumentException>(Constants.ERROR_MINUS_LOTTO_INPUT){
+    fun `로또 정답 음수 테스트`() {
+        val input = listOf("1", "2", "3", "-1", "5")
+        assertThrows<IllegalArgumentException>(Constants.ERROR_MINUS_LOTTO_INPUT) {
             LottoAnswerNumberInputHandler().inputValidation(input)
         }
     }
 
     @Test
-    fun `로또 정답 문자 테스트`(){
-        val input = listOf("1","a","3","-1","5")
-        assertThrows<IllegalArgumentException>(Constants.ERROR_ONLY_NUMBER){
+    fun `로또 정답 문자 테스트`() {
+        val input = listOf("1", "a", "3", "-1", "5")
+        assertThrows<IllegalArgumentException>(Constants.ERROR_ONLY_NUMBER) {
             LottoAnswerNumberInputHandler().inputValidation(input)
         }
     }
 
     @Test
-    fun `로또 정답 범위 테스트`(){
-        val input = listOf("1","2","3","49","5")
-        assertThrows<IllegalArgumentException>(Constants.ERROR_OUT_OF_RANGE){
+    fun `로또 정답 범위 테스트`() {
+        val input = listOf("1", "2", "3", "49", "5")
+        assertThrows<IllegalArgumentException>(Constants.ERROR_OUT_OF_RANGE) {
             LottoAnswerNumberInputHandler().inputValidation(input)
         }
     }
 
     @Test
-    fun `로도 정답 카운트 테스트`(){
-        val answer = listOf(1,2,3,4,5,6)
+    fun `로도 정답 카운트 테스트`() {
+        val answer = listOf(1, 2, 3, 4, 5, 6)
         val bonusNumber = 7
         val lotto = Lotto(answer)
-        assertThat(lotto.countCorrectNumber(listOf(1,2,3,8,9,10), bonusNumber)).isEqualTo(3)
+        assertThat(lotto.countCorrectNumber(listOf(1, 2, 3, 8, 9, 10), bonusNumber)).isEqualTo(3)
     }
 
     @Test
-    fun `로도 정답 카운트 테스트2`(){
-        val answer = listOf(1,2,3,4,5,6)
+    fun `로도 정답 카운트 테스트2`() {
+        val answer = listOf(1, 2, 3, 4, 5, 6)
         val bonusNumber = 7
         val lotto = Lotto(answer)
-        assertThat(lotto.countCorrectNumber(listOf(1,2,3,4,5,7), bonusNumber)).isEqualTo(6)
+        assertThat(lotto.countCorrectNumber(listOf(1, 2, 3, 4, 5, 7), bonusNumber)).isEqualTo(6)
     }
 
     @Test
-    fun `로도 정답 카운트 테스트3`(){
-        val answer = listOf(1,2,3,4,5,6)
+    fun `로도 정답 카운트 테스트3`() {
+        val answer = listOf(1, 2, 3, 4, 5, 6)
         val bonusNumber = 7
         val lotto = Lotto(answer)
-        assertThat(lotto.countCorrectNumber(listOf(1,2,3,4,5,6), bonusNumber)).isEqualTo(7)
+        assertThat(lotto.countCorrectNumber(listOf(1, 2, 3, 4, 5, 6), bonusNumber)).isEqualTo(7)
     }
+
     @Test
-    fun `로또 상여금 계산 테스트`(){
-        val input = listOf(0,0,0,6,7)
+    fun `로또 상여금 계산 테스트`() {
+        val input = listOf(0, 0, 0, 6, 7)
         val checker = RewardChecker(input)
         assertThat(checker.checkRank()).isEqualTo(2030000000)
     }
 
     @Test
-    fun `수익률 계산 테스트`(){
+    fun `수익률 계산 테스트`() {
         val reward = 10000
         val spendMoney = 5000
         val checker = EarningRateCalculator(reward, spendMoney)

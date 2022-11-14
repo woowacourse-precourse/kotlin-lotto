@@ -27,9 +27,9 @@ class RewardChecker(private val lottoResult: List<Int>) {
 
     fun calculateReward(result: List<Int>): Int {
         var reward = 0
-        var rewardList = listOf(5000,50000,1500000, 30000000, 2000000000)
-        for(i in result.indices){
-            reward += rewardList[i]* result[i]
+        var rewardList = listOf(5000, 50000, 1500000, 30000000, 2000000000)
+        for (i in result.indices) {
+            reward += rewardList[i] * result[i]
         }
         return reward
     }

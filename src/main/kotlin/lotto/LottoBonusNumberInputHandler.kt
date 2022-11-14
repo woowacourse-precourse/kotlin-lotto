@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 
 class LottoBonusNumberInputHandler(private val lottoAnswerList: List<Int>) {
 
-    fun getBonusNumber():Int {
+    fun getBonusNumber(): Int {
         var input = Console.readLine()
         inputValidation(input)
         return input.toInt()
@@ -37,8 +37,8 @@ class LottoBonusNumberInputHandler(private val lottoAnswerList: List<Int>) {
 
     }
 
-    private fun checkDuplicate(input: String){
-        if(lottoAnswerList.contains(input.toInt())){
+    private fun checkDuplicate(input: String) {
+        if (lottoAnswerList.contains(input.toInt())) {
             throw IllegalArgumentException(Constants.ERROR_DUPLICATE)
         }
     }

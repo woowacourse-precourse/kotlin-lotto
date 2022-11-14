@@ -24,8 +24,6 @@ class MoneyInputHandler {
         if (checkUnderMinimumValue(input.toInt())) {
             throw IllegalArgumentException(Constants.ERROR_UNDER_MINIMUM)
         }
-
-
         return input
 
     }
