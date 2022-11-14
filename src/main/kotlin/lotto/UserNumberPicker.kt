@@ -34,6 +34,10 @@ class UserNumberPicker {
         throw IllegalArgumentException("[ERROR] : $message")
     }
 
+    fun printNoticeNumbers() = println("당첨 번호를 입력해 주세요.")
+
+    fun printNoticeBonusNumber() = println("보너스 번호를 입력해 주세요.")
+
     companion object {
         const val TYPE_ERROR = "숫자가 아닙니다."
         const val VALUE_ERROR = "올바른 값이 아닙니다."
