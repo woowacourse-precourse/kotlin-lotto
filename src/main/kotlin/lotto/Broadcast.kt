@@ -3,10 +3,10 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 
 class Broadcast() {
-    var winningNumbers = listOf<Int>()
-    var bonusNumber = 0
-    val winLottery = mutableListOf(0, 0, 0, 0, 0, 0, 0)
-    var bonusCount = 0
+    private var winningNumbers = listOf<Int>()
+    private val winLottery = mutableListOf(0, 0, 0, 0, 0, 0, 0)
+    private var bonusNumber = 0
+    private var bonusCount = 0
 
     fun broadcast(lottery: List<List<Int>>) {
         println()
@@ -38,7 +38,7 @@ class Broadcast() {
         return bonus
     }
 
-    fun winLotto(lottery: List<List<Int>>): List<Int> {
+    private fun winLotto(lottery: List<List<Int>>): List<Int> {
         for (ticket in lottery) {
             var count = 0
             count = makeWinningNumber(ticket)
@@ -47,7 +47,7 @@ class Broadcast() {
         return winLottery
     }
 
-    fun bonusWinningNumber(lotterys: List<List<Int>>, bonusNumber: Int): Int {
+    private fun bonusWinningNumber(lotterys: List<List<Int>>, bonusNumber: Int): Int {
         var bonusCounter = 0
         var counter = 0
         for (lottery in lotterys) {
@@ -67,7 +67,7 @@ class Broadcast() {
         return winningNumberCounter
     }
 
-    fun statistics(winningNumber: List<Int>, bonusNumber: Int) {
+    private fun statistics(winningNumber: List<Int>, bonusNumber: Int) {
         println("당첨 통계")
         println("---")
         println("3개 일치 (5,000원) - ${winningNumber[3]}개")
@@ -77,15 +77,15 @@ class Broadcast() {
         println("6개 일치 (2,000,000,000원) - ${winningNumber[6]}개")
     }
 
-    fun profits(winLottery: List<Int>, bonusNumber: Int) {
-        var sales = winLottery.sum() * 1000
-        var list = listOf(0, 0, 0, 5000, 50000, 1500000, 2000000000)
+    private fun profits(winLottery: List<Int>, bonusNumber: Int) {
+        val sales = winLottery.sum() * 1000
+        val list = listOf(0, 0, 0, 5000, 50000, 1500000, 2000000000)
         var prize = 0
         for (i in 0..6) {
             prize += winLottery[i] * list[i]
         }
         prize += bonusNumber * 30000000
-        var profit = "%.1f".format(prize.toDouble() / sales * 100)
+        val profit = "%.1f".format(prize.toDouble() / sales * 100)
         println("총 수익률은 ${profit}%입니다.")
     }
 }
