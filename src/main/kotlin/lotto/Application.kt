@@ -20,8 +20,7 @@ fun pickNum(Num:Int,userNum:List<String>){
     var ok = arrayOf(0,0,0,0,0)
     for(i in 1 until Num+1){
     val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
-    var grade = checkGrade(numbers,userNum);
-    ok[grade]++
+
     }
 }
 
