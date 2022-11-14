@@ -1,6 +1,7 @@
 package lotto.view
 
 import lotto.domain.model.Lotto
+import lotto.domain.model.Rank
 
 object OutputView {
     // TODO 출력을 담당하는 뷰
@@ -13,9 +14,13 @@ object OutputView {
         println()
     }
 
-    fun printSummary() {
+    fun printSummary(statistics: List<Rank>) {
         println("당첨 통계\n---")
-        // 결과 출력
+        for (rank in Rank.values()) {
+            if (rank == Rank.CORRECT_ZERO) continue
+            val rankCnt = statistics.count { it == rank }
+            println("${rank.getCount()}개 일치 (5,000원) - ${rankCnt}개")
+        }
     }
 
     fun earningRate(earningRate: String) {

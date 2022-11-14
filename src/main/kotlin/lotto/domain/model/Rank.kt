@@ -26,6 +26,8 @@ enum class Rank(private val correctCnt: Int) {
 
     fun compareCnt(cnt: Int): Boolean = this.correctCnt == cnt
 
+    fun getCount(): Int = this.correctCnt
+
     companion object {
         fun valueOf(correctCnt: Int, checkBonus: Boolean): Rank {
             if (correctCnt < 3) {

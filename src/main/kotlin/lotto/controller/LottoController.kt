@@ -1,12 +1,12 @@
 package lotto.controller
 
+import lotto.domain.model.Rank
 import lotto.domain.model.WinningLottery
 import lotto.domain.repository.LottoRepository
 import lotto.view.InputView
 import lotto.view.OutputView
 
 class LottoController {
-    // TODO 게임플레이를 관리한다.
 
     private val lottoRepository = LottoRepository()
 
@@ -15,8 +15,16 @@ class LottoController {
         val purchaseLottos = lottoRepository.generateLottos(purchaseMoney)
         OutputView.purchasingLottos(purchaseLottos)
         val winningLottery = WinningLottery(InputView.inputWinningNum(), InputView.inputBonusNum())
-        lottoRepository.calStatistics(winningLottery, purchaseLottos)
+        val statistics = lottoRepository.calStatistics(winningLottery, purchaseLottos)
+        val earningRate = lottoRepository.calEarningRate(purchaseMoney, statistics.sumOf { it.prize })
+        printResult(statistics, earningRate)
+    }
 
+    private fun printResult(statistics: List<Rank>, earningRate: String) {
+        OutputView.run {
+            printSummary(statistics)
+            earningRate(earningRate)
+        }
     }
 
 
