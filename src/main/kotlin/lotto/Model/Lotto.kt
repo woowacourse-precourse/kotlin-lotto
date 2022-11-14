@@ -27,12 +27,9 @@ class Lotto(private val numbers: List<Int>) {
         return count
     }
 
-    fun calculateWinningResult(winningNumber: Lotto, bonusNumber: Int): Pair<Rank, Int> {
+    fun calculateWinningResult(winningNumber: Lotto, bonusNumber: Int): Rank {
         val count = compareWithWinningNumber(winningNumber)
-        val rank = determineRank(count, bonusNumber)
-        val sumPrizeMoney = rank.prizeMoney
-
-        return Pair(rank, sumPrizeMoney)
+        return determineRank(count, bonusNumber)
     }
 
     private fun determineRank(count: Int, bonusNumber: Int): Rank {

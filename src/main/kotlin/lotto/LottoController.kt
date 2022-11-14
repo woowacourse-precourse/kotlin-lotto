@@ -25,9 +25,8 @@ class LottoController {
         var earnedMoney = 0
         val prizeResult = mutableListOf(0, 0, 0, 0, 0, 0)
         for (lotto in lottoList) {
-            val result = lotto.calculateWinningResult(winningNumber, bonusNumber)
-            val rank = result.first
-            earnedMoney += result.second
+            val rank = lotto.calculateWinningResult(winningNumber, bonusNumber)
+            earnedMoney += rank.prizeMoney
             prizeResult[countPrizeResult(rank)]++
         }
         prizeResult[0] = earnedMoney
