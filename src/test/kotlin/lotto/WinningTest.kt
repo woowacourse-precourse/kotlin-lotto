@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test
 
 
 class WinningTest {
+    /* createRankList 기능 교체 전 테스트 */
     @Test
     fun `번호가 0,1,2개 일치할 때 LAST 반환`() {
         assertRank(NONE_MATCH, Rank.LAST)
@@ -43,8 +44,9 @@ class WinningTest {
 
     }
 
+    /* 수익률 반환 기능 프로젝트 적용 전 테스트 */
     @Test
-    fun `8000원 지불, 5000원 상금 받았을 때 올바른 수익률 반환`() {
+    fun `5000원 지불, 5000원 상금 받았을 때 올바른 수익률 반환`() {
         val winning = Winning()
         val resultYield = winning.createYield(5000)
         assertThat(62.5).isEqualTo(resultYield)
