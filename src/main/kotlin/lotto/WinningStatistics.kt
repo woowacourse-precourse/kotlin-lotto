@@ -88,5 +88,13 @@ enum class WinningStatistics(
             }
             return winNumbers
         }
+
+        fun clear(){
+            WIN3.count=0;
+            WIN4.count=0;
+            WIN5.count=0;
+            WIN5Bonus.count=0;
+            WIN6.count=0;
+        }
     }
 }
