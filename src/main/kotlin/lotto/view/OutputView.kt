@@ -16,6 +16,11 @@ private enum class OutputMessage(val message: String) {
     fun getLottoCountMessage(number: Int): String {
         return number.toString() + this.message
     }
+
+    fun getRankMessage(number: Int): String {
+        return (this.message + number.toString() + "개")
+    }
+
 }
 
 object OutputView {
@@ -29,6 +34,19 @@ object OutputView {
             println(lotto.getNumbers())
         }
         println()
+    }
+
+    fun printLottoResult(rank: List<Int>) {
+        println(OutputMessage.LOTTO_RESULT.message)
+        for (i in rank.indices) {
+            when (i) {
+                0 -> println(OutputMessage.FIFTH_PLACE.getRankMessage(rank[4]))
+                1 -> println(OutputMessage.FOURTH_PLACE.getRankMessage(rank[3]))
+                2 -> println(OutputMessage.THIRD_PLACE.getRankMessage(rank[2]))
+                3 -> println(OutputMessage.SECOND_PLACE.getRankMessage(rank[1]))
+                4 -> println(OutputMessage.FIRST_PLACE.getRankMessage(rank[0]))
+            }
+        }
     }
 
 }
