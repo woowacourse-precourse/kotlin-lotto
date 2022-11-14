@@ -37,6 +37,10 @@ fun main() {
     println("구매금액을 입력해 주세요.")
     val userPayMoney = readLine()!!.toInt()
     val userAmountTobuy = userPayMoney / 1000
+    val lottoList = buyLotto(userAmountTobuy)
+
+    // 구입한 로또 리스트 출력
+    lottoList.forEach{it.printLotto()}
 
     // 로또 당첨 번호 입력
     println("\n당첨 번호를 입력해 주세요.")
