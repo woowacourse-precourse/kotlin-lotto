@@ -20,11 +20,11 @@ class Lotto(private val numbers: List<Int>) {
         return false
     }
 
-    fun getValues(index: Int): Int {
+    fun getValue(index: Int): Int {
         return numbers[index]
     }
 
-    fun print(): List<Int> {
+    fun getNumbers(): List<Int> {
         return numbers
     }
 

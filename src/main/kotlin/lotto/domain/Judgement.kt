@@ -12,7 +12,7 @@ class Judgement(
     fun calculate(): ArrayList<Int> {
         for (numberLine in computerNumber) {
             for (i in 0 until Lotto.Information.SIZE.number) {
-                includeNumber(numberLine.getValues(i))
+                includeNumber(numberLine.getValue(i))
             }
             if (count == 5) {
                 includeBounusNumber(numberLine)
