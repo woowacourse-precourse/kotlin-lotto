@@ -1,6 +1,7 @@
 package lotto
 
 import lotto.domain.LottoStaff
+import lotto.domain.Prize
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -35,6 +36,12 @@ class LottoStaffTest {
     fun `보너스 번호가 일치하는지 확인하는 테스트`(){
         assertThat(lottoStaff.checkBonusNumber(lottoNumbers,bonusNumber)).isTrue
     }
+
+    @Test
+    fun `수익률 확인하는 기능 테스트`(){
+        assertThat(lottoStaff.getProfit(5000,7)).isEqualTo(714.3)
+    }
+
 
 
 }
