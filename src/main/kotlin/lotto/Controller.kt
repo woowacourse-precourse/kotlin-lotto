@@ -2,6 +2,10 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 
+enum class WinningAmount {
+    THREE, FOUR, FIVE, FIVE_PLUS, SIX
+}
+
 class Controller {
     private var three = 0
     private var four = 0
@@ -9,7 +13,6 @@ class Controller {
     private var fivePlus = 0
     private var six = 0
     private var saveRandomNumber = mutableListOf<List<Int>>()
-    private var countNumber = mutableListOf<Int>()
 
     fun getLotteryPaper(count: Int) {
         Output.resultPurchase(count)
@@ -40,11 +43,11 @@ class Controller {
 
     fun resultPrint() {
         Output.winningStatistics()
-        printStatistics(WinningAmount.THREE, three)
-        printStatistics(WinningAmount.FOUR, four)
-        printStatistics(WinningAmount.FIVE, five)
-        printStatistics(WinningAmount.FIVE_PLUS, fivePlus)
-        printStatistics(WinningAmount.SIX, six)
+        printStatistics(WinningAmount.THREE)
+        printStatistics(WinningAmount.FOUR)
+        printStatistics(WinningAmount.FIVE)
+        printStatistics(WinningAmount.FIVE_PLUS)
+        printStatistics(WinningAmount.SIX)
     }
 
     fun getYield(amount: Int) {
@@ -72,13 +75,13 @@ class Controller {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6)
     }
 
-    private fun printStatistics(w: WinningAmount, number: Int) {
+    private fun printStatistics(w: WinningAmount) {
         when (w) {
-            WinningAmount.THREE -> Output.resultThree(number)
-            WinningAmount.FOUR -> Output.resultFour(number)
-            WinningAmount.FIVE -> Output.resultFive(number)
-            WinningAmount.FIVE_PLUS -> Output.resultFivePlus(number)
-            WinningAmount.SIX -> Output.resultSix(number)
+            WinningAmount.THREE -> Output.resultThree(three)
+            WinningAmount.FOUR -> Output.resultFour(four)
+            WinningAmount.FIVE -> Output.resultFive(five)
+            WinningAmount.FIVE_PLUS -> Output.resultFivePlus(fivePlus)
+            WinningAmount.SIX -> Output.resultSix(six)
         }
     }
 }
