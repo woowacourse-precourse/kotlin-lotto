@@ -83,3 +83,12 @@ fun getWinningNum(inputNumbers: List<String>): Lotto {
     winnerNum.sort()
     return Lotto(winnerNum)
 }
+
+fun validateBonusNum(bonusNum: String) {
+    if (bonusNum.toIntOrNull() == null) {
+        throw IllegalArgumentException(ErrorCode.NUMERIC_REQUIRED.message)
+    }
+    if (bonusNum.toInt() > 45 || bonusNum.toInt() < 1) {
+        throw IllegalArgumentException(ErrorCode.NUMBER_RANGE_UNQUALIFIED.message)
+    }
+}
