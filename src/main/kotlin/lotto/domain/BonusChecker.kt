@@ -17,7 +17,7 @@ class BonusChecker(private val winning: Lotto,private val bonusString: String) {
     }
     private fun checkBonusValidRange(bonus:Int){
         try {
-            require(bonus in 1..45)
+            require(bonus in CONSTANT.LOTTO.MIN_LOTTO_NUMBER.params..CONSTANT.LOTTO.MAX_LOTTO_NUMBER.params)
         }catch (e: IllegalArgumentException){
             println(CONSTANT.ERRORMESSAGE.BONUSNUMBERRANGEERROR.message)
             throw e
