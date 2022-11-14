@@ -97,6 +97,5 @@ internal class WinningLotteryTest {
             val winningLottery = WinningLottery(input, bonus)
         }.isInstanceOf(IllegalArgumentException::class.java)
             .hasMessage("[ERROR] 복권 숫자에 중복값이 존재합니다.")
-
     }
 }

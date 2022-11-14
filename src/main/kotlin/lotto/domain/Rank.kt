@@ -1,5 +1,6 @@
 package lotto.domain
 
+import lotto.utils.ErrorMessage.ERROR_NOT_VALID
 import java.lang.IllegalArgumentException
 
 enum class Rank(private val count: Int, private val price: Int) {
@@ -39,7 +40,7 @@ enum class Rank(private val count: Int, private val price: Int) {
                 }
             }
 
-            throw IllegalArgumentException("[ERROR] 유효한 값이 없습니다.")
+            throw IllegalArgumentException(ERROR_NOT_VALID)
         }
     }
 }
