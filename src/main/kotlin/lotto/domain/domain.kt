@@ -1,6 +1,7 @@
 package lotto.domain
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.Lotto
 
 class domain {
     fun lottoNumberCalculate(money : Int) : Int {
@@ -19,5 +20,14 @@ class domain {
             println(lottoPublishment[i])
         }
         return lottoPublishment
+    }
+
+    fun lottoCoincidence(lottoPublishment : MutableList<List<Int>>,lotto : Lotto, bonusNumber : Int) : MutableList<Int> {
+        var lottoCoincidence = mutableListOf<Int>()
+        for (i in lottoPublishment){
+            var coincidence = lotto.compare(i, bonusNumber)
+            lottoCoincidence.add(coincidence)
+        }
+        return lottoCoincidence
     }
 }
