@@ -17,6 +17,11 @@ class Lotto(private val numbers: List<Int>) {
         return numbers
     }
 
+    fun calculateWinningResult(winningNumber: Lotto, bonusNumber: Int): Rank {
+        val count = compareWithWinningNumber(winningNumber)
+        return determineRank(count, bonusNumber)
+    }
+
     private fun compareWithWinningNumber(winningNum: Lotto): Int {
         var count = 0
         for (i in winningNum.getNumbers())
@@ -24,11 +29,6 @@ class Lotto(private val numbers: List<Int>) {
                 count++
 
         return count
-    }
-
-    fun calculateWinningResult(winningNumber: Lotto, bonusNumber: Int): Rank {
-        val count = compareWithWinningNumber(winningNumber)
-        return determineRank(count, bonusNumber)
     }
 
     private fun determineRank(count: Int, bonusNumber: Int): Rank {
@@ -39,13 +39,14 @@ class Lotto(private val numbers: List<Int>) {
                     return Rank.Second
                 return Rank.Third
             }
+
             4 -> return Rank.Fourth
             3 -> return Rank.Fifth
             else -> return Rank.None
         }
     }
 
-    private fun validateLengthAndDuplication(winningNumbers: List<Int>){
+    private fun validateLengthAndDuplication(winningNumbers: List<Int>) {
         if (winningNumbers.distinct().size != 6) {
             OutputView().printErrorMessage(ERROR_DUPLICATION)
             throw IllegalArgumentException()
