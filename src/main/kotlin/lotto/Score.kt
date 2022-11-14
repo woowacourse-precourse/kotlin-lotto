@@ -2,7 +2,7 @@ package lotto
 
 import message.ScoreMessage
 
-class PrintScore {
+class Score {
 
     fun printWinningScore(winningCounts: MutableList<Int>) {
         println(ScoreMessage.SCORE_TITLE.message)
