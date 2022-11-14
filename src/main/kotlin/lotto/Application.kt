@@ -1,5 +1,20 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
+
 fun main() {
-    TODO("프로그램 구현")
+    lotto()
+}
+
+fun lotto() {
+    val lottoCount = inputMoney()
+}
+
+fun inputMoney(): Int {
+    println("구입금액을 입력해 주세요.")
+    val money = Console.readLine()
+    val lottoCount = money.toInt() / 1000
+    println("${lottoCount}개를 구매했습니다.")
+    return lottoCount
 }
