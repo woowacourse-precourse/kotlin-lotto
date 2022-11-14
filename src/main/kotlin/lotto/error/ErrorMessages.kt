@@ -9,6 +9,13 @@ object ErrorMessages {
 
     private fun String.applyPrefix(): String = "$PREFIX $this"
 
+    enum class ConsoleEnum(private val message: String) {
+
+        NotValidInteger("올바른 숫자를 입력해주세요."),;
+
+        override fun toString(): String = message.applyPrefix()
+    }
+
     enum class LottoShopEnum(private val message: String) {
 
         OutOfRangeNumbers("${LottoShop.MoneyRange} 범위 내의 숫자여야 합니다."),
