@@ -1,4 +1,4 @@
-package lotto
+package lotto.utils.validation
 
 class DivisibilityVerifier(private val divisor: Int) : Verifier<Int>() {
     override fun verify(input: Int) {

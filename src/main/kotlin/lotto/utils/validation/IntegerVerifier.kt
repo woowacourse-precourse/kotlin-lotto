@@ -1,4 +1,4 @@
-package lotto
+package lotto.utils.validation
 
 class IntegerVerifier : Verifier<String>() {
     override fun verify(input: String) {

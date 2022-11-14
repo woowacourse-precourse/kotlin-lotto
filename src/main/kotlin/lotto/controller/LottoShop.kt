@@ -1,9 +1,13 @@
-package lotto
+package lotto.controller
 
 import lotto.domain.Generator
 import lotto.domain.Lotto
 import lotto.domain.ProfitCalculator
 import lotto.domain.Rank
+import lotto.utils.validation.InputValidator
+import lotto.utils.validation.Verifier
+import lotto.view.Input
+import lotto.view.Output
 
 class LottoShop(
     private val input: Input,
