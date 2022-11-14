@@ -11,15 +11,19 @@ class UserNumberPicker {
 
     fun userInput() {
         val input = Console.readLine().split(',')
-        checkInputType(input)
+        checkNumberType(input)
     }
 
-    private fun checkInputType(input: List<String>) {
+    private fun checkNumberType(input: List<String>) {
         try {
             input.map { it.toInt() }
         } catch (e: Exception) {
             invalidInputValue(TYPE_ERROR)
         }
+    }
+
+    private fun checkNumberOverlap(input: List<String>) {
+        if (input.size != input.toSet().size) invalidInputValue(VALUE_ERROR)
     }
 
     private fun invalidInputValue(message: String) {
