@@ -1,5 +1,8 @@
 package lotto
-
 fun main() {
-    LottoGame().run()
+    try {
+        LottoGame().run()
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+    }
 }
