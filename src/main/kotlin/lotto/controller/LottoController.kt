@@ -1,8 +1,6 @@
 package lotto.controller
 
-import lotto.domain.LottoGame
-import lotto.domain.model.Lotto
-import lotto.domain.model.Lotto.Companion.LOTTO_PRIZE
+import lotto.domain.model.WinningLottery
 import lotto.domain.repository.LottoRepository
 import lotto.view.InputView
 import lotto.view.OutputView
@@ -13,6 +11,11 @@ class LottoController {
     private val lottoRepository = LottoRepository()
 
     fun play() {
+        val purchaseMoney = InputView.inputMoney()
+        val purchaseLottos = lottoRepository.generateLottos(purchaseMoney)
+        OutputView.purchasingLottos(purchaseLottos)
+        val winningLottery = WinningLottery(InputView.inputWinningNum(), InputView.inputBonusNum())
+        lottoRepository.calStatistics(winningLottery, purchaseLottos)
 
     }
 

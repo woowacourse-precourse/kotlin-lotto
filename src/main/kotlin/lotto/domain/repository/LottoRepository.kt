@@ -1,6 +1,9 @@
 package lotto.domain.repository
 
 import lotto.domain.model.Lotto
+import lotto.domain.model.WinningLottery
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 class LottoRepository {
 
@@ -12,4 +15,17 @@ class LottoRepository {
         return purchaseLottos.toList()
     }
 
+    fun calEarningRate(purchasePrize: Int, winningPrize: Int): String {
+        val dec = DecimalFormat("#,###.0")
+        return dec.format(
+            (winningPrize * 100.0).toBigDecimal().divide(purchasePrize.toBigDecimal(), 1, RoundingMode.FLOOR)
+        )
+    }
+
+    fun calStatistics(winningLottery: WinningLottery, purchaseLottos: List<Lotto>) {
+        purchaseLottos.forEach { lotto ->
+            winningLottery.compareLotto(lotto)
+
+        }
+    }
 }
