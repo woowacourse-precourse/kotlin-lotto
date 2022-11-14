@@ -1,6 +1,6 @@
 package lotto.domain
 
-class Purchaser() {
+object Purchaser {
     fun purchase(amount: Int) = Store().buyTickets(amount).map { Lotto(it) }
 
     fun calculateResult(winningLotto: WinningLotto, tickets: List<Lotto>): Pair<MutableList<Int>, Int> {

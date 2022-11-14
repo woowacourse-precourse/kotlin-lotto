@@ -8,17 +8,17 @@ fun main() {
         val amount = inputPurchaseAmount().toIntOrError()
         val tickets = purchaseTickets(amount)
         val winningLotto = registerWinningLotto()
-        val (resultRank, totalPrize) = Purchaser().calculateResult(winningLotto, tickets)
+        val (resultRank, totalPrize) = Purchaser.calculateResult(winningLotto, tickets)
 
         printPrizeResult(resultRank)
-        printRateOfReturn(Purchaser().calculateRateOfReturn(totalPrize, amount))
+        printRateOfReturn(Purchaser.calculateRateOfReturn(totalPrize, amount))
     } catch (e: IllegalArgumentException) {
         println(e.message)
     }
 }
 
 fun purchaseTickets(amount: Int): List<Lotto> {
-    val tickets = Purchaser().purchase(amount)
+    val tickets = Purchaser.purchase(amount)
     printNumberOfTickets(tickets.size)
     printNumbersOfLottos(tickets)
 
