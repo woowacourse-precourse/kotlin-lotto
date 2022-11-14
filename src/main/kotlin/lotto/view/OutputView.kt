@@ -29,8 +29,8 @@ object OutputView {
         }
     }
 
-    fun earningRate(earningRate: String) {
-        println("총 수익률은 ${earningRate}%입니다.")
+    fun earningRate(earningRate: Double) {
+        println(String.format("총 수익률은 %.1f", earningRate) + "%입니다.")
     }
 
 }
