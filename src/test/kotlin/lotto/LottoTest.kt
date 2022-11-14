@@ -70,9 +70,9 @@ class LottoTest {
 
         @Test
         fun `구입 금액과 당첨 금액을 비교하여 수익률을 계산한다`() {
-            val purchasePrize = listOf(8_000, 10_000)
-            val winningPrize = listOf(5_000, 5_000)
-            val earningRate = listOf(62.5, 50.0)
+            val purchasePrize = listOf(8_000, 10_000, 8_000)
+            val winningPrize = listOf(5_000, 5_000, 2_000_000_000)
+            val earningRate = listOf("62.5", "50.0", "25,000,000.0")
             purchasePrize.forEachIndexed { idx, _ ->
                 assertThat(
                     calEarningRate(purchasePrize[idx], winningPrize[idx])
@@ -87,8 +87,7 @@ class LottoTest {
             purchasePrize.forEachIndexed { idx, _ ->
                 val earningRate = calEarningRate(purchasePrize[idx], winningPrize[idx])
                 // 소수점 한 자리 이하인지
-                assertThat(earningRate.toString().split(".").last().length).isLessThan(1)
-                assertThat(earningRate).isGreaterThanOrEqualTo(0.0)
+                assertThat(earningRate.split(".").last().length).isLessThan(2)
             }
         }
     }
