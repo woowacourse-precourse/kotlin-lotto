@@ -23,8 +23,8 @@ class LottoCalculator(
 
     private fun compareNumbers(consumerLotto: List<Int>): Int {
         var count = 0
-        for (i in 0 until LOTTO_SIZE) {
-            if (winningLotto.contains(consumerLotto[i])) {
+        for (index in 0 until LOTTO_SIZE) {
+            if (winningLotto.contains(consumerLotto[index])) {
                 count++
             }
         }
