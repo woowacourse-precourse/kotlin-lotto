@@ -22,9 +22,17 @@ class LottoShop(
 
     fun announceWinners() {}
 
-    fun publish() {}
+    fun publish() {
+        getMoney()
+    }
 
-    private fun getMoney() {}
+    private fun getMoney() {
+        guideInputMoney()
+    }
+
+    private fun guideInputMoney() {
+        output.guideInputMoney()
+    }
 
     private fun printTickets() {}
 
