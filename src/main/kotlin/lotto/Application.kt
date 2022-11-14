@@ -2,7 +2,7 @@ package lotto
 import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
 
-fun payForLotto() : Int{
+fun firstPay() : Int{
     var pay = 0
     println("구입금액을 입력해 주세요.")
     try {
@@ -15,6 +15,8 @@ fun payForLotto() : Int{
     }
     return pay
 }
+
+
 
 fun main() {
     TODO("프로그램 구현")
