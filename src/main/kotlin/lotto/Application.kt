@@ -60,3 +60,29 @@ fun  getnumber2(count: MutableList<Int>, prizemoney : Int) : Int{
     }
     return prizemoney
 }
+fun  comparlotto(inputlotto : List<Int>, lottonum : MutableList<MutableList<Int>>) : Pair<Int,MutableList<Int>> {
+    var prizemoney :Int = 0
+    var count = MutableList<Int>(7) {0}
+    var frLottonum = makeLottonumber(inputlotto.toMutableList())
+    for (i : Int in 0..lottonum.size-1) {
+        count[checknum(lottonum[i], frLottonum)] += 1
+        prizemoney += getnumber2(count, prizemoney)
+    }
+    return Pair(prizemoney,count)
+}
+fun comparlotto2(inputlotto : List<Int>, lottonum : MutableList<MutableList<Int>>) : Pair<Int,Int>{
+    var prizemoney2: Int = 0
+    var count2 : Int = 0
+    var count = MutableList<Int>(7) {0}
+  //  var sedLottonum = makeLottonumber2(inputlotto.toMutableList())
+    for (i: Int in 0..lottonum.size - 1) {
+        var tmp = count[5]
+        count [checknum(lottonum[i], inputlotto.toMutableList())]+=1
+        if ( count[5] - tmp == 1) {
+            prizemoney2 += 30000000
+            count2+=1
+            count[1] += 1
+        }
+    }
+    return Pair(prizemoney2, count2)
+}
