@@ -69,5 +69,34 @@ class ValidCheckerTest {
         Assertions.assertEquals(result3,true)
     }
 
+    @Test
+    fun `보너스 번호가 당첨번호와 중복되면 true 리턴`() {
+        var input= 1
+
+        var winningNum= listOf<Int>(1,2,3,4,5,45)
+        var lotto1= Lotto(winningNum)
+        var result=validCheker.checkBonusDuplicate(lotto1,input)
+
+        Assertions.assertEquals(result,true)
+
+    }
+
+    @Test
+    fun `보너스 번호의 범위가 1부터 45가 아니면 true 리턴`() {
+        var input1=0
+        var input2=46
+
+
+
+        var result=validCheker.checkBonusRange(input1)
+        var result2=validCheker.checkBonusRange(input2)
+
+        Assertions.assertEquals(result,true)
+        Assertions.assertEquals(result2,true)
+
+    }
+
+
+
 
 }

@@ -2,6 +2,7 @@ package lotto
 
 private const val INTRO_MSG = "구입금액을 입력해 주세요."
 private const val ASK_WINNING_NUM="당첨 번호를 입력해 주세요."
+private const val ASK_BONUS_NUM="보너스 번호를 입력해 주세요."
 
 class LottoPrinter {
 
@@ -21,5 +22,6 @@ class LottoPrinter {
     }
 
     fun printAskingWinningNumber() = println(ASK_WINNING_NUM)
+    fun printAskingBonusNumber() = println("\n"+ ASK_BONUS_NUM)
 
 }
