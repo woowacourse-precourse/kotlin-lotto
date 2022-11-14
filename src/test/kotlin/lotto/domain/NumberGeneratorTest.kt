@@ -8,7 +8,7 @@ class NumberGeneratorTest {
 
     @Test
     fun `기능 테스트`() {
-        val numberGenerator = NumberGenerator()
+        val numberGenerator = NumberGenerator
         val randomNumbers = numberGenerator.createRandomNumbers()
         print(randomNumbers.toString())
         assertThat(
@@ -20,7 +20,7 @@ class NumberGeneratorTest {
 
     @Test
     fun `정렬 테스트`() {
-        val numberGenerator = NumberGenerator()
+        val numberGenerator = NumberGenerator
         assertRandomUniqueNumbersInRangeTest(
             {
                 val getElement = numberGenerator.createRandomNumbers()
