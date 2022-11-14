@@ -24,4 +24,6 @@ class Lotto(private val numbers: List<Int>) {
             winningLotto.contains(number)
         } to bonusNumber.isMatched(numbers)
     }
+
+    override fun toString(): String = numbers.toString()
 }
