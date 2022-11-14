@@ -3,6 +3,7 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import message.Message
+import message.ScoreMessage
 
 fun main() {
     val money = inputMoney()
@@ -110,13 +111,13 @@ fun calculateLottoWin(
 }
 
 fun printWinningScore(answerList: MutableList<Int>) {
-    println("\n당첨 통계")
-    println("---")
-    println("3개 일치 (5,000원) - ${answerList[3]}개")
-    println("4개 일치 (50,000원) - ${answerList[4]}개")
-    println("5개 일치 (1,500,000원) - ${answerList[5]}개")
-    println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${answerList[7]}개")
-    println("6개 일치 (2,000,000,000원) - ${answerList[6]}개")
+    println(ScoreMessage.SCORE_TITLE.message)
+    println(ScoreMessage.SCORE_LINE.message)
+    println("${ScoreMessage.SCORE_THREE.message}${answerList[3]}개")
+    println("${ScoreMessage.SCORE_FOUR.message}${answerList[4]}개")
+    println("${ScoreMessage.SCORE_FIVE.message}${answerList[5]}개")
+    println("${ScoreMessage.SCORE_FIVE_BONUS.message}${answerList[7]}개")
+    println("${ScoreMessage.SCORE_SIX.message}${answerList[6]}개")
 }
 
 fun printWinningRate(answerList: MutableList<Int>, money: Int) {
