@@ -21,4 +21,29 @@ object Validator {
         }
         return money
     }
+
+    fun checkWinningNumberInput(input: String): List<Int> {
+        if (!input.contains(",")) throw IllegalArgumentException(ErrorMessage.NOT_COMMA.message)
+        val input = input.replace(" ", "").split(",")
+        if (input.size != 6) {
+            throw IllegalArgumentException(ErrorMessage.NOT_6_NUMBER.message)
+        }
+        return checkWinningNumberList(input)
+    }
+
+    private fun checkWinningNumberList(input: List<String>): List<Int> {
+        val numbers = mutableListOf<Int>()
+        for (string in input) {
+            val number = string.toIntOrNull() ?: throw IllegalArgumentException(ErrorMessage.NOT_NUMBER.message)
+            if ((number < 1) or (number > 45)) {
+                throw IllegalArgumentException(ErrorMessage.OUT_OF_RANGE.message)
+            }
+            if (numbers.contains(number)) {
+                throw IllegalArgumentException(ErrorMessage.DUPLICATE.message)
+            }
+            numbers.add(number)
+        }
+        return numbers
+    }
+
 }
