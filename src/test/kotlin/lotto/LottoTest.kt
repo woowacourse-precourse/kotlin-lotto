@@ -67,6 +67,16 @@ class LottoTest {
         for(idx in 0 until lottoTickets.size){
             println(lottoTickets[idx].getNumbers())
         }
+        println("=======")
 
+    }
+
+    @Test
+    fun `로또 갯수와 로또번호 출력하기`(){
+        var count = 6000
+        var lottoTickets=machine.makeUserLottoTickets(count)
+        machine.initializeUser(count,lottoTickets)
+        machine.printMyLottoTickets()
+        println("========")
     }
 }

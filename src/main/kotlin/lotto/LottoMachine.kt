@@ -15,8 +15,15 @@ class LottoMachine {
 
     }
 
+
     fun inputAmount(): Int = console.inputAmount()
     fun printHowMuchLotto() = printer.printIntroMsg()
+    fun printMyLottoTickets(){
+        printer.printTicketsCount(user.amount)
+        printer.printMyTickets(user)
+    }
+
+
 
     fun makeRandomNumber(): Lotto {
         val numbers = mutableListOf<Int>()
@@ -39,10 +46,18 @@ class LottoMachine {
         return lottoTickets
     }
 
+    fun initializeUser(amount:Int,lottoTickets:List<Lotto>){
+        this.user=User(amount,lottoTickets)
+    }
+
+
     fun startLottoProgram() {
-        val amount: Int
         printer.printIntroMsg()
-        amount = console.inputAmount()
+        val amount = console.inputAmount()
+        val lottoTickets = makeUserLottoTickets(amount)
+        initializeUser(amount,lottoTickets)
+        printer.printTicketsCount(amount)
+        printer.printMyTickets(user)
 
     }
 

@@ -6,4 +6,16 @@ class LottoPrinter {
 
     fun printIntroMsg() = println(INTRO_MSG)
 
+    fun printTicketsCount(amount:Int){
+        var count=amount/1000
+        println()
+        println("${count}개를 구매했습니다.")
+    }
+
+    fun printMyTickets(user:User){
+        for(count in 0 until user.myLottoTickets.size){
+            println(user.myLottoTickets[count].getNumbers())
+        }
+    }
+
 }
