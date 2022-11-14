@@ -3,6 +3,8 @@ package lotto.bank
 import lotto.Lotto
 
 interface Bank {
+    val prizeGrades: MutableList<Int>
+    var earningRate: Float
 
     fun calcPrizeGrade(receivedMainLottoNumbers: List<Int>, receivedBonusLottoNumber: Int, lotto: Lotto)
 
