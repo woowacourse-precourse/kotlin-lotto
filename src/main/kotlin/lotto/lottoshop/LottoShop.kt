@@ -1,5 +1,6 @@
 package lotto.lottoshop
 
+import lotto.LottoPhrases.MAIN_LOTTO_NUMBER_INPUT_TYPE_ERROR
 import lotto.LottoPhrases.PURCHASE_AMOUNT_INPUT_TYPE_ERROR
 import lotto.LottoPhrases.PURCHASE_AMOUNT_MINIMUM_ERROR
 import lotto.LottoPhrases.PURCHASE_AMOUNT_UNIT_ERROR
@@ -24,13 +25,20 @@ class LottoShop() {
     }
 
     fun getValidateMainLottoNumbers(mainLottoNumbers: List<String>): List<Int> {
-
+        if (!isInputTypeNumber(mainLottoNumbers)) printErrorMessage(MAIN_LOTTO_NUMBER_INPUT_TYPE_ERROR)
+        val processedMainLottoNumbers = convertToInt(mainLottoNumbers)
     }
 
-    private fun isInputTypeNumber(input: List<String>) :Boolean {
+    private fun isInputTypeNumber(input: List<String>): Boolean {
         var hasOnlyInt = true
-        for (mainLottoNumber in input) if(!isInputTypeNumber(mainLottoNumber)) hasOnlyInt = false
+        for (mainLottoNumber in input) if (!isInputTypeNumber(mainLottoNumber)) hasOnlyInt = false
         return hasOnlyInt
+    }
+
+    private fun convertToInt(input: List<String>): List<Int> {
+        val processedMainLottoNumbers = mutableListOf<Int>()
+        for (mainLottoNumber in input) processedMainLottoNumbers.add(mainLottoNumber.toInt())
+        return processedMainLottoNumbers
     }
 
     fun getValidateBonusLottoNumber(bonusLottoNumber: String): Int {
