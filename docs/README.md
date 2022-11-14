@@ -3,12 +3,12 @@
 ### ⌨️ Service Logic : User
 - **사용자입력** : `@datatype : String`
 1. **로또 구입 금액을 입력 받는다.**
-   - [ ] 입력 안내문 : `구입금액을 입력해 주세요.`
-   - [ ] 콘솔입력 `camp.nextstep.edu.missionutils.Console의 readLine()`
+   - [x] 입력 안내문 : `구입금액을 입력해 주세요.`
+   - [x] 콘솔입력 `camp.nextstep.edu.missionutils.Console의 readLine()`
      -  구입 금액은 1,000원 단위로 입력 받는다
      -  **예외처리** `IllegalArgumentException`
-        - [ ] `@datatype : Int` 1,000원으로 나누어 떨어지지 않는 경우 예외 처리한다.
-        - [ ] 에러 문구는 "[ERROR]"로 시작해야 한다.
+        - [x] `@datatype : Int` 1,000원으로 나누어 떨어지지 않는 경우 예외 처리한다.
+        - [x] 에러 문구는 "[ERROR]"로 시작해야 한다.
     
 2. **당첨번호를 입력받는다.**
    - [ ] 입력 안내문 : `당첨 번호를 입력해 주세요.`

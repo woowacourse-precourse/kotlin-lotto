@@ -5,9 +5,40 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
-//
+    @Test
+    fun `사용자 구매 입력 테스트`(){
+        assertSimpleTest{
+            run("1000")
+            assertThat(output()).contains(
+                "1개를 구매했습니다."
+            )
+        }
+    }
+
+    @Test
+    fun `사용자 구매 입력 예외 테스트`() {
+        assertThrows<IllegalArgumentException> {
+            runException("1000j")
+        }
+    }
+
+    @Test
+    fun `사용자 구매 입력 예외 테스트 금액 낮음`() {
+        assertThrows<IllegalArgumentException> {
+            runException("900")
+        }
+    }
+
+    @Test
+    fun `사용자 구매 입력 예외 테스트 mod`() {
+        assertThrows<IllegalArgumentException> {
+            runException("1200")
+        }
+    }
+
 //    @Test
 //    fun `기능 테스트`() {
 //        assertRandomUniqueNumbersInRangeTest(
@@ -41,14 +72,7 @@ class ApplicationTest : NsTest() {
 //            listOf(1, 3, 5, 14, 22, 45)
 //        )
 //    }
-//
-//    @Test
-//    fun `예외 테스트`() {
-//        assertSimpleTest {
-//            runException("1000j")
-//            assertThat(output()).contains(ERROR_MESSAGE)
-//        }
-//    }
+
 
     override fun runMain() {
         main()
