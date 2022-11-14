@@ -16,7 +16,7 @@ class LottoPrizeTest {
         "FIRST_PRIZE,2000000000"
     )
     fun `로또 당첨금 테스트`(prize: String, winningAmount: Int) {
-        val result = LottoPrize.valueOf(prize).winPrize()
+        val result = LottoPrize.valueOf(prize).winningAmount
         assertThat(result).isEqualTo(winningAmount)
     }
 
@@ -34,7 +34,7 @@ class LottoPrizeTest {
         isMaching: Boolean,
         winningAmount: Int
     ) {
-        val result = LottoPrize.lottoValueOf(matchedCount, isMaching).winPrize()
+        val result = LottoPrize.lottoValueOf(matchedCount, isMaching).winningAmount
         assertThat(result).isEqualTo(winningAmount)
     }
 }

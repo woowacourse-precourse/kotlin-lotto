@@ -1,45 +1,25 @@
 package lotto.domain.prize
 
 enum class LottoPrize(
-    private val matchedCount: Int,
-    private val isMatchedLottoNumbers: Boolean = false
-) : WinningAmount {
+    val matchedCount: Int,
+    val winningAmount: Int,
+    val isMatchedLottoNumbers: Boolean = false
+) {
 
-    FIRST_PRIZE(6) {
-        override fun winPrize(): Int {
-            return 2_000_000_000
-        }
-    },
-    SECOND_PRIZE(5, true) {
-        override fun winPrize(): Int {
-            return 30_000_000
-        }
-    },
-    THIRD_PRIZE(5) {
-        override fun winPrize(): Int {
-            return 1_500_000
-        }
-    },
-    FOURTH_PRIZE(4) {
-        override fun winPrize(): Int {
-            return 50_000
-        }
-    },
-    FIFTH_PRIZE(3) {
-        override fun winPrize(): Int {
-            return 5_000
-        }
-    },
-    NO_WINNING_AMOUNT(0) {
-        override fun winPrize(): Int {
-            return 0
-        }
-    };
+    FIRST_PRIZE(6, 2_000_000_000),
+    SECOND_PRIZE(5, 30_000_000, true),
+    THIRD_PRIZE(5, 1_500_000),
+    FOURTH_PRIZE(4, 50_000),
+    FIFTH_PRIZE(3, 5_000),
+    NO_WINNING_AMOUNT(0, 0);
 
     private fun isCorrectMatchingNumberCount(lottoCount: Int, isMatchingNumber: Boolean): Boolean =
         lottoCount == 5 && isMatchingNumber
 
-    private fun isMatchingLottoNumber(lottoMatchingCount: Int, isMatchingBonusNumber: Boolean): Boolean =
+    private fun isMatchingLottoNumber(
+        lottoMatchingCount: Int,
+        isMatchingBonusNumber: Boolean
+    ): Boolean =
         isCorrectMatchingNumberCount(
             lottoMatchingCount,
             isMatchingBonusNumber
@@ -50,7 +30,10 @@ enum class LottoPrize(
             return values()
                 .firstOrNull { lottoPrize ->
                     lottoPrize.matchedCount == lottoMatchingCount &&
-                            lottoPrize.isMatchingLottoNumber(lottoMatchingCount, isMatchingBonusNumber)
+                            lottoPrize.isMatchingLottoNumber(
+                                lottoMatchingCount,
+                                isMatchingBonusNumber
+                            )
                 } ?: NO_WINNING_AMOUNT
 
         }

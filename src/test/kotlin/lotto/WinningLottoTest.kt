@@ -1,6 +1,7 @@
 package lotto
 
 import lotto.domain.lotto.Lotto
+import lotto.domain.prize.LottoPrize
 import lotto.domain.statistics.WinningLotto
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -22,7 +23,7 @@ class WinningLottoTest {
         val bonus = 7
         val lotto = lottoNumbers.map { lotto -> Lotto(lotto) }
         val prize = WinningLotto(lotto, bonus).countWinningLotto(winningLotto)
-        val result = prize[5000]
+        val result = prize[LottoPrize.FIFTH_PRIZE]
         val count = 1
         assertThat(result).isEqualTo(count)
     }

@@ -1,10 +1,12 @@
 package lotto.domain.statistics
 
-class Profit(private val prizeCount: Map<Int, Int>, private val money: Int) {
+import lotto.domain.prize.LottoPrize
+
+class Profit(private val prizeCount: Map<LottoPrize, Int>, private val money: Int) {
     fun calculateRate(): String {
         val totalAmount = prizeCount.entries
             .sumOf { (lottoPrize, count) ->
-                lottoPrize * count
+                lottoPrize.winningAmount * count
             }.toFloat()
         return "%.1f".format(totalAmount / money * HUNDRED_NUMBER)
     }
