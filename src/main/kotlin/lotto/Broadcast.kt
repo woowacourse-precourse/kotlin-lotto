@@ -16,7 +16,8 @@ class Broadcast() {
         println("보너스 번호를 입력해주세요.")
         bonusNumber = winningBonusLotto()
         winLotto(lottery)
-
+        bonusCount = bonusWinningNumber(lottery, bonusNumber)
+        winLottery[5] = winLottery[5] - bonusCount
     }
 
     private fun winningLotto(): List<Int> {
@@ -42,6 +43,18 @@ class Broadcast() {
             winLottery[count]++
         }
         return winLottery
+    }
+
+    fun bonusWinningNumber(lotterys: List<List<Int>>, bonusNumber: Int): Int {
+        var bonusCounter = 0
+        var counter = 0
+        for (lottery in lotterys) {
+            counter = makeWinningNumber(lottery)
+            if (counter == 5) {
+                if (lottery.contains(bonusNumber)) bonusCounter++
+            }
+        }
+        return bonusCounter
     }
 
     private fun makeWinningNumber(lottery: List<Int>): Int {
