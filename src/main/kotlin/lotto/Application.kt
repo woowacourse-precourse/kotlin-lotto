@@ -56,7 +56,16 @@ fun inputWinningNumber(): List<Int> {
 }
 
 fun checkWinningNumberThrowException(userInput: String) {
+    throwLottoSizeException(userInput)
     throwLottoNumberRangeException(userInput)
+}
+
+fun throwLottoSizeException(userInput: String) {
+    val numbers = userInput.split(',').map { it.toInt() }
+    if (numbers.size != 6) {
+        println("[ERROR] 로또 번호는 6개의 숫자여야 합니다.")
+        throw IllegalArgumentException()
+    }
 }
 
 fun throwLottoNumberRangeException(userInput: String) {
