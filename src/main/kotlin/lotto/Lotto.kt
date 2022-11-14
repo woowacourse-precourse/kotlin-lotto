@@ -15,7 +15,12 @@ data class __Lotto__(val repeats: Int) {
     private fun setLottoNum(): List<Int> {
         var lottoNum = mutableSetOf<Int>()
         while (lottoNum.size < 6) lottoNum += (1..45).random() //lottoNum += Randoms.pickNumberInRange(1, 45)
-        return lottoNum.toList()
+        return lottoNum.toList().sorted()
+    }
+
+    public fun printBuyLotto() {
+        println("${idx.size}개를 구매했습니다.")
+        idx.forEach { Lotto(it).printLotto() }
     }
 }
 
@@ -26,5 +31,5 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.all { it in 1..45 }) { "[Error] : 1~45 사이의 숫자가 아닙니다" }
     }
 
-    // TODO: 추가 기능 구현
+    fun printLotto() = println(numbers)
 }
