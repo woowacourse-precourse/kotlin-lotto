@@ -54,7 +54,7 @@ object ExceptionHandler {
         if (!isOnlyInt(money) || !isDivideBy1000(money.toInt())) {
             throw IllegalArgumentException("checkInputMoney 잘못된 입력입니다.")
         }
-        return false
+        return true
     }
 
     private fun isDivideBy1000(money: Int): Boolean {
@@ -70,11 +70,12 @@ object ExceptionHandler {
         return true
     }
 
-    fun checkBonusNumber(number: String, winningNumberList: List<Int>) {
+    fun checkBonusNumber(number: String, winningNumberList: List<Int>): Boolean {
         if(!isOnlyInt(number)
                 || !isInRange(number)
                 || winningNumberList.contains(number.toInt())){
             throw IllegalArgumentException("checkBonusNumber 잘못된 입력입니다.")
         }
+        return true
     }
 }
