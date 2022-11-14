@@ -9,7 +9,7 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.filter { winningNumbers.contains(it) }.size
     }
 
-    fun checkBonusNumberMatching(bonusNumebr: Int): Boolean {
-        return numbers.contains(bonusNumebr)
+    fun checkBonusNumberMatching(bonusNumber: Int): Boolean {
+        return numbers.contains(bonusNumber)
     }
 }
