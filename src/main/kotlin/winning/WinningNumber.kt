@@ -28,12 +28,9 @@ class WinningNumber {
     }
 
     private fun checkNumberFormat(input: List<String>?) {
-        try {
-            input?.forEach { it ->
-                it.toInt()
-            }
-        } catch (e: NumberFormatException) {
-            require(false) {
+        input?.forEach { it ->
+            val chk = it.toIntOrNull()
+            require(chk != null) {
                 Error.NUMBER_FORMAT_ERROR.message
             }
         }

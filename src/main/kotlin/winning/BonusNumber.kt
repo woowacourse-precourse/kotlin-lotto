@@ -21,12 +21,9 @@ class BonusNumber {
     }
 
     private fun checkNumberFormat(input: String?) {
-        try {
-            input?.toInt()
-        } catch (e: NumberFormatException) {
-            require(false) {
-                Error.NUMBER_FORMAT_ERROR.message
-            }
+        val chk = input?.toIntOrNull()
+        require(chk != null){
+            Error.NUMBER_FORMAT_ERROR.message
         }
     }
 
