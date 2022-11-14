@@ -11,10 +11,12 @@ fun purchaseChecker(): Int {
     val purchase = readLine().trim()
     try {
         if (purchase.toInt() % Price.STANDARD.price != 0) {
-            throw IllegalArgumentException(StringResource.REMAINDER.resource)
+            println(StringResource.REMAINDER.resource)
+            return -1
         }
     } catch (e: NumberFormatException) {
-        throw IllegalArgumentException(StringResource.NUMBERERROR.resource)
+        println(StringResource.NUMBERERROR.resource)
+        return -1
     }
 
     return purchase.toInt()
@@ -25,8 +27,10 @@ fun lotteryChecker(): List<Int> {
     val input = readLine().trim().split(",")
     val lotteryNumbers = mutableListOf<Int>()
     input.forEach {
-        if (it.toIntOrNull() == null)
-            throw IllegalArgumentException(StringResource.NUMBERERROR.resource)
+        if (it.toIntOrNull() == null) {
+            println(StringResource.NUMBERERROR.resource)
+            return listOf()
+        }
         lotteryNumbers.add(it.toInt())
     }
 
@@ -39,21 +43,27 @@ fun bonusChecker(lotteryNumbers: List<Int>): Int {
     try {
         bonusNumber = readLine().trim().toInt()
         if (lotteryNumbers.contains(bonusNumber)) {
-            throw IllegalArgumentException(StringResource.DUPLICATE.resource)
+            println(StringResource.DUPLICATE.resource)
+            return -1
         }
         if (bonusNumber !in NumberRange.START.number..NumberRange.END.number) {
-            throw IllegalArgumentException(StringResource.RANGEERROR.resource)
+            println(StringResource.RANGEERROR.resource)
+            return -1
         }
     } catch (e: NumberFormatException) {
-        throw IllegalArgumentException(StringResource.NUMBERERROR.resource)
+        println(StringResource.NUMBERERROR.resource)
+        return -1
     }
     return bonusNumber
 }
 
 fun main() {
     val purchase = purchaseChecker()
+    if (purchase == -1) return
     val lotteryNumbers = lotteryChecker()
+    if (lotteryNumbers.isEmpty()) return
     val bonusNumber = bonusChecker(lotteryNumbers)
+    if (bonusNumber == -1) return
     val lotto = Lottery(purchase, Lotto(lotteryNumbers), bonusNumber)
 
     lotto.printQuickPick()
