@@ -28,11 +28,25 @@ fun stage2(price:Int): Any {
         -1
     }
 }
+fun stage3(): Any {
+    println(CONSTANT.STAGE.WINNINGINPUT.message)
+    val inputWinning = Console.readLine()
+    val inputWinningList = inputWinning.split(",")
+    return try {
+        val winning = LottoGenerator().checkUserInputLotto(inputWinningList)
+        println(winning.returnLottoNumbers())
+        return winning
+    } catch (_: IllegalArgumentException) {
+        -1
+    }
+}
+
 fun main() {
     val price = stage1()
     if (price == -1) return
     val lottos = stage2(price)
-    if (lottos==-1) return
-
+    if (lottos == -1) return
+    val winning = stage3()
+    if (winning == -1) return
 
 }
