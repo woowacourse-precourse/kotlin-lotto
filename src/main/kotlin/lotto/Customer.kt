@@ -21,4 +21,8 @@ class Customer (private val spendMoney: Int){
     fun setSelectedLottoList(value: List<List<Int>>){
         this.selectedLottoList = value
     }
+
+    fun getSelectedLottoList():List<List<Int>>{
+        return this.selectedLottoList
+    }
 }

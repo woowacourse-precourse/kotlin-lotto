@@ -11,7 +11,10 @@ class LottoSimulator {
             val lottoAnswerNumberInputHandler = LottoAnswerNumberInputHandler()
             lottoNumberMaker.setLottoCount(customer.getCustomerMoney())
             customer.setSelectedLottoList(lottoNumberMaker.makeLottoList())
-            val lotto = Lotto(lottoAnswerNumberInputHandler.getLottoAnswer())
+            val answer= lottoAnswerNumberInputHandler.getLottoAnswer()
+            val bonusNumber =  LottoBonusNumberInputHandler(answer).getBonusNumber()
+            val lotto = Lotto(answer)
+            val lottoResult =  lotto.checkLottoAnswer(customer.getSelectedLottoList())
         }
     }
 }

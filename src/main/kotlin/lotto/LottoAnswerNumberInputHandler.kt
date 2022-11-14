@@ -11,7 +11,6 @@ class LottoAnswerNumberInputHandler {
         return res.map { it.toInt() }
     }
 
-
     fun inputValidation(input: List<String>) {
         checkOnlyNumber(input)
         checkMinusInput(input)
@@ -34,10 +33,10 @@ class LottoAnswerNumberInputHandler {
         }
     }
 
-    private fun checkOnlyNumber(input: List<String>){
+    private fun checkOnlyNumber(input: List<String>) {
         val regexOnlyNumber = Regex("-?\\d+(\\.\\d+)?")
-        for(num in input){
-            if(!regexOnlyNumber.matches(num)){
+        for (num in input) {
+            if (!regexOnlyNumber.matches(num)) {
                 throw IllegalArgumentException(Constants.ERROR_ONLY_NUMBER)
             }
         }

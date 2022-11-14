@@ -7,4 +7,5 @@ object Constants {
     const val ERROR_DIVIDE_UNIT = "[ERROR] 구매 금액은 천으로 나누어져야 합니다"
     const val ERROR_MINUS_LOTTO_INPUT = "[ERROR] 로또 당첨번호는 음수가 될 수 없습니다"
     const val ERROR_OUT_OF_RANGE = "[ERROR] 로또 당첨번호는 1-45사이의 숫자여야 합니다"
+    const val ERROR_DUPLICATE = "[ERROR] 중복되는 번호 입력됨"
 }
