@@ -88,4 +88,15 @@ internal class WinningLotteryTest {
         }.isInstanceOf(IllegalArgumentException::class.java)
             .hasMessage("[ERROR] 숫자가 아닙니다. 숫자로 입력해주세요.")
     }
+
+    @Test
+    fun `보너스 번호가 당첨번호와 중복이 되는 경우`() {
+        val input = "1,2,3,4,5,6"
+        val bonus = "1"
+        Assertions.assertThatThrownBy {
+            val winningLottery = WinningLottery(input, bonus)
+        }.isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage("[ERROR] 복권 숫자에 중복값이 존재합니다.")
+
+    }
 }

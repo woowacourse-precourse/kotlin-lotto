@@ -34,6 +34,7 @@ class WinningLottery(private val winningLottery: String, private val bonus: Stri
     private fun validateBonusNumber(bonus: String) {
         require(bonus.all { it.isDigit() }) { ERROR_NOT_NUMBERS }
         require(bonus.toInt() in LOTTO_MIN_RANGE..LOTTO_MAX_RANGE) { ERROR_NOT_NUMBER_IN_RANGE }
+        require(!winningLottery.contains(bonus)) { ERROR_NUMBER_DUPLICATE }
     }
 
     private fun validateNumbers(numbers: List<String>): List<String> {
