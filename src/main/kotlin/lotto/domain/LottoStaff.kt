@@ -13,9 +13,9 @@ class LottoStaff() {
         return Lotto(numbers.sorted())
     }
 
-    fun generateLotteries(lottoCount:Int):List<Lotto>{
-        val lotteries= mutableListOf<Lotto>()
-        for (i in 0 until lottoCount){
+    fun generateLotteries(lottoCount: Int): List<Lotto> {
+        val lotteries = mutableListOf<Lotto>()
+        for (i in 0 until lottoCount) {
             lotteries.add(generateLotto())
         }
         return lotteries
@@ -29,8 +29,17 @@ class LottoStaff() {
         return count
     }
 
-    fun checkBonusNumber(lottoNumbers: List<Int>,bonusNUmber:Int):Boolean{
+    fun checkBonusNumber(lottoNumbers: List<Int>, bonusNUmber: Int): Boolean {
         return lottoNumbers.contains(bonusNUmber)
+    }
+
+    fun checkPrize(matchingNumber: Int, isBonusNumberMatch: Boolean):Prize {
+        if (matchingNumber == 6) return Prize.FIRST
+        if (matchingNumber == 5 && isBonusNumberMatch) return Prize.SECOND
+        if (matchingNumber == 5 && !isBonusNumberMatch) return Prize.THIRD
+        if (matchingNumber == 4) return Prize.FOURTH
+        if (matchingNumber == 3) return Prize.FIFTH
+        return Prize.NOTHING
     }
 
     companion object {
