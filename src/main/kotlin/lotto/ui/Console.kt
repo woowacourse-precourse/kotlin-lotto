@@ -1,6 +1,26 @@
 package lotto.ui
 
+import lotto.error.ErrorMessages
+import camp.nextstep.edu.missionutils.Console as ConsoleUtil
+
+private typealias ConsoleError = ErrorMessages.ConsoleEnum
+
 object Console {
+
+    fun requestPurchaseAmount(): Int {
+        println(Message.InputPurchaseAmount)
+        return readLine().replace(",", "").toIntOrThrow()
+    }
+
+    private fun String.toIntOrThrow(): Int {
+        return requireNotNull(toIntOrNull()) { ConsoleError.NotValidInteger }
+    }
+
+    private fun readLine(): String {
+        val input = ConsoleUtil.readLine()
+        println("$input\n")
+        return input
+    }
 
     enum class Message(vararg args: String) {
 
