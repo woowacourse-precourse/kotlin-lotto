@@ -1,5 +1,7 @@
 package lotto
 
+import java.text.DecimalFormat
+
 class LottoWin {
 
     private var wonLotto = mutableListOf<Int>(0,0,0,0,0)
@@ -31,6 +33,7 @@ class LottoWin {
                 else -> {}
             }
         }
+        printWinStats(wonLotto)
         return prize
     }
 
@@ -57,6 +60,30 @@ class LottoWin {
             3 -> LottoPrize.FIFTH
             else -> LottoPrize.NONE
         }
+    }
+
+    fun printWinStats(wonLotto: List<Int>) {
+        val dec = DecimalFormat("#,###")
+        print("\n당첨 통계\n" + "---\n")
+        var i = 0
+        LottoPrize.values().forEachIndexed { index, winStats ->
+            if(index < 5) {
+                println("${winStats.matchCount}개 일치${winStats.bonusBall} (${dec.format(winStats.prize)}원) - ${wonLotto[i++]}개")
+            } else if(index > 5) {
+                return
+            }
+        }
+    }
+
+    fun printProfitRate(lottoPurchasePrice: Int, winPrize: Int) {//수익률 계산
+        var profitRate : Double = (winPrize.toDouble() * 100)/lottoPurchasePrice.toDouble()
+        val saveRoundDigit = roundDigit(profitRate, 1)
+        println("총 수익률은 $saveRoundDigit%입니다.")
+    }
+
+    // 반올림 함수
+    fun roundDigit(number: Double, digits: Int): Double {
+        return Math.round(number * Math.pow(10.0, digits.toDouble())) / Math.pow(10.0, digits.toDouble())
     }
 
 }
