@@ -14,9 +14,12 @@ class WinningStatistics(lotteries: List<Lotto>, winningNumber: WinningNumber) {
             winningCounts[winningNumber.winningResult(it)] =
                 winningCounts[winningNumber.winningResult(it)]!! + 1
         }
-        this.yields = totalRevenue().multiply(BigDecimal(100))
-            .divide(BigDecimal(lotteries.size).multiply(BigDecimal(LottoShop.lottoPrice())), 1, RoundingMode.HALF_EVEN)
+        this.yields = calculateYields(lotteries)
     }
+
+    private fun calculateYields(lotteries: List<Lotto>): BigDecimal =
+        totalRevenue().multiply(BigDecimal(100))
+            .divide(BigDecimal(lotteries.size).multiply(BigDecimal(LottoShop.lottoPrice())), 1, RoundingMode.HALF_EVEN)
 
     private fun totalRevenue() =
         winningCounts.entries.sumOf { BigDecimal(it.key.winnings).multiply(BigDecimal(it.value)) }
