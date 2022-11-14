@@ -79,9 +79,9 @@ class WinningStatisticsTest : NsTest() {
         LottoWin.NUM5.number = 5
         LottoWin.NUM6.number = 6
         LottoWin.BONUS.number = 7
-        val lottoes =
+        val lottos =
             listOf(listOf(1, 2, 3, 4, 5, 6), listOf(1, 2, 3, 7, 8, 9), listOf(1, 2, 3, 5, 6, 7))
-        WinningStatistics.calculateWin(lottoes)
+        WinningStatistics.calculateWin(lottos)
         assertThat(WinningStatistics.WIN3.count).isEqualTo(1)
         assertThat(WinningStatistics.WIN5Bonus.count).isEqualTo(1)
         assertThat(WinningStatistics.WIN6.count).isEqualTo(1)
