@@ -40,6 +40,8 @@ class LottoController {
         println(Price.FIVE_WITH_BONUS.reward + sameFiveWithBonus + "개")
         println(Price.SIX.reward + sameSix + "개")
 
+
+        println("총 수익률은 "+"%.1f".format(countYield().toDouble() / money.toDouble() * 100) + "%입니다.")
     }
 
     fun arrangeResult( bonusNum: Int) {
@@ -50,29 +52,32 @@ class LottoController {
             when (count) {
                 3 -> {
                     sameThree++
-                    println("3개적립")
+
                 }
                 4 -> {
                     sameFour++
-                    println("4개적립")
+
                 }
                 5 -> {
                     if (Lotto(myLottoGroup[i]).countSameWithBonus(myLottoGroup[i], bonusNum)) {
                         sameFiveWithBonus++
-                        println("5개 보너스 적립")
+
                     }
                     if (!Lotto(myLottoGroup[i]).countSameWithBonus(myLottoGroup[i], bonusNum)) {
-                        sameFiveWithBonus++
-                        println("5개 보너스 적립")
+                        sameFive++
+
                     }
                 }
                 6 -> {
                     sameSix++
-                    println("6개적립")
                 }
             }
 
         }
+    }
+
+    fun countYield(): Int {
+        return (sameThree * 5000) + (sameFour * 50000) + (sameFive *1500000 ) + (sameFiveWithBonus * 30000000) + (sameSix * 2000000000)
     }
 
 }

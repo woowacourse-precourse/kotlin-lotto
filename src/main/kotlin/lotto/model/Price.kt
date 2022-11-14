@@ -5,7 +5,7 @@ enum class Price(val reward : String) {
     FOUR("4개 일치 (50,000원) - "),
     FIVE("5개 일치 (1,500,000원) - "),
     FIVE_WITH_BONUS("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
-    SIX("6개 일치 (2,000,000,000원) - 0"),
+    SIX("6개 일치 (2,000,000,000원) - "),
     COUNT("개를 구매했습니다. "),
     INPUT_PURCHASE_CENTENCE("구입금액을 입력해 주세요."),
     INPUT_WINNING_NUMBER("당첨 번호를 입력해 주세요."),
