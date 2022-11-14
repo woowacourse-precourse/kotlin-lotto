@@ -27,14 +27,14 @@ enum class LottoWin(var number: Int) {
         }
 
         fun inputNumbers(numbers: String) {
-            val numbers = numbers.split(",")
-            numbersException(numbers)
-            NUM1.number = numbers[0].toInt()
-            NUM2.number = numbers[1].toInt()
-            NUM3.number = numbers[2].toInt()
-            NUM4.number = numbers[3].toInt()
-            NUM5.number = numbers[4].toInt()
-            NUM6.number = numbers[5].toInt()
+            val castingNumbers = numbers.split(",")
+            numbersException(castingNumbers)
+            NUM1.number = castingNumbers[0].toInt()
+            NUM2.number = castingNumbers[1].toInt()
+            NUM3.number = castingNumbers[2].toInt()
+            NUM4.number = castingNumbers[3].toInt()
+            NUM5.number = castingNumbers[4].toInt()
+            NUM6.number = castingNumbers[5].toInt()
         }
 
         private fun numbersException(numbers: List<String>) {
