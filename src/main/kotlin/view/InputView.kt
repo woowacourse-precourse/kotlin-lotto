@@ -10,6 +10,9 @@ class InputView {
     private val MESSAGE_WINNING_NUMBER = "당첨 번호를 입력해 주세요."
     private val ERROR_MESSAGE_WINNING_NUMBER = "[ERROR] 당첨 번호 규칙에 맞지 않습니다."
 
+    private val MESSAGE_BONUS_NUMBER = "보너스 번호를 입력해 주세요."
+    private val ERROR_MESSAGE_BONUS_NUMBER = "[ERROR] 보너스 번호 규칙에 맞지 않습니다."
+
     // 구입할 금액 입력
     fun inputMoney(): Long {
         println(MESSAGE_HOW_MUCH_BUY_TICKET)
@@ -45,6 +48,18 @@ class InputView {
         }
 
         throw IllegalArgumentException("$ERROR_MESSAGE_WINNING_NUMBER 입력 값: $winningNumber")
+    }
+
+    fun inputBonusNumber(): Int{
+        println("\n$MESSAGE_BONUS_NUMBER")
+        // todo cosole readLine 체인지
+        val bonusNumber = readLine()!!
+        try {
+            if (bonusNumber.toInt() in 1..45) return bonusNumber.toInt()
+        }catch (e: Exception){
+            throw IllegalArgumentException("$ERROR_MESSAGE_BONUS_NUMBER 입력 값: $bonusNumber")
+        }
+        throw IllegalArgumentException("$ERROR_MESSAGE_BONUS_NUMBER 입력 값: $bonusNumber")
     }
 
 }

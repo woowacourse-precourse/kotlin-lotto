@@ -22,8 +22,10 @@ fun main() {
     outputView.outputListOfLotto(availableTickets)
 
     // 담청 번호 입력
-    inputView.inputWinningNumber()
+    val winningNumber = inputView.inputWinningNumber()
 
+    // 보너스 번호 입력
+    val bonusNumber = inputView.inputBonusNumber()
 
     //val lotto = Lotto(list)
 
