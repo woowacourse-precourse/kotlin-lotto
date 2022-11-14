@@ -14,8 +14,16 @@ fun main() {
     printWinningRate(answerList, money)
 }
 
+enum class Message(val message: String) {
+    INPUT_MONEY("구입금액을 입력해 주세요."),
+    COUNT("개를 구매했습니다."),
+    INPUT_WINNING_NUM("당첨 번호를 입력해 주세요."),
+    INPUT_BONUS_NUM("보너스 번호를 입력해 주세요."),
+    RATE("당첨 통계");
+}
+
 fun inputMoney(): Int {
-    println("구입금액을 입력해 주세요.")
+    println(Message.INPUT_MONEY.message)
     var money = try {
         Console.readLine().toInt()
     } catch (e: NumberFormatException) {
@@ -31,7 +39,7 @@ fun inputMoney(): Int {
 
 fun printLottoConut(money: Int): Int {
     var lottoCount = money / 1000
-    println("\n${lottoCount}개를 구매했습니다.")
+    println("\n${lottoCount}${Message.COUNT.message}")
     return lottoCount
 }
 
@@ -47,7 +55,7 @@ fun publishLotto(lottoCount: Int): Array<IntArray> {
 }
 
 fun inputWinningNumber(): List<String> {
-    println("\n당첨 번호를 입력해 주세요.")
+    println("\n${Message.INPUT_WINNING_NUM.message}")
     var answerNum = Console.readLine().split(",")
     answerNum.forEach {
         if (it.toInt() < 1 || it.toInt() > 45) {
@@ -66,7 +74,7 @@ fun inputWinningNumber(): List<String> {
 }
 
 fun inputBonusNumber(): Int {
-    println("\n보너스 번호를 입력해 주세요.")
+    println("\n${Message.INPUT_BONUS_NUM.message}")
     var bonusNum = Console.readLine().toInt()
     if (bonusNum < 1 || bonusNum > 45) {
         throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
