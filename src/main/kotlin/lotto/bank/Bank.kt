@@ -4,7 +4,7 @@ import lotto.Lotto
 
 interface Bank {
 
-    fun calcPrizeGrade()
+    fun calcPrizeGrade(receivedMainLottoNumbers: List<Int>, receivedBonusLottoNumber: Int, lotto: Lotto)
 
     fun calcWinningMainLottoNumbers(receivedMainLottoNumbers: List<Int>, lotto: Lotto): Int
 
