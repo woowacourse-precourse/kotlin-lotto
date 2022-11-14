@@ -1,6 +1,7 @@
 package lotto.service
 
 import lotto.domain.LottoShop
+import lotto.domain.WinningNumber
 import lotto.domain.WinningStatistics
 import lotto.repository.LottoRepository
 import lotto.service.dto.LottoDto
@@ -16,7 +17,8 @@ object LottoService {
 
     fun getWinningStatistics(winningNumbers: List<Int>, bonusNumber: Int): WinningStatisticsDto {
         val lotteries = LottoRepository.findAll()
-        val winningStatistics = WinningStatistics(lotteries, winningNumbers, bonusNumber)
+        val winningNumber = WinningNumber(winningNumbers, bonusNumber)
+        val winningStatistics = WinningStatistics(lotteries, winningNumber)
         return WinningStatisticsDto(winningStatistics)
     }
 }
