@@ -78,4 +78,7 @@ fun bonusNumInputCheck() {
     if (bonusNum < 1 || bonusNum > 45 || !checkDigit(bonusNum.toString())) {
         throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
     }
+    if (lottoWinNum.contains(bonusNum)) {
+        throw IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복돼서는 안됩니다.")
+    }
 }
