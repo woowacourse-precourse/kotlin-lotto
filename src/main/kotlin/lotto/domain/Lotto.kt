@@ -6,20 +6,31 @@ data class Lotto(private val numbers: List<Int>) {
         validateLottoNumber(numbers)
     }
 
-    // TODO: 추가 기능 구현
     fun getLottoNumbers(): List<Int> {
         return numbers
     }
 
     private fun validateLottoNumber(numbers: List<Int>) {
+        if (!isNumber(numbers)) {
+            throw IllegalArgumentException()
+        }
         if (!isRepeated(numbers)) {
-            throw IllegalArgumentException("")
+            throw IllegalArgumentException()
         }
     }
 
     private fun isRepeated(numbers: List<Int>): Boolean {
         if (numbers.distinct().count() != 6) {
             return false
+        }
+        return true
+    }
+
+    private fun isNumber(numbers: List<Int>): Boolean {
+        for (number in numbers) {
+            if (!number.toString().all { it.isDigit() }) {
+                return false
+            }
         }
         return true
     }
