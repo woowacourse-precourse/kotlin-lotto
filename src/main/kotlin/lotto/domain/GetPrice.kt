@@ -25,7 +25,7 @@ object GetPrice {
     }
 
     private fun isPrice(number: Int) {
-        if(number%1000!=0) {
+        if(number%1000!=0 || number<1000) {
             print("[ERROR] 금액은 1000원 단위만 입력 가능합니다.")
             throw NoSuchElementException()
         }
