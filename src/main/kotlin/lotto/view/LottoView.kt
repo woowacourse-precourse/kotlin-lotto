@@ -44,6 +44,6 @@ class LottoView {
     }
 
     fun printRevenue(revenue: Float){
-        println("\n총 수익률은 " +String.format("%.2f", revenue) +"% 입니다.")
+        println("\n총 수익률은 " +String.format("%.1f", revenue) +"% 입니다.")
     }
 }
