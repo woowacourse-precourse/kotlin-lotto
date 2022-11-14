@@ -10,23 +10,23 @@ class PriceChecker(priceString:String) {
         try {
             return Integer.parseInt(price)
         } catch (e: IllegalArgumentException){
-            println(Constant.ErrorMessage.CheckPriceIntError.message)
+            println(CONSTANT.ERRORMESSAGE.CHECKPRICEINTERROR.message)
             throw e
         }
     }
     private fun checkPriceUnderZero(price: Int){
         try {
-            require(price > Constant.Price.MIN_PRICE.params)
+            require(price > CONSTANT.PRICE.MIN_PRICE.params)
         } catch (e: IllegalArgumentException){
-            println(Constant.ErrorMessage.CheckPriceUnderZeroError.message)
+            println(CONSTANT.ERRORMESSAGE.CHECKPRICEUNDERZEROERROR.message)
             throw e
         }
     }
     private fun checkPriceThousandsUnit(price: Int){
         try {
-            require(price % Constant.Price.UNIT.params == 0)
+            require(price % CONSTANT.PRICE.UNIT.params == 0)
         } catch (e: IllegalArgumentException){
-            println(Constant.ErrorMessage.CheckPriceThousandsUnitError.message)
+            println(CONSTANT.ERRORMESSAGE.CHECKPRICETHOUSANDSUNITERROR.message)
             throw e
         }
     }
