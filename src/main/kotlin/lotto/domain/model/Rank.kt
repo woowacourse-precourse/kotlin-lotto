@@ -1,25 +1,31 @@
 package lotto.domain.model
 
-import lotto.controller.LottoController.Companion.ERROR_MESSAGE
+import lotto.utils.Constants.ERROR_MESSAGE
+import lotto.utils.Constants.PRIZE_FIVE
+import lotto.utils.Constants.PRIZE_FIVE_BONUS
+import lotto.utils.Constants.PRIZE_FOUR
+import lotto.utils.Constants.PRIZE_SIX
+import lotto.utils.Constants.PRIZE_THREE
+import lotto.utils.Constants.ZERO
 
 enum class Rank(private val correctCnt: Int) {
     CORRECT_ZERO(0) {
-        override val prize: Int = 0
+        override val prize: Int = ZERO
     },
     CORRECT_THREE(3) {
-        override val prize: Int = 5_000
+        override val prize: Int = PRIZE_THREE
     },
     CORRECT_FOUR(4) {
-        override val prize: Int = 50_000
+        override val prize: Int = PRIZE_FOUR
     },
     CORRECT_FIVE(5) {
-        override val prize: Int = 1_500_000
+        override val prize: Int = PRIZE_FIVE
     },
     CORRECT_FIVE_BONUS(5) {
-        override val prize: Int = 30_000_000
+        override val prize: Int = PRIZE_FIVE_BONUS
     },
     CORRECT_SIX(6) {
-        override val prize: Int = 2_000_000_000
+        override val prize: Int = PRIZE_SIX
     };
 
     abstract val prize: Int
@@ -29,8 +35,9 @@ enum class Rank(private val correctCnt: Int) {
     fun getCount(): Int = this.correctCnt
 
     companion object {
+        private const val MIN_CORRECT_COUNT = 3
         fun valueOf(correctCnt: Int, checkBonus: Boolean): Rank {
-            if (correctCnt < 3) {
+            if (correctCnt < MIN_CORRECT_COUNT) {
                 return CORRECT_ZERO
             }
             if (CORRECT_FIVE.compareCnt(correctCnt) && checkBonus) {

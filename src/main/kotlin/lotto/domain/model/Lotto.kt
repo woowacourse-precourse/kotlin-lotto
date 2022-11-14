@@ -1,8 +1,12 @@
 package lotto.domain.model
 
 import camp.nextstep.edu.missionutils.Randoms
-import lotto.controller.LottoController.Companion.ERROR_MESSAGE
-import lotto.domain.model.Prize.*
+import lotto.utils.Constants.LOTTO_LENGTH
+import lotto.utils.Constants.LOTTO_LENGTH_MUST_SIX_TEXT
+import lotto.utils.Constants.LOTTO_NOT_DUPLICATE_TEXT
+import lotto.utils.Constants.LOTTO_NUM_IN_RANGE_TEXT
+import lotto.utils.Constants.MAX_LOTTO_NUM
+import lotto.utils.Constants.MIN_LOTTO_NUM
 
 class Lotto(private val numbers: List<Int>) {
     init {
@@ -16,26 +20,16 @@ class Lotto(private val numbers: List<Int>) {
     fun contains(number: Int) = numbers.contains(number)
 
     private fun checkValidation() {
-        require(numbers.size == 6) {
-            "$ERROR_MESSAGE 로또의 길이는 6이여야 합니다."
+        require(numbers.size == LOTTO_LENGTH) {
+            LOTTO_LENGTH_MUST_SIX_TEXT
         }
-        require(numbers.distinct().size == 6) {
-            "$ERROR_MESSAGE 중복된 숫자가 없어야 합니다."
+        require(numbers.distinct().size == LOTTO_LENGTH) {
+            LOTTO_NOT_DUPLICATE_TEXT
         }
         numbers.forEach { number ->
-            require(number in 1..45) {
-                "$ERROR_MESSAGE 중복된 숫자가 없어야 합니다."
+            require(number in MIN_LOTTO_NUM..MAX_LOTTO_NUM) {
+                LOTTO_NUM_IN_RANGE_TEXT
             }
-        }
-    }
-
-    fun getPrize(winningNum: List<Int>, bonusNum: Int): Int {
-        val correctCnt = numbers.count { winningNum.contains(it) }
-        return when (Prize.create(correctCnt)) {
-            CORRECT_THREE -> 5_000
-            CORRECT_FOUR -> 50_000
-            CORRECT_FIVE -> if (numbers.contains(bonusNum)) 30_000_000 else 1_500_000
-            CORRECT_SIX -> 2_000_000_000
         }
     }
 

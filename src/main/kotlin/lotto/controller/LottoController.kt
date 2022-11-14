@@ -14,6 +14,7 @@ class LottoController {
         val purchaseMoney = InputView.inputMoney()
         val purchaseLottos = lottoRepository.generateLottos(purchaseMoney)
         OutputView.purchasingLottos(purchaseLottos)
+        
         val winningLottery = WinningLottery(InputView.inputWinningNum(), InputView.inputBonusNum())
         val statistics = lottoRepository.calStatistics(winningLottery, purchaseLottos)
         val earningRate = lottoRepository.calEarningRate(purchaseMoney, statistics.sumOf { it.prize.toLong() })
@@ -28,8 +29,4 @@ class LottoController {
     }
 
 
-    companion object {
-        const val ERROR_MESSAGE = "[ERROR]"
-
-    }
 }

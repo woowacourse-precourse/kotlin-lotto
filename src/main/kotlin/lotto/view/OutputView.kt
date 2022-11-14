@@ -5,7 +5,6 @@ import lotto.domain.model.Rank
 import java.text.DecimalFormat
 
 object OutputView {
-    // TODO 출력을 담당하는 뷰
 
     fun purchasingLottos(lottos: List<Lotto>) {
         println("${lottos.size}개를 구매했습니다.")
