@@ -2,8 +2,6 @@ package lotto
 
 import kotlin.math.round
 
-const val ROUND_POSITION = 10
-
 class Consumer(private val money: Int) {
     val myLotto = mutableListOf<List<Int>>()
 
