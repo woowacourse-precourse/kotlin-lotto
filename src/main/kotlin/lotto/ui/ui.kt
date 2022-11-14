@@ -11,12 +11,13 @@ class ui {
             println("구입금액을 입력해 주세요.")
             money = Console.readLine().toInt()
             MoneyTypeException(money.toString())
+            moneyInputNotDivideException(money)
         } catch (e : IllegalArgumentException){
             println("[ERROR] 올바른 입력이 아닙니다.")
             control = 1
         }
+
         if (control == 1){ return 1 }
-        if (control == 0){ moneyInputNotDivideException(money) }
         return money
     }
 
