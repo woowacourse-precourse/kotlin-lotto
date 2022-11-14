@@ -39,7 +39,7 @@ class LottoMachine {
     }
 
     private fun checkDuplication(number: String) {
-        if (!winningNumbers.contains(number.toInt())) {
+        if (winningNumbers.contains(number.toInt())) {
             throw IllegalArgumentException(BONUS_DUPLICATED)
         }
     }
