@@ -1,6 +1,13 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Console
+
 class UI {
+
+    fun inputPurchasingAmount(): Long {
+        val purchasingAmount = Console.readLine().toLong()
+        return purchasingAmount
+    }
 
     companion object {
         const val REQUEST_INPUT_PURCHASING_AMOUNT = "구입금액을 입력해 주세요."
