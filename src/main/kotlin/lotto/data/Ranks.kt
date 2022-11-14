@@ -5,5 +5,5 @@ enum class Ranks(val rank:Int){
     SECOND(2),
     THIRD(3),
     FOURTH(4),
-    FIFTH(3);
+    FIFTH(5)
 }

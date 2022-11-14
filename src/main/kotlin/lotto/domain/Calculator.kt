@@ -12,7 +12,7 @@ class Calculator {
         return sumPrizes
     }
 
-    private fun prizeMoney(rank:Int): Int {
+    fun prizeMoney(rank:Int): Int {
         var prize = 0
         when (rank) {
             Ranks.FIRST.rank -> prize = Prizes.FIRST.money

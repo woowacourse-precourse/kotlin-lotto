@@ -1,6 +1,7 @@
 ## 기능 목록
 - [ ] 구매 금액 1000원당 1개의 로또를 발행한다 - createPerThousand()
 - [x] 로또 발행 시 1 ~ 45까지 중복되지 않는 6개의 숫자를 생성한다. - RandomGenerator#createRandomNumbers()
+- [ ] 개수를 받아 그 개수만큼 로또를 생성한다. - RandomGenerator#createRandomlottos()
   - [x] 당첨 번호가 몇 개 일치하는지 확인한다. - Compare#checkWinningNumbers()
   - [x] 보너스 번호가 일치하는지 확인한다. - Compare#checkBonusNumber()
 - [x] 번호 일치 개수로 몇 등 인지 확인한다. - Ranking#checkRanking()
@@ -14,7 +15,7 @@
 - [x] 당첨 번호 입력 받기 - InputUi#inputWinningNumbers()
 - [x] 보너스 번호 - InputUi#inputBonusNumber()
 - [x] 구매 개수 출력 - PrintUi#printPurchaseNum()
-- [ ] 로또 목록 출력 - PrintUi#printLottos()
+- [x] 로또 목록 출력 - PrintUi#printLottos()
 - [ ] 당첨 통계 출력 - PrintUi#printWinningStats()
 - [x] 입력 요구 메세지 출력 - PrintUi#pleaseInput()
 
