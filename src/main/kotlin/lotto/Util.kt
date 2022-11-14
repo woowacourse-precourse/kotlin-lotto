@@ -1,5 +1,6 @@
 package lotto
 
+
 import java.lang.IllegalArgumentException
 
 class Util {
@@ -52,4 +53,15 @@ class Util {
             throw IllegalArgumentException("[ERROR] 중복된 로또 번호가 존재합니다.")
         return false
     }
+
+    fun checkBonusNum(input:String, lottoNum: Lotto) : Boolean{
+        isNumInt(input)
+        var bonus = input.toInt()
+        isRightRange(listOf(bonus))
+        var numbers = lottoNum.getLottoNum().toMutableList<Int>()
+        numbers.add(bonus)
+        isOverlap(numbers.toList())
+        return true
+    }
+
 }

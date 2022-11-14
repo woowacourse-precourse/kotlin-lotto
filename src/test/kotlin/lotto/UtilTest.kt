@@ -51,13 +51,14 @@ class UtilTest {
         }
     }
 
-//    @Test
-//    fun checkBonusNumTest(){
-//        assertThat(checkBonusNum("1")).isEqualTo(true)
-//        assertThrows<IllegalArgumentException> {
-//            checkBonusNum("1,2")
-//            checkBonusNum("a")
-//            checkBonusNum("47")
-//        }
-//    }
+    @Test
+    fun checkBonusNumTest(){
+        val lotto = Lotto(listOf(2,3,4,5,6,7))
+        assertThat(util.checkBonusNum("1", lotto)).isEqualTo(true)
+        assertThrows<IllegalArgumentException> {
+            util.checkBonusNum("1,2", lotto)
+            util.checkBonusNum("a", lotto)
+            util.checkBonusNum("47", lotto)
+        }
+    }
 }
