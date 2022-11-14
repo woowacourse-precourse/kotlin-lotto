@@ -19,7 +19,8 @@ fun main() {
     println()
     println("당첨 번호를 입력해 주세요.")
     val pickedNum = cs.readLine()
-    val winningNum = validateWinningNum(pickedNum)
+    val inputNumbers = validateWinningNum(pickedNum)
+    val winningNum = getWinningNum(inputNumbers)
 }
 
 enum class ErrorCode(val message: String) {
@@ -55,8 +56,7 @@ fun validateAmount(amountPaid: String): Int{
     return price/1000
 }
 
-fun validateWinningNum(pickedNum: String): Lotto {
-    val winnerNum = mutableListOf<Int>()
+fun validateWinningNum(pickedNum: String): List<String> {
     val inputNumbers = pickedNum.split(",")
 
     for (valueIndex in inputNumbers.indices) {
@@ -67,12 +67,19 @@ fun validateWinningNum(pickedNum: String): Lotto {
         if (inputValue.toInt() > 45 || inputValue.toInt() < 1) {
             throw IllegalArgumentException(ErrorCode.NUMBER_RANGE_UNQUALIFIED.message)
         }
-        if(winnerNum.contains(inputValue.toInt())){
+    }
+    return inputNumbers
+}
+
+fun getWinningNum(inputNumbers: List<String>): Lotto {
+    val winnerNum = mutableListOf<Int>()
+    for (valueIndex in inputNumbers.indices) {
+        val inputValue = inputNumbers[valueIndex]
+        if (winnerNum.contains(inputValue.toInt())) {
             throw IllegalArgumentException(ErrorCode.NUMBER_REPEATED.message)
         }
         winnerNum.add(inputValue.toInt())
     }
     winnerNum.sort()
-
     return Lotto(winnerNum)
 }
