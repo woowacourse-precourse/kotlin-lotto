@@ -10,6 +10,7 @@ class LottoNumberRepository {
             val createLotto = createLottoNumber.createRandomLottoNumber()
             lottoRepository.add(createLotto)
         }
+
         return lottoRepository
     }
 

@@ -41,7 +41,6 @@ class InputView {
         }catch (e:Exception){
             throw IllegalArgumentException("$ERROR_MESSAGE_WINNING_NUMBER 입력 값: $winningNumber")
         }
-
         throw IllegalArgumentException("$ERROR_MESSAGE_WINNING_NUMBER 입력 값: $winningNumber")
     }
 
