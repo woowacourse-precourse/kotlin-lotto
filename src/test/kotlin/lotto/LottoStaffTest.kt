@@ -14,8 +14,8 @@ class LottoStaffTest {
     @BeforeEach
     fun setUp() {
         lottoStaff = LottoStaff()
-        winningNumbers = listOf<Int>(1,2,3,4,5,6)
-        lottoNumbers = listOf<Int>(3,5,7,9,11,13)
+        winningNumbers = listOf<Int>(1, 2, 3, 4, 5, 6)
+        lottoNumbers = listOf<Int>(3, 5, 7, 9, 11, 13)
         bonusNumber = 3
     }
 
@@ -25,20 +25,17 @@ class LottoStaffTest {
     }
 
     @Test
-    fun `몇개 번호 일치하는지 확인하는 테스트`(){
-        assertThat(lottoStaff.countMatchingNumber(lottoNumbers,winningNumbers)).isEqualTo(2)
+    fun `몇개 번호 일치하는지 확인하는 테스트`() {
+        assertThat(lottoStaff.countMatchingNumber(lottoNumbers, winningNumbers)).isEqualTo(2)
     }
 
     @Test
-    fun `보너스 번호가 일치하는지 확인하는 테스트`(){
-        assertThat(lottoStaff.checkBonusNumber(lottoNumbers,bonusNumber)).isTrue
+    fun `보너스 번호가 일치하는지 확인하는 테스트`() {
+        assertThat(lottoStaff.checkBonusNumber(lottoNumbers, bonusNumber)).isTrue
     }
 
     @Test
-    fun `수익률 확인하는 기능 테스트`(){
-        assertThat(lottoStaff.getProfit(5000,10000)).isEqualTo(50.0)
+    fun `수익률 확인하는 기능 테스트`() {
+        assertThat(lottoStaff.getProfit(5000, 10000)).isEqualTo(50.0)
     }
-
-
-
 }

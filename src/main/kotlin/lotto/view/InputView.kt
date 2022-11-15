@@ -6,7 +6,7 @@ import lotto.domain.Lotto
 
 class InputView {
 
-    val inputValidation = InputValidation()
+    private val inputValidation = InputValidation()
 
     fun getPurchasePrice(): Int {
         println(PURCHASE_PRICE_INPUT_MESSAGE)

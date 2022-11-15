@@ -19,9 +19,9 @@ data class PrizeResult(
 
     fun getTotalPrizeMoney(): Int {
         return (Prize.FIRST.prizeMoney * firstPlace
-        + Prize.SECOND.prizeMoney * secondPlace
-        + Prize.THIRD.prizeMoney * thirdPlace
-        + Prize.FOURTH.prizeMoney * fourthPlace
-        + Prize.FIFTH.prizeMoney * fifthPlace)
+                + Prize.SECOND.prizeMoney * secondPlace
+                + Prize.THIRD.prizeMoney * thirdPlace
+                + Prize.FOURTH.prizeMoney * fourthPlace
+                + Prize.FIFTH.prizeMoney * fifthPlace)
     }
 }

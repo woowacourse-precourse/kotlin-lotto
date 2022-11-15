@@ -6,7 +6,7 @@ import org.junit.jupiter.api.assertThrows
 
 class InputValidationTest {
 
-    private val inputValidation= InputValidation()
+    private val inputValidation = InputValidation()
 
     @Test
     fun `입력값이 정수가 아니라면 예외가 발생한다`() {
@@ -39,7 +39,7 @@ class InputValidationTest {
     @Test
     fun `보너스 번호가 당첨 번호와 중복 될 경우 예외 발생`() {
         assertThrows<IllegalArgumentException> {
-            inputValidation.checkWinningNumberContainBonusNumber(listOf(1,2,3,4,5),1)
+            inputValidation.checkWinningNumberContainBonusNumber(listOf(1, 2, 3, 4, 5), 1)
         }
     }
 }

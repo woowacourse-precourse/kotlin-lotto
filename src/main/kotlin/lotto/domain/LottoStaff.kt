@@ -8,7 +8,7 @@ class LottoStaff() {
         return amount / LOTTO_PRICE
     }
 
-    fun generateLotto(): Lotto {
+    private fun generateLotto(): Lotto {
         val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
         return Lotto(numbers.sorted())
     }
@@ -42,12 +42,13 @@ class LottoStaff() {
         return Prize.NOTHING
     }
 
-    fun roundDouble(value: Double): Double {
+    private fun roundDouble(value: Double): Double {
         return String.format("%.1f", value)
             .toDouble()
     }
 
-    fun getProfit(totalPrizeMoney: Int, purchasePrice: Int) = roundDouble((totalPrizeMoney.toDouble() / purchasePrice)*100)
+    fun getProfit(totalPrizeMoney: Int, purchasePrice: Int) =
+        roundDouble((totalPrizeMoney.toDouble() / purchasePrice) * 100)
 
     companion object {
         const val LOTTO_PRICE = 1000

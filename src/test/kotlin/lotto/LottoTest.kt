@@ -29,6 +29,4 @@ class LottoTest {
             Lotto(listOf(0, 2, 3, 4, 5, 46))
         }
     }
-
-
 }

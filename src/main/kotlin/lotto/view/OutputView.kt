@@ -15,17 +15,18 @@ class OutputView {
         }
         println()
     }
+
     fun printLottoPrizeResult(prizeResult: PrizeResult){
         println(LOTTO_RESULT_INTRO_OUTPUT_MESSAGE)
-        println("${FIFTH_PLACE_OUTPUT_MESSAGE} ${prizeResult.fifthPlace}개")
-        println("${FOURTH_PLACE_OUTPUT_MESSAGE} ${prizeResult.fourthPlace}개")
-        println("${THIRD_PLACE_OUTPUT_MESSAGE} ${prizeResult.thirdPlace}개")
-        println("${SECOND_PLACE_OUTPUT_MESSAGE} ${prizeResult.secondPlace}개")
-        println("${FIRST_PLACE_OUTPUT_MESSAGE} ${prizeResult.firstPlace}개")
+        println("$FIFTH_PLACE_OUTPUT_MESSAGE ${prizeResult.fifthPlace}개")
+        println("$FOURTH_PLACE_OUTPUT_MESSAGE ${prizeResult.fourthPlace}개")
+        println("$THIRD_PLACE_OUTPUT_MESSAGE ${prizeResult.thirdPlace}개")
+        println("$SECOND_PLACE_OUTPUT_MESSAGE ${prizeResult.secondPlace}개")
+        println("$FIRST_PLACE_OUTPUT_MESSAGE ${prizeResult.firstPlace}개")
     }
 
     fun printProfitPercentage(profitPercentage:Double){
-        println("${PROFIT_PERCENTAGE_OUTPUT_MESSAGE} ${profitPercentage}%입니다.")
+        println("$PROFIT_PERCENTAGE_OUTPUT_MESSAGE ${profitPercentage}%입니다.")
     }
 
     companion object{
