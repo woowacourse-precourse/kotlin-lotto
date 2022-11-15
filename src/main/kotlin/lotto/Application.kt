@@ -33,15 +33,16 @@ fun bonusSame(numbers: List<Int>, bonus: Int):Int{
     }
     return -1
 }
+fun checkSame(one:Int,two:Int,count:Int):Int{
+    if(one == two) return count+1
+    return count
+}
 
 fun checkGrade(numbers:List<Int>,userNum:List<String>,bonus: Int):Int{
     var count = 0
     for(i in 0 until 6) {
         for(j in 0 until 6) {
-            if (numbers[i] == userNum[j].toInt()) {
-                count++
-                break;
-            }
+            count = checkSame(numbers[i],userNum[j].toInt(),count)
         }
     }
     println(count)
