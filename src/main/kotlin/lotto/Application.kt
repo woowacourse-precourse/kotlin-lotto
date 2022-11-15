@@ -1,13 +1,10 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
-import camp.nextstep.edu.missionutils.Randoms
 import lotto.constants.*
 import java.lang.IllegalArgumentException
-import kotlin.math.round
 
 lateinit var user: User
-lateinit var lottoNums: List<Lotto>
 lateinit var lottoWinNums: LottoWinNums
 
 fun inputPurchasingAmount(): Int {
@@ -21,9 +18,9 @@ fun inputPurchasingAmount(): Int {
     return 0
 }
 
-fun makeLottoWinNumbers(): Int {
+fun makeLottoNumbers(): Int {
     try {
-        lottoNums = List(user.numOfLotto) { Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)) }
+        user.makeLottoNum()
     } catch (e: IllegalArgumentException) {
         return -1
     }
@@ -46,13 +43,14 @@ fun inputWinNumbers(): Int {
     return 0
 }
 
-fun printLottoWinNumbers() {
+fun printLottoNumbers() {
     println(user.numOfLotto.toString() + NUM_OF_LOTTO_MSG)
-    for (case in lottoNums) case.printLottoWinNum()
+    user.printLottoNum()
 }
 
 fun calcEarningRate(earningMoney:Long,purchaseMoney:Long):Double{
-    return round((earningMoney.toDouble()/purchaseMoney) *1000)/10
+    //return round((earningMoney.toDouble()/purchaseMoney) *1000)/10
+    return earningMoney.toDouble()/purchaseMoney.toDouble()*100
 }
 fun printResult() {
     println(WIN_RESULT_MSG)
@@ -63,24 +61,12 @@ fun printResult() {
 
 }
 
-fun calcResult() {
-    for (case in lottoNums) {
-        val caseNum = case.calcWin(lottoWinNums)
-
-        if (caseNum < 0) {
-            continue
-        }
-
-        user.winCase[caseNum]++
-        user.earningMoney += LottoWinCaseMoney.getPrizeMoney(caseNum)
-    }
-}
 
 fun main() {
     if (inputPurchasingAmount() == -1) return
-    if (makeLottoWinNumbers() == -1) return
-    printLottoWinNumbers()
+    if (makeLottoNumbers() == -1) return
+    printLottoNumbers()
     if (inputWinNumbers() == -1) return
-    calcResult()
+    user.calcResult()
     printResult()
 }

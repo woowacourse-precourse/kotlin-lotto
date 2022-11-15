@@ -9,7 +9,7 @@ const val WIN_RESULT_MSG = "당첨 통계\n" + "---"
 
 
 fun earningRateMSG(rate: Double): String {
-    if(rate>1){
+    if(rate>100){
         return "총 수익률은 ${rate.toLong()}%입니다."
     }
 

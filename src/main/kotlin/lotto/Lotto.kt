@@ -11,7 +11,7 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.count{ num-> num in 1..45 }==6){ MAKE_LOTTO_NUM_SCOPE_ERROR_MSG}
     }
 
-    fun printLottoWinNum() {
+    fun printLottoNum() {
         println(numbers.sorted().joinToString(", ", "[", "]"))
     }
 

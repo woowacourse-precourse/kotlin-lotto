@@ -1,12 +1,14 @@
 package lotto
 
-import lotto.constants.INPUT_PURCHASE_AMOUNT_ERROR_MSG
+import camp.nextstep.edu.missionutils.Randoms
+import lotto.constants.*
 
 
 class User(money: String) {
     val numOfLotto: Int
     var earningMoney: Long
     val purchaseMoney: Long
+    private lateinit var lottoNums: List<Lotto>
     var winCase= MutableList(5){0}
 
     init {
@@ -19,5 +21,24 @@ class User(money: String) {
         numOfLotto = (purchaseMoney / 1000).toInt()
         earningMoney = 0L
     }
+    fun makeLottoNum(){
+        lottoNums = List(numOfLotto) { Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)) }
+    }
+    fun printLottoNum(){
+        for (case in lottoNums) case.printLottoNum()
+    }
+    fun calcResult() {
+        for (case in lottoNums) {
+            val caseNum = case.calcWin(lottoWinNums)
+
+            if (caseNum < 0) {
+                continue
+            }
+
+            winCase[caseNum]++
+            earningMoney += LottoWinCaseMoney.getPrizeMoney(caseNum)
+        }
+    }
+
 
 }
