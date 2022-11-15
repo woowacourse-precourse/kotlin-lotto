@@ -84,7 +84,7 @@ fun buyLotto(){
 }
 
 fun userInputCheck(userInput: Int?){
-    var E = ExceptionExplain.WrongPayment
+    val E = ExceptionExplain.WrongPayment
 
     if (1 > userInput!!)
         E.checkAndThrowException()
