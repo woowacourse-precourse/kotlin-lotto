@@ -1,10 +1,7 @@
 package lotto.domain.controller.ticket
 
 import camp.nextstep.edu.missionutils.Randoms
-import lotto.domain.common.END_LOTTO_NUMBER
-import lotto.domain.common.LOTTO_NUMBER_COUNT
-import lotto.domain.common.START_LOTTO_NUMBER
-import lotto.domain.common.THOUSAND
+import lotto.domain.common.*
 import lotto.domain.controller.Controller
 import lotto.domain.model.ticket.Lotto
 import lotto.domain.model.ticket.LottoTicket
@@ -14,7 +11,7 @@ import lotto.ui.view.ticket.BuyTicketView
 class BuyTicketController(
     private val buyTicketView: BuyTicketView,
     private val lottoTicket: LottoTicket
-): Controller() {
+) : Controller() {
     private val _lottos = mutableListOf<Lotto>()
 
     override fun run() {
@@ -34,24 +31,20 @@ class BuyTicketController(
 
     private fun enterTicketMoney() {
         val inputTicketMoney = buyTicketView.enterTicketMoney()
-
-        if (InputValidator.validateTicketMoney(inputTicketMoney)) {
-            lottoTicket.ticketMoney = inputTicketMoney.toInt()
-            lottoTicket.ticketCount = lottoTicket.ticketMoney / THOUSAND
-        }
-        else {
-            buyTicketView.printErrorMessage()
-        }
+        checkTicketMoney(inputTicketMoney)
     }
 
-    private fun printTicketCount() {
-        buyTicketView.printTicketCountMessage(ticketCount = lottoTicket.ticketCount)
+    private fun checkTicketMoney(inputTicketMoney: String) {
+        val errorType = InputValidator.validateTicketMoney(inputTicketMoney)
+        buyTicketView.printErrorMessage(errorType)
+
+        updateTicketInfo(inputTicketMoney.toInt(), inputTicketMoney.toInt() / THOUSAND)
     }
 
-    private fun printLottoTicketNumber() {
-        lottoTicket.lottos.forEach { lotto ->
-            val lottoNumbers = lotto.getLottoNumbers().joinToString(", ")
-            buyTicketView.printLottoNumberMessage(lottoNumbers = lottoNumbers)
+    private fun updateTicketInfo(ticketMoney: Int, ticketCount: Int) {
+        lottoTicket.apply {
+            this.ticketMoney = ticketMoney
+            this.ticketCount = ticketCount
         }
     }
 
@@ -67,5 +60,16 @@ class BuyTicketController(
             _lottos.add(lotto)
         }
         lottoTicket.lottos = _lottos.toList()
+    }
+
+    private fun printTicketCount() {
+        buyTicketView.printTicketCountMessage(ticketCount = lottoTicket.ticketCount)
+    }
+
+    private fun printLottoTicketNumber() {
+        lottoTicket.lottos.forEach { lotto ->
+            val lottoNumbers = lotto.getLottoNumbers().joinToString(", ")
+            buyTicketView.printLottoNumberMessage(lottoNumbers = lottoNumbers)
+        }
     }
 }
