@@ -60,4 +60,13 @@ class ExceptionCheck {
             }
         }
     }
+
+    private fun checkValidInputType(userInput: String): Boolean {
+        for (i in userInput.indices) {
+            if (userInput[i].isLetter()) {
+                return true
+            }
+        }
+        return false
+    }
 }
