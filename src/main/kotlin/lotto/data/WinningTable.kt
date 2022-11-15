@@ -15,7 +15,7 @@ class WinningTable(
     ): List<Record> {
         return lotteries.groupingBy { winning.matches(it) }
             .eachCount()
-            .filterKeys { it.first >= 3 }
+            .filterKeys { it.first >= LottoRank.FIFTH.hitCount }
             .mapNotNull { Record.newInstance(it.key.first, it.key.second, it.value) }
             .plus(LottoRank.values().map { Record(it, 0) })
             .distinctBy { it.info.rank }
@@ -26,7 +26,7 @@ class WinningTable(
         return records.sumOf { it.info.prize * it.count } / money.toDouble() * 100
     }
 
-    data class Record(val info: LottoRank, var count: Int) : Comparable<Record> {
+    data class Record(val info: LottoRank, val count: Int) : Comparable<Record> {
 
         override fun compareTo(other: Record): Int {
             return info.rank - other.info.rank
