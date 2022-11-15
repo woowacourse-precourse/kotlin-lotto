@@ -51,8 +51,8 @@ class LottoSeller {
 
     fun inputPrizeNumberException(inputPrizeNumber: List<String>) {
         val distinctPrizeNumber = inputPrizeNumber.distinct()
-        if(distinctPrizeNumber.size != inputPrizeNumber.size) return throw IllegalArgumentException(ConstMessage.ENTER_DUPLICATION_NUMBER_EXCEPTION)
-        if(inputPrizeNumber.size > 6) return throw IllegalArgumentException(ConstMessage.ENTER_MORE_NUMBER_EXCEPTION)
+        if(distinctPrizeNumber.size != inputPrizeNumber.size) throw IllegalArgumentException(ConstMessage.ENTER_DUPLICATION_NUMBER_EXCEPTION)
+        if(inputPrizeNumber.size > 6) throw IllegalArgumentException(ConstMessage.ENTER_MORE_NUMBER_EXCEPTION)
     }
 
     fun inputBonusNumber(): Int {//보너스 번호 입력
