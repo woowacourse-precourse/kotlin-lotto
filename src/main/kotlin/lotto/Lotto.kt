@@ -78,8 +78,8 @@ class Lotto(private val numbers: List<Int>) {
 fun buyLotto(): List<Lotto>{
     println("구매 금액을 입력해 주세요.")
     var userInput : Int? = readLine()!!.toIntOrNull()
-    userInput = userInput?.div(1000)
     userInputCheck(userInput)
+    userInput = userInput?.div(1000)
 
 
     var lottoList = createLottoList(userInput!!)
@@ -153,11 +153,9 @@ fun printLottos(lottoList: List<Lotto>){
 fun userInputCheck(userInput: Int?){
     val E = ExceptionExplain.WrongPayment
 
-    if (1 > userInput!!)
-        E.checkAndThrowException()
-    if (userInput == null)
-        E.checkAndThrowException()
     if (userInput !is Int)
+        E.checkAndThrowException()
+    if (1 > userInput!!)
         E.checkAndThrowException()
 
 }
