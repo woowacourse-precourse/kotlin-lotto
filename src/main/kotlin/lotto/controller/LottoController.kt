@@ -26,6 +26,7 @@ class LottoController {
 
     fun generateLotto() {
         var lottoMaker = LottoMaker()
+        println()
         Print.buyLotto(Buyer.buyCount)
         lottoMaker.generateLotto(Buyer.buyCount)
     }
@@ -48,6 +49,7 @@ class LottoController {
     fun showLottoResult() {
         var lotto = Lotto(winningNumber)
 
+        println()
         Print.resultSentence()
         Print.seperator()
 

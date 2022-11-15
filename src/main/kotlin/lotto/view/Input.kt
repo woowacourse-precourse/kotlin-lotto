@@ -12,12 +12,14 @@ object Input {
     }
 
     fun winningNumber(): List<Int>{
+        println()
         Print.winningLotto()
         var input = Console.readLine()
         return Validator.checkWinningNumber(input)
     }
 
     fun bonusNumber(): String{
+        println()
         Print.bonusNumber()
         var input = Console.readLine()
         return Validator.checkBonusNumber(input)

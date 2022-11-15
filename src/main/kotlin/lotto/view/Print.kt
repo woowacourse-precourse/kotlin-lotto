@@ -13,27 +13,22 @@ object Print {
     }
 
     fun winningLotto(){
-        println()
         println(WINNING_LOTTO)
     }
 
     fun bonusNumber() {
-        println()
         println(BONUS_NUMBER)
     }
 
     fun resultSentence() {
-        println()
         println(LOTTO_RESULT)
     }
 
     fun seperator() {
         println(SEPERATOR)
-        println()
     }
 
     fun buyLotto(count: Int) {
-        println()
         println("${count}${BUY_LOTTO}")
     }
 
