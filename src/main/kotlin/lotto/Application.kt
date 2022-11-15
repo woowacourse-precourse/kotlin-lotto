@@ -148,16 +148,20 @@ fun calculateProfitRate(matchCount: List<Int>, money: Int) {
     var total = 0.0
     if (matchCount[State.FIFTH.value] != 0) {
         total += matchCount[State.FIFTH.value] * State.FIFTH.price
-    } else if (matchCount[State.FOURTH.value] != 0) {
+    }
+    if (matchCount[State.FOURTH.value] != 0) {
         total += matchCount[State.FOURTH.value] * State.FOURTH.price
-    } else if (matchCount[State.THIRD.value] != 0) {
+    }
+    if (matchCount[State.THIRD.value] != 0) {
         total += matchCount[State.THIRD.value] * State.THIRD.price
-    } else if (matchCount[State.SECOND.value] != 0) {
+    }
+    if (matchCount[State.SECOND.value] != 0) {
         total += matchCount[State.SECOND.value] * State.SECOND.price
-    } else if (matchCount[State.FIRST.value] != 0) {
+    }
+    if (matchCount[State.FIRST.value] != 0) {
         total += matchCount[State.FIRST.value] * State.FIRST.price
     }
 
-    var result = ((total / money) * 10).roundToInt() / 10f
+    var result = ((total / money) * 1000).roundToInt() / 10f
     println("총 수익률은 ${result}%입니다.")
 }
