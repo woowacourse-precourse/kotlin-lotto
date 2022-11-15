@@ -11,7 +11,6 @@ class InputView {
 
     private val ERROR_MESSAGE_WINNING_NUMBER = "[ERROR] 당첨 번호 규칙에 맞지 않습니다."
     private val ERROR_MESSAGE_BONUS_NUMBER = "[ERROR] 보너스 번호 규칙에 맞지 않습니다."
-    //private val ERROR_MESSAGE_BONUS_NUMBER_OVERLAP = "[ERROR] 보너스 번호와 당첨 번호가 중복됩니다."
 
     // 구입할 금액 입력
     fun inputMoney(): Long {
@@ -22,11 +21,9 @@ class InputView {
         }catch (e: Exception){
             println("$ERROR_MESSAGE_BUY_TICKET 입력 값: $money")
             throw IllegalArgumentException("$ERROR_MESSAGE_BUY_TICKET 입력 값: $money")
-            // IllegalArgumentException 사용시 테스트 실패
         }
         println("$ERROR_MESSAGE_BUY_TICKET 입력 값: $money")
         throw IllegalArgumentException("$ERROR_MESSAGE_BUY_TICKET 입력 값: $money")
-//        return 0
     }
 
     // 당첨 번호 입력
