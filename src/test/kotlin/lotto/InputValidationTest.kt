@@ -21,4 +21,11 @@ class InputValidationTest {
             inputValidation.checkAmountMultipleOfThousand(2500)
         }
     }
+
+    @Test
+    fun `입력값을 쉼표로 구분했을 때, 6개가 나오지 않을 경우 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            inputValidation.checkInputSplitWithComma("1,2,3,4.5")
+        }
+    }
 }
