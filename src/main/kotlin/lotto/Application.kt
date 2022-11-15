@@ -3,20 +3,20 @@ package lotto
 import kotlin.io.readLine
 
 fun userbuy() : Int{
-    var buing : Int = 0
-    var howmany : Int = 0
+    var buing : Int
+    var howmany : Int
     println("구입금액을 입력해주세요.")
     buing = readLine()!!.toIntOrNull() ?: 0
     if (buing < 1000 || buing % 1000 != 0) throw  IllegalArgumentException ("[ERROR]")
-    if(buing == null) throw IllegalArgumentException ("[ERROR]")
+    if(!(buing != 0)) throw IllegalArgumentException ("[ERROR]")
     howmany = buing / 1000
     return(howmany)
 }
 
 fun inputnum() : List<Int>{
-    var inputlotto  : List<Int> = List(7) {0}
+    //var inputlotto  : MutableList<Int> = MutableList(7) { 0 }
     println("당첨 번호를 입력해 주세요.")
-    inputlotto = readLine()!!.split(",").map { it.toIntOrNull() ?: 0 }
+    var inputlotto = readLine()!!.split(",").map { it.toIntOrNull() ?: 0 }
     if(inputlotto.size != inputlotto.distinct().size) throw IllegalArgumentException ("[ERROR]")
     if(inputlotto.size > 6 ) throw IllegalArgumentException ("[ERROR]")
     for( i : Int in 0 .. 5 step(1))
@@ -50,15 +50,15 @@ fun checknum02(i : Int, j : Int) : Int
     return checker
 }
 fun  getnumber2(count: MutableList<Int>, prizemoney : Int) : Int{
-    var prizemoney = prizemoney
+    var PrizeMoney = prizemoney
     when  {
-        (count[6] != 0) -> prizemoney += 2000000000
-        (count[5] != 0) -> prizemoney += 1500000//3등
-        (count[4] != 0) -> prizemoney += 50000
-        (count[3] != 0) -> prizemoney += 5000
-        else -> prizemoney += 0
+        (count[6] != 0) -> PrizeMoney += 2000000000
+        (count[5] != 0) -> PrizeMoney += 1500000//3등
+        (count[4] != 0) -> PrizeMoney += 50000
+        (count[3] != 0) -> PrizeMoney += 5000
+        else -> PrizeMoney += 0
     }
-    return prizemoney
+    return PrizeMoney
 }
 fun  comparlotto(inputlotto : List<Int>, lottonum : MutableList<MutableList<Int>>) : Pair<Int,MutableList<Int>> {
     var prizemoney :Int = 0
@@ -107,7 +107,7 @@ fun main() {
             count[1] += count2
         }
     }
-    var tmp = count[4]
+    //var tmp = count[4]
     if(count[1] > 0) count[5] -=count[1]
     println("당첨 통계")
     println("3개 일치 (5,000원) - ${count[3]}개")
