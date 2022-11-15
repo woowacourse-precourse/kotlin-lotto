@@ -172,3 +172,12 @@ fun resultConfirm(result : Int, lottoResult : MutableList<Int>) : MutableList<In
     return lottoResultTemp
 }
 
+fun printResult(lottoResult: MutableList<Int>): Int {
+    println("3개 일치 (5,000원) - ${lottoResult[0]}개")
+    println("4개 일치 (50,000원) - ${lottoResult[1]}개")
+    println("5개 일치 (1,500,000원) - ${lottoResult[2]}개")
+    println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${lottoResult[4]}개")
+    println("3개 일치 (2,000,000,000원) - ${lottoResult[3]}개")
+    return lottoResult[0] * 5000 + lottoResult[1] * 50000 + lottoResult[2] * 1500000 + lottoResult[4] * 30000000 + lottoResult[3] * 2000000000
+}
+
