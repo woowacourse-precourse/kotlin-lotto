@@ -1,6 +1,6 @@
 package lotto
 
-class buyLottos(userMainView: MainView) {
+class LottoStart(userMainView: MainView) {
 
     fun sequences(userMainView: MainView){
 
