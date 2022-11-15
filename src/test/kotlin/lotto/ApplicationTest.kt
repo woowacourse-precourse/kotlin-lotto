@@ -57,4 +57,10 @@ class ApplicationTest : NsTest() {
     companion object {
         private const val ERROR_MESSAGE = "[ERROR]"
     }
+
+    @Test
+    fun `로또 개수만큼 적절하게 로또가 생성되는지 테스트`() {
+        val num = 3
+        assertThat(getLottoNumbers(num).size).isEqualTo(num)
+    }
 }
