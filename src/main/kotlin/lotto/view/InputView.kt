@@ -24,20 +24,7 @@ class InputView {
         }
     }
 
-    // 발행한 로또 수량 및 번호를 출력한다. (로또 번호는 오름차순 정렬)
-    fun getLottoNumbers(tryNumber: Int): List<List<Int>> {
-        println("\n${tryNumber}개를 구매했습니다.")
-        val generator = NumberGenerator()
-        val lottoNumbers = mutableListOf<List<Int>>()
-        for (i in 0 until tryNumber) {
-            val lottoNumber = generator.createLottoNumbers()
-            lottoNumbers.add(lottoNumber)
-            println(lottoNumber)
-        }
-        return lottoNumbers
-    }
-
-    // 쉼표로 구분된 당첨 번호를 입력 받아서 정수 리스트를 반환한다.
+    // 쉼표로 구분된 당첨 번호를 입력 받는다.
     fun askWinningNumbers(): List<Int> {
         println(WINNING_INPUT_MSG)
         val input = Console.readLine()
@@ -59,7 +46,7 @@ class InputView {
         return numbers
     }
 
-    // 보너스 번호를 입력 받아서 리턴한다.
+    // 보너스 번호를 입력 받는다.
     fun askBonusNumber(): Int {
         println(BONUS_INPUT_MSG)
         val input = Console.readLine()

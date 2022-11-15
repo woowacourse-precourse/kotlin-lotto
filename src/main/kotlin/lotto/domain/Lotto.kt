@@ -10,8 +10,7 @@ class Lotto(private val winningNumber: List<Int>) {
         }
 
         // 중복된 수를 입력한 경우
-        val temp = winningNumber.toSet()
-        require(temp.size == winningNumber.size){
+        require(winningNumber.toSet().size == winningNumber.size){
             throw IllegalArgumentException(DUPLICATE_ERROR_MSG)
         }
 

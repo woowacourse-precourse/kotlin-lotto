@@ -1,12 +1,24 @@
 package lotto.view
 
 import lotto.domain.Calculator
+import lotto.domain.NumberGenerator
 import lotto.domain.Ranking
 import lotto.utils.*
-import kotlin.math.pow
-import kotlin.math.round
 
 class OutputView {
+    // 발행한 로또 수량 및 번호를 출력한다. (로또 번호는 오름차순 정렬)
+    fun printLottoNumbers(tryNumber: Int): List<List<Int>> {
+        println("\n${tryNumber}개를 구매했습니다.")
+        val generator = NumberGenerator()
+        val lottoNumbers = mutableListOf<List<Int>>()
+        for (i in 0 until tryNumber) {
+            val lottoNumber = generator.createLottoNumbers()
+            lottoNumbers.add(lottoNumber)
+            println(lottoNumber)
+        }
+        return lottoNumbers
+    }
+
     // 당첨 내역을 출력한다.
     fun printWinnerList(winners: List<Int>) {
         println(WINNER_RESULT_MGS)
