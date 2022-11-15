@@ -12,6 +12,7 @@ enum class Rank(var match: Int, var reward: Int) {
     FIFTH(3, 5000)
 
 }
+
 fun main() {
 
 }
@@ -59,7 +60,7 @@ class LottoNumber {
 
     private fun lottoResult(winnerNumList: List<Int>, bonusNumber: Int): Array<Int> {
 
-        var win = Array(8) { 0 }
+        val win = Array(8) { 0 }
 
         lottoNumberList.forEach { lottoNumber ->
 
@@ -85,5 +86,36 @@ class LottoNumber {
         println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${resultArray[7]}개")
         println("6개 일치 (2,000,000,000원) - ${resultArray[6]}개")
 
+    }
+
+    private fun rateOfReturn(money: Int, resultArray: Array<Int>): Double {
+
+        var result = 0
+        for (i in 3..7) {
+            when (i) {
+                3 -> {
+                    result += Rank.FIFTH.reward * resultArray[i]
+                }
+
+                4 -> {
+                    result += Rank.FOURTH.reward * resultArray[i]
+                }
+
+                5 -> {
+                    result += Rank.THIRD.reward * resultArray[i]
+                }
+
+                6 -> {
+                    result += Rank.FIRST.reward * resultArray[i]
+                }
+
+                7 -> {
+                    result += Rank.SECOND.reward * resultArray[i]
+                }
+            }
+        }
+
+        // println(result.toFloat() / money * 100)
+        return result.toDouble() / money * 100
     }
 }
