@@ -3,16 +3,16 @@ package lotto.ui
 import lotto.data.Lotto
 import lotto.data.WinningTable
 import lotto.error.ErrorMessages
+import lotto.util.println
+import lotto.util.roundAt
 import java.text.DecimalFormat
-import kotlin.math.pow
-import kotlin.math.roundToLong
 import camp.nextstep.edu.missionutils.Console as ConsoleUtil
 
 private typealias ConsoleError = ErrorMessages.ConsoleEnum
 
 object Console {
 
-    private val numberFormatter = DecimalFormat("#,###")
+    private val decimal = DecimalFormat("#,###")
 
     fun requestPurchaseAmount(): Int {
         println(Message.InputPurchaseAmount)
@@ -30,27 +30,21 @@ object Console {
     }
 
     fun print(lotteries: List<Lotto>) {
-        println("${numberFormatter.format(lotteries.size)}${Message.ShowLotto}")
+        println(Message.ShowLotto, decimal.format(lotteries.size))
         println(lotteries.joinToString("\n") + "\n")
     }
 
     fun print(table: WinningTable) {
-        println(buildString {
-            val messages = Message.ShowWinningStatistics.messages
+        val messages = Message.ShowWinningStatistics.messages
 
-            appendLine(messages[0])
-            appendLine(messages[1])
-            appendLine(table.records.joinToString("\n"))
-            appendLine("${messages[2]}${table.returnOfRate.roundAt(-2)}${messages[3]}")
-        })
+        println(messages[0])
+        println(messages[1])
+        println(table.records.joinToString("\n"))
+        println(messages[2], table.returnOfRate.roundAt(-2).toBigDecimal())
     }
 
     private fun String.toIntOrThrow(): Int {
         return requireNotNull(toIntOrNull()) { ConsoleError.NotValidInteger }
-    }
-
-    private fun Double.roundAt(n: Int): Double {
-        return (this * 10.0.pow(-n - 1)).roundToLong() / 10.0.pow(-n - 1)
     }
 
     private fun readLine(): String {
@@ -65,12 +59,11 @@ object Console {
         InputWinningNumbers("당첨 번호를 입력해 주세요."),
         InputBonusNumber("보너스 번호를 입력해 주세요."),
 
-        ShowLotto("개를 구매했습니다."),
+        ShowLotto("%s개를 구매했습니다."),
         ShowWinningStatistics(
             "당첨 통계",
             "---",
-            "총 수익률은 ",
-            "%입니다.",
+            "총 수익률은 %s%%입니다.",
         );
 
         val messages: List<String> = args.toList()
