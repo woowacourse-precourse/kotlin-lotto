@@ -6,6 +6,12 @@ enum class ErrorType {
             super.print()
             println("입력은 1,000의 배수여야 합니다.")
         }
+    },
+    WINNING_NUMBER {
+        override fun print() {
+            super.print()
+            println("올바르지 않은 당첨 번호입니다.")
+        }
     };
 
     open fun print() {
@@ -64,14 +70,46 @@ class LottoGame {
         val resultNumbers = ArrayList<Int>()
 
         for(number in splitNumbers) {
-            checkWinningNumberValid(number)
+            checkWinningNumbersValid(number)
             resultNumbers.add(number.toInt())
         }
+
+        checkWinningNumbersValue(resultNumbers)
+        checkWinningNumbersLength(resultNumbers)
 
         return resultNumbers
     }
 
-    private fun checkWinningNumberValid(number: String) {
+    private fun checkWinningNumbersValid(number: String) {
+        for(character in number) {
+            checkWinningNumberValid(character)
+        }
+    }
 
+    private fun checkWinningNumberValid(character: Char) {
+        if(!character.isDigit()) {
+            ErrorType.WINNING_NUMBER.print()
+            throw IllegalArgumentException()
+        }
+    }
+
+    private fun checkWinningNumbersValue(numbers: ArrayList<Int>) {
+        for(number in numbers) {
+            checkWinningNumberRange(number)
+        }
+    }
+
+    private fun checkWinningNumberRange(number: Int) {
+        if(number < 1 || number > 45) {
+            ErrorType.WINNING_NUMBER.print()
+            throw IllegalArgumentException()
+        }
+    }
+
+    private fun checkWinningNumbersLength(numbers: ArrayList<Int>) {
+        if(numbers.size != 6) {
+            ErrorType.WINNING_NUMBER.print()
+            throw IllegalArgumentException()
+        }
     }
 }
