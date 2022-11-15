@@ -4,8 +4,11 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersI
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+import util.InputException
 
 class ApplicationTest : NsTest() {
 
@@ -52,12 +55,20 @@ class ApplicationTest : NsTest() {
     }
 
     @Nested
-    inner class InputMoney {
+    inner class UserTest {
+        val user = User()
+        val exception = InputException()
 
         @Test
         fun `구매 금액 단위 테스트`() {
-
+            val money = "1000"
+            try {
+                exception.checkInputException(money)
+            } catch (e: Exception) {
+                Assertions.assertEquals("[ERROR] : $VALUE_EXCEPTION", e.message)
+            }
         }
+
     }
 
     @Nested
@@ -90,6 +101,7 @@ class ApplicationTest : NsTest() {
         fun `총 수익률 검수 테스트`() {
 
         }
+
     }
 
 
@@ -99,5 +111,10 @@ class ApplicationTest : NsTest() {
 
     companion object {
         private const val ERROR_MESSAGE = "[ERROR]"
+        const val TYPE_EXCEPTION = "올바른 형식이 아닙니다."
+        const val NULL_EXCEPTION = "아무 것도 입력하지 않았습니다."
+        const val VALUE_EXCEPTION = "잘못된 값입니다."
+        const val OVERLAP_EXCEPTION = "중복된 값이 존재 합니다."
+        const val LENGTH_EXCEPTION = "6개 입력이 아닙니다."
     }
 }
