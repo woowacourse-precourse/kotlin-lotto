@@ -2,11 +2,30 @@ package lotto
 
 class LottoStart(private val userMainView: MainView) {
 
+        fun calcWinPrice(){
+            var winList = listOf<Int>()
+            val boughtPrice = getBoughtPrice()
+            val boughtLottoNums = boughtPrice?.let { createLottoNums(it) }
+            val winNums = getLottoWinNums()
+            val bonusNums = getBonusNum()
+            if(boughtLottoNums != null && winNums != null && bonusNums != null){
+                winList = getWinningResult(boughtLottoNums, winNums, bonusNums)
+            }
+            val winPrice = getWinPrice(winList)
+            val earnRate = boughtPrice?.let { getEarningRate(it, winPrice) }
+            if (earnRate != null) {
+                getWinningPrizeRanking(winList, earnRate)
+            }
+        }
 
-        fun createLottoNums() : List<List<Int>>?{
-            val boughtPrice = userMainView.getLottoPrice()
-            val createLottos = boughtPrice?.let { CreateLottos.getLottoCount(it) }
-            val boughtLottoNums = createLottos?.let { CreateLottos.getLottoNumsWithCount(it) }
+        fun getBoughtPrice() : Int? {
+            return userMainView.getLottoPrice()
+        }
+
+        fun createLottoNums(boughtPrice: Int) : List<List<Int>>?{
+//            val boughtPrice = getBoughtPrice()
+            val createLottos = boughtPrice.let { CreateLottos.getLottoCount(it) }
+            val boughtLottoNums = createLottos.let { CreateLottos.getLottoNumsWithCount(it) }
 
             if (createLottos != null && boughtLottoNums != null) {
                 userMainView.showLottoNums(createLottos, boughtLottoNums)

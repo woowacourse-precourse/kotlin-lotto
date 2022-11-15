@@ -20,7 +20,7 @@ class Lotto(private val numbers: List<Int>) {
 
     fun checkLottoRange(numbers: List<Int>): Boolean {
         numbers.forEach {
-            if (it <= LOTTO_RANGE_START || it >= LOTTO_RANGE_END)
+            if (it < LOTTO_RANGE_START || it > LOTTO_RANGE_END)
                 return false
         }
         return true
