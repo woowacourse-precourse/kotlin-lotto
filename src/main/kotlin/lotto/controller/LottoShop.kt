@@ -20,7 +20,11 @@ class LottoShop(
     private var bonusNumber = 0
     private val totalRanks = MutableList(Rank.values().size) { 0 }
 
-    fun announceYield() {}
+    fun announceYield() {
+        val totalPrize = profitCalculator.calculateTotalPrize(ranks, totalRanks)
+        val yieldPercentage = profitCalculator.calculateYield(totalPrize, money)
+        printYield(yieldPercentage)
+    }
 
     fun announceWinners() {
         setWinningNumbers()
