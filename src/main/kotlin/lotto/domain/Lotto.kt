@@ -23,7 +23,8 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     fun getTicket(): String {
-        return numbers.toString()
+        val sortedNumbers = numbers.sorted()
+        return sortedNumbers.toString()
     }
 
     private fun checkValidation() {

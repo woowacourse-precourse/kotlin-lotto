@@ -32,7 +32,7 @@ class LottoTest {
 
     @Test
     fun `로또 번호를 문자열로 반환해준다`() {
-        val numbers = listOf(1, 2, 3, 4, 5, 6)
+        val numbers = listOf(1, 2, 3, 4, 6, 5)
         val lotto = Lotto(numbers)
         val expected = "[1, 2, 3, 4, 5, 6]"
         assertThat(lotto.getTicket()).isEqualTo(expected)
