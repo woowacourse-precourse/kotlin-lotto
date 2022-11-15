@@ -2,6 +2,11 @@ package lotto
 
 import util.InputException
 import util.Printer
+import util.Printer.Companion.FIRST_PRIZE
+import util.Printer.Companion.FIVTH_PRIZE
+import util.Printer.Companion.FOURTH_PRIZE
+import util.Printer.Companion.SECOND_PRIZE
+import util.Printer.Companion.THIRD_PRIZE
 
 class LottoVendingMachine(
     private val user: User,
@@ -12,23 +17,50 @@ class LottoVendingMachine(
     fun execution() {
         purchaseLotto()
         issueLotto()
+        val winnings = inputWinningNumbers()
+        val totalPrize = calculatePrize(winnings)
+        outputLottoResult(totalPrize, winnings)
+    }
+
+    private fun inputWinningNumbers(): List<Int> {
         val numbers = inputLottoNumbers()
         val bonus = inputBonusNumber(numbers)
-        resultLottoWinnings(numbers, bonus)
+        return resultLottoWinnings(numbers, bonus)
+    }
+
+    private fun outputLottoResult(totalPrize: Int, winnings: List<Int>) {
+        printer.apply {
+            printLottoResultMessage()
+            printLottoResultTable(winnings)
+        }
+        val rate = machine.winningsRate(user.inputMoney, totalPrize)
+        printer.printReturnRate(rate)
+    }
+
+    private fun calculatePrize(winnings: List<Int>): Int {
+        println(winnings)
+        val prizes = listOf(FIVTH_PRIZE, FOURTH_PRIZE, THIRD_PRIZE, SECOND_PRIZE, FIRST_PRIZE)
+        return winnings.mapIndexed { idx, count -> count * prizes[idx] }.sum()
     }
 
     private fun resultLottoWinnings(numbers: List<Int>, bonus: Int): List<Int> {
         val lotto = Lotto(numbers)
-        val lottoResult = mutableListOf<Int>(0, 0, 0, 0, 0, 0, 0, 0)
+        return lottoCalculate(lotto, bonus)
+    }
+
+    private fun lottoCalculate(lotto: Lotto, bonus: Int): List<Int> {
+        val lottoResult = mutableListOf(0, 0, 0, 0, 0, 0, 0, 0)
         machine.lottos.forEach { it ->
             val count = lotto.winningsCount(it)
-            if (lotto.isBonusTrue(bonus)) {
+            println(count)
+            if (lotto.isBonusTrue(bonus) || count == 6) {
                 lottoResult[count + 1]++
                 return@forEach
             }
             lottoResult[count]++
         }
-        return lottoResult
+        println(lottoResult)
+        return lottoResult.takeLast(5)
     }
 
     private fun purchaseLotto() {
@@ -56,4 +88,5 @@ class LottoVendingMachine(
         if (numbers.contains(bonus)) inputException.checkOverlapException()
         return bonus
     }
+
 }
