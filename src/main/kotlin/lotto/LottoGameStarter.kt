@@ -11,6 +11,9 @@ class LottoGameStarter {
 
         val bonusNumber = readLine()
         checkBonusNumberError(bonusNumber)
+
+        val purchasedLotto = lottoPurchase(money!!.toInt())
+        println("${purchasedLotto}개를 구매했습니다.")
     }
 
     fun checkMoneyError(money:String?){
@@ -31,5 +34,10 @@ class LottoGameStarter {
     fun checkBonusNumberError(bonusNumber: String?){
         if(bonusNumber!!.toIntOrNull() == null) throw IllegalArgumentException("[ERROR] 보너스 번호는 정수인 숫자여야 합니다.")
         if(bonusNumber!!.toInt() < 1 || bonusNumber!!.toInt() > 45) throw IllegalArgumentException("[ERROR] 보너스 번호는 1~45 범위 내여야 합니다.")
+    }
+
+    fun lottoPurchase(money: Int): Int{
+        val purchasedLotto = money / 1000
+        return purchasedLotto
     }
 }
