@@ -9,13 +9,14 @@ import lotto.Messages.Companion.DIVISION_ERROR
 import lotto.Messages.Companion.DUPLICATE_NUMBER_ERROR
 import lotto.Messages.Companion.NUMBER_INPUT_ERROR
 import lotto.Messages.Companion.NUMBER_RANGE_ERROR
+import net.bytebuddy.implementation.InvokeDynamic.WithImplicitArguments
 
 class LottoMachine {
 
-    private lateinit var rankResults: MutableMap<WinningRank, Int>
-    private var prizeMoney = 0.0
+    private lateinit var results: Results
 
     fun start() {
+
         val paymentInput = View.getPaymentAmount()
         val numberOfLotto = getNumberOfLottos(paymentInput)
 
@@ -29,10 +30,10 @@ class LottoMachine {
         val bonusNumber = getBonusNumber(View.getBonusNumber())
         checkBonusNumberException(winningLotto, bonusNumber)
 
-        calculateResult(lottos, winningLotto, bonusNumber)
-        val earningsRate = getEarningsRate(numberOfLotto)
+        results = Results(numberOfLotto)
+        results.calculateResult(lottos, winningLotto, bonusNumber)
 
-        View.printResultStats(rankResults, earningsRate)
+        View.printResultStats(results)
     }
 
     fun getNumberOfLottos(payment: String): Int {
@@ -41,14 +42,13 @@ class LottoMachine {
     }
 
     fun checkPaymentException(payment: String) {
-        var price = -1
         try {
-            price = payment.toInt()
+            payment.toInt()
         } catch (e: IllegalArgumentException) {
             println(NUMBER_INPUT_ERROR)
             throw NoSuchElementException(NUMBER_INPUT_ERROR)
         }
-        if (price % LOTTO_PRICE != 0) {
+        if (payment.toInt() % LOTTO_PRICE != 0) {
             println(DIVISION_ERROR)
             throw IllegalArgumentException(DIVISION_ERROR)
         }
@@ -87,42 +87,6 @@ class LottoMachine {
         if (winningLotto.getNumbers().contains(number)) {
             throw IllegalArgumentException(DUPLICATE_NUMBER_ERROR)
         }
-    }
-
-    fun calculateResult(lottos: List<Lotto>, winningLotto: Lotto, bonusNumber: Int) {
-        initializeResults()
-        lottos.forEach { calculateLottoResult(it, winningLotto, bonusNumber) }
-    }
-
-    fun initializeResults() {
-        rankResults = mutableMapOf()
-        for (rank in WinningRank.values()) {
-            rankResults[rank] = 0
-        }
-        prizeMoney = 0.0
-    }
-
-    fun calculateLottoResult(lotto: Lotto, winningLotto: Lotto, bonusNumber: Int) {
-        val matchCount = lotto.getNumbers().count { winningLotto.getNumbers().contains(it) }
-        val rank = when (matchCount) {
-            6 -> WinningRank.FIRST
-            5 -> {
-                if (lotto.getNumbers().contains(bonusNumber)) {
-                    WinningRank.SECOND
-                } else {
-                    WinningRank.THIRD
-                }
-            }
-            4 -> WinningRank.FORTH
-            3 -> WinningRank.FIFTH
-            else -> WinningRank.NOTHING
-        }
-        prizeMoney += rank.prizeMoney
-        rankResults[rank] = rankResults[rank]!!.plus(1)
-    }
-
-    fun getEarningsRate(numberOfLotto: Int): String {
-        return String.format("%.1f", (prizeMoney / (numberOfLotto * LOTTO_PRICE)) * 100)
     }
 
 }

@@ -41,15 +41,15 @@ class View {
             return Console.readLine()
         }
 
-        fun printResultStats(rankResults: Map<WinningRank, Int>, earningsRate: String) {
+        fun printResultStats(results: Results) {
             val sb = StringBuilder()
             sb.append(STATS_TITLE).append('\n')
-            sb.append(FIFTH_PRIZE_RESULT.format(rankResults[WinningRank.FIFTH])).append('\n')
-            sb.append(FORTH_PRIZE_RESULT.format(rankResults[WinningRank.FORTH])).append('\n')
-            sb.append(THIRD_PRIZE_RESULT.format(rankResults[WinningRank.THIRD])).append('\n')
-            sb.append(SECOND_PRIZE_RESULT.format(rankResults[WinningRank.SECOND])).append('\n')
-            sb.append(FIRST_PRIZE_RESULT.format(rankResults[WinningRank.FIRST])).append('\n')
-            sb.append(EARNINGS_RATE_MESSAGE.format(earningsRate))
+            sb.append(FIFTH_PRIZE_RESULT.format(results.rankResults[WinningRank.FIFTH])).append('\n')
+            sb.append(FORTH_PRIZE_RESULT.format(results.rankResults[WinningRank.FORTH])).append('\n')
+            sb.append(THIRD_PRIZE_RESULT.format(results.rankResults[WinningRank.THIRD])).append('\n')
+            sb.append(SECOND_PRIZE_RESULT.format(results.rankResults[WinningRank.SECOND])).append('\n')
+            sb.append(FIRST_PRIZE_RESULT.format(results.rankResults[WinningRank.FIRST])).append('\n')
+            sb.append(EARNINGS_RATE_MESSAGE.format(results.earningsRate))
             print(sb.toString())
         }
     }
