@@ -4,21 +4,21 @@ import camp.nextstep.edu.missionutils.Console
 
 class LottoProcessor(private val seller: LottoSeller, private val printer: Printer) {
     fun processLotto() {
-        printer.printWord(REQUEST_MONEY)
+        printer.print(REQUEST_MONEY)
         val inputMoney = processInputMoney()
         val purchasedLotto = seller.sellLotto(inputMoney)
         printer.printPurchasedLotto(purchasedLotto)
-        printer.printWord(PURCHASED_LOTTO_COUNT.format(purchasedLotto.size))
+        printer.print(PURCHASED_LOTTO_COUNT.format(purchasedLotto.size))
 
-        printer.printWord(REQUEST_WINNING_NUMBER)
+        printer.print(REQUEST_WINNING_NUMBER)
         val winningNumber = processGeneratingWinningNumber()
-        printer.printWord(REQUEST_BONUS_NUMBER)
+        printer.print(REQUEST_BONUS_NUMBER)
         val bonusNumber = processGeneratingBonusNumber(winningNumber)
 
         val result = ResultExtractor.extractResult(purchasedLotto, winningNumber, bonusNumber)
         printer.printResult(result)
         val profit = ResultExtractor.calcProfit(inputMoney.toDouble(), result)
-        printer.printWord(PROFIT_RESULT.format(profit))
+        printer.print(PROFIT_RESULT.format(profit))
     }
 
     private fun processInputMoney(): Int {
