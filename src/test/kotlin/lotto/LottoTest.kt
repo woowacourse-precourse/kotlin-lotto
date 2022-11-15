@@ -38,7 +38,7 @@ class LottoTest {
         val assertThrows = assertThrows<IllegalArgumentException> {
             ExceptionHandler.checkNumber()
         }
-        assertEquals(assertThrows.message, null)
+        assertEquals(assertThrows.message, "[ERROR] 숫자만 입력하세요")
     }
 
     @Test
