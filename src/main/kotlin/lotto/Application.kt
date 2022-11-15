@@ -14,7 +14,7 @@ fun playLotto(){
     val count = inputUserMoney()
 
     println("${count}개를 구매했습니다.")
-    val LottoNum = printLottoNumber(count)
+    val lottoNum = printLottoNumber(count)
 
     println("당첨번호를 입력해주세요.")
     val userNumber = inputUserNumber()
@@ -22,8 +22,9 @@ fun playLotto(){
     println("보너스 번호를 입력해주세요.")
     val userBonusNumber = inputUserBonusNumber()
 
-    //val result = checkMatch(userNumberInt, userBonusNumber, LottoNum)
-    //printResult(result)
+    val result = checkMatch(userNumber, lottoNum)
+    val lottoResult = compareBonus(userBonusNumber, lottoNum, result)
+    printResult(lottoResult)
 }
 fun inputUserMoney():Int{
     val userMoney = Console.readLine().toInt()
@@ -48,10 +49,11 @@ fun issueLottoNumber(): List<Int> {
     println(numbers)
     return set.toList()
 }
-fun inputUserNumber(): String? {
-    val userNumber = Console.readLine()
-    println(userNumber)
-    return userNumber
+fun inputUserNumber(): List<Int> {
+    val userNumber = Console.readLine().toInt()
+    val userNumberList = mutableListOf<Int>()
+    println(userNumberList)
+    return userNumberList
 }
 fun inputUserBonusNumber():Int{
     var userBonusNumber = Console.readLine().toInt()
@@ -73,18 +75,30 @@ fun compareNums(userNumber:String): List<String>{
     return userNumberInt
 }
 
-fun compareBonus(bonusNum: Int){
+fun compareBonus(bonusNum: Int, lottoNum: List<List<Int>>, result:Array<Int>):List<Int>{
+    var lottoResult = result.toMutableList()
     if(bonusNum == null){
         throw IllegalArgumentException("[ERROR]")
     }
     if(bonusNum > 45 || bonusNum < 1){
         throw IllegalArgumentException("[ERROR]")
     }
+    for(i in 1..6){
+        if(lottoNum[i].contains(bonusNum)){
+            lottoResult[3]+=1
+        }
+    }
+    return lottoResult
 }
 
-fun checkMatch(lottoNum: List<Int>, userNumber: List<Int>, bonusNum: Int): ArrayList<Int>{
+fun checkMatch(userNumber: List<Int>, lottoNum: List<List<Int>>): Array<Int>{
     val result = Array(6){0}
-
+    for(i in lottoNum.indices){
+        if(lottoNum[i].contains(userNumber[i])){
+            result[i]+=1
+        }
+    }
+    return result
 }
 
 fun printResult(result: List<Int>){
