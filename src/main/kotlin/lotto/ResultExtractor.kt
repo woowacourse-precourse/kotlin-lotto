@@ -5,8 +5,8 @@ object ResultExtractor {
         generatedLotto: List<Lotto>,
         winningNumbers: List<Int>,
         bonusNumber: Int,
-    ): Map<LottoPrice, Int> {
-        val result = mutableMapOf<LottoPrice, Int>()
+    ): Map<LottoPlace, Int> {
+        val result = mutableMapOf<LottoPlace, Int>()
 
         generatedLotto.forEach { eachLotto ->
             val lottoStatus = eachLotto.checkLotto(winningNumbers, bonusNumber)
@@ -20,7 +20,7 @@ object ResultExtractor {
         return result.toMap()
     }
 
-    fun calcProfit(money: Double, extractedResult: Map<LottoPrice, Int>): Double {
+    fun calcProfit(money: Double, extractedResult: Map<LottoPlace, Int>): Double {
         var totalPrice: Double = 0.00
 
         extractedResult.forEach { eachLottoResult ->
