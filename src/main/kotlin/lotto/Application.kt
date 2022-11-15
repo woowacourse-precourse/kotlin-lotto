@@ -6,18 +6,22 @@ import kotlin.math.round
 
 fun calculateYield(winRanks: Map<LottoRank, Int>, lottoMoney: Int): Float {
     var winMoney = 0f
+
     for ((k, v) in winRanks) {
         winMoney += k.value * v
     }
+
     return round((winMoney / (lottoMoney * 1000) * 1000)) / 10
 }
 
 fun calculateWinRanks(lottos: List<Lotto>, winNumber: List<Int>, bonusNumber: Int): Map<LottoRank, Int> {
     val rankMap = mutableMapOf<LottoRank, Int>()
+
     for (i in lottos) {
         val calculatedRank = i.calculateWinRank(winNumber, bonusNumber)
         rankMap[calculatedRank] = (rankMap[calculatedRank] ?: 0) + 1
     }
+
     return rankMap
 }
 
@@ -34,19 +38,23 @@ fun produceLotto(amount: Int): List<Lotto> {
 
 fun formatLottos(lottos: List<Lotto>): String {
     val formattedLottos = StringBuilder()
+
     for (i in lottos) {
         formattedLottos.append(i.toString() + "\n")
     }
+
     return formattedLottos.toString()
 }
 
 fun formatWinRanks(winRanks: Map<LottoRank, Int>): String {
     val formattedRank = StringBuilder()
+
     formattedRank.append("3개 일치 (5,000원) - ${winRanks[LottoRank.FIFTH] ?: 0}개\n")
     formattedRank.append("4개 일치 (50,000원) - ${winRanks[LottoRank.FOURTH] ?: 0}개\n")
     formattedRank.append("5개 일치 (1,500,000원) - ${winRanks[LottoRank.THIRD] ?: 0}개\n")
     formattedRank.append("5개 일치, 보너스 볼 일치 (30,000,000원) - ${winRanks[LottoRank.SECOND] ?: 0}개\n")
     formattedRank.append("6개 일치 (2,000,000,000원) - ${winRanks[LottoRank.FIRST] ?: 0}개\n")
+
     return formattedRank.toString()
 }
 
