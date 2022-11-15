@@ -37,7 +37,7 @@ class LottoGame {
     private val winningNumbers = ArrayList<Int>()
     private var bonusNumber = 0
     private val buyLotteries = ArrayList<Lotto>()
-
+    private var counts = arrayOf(0, 0, 0, 0, 0, 0)
     fun simulate() {
         getPurchaseAmount()
         printLotteriesNumber()
@@ -46,6 +46,7 @@ class LottoGame {
         getBonusNumber()
 
         getBuyLotteries()
+        printBuyLotteries()
     }
 
     private fun getPurchaseAmount() {
@@ -176,6 +177,12 @@ class LottoGame {
     private fun getBuyLotteries() {
         for(i in 0 until lotteries) {
             buyLotteries.add(Lotto(getLotteriesNumber()))
+        }
+    }
+
+    private fun printBuyLotteries() {
+        for(i in 0 until lotteries) {
+            println(buyLotteries[i].toString())
         }
     }
 }
