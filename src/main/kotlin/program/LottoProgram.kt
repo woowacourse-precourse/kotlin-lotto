@@ -1,8 +1,5 @@
-package lotto
-import domain.BonusNumber
-import domain.Lotto
-import domain.MatchStorage
-import domain.PurchaseMoney
+package program
+import domain.*
 import utils.ExceptionHandler.getIsInputFormRight
 import utils.Constants
 import utils.Constants.SHOW_MATCH_STATISTICS_MESSAGE
