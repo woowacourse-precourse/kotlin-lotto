@@ -19,7 +19,7 @@ enum class LottoValue(val earning : Int, val correctNumbers : Int, open var amou
 }
 
 fun firstPay(): Int {
-    var deposit = Console.readLine().toString()
+    val deposit = Console.readLine().toString()
     try {
         deposit.toIntOrNull() ?: throw IllegalArgumentException()
         deposit.toInt() % lottoCost != 0
@@ -81,14 +81,12 @@ fun lottoCompareNormal(answer: List<Int>, uncheckedLotto :List<Int>) : Int{
 
 fun lottoCompareSpecial(special : List<Int>, uncheckedLotto : List<Int>) : Int{
     var specialCoincidence = 0
-    if(uncheckedLotto.contains(special[0])){
-        specialCoincidence += 1
-    }
+    if(uncheckedLotto.contains(special[0])) specialCoincidence += 1
     return specialCoincidence
 }
 
 fun findValue(normalCoincidence : Int, specialCoincidence : Int): MutableList<Int> {
-    val prize = mutableListOf<Int>(0,0,0,0,0)
+    val prize = mutableListOf(0,0,0,0,0)
     when(normalCoincidence){
         LottoValue.FIRST.correctNumbers -> prize[4]+=1
         LottoValue.SECOND.correctNumbers -> if (specialCoincidence==1) prize[3]+=1 else prize[2]+=1
@@ -100,11 +98,21 @@ fun findValue(normalCoincidence : Int, specialCoincidence : Int): MutableList<In
 
 fun calculatePrize(prize : MutableList<Int>){
     when(1){
-        prize[0] -> LottoValue.FIFTH.amount+=1
-        prize[1] -> LottoValue.FOURTH.amount+=1
-        prize[2] -> LottoValue.THIRD.amount+=1
-        prize[3] -> LottoValue.SECOND.amount+=1
-        prize[4] -> LottoValue.FIRST.amount+=1
+        prize[0] -> {
+            LottoValue.FIFTH.amount+=1
+        }
+        prize[1] -> {
+            LottoValue.FOURTH.amount+=1
+        }
+        prize[2] -> {
+            LottoValue.THIRD.amount+=1
+        }
+        prize[3] -> {
+            LottoValue.SECOND.amount+=1
+        }
+        prize[4] -> {
+            LottoValue.FIRST.amount+=1
+        }
     }
 }
 
@@ -136,7 +144,7 @@ fun main() {
     try{
         println("구입금액을 입력해 주세요.")
         val paidMoney = firstPay()
-        val lottoPapers = paidMoney!! / lottoCost
+        val lottoPapers = paidMoney / lottoCost
         println("")
 
         print(lottoPapers)
