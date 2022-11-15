@@ -74,4 +74,17 @@ class LottoTest {
         }
         assertThat(result).isEqualTo(1)
     }
+
+    @Test
+    fun `당첨번호와 랜덤 번호가 얼마나 맞는지`() {
+        val winningNumber = listOf(1, 2, 3, 4, 5, 6)
+        val saveNumber = listOf(1, 2, 3, 4, 5, 7)
+        var count = 0
+        winningNumber.forEach { winning ->
+            if (saveNumber.contains(winning)) {
+                count++
+            }
+        }
+        assertThat(count).isEqualTo(5)
+    }
 }
