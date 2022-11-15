@@ -37,8 +37,8 @@
 - 겹치는 로또 번호가 있는 경우
 
 ---
-### 🚧️️ Prize enum class
-#### ⬜️ 일치하는 숫자의 개수를 기반으로 Prize를 update하는 함수
+### ✅️ Prize enum class
+#### ✅ 일치하는 숫자의 개수를 기반으로 Prize를 update하는 함수
 
 ---
 ### ⬜️ Main logic
