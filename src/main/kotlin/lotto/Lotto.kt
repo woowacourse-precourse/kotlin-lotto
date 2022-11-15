@@ -127,8 +127,6 @@ fun bonusNumCheck(bonus: Int?) {
 fun winningNumCheck(winint: List<Int>) {
     val E = ExceptionExplain.WrongWinNum
 
-    if (winint.equals(null))
-        E.checkAndThrowException()
     if (winint !is List<Int>)
         E.checkAndThrowException()
 
