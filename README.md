@@ -9,11 +9,11 @@
 ## 📮 미션 제출 방법
 
 - 미션 구현을 완료한 후 GitHub을 통해 제출해야 한다.
-  - GitHub을 활용한 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고해
-    제출한다.
+    - GitHub을 활용한 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고해
+      제출한다.
 - GitHub에 미션을 제출한 후 [우아한테크코스 지원](https://apply.techcourse.co.kr) 사이트에 접속하여 프리코스 과제를 제출한다.
-  - 자세한 방법은 [제출 가이드](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse#제출-가이드) 참고
-  - **Pull Request만 보내고 지원 플랫폼에서 과제를 제출하지 않으면 최종 제출하지 않은 것으로 처리되니 주의한다.**
+    - 자세한 방법은 [제출 가이드](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse#제출-가이드) 참고
+    - **Pull Request만 보내고 지원 플랫폼에서 과제를 제출하지 않으면 최종 제출하지 않은 것으로 처리되니 주의한다.**
 
 ## 🚨 과제 제출 전 체크 리스트 - 0점 방지
 
@@ -159,28 +159,29 @@ BUILD SUCCESSFUL in 0s
 - 프로그램 구현이 완료되면 `ApplicationTest`의 모든 테스트가 성공해야 한다. **테스트가 실패할 경우 0점 처리한다.**
 - 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않는다.
 - indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
-  - 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
-  - 힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메서드)를 분리하면 된다.
+    - 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
+    - 힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메서드)를 분리하면 된다.
 - 함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
 - JUnit 5와 AssertJ를 이용하여 본인이 정리한 기능 목록이 정상 동작함을 테스트 코드로 확인한다.
 
 ### 추가된 요구 사항
 
 - 함수(또는 메서드)의 길이가 15라인을 넘어가지 않도록 구현한다.
-  - 함수(또는 메서드)가 한 가지 일만 잘 하도록 구현한다.
+    - 함수(또는 메서드)가 한 가지 일만 잘 하도록 구현한다.
 - else를 지양한다.
-  - 힌트: if 조건절에서 값을 return하는 방식으로 구현하면 else를 사용하지 않아도 된다.
-  - 때로는 if/else, when문을 사용하는 것이 더 깔끔해 보일 수 있다. 어느 경우에 쓰는 것이 적절할지 스스로 고민해 본다.
+    - 힌트: if 조건절에서 값을 return하는 방식으로 구현하면 else를 사용하지 않아도 된다.
+    - 때로는 if/else, when문을 사용하는 것이 더 깔끔해 보일 수 있다. 어느 경우에 쓰는 것이 적절할지 스스로 고민해 본다.
 - Enum 클래스를 적용해 프로그래밍을 구현한다.
 - 도메인 로직에 단위 테스트를 구현해야 한다. 단, UI(System.out, System.in, Scanner) 로직은 제외한다.
-  - 핵심 로직을 구현하는 코드와 UI를 담당하는 로직을 분리해 구현한다.
-  - 단위 테스트 작성이 익숙하지 않다면 `test/kotlin/lotto/LottoTest`를 참고하여 학습한 후 테스트를 구현한다.
+    - 핵심 로직을 구현하는 코드와 UI를 담당하는 로직을 분리해 구현한다.
+    - 단위 테스트 작성이 익숙하지 않다면 `test/kotlin/lotto/LottoTest`를 참고하여 학습한 후 테스트를 구현한다.
 
 ### 라이브러리
 
-- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
-  - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.
-  - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
+- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console`
+  API를 사용하여 구현해야 한다.
+    - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.
+    - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 #### 사용 예시
 
@@ -214,5 +215,38 @@ class Lotto(private val numbers: List<Int>) {
   시작한다.
 - **기능을 구현하기 전 `docs/README.md`에 구현할 기능 목록을 정리**해 추가한다.
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
-  - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
+    - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+## 기능 목록
+
+- [ ] 로또를 구입하는 기능
+    - [ ] "구입금액을 입력해 주세요." 출력
+    - [ ] 잘못된 값이 입력되면 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료
+        - [ ] 최소 입력 금액 1000원보다 작은 경우
+        - [ ] 구입 금액이 1000으로 나누어 떨어지지 않는 경우
+        - [ ] Int 형 숫자가 아닌 값이 들어오는 경우
+- [ ] 로또를 발급하는 기능
+    - [ ] "n개를 구매했습니다." 출력
+    - [ ] 각각의 로또에 포함된 난수 한 줄에 하나씩 오름차순 정렬로"['8, 21, 23, 41, 42, 43]" 형식으로 출력
+    - [ ] 각 로또를 만들기 위해 중복되지 않는 숫자로 6개의 난수 생성
+- [ ] 당첨 번호를 입력
+    - [ ] 입력은 "1,2,3,4,5,6" 형식
+    - [ ] 잘못된 값이 입력되면 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료
+        - [ ] 숫자가 6개가 아닌 경우
+        - [ ] Int 형 숫자가 아닐 경우
+        - [ ] 중복되는 숫자일 경우
+        - [ ] 숫자 범위가 1~45 사이가 아닌 경우
+        - [ ] 쉼표로 분리하지 않는 경우
+- [ ] 보너스 번호 입력
+    - [ ] 잘못된 값이 입력되면 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료
+        - [ ] 숫자를 한 개만 입력한 것이 아닐 경우
+        - [ ] Int 형 숫자가 아닐 경우
+        - [ ] 숫자 범위가 1~45 사이가 아닌 경우
+- [ ] 당첨 번호, 보너스 번호의 중복 확인하여 중복이 존재할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를
+  출력 후 종료
+- [ ] 당첨 통계
+    - [ ] Random 추첨된 구입한 로또 번호들과 입력된 당첨번호, 보너스 볼을 비교한 뒤 n등 당첨 산출
+    - [ ] 수익률은 당첨 금액 / 구입 금액
+    - [ ] "3개 일치 (5000원) - 1개" 3개에서 6개까지 당첨 금액과 일치하는 로또 개수를 출력
+    - [ ] "총 수익률은 n%입니다." 총 수익률은 소수점 2자리 까지 출력
