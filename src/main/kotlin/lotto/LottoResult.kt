@@ -2,11 +2,15 @@ package lotto
 
 class LottoResult {
 
-    val first = 0
-    val second = 0
-    val third = 0
-    val fourth = 0
-    val fifth = 0
+    var first = 0
+    var second = 0
+    var third = 0
+    var fourth = 0
+    var fifth = 0
+
+    fun getPrizeRanking(){
+
+    }
 
     //7. 수익률 계산하는 함수 생성
     fun getEarningRate(inputPrice : Int, winPrice : Int) : String {
