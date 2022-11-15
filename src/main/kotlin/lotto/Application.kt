@@ -14,11 +14,11 @@ fun main() {
 
     // 구입할 금액 메시지 출력
     outputView.outputHowMuchBuy()
-    val money = inputView.inputMoney()
 
+    // 구입할 금액 입력
+    val money = inputView.inputMoney()
     outputView.outputMoney(money)
     outputView.newLine()
-
 
     // 구매 가능한 티켓 출력
     val availableTickets = CalculateNumberOfTickets().calculateNumberOfTickets(money)
@@ -34,12 +34,14 @@ fun main() {
 
     // 당첨 번호 메시지 출력
     outputView.outputWinningNumber()
+
     // 담청 번호 입력
     val winningNumber = inputView.inputWinningNumber()
     outputView.newLine()
 
     // 보너스 번호 메시지 출력
     outputView.outputBonusNumber()
+
     // 보너스 번호 입력
     val bonusNumber = inputView.inputBonusNumber(winningNumber)
     println(bonusNumber)
@@ -47,14 +49,13 @@ fun main() {
 
     // 당첨 통계 메세지
     outputView.outputWinningStatistics()
+
     // 당첨 통계 출력
     val winningLotto = WinningStatistics().winningStatistics(listOfLotto, winningNumber, bonusNumber)
     val winningMap = WinningStatistics().winningMap(winningLotto)
     outputView.outputWinningStatisticsResult(winningMap)
 
-
     // 총 수익률 출력
     val income = WinningStatistics().incomeCalculation(winningLotto)
     outputView.outputTotalYield(money, income)
-
 }
