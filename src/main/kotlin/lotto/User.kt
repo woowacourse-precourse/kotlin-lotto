@@ -5,8 +5,9 @@ import lotto.constants.INPUT_PURCHASE_AMOUNT_ERROR_MSG
 
 class User(money: String) {
     val numOfLotto: Int
-    val earningMoney: Long
-    var purchaseMoney: Long
+    var earningMoney: Long
+    val purchaseMoney: Long
+    var winCase= MutableList(5){0}
 
     init {
         for (i in money) {

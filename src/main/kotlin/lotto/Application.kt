@@ -10,9 +10,6 @@ lateinit var user: User
 lateinit var lottoNums: List<Lotto>
 lateinit var lottoWinNums: LottoWinNums
 
-var winCase = MutableList(5) { 0 }
-var earningMoney = 0L
-
 fun inputPurchasingAmount(): Int {
     println(INPUT_PURCHASE_AMOUNT_MSG)
     try {
@@ -60,9 +57,9 @@ fun calcEarningRate(earningMoney:Long,purchaseMoney:Long):Double{
 fun printResult() {
     println(WIN_RESULT_MSG)
     for (i in 0 until 5) {
-        println(LottoWinCaseMsg.getMsg(i) + winCase[i] + "개")
+        println(LottoWinCaseMsg.getMsg(i) + user.winCase[i] + "개")
     }
-    println(earningRateMSG(calcEarningRate(earningMoney , user.purchaseMoney)))
+    println(earningRateMSG(calcEarningRate(user.earningMoney , user.purchaseMoney)))
 
 }
 
@@ -74,8 +71,8 @@ fun calcResult() {
             continue
         }
 
-        winCase[caseNum]++
-        earningMoney += LottoWinCaseMoney.getPrizeMoney(caseNum)
+        user.winCase[caseNum]++
+        user.earningMoney += LottoWinCaseMoney.getPrizeMoney(caseNum)
     }
 }
 
