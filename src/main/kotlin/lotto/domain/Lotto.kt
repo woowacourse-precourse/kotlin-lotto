@@ -5,4 +5,9 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.size == 6)
     }
 
+    fun throwLottoException() {
+        if (numbers.size != 6) throw IllegalArgumentException("6개의 숫자만 입력 가능합니다")
+        if (numbers.distinct().size != 6) throw IllegalArgumentException("중복된 숫자가 존재합니다")
+    }
+
 }
