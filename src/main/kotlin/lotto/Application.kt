@@ -30,7 +30,9 @@ fun main() {
     println("보너스 번호를 입력해 주세요.")
     var bonusNumber = Console.readLine()
     if (bonusNumber!!.toInt() !in (1..45) )
-        throw IllegalArgumentException("[ERROR]")
+        throw IllegalArgumentException("[ERROR] : 올바른 범위의 숫자를 입력해 주세요.(1~45)")
+    if (myList.contains(bonusNumber.toInt()))
+        throw IllegalArgumentException("[ERROR] : 입력한 당첨 번호와 중복됩니다.")
 
     println("당첨 통계")
     for (i in 0 until randomlotto.size){
