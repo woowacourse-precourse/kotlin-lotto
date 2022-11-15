@@ -40,6 +40,13 @@ class LottoExecptions {
         throw IllegalArgumentException(JOptionPane.ERROR_MESSAGE.toString() + BONUS_TYPE_ERROR)
     }
 
+    fun getBonusLengthException(input : String) : Boolean{
+        if(input.length != 1){
+            throw IllegalArgumentException(JOptionPane.ERROR_MESSAGE.toString() + BONUS_LENGTH_ERROR)
+        }
+        return true
+    }
+
 
     companion object{
         const val LOTTO_SIZE_ERROR = "로또 번호는 총 6개여야 합니다"
