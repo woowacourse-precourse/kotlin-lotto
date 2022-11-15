@@ -51,24 +51,6 @@ class ApplicationTest : NsTest() {
         }
     }
 
-//    @ParameterizedTest
-//    @ValueSource(strings = {"1000j", "1234"})
-//    fun `예외 테스트`(input: String) {
-//        assertThrows<IllegalArgumentException> {
-//            getUserMoney(input) // 문자 포함
-//            getUserMoney("1234")  // 1000으로 나눠 떨어지지 않는 경우
-//
-//            getWinningNumbers("1,2,3,j") // 문자 포함
-//            getWinningNumbers("1,2,0,45") // 1~45 범위 벗어난 경우
-//            getWinningNumbers("1,2,2,3,4,5") // 중복된 숫자
-//            getWinningNumbers("1,2,3,4,5,6,7") // 6개가 아닌 경우
-//            getWinningNumbers("1,2,3,4")
-//
-//            getBonusNumber("45j") // 문자 포함
-//            getBonusNumber("100") // 1~45 범위 벗어난 경우
-//        }
-//    }
-
     companion object {
         private const val ERROR_MESSAGE = "[ERROR]"
     }
