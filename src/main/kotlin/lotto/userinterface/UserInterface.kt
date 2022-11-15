@@ -21,17 +21,30 @@ object UserInterface {
     }
 
     private fun validatePurchaseAmount(readValue: String) {
+        validatePurchaseAmountType(readValue)
+        validatePurchaseAmountLimit(readValue)
+        validatePurchaseAmountDivisible(readValue)
+    }
+
+    private fun validatePurchaseAmountType(readValue: String) =
         require(readValue.all { it.isDigit() }) { PURCHASE_AMOUNT_MUST_BE_A_NUMBER }
+
+    private fun validatePurchaseAmountLimit(readValue: String) {
         val purchaseAmount = BigInteger(readValue)
         require(purchaseAmount <= BigInteger(PURCHASE_AMOUNT_LIMIT.toString())) {
             String.format(
                 PURCHASE_AMOUNT_MUST_NOT_EXCEED_LIMIT, decimalFormat.format(PURCHASE_AMOUNT_LIMIT)
             )
         }
+    }
+
+    private fun validatePurchaseAmountDivisible(readValue: String) {
+        val purchaseAmount = BigInteger(readValue)
         require(
             purchaseAmount.mod(BigInteger("1000")).equals(BigInteger.ZERO)
         ) { PURCHASE_AMOUNT_MUST_BE_DIVIDED_BY_1000 }
     }
+
 
     fun showPurchaseResult(lotteries: List<LottoDto>) {
         println(String.format(PURCHASE_RESULT, lotteries.size))
@@ -46,9 +59,21 @@ object UserInterface {
     }
 
     private fun validateWinningNumbers(readValue: String) {
+        validateWinningNumbersSize(readValue)
+        validateWinningNumbersRange(readValue)
+        validateWinningNumbersDuplicated(readValue)
+    }
+
+    private fun validateWinningNumbersSize(readValue: String) =
         require(readValue.split(",").size == 6) { WINNING_NUMBERS_SIZE_MUST_BE_6 }
+
+    private fun validateWinningNumbersRange(readValue: String) {
         val splitValues = readValue.split(",").map { it.trim() }
         require(splitValues.all { it.matches(Regex("\\d{1,2}")) && it.toInt() in 1..45 }) { WINNING_NUMBERS_MUST_BE_BETWEEN_1_AND_45 }
+    }
+
+    private fun validateWinningNumbersDuplicated(readValue: String) {
+        val splitValues = readValue.split(",").map { it.trim() }
         require(splitValues.toSet().size == splitValues.size) { WINNING_NUMBERS_MUST_NOT_BE_DUPLICATED }
     }
 
@@ -60,9 +85,15 @@ object UserInterface {
     }
 
     private fun validateBonusNumber(readValue: String, winningNumbers: List<Int>) {
-        require(readValue.matches(Regex("\\d{1,2}")) && readValue.toInt() in 1..45) { BONUS_NUMBER_MUST_BE_BETWEEN_1_AND_45 }
-        require(readValue.toInt() !in winningNumbers) { BONUS_NUMBER_MUST_NOT_BE_INCLUDED_IN_WINNING_NUMBERS }
+        validateBonusNumberRange(readValue)
+        validateBonusNumberThatIsIncludedInWinningNumbers(readValue, winningNumbers)
     }
+
+    private fun validateBonusNumberRange(readValue: String) =
+        require(readValue.matches(Regex("\\d{1,2}")) && readValue.toInt() in 1..45) { BONUS_NUMBER_MUST_BE_BETWEEN_1_AND_45 }
+
+    private fun validateBonusNumberThatIsIncludedInWinningNumbers(readValue: String, winningNumbers: List<Int>) =
+        require(readValue.toInt() !in winningNumbers) { BONUS_NUMBER_MUST_NOT_BE_INCLUDED_IN_WINNING_NUMBERS }
 
     fun showWinningStatistics(winningStatistics: WinningStatisticsDto) {
         println("당첨 통계")
