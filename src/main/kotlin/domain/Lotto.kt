@@ -1,9 +1,11 @@
 package domain
 
+import lotto.LottoMessage
+
 class Lotto(val numbers: List<Int>) {
     init {
-        require(numbers.size == 6) { "로또 번호는 6개야 합니다." }
-        numbers.forEach { require(it in 1..45) { "로또의 각 번호는 1~45 사이여아 합니다." } }
+        require(numbers.toSet().size == LOTTO_SIZE) { LottoMessage.LOTTERY_SIZE_ERROR }
+        numbers.forEach { require(it in LOTTO_MIN_BOUND..LOTTO_MAX_BOUND) { LottoMessage.BONUS_RANGE_ERROR } }
     }
 
     fun countSameNumber(lotto: Lotto): Int {
@@ -11,7 +13,14 @@ class Lotto(val numbers: List<Int>) {
         differences.removeAll(lotto.numbers)
         return 6 - differences.size
     }
+
     operator fun contains(number: Int): Boolean {
         return numbers.contains(number)
+    }
+
+    companion object {
+        private const val LOTTO_MIN_BOUND = 1
+        private const val LOTTO_MAX_BOUND = 45
+        private const val LOTTO_SIZE = 6
     }
 }
