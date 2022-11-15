@@ -37,7 +37,9 @@ class LottoGame {
     private val winningNumbers = ArrayList<Int>()
     private var bonusNumber = 0
     private val buyLotteries = ArrayList<Lotto>()
-    private var counts = arrayOf(0, 0, 0, 0, 0, 0)
+    private var counts = arrayOf(0, 0, 0, 0)
+    private var bonusCounts = 0
+
     fun simulate() {
         getPurchaseAmount()
         printLotteriesNumber()
@@ -49,6 +51,7 @@ class LottoGame {
         printBuyLotteries()
 
         getResult()
+        printResult()
     }
 
     private fun getPurchaseAmount() {
@@ -165,7 +168,6 @@ class LottoGame {
 
     private fun initBonusNumber(number: Int) {
         bonusNumber = number
-        winningNumbers.add(bonusNumber)
     }
 
     private fun printLotteriesNumber() {
@@ -191,7 +193,24 @@ class LottoGame {
     private fun getResult() {
         for(lotto in buyLotteries) {
             val result = lotto.checkRank(winningNumbers)
+            val isBonus = lotto.isContainNumber(bonusNumber, winningNumbers)
             counts[result - 3]++
         }
+    }
+
+    private fun checkBonus(isBonus: Boolean, count: Int) {
+        if(isBonus) {
+            bonusCounts++
+        } else {
+            counts[count - 3]++
+        }
+    }
+
+    private fun printResult() {
+        println("3개 일치 (5,000원) - ${counts[0]}개")
+        println("4개 일치 (50,000원) - ${counts[1]}개")
+        println("5개 일치 (1,500,000원) - ${counts[2]}개")
+        println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${bonusCounts}개")
+        println("6개 일치 (2,000,000,000원) - ${counts[3]}개")
     }
 }
