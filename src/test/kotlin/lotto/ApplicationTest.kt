@@ -66,6 +66,20 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `lotto번호로 숫자가 입력되었는지 체크`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("1000", "1,2,3,4,5,a")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            },
+            listOf(8, 21, 23, 41, 42, 43),
+
+        )
+    }
+
+
+
     override fun runMain() {
         main()
     }
