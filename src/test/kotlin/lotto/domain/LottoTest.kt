@@ -3,7 +3,10 @@ package lotto.domain
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import kotlin.math.exp
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.MethodSource
+import java.util.stream.Stream
 
 class LottoTest {
     @Test
@@ -33,5 +36,25 @@ class LottoTest {
         val lotto = Lotto(numbers)
         val expected = "[1, 2, 3, 4, 5, 6]"
         assertThat(lotto.getTicket()).isEqualTo(expected)
+    }
+
+    @ParameterizedTest
+    @MethodSource("generateDataForGetRank")
+    fun `로또의 등수를 계산한다`(winningNumbers: List<Int>, bonusNumber: Int, expected: Rank) {
+        val lotto = Lotto(listOf(1, 6, 32, 22, 10, 45))
+        assertThat(lotto.getRank(winningNumbers, bonusNumber)).isEqualTo(expected)
+    }
+
+    companion object {
+        @JvmStatic
+        private fun generateDataForGetRank(): Stream<Arguments> {
+            return Stream.of(
+                Arguments.of(listOf(1, 6, 32, 22, 10, 45), 22, Rank.FIRST),
+                Arguments.of(listOf(1, 6, 12, 22, 10, 45), 22, Rank.SECOND),
+                Arguments.of(listOf(1, 6, 12, 22, 10, 45), 7, Rank.THIRD),
+                Arguments.of(listOf(1, 6, 12, 5, 10, 45), 22, Rank.FOURTH),
+                Arguments.of(listOf(1, 6, 12, 22, 9, 44), 22, Rank.FIFTH)
+            )
+        }
     }
 }

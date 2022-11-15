@@ -5,8 +5,21 @@ class Lotto(private val numbers: List<Int>) {
         checkValidation()
     }
 
-    fun getRank(winningNumbers: List<Int>, bonusNumber: Int): Rank {
-        return Rank.FIRST
+    fun getRank(winningNumbers: List<Int>, bonusNumber: Int): Rank? {
+        val lottoChecker = LottoChecker()
+        return when (lottoChecker.countCorrectNumbers(numbers, winningNumbers)) {
+            6 -> Rank.FIRST
+            5 -> {
+                if (lottoChecker.hasBonusNumber(numbers, bonusNumber)) {
+                    return Rank.SECOND
+                }
+                Rank.THIRD
+            }
+
+            4 -> Rank.FOURTH
+            3 -> Rank.FIFTH
+            else -> null
+        }
     }
 
     fun getTicket(): String {
