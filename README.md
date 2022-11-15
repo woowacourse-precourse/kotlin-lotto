@@ -10,14 +10,3 @@
 > * 수익률 계산 함수
 > * 당첨 수 + 수익률 출력 함수
 > * 에러 함수
-
-## Class layout
-The contents of a class should go in the following order:
->
-> Property declarations and initializer blocks
-  
-  Secondary constructors
-  
-  Method declarations
-  
-  Companion object
