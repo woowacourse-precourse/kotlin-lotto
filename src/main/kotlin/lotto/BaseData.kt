@@ -1,6 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 class BaseData {
     var inputMoney = 0
@@ -39,6 +40,11 @@ class BaseData {
             purchasedLotto.add(randomLotto())
         }
         purchasedLotto
+    }
+
+    fun randomLotto(): MutableList<Int> {
+        val randomLotto = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+        return randomLotto
     }
 
     fun inputLottoNum() {
