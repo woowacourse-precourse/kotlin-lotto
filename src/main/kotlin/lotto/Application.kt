@@ -189,7 +189,7 @@ class LottoGame {
 
     private fun printBuyLotteries() {
         for(i in 0 until lotteries) {
-            println(buyLotteries[i].toString())
+            buyLotteries[i].printNumbers()
         }
     }
 
