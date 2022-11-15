@@ -9,7 +9,7 @@ import lotto.service.CheckWinning
 import lotto.service.Yeild
 import lotto.util.input
 
-class lottoController(){
+class LottoController {
     private val buyMoney = PayedMoney().inputUserMoney()
     val Lotto = LottoCreate().createLotto(buyMoney)
     val winningNumber = WinningNumber().inputWinningNumber()
