@@ -8,27 +8,30 @@ class LotteryChecker {
 
     fun checkLotteryNumber(winningLottery: WinningLottery, lottoTicket: List<Lotto>) {
         lottoTicket.forEach { Lotto ->
-            val result = matchLottoNumbers(winningLottery, Lotto.getNumbers())
-            val rank = Rank.valueOf(matchedCount = result.first, checkBonus = result.second)
+            val count = countRightLottoNumbers(winningLottery.getNumber(), Lotto.getNumbers())
+            val bonus = isBonusNumber(winningLottery, Lotto.getNumbers())
+            val rank = Rank.valueOf(count, bonus)
+
             addCount(rank)
         }
+    }
+
+    private fun countRightLottoNumbers(winningLotto: List<Int>, lotto: List<Int>): Int {
+        var count = 0
+        winningLotto.forEach { number ->
+            if (lotto.contains(number)) count++
+        }
+
+        return count
+    }
+    private fun isBonusNumber(winningLottery: WinningLottery, lotto: List<Int>): Boolean {
+        return lotto.contains(winningLottery.getBonusNumber())
     }
 
     private fun addCount(rank: Rank) {
         winner[rank] = winner.getOrDefault(rank, 0) + 1
     }
 
-    private fun matchLottoNumbers(winningLottery: WinningLottery, lotto: List<Int>): Pair<Int, Boolean> {
-        var count = 0
-        var checkBonus = false
-        winningLottery.getNumber().forEach { number ->
-            if (lotto.contains(number)) count++
-        }
-
-        if (lotto.contains(winningLottery.getBonusNumber())) { checkBonus = true }
-
-        return Pair(count, checkBonus)
-    }
 
     fun getWinnerScore(rank: Rank): Int {
         return winner[rank]!!
