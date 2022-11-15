@@ -1,3 +1,3 @@
-package lotto.exception
+package exception
 
 class DuplicateInputException : Exception()

@@ -1,4 +1,4 @@
-package lotto
+package winlotto
 
 class WinLottoFactory {
     fun makeWinLotto(

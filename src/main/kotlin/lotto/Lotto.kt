@@ -1,11 +1,11 @@
 package lotto
 
-import lotto.constant.LOTTO_NUM_COUNT
-import lotto.constant.LOTTO_NUM_RANGE_END
-import lotto.exception.DuplicateInputException
-import lotto.util.ErrorType
-import lotto.util.printErrorMessage
-import lotto.util.showError
+import enterprise.LOTTO_NUM_COUNT
+import enterprise.LOTTO_NUM_RANGE_END
+import exception.DuplicateInputException
+import util.ErrorType
+import util.printErrorMessage
+import util.showError
 
 class Lotto(private val numbers: List<Int>) {
     init {
@@ -26,23 +26,5 @@ class Lotto(private val numbers: List<Int>) {
         }
     }
 
-    fun matchLotto(winLotto: WinLotto): SameLottoResult {
-
-        val used = BooleanArray(LOTTO_NUM_RANGE_END + 1)
-        var lottoSameCount = 0
-        var isBonusSame = false
-        val winLottoNumbers = winLotto.numbers
-
-        winLottoNumbers.forEach {
-            used[it] = true
-        }
-
-        numbers.forEach {
-            if (used[it]) {
-                if (winLottoNumbers[winLottoNumbers.lastIndex] == it) isBonusSame = true
-                else lottoSameCount++
-            }
-        }
-        return SameLottoResult(lottoSameCount, isBonusSame)
-    }
+    fun getNumbers(): List<Int> = numbers
 }

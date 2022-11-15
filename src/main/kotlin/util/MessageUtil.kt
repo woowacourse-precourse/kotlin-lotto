@@ -1,4 +1,4 @@
-package lotto.util
+package util
 
 
 fun printErrorMessage(errorType: ErrorType) {
@@ -24,4 +24,20 @@ fun printLottoGradeCountToMessage(
 fun printLottoEarningsRate(lottoPrizeSum: Long, paidMoney: Int) {
     val ratio = lottoPrizeSum / paidMoney.toDouble()
     println("총 수익률은 ${String.format("%.1f", (ratio * 100))}%입니다.")
+}
+
+fun printAskPayMoneyInput() {
+    println("로또 구입 금액을 입력해 주세요.")
+}
+
+fun printAnswerBuyLottoCount(lottoCount: Int?) {
+    println("${lottoCount}개를 구매했습니다.")
+}
+
+fun printAskWinLottoNumbersInput() {
+    println("당첨 번호를 입력해 주세요.")
+}
+
+fun printAskWinBonusNumberInput() {
+    println("보너스 번호를 입력해 주세요.")
 }

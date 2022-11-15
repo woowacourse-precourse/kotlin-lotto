@@ -1,9 +1,9 @@
-package lotto.util
+package util
 
-import lotto.constant.LOTTO_NUM_RANGE_END
-import lotto.constant.LOTTO_NUM_RANGE_START
-import lotto.exception.DivisibleMoneyException
-import lotto.exception.InputCountException
+import enterprise.LOTTO_NUM_RANGE_END
+import enterprise.LOTTO_NUM_RANGE_START
+import exception.DivisibleMoneyException
+import exception.InputCountException
 
 enum class ErrorType {
     CANNOT_DIVISIBLE_MONEY, WRONG_TYPE_INPUT, WRONG_VALUE, WRONG_WIN_LOTTO_NUMBERS_COUNT,

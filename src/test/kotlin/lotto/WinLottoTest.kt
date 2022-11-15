@@ -1,6 +1,7 @@
 package lotto
 
 import org.junit.jupiter.api.Test
+import winlotto.WinLotto
 
 class WinLottoTest {
     @Test
