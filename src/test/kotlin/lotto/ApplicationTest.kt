@@ -58,6 +58,14 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `1000의 배수인지 테스트`() {
+        assertSimpleTest {
+            runException("1500")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
     override fun runMain() {
         main()
     }
