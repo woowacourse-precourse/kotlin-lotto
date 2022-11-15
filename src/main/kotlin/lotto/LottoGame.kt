@@ -1,14 +1,12 @@
 package lotto
 
+import kotlin.math.round
+
 class LottoGame {
-    fun calculateProfitRate() {
-
-    }
-
     fun gameControl() {
         val lottoList = mutableListOf<Lotto>()
-
-        val lottoQuantity = PurchaseLotto().issuedLotto(PurchaseLotto().purchase())
+        val inputMoney = PurchaseLotto().purchase()
+        val lottoQuantity = PurchaseLotto().issuedLotto(inputMoney)
 
         PurchaseLotto().getLottoTicket(lottoList, lottoQuantity)
 
@@ -26,11 +24,11 @@ class LottoGame {
         }
 
         printStatistics()
-
+        println("총 수익률은 ${calculateYield(inputMoney)}%입니다.")
     }
 
     private fun printStatistics() {
-        println("당첨 통계")
+        println("\n당첨 통계")
         println("---")
         println("3개 일치 (5,000원) - ${LottoRank.MATCH_THREE.ticketCount}개")
         println("4개 일치 (50,000원) - ${LottoRank.MATCH_FOUR.ticketCount}개")
@@ -39,5 +37,16 @@ class LottoGame {
         println("6개 일치 (2,000,000,000원) - ${LottoRank.MATCH_SIX.ticketCount}개")
     }
 
+    private fun calculateYield(money: Int): Double {
+        var sum = 0.0
 
+        sum += LottoRank.MATCH_THREE.winningReward * LottoRank.MATCH_THREE.ticketCount
+        sum += LottoRank.MATCH_FOUR.winningReward * LottoRank.MATCH_FOUR.ticketCount
+        sum += LottoRank.MATCH_FIVE.winningReward * LottoRank.MATCH_FIVE.ticketCount
+        sum += LottoRank.MATCH_FIVE_BONUS.winningReward * LottoRank.MATCH_FIVE_BONUS.ticketCount
+        sum += LottoRank.MATCH_SIX.winningReward * LottoRank.MATCH_SIX.ticketCount
+
+        val yield = (sum / money) * 100
+        return round(`yield`)
+    }
 }
