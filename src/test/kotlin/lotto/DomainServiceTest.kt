@@ -41,12 +41,12 @@ class DomainServiceTest {
     }
 
     @Test
-    fun `3등 미만의 bonus 값을 false로 고정하는 함수 테스트`() {
-        val hit = 4
+    fun `2등 이외의 bonus 값을 false로 고정하는 함수 테스트`() {
+        val hit = 5
         val bonus = true
-        assertThat(domainService.isNecessaryBonus(hit, bonus)
+        assertThat(domainService.isBonusNecessary(hit, bonus)
             .also { println(it) })
-            .isEqualTo(4 to false)
+            .isEqualTo(5 to true)
     }
 
     @Test

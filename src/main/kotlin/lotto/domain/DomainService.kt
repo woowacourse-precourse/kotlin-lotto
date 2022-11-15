@@ -29,14 +29,14 @@ class DomainService {
                 bonus = true
             }
         }
-        return isNecessaryBonus(hit, bonus)
+        return isBonusNecessary(hit, bonus)
     }
 
     /**
-     * 3등 미만은 보너스 정보가 필요 없으므로 bonus 값을 false로 고정하는 함수
+     * 2등 이외에는 보너스 정보가 필요 없으므로 bonus 값을 false로 고정하는 함수
      * */
-    fun isNecessaryBonus(hit: Int, bonus: Boolean): Pair<Int, Boolean> {
-        if ((hit < 5) and bonus) {
+    fun isBonusNecessary(hit: Int, bonus: Boolean): Pair<Int, Boolean> {
+        if ((hit != 5) and bonus) {
             return hit to false
         }
         return hit to bonus
