@@ -1,4 +1,4 @@
-package lotto
+package domain
 
 import domain.EarningRateCalculator
 import domain.MatchStorage
