@@ -1,5 +1,11 @@
 package lotto
 
 fun main() {
-    TODO("프로그램 구현")
+    try {
+        Lottery(
+            Computer()
+        ).start()
+    } catch (e: IllegalArgumentException) {
+        Printer.printError(e.message!!)
+    }
 }
