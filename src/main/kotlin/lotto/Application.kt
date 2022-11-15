@@ -2,7 +2,6 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
-import kotlin.math.round
 
 fun main() {
     println("구입금액을 입력해 주세요.")
