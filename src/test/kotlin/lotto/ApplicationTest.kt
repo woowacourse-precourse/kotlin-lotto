@@ -102,6 +102,18 @@ class ApplicationTest : NsTest() {
             )
     }
 
+    @Test
+    fun `lotto번호로 입력된 값중 수의 범위가 적당한지 체크`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("1000", "1,49, 253,4,5,6")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            },
+            listOf(8, 21, 23, 41, 42, 43),
+
+            )
+    }
+
 
 
     override fun runMain() {
