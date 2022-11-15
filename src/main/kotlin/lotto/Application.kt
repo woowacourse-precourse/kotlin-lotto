@@ -1,7 +1,11 @@
 package lotto
 
 fun main() {
-    playLotto()
+    try{
+        playLotto()
+    }catch (e: IllegalArgumentException){
+        println("입력값은 숫자여야 합니다.")
+    }
 }
 
 fun playLotto() {
@@ -22,21 +26,22 @@ fun playLotto() {
 }
 
 fun checkPriceNumber(): Int {
-    var price = 0
+    val price: Int
     try {
         price = InputNumbers.inputPrice()
-    } catch (e: IllegalArgumentException) {
-        print("[ERROR] 입력값은 숫자로 이루어져야 합니다.")
+    } catch (e: NumberFormatException) {
+        throw IllegalArgumentException("[ERROR] 입력값은 숫자로 이루어져야 합니다.")
     }
     return price
 }
 
 fun checkBonusNumber(): Int {
-    var bonusNumber = 0
+    val bonusNumber:Int
     try {
         bonusNumber = InputNumbers.inputBonus()
-    } catch (e: IllegalArgumentException) {
+    } catch (e: NumberFormatException) {
         print("[ERROR] 입력값은 숫자로 이루어져야 합니다.")
+        throw IllegalArgumentException()
     }
     return bonusNumber
 }
