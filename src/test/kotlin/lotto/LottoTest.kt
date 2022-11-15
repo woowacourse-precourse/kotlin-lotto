@@ -1,5 +1,7 @@
 package lotto
 
+import lotto.domain.BonusNumberError
+import lotto.domain.Lotto
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -12,7 +14,6 @@ class LottoTest {
         }
     }
 
-    // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
     @Test
     fun `로또 번호에 중복된 숫자가 있으면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
@@ -27,4 +28,15 @@ class LottoTest {
             Lotto(listOf(8, 12, 17, 26, 37, 56))
         }
     }
+
+    @Test
+    fun `6개의 로또 번호가 보너스 번호와 중복된다면 예외가 발생한다`() {
+
+        val lottoNumber = listOf(1, 2, 3, 4, 5, 6)
+        val bonusNumber = 5
+        assertThrows<IllegalArgumentException> {
+            BonusNumberError(lottoNumber, bonusNumber)
+        }
+    }
+
 }
