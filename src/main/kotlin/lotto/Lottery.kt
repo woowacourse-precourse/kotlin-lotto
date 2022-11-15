@@ -46,8 +46,7 @@ class Lottery(
     }
 
     companion object {
-        fun printAndThrowException(errorMessage: String) {
-            Printer.printError(errorMessage)
+        fun throwException(errorMessage: String) {
             throw IllegalArgumentException(errorMessage)
         }
     }

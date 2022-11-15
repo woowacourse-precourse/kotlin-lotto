@@ -5,6 +5,7 @@ fun main() {
         Lottery(
             Computer()
         ).start()
-    } catch (_: IllegalArgumentException) {
+    } catch (e: IllegalArgumentException) {
+        Printer.printError(e.message!!)
     }
 }

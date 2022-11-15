@@ -33,27 +33,27 @@ object Buyer {
 
     private fun checkIsBlank(input: String) {
         if (input.isBlank()) {
-            Lottery.printAndThrowException(ENTER_AMOUNT)
+            Lottery.throwException(ENTER_AMOUNT)
         }
     }
 
     private fun checkIsNumber(input: String) {
         input.forEach {
             if (!it.isDigit()) {
-                Lottery.printAndThrowException(ENTER_NUMBER)
+                Lottery.throwException(ENTER_NUMBER)
             }
         }
     }
 
     private fun checkCanDivide(input: String) {
         if (!canDivide1000(input.toInt())) {
-            Lottery.printAndThrowException(MUST_CAN_DIVIDED)
+            Lottery.throwException(MUST_CAN_DIVIDED)
         }
     }
 
     private fun checkIsRightRange(input: String) {
         if (input.toLong() > Int.MAX_VALUE || input.toLong() < ONE_THOUSAND) {
-            Lottery.printAndThrowException(WRONG_RANGE_AMOUNT)
+            Lottery.throwException(WRONG_RANGE_AMOUNT)
         }
     }
 
@@ -61,31 +61,31 @@ object Buyer {
 
     private fun checkIsRightFormat(input: String) {
         if (!(INPUT_FORMAT.toRegex().matches(input)))
-            Lottery.printAndThrowException(FORMAT_ERROR)
+            Lottery.throwException(FORMAT_ERROR)
     }
 
     private fun checkIsNumberInRange(input: String) {
         input.split(",").forEach {
             checkIsIn1To45(it.toInt())
             if (it[0] == '0')
-                Lottery.printAndThrowException(WRONG_RANGE_NUMBER)
+                Lottery.throwException(WRONG_RANGE_NUMBER)
         }
     }
 
     private fun checkIsIn1To45(num: Int) {
         if (num !in (1..45))
-            Lottery.printAndThrowException(WRONG_RANGE_NUMBER)
+            Lottery.throwException(WRONG_RANGE_NUMBER)
     }
 
     private fun checkDuplicate(input: String) {
         val numbers: Set<String> = input.split(",").toSet()
         if (numbers.count() != ONE_LOTTERY_COUNT)
-            Lottery.printAndThrowException(DUPLICATE_NUMBER)
+            Lottery.throwException(DUPLICATE_NUMBER)
     }
 
     private fun checkDuplicateWithWinningNumber(num: Int) {
         if (winningNumbers.contains(num))
-            Lottery.printAndThrowException(DUPLICATE_NUMBER)
+            Lottery.throwException(DUPLICATE_NUMBER)
     }
 
 }
