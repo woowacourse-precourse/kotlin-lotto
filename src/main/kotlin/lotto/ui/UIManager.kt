@@ -18,8 +18,8 @@ class UIManager(private val inputManager: InputManager, private val outputManage
         return inputManager.askDrawnNumbers()
     }
 
-    fun printWinningStatistics(winningList: List<Int>, earningsRate: Double) {
-        outputManager.printWinningStatistics(winningList, earningsRate)
+    fun printWinningStatistics(winningDetails: List<Int>, earningsRate: Double) {
+        outputManager.printWinningStatistics(winningDetails, earningsRate)
     }
 
     fun printUserLotto(userLotto: LottoList) {

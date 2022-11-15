@@ -19,7 +19,7 @@ class LottoGameController(private val uiManager: UIManager) {
             val (winningLotto, bonusNumber) = uiManager.askDrawnNumbers()
             val lottoGame = LottoGame(winningLotto, bonusNumber, userLotto)
             val gameResult = lottoGame.play()
-            uiManager.printWinningStatistics(winningList = gameResult.first, earningsRate = gameResult.second)
+            uiManager.printWinningStatistics(winningDetails = gameResult.first, earningsRate = gameResult.second)
         } catch (exception: IllegalArgumentException) {
             println(exception.message)
         }
