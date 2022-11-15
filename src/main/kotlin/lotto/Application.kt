@@ -29,9 +29,9 @@ fun main() {
 fun inputPrice(): Int {
     println("구입금액을 입력해 주세요.")
     val price = Console.readLine()
-    if(price.matches(priceRegex).not()) {
+    if (price.matches(priceRegex).not()) {
         println("[ERROR] 가격은 숫자여야만 한다.")
-        throw NoSuchElementException("[ERROR] 가격은 숫자여야만 한다.")
+        throw NoSuchElementException()
     }
 
     require(price.toInt() % 1000 == 0) {
