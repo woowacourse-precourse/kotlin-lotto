@@ -75,10 +75,10 @@ fun inputWinNumber(){
 fun main() {
     println("구입 금액을 입력하세요")
     val money = Console.readLine()!!.toInt() //정수형 변환
-    //if(money%0!=0){
-      //  println("[ERROR] 로또 1장의 가격은 1000원입니다. 1000원 단위로 입력해주세요")
-        //throw IllegalArgumentException()
-    //}
+    if(money%1000!=0){
+        println("[ERROR] 로또 1장의 가격은 1000원입니다. 1000원 단위로 입력해주세요")
+        throw IllegalArgumentException()
+    }
     val lottoCount = money/1000 //로또 횟수
 
     print("\n")
