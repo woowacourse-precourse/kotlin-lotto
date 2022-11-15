@@ -2,10 +2,8 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 
-//UI 로직 포함하는 클래스 생성
 class MainView {
 
-    // 1. 로또 구입 금액 입력 받기
     fun getLottoPrice() : Int? {
         println(PURCHASE_MSG)
         val lottoPrice = readLine()?.toInt()
@@ -21,7 +19,6 @@ class MainView {
         }
     }
 
-    // 2. 당첨 번호 입력 받기
     fun getWinNums() : String? {
         println(GET_LOTTO_INPUT_MSG)
         val winNums = readLine()
@@ -29,7 +26,6 @@ class MainView {
         return winNums
     }
 
-    // 3. 보너스 번호 입력 받기
     fun getBonusNum(): Int? {
         println(GET_BONUS_INPUT_MSG)
         //보너스 번호가 양식에 맞게 입력되지 않았을 때의 예외 사항 처리 필요
