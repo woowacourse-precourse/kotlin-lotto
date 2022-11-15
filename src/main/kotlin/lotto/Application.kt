@@ -1,22 +1,22 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.Randoms
-import kotlin.math.round
-
 fun main() {
-    val price = inputPrice()
-    val lottoCount = calculatePrice(price)
-    val lottoNumber = pickNumber(lottoCount)
-    printNumbers(lottoNumber,lottoCount)
-    val winning = inputWinning()
-    val winningNumber = changeNumberList(winning)
-    Lotto(winningNumber)
-    val bonusNumber = inputBonus()
-    val countReward = calculateSame(lottoNumber,winningNumber,bonusNumber)
-    val money = calculateMoney(countReward)
-    val revenue = calculateRevenue(money, price)
-    printReward(countReward, revenue)
+    val price = InputNumbers.inputPrice()
+    val lotto = LottoNumber()
+    lotto.calculatePrice(price)
+
+
+    val winning = InputNumbers.inputWinning()
+    val winningNumber = WinningNumber()
+    winningNumber.changeNumberList(winning)
+
+    val bonusNumber = InputNumbers.inputBonus()
+
+    val reward = Reward()
+    reward.calculateSame(lotto.lottoNumber,winningNumber.winningNumber,bonusNumber)
+    reward.calculateRevenue(reward.money, price)
 }
+
 
 enum class Message {
     PRICE, COUNT, NUMBER, BONUS,
@@ -31,118 +31,8 @@ fun getMessage(message: Message) {
     }
 }
 
-fun inputPrice(): Int {
-    getMessage(Message.PRICE)
-    return readLine()!!.toInt()
-}
 
-fun calculatePrice(price: Int): Int {
-    if (price % 1000 != 0) {
-        throw IllegalArgumentException("[ERROR] 로또는 1000원 단위로 구매 가능합니다.")
-    }
-    return price / 1000
-}
-
-fun pickNumber(lottoCount: Int): MutableList<MutableList<Int>> {
-    val lottoNumber:MutableList<MutableList<Int>> = mutableListOf()
-
-    for(number:Int in 0 until lottoCount){
-        val randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
-        randomNumbers.sort()
-        lottoNumber.add(randomNumbers)
-    }
-    return lottoNumber
-}
-
-fun printNumbers(lottoNumber: MutableList<MutableList<Int>>, lottoCount: Int){
-    print(lottoCount)
-    getMessage(Message.COUNT)
-    for(count in 0 until lottoCount){
-        println(lottoNumber[count])
-    }
-}
-
-fun inputWinning(): String {
-    getMessage(Message.NUMBER)
-    val winning = readLine()
-    return winning.toString()
-}
-
-fun changeNumberList(winning: String): List<Int> {
-    val winningNumber = winning.split(',').map{it.toInt()}
-    print(winningNumber)
-    return winningNumber
-}
-
-fun inputBonus(): Int {
-    getMessage(Message.BONUS)
-    val bonusNumber = readLine()
-    return bonusNumber!!.toInt()
-}
-
-fun calculateSame(lottoNumber: MutableList<MutableList<Int>>, winningNumber:  List<Int>, bonusNumber: Int): MutableList<Int> {
-    val countReward: MutableList<Int> = mutableListOf(0,0,0,0,0)
-    for(i:Int in lottoNumber.indices){
-        val difference = winningNumber.toSet().minus(lottoNumber[i].toSet())
-        val duplicationCount = winningNumber.size - difference.size
-        print(duplicationCount)
-        val countWinning = calculateReward(duplicationCount,bonusNumber,winningNumber)
-        for(index:Int in 0 until countReward.size){
-            countReward[index] = countReward[index] + countWinning[index]
-        }
-    }
-    println(countReward)
-    return countReward
-}
-
-fun calculateReward(duplicationCount: Int, bonusNumber:Int, winningNumber: List<Int>): MutableList<Int> {
-    val countReward:MutableList<Int> = mutableListOf(0,0,0,0,0)
-    when(duplicationCount){
-        3 -> countReward[0]=+1
-        4 -> countReward[1]=+1
-        5 -> whenCountFive(countReward, bonusNumber, winningNumber)
-        6 -> countReward[4]+=1
-    }
-    return countReward
-}
-
-fun whenCountFive(countReward: MutableList<Int>, bonusNumber: Int, winningNumber: List<Int>): MutableList<Int> {
-    if(winningNumber.contains(bonusNumber)){
-        countReward[3] =+ 1
-        return countReward
-    }
-    countReward[2] =+ 1
-    return  countReward
-}
-
-fun calculateMoney(countReward: MutableList<Int>): Int {
-    var money = 0
-    for(index:Int in 0 until countReward.size) {
-        when (index) {
-            0 -> money += countReward[0] * 5000
-            1 -> money += countReward[1] * 50000
-            2 -> money += countReward[2] * 1500000
-            3 -> money += countReward[3] * 30000000
-            4 -> money += countReward[4] * 2000000000
-        }
-    }
-    println(money)
-    return money
-}
-
-fun printReward(countReward: MutableList<Int>, revenue:Float){
-    println("3개 일치 (5,000원) - "+ countReward[0] +"개\n" +
-            "4개 일치 (50,000원) - "+countReward[1] +"개\n" +
-            "5개 일치 (1,500,000원) - "+ countReward[2] +"개\n" +
-            "5개 일치, 보너스 볼 일치 (30,000,000원) - "+ countReward[3] +"개\n" +
-            "6개 일치 (2,000,000,000원) - "+ countReward[4] +"개\n"+
-            "총 수익률은 "+revenue+"%입니다.")
-}
-
-fun calculateRevenue(money:Int, price:Int): Float {
-    val revenue: Float =(money.toFloat()/price.toFloat())*100
-    println(money)
-    println(price)
-    println(revenue)
-    return round(revenue*10)/10
-}
+//클래스 나누기
+//보너스 점수 중복 증명하기
+//45이상 숫자 예외처리
+//하드코딩 하지않기
