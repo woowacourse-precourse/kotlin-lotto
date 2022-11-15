@@ -12,6 +12,13 @@ enum class MatchStorage(val matchMessage: String,
         MATCH_SIX(Constants.MATCH_SIX_NUMBER_MESSAGE, 2000000000, 0)
 }
 
+fun initializeMatchStorage(){
+    val matches = enumValues<MatchStorage>()
+    for (index in matches.indices){
+        matches[index].matchCount = 0
+    }
+}
+
 
 
 
