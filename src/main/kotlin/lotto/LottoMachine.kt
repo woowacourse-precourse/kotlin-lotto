@@ -12,7 +12,6 @@ import lotto.Messages.Companion.NUMBER_RANGE_ERROR
 
 class LottoMachine {
 
-    private var bonusNumber = 0
     private lateinit var rankResults: MutableMap<WinningRank, Int>
     private var prizeMoney = 0.0
 
@@ -25,13 +24,12 @@ class LottoMachine {
         View.printNumberOfLottos(numberOfLotto)
         View.printLottos(lottos)
 
-        val winningNumberInput = View.getWinningNumber()
-        val winningLotto = convertNumbersToLotto(winningNumberInput)
+        val winningLotto = convertNumbersToLotto(View.getWinningNumber())
 
-        bonusNumber = View.getBonusNumber().toInt()
+        val bonusNumber = View.getBonusNumber().toInt()
         checkBonusNumberException(winningLotto, bonusNumber)
 
-        calculateResult(lottos, winningLotto)
+        calculateResult(lottos, winningLotto, bonusNumber)
         val earningsRate = getEarningsRate(numberOfLotto)
 
         View.printResultStats(rankResults, earningsRate)
@@ -82,9 +80,9 @@ class LottoMachine {
         }
     }
 
-    fun calculateResult(lottos: List<Lotto>, winningLotto: Lotto) {
+    fun calculateResult(lottos: List<Lotto>, winningLotto: Lotto, bonusNumber: Int) {
         initializeResults()
-        lottos.forEach { calculateLottoResult(it, winningLotto) }
+        lottos.forEach { calculateLottoResult(it, winningLotto, bonusNumber) }
     }
 
     fun initializeResults() {
@@ -95,7 +93,7 @@ class LottoMachine {
         prizeMoney = 0.0
     }
 
-    fun calculateLottoResult(lotto: Lotto, winningLotto: Lotto) {
+    fun calculateLottoResult(lotto: Lotto, winningLotto: Lotto, bonusNumber: Int) {
         val matchCount = lotto.getNumbers().count { winningLotto.getNumbers().contains(it) }
         val rank = when (matchCount) {
             6 -> WinningRank.FIRST
