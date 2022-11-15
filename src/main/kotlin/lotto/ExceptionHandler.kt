@@ -1,5 +1,5 @@
 package lotto
-
+import lotto.Constants
 object ExceptionHandler {
 
     /**
@@ -7,9 +7,9 @@ object ExceptionHandler {
      */
     fun throwExceptionForLottoNumbers(lottoNumbers: List<Int>){
         when{
-            !getHasDistinctNumber(lottoNumbers) -> throw IllegalArgumentException("[ERROR] 로또 번호는 서로 중복되지 않은 숫자여야 합니다.")
-            !getIsSizeSix(lottoNumbers) -> throw IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자여야 합니다.")
-            !getIsBetweenOneAndFortyFive(lottoNumbers) -> throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+            !getHasDistinctNumber(lottoNumbers) -> throw IllegalArgumentException(Constants.ERROR_LOTTO_NUMBER_DUPLICATED_NUMBER)
+            !getIsSizeSix(lottoNumbers) -> throw IllegalArgumentException(Constants.ERROR_LOTTO_NUMBER_OVER_SIX_NUMBER)
+            !getIsBetweenOneAndFortyFive(lottoNumbers) -> throw IllegalArgumentException(Constants.ERROR_LOTTO_NUMBER_NOT_BETWEEN_ONE_AND_FORTYFIVE)
         }
     }
 
@@ -57,9 +57,9 @@ object ExceptionHandler {
     fun throwExceptionForBonusNumbers(bonusNumber: Int, lottoNumbers: List<Int>){
         when {
             !getIsBetweenOneAndFortyFive(bonusNumber) ->
-                throw IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.")
+                throw IllegalArgumentException(Constants.ERROR_BONUS_NUMBER_NOT_BETWEEN_ONE_AND_FORTYFIVE)
             !getHasDistinctNumberInLottoNumbers(bonusNumber, lottoNumbers) ->
-                throw IllegalArgumentException("[ERROR] 보너스 번호는 입력했던 6개의 숫자와 중복되지 않아야 합니다.")
+                throw IllegalArgumentException(Constants.ERROR_BONUS_NUMBER_DUPLICATED_IN_LOTTO_NUMBERS)
         }
     }
 
@@ -83,7 +83,7 @@ object ExceptionHandler {
     fun throwExceptionForPurchaseMoney(purchaseMoney: Int){
         when {
             !getIsThousandUnit(purchaseMoney) ->
-                throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+                throw IllegalArgumentException(Constants.ERROR_PURCHASE_MONEY_NOT_THOUSAND_UNIT)
         }
     }
 
