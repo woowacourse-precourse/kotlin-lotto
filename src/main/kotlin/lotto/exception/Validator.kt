@@ -24,16 +24,16 @@ object Validator {
 
     fun checkWinningNumberInput(input: String): List<Int> {
         if (!input.contains(",")) throw IllegalArgumentException(ErrorMessage.NOT_COMMA.message)
-        val input = input.replace(" ", "").split(",")
-        if (input.size != 6) {
+        val inputList = input.replace(" ", "").split(",")
+        if (inputList.size != 6) {
             throw IllegalArgumentException(ErrorMessage.NOT_6_NUMBER.message)
         }
-        return checkWinningNumberList(input)
+        return checkWinningNumberList(inputList)
     }
 
-    private fun checkWinningNumberList(input: List<String>): List<Int> {
+    private fun checkWinningNumberList(inputList: List<String>): List<Int> {
         val numbers = mutableListOf<Int>()
-        for (string in input) {
+        for (string in inputList) {
             val number = string.toIntOrNull() ?: throw IllegalArgumentException(ErrorMessage.NOT_NUMBER.message)
             if ((number < 1) or (number > 45)) {
                 throw IllegalArgumentException(ErrorMessage.OUT_OF_RANGE.message)
@@ -46,8 +46,8 @@ object Validator {
         return numbers
     }
 
-    fun checkBonusNumberInput(lotto: Lotto, number: String): Int {
-        val number = number.toIntOrNull() ?: throw IllegalArgumentException(ErrorMessage.NOT_NUMBER.message)
+    fun checkBonusNumberInput(lotto: Lotto, bonusNumber: String): Int {
+        val number = bonusNumber.toIntOrNull() ?: throw IllegalArgumentException(ErrorMessage.NOT_NUMBER.message)
         if (lotto.getNumbers().contains(number)) {
             throw IllegalArgumentException(ErrorMessage.BONUS_NUMBER_DUPLICATE.message)
         }
