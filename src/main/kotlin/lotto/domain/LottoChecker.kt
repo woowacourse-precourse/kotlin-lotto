@@ -6,6 +6,6 @@ class LottoChecker {
     }
 
     fun hasBonusNumber(numbers: List<Int>, bonusNumber: Int): Boolean {
-        return false
+        return numbers.contains(bonusNumber)
     }
 }
