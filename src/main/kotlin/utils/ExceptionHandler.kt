@@ -1,5 +1,5 @@
-package lotto
-import lotto.Constants
+package utils
+
 object ExceptionHandler {
 
     /**
