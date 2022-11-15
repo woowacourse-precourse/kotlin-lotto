@@ -11,11 +11,11 @@ class Messages {
         val WINNING_NUMBER_INPUT_MESSAGE = "당첨 번호를 입력해 주세요."
         val BONUS_NUMBER_INPUT_MESSAGE = "보너스 번호를 입력해 주세요."
         val STATS_TITLE = "당첨 통계\n---"
-        val MATCH_3 = "3개 일치 (5,000원) - %d개"
-        val MATCH_4 = "4개 일치 (50,000원) - %d개"
-        val MATCH_5 = "5개 일치 (1,500,000원) - %d개"
-        val MATCH_5_BONUS = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개"
-        val MATCH_6 = "6개 일치 (2,000,000,000원) - %d개"
+        val FIFTH_PRIZE_RESULT = "3개 일치 (5,000원) - %d개"
+        val FORTH_PRIZE_RESULT = "4개 일치 (50,000원) - %d개"
+        val THIRD_PRIZE_RESULT = "5개 일치 (1,500,000원) - %d개"
+        val SECOND_PRIZE_RESULT = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개"
+        val FIRST_PRIZE_RESULT = "6개 일치 (2,000,000,000원) - %d개"
         val EARNINGS_RATE_MESSAGE = "총 수익률은 %s%%입니다."
     }
 }
