@@ -78,6 +78,18 @@ class ApplicationTest : NsTest() {
         )
     }
 
+    @Test
+    fun `lotto번호로 입력된 값중 ,말고 다른 문자가 있는지 체크`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("1000", "1,-2,3,4,5,6")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            },
+            listOf(8, 21, 23, 41, 42, 43),
+
+            )
+    }
+
 
 
     override fun runMain() {
