@@ -16,7 +16,7 @@ enum class Rank(val rank: Int, val reward: Int) {
                 .filter { it.rank == rank }
                 .findFirst()
                 .orElse(NOTHING)
-            if (rank == 5 && !hasBonusBall) {
+            if (rank == THIRD_PLACE_BALL && !hasBonusBall) {
                 return THIRD_PLACE
             }
             return checkRank
@@ -26,5 +26,7 @@ enum class Rank(val rank: Int, val reward: Int) {
             return Arrays.stream(values())
                 .filter { it !== NOTHING }.toList()
         }
+
+        private const val THIRD_PLACE_BALL = 5
     }
 }
