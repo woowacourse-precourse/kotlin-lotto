@@ -1,5 +1,9 @@
 package lotto
 
 fun main() {
-    TODO("프로그램 구현")
+    val baseData = BaseData()
+    baseData.baseData()
+    val lotto = Lotto(baseData.LottoNum)
+    val winLotto = lotto.checkAllWinLotto(baseData.purchasedLotto,baseData.bonusNum)
+    lotto.printResult(winLotto,baseData.inputMoney)
 }
