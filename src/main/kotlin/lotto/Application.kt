@@ -12,6 +12,8 @@ fun main() {
 }
 
 fun printLottoNumbers(numbers: List<Lotto>) {
+    println("\n${numbers.size}$PURCHASE_LOTTO")
+
     for(number in numbers) {
         number.print()
     }
