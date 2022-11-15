@@ -16,15 +16,15 @@ class Controller {
     }
 
     fun winningStatistics(winningNumber: List<Int>, bonusNumber: Int) {
-        saveRandomNumber.forEach {
+        saveRandomNumber.forEach { saveNumber ->
             var cnt = 0
-            for (i in winningNumber.indices) {
-                if (it.contains(winningNumber[i])) {
+            winningNumber.forEach { winning ->
+                if (saveNumber.contains(winning)) {
                     cnt++
                 }
             }
             if (cnt == 5) {
-                if (it.contains(bonusNumber)) {
+                if (saveNumber.contains(bonusNumber)) {
                     cnt = 7
                 }
             }
