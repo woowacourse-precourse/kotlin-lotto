@@ -1,14 +1,18 @@
 package lotto.input
 
-class InputBonus(private val lottoNumber: String) {
+interface InputBonus{
+    fun inputBonusNumber(lottoNumber: String): Int
+    fun checkBonusStandard(userInputNumber: String?, lottoNumbers: String)
+}
+class InputBonusImpl:InputBonus {
     private val userInputNumber= lotto.util.input().inputUser()
-    fun inputBonusNumber(): Int {
+    override fun inputBonusNumber(lottoNumber: String): Int {
         print("보너스 번호를 입력해 주세요.")
         checkBonusStandard(userInputNumber, lottoNumber)
         println(userInputNumber.toInt())
         return userInputNumber.toInt()
     }
-    fun checkBonusStandard(userInputNumber: String?, lottoNumbers: String) {
+    override fun checkBonusStandard(userInputNumber: String?, lottoNumbers: String) {
         userInputNumber ?: throw IllegalArgumentException()
         val lottoOverlapCheck = mutableListOf<String>()
         val lottoNumber =lottoNumbers.split(",")
