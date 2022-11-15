@@ -16,7 +16,7 @@ class BonusNumberChecker(private val input: String?, private val winningNumber: 
 
     private fun checkNumberFormat() {
         val chk = input?.toIntOrNull()
-        require(chk != null){
+        require(chk != null) {
             Error.NUMBER_FORMAT_ERROR.message
         }
     }

@@ -15,7 +15,7 @@ class Money(private val input: String?) {
 
     private fun checkNumberFormat() {
         val chk = input?.toIntOrNull()
-        require(chk != null){
+        require(chk != null) {
             Error.NUMBER_FORMAT_ERROR.message
         }
     }
