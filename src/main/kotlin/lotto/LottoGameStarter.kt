@@ -8,6 +8,9 @@ class LottoGameStarter {
         val winningNumbers = readLine()!!.split(",")
         checkWinningNumError(winningNumbers)
         for(i in 0..5) checkWinningNumError(winningNumbers[i].toInt())
+
+        val bonusNumber = readLine()
+        checkBonusNumberError(bonusNumber)
     }
 
     fun checkMoneyError(money:String?){
@@ -23,5 +26,10 @@ class LottoGameStarter {
     fun checkWinningNumError(winningNumber: Int){
         if(winningNumber !is Int) throw IllegalArgumentException("[ERROR] 로또 번호는 정수인 숫자여야 합니다.")
         if(winningNumber < 1 || winningNumber > 45) throw IllegalArgumentException("[ERROR] 로또 번호는 1~45 범위 내여야 합니다.")
+    }
+
+    fun checkBonusNumberError(bonusNumber: String?){
+        if(bonusNumber!!.toIntOrNull() == null) throw IllegalArgumentException("[ERROR] 보너스 번호는 정수인 숫자여야 합니다.")
+        if(bonusNumber!!.toInt() < 1 || bonusNumber!!.toInt() > 45) throw IllegalArgumentException("[ERROR] 보너스 번호는 1~45 범위 내여야 합니다.")
     }
 }
