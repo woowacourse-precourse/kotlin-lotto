@@ -44,12 +44,15 @@ fun buyLotto(userAmountTobuy: Int): List<Lotto> {
 * */
 
 fun returnLottoResult(lottoList: List<Lotto>, winLottoNumber: List<Int>, bonusNumber: Int): Int {
+    println("\n당첨 통계")
+    println("---")
+
     val winPlaceCount: MutableList<Int> = mutableListOf(0, 0, 0, 0, 0, 0)
     var totalWinningMoney = 0
     // 로또 리스트를 돌면서 각 로또의 당첨 결과 출력
     lottoList.forEach { lotto ->
         val result = lotto.generateResult(winLottoNumber, bonusNumber)
-        println(result)
+        // println(result)
         if ( result == LottoWinningPlace.FIRST ){
             winPlaceCount[0] += 1
             totalWinningMoney += LottoWinningPlace.FIRST.winningMoney
