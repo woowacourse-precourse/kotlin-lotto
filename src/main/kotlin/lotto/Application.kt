@@ -87,8 +87,17 @@ fun checkEarnMoney(gradeNum: Array<Int>):Double{
 fun main() {
     var userMoney = Console.readLine()!!.toString()
     val money = Money()
-    var checkUserMoneyok = money.checkUserMoney(userMoney)
-    var LottoNum = (checkUserMoneyok)/1000
+
+    try{
+    var checkUserMoneyOk = money.checkUserMoney(userMoney)}
+    catch(e:IllegalArgumentException){
+        print("[ERROR] 잘못 입력하셨습니다.")
+        return
+    }
+
+    var checkUserMoneyOk = money.checkUserMoney(userMoney)
+    var LottoNum = (checkUserMoneyOk)/1000
+
     println("${LottoNum}개를 구매했습니다.")
     println("당첨번호를 입력하세요")
     val userString = Console.readLine()!!.toString()
