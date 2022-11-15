@@ -6,8 +6,8 @@ class Consumer(private val money: Int) {
     var myLotto = mutableListOf<List<Int>>()
 
     init {
-        require(money % WON_THOUSAND_UNIT == 0) { println("[ERROR] 1000원 단위가 아닙니다.") }
-        require(money >= WON_THOUSAND_UNIT) { println("[ERROR] 돈이 부족합니다") }
+        require(money % WON_THOUSAND_UNIT == 0) { println(ERROR_UNIT_NOT_THOUSAND) }
+        require(money >= WON_THOUSAND_UNIT) { println(ERROR_MONEY_LOWER_THAN_THOUSAND) }
     }
 
     fun buyLotto() {

@@ -2,8 +2,8 @@ package lotto
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == LOTTO_SIZE) { println("[ERROR] 6개의 숫자가 아닙니다.") }
-        require(!checkDuplication()) { println("[ERROR] 중복된 숫자가 있습니다.") }
+        require(numbers.size == LOTTO_SIZE) { println(ERROR_LOTTO_NOT_SIX) }
+        require(!checkDuplication()) { println(ERROR_LOTTO_DUPLICATION) }
     }
 
     private fun checkDuplication(): Boolean {

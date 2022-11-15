@@ -8,7 +8,7 @@ class LottoCalculator(
 ) {
 
     init {
-        require(!checkLottoContainBonusNumber()) { println("[ERROR] 보너스 번호가 로또 번호에 포함되어 있습니다.") }
+        require(!checkLottoContainBonusNumber()) { println(ERROR_BONUS_CONTAIN_LOTTO) }
     }
 
     fun checkLottoContainBonusNumber(): Boolean {

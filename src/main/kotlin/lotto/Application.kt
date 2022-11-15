@@ -25,7 +25,7 @@ private fun orderLotto() {
         consumer.buyLotto()
         println("${money.toInt() / WON_THOUSAND_UNIT}개를 구매했습니다.")
     } catch (e: IllegalArgumentException) {
-        print("[ERROR] " + e.message)
+        print(ERROR_INPUT_VALUE)
         programException = true
     }
 }
@@ -43,14 +43,14 @@ private fun pickWinningNumbers(): Pair<List<Int>, Int> {
 }
 
 private fun pickWinningLottoList(): List<Int> {
-    println("당첨 번호를 입력해 주세요.")
+    println(INPUT_LOTTO_NUMBER)
     val inputWinningNumbers = convertStringToIntList(Console.readLine())
     checkLottoListNumberScope(inputWinningNumbers)
     return inputWinningNumbers
 }
 
 private fun pickWinningBonusNumber(): Int {
-    println("\n보너스 번호를 입력해 주세요.")
+    println(INPUT_BONUS_NUMBER)
     val inputWinningBonusNumber = convertStringToInt(Console.readLine())
     checkLottoNumberScope(inputWinningBonusNumber)
     return inputWinningBonusNumber
@@ -61,7 +61,7 @@ private fun convertStringToIntList(input: String): List<Int> {
         return input.split(",")
             .map { it.toInt() }
     } catch (exception: Exception) {
-        println("[ERROR] 입력값이 올바르지 않습니다.")
+        println(ERROR_INPUT_VALUE)
         throw IllegalArgumentException()
     }
 }
@@ -70,7 +70,7 @@ private fun convertStringToInt(input: String): Int {
     try {
         return input.toInt()
     } catch (exception: NumberFormatException) {
-        println("[ERROR] 입력값이 올바르지 않습니다.")
+        println(ERROR_INPUT_VALUE)
         throw IllegalArgumentException()
     }
 }
@@ -83,7 +83,7 @@ private fun checkLottoListNumberScope(numbers: List<Int>) {
 
 private fun checkLottoNumberScope(number: Int) {
     if (number > 45 || number < 1) {
-        require(false) { println("[ERROR] 로또 범위가 아닙니다.") }
+        require(false) { println(ERROR_LOTTO_SCOPE) }
     }
 }
 
