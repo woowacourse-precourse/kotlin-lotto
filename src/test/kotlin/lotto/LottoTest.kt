@@ -7,20 +7,20 @@ import org.junit.jupiter.api.assertThrows
 
 
 class LottoTest : NsTest() {
-    @Test
-    fun `로또 번호의 개수가 6개가 넘어가면 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, 6, 7))
-        }
-    }
-
-    // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
-    @Test
-    fun `로또 번호에 중복된 숫자가 있으면 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, 5))
-        }
-    }
+//    @Test
+//    fun `로또 번호의 개수가 6개가 넘어가면 예외가 발생한다`() {
+//        assertThrows<IllegalArgumentException> {
+//            Lotto(listOf(1, 2, 3, 4, 5, 6, 7))
+//        }
+//    }
+//
+//    // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+//    @Test
+//    fun `로또 번호에 중복된 숫자가 있으면 예외가 발생한다`() {
+//        assertThrows<IllegalArgumentException> {
+//            Lotto(listOf(1, 2, 3, 4, 5, 5))
+//        }
+//    }
 
     // 아래에 추가 테스트 작성 가능
 
@@ -65,5 +65,33 @@ class LottoTest : NsTest() {
     }
     override fun runMain() {
         main()
+    }
+    @Test
+    fun `로또가 갯수에 알맞게 생성되었는가` (){
+        run("5000")
+    }
+    @Test
+    fun `로또 정답 숫자에 문자가 있는가` (){
+        assertThrows<IllegalArgumentException>{
+            run("5000", "1,2,3,4,5,s", "8")
+        }
+    }
+    @Test
+    fun `로또 정답 숫자가 중복되지 않는가` (){
+        assertThrows<IllegalArgumentException>{
+            run("5000", "1,2,3,4,5,5", "8")
+        }
+    }
+    @Test
+    fun `로또 정답 숫자가 범위에 드는가` (){
+        assertThrows<IllegalArgumentException>{
+            run("5000", "1,2,3,4,5,55", "8")
+        }
+    }
+    @Test
+    fun `로또 보너스 숫자가 중복이 되는가` (){
+        assertThrows<IllegalArgumentException>{
+            run("5000", "1,2,3,4,5,6", "1")
+        }
     }
 }
