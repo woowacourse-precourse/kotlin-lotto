@@ -2,6 +2,7 @@ package lotto.domain
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.AMOUNT_PURCHASE_MESSAGE
+import lotto.ERROR_AMOUNT_BIG_NUMBER_MESSAGE
 import lotto.ERROR_AMOUNT_NUMBER_MESSAGE
 
 class User {
@@ -14,12 +15,19 @@ class User {
         return userAmount.toInt()
     }
 
+
     fun checkAmount(userAmount: String) {
         if (!checkNumAmount(userAmount))
             throw IllegalArgumentException(ERROR_AMOUNT_NUMBER_MESSAGE)
+        if (checkBigNumAmount(userAmount) == null)
+            throw IllegalArgumentException(ERROR_AMOUNT_BIG_NUMBER_MESSAGE)
+
     }
 
     private fun checkNumAmount(userAmount: String): Boolean =
         userAmount.count() == userAmount.replace("\\D".toRegex(), "").count()
+
+    private fun checkBigNumAmount(userAmount: String) = userAmount.toIntOrNull()
+
 
 }
