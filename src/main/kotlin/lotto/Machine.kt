@@ -25,6 +25,7 @@ class Machine() {
         return money.toInt()
     }
 
+
     private fun makeLottoNumbers(ticket: Int): MutableList<List<Int>> {
         printButLotto(ticket)
         var lotteryCount = INIT_NUMBER
@@ -37,8 +38,9 @@ class Machine() {
     }
 
     private fun moneyCheck(money: String) {
+        val priceRegex = "\\d+".toRegex()
         when {
-            !money.all { it.isDigit() } -> throw IllegalArgumentException(NOT_INT_MESSAGE)
+            money.matches(priceRegex).not() -> printNotNumberErrorMessage()
             money.toInt() % THOUSAND_UNIT != REMINDER -> throw IllegalArgumentException(NOT_THOUSANDS_NUMBER_MESSAGE)
         }
     }

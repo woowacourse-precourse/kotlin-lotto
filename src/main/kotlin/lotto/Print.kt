@@ -59,3 +59,8 @@ fun printProfit(prize: Int, sales: Int) {
     val profit = FORMATTING.format(prize.toDouble() / sales * PERCENT)
     println(FRONT_PROFITS_MESSAGE + profit + END_PROFITS_MESSAGE)
 }
+
+fun printNotNumberErrorMessage() {
+    println(Message.NOT_INT_MESSAGE)
+    throw NoSuchElementException()
+}
