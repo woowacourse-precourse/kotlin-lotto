@@ -1,6 +1,7 @@
 package lotto.User
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.utils.ErrorCheck
 import lotto.utils.ErrorMessage
 
 public var ticket = 0
@@ -9,24 +10,25 @@ public var bonus = 0
 
 class UserInput {
     fun buyPrice(): Int {
-        val input = Console.readLine()
-        val buyPrice = input!!.toInt()
+        var input = Console.readLine()
+        ErrorCheck().errorString(input)
 
-        if (buyPrice % 1000 != 0) {
-            throw IllegalArgumentException(ErrorMessage.ERROR1.messages)
-        }
+
+        val buyPrice = input!!.toInt()
+        ErrorCheck().errorPrice(buyPrice)
 
         ticket = buyPrice / 1000
 
         return ticket
     }
 
-    fun answerNumbers(){
+    fun answerNumbers() {
         val input = Console.readLine()
         val answerSheet = input!!.split(',').map(String::toInt)
         answer = answerSheet.sorted()
     }
-    fun bonusNumber(){
+
+    fun bonusNumber() {
         val input = Console.readLine()
         val bonusNumber = input.toInt()
         bonus = bonusNumber

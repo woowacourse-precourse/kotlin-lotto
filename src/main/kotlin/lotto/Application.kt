@@ -8,9 +8,11 @@ import lotto.User.UserInput
 import lotto.User.answer
 import lotto.User.bonus
 import lotto.User.ticket
+import lotto.utils.ErrorMessage
 
 
 fun main() {
+    try {
     MessageOutput().printStartMessage()
     UserInput().buyPrice()
 
@@ -30,4 +32,8 @@ fun main() {
 
     MessageOutput().printAverageInputMessage()
     MessageOutput().printMatchedNumberMessage()
+    } catch (e : IllegalArgumentException){
+        println(ErrorMessage.ERROR.messages)
+    }
+
 }
