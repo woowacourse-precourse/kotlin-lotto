@@ -216,3 +216,29 @@ class Lotto(private val numbers: List<Int>) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
   - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+---------------------------------------------------------------------------------------
+### ✅ 기능 목록
+
+- [x] 로또 구입 금액 입력 받기 - Lotto#enterPurchaseAmount()
+- [x] 로또 구입 갯수 및 구입 갯수만큼 1~45 사이 6개의 중복되지 않은 랜덤 숫자 오름차순 출력 - Lotto#printIssuedNumber()
+- [x] 쉼표 기준으로 1~45 사이 6개의 중복되지 않은 당첨 번호 입력 받기 - Lotto#enterWinningNumber()
+- [x] 1~45 사이의 보너스 번호 1개 입력 받기 - Lotto#enterBonusNumber()
+- [x] 당첨 번호, 보너스 번호와 구매한 로또 번호를 비교하여 당첨된 숫자 구하기 - LottoViewModel#getMatchedNumbers()
+- [x] 당첨 번호, 보너스 번호와 구매한 로또 번호를 비교하여 당첨 통계 출력 - Lotto#printWinningStatistics()
+  - 3개 일치 (5,000원)
+  - 4개 일치 (50,000원)
+  - 5개 일치 (1,500,000원)
+  - 5개 일치, 보너스 볼 일치 (30,000,000원)
+  - 6개 일치 (2,000,000,000원)
+- [x] 총 수익률에 천단위 콤마를 추가한 후, 소수점 둘째 자리에서 반올림하여 출력 - LottoViewModel#getProfit()
+- [x] 예외 처리 - LottoBonus, LottoPurchase, LottoWinning.kt
+
+### ☑️ 예외 처리
+- 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException` 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료
+  - [x] 로또 구입 금액을 입력받을 때, 숫자가 아닐 경우
+  - [x] 로또 구입 금액을 입력받을 때, 1000원으로 나누어 떨어지지 않는 경우
+  - [x] 당첨 번호를 입력받을 때, 1~45 사이의 번호가 아닌 경우
+  - [x] 당첨 번호를 입력받을 때, 중복된 번호가 있는 경우
+  - [x] 당첨 번호를 입력받을 때, 6개가 아닌 경우
+  - [x] 보너스 번호를 입력받을 때, 1~45 사이의 번호가 아닌 경우
