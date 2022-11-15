@@ -58,6 +58,14 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `콤마 예외 테스트`() {
+        assertSimpleTest {
+            runException("8000", "1+2+3+4+5+6")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
     override fun runMain() {
         main()
     }
