@@ -1,8 +1,8 @@
 package lotto.input
 
-class InputBonus() {
+class InputBonus(private val lottoNumber: String) {
     private val userInputNumber= lotto.util.input().inputUser()
-    fun inputBonusNumber(lottoNumber: String): Int {
+    fun inputBonusNumber(): Int {
         print("보너스 번호를 입력해 주세요.")
         checkBonusStandard(userInputNumber, lottoNumber)
         println(userInputNumber.toInt())
