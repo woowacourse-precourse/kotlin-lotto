@@ -32,6 +32,11 @@ class LottoGameStarter {
             else if (count == 6) countLotteryWin[4]++
         }
 
+        println("3개 일치 (5,000원) - ${countLotteryWin[0]}개")
+        println("4개 일치 (50,000원) - ${countLotteryWin[1]}개")
+        println("5개 일치 (1,500,000원) - ${countLotteryWin[2]}개")
+        println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${countLotteryWin[3]}개")
+        println("6개 일치 (2,000,000,000원) - ${countLotteryWin[4]}개")
     }
 
     fun checkMoneyError(money:String?){
