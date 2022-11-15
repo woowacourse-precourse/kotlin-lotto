@@ -17,7 +17,7 @@ class LottoMarket {
             .sorted()
     }
 
-    fun getNumberOfLotto(purchasingAmount: Long): Long {
+    fun getTheNumberOfLotto(purchasingAmount: Long): Long {
         return purchasingAmount / 1000
     }
 
