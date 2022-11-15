@@ -127,3 +127,24 @@ fun numberSizeCheck(lottoNumbers : MutableList<Int>) : MutableList<Int>{
     return lottoNumbers
 }
 
+un bonusNumValidCheck(input : String) : Int {
+    val bonusNum : Int
+    try{
+        bonusNum = input.toInt()
+    }catch(e : NumberFormatException){
+        throw IllegalArgumentException("[ERROR] 제대로 된 형태의 숫자를 입력해 주세요.")
+    }
+    if(bonusNum<1 || bonusNum>45)
+        throw IllegalArgumentException("[ERROR] 45이하의 자연수를 입력해 주세요.")
+    return bonusNum
+}
+
+fun bonusLottNumCheck(input : Int, lottoNum: MutableList<Int>) : Int{
+    for(i : Int in 0..lottoNum.size-1){
+        if(lottoNum[i] == input)
+            throw IllegalArgumentException("[ERROR] 보너스 숫자가 당첨숫자와 중복됩니다.")
+    }
+    return input
+
+}
+
