@@ -22,7 +22,16 @@ class LottoShop(
 
     fun announceYield() {}
 
-    fun announceWinners() {}
+    fun announceWinners() {
+        setWinningNumbers()
+        setBonusNumber()
+
+        val lottoRanks = tickets.map { lotto -> lotto.getRank(winningNumbers, bonusNumber) }
+        lottoRanks.filterNotNull()
+            .map { rank -> totalRanks[rank.ordinal]++ }
+
+        printWinners()
+    }
 
     fun publish() {
         getMoney()
