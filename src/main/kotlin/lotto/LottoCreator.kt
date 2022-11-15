@@ -12,7 +12,7 @@ class LottoCreator {
 
         fun createRandomLottos(count: Int): Lottos {
             val lottos = Lottos()
-            for(i in 0 until count) {
+            for (i in 0 until count) {
                 lottos.addLotto(createRandomLotto())
             }
             return lottos

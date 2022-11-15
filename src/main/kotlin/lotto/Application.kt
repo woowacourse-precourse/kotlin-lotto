@@ -3,7 +3,7 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 import kotlin.IllegalArgumentException
 
-fun inputLottoPrice() : Int{
+fun inputLottoPrice(): Int {
     val price = Console.readLine()
     return try {
         Integer.parseInt(price)
@@ -21,12 +21,12 @@ fun inputWinningLotto(): List<Int> {
     val numbers = Console.readLine().split(",")
     val convertNumbers: MutableList<Int> = mutableListOf<Int>()
     try {
-        for(i in numbers.indices) {
+        for (i in numbers.indices) {
             convertNumbers.add(Integer.parseInt(numbers[i]))
         }
         if (convertNumbers.size != 6) throw IllegalArgumentException("size")
     } catch (e: IllegalArgumentException) {
-        if(e.message == "size") {
+        if (e.message == "size") {
             Error.sizeError()
         } else {
             Error.typeError()
@@ -41,8 +41,8 @@ fun inputBonusNumber(): Int {
         val bonusNumber = Integer.parseInt(Console.readLine())
         if (bonusNumber > 45 || bonusNumber < 1) throw IllegalArgumentException("range")
         bonusNumber
-    } catch(e: IllegalArgumentException) {
-        if(e.message == "range") {
+    } catch (e: IllegalArgumentException) {
+        if (e.message == "range") {
             Error.rangeError()
         } else {
             Error.typeError()
@@ -64,7 +64,7 @@ fun printWinningResult(winningResult: Map<WinningType, Int>, rate: Double) {
 
 fun main() {
     println("구입금액을 입력해 주세요.")
-    val price:Int = inputLottoPrice()
+    val price: Int = inputLottoPrice()
     if (price == -1) return
     val count = LottoCalculator.calculateLottoCount(price)
     printLottoCount(count)

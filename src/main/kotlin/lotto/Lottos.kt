@@ -19,7 +19,7 @@ class Lottos {
                 WinningType.FOURTH to 0,
                 WinningType.FIFTH to 0,
                 WinningType.NOTHING to 0)
-        for(i in lottos.indices) {
+        for (i in lottos.indices) {
             val type = lottos[i].matchLotto(winningNumbers, bonusNumber)
             winningResult[type] = winningResult[type]!! + 1
         }

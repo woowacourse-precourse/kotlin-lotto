@@ -22,7 +22,7 @@ class LottoCalculatorTest {
         lottos.addLotto(Lotto(listOf(2, 13, 22, 32, 38, 45)))
         lottos.addLotto(Lotto(listOf(1, 3, 5, 14, 22, 45)))
 
-        val result = lottos.matchLottos(listOf(1,2,3,4,5,6), 7)
+        val result = lottos.matchLottos(listOf(1, 2, 3, 4, 5, 6), 7)
         assertThat(LottoCalculator.calculateRate(8000, result)).isEqualTo(62.5)
     }
 
