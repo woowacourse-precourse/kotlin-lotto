@@ -95,7 +95,7 @@ fun returnLottoResult(lottoList: List<Lotto>, winLottoNumber: List<Int>, bonusNu
 fun calculateRevenue(userPayMoney: Double, totalWinningMoney: Double){
     var revenue = 0.0
 
-    if ( totalWinningMoney != 0.0 ){
+    if ( totalWinningMoney != 0.0 ) {
         revenue = ( totalWinningMoney / userPayMoney ) * 100
         val df = DecimalFormat("#.#")
         df.roundingMode = RoundingMode.HALF_UP
@@ -110,6 +110,18 @@ fun calculateRevenue(userPayMoney: Double, totalWinningMoney: Double){
  * 예외처리 - 사용자 구입 금액
  */
 
+fun exceptionUserPayMoney(userPayMoney: Int): Int {
+    try {
+        if ( userPayMoney < 1000 ) throw IllegalArgumentException("[ERROR] 적어도 1000원 이상의 금액이 필요합니다.")
+        if ( userPayMoney % 1000 != 0 ) throw IllegalArgumentException("[ERROR] 구입 금액은 1000원으로 나누어 떨어져야 합니다.")
+
+    } catch (e:IllegalArgumentException) {
+        throw IllegalArgumentException("[ERROR] 구입 금액은 1000원으로 나누어 떨어져야 합니다.")
+    }
+
+    return userPayMoney
+}
+
 
 /**
  * 예외처리 - 당첨 번호
@@ -119,7 +131,7 @@ fun calculateRevenue(userPayMoney: Double, totalWinningMoney: Double){
 fun exceptionWinLottoNumberFormat(winLottoNumberString: String): List<Int> {
     try {
         if ( ' ' in winLottoNumberString ) throw IllegalArgumentException("[ERROR] 당첨 번호 사이는 띄어쓰기 없는 ,(콤마)로 구분해 주세요.")
-    }catch (e: NumberFormatException){
+    }catch (e: NumberFormatException) {
         throw IllegalArgumentException("[ERROR] 당첨 번호 사이는 띄어쓰기 없는 ,(콤마)로 구분해 주세요.")
     }
 
@@ -158,9 +170,9 @@ fun main() {
     // 로또 구입 금액 입력
     // 1000원 = 1장
     println("구매금액을 입력해 주세요.")
-    val userPayMoney = readLine()!!.toInt()
-    val userAmountTobuy = userPayMoney / 1000
-    val lottoList = buyLotto(userAmountTobuy)
+    val userPayMoney = exceptionUserPayMoney(readLine()!!.toInt())
+    val userAmountToBuy = userPayMoney / 1000
+    val lottoList = buyLotto(userAmountToBuy)
 
     // 구입한 로또 리스트 출력
     lottoList.forEach{it.printLotto()}
