@@ -20,4 +20,20 @@ class Lotto(private val numbers: List<Int>) {
         return "[${sortedNumber[0]}, ${sortedNumber[1]}, ${sortedNumber[2]}, " +
                 "${sortedNumber[3]}, ${sortedNumber[4]}, ${sortedNumber[5]}]"
     }
+
+    /**
+     * @brief Calculate prize by comparing this lotto's numbers and actual winning numbers
+     * @param winningNumbers : 6 winning numbers
+     * @param bonusNumber: bonus number
+     * @return Prize for this lotto
+     */
+    fun winLottery(winningNumbers: List<Int>, bonusNumber: Int): Prize {
+        var numberOfEquals = 0
+        for(number in winningNumbers) {
+            if(numbers.contains(number)) {
+                numberOfEquals += 1
+            }
+        }
+        return Prize.NOTHING.updatePrize(numberOfEquals, numbers.contains(bonusNumber))
+    }
 }
