@@ -21,7 +21,7 @@ class LottoGame {
         println(WINNING_INPUT_MSG)
         val winningNumbers = inputView.askWinningNumbers()
         println(BONUS_INPUT_MSG)
-        val bonusNumber = inputView.askBonusNumber()
+        val bonusNumber = inputView.askBonusNumber(winningNumbers)
 
         val lotto = Lotto(winningNumbers)
         val winners = lotto.getWinnerList(lottoNumbers, bonusNumber)

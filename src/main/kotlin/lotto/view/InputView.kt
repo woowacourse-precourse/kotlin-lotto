@@ -44,18 +44,20 @@ class InputView {
     }
 
     // 보너스 번호를 입력 받는다.
-    fun askBonusNumber(): Int {
+    fun askBonusNumber(winningNumbers: List<Int>): Int {
         val input = Console.readLine()
-        return validateBonusNumber(input)
+        return validateBonusNumber(input, winningNumbers)
     }
 
-    fun validateBonusNumber(input: String): Int {
+    fun validateBonusNumber(input: String, winningNumbers: List<Int>): Int {
         for (item in input) {
             if (!Character.isDigit(item))
                 throw IllegalArgumentException(MIXED_CHAR_ERROR_MSG)
         }
         if (input.toInt() !in MIN_VALUE..MAX_VALUE)
             throw IllegalArgumentException(RANGE_BOUNDS_ERROR_MSG)
+        if(winningNumbers.contains(input.toInt()))
+            throw IllegalArgumentException(BONUS_DUPLICATE_ERROR_MSG)
         return input.toInt()
     }
 }

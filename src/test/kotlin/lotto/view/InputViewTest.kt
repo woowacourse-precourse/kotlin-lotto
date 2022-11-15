@@ -41,11 +41,15 @@ internal class InputViewTest {
 
     @Test
     fun `보너스 번호 입력에 대한 예외 처리`() {
+        val winningNumbers = listOf(1,2,3,4,5,6)
         assertThrows<IllegalArgumentException> {
-            inputView.validateBonusNumber("asdf")
+            inputView.validateBonusNumber("asdf", winningNumbers)
         }
         assertThrows<IllegalArgumentException> {
-            inputView.validateBonusNumber("46")
+            inputView.validateBonusNumber("46", winningNumbers)
+        }
+        assertThrows<IllegalArgumentException> {
+            inputView.validateBonusNumber("6", winningNumbers)
         }
     }
 }
