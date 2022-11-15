@@ -6,7 +6,7 @@ import lotto.domain.Lotto
 import org.junit.jupiter.api.Test
 import org.assertj.core.api.Assertions.assertThat
 
-class CalculatingRankingTest {
+class CalculateRankingTest {
     @Test
     fun `당첨 번호와 로또 번호가 6개 일치`() {
         val result = CalculateRanking().countSameNumber(listOf(1,2,3,4,5,6), listOf(1,2,3,4,5,6))
