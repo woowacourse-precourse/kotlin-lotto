@@ -67,7 +67,9 @@ class LottoShop(
         output.printWinners(ranks.reversed(), totalRanks.reversed())
     }
 
-    private fun printYield(yield: Double) {}
+    private fun printYield(yieldPercentage: String) {
+        output.printYield(yieldPercentage)
+    }
 
     private fun setBonusNumber() {
         val userInput = input.getBonusNumber()

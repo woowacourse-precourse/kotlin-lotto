@@ -10,12 +10,14 @@ class Output {
 
     fun printWinners(ranks: List<Rank>, totalRanks: List<Int>) {
         println(WINNER_MESSAGE_TITLE)
-        for(index in totalRanks.indices) {
+        for (index in totalRanks.indices) {
             println("${ranks[index].message} - ${totalRanks[index]}개")
         }
     }
 
-    fun printYield(yield: Double) {}
+    fun printYield(yieldPercentage: String) {
+        println("총 수익률은 $yieldPercentage%입니다.")
+    }
 
     companion object {
         const val TICKET_COUNT_MESSAGE = "개를 구매했습니다."
