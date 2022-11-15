@@ -39,6 +39,8 @@ class InputException {
         if (numbers.size != numbers.toSet().size) invalidException(OVERLAP_EXCEPTION)
     }
 
+    fun checkOverlapException() = invalidException(OVERLAP_EXCEPTION)
+
     private fun invalidException(message: String) {
         throw IllegalArgumentException("[ERROR] : $message")
     }
