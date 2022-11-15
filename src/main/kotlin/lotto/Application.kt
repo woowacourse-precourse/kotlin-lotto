@@ -17,5 +17,12 @@ fun main() {
 
     val bonus = Bonus().InputBonus()
     println()
+
+    println("당첨 통계")
+    println("---")
+
+    val winning_numbers_count= WinningCount().WinningNumbers(total_numbers,lotto_numbers_list,bonus)
+
+    WinningCount().PrintWinningCount(winning_numbers_count)
 }
 
