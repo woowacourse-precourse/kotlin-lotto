@@ -1,20 +1,20 @@
 package lotto.input
 
-import camp.nextstep.edu.missionutils.Console
-import java.util.regex.Matcher
-import java.util.regex.Pattern
-
-class WinningNumber() {
+interface WinnigNumber{
+    fun inputWinningNumber(): String
+    fun checkLottoStandard(userInputNumber: String?)
+}
+class WinningNumberImpl:WinnigNumber {
 
     private val userInputNumber= lotto.util.input().inputUser()
 
-    fun inputWinningNumber(): String {
+    override fun inputWinningNumber(): String {
         println("당첨 번호를 입력해 주세요.")
         checkLottoStandard(userInputNumber)
         return userInputNumber
     }
 
-    fun checkLottoStandard(userInputNumber: String?) {
+    override fun checkLottoStandard(userInputNumber: String?) {
         userInputNumber ?: throw IllegalArgumentException()
         val checkLotto = userInputNumber.split(",").toList() as MutableList<String>
         for (i in checkLotto)
