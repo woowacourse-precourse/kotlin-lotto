@@ -11,5 +11,10 @@ class PurchaseLotto {
         return inputMoney.toInt()
     }
 
+    fun userLottoCount(): String {
+        var lottoCount  =0
+         lottoCount = inputUserMoney() / 1000
+        return "${lottoCount}개를 구매했습니다."
+    }
 
 }
