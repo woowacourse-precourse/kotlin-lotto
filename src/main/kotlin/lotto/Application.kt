@@ -53,7 +53,7 @@ fun calculateWinnings(lottos: List<Lotto>, winnings: Lotto, bonus: Int): List<In
 fun getBonusNumber(winnings: Lotto): Int {
     println("\n$INPUT_BONUS_NUMBER")
 
-    val value = readLine()
+    val value = readLine()?.trim()
     InputError.checkInteger(value)
 
     val number = value!!.toInt()
@@ -107,7 +107,7 @@ fun generateNumbers(): List<Int> {
 fun getPurchaseMoney(): Int {
     println(INPUT_MONEY)
 
-    val value = readLine()
+    val value = readLine()?.trim()
     InputError.checkInteger(value)
 
     val money = value!!.toInt()
