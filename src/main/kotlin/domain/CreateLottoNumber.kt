@@ -13,16 +13,18 @@ class CreateLottoNumber {
     fun createRandomLottoNumber(): List<Int>{
         val numbers = Randoms.pickUniqueNumbersInRange(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER, LOTTO_NUMBER)
 
-        if (isCorrectCreateLotto(numbers)) return numbers.sorted()
-        throw IllegalArgumentException("$ERROR_MESSAGE_LOTTO_NUMBER ")
+        if (numbers.toSet().size == 6 && numbers.all { it in 1..45 }) return numbers.sorted()
+        else throw IllegalArgumentException("$ERROR_MESSAGE_LOTTO_NUMBER ")
     }
 
     // 중복 체크와 길이 체크
-    fun isCorrectCreateLotto(lotto: List<Int>): Boolean{
+    /*fun isCorrectCreateLotto(lotto: List<Int>): Boolean{
         // 범위에 맞는지
         // 중복된 숫자가 나왔을 경우 예외처리
-        if (lotto.toSet().size < 6 || lotto.all { it !in 1..45 }) return false
-        return true
-    }
+        println("$lotto ?? ${lotto.toSet().size != 6}\n")
+        println("$lotto ???${lotto.all { it !in 1..45 }}")
+        println("$lotto ??? ${(lotto.toSet().size != 6 || lotto.all { it !in 1..45 })}")
+        return !(lotto.toSet().size != 6 || lotto.all { it !in 1..45 })
+    }*/
 
 }
