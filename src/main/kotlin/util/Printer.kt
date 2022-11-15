@@ -11,7 +11,7 @@ class Printer {
 
     fun printLottoResultMessage() = println("당첨 통계\n---")
 
-    fun printReturnRate(rate: Float) = println("총 수익률은" + "%.2f".format(rate) + "입니다.")
+    fun printReturnRate(rate: Float) = println("총 수익률은" + "%.2f".format(rate) + "%입니다.")
 
     fun printLottoResultTable(winnings: List<Int>) {
         val winningsTable = listOf(FIVTH, FOURTH, THIRD, SECOND, FIRST)
@@ -26,5 +26,10 @@ class Printer {
         const val THIRD = "5개 일치 (1,500,000원) - "
         const val SECOND = "5개 일치, 보너스 볼 일치 (30,000,000원) - "
         const val FIRST = "6개 일치 (2,000,000,000원) - "
+        const val FIVTH_PRIZE = 5_000
+        const val FOURTH_PRIZE = 50_000
+        const val THIRD_PRIZE = 1_500_000
+        const val SECOND_PRIZE = 30_000_000
+        const val FIRST_PRIZE = 2_000_000_000
     }
 }
