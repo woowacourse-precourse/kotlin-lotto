@@ -1,4 +1,6 @@
-package lotto.domain
+package lotto.domain.store
+
+import lotto.domain.Lotto
 
 private const val PURCHASE_STANDARD_UNIT = 1000
 

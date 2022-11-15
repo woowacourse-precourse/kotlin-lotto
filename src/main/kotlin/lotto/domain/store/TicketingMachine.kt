@@ -1,6 +1,7 @@
-package lotto
+package lotto.domain.store
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.domain.Lotto
 
 private const val LOTTO_START_NUMBER = 1
 private const val LOTTO_END_NUMBER = 45
