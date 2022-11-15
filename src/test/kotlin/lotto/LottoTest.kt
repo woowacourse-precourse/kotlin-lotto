@@ -1,5 +1,6 @@
 package lotto
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -21,4 +22,8 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @Test
+    fun `숫자 5개와 보너스번호가 일치하면 2(등수)를 리턴한다`() {
+        assertThat(Lotto(listOf(1,2,3,4,5,6)).rank(listOf(1,2,3,4,5,8),6)).isEqualTo(2)
+    }
 }
