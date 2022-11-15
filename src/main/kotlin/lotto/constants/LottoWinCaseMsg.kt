@@ -1,6 +1,6 @@
 package lotto.constants
 
-enum class LottoWinCaseString(val caseNum: Int, val msg: String) {
+enum class LottoWinCaseMsg(val caseNum: Int, val msg: String) {
     FIRST_WIN_MSG(4, "6개 일치 (2,000,000,000원) - "),
     SECOND_WIN_MSG(3, "5개 일치, 보너스 볼 일치 (30,000,000원) - "),
     THIRD_WIN_MSG(2, "5개 일치 (1,500,000원) - "),
@@ -10,7 +10,7 @@ enum class LottoWinCaseString(val caseNum: Int, val msg: String) {
     companion object {
         fun getMsg(caseNum: Int): String {
 
-            for (case in LottoWinCaseString.values()) {
+            for (case in LottoWinCaseMsg.values()) {
                 if (case.caseNum == caseNum) {
                     return case.msg
                 }
