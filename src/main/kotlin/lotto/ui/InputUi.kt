@@ -19,7 +19,9 @@ class InputUi {
 
     fun inputWinningNumbers():List<Int>{
         printUi.pleaseInput("당첨 번호를")
-        val winningNumbers = Lotto(Console.readLine().split(",").map(String::toInt))
+        val input = Console.readLine()
+        input.inputCommaException()
+        val winningNumbers = Lotto(input.split(",").map(String::toInt))
         return winningNumbers.getNumbers()
     }
 
