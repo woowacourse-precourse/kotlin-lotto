@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test
 class ApplicationTest : NsTest() {
 
     @Test
-    fun `기능 테스트`() {
+    fun `기능 테스트1`() {
         assertRandomUniqueNumbersInRangeTest(
             {
                 run("8000", "1,2,3,4,5,6", "7")
@@ -43,9 +43,58 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `기능 테스트2`() {
+        assertRandomUniqueNumbersInRangeTest(
+                {
+                    run("5000", "1,2,3,4,5,6", "7")
+                    assertThat(output()).contains(
+                            "5개를 구매했습니다.",
+                            "[1, 2, 3, 4, 8, 9]",
+                            "[1, 2, 3, 4, 5, 9]",
+                            "[1, 2, 3, 4, 5, 7]",
+                            "[1, 2, 3, 30, 31, 32]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "3개 일치 (5,000원) - 1개",
+                            "4개 일치 (50,000원) - 1개",
+                            "5개 일치 (1,500,000원) - 1개",
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개",
+                            "6개 일치 (2,000,000,000원) - 1개",
+                            "총 수익률은 40631100.0%입니다."
+                    )
+                },
+                listOf(1, 2, 3, 4, 8, 9),
+                listOf(1, 2, 3, 4, 5, 9),
+                listOf(1, 2, 3, 4, 5, 7),
+                listOf(1, 2, 3, 30, 31, 32),
+                listOf(1, 2, 3, 4, 5, 6)
+
+        )
+    }
+
+    @Test
     fun `예외 테스트`() {
         assertSimpleTest {
             runException("1000j")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+
+        assertSimpleTest {
+            runException("10 0")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+
+        assertSimpleTest {
+            runException("1001")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+
+        assertSimpleTest {
+            runException("100")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+
+        assertSimpleTest {
+            runException("1000.0")
             assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
