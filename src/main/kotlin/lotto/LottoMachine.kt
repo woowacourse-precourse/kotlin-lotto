@@ -11,7 +11,7 @@ class LottoMachine(private val customerBuyLottoPrice: Int) {
     }
 
     private fun createCustomerLottoNumber(): List<Int>{
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6)
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
     }
 
     fun produceLottoNumbers() {
@@ -21,6 +21,8 @@ class LottoMachine(private val customerBuyLottoPrice: Int) {
             totalLottoNumbers.add(lottoNumbers)
         }
     }
+
+
 
 
 
