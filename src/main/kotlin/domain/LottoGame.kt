@@ -62,10 +62,8 @@ fun getWinningNumbers(): Lotto {
 
     val winningNumbers = mutableListOf<Int>()
     winning!!.split(SEPARATOR)
-        .forEach { n ->
-            val num = n.trim().toInt()
-            InputError.checkNegative(num)
-            winningNumbers.add(num)
+        .forEach { num ->
+            winningNumbers.add(num.trim().toInt())
         }
 
     return Lotto(winningNumbers)

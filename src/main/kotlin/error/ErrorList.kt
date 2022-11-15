@@ -53,8 +53,7 @@ object InputError {
 
     fun checkIntegerValid(value: String?, winning: Lotto) {
         checkInteger(value)
-        checkNegative(value!!.toInt())
-        LottoError.checkOutOfRange(value.toInt())
+        LottoError.checkOutOfRange(value!!.toInt())
         LottoError.checkDuplicate(winning, value.toInt())
     }
 
