@@ -20,4 +20,11 @@ class UserTest {
             userTest.checkAmount("12311234123124213124")
         }
     }
+
+    @Test
+    fun `로또 구입 금액이 1000원으로 나누어 떨어지는지 확인한다`() {
+        assertThrows<IllegalArgumentException> {
+            userTest.checkAmount("1001")
+        }
+    }
 }
