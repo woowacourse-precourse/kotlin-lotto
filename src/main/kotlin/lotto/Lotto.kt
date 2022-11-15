@@ -5,6 +5,11 @@ class Lotto(private val numbers: List<Int>) {
         var sizecheck = numbers.distinct().size
         require(numbers.size == 6)
         require(sizecheck == 6)
+        numbers.forEach{ a ->
+            require( a <= 45 && a >=1)
+            {"[ERROR] 번호는 1~45사이의 숫자여야 합니다."}
+        }
+
 
     }
     fun calculater (a:IntArray) : Int {
