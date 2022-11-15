@@ -31,14 +31,9 @@ fun printResult(result: List<Int>, rate: Double) {
 }
 
 fun calculateWinningRate(result: List<Int>, money: Int): Double {
-    var sum = 0
-    var rate = 0.0
+    val sum = Winning.getAllPrize(result)
+    val rate =  (sum.toDouble() / money.toDouble()) * 100
 
-    for(index in result.indices) {
-        sum += result[index] * Winning.values()[index].prize
-    }
-
-    rate = (sum.toDouble() / money.toDouble()) * 100
     return (Math.round(rate*10))/10.0
 }
 
