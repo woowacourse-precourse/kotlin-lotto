@@ -1,12 +1,9 @@
 package lotto
 
 import lotto.domain.LottoStaff
-import lotto.domain.Prize
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import kotlin.properties.Delegates
-
 
 class LottoStaffTest {
     private lateinit var lottoStaff: LottoStaff
@@ -39,7 +36,7 @@ class LottoStaffTest {
 
     @Test
     fun `수익률 확인하는 기능 테스트`(){
-        assertThat(lottoStaff.getProfit(5000,7)).isEqualTo(714.3)
+        assertThat(lottoStaff.getProfit(5000,10000)).isEqualTo(50.0)
     }
 
 
