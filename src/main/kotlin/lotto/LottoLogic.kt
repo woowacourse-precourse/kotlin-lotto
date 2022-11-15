@@ -7,7 +7,7 @@ const val PRICE = 1000
 class LottoLogic {
 
     private var userLotto = mutableListOf<Int>()
-    private val userLottoList = mutableListOf<List<Int>>()
+    private var userLottoList = mutableListOf<List<Int>>()
     private var userPurchaseAmount = ""
     private var lottoCount = 0
 
@@ -27,4 +27,14 @@ class LottoLogic {
         }
         return lottoCount / PRICE
     }
+
+    fun lottoCreateLists(count : Int):List<List<Int>>{
+        var oneLotto : List<Int>
+        for(i in 0 until count){
+            oneLotto = lottoGenerator()
+            userLottoList.add(oneLotto.toSet().toList())
+        }
+        return userLottoList
+    }
+
 }
