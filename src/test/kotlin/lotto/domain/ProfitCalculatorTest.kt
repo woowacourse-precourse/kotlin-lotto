@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.CsvSource
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
@@ -21,6 +22,13 @@ class ProfitCalculatorTest {
     @MethodSource("generateDataForCalculateTotalPrize")
     fun `총 당첨 금액 계산`(totalRanks: List<Int>, expected: Long) {
         val actual = calculator.calculateTotalPrize(ranks, totalRanks)
+        assertThat(actual).isEqualTo(expected)
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = ["5000, 8000, 62.5", "2000000000, 5000, 40000000.0", "2000, 7000, 28.6"])
+    fun `총 수익률 계산`(totalPrize: Long, totalMoney: Int, expected: String) {
+        val actual = calculator.calculateYield(totalPrize, totalMoney)
         assertThat(actual).isEqualTo(expected)
     }
 
