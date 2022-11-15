@@ -29,7 +29,7 @@ class BaseData {
         }
     }
     fun countpurchasingVolume(inputMoney: Int): Int {
-        var purchasingVolume = inputMoney/1000
+        val purchasingVolume = inputMoney/1000
         println("${purchasingVolume}개를 구매했습니다.")
         return purchasingVolume
     }
@@ -49,7 +49,7 @@ class BaseData {
 
     fun inputLottoNum() {
         println("당첨 번호를 입력해 주세요.")
-        var Lotto = Console.readLine()
+        val Lotto = Console.readLine()
         makeLottoNum(Lotto)
     }
     fun makeLottoNum(Lotto:String) {
