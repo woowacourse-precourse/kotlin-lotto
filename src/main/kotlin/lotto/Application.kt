@@ -37,10 +37,9 @@ fun showResult(){
 
 fun lottoWinCheck(lucky:MutableList<Int>, bonus:Int){
 
-
-    val luckyList = mutableListOf<Int>(luckylist+bonus)
-    val map = luckyList.groupBy{ {it},{it.length} }
-    //filter { it.value.size > 1 }.flatMap { it.value }.distinct()
+    //사용자가 입력한 로또 번호(+보너스번호)를 luckylist로 매핑
+    val luckyList = lucky+bonus
+    val map = luckyList.groupBy{it}
 
     if (map.count() == 3)//5등
         five++
@@ -53,14 +52,7 @@ fun lottoWinCheck(lucky:MutableList<Int>, bonus:Int){
     if (map.count() == 6)//1등
         one++
 
-
     showResult()
-
-
-
-
-
-
 }
 fun main() {
     println("구입 금액을 입력하세요")
