@@ -7,14 +7,3 @@ fun main() {
     val winLotto = lotto.checkAllWinLotto(baseData.purchasedLotto,baseData.bonusNum)
     lotto.printResult(winLotto,baseData.inputMoney)
 }
-
-
-
-
-
-
-
-
-
-
-
