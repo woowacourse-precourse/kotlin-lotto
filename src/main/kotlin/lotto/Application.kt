@@ -1,13 +1,18 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
-import kotlin.math.roundToInt
 
 enum class ErrorType {
     AMOUNT {
         override fun print() {
             super.print()
-            println("입력은 1,000의 배수여야 합니다.")
+            println("구입 금액은 1,000의 배수여야 합니다.")
+        }
+    },
+    WRONG_AMOUNT {
+        override fun print() {
+            super.print()
+            println("올바르지 않은 구입 금액입니다")
         }
     },
     WINNING_NUMBER {
@@ -66,7 +71,16 @@ class LottoGame {
 
     private fun getPurchaseAmountInput(): Int {
         print("구입금액을 입력해 주세요.\n")
-        return readLine()?.toInt() ?: 0
+        val inputAmount = readLine()
+
+        try {
+            inputAmount?.toInt()
+        } catch (e: Exception) {
+            ErrorType.WRONG_AMOUNT.print()
+            throw IllegalArgumentException()
+        }
+
+        return inputAmount?.toInt() ?: 0
     }
 
     private fun checkInputAmountValid(amount: Int) {
@@ -228,6 +242,6 @@ class LottoGame {
         sum  += 1500000 * counts[5]
         sum += 30000000 * bonusCounts
         sum += 2000000000 * counts[6]
-        println("총 수익률은 ${(sum * 100 / inputAmount.toDouble()).roundToInt() / 100.0}%입니다.")
+        println("총 수익률은 ${(sum / inputAmount.toDouble()) * 100 }%입니다.")
     }
 }
