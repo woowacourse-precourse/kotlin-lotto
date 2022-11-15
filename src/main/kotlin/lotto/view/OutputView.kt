@@ -1,5 +1,6 @@
 package lotto.view
 
+import lotto.domain.Ranking
 import lotto.utils.*
 import kotlin.math.pow
 import kotlin.math.round
@@ -8,11 +9,11 @@ class OutputView {
     // 당첨 내역을 출력한다.
     fun printWinnerList(winners: List<Int>) {
         println(WINNER_RESULT_MGS)
-        println("$WINNER_5_MSG - ${winners[0]}개")
-        println("$WINNER_4_MSG - ${winners[1]}개")
-        println("$WINNER_3_MSG - ${winners[2]}개")
-        println("$WINNER_2_MSG - ${winners[3]}개")
-        println("$WINNER_1_MSG - ${winners[4]}개")
+        println("$WINNER_5_MSG - ${winners[Ranking.FIFTH.ordinal]}개")
+        println("$WINNER_4_MSG - ${winners[Ranking.FOURTH.ordinal]}개")
+        println("$WINNER_3_MSG - ${winners[Ranking.THIRD.ordinal]}개")
+        println("$WINNER_2_MSG - ${winners[Ranking.SECOND.ordinal]}개")
+        println("$WINNER_1_MSG - ${winners[Ranking.FIRST.ordinal]}개")
     }
 
     // 수익률을 출력한다.
@@ -24,10 +25,10 @@ class OutputView {
 
     // 수익금을 계산한다.
     fun calcProfits(winners: List<Int>): Int {
-        val money = listOf(5000, 50_000, 1_500_000, 30_000_000, 2_000_000_000)
         var profits = 0
-        for (i in winners.indices) {
-            profits += money[i] * winners[i]
+        val rank = Ranking.values()
+        for(i in rank.indices){
+            profits += winners[i] * rank[i].price
         }
         return profits
     }

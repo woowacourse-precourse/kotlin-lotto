@@ -31,13 +31,14 @@ class Lotto(private val winningNumber: List<Int>) {
         val judgement = Judgement()
         for(lottoNumber in lottoNumbers){
             when(judgement.countMatchNumber(lottoNumber, winningNumber)){
-                FIRST_WINNER_NUM -> winners[FIRST_WINNER_INDEX]++
-                SECOND_THIRD_WINNER_NUM ->  {
-                    if(judgement.checkBonusBall(lottoNumber, bonusNumber)) winners[SECOND_WINNER_INDEX]++
-                    else winners[THIRD_WINNER_INDEX]++
+                Ranking.FIRST.count -> winners[Ranking.FIRST.ordinal]++
+                Ranking.SECOND.count -> {
+                    if(judgement.checkBonusBall(lottoNumber, bonusNumber))
+                        winners[Ranking.SECOND.ordinal]++
+                    else winners[Ranking.THIRD.ordinal]++
                 }
-                FORTH_WINNER_NUM -> winners[FORTH_WINNER_INDEX]++
-                FIFTH_WINNER_NUM -> winners[FIFTH_WINNER_INDEX]++
+                Ranking.FOURTH.count -> winners[Ranking.FOURTH.ordinal]++
+                Ranking.FIFTH.count -> winners[Ranking.FIFTH.ordinal]++
             }
         }
         return winners

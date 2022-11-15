@@ -11,17 +11,6 @@ const val WINNER_3_MSG = "5개 일치 (1,500,000원)"
 const val WINNER_2_MSG = "5개 일치, 보너스 볼 일치 (30,000,000원)"
 const val WINNER_1_MSG = "6개 일치 (2,000,000,000원)"
 
-const val FIFTH_WINNER_INDEX = 0
-const val FORTH_WINNER_INDEX = 1
-const val THIRD_WINNER_INDEX = 2
-const val SECOND_WINNER_INDEX = 3
-const val FIRST_WINNER_INDEX = 4
-
-const val FIRST_WINNER_NUM = 6
-const val SECOND_THIRD_WINNER_NUM = 5
-const val FORTH_WINNER_NUM = 4
-const val FIFTH_WINNER_NUM = 3
-
 const val MONEY_UNIT = 1000
 const val MIN_VALUE = 1
 const val MAX_VALUE = 45

@@ -43,13 +43,13 @@ class ApplicationTest : NsTest() {
         )
     }
 
-//    @Test
-//    fun `예외 테스트`() {
-//        assertSimpleTest {
-//            runException("1000j")
-//            assertThat(output()).contains(ERROR_MESSAGE)
-//        }
-//    }
+    @Test
+    fun `예외 테스트`() {
+        assertSimpleTest {
+            runException("1000j")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
 
 //    @ParameterizedTest
 //    @ValueSource(strings = {"1000j", "1234"})
