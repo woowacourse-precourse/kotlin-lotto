@@ -10,7 +10,5 @@ object LottoRepository {
         repository = lotteries
     }
 
-    fun findAll(): List<Lotto> {
-        return repository
-    }
+    fun findAll(): List<Lotto> = repository
 }
