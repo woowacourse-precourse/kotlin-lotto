@@ -16,9 +16,16 @@ class LottoPrint {
         }
         count = lg.lottoPurchaseAmount(purchaseAmount)
         lottoCount(count)
+        lottoLists(lg.lottoCreateLists(count))
     }
 
     private fun lottoCount(count : Int) {
-        println("${count}개를 구매했습니다.")
+        println("\n${count}개를 구매했습니다.")
+    }
+
+    private fun lottoLists(listLotto : List<List<Int>>){
+        for(i in listLotto.indices){
+            println(listLotto[i])
+        }
     }
 }
