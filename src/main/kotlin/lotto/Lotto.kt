@@ -5,9 +5,13 @@ class Lotto(private val numbers: List<Int>) {
         if(numbers.size!=6){
             throw IllegalArgumentException("[ERROR] 로또 번호가 6개가 아닙니다")
         }
+        noSameNum()
         require(numbers.size == 6)
     }
-
+    fun noSameNum(){
+        numbers.forEach{it->if(numbers.contains(it)) throw IllegalArgumentException("[ERROR] 로또 번호에 중복된 숫자가 있습니다")}
+        
+    }
     // TODO: 추가 기능 구현
     fun game(answer:Array<Int>,bonusNumber:Int):Int{
         //정식번호 맞은 개수
@@ -36,7 +40,7 @@ class Lotto(private val numbers: List<Int>) {
         if(sameCnt==5) return 3
         if(sameCnt==4) return 4
         if(sameCnt==3) return 5
-        return -1
+        return 0
     }
     //일반번호 동일 갯수
     fun sameCount(solution:List<Int>):Int{
