@@ -1,12 +1,10 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
+import kotlin.math.round
 
 class LottoInputOutput {
     private var lotto : Lotto? = null
-    private var stats : LottoStats? = null
-    private var userList = mutableListOf<List<Int>>()
-    private var comList = mutableListOf<Int>()
     private val logic = LottoLogic()
     private var count = 0
     fun lottoPurchaseAmount(){
@@ -63,5 +61,18 @@ class LottoInputOutput {
 
     private fun finalLotto(){
         lotto = Lotto(lottoAnswer(), lottoBonus())
+        printResult()
+    }
+
+    fun printResult(){
+        println("\n당첨 통계\n---")
+        val price = lotto?.getSumPrice(logic.getUserLottoList())
+        LottoStats.values().forEach{
+            println("${it.message} - ${it.Cnt}개")
+        }
+        val rateOfReturn = price?.let { logic.getRate(it) }
+        if (rateOfReturn != null) {
+            println("총 수익률은 ${round(rateOfReturn*10) /10}%입니다.")
+        }
     }
 }
