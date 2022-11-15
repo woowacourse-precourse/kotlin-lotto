@@ -9,7 +9,7 @@ import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
 
-  /*  @Test
+    @Test
     fun `기능 테스트`() {
         assertRandomUniqueNumbersInRangeTest(
             {
@@ -41,7 +41,7 @@ class ApplicationTest : NsTest() {
             listOf(2, 13, 22, 32, 38, 45),
             listOf(1, 3, 5, 14, 22, 45)
         )
-    }*/
+    }
  @Test
     fun errorUserMoney1() {
         assertSimpleTest {
@@ -58,9 +58,9 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun checkUserMoneyTest() {
-        assertSimpleTest {
+        assertThrows<IllegalArgumentException>{
             runException("1000j")
-            assertThat(output()).contains("[ERROR]")
+            assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
 
