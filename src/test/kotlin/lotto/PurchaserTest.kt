@@ -19,7 +19,7 @@ class PurchaserTest {
         val winningNumbers = listOf<Int>(6, 7, 8, 9, 10, 11)
         val bonusNumber = 12
         val resultMap = mapOf<MatchedCount, Int>(
-            MatchedCount.TRHEE to 0,
+            MatchedCount.THREE to 0,
             MatchedCount.FOUR to 0,
             MatchedCount.FIVE to 0,
             MatchedCount.FIVE_BONUS to 1,

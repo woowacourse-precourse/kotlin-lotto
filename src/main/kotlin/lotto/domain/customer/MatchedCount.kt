@@ -9,8 +9,8 @@ private const val SIX_PRIZE = 2000000000
 private const val INVALID_ORDINAL = "[ERROR] ENUM 클래스에 없는 값입니다."
 
 enum class MatchedCount(val matchCount: Int, val prizeMoney: Int) {
-    TRHEE(3, THREE_PRIZE) {
-        override val gradeDescription: String = "3개 일치 (5,000원) - "
+    THREE(3, THREE_PRIZE) {
+        override val gradeDescription: String = THREE_RESULT
     },
     FOUR(4, FOUR_PRIZE) {
         override val gradeDescription: String = "4개 일치 (50,000원) - "

@@ -13,7 +13,7 @@ class Calculator() {
     init {
         rankResult.putAll(
             mapOf<MatchedCount, Int>(
-                MatchedCount.TRHEE to ZERO,
+                MatchedCount.THREE to ZERO,
                 MatchedCount.FOUR to ZERO,
                 MatchedCount.FIVE to ZERO,
                 MatchedCount.FIVE_BONUS to ZERO,
