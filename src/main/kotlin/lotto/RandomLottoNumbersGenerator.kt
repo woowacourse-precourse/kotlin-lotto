@@ -14,7 +14,7 @@ class RandomLottoNumbersGenerator(purchaseAmount: Int) {
      * 구입 금액에 따라 랜덤 로또 번호를 뽑는 함수
      */
     fun createRandomLottoNumbers(purchaseAmount: Int){
-        println("${purchaseAmount}개를 구입했습니다.")
+        println("\n${purchaseAmount / 1000}개를 구매했습니다.")
         for (index in 0 until purchaseAmount/1000){
             val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
             randomLottoes.add(numbers.sorted())
