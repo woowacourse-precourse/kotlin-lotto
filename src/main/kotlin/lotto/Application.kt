@@ -8,7 +8,7 @@ fun main() {
 
     println(Message.INPUT_MONEY_MASSAGE)
     money.money = input.inputMoney()
-    if (money.money == "ERROR") {
+    if (money.isError()) {
         return
     }
 
@@ -27,7 +27,7 @@ fun main() {
         return
     }
 
-    var winningResult = lottoList.getWinningResult(winningNumber, bonus)
+    val winningResult = lottoList.getWinningResult(winningNumber, bonus)
     message.printStatistics(winningResult)
 
     val profitRate = money.getProfitRate(winningResult)

@@ -3,15 +3,23 @@ package lotto
 class Money {
     var money: String = ""
 
-    enum class WinMoney(private val prize: Int){
+    enum class WinMoney(private val prize: Int) {
         FifthPlace(5000),
         FourthPlace(50000),
         ThirdPlace(1500000),
         SecondPlace(30000000),
         FirstPlace(2000000000);
+
         fun getPrize(): Int {
             return prize
         }
+    }
+
+    fun isError(): Boolean {
+        if (money == "ERROR") {
+            return false
+        }
+        return true
     }
 
     fun getNumberOfPurchases(): Int {
@@ -25,7 +33,7 @@ class Money {
 
     private fun getTotalPrize(winningResult: List<Int>): Int {
         var totalPrize = 0
-        winningResult.forEachIndexed { index, it -> totalPrize += WinMoney.values()[index].getPrize() * it }
+        winningResult.forEachIndexed { index, Num -> totalPrize += WinMoney.values()[index].getPrize() * Num }
 
         return totalPrize
     }

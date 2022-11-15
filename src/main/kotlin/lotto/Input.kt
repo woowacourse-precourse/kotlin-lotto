@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console
 class Input {
     fun inputMoney(): String {
         return try {
-            var money = Console.readLine()
+            val money = Console.readLine()
             Exceptions.checkMoney(money)
             money
         } catch (e: IllegalArgumentException) {
