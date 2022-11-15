@@ -2,16 +2,23 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import java.lang.Math.round
+import java.text.DecimalFormat
 
 fun main() {
-    TODO("프로그램 구현")
-    var inputMoney = Console.readLine()
+    val baseData = BaseData()
+    val lotto = Lotto(baseData.LottoNum)
+    val winLotto = lotto.checkAllWinLotto(baseData.purchasedLotto,baseData.bonusNum)
+    lotto.printResult(winLotto,baseData.inputMoney)
 }
-fun inputMoney(): Int? {
-    print("구입금앱을 입력해 주세요.")
-    return Console.readLine().toInt()
-}
-fun validInputMoney(inputMoney : Int){
-    if(inputMoney%1000 != 0)
-        throw IllegalArgumentException("[ERROR] 구입금액은 1000원 단위입니다.")
-}
+
+
+
+
+
+
+
+
+
+
+
