@@ -14,21 +14,22 @@ class InputView {
 
     // 구입할 금액 입력
     fun inputMoney(): Long {
-        val money = readLine()!!
+        val money = Console.readLine()
         try{
             if (money.matches(REGULAR_CORRECT_MONEY.toRegex()))
                 return money.toLong()
         }catch (e: Exception){
             println("$ERROR_MESSAGE_BUY_TICKET 입력 값: $money")
-            throw IllegalArgumentException("$ERROR_MESSAGE_BUY_TICKET 입력 값: $money")
+            // IllegalArgumentException("$ERROR_MESSAGE_BUY_TICKET 입력 값: $money")
         }
         println("$ERROR_MESSAGE_BUY_TICKET 입력 값: $money")
-        throw IllegalArgumentException("$ERROR_MESSAGE_BUY_TICKET 입력 값: $money")
+        //throw IllegalArgumentException("$ERROR_MESSAGE_BUY_TICKET 입력 값: $money")
+        return 0
     }
 
     // 당첨 번호 입력
     fun inputWinningNumber(): List<Int>{
-        val winningNumber = readLine()!!
+        val winningNumber = Console.readLine()
         try {
             val sixWinningNumber =  winningNumber.split(",").map { it.toInt() }
             if (sixWinningNumber.toSet().size == 6 && sixWinningNumber.all { it in 1..45 }) {
@@ -42,7 +43,7 @@ class InputView {
     }
 
     fun inputBonusNumber(correctLotto: List<Int>): Int{
-        val inputBonusNumber = readLine()!!
+        val inputBonusNumber = Console.readLine()
         try {
             val bonusNumber = inputBonusNumber.toInt()
             if (bonusNumber !in correctLotto && bonusNumber in 1..45) return bonusNumber
