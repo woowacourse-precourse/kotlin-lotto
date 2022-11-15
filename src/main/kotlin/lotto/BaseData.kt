@@ -26,7 +26,6 @@ class BaseData {
     fun validInputMoney(money : String){
         for(i in 0 until money.length){
             if(money.elementAt(i).code <48 || money.elementAt(i).code>57){
-                print("[ERROR]")
                 throw IllegalArgumentException("[ERROR] 구입금액은 숫자여야 합니다.")
             }
         }
@@ -50,15 +49,27 @@ class BaseData {
 
     fun inputLottoNum() {
         println("당첨 번호를 입력해 주세요.")
-        val Lotto = Console.readLine()
-        makeLottoNum(Lotto)
+        val lotto = Console.readLine()
+        validInputLotto(lotto)
+        makeLottoNum(lotto)
     }
-    fun makeLottoNum(Lotto:String) {
-        for(i in Lotto.replace(" ","").split(",")){
+    fun makeLottoNum(lotto:String) {
+        for(i in lotto.replace(" ","").split(",")){
             LottoNum.add(i.toInt())
         }
     }
-
+    fun validInputLotto(lotto : String){
+        for(i in 0 until lotto.length step 2){
+            if(lotto.elementAt(i).code <48 || lotto.elementAt(i).code>57){
+                throw IllegalArgumentException("[ERROR] 구입금액은 숫자여야 합니다.")
+            }
+        }
+        for(i in 1 until lotto.length step 2){
+            if(lotto.elementAt(i)==','){
+                throw IllegalArgumentException("[ERROR] 로또번호는 ,로 구분해야 합니다.")
+            }
+        }
+    }
     fun inputBonus() {
         println("보너스 번호를 입력해 주세요.")
         val bonus=Console.readLine()
