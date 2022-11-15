@@ -61,4 +61,14 @@ class Lotto(private val numbers: List<Int>) {
             6 -> println("6개 일치 (${dec.format(Money.SIX.money)}원) - ${sameNum}개")
         }
     }
+    fun winMoney(sameNum : Int, money : Int): Int {
+        when(money){
+            3 -> return Money.THREE.money * sameNum
+            4 -> return Money.FOUR.money * sameNum
+            5 -> return Money.FIVE.money * sameNum
+            7 -> return Money.BONUS.money * sameNum
+            6 -> return Money.SIX.money * sameNum
+        }
+        return 0
+    }
 }
