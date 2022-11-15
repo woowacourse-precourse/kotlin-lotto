@@ -1,4 +1,4 @@
-package lotto
+package lotto.domain
 
 import lotto.utils.MONEY_UNIT
 import lotto.view.InputView

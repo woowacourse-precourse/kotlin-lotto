@@ -1,6 +1,5 @@
-package lotto
+package lotto.domain
 
-import lotto.domain.*
 import lotto.utils.*
 
 class Lotto(private val winningNumber: List<Int>) {
