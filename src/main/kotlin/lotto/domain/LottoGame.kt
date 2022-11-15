@@ -52,7 +52,7 @@ class LottoGame {
     private fun validateNumberInput(input: String): Int {
         try {
             return input.toInt()
-        } catch (e: NumberFormatException){
+        } catch (e: NumberFormatException) {
             println(INPUT_EXCEPTION)
             throw IllegalArgumentException(e)
         }

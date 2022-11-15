@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test
 
 class LottoGameTest : NsTest() {
     @Test
-    fun `입력 금액 예외 테스트 1` () {
+    fun `입력 금액 예외 테스트 1`() {
         assertSimpleTest {
             runException("10-00")
             assertThat(output()).contains(ERROR_MESSAGE)
@@ -17,7 +17,7 @@ class LottoGameTest : NsTest() {
     }
 
     @Test
-    fun `입력 금액 예외 테스트 2` () {
+    fun `입력 금액 예외 테스트 2`() {
         assertSimpleTest {
             runException("one")
             assertThat(output()).contains(ERROR_MESSAGE)

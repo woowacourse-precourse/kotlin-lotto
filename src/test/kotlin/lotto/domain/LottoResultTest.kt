@@ -13,7 +13,8 @@ class LottoResultTest {
             Lotto(listOf(1, 2, 3, 4, 5, 20)),
             Lotto(listOf(1, 2, 3, 7, 5, 6)),
             Lotto(listOf(1, 2, 13, 8, 9, 20)),
-            Lotto(listOf(1, 2, 3, 4, 5, 6)))
+            Lotto(listOf(1, 2, 3, 4, 5, 6))
+        )
         assertThat(LottoResult().getResult(winning, player)).isEqualTo(
             mapOf("FIRST" to 1, "SECOND" to 1, "THIRD" to 1, "FORTH" to 1, "FIFTH" to 1, "NOTHING" to 1)
         )
@@ -27,7 +28,8 @@ class LottoResultTest {
             Lotto(listOf(1, 2, 3, 4, 7, 6)),
             Lotto(listOf(1, 7, 3, 4, 5, 6)),
             Lotto(listOf(1, 2, 3, 4, 5, 9)),
-            Lotto(listOf(1, 2, 13, 8, 9, 20)))
+            Lotto(listOf(1, 2, 13, 8, 9, 20))
+        )
         assertThat(LottoResult().getResult(winning, player)).isEqualTo(
             mapOf("FIRST" to 0, "SECOND" to 3, "THIRD" to 1, "FORTH" to 0, "FIFTH" to 0, "NOTHING" to 1)
         )
