@@ -9,16 +9,10 @@ class User {
     private var _inputMoney = 0
     val inputMoney get() = _inputMoney
 
-    private val _lottoNumbers = mutableListOf<Int>()
-    val lottoNumbers get() = _lottoNumbers as List<Int>
-
-    private var _bonus = 0
-    val bonus get() = _bonus
-
-    fun inputMoney(): Int {
+    fun inputMoney() {
         val input = userInput()
         checkInputException(input)
-        return input.toInt()
+        _inputMoney = input.toInt()
     }
 
     fun getLottos() = _inputMoney / 1000
@@ -35,7 +29,7 @@ class User {
     fun inputNumbers(): List<Int> {
         val input = userInput()
         checkInputNumbersException(input)
-        return input.toList().map { it.digitToInt() }
+        return input.split(",").map { it.toInt() }.sorted()
     }
 
     fun inputBonus(): Int {
@@ -48,7 +42,7 @@ class User {
         with(inputCheck) {
             checkNullException(input)
             checkTypeException(input)
-            checkRangeException(input?.toList()?.map { it.digitToInt() }!!)
+            checkRangeException(input?.toInt()!!)
         }
     }
 
