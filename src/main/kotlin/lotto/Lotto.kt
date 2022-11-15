@@ -38,7 +38,7 @@ class Lotto(private val numbers: List<Int>) {
         return winningCounts
     }
 
-    private fun compareWithLottoNum(lottoNum: Int, bonusNum: Int, answerCount: Int): List<Int> {
+    fun compareWithLottoNum(lottoNum: Int, bonusNum: Int, answerCount: Int): List<Int> {
         var answerCount = answerCount
         var bonusCount = 0
 
