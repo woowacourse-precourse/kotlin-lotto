@@ -1,4 +1,4 @@
-package lotto
+package domain
 
 import domain.BonusNumber
 import org.junit.jupiter.api.Test
