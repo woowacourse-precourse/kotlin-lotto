@@ -4,33 +4,40 @@ import camp.nextstep.edu.missionutils.Console
 import lotto.*
 
 class User {
-
-
-    fun inputUserBonusNumber() {
+    fun inputUserBonusNumber(userGamePrizeNumber: List<String>) {
         println(BONUS_NUMBER_MESSAGE)
         val bonusNumber = Console.readLine()
 
-        checkBonusNumber(bonusNumber)
+        checkBonusNumber(bonusNumber, userGamePrizeNumber)
     }
 
-    fun checkBonusNumber(bonusNumber: String) {
+    fun checkBonusNumber(bonusNumber: String, userGamePrizeNumber: List<String>) {
         if (!checkNumber(bonusNumber))
             throw IllegalArgumentException(ERROR_PRIZE_NUMBER_MESSAGE)
         if (!checkRangeBonusNumber(bonusNumber))
-            throw IllegalArgumentException(ERROR_BIG_NUMBER_MESSAGE)
+            throw IllegalArgumentException(ERROR_BONUS_NUMBER_MESSAGE)
+        if (checkRepeatBonusNumber(bonusNumber, userGamePrizeNumber) != null)
+            throw IllegalArgumentException(ERROR_BONUS_REPEAT_MESSAGE)
     }
+
+    private fun checkRepeatBonusNumber(bonusNumber: String, userGamePrizeNumber: List<String>): String? {
+        return userGamePrizeNumber.find {
+            it == bonusNumber
+        }
+    }
+
 
     private fun checkRangeBonusNumber(bonusNumber: String) = bonusNumber.toInt() < 1 || bonusNumber.toInt() > 46
 
-    fun inputUserPrizeNumber() {
+    fun inputUserPrizeNumber(): List<String> {
         println(PRIZE_NUMBER_PURCHASE_MESSAGE)
         val prizeNumber = Console.readLine()
 
-        checkPrizeNumber(prizeNumber)
+        return checkPrizeNumber(prizeNumber)
     }
 
 
-    fun checkPrizeNumber(prizeNumber: String) {
+    fun checkPrizeNumber(prizeNumber: String): List<String> {
         val prizeNumberGroup = changeCommaPrizeNumber(prizeNumber)
         if (!checkNumPrizeGroup(prizeNumberGroup))
             throw IllegalArgumentException(ERROR_PRIZE_NUMBER_MESSAGE)
@@ -40,6 +47,7 @@ class User {
             throw IllegalArgumentException(ERROR_PRIZE_RANGE_MESSAGE)
         if (!checkRepeatPrizeGroup(prizeNumberGroup))
             throw IllegalArgumentException(ERROR_PRIZE_REPEAT_MESSAGE)
+        return prizeNumberGroup
     }
 
     private fun checkRepeatPrizeGroup(prizeNumberGroup: List<String>) =

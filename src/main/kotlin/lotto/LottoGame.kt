@@ -11,5 +11,6 @@ class LottoGame {
         val userGameAmount = user.inputUserAmount()
         val purchase = LottoPurchase(userGameAmount).randomLottoPurchase()
         val userGamePrizeNumber = user.inputUserPrizeNumber()
+        val bonusNumber = user.inputUserBonusNumber(userGamePrizeNumber)
     }
 }
