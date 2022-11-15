@@ -3,7 +3,11 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 
 fun main() {
-    launch()
+    try{
+        launch()
+    } catch (e: IllegalArgumentException) {
+        print(e.message)
+    }
 }
 
 fun launch() {
@@ -38,23 +42,23 @@ fun purchase(string: String): Int {
     try {
         val amount: Int = string.toInt()
         if (amount % 1000 != 0)
-            throw throwPurchaseInputException()
+            throw IllegalArgumentException("[ERROR] 구입 금액 입력이 올바르지 않음")
         return amount
 
     } catch (_: NumberFormatException) {
-        throw throwPurchaseInputException()
+        throw IllegalArgumentException("[ERROR] 구입 금액 입력이 올바르지 않음")
     }
 }
 
 fun lottoNumbers(string: String): List<Int> {
-    var result: Set<Int> = setOf()
+    var result: Set<Int>
     try {
         result = string.split(",").map {
             validateNumberRange(it.toInt())
             it.toInt()
         }.toSet()
     } catch (_: NumberFormatException) {
-        throwWinningNumberInputException()
+        throw IllegalArgumentException("[ERROR] 당첨 번호 입력이 올바르지 않음")
     }
 
     return result.toList()
@@ -65,25 +69,14 @@ fun bonusNumber(string: String): Int {
         validateNumberRange(string.toInt())
         string.toInt()
     } catch (_: NumberFormatException) {
-        println("[ERROR] 보너스 번호가 올바르게 입력되지 않음")
-        throw IllegalArgumentException()
+        throw IllegalArgumentException("[ERROR] 보너스 번호가 올바르게 입력되지 않음")
     }
 }
 
 fun validateNumberRange(number: Int) {
     if (number < 1 || number > 45) {
-        throwWinningNumberInputException()
+        throw IllegalArgumentException("[ERROR] 당첨 번호 입력이 올바르지 않음")
     }
-}
-
-fun throwWinningNumberInputException() {
-    println("[ERROR] 당첨 번호 입력이 올바르지 않음")
-    throw IllegalArgumentException()
-}
-
-fun throwPurchaseInputException(): IllegalArgumentException {
-    println("[ERROR] 구입 금액 입력이 올바르지 않음")
-    return IllegalArgumentException()
 }
 
 
