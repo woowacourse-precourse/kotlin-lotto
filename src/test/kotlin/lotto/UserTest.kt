@@ -27,24 +27,28 @@ class UserTest {
             userTest.checkAmount("1001")
         }
     }
+
     @Test
     fun `로또 번호가 숫자인지 확인한다`() {
         assertThrows<IllegalArgumentException> {
             userTest.checkPrizeNumber("1,2,3,4,5,a")
         }
     }
+
     @Test
     fun `로또 번호 사이즈가 6인지 확인한다`() {
         assertThrows<IllegalArgumentException> {
             userTest.checkPrizeNumber("1,2,3,4,5,7,9")
         }
     }
+
     @Test
     fun `로또 번호가 1~45인지 확인한다`() {
         assertThrows<IllegalArgumentException> {
             userTest.checkPrizeNumber("1,2,3,4,5,46")
         }
     }
+
     @Test
     fun `로또 번호가 중복인지 확인한다`() {
         assertThrows<IllegalArgumentException> {
@@ -55,19 +59,21 @@ class UserTest {
     @Test
     fun `보너스 번호가 숫자인지 확인한다`() {
         assertThrows<IllegalArgumentException> {
-            userTest.checkBonusNumber("1e", listOf("1","2","3","4","5","6"))
+            userTest.checkBonusNumber("1e", listOf(1, 2, 3, 4, 5, 6))
         }
     }
+
     @Test
     fun `보너스 번호가 1~45인지 확인한다`() {
         assertThrows<IllegalArgumentException> {
-            userTest.checkBonusNumber("46", listOf("1","2","3","4","5","6"))
+            userTest.checkBonusNumber("46", listOf(1, 2, 3, 4, 5, 6))
         }
     }
+
     @Test
     fun `보너스 번호와 당첨 번호가 겹치는지 확인한다`() {
         assertThrows<IllegalArgumentException> {
-            userTest.checkBonusNumber("6", listOf("1","2","3","4","5","6"))
+            userTest.checkBonusNumber("6", listOf(1, 2, 3, 4, 5, 6))
         }
     }
 }

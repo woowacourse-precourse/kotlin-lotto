@@ -2,5 +2,9 @@ package lotto
 
 fun main() {
     val lottoGame = LottoGame()
-    lottoGame.gameStart()
+    try {
+        lottoGame.gameStart()
+    } catch (e: Exception) {
+        println(e.message)
+    }
 }
