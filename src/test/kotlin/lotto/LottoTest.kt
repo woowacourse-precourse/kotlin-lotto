@@ -1,6 +1,8 @@
 package lotto
 
+import lotto.control.Controller
 import lotto.control.ExceptionHandler
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -9,6 +11,9 @@ import java.io.InputStream
 
 
 class LottoTest {
+
+    val control = Controller()
+
     @Test
     fun `로또 번호의 개수가 6개가 넘어가면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
@@ -57,5 +62,16 @@ class LottoTest {
         assertThrows<IllegalArgumentException> {
             ExceptionHandler.checkBonusNumber(bonusNumber, winningNumber)
         }
+    }
+
+    @Test
+    fun `보너스 숫자가 리스트에 포함이 된다`() {
+        val saveNumber = listOf(1, 2, 3, 4, 5, 6)
+        val bonusNumber = 2
+        var result = 0
+        if (saveNumber.contains(bonusNumber)) {
+            result++
+        }
+        assertThat(result).isEqualTo(1)
     }
 }
