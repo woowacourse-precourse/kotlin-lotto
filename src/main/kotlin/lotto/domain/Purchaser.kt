@@ -21,9 +21,9 @@ class Purchaser(private val purchasedLotto: List<Lotto>) {
         )
     }
 
-    fun determineRank(autoCreatedLottos: List<Lotto>, winningNumbers: List<Int>, bonusNumber: Int) {
-        for (lotto in autoCreatedLottos) {
-            val matchedCount = compareLottos(lotto, winningNumbers, bonusNumber) ?: continue
+    fun determineRank(winningNumbers: List<Int>, bonusNumber: Int) {
+        for (lotto in purchasedLotto) {
+            val matchedCount = compareLotteries(lotto, winningNumbers, bonusNumber) ?: continue
             _rankResult[matchedCount] = _rankResult[matchedCount]!!.plus(PLUS_COUNT)
         }
     }
