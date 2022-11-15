@@ -24,5 +24,6 @@ fun main() {
     val winning_numbers_count= WinningCount().WinningNumbers(total_numbers,lotto_numbers_list,bonus)
 
     WinningCount().PrintWinningCount(winning_numbers_count)
+    Rate().PrintRate(winning_numbers_count,buy)
 }
 
