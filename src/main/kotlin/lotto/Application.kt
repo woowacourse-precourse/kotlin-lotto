@@ -1,5 +1,12 @@
 package lotto
 
 fun main() {
-    TODO("프로그램 구현")
+    val money = Input().inputMoney()
+
+    if (money == "ERROR")
+        return
+
+    val lotteryCount = money.toInt()/1000
+    Lotto.createLotto(lotteryCount)
+    Lotto.printLotto()
 }
