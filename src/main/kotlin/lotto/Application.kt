@@ -24,10 +24,11 @@ fun main() {
     Lotto(myList)
 
     println("보너스 번호를 입력해 주세요.")
-    var bonusNumber = Console.readLine()
-    if (bonusNumber!!.toInt() !in (1..45) )
+    var myBonus = Console.readLine()
+    var bonusNumber = myBonus.toInt()
+    if (bonusNumber !in (1..45) )
         throw IllegalArgumentException("[ERROR] : 올바른 범위의 숫자를 입력해 주세요.(1~45)")
-    if (myList.contains(bonusNumber.toInt()))
+    if (myList.contains(bonusNumber))
         throw IllegalArgumentException("[ERROR] : 입력한 당첨 번호와 중복됩니다.")
 
     println("당첨 통계")
@@ -42,11 +43,11 @@ fun main() {
             emd4+=1
             moneyResult+=500000
         }
-        if(!(randomlotto[i].contains(bonusNumber.toInt()))&&intersection.size == 5){
+        if(!(randomlotto[i].contains(bonusNumber))&&intersection.size == 5){
             emd3+=1
             moneyResult+=1500000
         }
-        if(randomlotto[i].contains(bonusNumber.toInt())&&intersection.size == 5){
+        if(randomlotto[i].contains(bonusNumber)&&intersection.size == 5){
             emd2+=1
             moneyResult+=30000000
         }
