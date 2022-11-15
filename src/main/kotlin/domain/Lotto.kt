@@ -11,7 +11,7 @@ class Lotto(private val numbers: List<Int>) {
         println(numbers.toString())
     }
 
-    fun calculateWinnings(winningNumbers: List<Int>, bonusNumber: Int): Int {
+    fun getWinningRank(winningNumbers: List<Int>, bonusNumber: Int): Int {
         var countMatching = 0
 
         for (number in numbers) {
@@ -20,7 +20,7 @@ class Lotto(private val numbers: List<Int>) {
             }
         }
 
-        return when(countMatching) {
+        return when (countMatching) {
             Winning.FIFTH.countMatching -> Winning.FIFTH.ordinal
             Winning.FOURTH.countMatching -> Winning.FOURTH.ordinal
             Winning.THIRD.countMatching -> {

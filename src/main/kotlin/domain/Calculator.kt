@@ -14,7 +14,7 @@ class Calculator {
     fun calculateWinnings(lottos: List<Lotto>, winnings: List<Int>, bonus: Int): List<Int> {
         val result = mutableListOf(0, 0, 0, 0, 0)
         for (lotto in lottos) {
-            val prize = lotto.calculateWinnings(winnings, bonus)
+            val prize = lotto.getWinningRank(winnings, bonus)
             if (prize == -1) {
                 continue
             }
