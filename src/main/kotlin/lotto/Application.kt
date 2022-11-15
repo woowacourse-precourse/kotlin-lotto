@@ -1,5 +1,9 @@
 package lotto
 
 fun main() {
-    TODO("프로그램 구현")
+    try {
+        InputLottoPrice().input()
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+    }
 }
