@@ -1,5 +1,13 @@
 package lotto
 
+import lotto.controller.LottoController
+import java.math.RoundingMode
+import java.text.DecimalFormat
+
 fun main() {
-    TODO("프로그램 구현")
+    try {
+        LottoController().play()
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+    }
 }
