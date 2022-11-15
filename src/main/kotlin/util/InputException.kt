@@ -35,6 +35,10 @@ class InputException {
         }
     }
 
+    fun checkOverlapException(numbers: List<Int>) {
+        if (numbers.size != numbers.toSet().size) invalidException(OVERLAP_EXCEPTION)
+    }
+
     private fun invalidException(message: String) {
         throw IllegalArgumentException("[ERROR] : $message")
     }
@@ -43,5 +47,6 @@ class InputException {
         const val TYPE_EXCEPTION = "올바른 형식이 아닙니다."
         const val NULL_EXCEPTION = "아무 것도 입력하지 않았습니다."
         const val VALUE_EXCEPTION = "잘못된 값입니다."
+        const val OVERLAP_EXCEPTION = "중복된 값이 존재 합니다."
     }
 }
