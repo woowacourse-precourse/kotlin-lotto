@@ -9,6 +9,23 @@ fun main() {
     val numberOfLotto = purchaseMoney / LOTTO_PRICE
     val lottoNumbers = getLottoNumbers(numberOfLotto)
     printLottoNumbers(lottoNumbers)
+
+    val winningNumbers = getWinningNumbers()
+}
+
+fun getWinningNumbers(): Lotto {
+    println("\n$INPUT_NUMBERS")
+
+    val winning = readLine()
+    InputError.checkWinningsFormat(winning)
+
+    val winningNumbers = mutableListOf<Int>()
+    winning!!.split(SEPARATOR)
+        .forEach { num ->
+            winningNumbers.add(num.trim().toInt())
+    }
+
+    return Lotto(winningNumbers)
 }
 
 fun printLottoNumbers(numbers: List<Lotto>) {
