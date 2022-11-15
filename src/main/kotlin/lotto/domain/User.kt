@@ -5,6 +5,21 @@ import lotto.*
 
 class User {
 
+
+    fun inputUserBonusNumber() {
+        println(BONUS_NUMBER_MESSAGE)
+        val bonusNumber = Console.readLine()
+
+        checkBonusNumber(bonusNumber)
+    }
+
+    fun checkBonusNumber(bonusNumber: String) {
+        if (!checkNumber(bonusNumber))
+            throw IllegalArgumentException(ERROR_PRIZE_NUMBER_MESSAGE)
+
+    }
+
+
     fun inputUserPrizeNumber() {
         println(PRIZE_NUMBER_PURCHASE_MESSAGE)
         val prizeNumber = Console.readLine()
@@ -62,8 +77,8 @@ class User {
     fun checkAmount(userAmount: String) {
         if (!checkNumber(userAmount))
             throw IllegalArgumentException(ERROR_AMOUNT_NUMBER_MESSAGE)
-        if (checkBigNumAmount(userAmount) == null)
-            throw IllegalArgumentException(ERROR_AMOUNT_BIG_NUMBER_MESSAGE)
+        if (checkBigNum(userAmount) == null)
+            throw IllegalArgumentException(ERROR_BIG_NUMBER_MESSAGE)
         if (!checkDivideAmount(userAmount))
             throw IllegalArgumentException(ERROR_AMOUNT_DIVIDE_MESSAGE)
     }
@@ -71,7 +86,7 @@ class User {
     private fun checkNumber(userAmount: String): Boolean =
         userAmount.count() == userAmount.replace("\\D".toRegex(), "").count()
 
-    private fun checkBigNumAmount(userAmount: String) = userAmount.toIntOrNull()
+    private fun checkBigNum(userAmount: String) = userAmount.toIntOrNull()
     private fun checkDivideAmount(userAmount: String): Boolean {
         if (userAmount.toInt() % 1000 != 0)
             return false
