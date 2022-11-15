@@ -1,5 +1,9 @@
 package lotto
 
 fun main() {
-    TODO("프로그램 구현")
+    val world = World()
+
+    world.purchaseLotto()
+    world.publishWinningLotto()
+    world.showResult()
 }
