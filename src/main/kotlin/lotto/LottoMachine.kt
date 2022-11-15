@@ -1,6 +1,10 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.Messages.Companion.DIVISION_ERROR
+import lotto.Messages.Companion.DUPLICATE_NUMBER_ERROR
+import lotto.Messages.Companion.NUMBER_INPUT_ERROR
+import lotto.Messages.Companion.NUMBER_RANGE_ERROR
 
 class LottoMachine {
 
@@ -43,12 +47,12 @@ class LottoMachine {
         try {
             price = payment.toInt()
         } catch (e: IllegalArgumentException){
-            println("[ERROR] 숫자만 입력해 주세요.")
-            throw NoSuchElementException("[ERROR] 숫자만 입력해 주세요.")
+            println(NUMBER_INPUT_ERROR)
+            throw NoSuchElementException(NUMBER_INPUT_ERROR)
         }
         if (price % 1000 != 0) {
-            println("[ERROR] 1000원으로 나눠지지 않습니다.")
-            throw IllegalArgumentException("[ERROR] 1000원으로 나눠지지 않습니다.")
+            println(DIVISION_ERROR)
+            throw IllegalArgumentException(DIVISION_ERROR)
         }
     }
 
@@ -63,10 +67,10 @@ class LottoMachine {
 
     fun checkBonusNumberException(winningLotto: Lotto, number: Int) {
         if (number !in 1..45) {
-            throw IllegalArgumentException("[ERROR] 로또 번호 범위(1~45)를 벗어났습니다.")
+            throw IllegalArgumentException(NUMBER_RANGE_ERROR)
         }
         if (winningLotto.getNumbers().contains(number)) {
-            throw IllegalArgumentException("[ERROR] 당첨 번호와 중복됩니다.")
+            throw IllegalArgumentException(DUPLICATE_NUMBER_ERROR)
         }
     }
 
