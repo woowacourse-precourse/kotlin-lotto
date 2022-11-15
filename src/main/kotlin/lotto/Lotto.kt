@@ -8,11 +8,11 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.size == LOTTO_NUMBER_SIZE) {
             throw IllegalArgumentException(ERROR_MESSAGE.toString() + LottoExecptions.LOTTO_SIZE_ERROR)
         }
-        require(checkLottoRange(numbers)) {
-            throw IllegalArgumentException(ERROR_MESSAGE.toString() + LottoExecptions.LOTTO_RANGE_ERROR)
-        }
         require(checkLottoDuplicated(numbers)) {
             throw IllegalArgumentException(ERROR_MESSAGE.toString() + LottoExecptions.LOTTO_DUPLICATE_ERROR)
+        }
+        require(checkLottoRange(numbers)) {
+            throw IllegalArgumentException(ERROR_MESSAGE.toString() + LottoExecptions.LOTTO_RANGE_ERROR)
         }
     }
 
@@ -20,7 +20,7 @@ class Lotto(private val numbers: List<Int>) {
 
     fun checkLottoRange(numbers: List<Int>): Boolean {
         numbers.forEach {
-            if (it in LOTTO_RANGE_START..LOTTO_RANGE_END)
+            if (it >= LOTTO_RANGE_START && it <= LOTTO_RANGE_END)
                 return true
         }
         return false
