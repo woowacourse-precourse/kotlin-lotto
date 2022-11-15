@@ -37,7 +37,7 @@ class LottoTest {
     @Test
     fun `입력 금액이 숫자 형태 인지 확인`() {
         assertThrows<IllegalArgumentException> {
-            check.checkInt("1500")
+            check.checkInt("1500ㅁ")
         }
     }
 

@@ -55,7 +55,9 @@ class View {
         println(Price.SIX.reward + six + "개")
     }
 
-
+    fun outputYield(yield : String){
+        println("총 수익률은 "+ `yield` + "%입니다.")
+    }
 
 
 
