@@ -11,7 +11,6 @@ class LottoProfit(val lottoWinner: List<Int>, val userGameAmount: Int) {
     fun calLottoProfit(): Double {
         val priceTag = listOf(5000.0, 50000.0, 1500000.0, 30000000.0, 2000000000.0)
         var sumPrice = 0.0
-        print(lottoWinner)
         for (i in lottoWinner.indices) {
             sumPrice += priceTag[i] * lottoWinner[i]
         }
