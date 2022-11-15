@@ -7,6 +7,7 @@ class LottoWinnerNumberException(private val lottoWinnerNumbers: String) {
         // 6개 check는 하지 않음. Lotto 클래스에 require 되있음
         isNotInteger()
         isNotLottoNumber()
+        isOverlap()
     }
 
     private fun isNotInteger() {
@@ -24,5 +25,11 @@ class LottoWinnerNumberException(private val lottoWinnerNumbers: String) {
                 throw IllegalArgumentException("[ERROR] 입력한 로또 번호 ${lottoNumber}는 존재하지 않습니다.")
             }
         }
+    }
+
+    private fun isOverlap() {
+        if(_lottoWinnerNumber.size != _lottoWinnerNumber.distinct().size)
+            throw IllegalArgumentException("[ERROR] 로또 번호는 중복 될 수 없습니다.")
+
     }
 }
