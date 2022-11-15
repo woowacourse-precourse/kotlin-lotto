@@ -1,8 +1,8 @@
 package lotto
 import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
-
-
+import java.util.*
+import org.junit.platform.commons.logging.LoggerFactory
 
 enum class Grade(val money:Int){
     First(2000000000),
@@ -11,21 +11,21 @@ enum class Grade(val money:Int){
     Fourth(50000),
     Fifth(5000);
 }
-
-fun checkUserMoney(userMoney:String):Int{
-    val ERROR_MESSAGE = "[ERROR]"
-
-   var userMoney = userMoney.toIntOrNull()
-    if(userMoney == null) {
-        println(ERROR_MESSAGE)
-        throw IllegalArgumentException()
+class Money{
+    private val log = LoggerFactory.getLogger(javaClass)
+    fun checkUserMoney(userMoney:String):Int{
+        var userMoney = userMoney.toIntOrNull()
+        if(userMoney == null) {
+            log.error() { "[ERROR] 수를 입력하세요" }
+            throw IllegalArgumentException()
+        }
+        if(userMoney%1000 != 0) {
+            log.error() { "[ERROR] 1000으로 나누어 떨어지게 입력하세요" }
+            throw IllegalArgumentException()}
+        return userMoney
     }
-
-    if(userMoney%1000 != 0) {
-        println(ERROR_MESSAGE)
-        throw IllegalArgumentException()}
-    return userMoney
 }
+
 
 fun bonusSame(numbers: List<Int>, bonus: Int):Int{
     for(i in 0 until 6){
@@ -84,16 +84,15 @@ fun checkEarnMoney(gradeNum: Array<Int>):Double{
 
 
 
-
 fun main() {
-   var userMoney = Console.readLine()!!.toString()
-    var checkUserMoneyok = checkUserMoney(userMoney)
+    var userMoney = Console.readLine()!!.toString()
+    val money = Money()
+    var checkUserMoneyok = money.checkUserMoney(userMoney)
     var LottoNum = (checkUserMoneyok)/1000
     println("${LottoNum}개를 구매했습니다.")
     println("당첨번호를 입력하세요")
     val userString = Console.readLine()!!.toString()
     val userNum = userString.split(",")
-
     println("보너스 점수를 입력하세요")
     var bonus = Console.readLine()!!.toInt()
     var gradeNum = pickNum(LottoNum,userNum,bonus)
@@ -101,7 +100,5 @@ fun main() {
     var plusMoney = checkEarnMoney(gradeNum)
     var earnMoney : Double = (plusMoney/(LottoNum*1000.0))*100.0
     var earnMoneyRound = Math.ceil(earnMoney*10)/10.0
-
     println("총 수익률은 ${earnMoney}%입니다.")
-
 }
