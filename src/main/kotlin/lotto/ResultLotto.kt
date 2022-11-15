@@ -52,4 +52,8 @@ class ResultLotto {
         }
         return match
     }
+
+    private fun compareBonusNumber(lotto: List<Int>, bonusNumber: Int): Boolean {
+        return lotto.contains(bonusNumber)
+    }
 }
