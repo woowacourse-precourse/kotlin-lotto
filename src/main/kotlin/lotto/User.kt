@@ -32,6 +32,20 @@ class User {
         return input.toList().map { it.digitToInt() }
     }
 
+    fun inputBonus(): Int {
+        val input = userInput()
+        checkBonusException(input)
+        return input.toInt()
+    }
+
+    private fun checkBonusException(input: String?) {
+        with(inputCheck) {
+            checkNullException(input)
+            checkTypeException(input)
+            checkRangeException(input?.toList()?.map { it.digitToInt() }!!)
+        }
+    }
+
     private fun checkInputNumbersException(input: String?) {
         with(inputCheck) {
             checkNullException(input)
