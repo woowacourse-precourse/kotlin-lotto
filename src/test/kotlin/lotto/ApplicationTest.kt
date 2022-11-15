@@ -58,6 +58,14 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `당첨보너스번호입력_중복숫자_예외`() {
+        assertSimpleTest {
+            runException("1000", "1,2,3,4,5,6", "6")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
     override fun runMain() {
         main()
     }
