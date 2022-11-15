@@ -45,4 +45,10 @@ class UserTest {
             userTest.checkPrizeNumber("1,2,3,4,5,46")
         }
     }
+    @Test
+    fun `로또 번호가 중복인지 확인한다`() {
+        assertThrows<IllegalArgumentException> {
+            userTest.checkPrizeNumber("1,2,3,4,5,5")
+        }
+    }
 }
