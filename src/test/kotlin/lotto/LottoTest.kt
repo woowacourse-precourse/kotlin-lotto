@@ -58,6 +58,11 @@ class LottoTest : NsTest() {
             run("13600")
         }
     }
+    @Test
+    fun `구매 갯수가 출력이 올바른가` (){
+        run("5000")
+        assertThat(output()).contains("5개를 구매했습니다.")
+    }
     override fun runMain() {
         main()
     }
