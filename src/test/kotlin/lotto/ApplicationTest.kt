@@ -8,7 +8,6 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
-import org.junit.jupiter.params.provider.ValueSource
 
 
 class ApplicationTest : NsTest() {
@@ -44,7 +43,19 @@ class ApplicationTest : NsTest() {
 
         assertThat(lottoNums.calcWin(lottoWinNums)).isEqualTo(expected)
     }
-
+    @ParameterizedTest
+    @CsvSource("1000/5000/500","3000/60000/2000","2000/50000/2500", delimiter = '/')
+    fun `당첨 수익률 test`(purchaseMoney:Long,earningMoney:Long,expected:Double){
+        assertThat(calcEarningRate(earningMoney,purchaseMoney)).isEqualTo(expected)
+    }
+    @Test
+    fun `로또 당첨금이 매우 클 경우의 수익률`(){
+        assertThat(earningRateMSG(200000000000.0)).isEqualTo("총 수익률은 200000000000%입니다.")
+    }
+    @Test
+    fun `수익률이 소수점 둘째 자리에서 정상적으로 반올림 되는지 test`(){
+        assertThat(calcEarningRate(5000,7000)).isEqualTo(71.4)
+    }
     @Test
     fun `로또 당첨 test1 - 1등`(){
         assertRandomUniqueNumbersInRangeTest(
@@ -145,14 +156,7 @@ class ApplicationTest : NsTest() {
             listOf(1, 2, 3, 10, 7, 8)
         )
     }
-    @Test
-    fun `로또 당첨금이 매우 클 경우의 수익률`(){
-        assertThat(earningRateMSG(200000000000.0)).isEqualTo("총 수익률은 200000000000%입니다.")
-    }
-    @Test
-    fun `수익률이 소수점 둘째 자리에서 정상적으로 반올림 되는지 test`(){
-        assertThat(calcEarningRate(5000,7000)).isEqualTo(71.4)
-    }
+
 
     @Test
     fun `기능 테스트`() {
