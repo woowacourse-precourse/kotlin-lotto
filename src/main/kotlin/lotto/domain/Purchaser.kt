@@ -5,7 +5,7 @@ import lotto.MatchedCount.*
 private const val PLUS_COUNT = 1
 private const val MIN_SAME_COUNT = 3
 
-class Purchaser {
+class Purchaser(private val purchasedLotto: List<Lotto>) {
     private val _rankResult = mutableMapOf<MatchedCount, Int>()
     val rankResult: Map<MatchedCount, Int> get() = _rankResult
 
