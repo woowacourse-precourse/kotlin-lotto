@@ -2,12 +2,13 @@ package lotto
 
 import lotto.LottoStats as LottoStats
 
-enum class LottoStats(val message: String, val price: Int, private var Cnt: Int) {
-    FIRST_RANK("6개 일치", 2_000_000_000, 0),
-    SECOND_RANK("5개 일치, 보너스볼 일치", 30_000_000, 0),
-    THIRD_RANK("5개 일치", 1_500_000, 0),
-    FORTH_RANK("4개 일치", 50_000, 0),
-    FIFTH_RANK("3개 일치", 5_000, 0);
+enum class LottoStats(val message: String, val price: Int, var Cnt: Int) {
+    FIFTH_RANK("3개 일치 (5,000원)", 5_000, 0),
+    FORTH_RANK("4개 일치 (50,000원)", 50_000, 0),
+    THIRD_RANK("5개 일치 (1,500,000원)", 1_500_000, 0),
+    SECOND_RANK("5개 일치, 보너스 볼 일치 (30,000,000원)", 30_000_000, 0),
+    FIRST_RANK("6개 일치 (2,000,000,000원)", 2_000_000_000, 0);
+
     fun lottoMatchLists(userLottoList : List<Int>, comLottoList : List<Int>) {
         var answerCnt = 0
         var bonusCnt = 0
