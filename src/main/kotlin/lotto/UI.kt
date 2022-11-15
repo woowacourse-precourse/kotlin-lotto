@@ -22,4 +22,15 @@ class UI {
         println("보너스 번호를 입력해 주세요.")
         return Console.readLine()
     }
+
+    /**
+     * @brief Print lotteryList
+     * @param List of lotto instances
+     */
+    fun printLottery(lotteryList: List<Lotto>) {
+        println("${lotteryList.size}개를 구매했습니다.")
+        for(lottery in lotteryList) {
+            println(lottery.lottoToString())
+        }
+    }
 }
