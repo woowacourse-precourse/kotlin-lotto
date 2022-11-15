@@ -19,7 +19,7 @@ class UI {
         println("당첨 번호를 입력해 주세요.")
 
         val lotteryNumber = Console.readLine()
-        return lotteryNumber.split(",")
+        return lotteryNumber.split(",").map { it.trim() }
     }
     fun getBonusNumber(): String {
         println("보너스 번호를 입력해 주세요.")
