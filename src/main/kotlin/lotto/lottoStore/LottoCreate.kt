@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 import lotto.Lotto
 
 
+class LottoCreate(){
 fun createLotto(inputUserNumber: String): MutableList<List<Int>> {
     val lotto = mutableListOf<List<Int>>()
     for (i in 1..inputUserNumber.toInt()) {
@@ -12,4 +13,5 @@ fun createLotto(inputUserNumber: String): MutableList<List<Int>> {
         lotto.add(Lotto.Lotto(numbers.sorted()).getNumbers())
     }
     return lotto
+}
 }
