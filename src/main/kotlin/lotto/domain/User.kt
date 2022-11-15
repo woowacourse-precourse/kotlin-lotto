@@ -15,7 +15,7 @@ class User {
     fun checkBonusNumber(bonusNumber: String, userGamePrizeNumber: List<Int>) {
         if (!checkNumber(bonusNumber))
             throw IllegalArgumentException(ERROR_PRIZE_NUMBER_MESSAGE)
-        if (!checkRangeBonusNumber(bonusNumber))
+        if (checkRangeBonusNumber(bonusNumber))
             throw IllegalArgumentException(ERROR_BONUS_NUMBER_MESSAGE)
         if (checkRepeatBonusNumber(bonusNumber, userGamePrizeNumber) != null)
             throw IllegalArgumentException(ERROR_BONUS_REPEAT_MESSAGE)
@@ -28,7 +28,7 @@ class User {
     }
 
 
-    private fun checkRangeBonusNumber(bonusNumber: String) = bonusNumber.toInt() < 1 || bonusNumber.toInt() > 46
+    private fun checkRangeBonusNumber(bonusNumber: String) = bonusNumber.toInt() < 1 || bonusNumber.toInt() > 45
 
     fun inputUserPrizeNumber(): List<Int> {
         println(PRIZE_NUMBER_PURCHASE_MESSAGE)
@@ -48,7 +48,7 @@ class User {
             throw IllegalArgumentException(ERROR_PRIZE_RANGE_MESSAGE)
         if (!checkRepeatPrizeGroup(prizeNumberGroup))
             throw IllegalArgumentException(ERROR_PRIZE_REPEAT_MESSAGE)
-        return prizeNumberGroup.map{it.toInt()}
+        return prizeNumberGroup.map { it.toInt() }
     }
 
     private fun checkRepeatPrizeGroup(prizeNumberGroup: List<String>) =
@@ -56,7 +56,7 @@ class User {
 
     private fun checkRangePrizeGroup(prizeNumberGroup: List<String>): Boolean {
         for (i in prizeNumberGroup) {
-            if (i.toInt() < 1 || i.toInt() > 46)
+            if (i.toInt() < 1 || i.toInt() > 45)
                 return false
         }
         return true
@@ -64,7 +64,7 @@ class User {
 
     private fun checkNumPrizeGroup(prizeNumberGroup: List<String>): Boolean {
         for (i in prizeNumberGroup) {
-            if (checkNumber(i))
+            if (!checkNumber(i))
                 return false
         }
         return true
