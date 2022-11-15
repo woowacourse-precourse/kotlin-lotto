@@ -27,6 +27,7 @@ class LottoController {
             count = CheckContainImpl().containBonusNum(count, lottonum, bonusNumber)
             lottoWinningAll = CheckWinningImpl().winningCount(count)
         }
+
         CheckWinningImpl().printResult(lottoWinningAll)
         return lottoWinningAll
     }

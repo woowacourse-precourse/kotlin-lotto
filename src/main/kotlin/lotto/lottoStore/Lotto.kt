@@ -5,12 +5,6 @@ class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.distinct().size==6)
     }
-    fun contains():Boolean {
-        if (numbers.distinct().size != 6) {
-         return true
-        }
-        return false
-    }
     fun getNumbers(): List<Int> {
         return numbers
     }

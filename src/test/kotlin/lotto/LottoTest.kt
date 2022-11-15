@@ -3,6 +3,7 @@ package lotto
 import lotto.lottoStore.Lotto
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.mockito.internal.matchers.Null
 
 
 class LottoTest {
@@ -26,6 +27,10 @@ class LottoTest {
             Lotto(listOf())
         }
     }
-
-    // 아래에 추가 테스트 작성 가능
+     @Test
+     fun `한자리가 생성이 안됬을 때`() {
+         assertThrows<IllegalArgumentException> {
+             Lotto(listOf(1, 2, 3, 4, 5))
+         }
+     }
 }
