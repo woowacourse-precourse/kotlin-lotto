@@ -7,7 +7,7 @@ class DisplayLottoResult(
     buyLotto: BuyLotto,
     getCorrectLotto: GetCorrectLotto
 ) {
-    private var totalPrice: Long = 0L
+    private var totalPrice = 0L
     private val lottoList = buyLotto.getLottoList()
     private val correct = getCorrectLotto.getCorrectValue()
     private val bonus = getCorrectLotto.getBonusValue()

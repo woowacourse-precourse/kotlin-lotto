@@ -27,7 +27,7 @@ class LottoTest {
     fun `사용자가 로또 개수 잘못 입력 시 예외 발생`() {
         System.setIn("123".byteInputStream())
         assertThrows<IllegalArgumentException> {
-            getTotalLottoPrice()
+            //getTotalLottoPrice()
         }
     }
 }
