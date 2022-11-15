@@ -40,28 +40,30 @@ fun lottoGenerator(amount : Int) : MutableList<List<Int>>{
     return lottoBundle
 }
 
-fun lottoWinningNumber() : List<Int>{
+fun lottoWinningNumber(winningNumber : String) : List<Int>{
     try {
-        val numbers = Console.readLine().split(",")
+        val numbers = winningNumber.split(",")
         val winningNumbers = mutableListOf<Int>()
         for (elements in numbers){
             winningNumbers.add(elements.toInt())
         }
-        winningNumbers.distinct().size != 6
+        if (winningNumbers.distinct().size != 6){
+            throw IllegalArgumentException()
+        }
         return winningNumbers.toList().sorted()
     } catch (e : IllegalArgumentException){
         throw (IllegalArgumentException(ErrorMessages.ANSWER_ERROR.messages))
     }
 }
 
-fun lottoBonusNumber(normalNumber: List<Int>) : List<Int>{
+fun lottoBonusNumber(normalNumber: List<Int>, bonus : String) : List<Int>{
     try{
-        val bonus = Console.readLine()?.toIntOrNull() ?: throw (IllegalArgumentException(ErrorMessages.BONUS_ERROR.messages))
-        val bonusNumber = mutableListOf<Int>()
-        if (bonus !in 1..45) throw (IllegalArgumentException(ErrorMessages.BONUS_ERROR.messages))
-        if (normalNumber.contains(bonus)) throw (IllegalArgumentException(ErrorMessages.BONUS_ERROR.messages))
-        bonusNumber.add(bonus)
-        return bonusNumber
+        val bonusNumber = bonus.toIntOrNull() ?: throw (IllegalArgumentException(ErrorMessages.BONUS_ERROR.messages))
+        val bonusNumbers = mutableListOf<Int>()
+        if (bonusNumber !in 1..45) throw (IllegalArgumentException(ErrorMessages.BONUS_ERROR.messages))
+        if (normalNumber.contains(bonusNumber)) throw (IllegalArgumentException(ErrorMessages.BONUS_ERROR.messages))
+        bonusNumbers.add(bonusNumber)
+        return bonusNumbers
     } catch (e : NumberFormatException){
         throw (IllegalArgumentException(ErrorMessages.BONUS_ERROR.messages))
     }
@@ -156,16 +158,18 @@ fun main() {
         println("")
 
         println("당첨 번호를 입력해 주세요.")
-        val winningNumber = lottoWinningNumber()
+        val winningNumber= Console.readLine()
+        val winningNumbers = lottoWinningNumber(winningNumber)
         println("")
 
         println("보너스 번호를 입력해 주세요")
-        val bonusNumber = lottoBonusNumber(winningNumber)
+        val bonusNumber = Console.readLine()
+        val bonusNumbers = lottoBonusNumber(winningNumbers, bonusNumber)
         println("")
 
         for (count in 0 until lottoPapers){
-            val normalCoincidence = lottoCompareNormal(winningNumber, lottoBundles[count])
-            val specialCoincidence = lottoCompareSpecial(bonusNumber, lottoBundles[count])
+            val normalCoincidence = lottoCompareNormal(winningNumbers, lottoBundles[count])
+            val specialCoincidence = lottoCompareSpecial(bonusNumbers, lottoBundles[count])
             val lottoValues = findValue(normalCoincidence, specialCoincidence)
             calculatePrize(lottoValues)
         }
