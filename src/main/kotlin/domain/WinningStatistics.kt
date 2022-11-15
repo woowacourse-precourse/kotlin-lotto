@@ -13,11 +13,6 @@ class WinningStatistics {
         }
 
         return winningRes
-        // 로또 일치 통계
-        //OutputView().outputWinningStatisticsResult(winningMap(winningRes))
-
-        // 총 수입
-        //return incomeCalculation(winningRes)
     }
 
     // 로또 일치 통계
@@ -30,7 +25,6 @@ class WinningStatistics {
             if (j.first == 5 && j.second) lottoMap[Ranking.RANKBonus5.rank] = lottoMap[Ranking.RANKBonus5.rank]!! +1
             if (j.first == 6) lottoMap[Ranking.RANK6.rank] = lottoMap[Ranking.RANK6.rank]!! +1
         }
-        //println(lottoMap)
         return lottoMap
     }
 
