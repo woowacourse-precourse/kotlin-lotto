@@ -5,19 +5,22 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import java.lang.IllegalArgumentException
+import org.assertj.core.api.Assertions.assertThat
 
 class ExceptionTest : NsTest() {
     @Test
     fun `구매 금액이 1000원으로 떨어지지 않을 때`(){
         Assertions.assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("1234") }
+            runException("1001")
+            assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
 
     @Test
     fun `구매 금액이 0원일 때`(){
         Assertions.assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("0") }
+            runException("0")
+            assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
 
@@ -51,5 +54,9 @@ class ExceptionTest : NsTest() {
 
     override fun runMain() {
         main()
+    }
+
+    companion object {
+        private const val ERROR_MESSAGE = "[ERROR]"
     }
 }
