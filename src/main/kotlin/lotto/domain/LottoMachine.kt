@@ -34,11 +34,11 @@ class LottoMachine {
 
     fun publishBonusNumber(number: String = readLine()) {
         checkInputValid(number)
-        checkDuplication(number)
+        checkBonusDuplication(number)
         _bonusNumber = number.toInt()
     }
 
-    private fun checkDuplication(number: String) {
+    private fun checkBonusDuplication(number: String) {
         if (winningNumbers.contains(number.toInt())) {
             throw IllegalArgumentException(BONUS_DUPLICATED)
         }
