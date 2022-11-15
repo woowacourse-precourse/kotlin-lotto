@@ -16,7 +16,7 @@ class LottoCustomer {
             return false
         }
 
-        if ((userInput.toInt() % LottoProcessStatement.LOTTO_UNIT_PRICE) == 0) {
+        if ((userInput.toInt() % LottoProcessConstValue.LOTTO_UNIT_PRICE) == 0) {
             return false
         }
 

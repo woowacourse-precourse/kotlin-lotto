@@ -4,14 +4,14 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class LottoMachine(private val customerBuyLottoPrice: Int) {
 
-    private val customerBuyLottoCount = this.customerBuyLottoPrice / LottoProcessStatement.LOTTO_UNIT_PRICE
+    private val customerBuyLottoCount = this.customerBuyLottoPrice / LottoProcessConstValue.LOTTO_UNIT_PRICE
 
     fun printCustomerBuyLottoCount() {
-        println("$customerBuyLottoCount" + LottoProcessStatement.COUNT_LOTTO_BUY + "\n")
+        println("$customerBuyLottoCount" + LottoProcessConstValue.COUNT_LOTTO_BUY + "\n")
     }
 
     private fun createCustomerLottoNumber(): List<Int>{
-        return Randoms.pickUniqueNumbersInRange(LottoProcessStatement.LOTTO_NUMBER_RANGE_START, LottoProcessStatement.LOTTO_NUMBER_RANGE_END, LottoProcessStatement.LOTTO_NUMBER_SIZE).sorted()
+        return Randoms.pickUniqueNumbersInRange(LottoProcessConstValue.LOTTO_NUMBER_RANGE_START, LottoProcessConstValue.LOTTO_NUMBER_RANGE_END, LottoProcessConstValue.LOTTO_NUMBER_SIZE).sorted()
     }
 
     fun produceLottoNumbers(): MutableList<List<Int>> {

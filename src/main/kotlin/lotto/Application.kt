@@ -21,6 +21,6 @@ fun main() {
 
 
 private fun printInputLottoBuyPrice() {
-    println(LottoProcessStatement.INPUT_LOTTO_BUY_PRICE)
+    println(LottoProcessConstValue.INPUT_LOTTO_BUY_PRICE)
 }
 
