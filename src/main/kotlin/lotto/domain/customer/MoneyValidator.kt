@@ -8,8 +8,13 @@ private const val THOUSAND_UNIT = "000"
 
 class MoneyValidator {
     fun checkInputValid(money: String): Int {
-        isNumber(money)
-        isThousandUnit(money)
+        try {
+            isNumber(money)
+            isThousandUnit(money)
+        } catch (e: Exception) {
+            println(e.message)
+            return -1
+        }
         return money.toInt()
     }
 
