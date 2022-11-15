@@ -4,12 +4,14 @@ import enterprise.LOTTO_PRICE
 import lotto.Lotto
 import lotto.LottoFactory
 import util.readPaidMoney
+import view.MarketUI
 
 class LottoMarket(
     private val lottoFactory: LottoFactory,
+    private val marketUI: MarketUI,
 ) {
     fun payMoney(): Int {
-        println("로또 구입 금액을 입력해 주세요.")
+        marketUI.showUI(MarketUI.Companion.UI.ASK_PAY_MONEY_INPUT, null)
         return readPaidMoney()
     }
 
@@ -17,10 +19,15 @@ class LottoMarket(
 
     fun sellLotties(paidMoney: Int): List<Lotto> {
         val lottoCount = getLottoCount(paidMoney)
-        println("${lottoCount}개를 구매했습니다.")
-        return lottoFactory.makeLotties(lottoCount).map {
-            println(it)
-            Lotto(it)
+        marketUI.showUI(
+            MarketUI.Companion.UI.ANSWER_BUY_LOTTO_COUNT, lottoCount
+        )
+        return lottoFactory.makeLotties(lottoCount).map { numbers ->
+            marketUI.showUI(
+                MarketUI.Companion.UI.ANSWER_LOTTO,
+                numbers
+            )
+            Lotto(numbers)
         }
     }
 }

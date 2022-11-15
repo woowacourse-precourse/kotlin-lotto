@@ -4,6 +4,7 @@ import enterprise.LottoEnterprise
 import market.LottoMarket
 import player.LottoPlayer
 import view.EnterpriseUI
+import view.MarketUI
 import winlotto.WinLottoFactory
 
 fun main() {
@@ -18,7 +19,8 @@ private fun getPlayer(): LottoPlayer {
         EnterpriseUI()
     )
     val lottoMarket = LottoMarket(
-        LottoFactory()
+        LottoFactory(),
+        marketUI = MarketUI()
     )
     return LottoPlayer(
         lottoEnterprise,
