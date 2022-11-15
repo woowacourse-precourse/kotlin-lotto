@@ -16,7 +16,7 @@ class LottoResultFormatter(private val lottoResult: LottoResult) {
 
     fun getProfitInfo(): String {
         val profit = lottoResult.profit
-        val profitFormatted = DecimalFormat("#,###.0").format(profit)
+        val profitFormatted = DecimalFormat("#,##0.0").format(profit)
         return PROFIT_INFO_FORMAT.format(profitFormatted)
     }
 
