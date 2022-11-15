@@ -3,14 +3,17 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 import lotto.Message.Companion.DUPLICATED_NUMBERS_MESSAGE
 import lotto.Message.Companion.NUMBER_IS_DUPLICATED_MESSAGE
+import lotto.Message.Companion.UNIT_DELIMETER
 import lotto.Units.Companion.ADDED_BONUS_NUMBER
-import lotto.Units.Companion.BOUNUS_REWARD
+import lotto.Units.Companion.BONUS_REWARD
+import lotto.Units.Companion.INIT_ARRAY
 import lotto.Units.Companion.INIT_NUMBER
 import lotto.Units.Companion.LOTTO_SIZE
+import lotto.Units.Companion.THOUSAND_UNIT
 
 class Broadcast() {
     private var winningNumbers = listOf<Int>()
-    private val winLottery = Array(LOTTO_SIZE) { INIT_NUMBER }.toMutableList()
+    private val winLottery = Array(INIT_ARRAY) { INIT_NUMBER }.toMutableList()
     private var bonusNumber = INIT_NUMBER
     private var bonusCount = INIT_NUMBER
 
@@ -29,7 +32,7 @@ class Broadcast() {
 
     private fun winningLotto(): List<Int> {
         val numbers = Console.readLine()
-            .split(",")
+            .split(UNIT_DELIMETER)
             .map { it.toInt() }
             .toList()
         inputWinningNumbersCheck(numbers)
@@ -76,12 +79,12 @@ class Broadcast() {
     }
 
     fun profits(winLottery: List<Int>, bonusNumber: Int) {
-        val sales = winLottery.sum() * 1000
+        val sales = winLottery.sum() * THOUSAND_UNIT
         var reward = INIT_NUMBER
         for (count in INIT_NUMBER..LOTTO_SIZE) {
             reward += winLottery[count] * rank(count)
         }
-        reward += bonusNumber * BOUNUS_REWARD
+        reward += bonusNumber * BONUS_REWARD
         printProfit(reward, sales)
     }
 
