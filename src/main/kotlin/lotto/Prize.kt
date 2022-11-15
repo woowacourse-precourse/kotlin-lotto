@@ -9,7 +9,7 @@ enum class Prize(val earnings: Int) {
     NOTHING(0);
 
     /**
-     * return Prize according to [ball] and [bonus]
+     * @return Prize according to [ball] and [bonus]
      */
     fun updatePrize(ball: Int, bonus: Boolean): Prize {
         when(ball) {
