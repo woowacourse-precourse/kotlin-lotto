@@ -7,5 +7,6 @@ class Exception {
         const val EXCEPTION_INVALID_COUNT = "[ERROR] 쉼표로 구분된 6개의 숫자를 입력해주세요."
         const val EXCEPTION_INVALID_CHARACTER = "[ERROR] 잘못된 입력입니다."
         const val EXCEPTION_INVALID_RANGE_NUMBER = "[ERROR] 1부터 45 사이의 숫자를 입력해주세요."
+        const val EXCEPTION_DUPLICATED_BONUS_NUMBER = "[ERROR] 보너스 번호는 당첨 번호가 아니어야 합니다."
     }
 }

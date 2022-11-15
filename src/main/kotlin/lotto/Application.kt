@@ -18,7 +18,7 @@ fun playLotto() {
     val lottos = purchase.createLottos(amount)
     OutputView.printLottos(lottos)
     val winningLotto = WinningLotto().createWinningLotto()
-    val bonusNumber = BonusNumber().createBonusNumber()
+    val bonusNumber = BonusNumber().createBonusNumber(winningLotto)
     val rewards = getReward(lottos, winningLotto, bonusNumber)
     OutputView.printCountReward(countReward(rewards))
     OutputView.printYield(calculateYield(rewards, amount))
