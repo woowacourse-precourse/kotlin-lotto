@@ -45,7 +45,7 @@ fun validateUserInputWinNumbers(userInputWinNumbers: String) {
         if (winNumber.isEmpty()) {
             throw IllegalArgumentException(ERROR + IS_EMPTY_VALUE)
         }
-        if (!winNumber.matches(Regex("\\d"))) {
+        if (winNumber.contains(Regex("\\D"))) {
             throw IllegalArgumentException(ERROR + NOT_CONSIST_OF_NUMBER)
         }
         if (winNumber.toInt() !in LOTTO_START_NUMBER..LOTTO_END_NUMBER) {
