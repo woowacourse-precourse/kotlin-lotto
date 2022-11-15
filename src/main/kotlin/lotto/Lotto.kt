@@ -5,7 +5,7 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.size == 6)
         numbers.sorted()
         for (i in 0 until numbers.size - 1)
-            if(numbers[i] == numbers[i + 1])
+            if (numbers[i] == numbers[i + 1])
                 throw IllegalArgumentException("로또번호는 각각 다른 숫자여야 합니다.")
     }
 
