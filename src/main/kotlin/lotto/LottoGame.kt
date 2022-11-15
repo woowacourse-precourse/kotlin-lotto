@@ -1,6 +1,6 @@
 package lotto
 
-import kotlin.math.round
+import kotlin.math.roundToInt
 
 class LottoGame {
     fun gameControl() {
@@ -28,7 +28,7 @@ class LottoGame {
     }
 
     private fun printStatistics() {
-        println("\n당첨 통계")
+        println("당첨 통계")
         println("---")
         println("3개 일치 (5,000원) - ${LottoRank.MATCH_THREE.ticketCount}개")
         println("4개 일치 (50,000원) - ${LottoRank.MATCH_FOUR.ticketCount}개")
@@ -46,7 +46,7 @@ class LottoGame {
         sum += LottoRank.MATCH_FIVE_BONUS.winningReward * LottoRank.MATCH_FIVE_BONUS.ticketCount
         sum += LottoRank.MATCH_SIX.winningReward * LottoRank.MATCH_SIX.ticketCount
 
-        val yield = (sum / money) * 100
-        return round(`yield`)
+        val yield : Double = (sum / money) * 100
+        return (`yield` * 10).roundToInt() / 10.0
     }
 }
