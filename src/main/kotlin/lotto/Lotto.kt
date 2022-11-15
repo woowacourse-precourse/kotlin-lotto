@@ -75,14 +75,64 @@ class Lotto(private val numbers: List<Int>) {
 
 
 fun buyLotto(){
-    print("구매 금액을 입력해 주세요.")
+    println("구매 금액을 입력해 주세요.")
     var userInput : Int? = readLine()!!.toIntOrNull()
     userInput = userInput?.div(1000)
     userInputCheck(userInput)
 
+
     var lottoList = createLottoList(userInput!!)
-    println("${userInput}개를 구매했습니다.")
+    println("\n${userInput}개를 구매했습니다.\n")
     printLottos(lottoList)
+}
+
+fun winningNumber(){
+    println("당첨 번호를 입력해 주세요.")
+    var winstr : List<String> = readLine()!!.split(",")
+    var winint : List<Int>   = listOf()
+    winningNumCheck(winint)
+    winstr.forEach() {
+        winint += it.toInt()
+    }
+
+    println("\n보너스 번호를 입력해 주세요.")
+    var bonus : Int? = readLine()!!.toIntOrNull()
+    bonusNumCheck(bonus)
+    
+    result(winint, bonus!!)
+}
+
+fun result(winint: List<Int>, bonus: Int) {
+
+}
+
+fun bonusNumCheck(bonus: Int?) {
+    val E = ExceptionExplain.WrongBonusNum
+
+    if (bonus !is Int)
+        E.checkAndThrowException()
+
+    checkRangeOfNum(bonus!!)
+}
+
+fun winningNumCheck(winint: List<Int>) {
+    val E = ExceptionExplain.WrongWinNum
+
+    if (winint.equals(null))
+        E.checkAndThrowException()
+    if (winint !is List<Int>)
+        E.checkAndThrowException()
+
+    winint.forEach(){
+        checkRangeOfNum(it)
+    }
+}
+
+fun checkRangeOfNum(it: Int) {
+    val E = ExceptionExplain.WrongWinNum
+
+    if (it >45 || it<1)
+        E.checkAndThrowException()
 }
 
 fun printLottos(lottoList: List<Lotto>){
@@ -96,8 +146,9 @@ fun userInputCheck(userInput: Int?){
 
     if (1 > userInput!!)
         E.checkAndThrowException()
-
     if (userInput == null)
+        E.checkAndThrowException()
+    if (userInput !is Int)
         E.checkAndThrowException()
 
 }
@@ -107,7 +158,7 @@ fun createOneLotto() : Lotto {
 
     var newLotto = mutableSetOf<Int>()
     while (newLotto.size < 6)
-        newLotto+= Randoms.pickNumberInRange(1, 9)
+        newLotto+= Randoms.pickNumberInRange(1, 45)
     return ListToLotto(newLotto.toList())
 }
 
