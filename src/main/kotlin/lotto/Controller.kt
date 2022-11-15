@@ -55,11 +55,11 @@ class Controller {
 
     private fun resultCorrect(count: Int) {
         when (count) {
-            3 -> three++
-            4 -> four++
-            5 -> five++
-            6 -> six++
-            7 -> fivePlus++
+            3 -> WinningAmount.FIFTH.number++
+            4 -> WinningAmount.FOURTH.number++
+            5 -> WinningAmount.THIRD.number++
+            6 -> WinningAmount.FIRST.number++
+            7 -> WinningAmount.SECOND.number++
         }
     }
 
