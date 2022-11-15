@@ -1,8 +1,8 @@
-package lotto
+package lotto.model
 
-import lotto.Constant.Companion.LOTTO_RESULT
-import lotto.Constant.Companion.LOTTO_SIZE
-import lotto.Constant.Companion.SEPERATOR
+import lotto.util.Constant.Companion.LOTTO_SIZE
+import lotto.model.LottoMaker.Companion.bonusNumber
+import lotto.view.Print
 
 class Lotto(private val numbers: List<Int>) {
     init {
@@ -23,17 +23,14 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     fun matchBonusNumber(randLotto: List<Int>): String {
-        if (Seller.bonusNumber.toInt() in randLotto) {
+        if (bonusNumber.toInt() in randLotto) {
             return "5 보너스"
         }
         return "5"
     }
 
-    fun getWinningLotto() {
-        var rewardInfo = RewardInfo()
-        var matchingResult = getMatchingNumber(Seller.allRandomRotto)
-
-        rewardInfo.resultInit()
+    fun getWinningLotto(matchingResult: MutableList<String>) {
+        RewardInfo.resultInit()
 
         for (result in matchingResult) {
             when (result) {
@@ -46,14 +43,14 @@ class Lotto(private val numbers: List<Int>) {
         }
     }
 
-    fun calcReturnRate(purchaseAmount: Int): String {
+    fun calcReturnRate(): String {
         var totalReward = getTotalReward().toDouble()
         if (totalReward == 0.0) {
             return "0"
         }
 
-        var useMoney = purchaseAmount.toDouble()
-        var returnRate = ((totalReward / useMoney) * 100).toDouble()
+        var useMoney = Buyer.payMoney.toDouble()
+        var returnRate = ((totalReward / useMoney) * 100)
         return String.format("%,.1f",returnRate)
     }
 
@@ -67,21 +64,15 @@ class Lotto(private val numbers: List<Int>) {
         return totalReward
     }
 
-    fun showLottoResult() {
-        println("$LOTTO_RESULT")
-        println("$SEPERATOR")
-
-        getWinningLotto()
+    fun produceLottoStats() {
         for (reward in RewardInfo.rewardResult.keys) {
-            var rewardCount = RewardInfo.rewardResult[reward]
+            var rewardCount = RewardInfo.rewardResult[reward]!!
+            
             if (reward == Reward.Second) {
                 var count = reward.correctNum.split(" ")[0]
-                println("${count}개 일치, 보너스 볼 일치 (${reward.rewardMoney}원) - ${rewardCount}개")
-            } else {
-                println("${reward.correctNum}개 일치 (${reward.rewardMoney}원) - ${rewardCount}개")
+                Print.lottoBonusResult(count,reward.rewardMoney,rewardCount)
             }
+            Print.lottoResult(reward.correctNum, reward.rewardMoney, rewardCount)
         }
-        var returnRate = calcReturnRate(Buyer.payMoney.toInt())
-        println("총 수익률은 ${returnRate}%입니다.")
     }
 }

@@ -1,4 +1,4 @@
-package lotto
+package lotto.model
 
 enum class Reward(val rewardMoney: String, var correctNum: String) {
     FIFTH("5,000","3"),
@@ -8,13 +8,11 @@ enum class Reward(val rewardMoney: String, var correctNum: String) {
     First("2,000,000,000","6"),
 }
 
-class RewardInfo {
+object RewardInfo {
+    var rewardResult = LinkedHashMap<Reward, Int>()
     fun resultInit() {
         for (reward in Reward.values()){
             rewardResult[reward] = 0
         }
-    }
-    companion object {
-        var rewardResult = LinkedHashMap<Reward, Int>()
     }
 }
