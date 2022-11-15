@@ -13,7 +13,7 @@ class LottoOrganizer(private val producedLottoNumbers: MutableList<List<Int>>) {
     fun inputBonusLottoNumber(): Int {
         val userInput = Console.readLine()
         if (bonusLottoNumberInputIsValid(userInput)) {
-            throw IllegalArgumentException()
+            throw IllegalArgumentException(BONUS_NUMBER_PRICE_ERROR_MESSAGE)
         }
 
         return userInput.toInt()
@@ -38,6 +38,11 @@ class LottoOrganizer(private val producedLottoNumbers: MutableList<List<Int>>) {
 
     fun printInputLottoBonusNumber() {
         println(LottoProcessConstValue.INPUT_LOTTO_BONUS_NUMBER)
+    }
+
+
+    companion object {
+        const val BONUS_NUMBER_PRICE_ERROR_MESSAGE = "[ERROR] 보너스 점수는 1이상 45이하의 정수 값이어야 합니다."
     }
 
 }

@@ -27,14 +27,4 @@ class LottoMachine(private val customerBuyLottoPrice: Int) {
 
 
 
-//    companion object {
-//        const val LOTTO_NUMBER_RANGE_START = 1
-//        const val LOTTO_NUMBER_RANGE_END = 45
-//        const val LOTTO_NUMBER_SIZE = 6
-//    }
-
-
-
-
-
 }
