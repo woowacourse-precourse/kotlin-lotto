@@ -37,22 +37,13 @@ class LottoGame {
     private fun generateWinningNumbers(): Lotto {
         println("당첨 번호를 입력해 주세요.")
         val userInput = Console.readLine()
-        val winningNumbers = convertWinningNumbersStringToIntList(userInput)
+        WinningNumberCheckError(userInput).throwWinningNumberFormException()
+        val winningNumbers = convertStringToIntList(userInput)
         return Lotto(winningNumbers)
     }
 
-    private fun convertWinningNumbersStringToIntList(userInput: String): List<Int> {
-        throwWinningNumberFormException(userInput)
+    private fun convertStringToIntList(userInput: String): List<Int> {
         return userInput.split(',').map { it.toInt() }
-    }
-
-    private fun throwWinningNumberFormException(userInput: String) {
-        userInput.forEach { char ->
-            if (!(char in '0'..'9' || char == ',')) {
-                println("[ERROR] 로또 번호는 숫자와 ,만 입력 해야 합니다.")
-                throw IllegalArgumentException()
-            }
-        }
     }
 
     private fun generateBonusNumber(winningNumbers: Lotto): BonusNumber {
