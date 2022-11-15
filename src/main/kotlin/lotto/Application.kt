@@ -1,5 +1,7 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Randoms
+
 enum class ErrorType {
     AMOUNT {
         override fun print() {
@@ -11,6 +13,12 @@ enum class ErrorType {
         override fun print() {
             super.print()
             println("올바르지 않은 당첨 번호입니다.")
+        }
+    },
+    BONUS_NUMBER {
+        override fun print() {
+            super.print()
+            println("올바르지 않은 보너스 번호입니다.")
         }
     };
 
@@ -28,11 +36,16 @@ class LottoGame {
     private var lotteries = 0
     private val winningNumbers = ArrayList<Int>()
     private var bonusNumber = 0
+    private val buyLotteries = ArrayList<Lotto>()
 
     fun simulate() {
         getPurchaseAmount()
+        printLotteriesNumber()
+
         getWinningNumbers()
         getBonusNumber()
+
+        getBuyLotteries()
     }
 
     private fun getPurchaseAmount() {
@@ -122,11 +135,47 @@ class LottoGame {
 
     private fun getBonusNumber() {
         val inputBonusNumber = getBonusNumberInput()
-
+        checkInputBonusNumberValid(inputBonusNumber)
+        initBonusNumber(inputBonusNumber.toInt())
     }
 
     private fun getBonusNumberInput(): String {
         println("보너스 번호를 입력해 주세요.")
         return readLine() ?: ""
+    }
+
+    private fun checkInputBonusNumberValid(bonusNumber: String) {
+        try {
+            bonusNumber.toInt()
+        } catch (e: Exception) {
+            ErrorType.BONUS_NUMBER.print()
+            throw IllegalArgumentException()
+        }
+
+        val number = bonusNumber.toInt()
+
+        if(number < 1 || number > 45)  {
+            ErrorType.BONUS_NUMBER.print()
+            throw IllegalArgumentException()
+        }
+    }
+
+    private fun initBonusNumber(number: Int) {
+        bonusNumber = number
+        winningNumbers.add(bonusNumber)
+    }
+
+    private fun printLotteriesNumber() {
+        println("{$lotteries}개를 구매했습니다.")
+    }
+
+    private fun getLotteriesNumber(): List<Int> {
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6)
+    }
+
+    private fun getBuyLotteries() {
+        for(i in 0 until lotteries) {
+            buyLotteries.add(Lotto(getLotteriesNumber()))
+        }
     }
 }
