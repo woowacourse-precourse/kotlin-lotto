@@ -13,12 +13,16 @@ class Number {
         }
         for (i in 0..4) {
             for (j in i + 1..5) {
-                if (winnings[i] == winnings[j]) {
-                    throw IllegalArgumentException("[ERROR] numbers에 중복된 숫자가 포함되어 있습니다.")
-                }
+                checkDuplicateNumber(winnings[i], winnings[j])
             }
         }
         return winnings
+    }
+
+    fun checkDuplicateNumber(pre: String, next: String) {
+        if (pre == next) {
+            throw IllegalArgumentException("[ERROR] numbers에 중복된 숫자가 포함되어 있습니다.")
+        }
     }
 
     fun inputBonusNumber(): Int {
