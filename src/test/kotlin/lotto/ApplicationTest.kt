@@ -7,7 +7,6 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class ApplicationTest : NsTest() {
-
     @Test
     fun `기능 테스트`() {
         assertRandomUniqueNumbersInRangeTest(
@@ -50,11 +49,11 @@ class ApplicationTest : NsTest() {
         }
     }
 
-    override fun runMain() {
-        main()
-    }
-
     companion object {
         private const val ERROR_MESSAGE = "[ERROR]"
+    }
+
+    override fun runMain() {
+        main()
     }
 }
