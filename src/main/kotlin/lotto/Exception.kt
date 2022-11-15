@@ -2,6 +2,7 @@ package lotto
 
 import lotto.ErrorMessage.ERROR_NOT_NUMBERS
 import lotto.ErrorMessage.ERROR_NOT_THOUSANDS
+import lotto.ErrorMessage.ERROR_NUM_NOT_IN_RANGE
 
 fun String.inputTypeException() {
     try {
