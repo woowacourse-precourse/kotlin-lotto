@@ -25,9 +25,12 @@ class LottoStart(userMainView: MainView) {
             return winNums
         }
 
-        val bonusInput = userMainView.getBonusNum()
-        if (bonusInput != null) {
-            Bonus(bonusInput) //Bonus Class를 리턴하는 getBonusNum 함수로 분리
+        fun getBonusNum() : Int?{
+            val bonusInput = userMainView.getBonusNum()
+            if (bonusInput != null) {
+                Bonus(bonusInput)
+            }
+            return bonusInput
         }
 
         val winList = SelectionWinning().getWinningListTotal(boughtLottoNums, winNums, bonusInput)
