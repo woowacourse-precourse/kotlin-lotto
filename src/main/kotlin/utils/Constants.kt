@@ -6,7 +6,7 @@ object Constants {
     const val REQUIRE_INPUT_BONUS_MESSAGE = "보너스 번호를 입력해 주세요."
 
 
-    const val PURCHASE_COUNT_MESSAGE = "개를 구매했습니다."
+    const val PURCHASE_COUNT_MESSAGE = "%d개를 구매했습니다."
 
 
     const val ERROR_OUT_OF_RANGE_MESSAGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."
@@ -21,6 +21,8 @@ object Constants {
     const val RANGE_END = 45
 
     const val PROFIT_RESULT = "총 수익률은 %.1f%%입니다."
+
+    const val LOTTO_NUMBER = "[%s]"
 
 
 }

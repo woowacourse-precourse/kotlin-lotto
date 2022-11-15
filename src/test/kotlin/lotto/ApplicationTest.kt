@@ -42,7 +42,6 @@ class ApplicationTest : NsTest() {
         )
     }
 
-    // todo 왜 테스트에 실패하는거지?
     @Test
     fun `예외 테스트`() {
         assertSimpleTest {

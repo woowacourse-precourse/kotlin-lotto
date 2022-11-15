@@ -1,5 +1,6 @@
 package lotto
 
+import utils.Constants.LOTTO_NUMBER
 import utils.Constants.PROFIT_RESULT
 import utils.Constants.PURCHASE_COUNT_MESSAGE
 import utils.Constants.REQUIRE_INPUT_BONUS_MESSAGE
@@ -12,19 +13,29 @@ class Display {
         println(REQUIRE_INPUT_PURCHASE_AMOUNT_MESSAGE)
     }
 
-    fun printLottoCount(count: Int) {
+    fun printLottoCount(purchaseAmount: Int) {
+        val count = purchaseAmount / 1000
+
         println()
-        println("${count}$PURCHASE_COUNT_MESSAGE")
+        println(PURCHASE_COUNT_MESSAGE.format(count))
     }
+    
+    // todo 여기 좀 쉽게 리팩터
     fun printLottos(lottos: List<Lotto>) {
         for(lotto in lottos) {
-            val numbers = lotto.getNumbers().sorted()
-            print("[")
-            for(i in 0 until numbers.size - 1) {
-                print("${numbers[i]}, ")
-            }
-            println("${numbers.last()}]")
+            val numbers = lotto.getNumbers()
+            val formatting = formattingNumbers(numbers)
+            println(LOTTO_NUMBER.format(formatting))
         }
+    }
+
+    private fun formattingNumbers(numbers: List<Int>): String {
+        var formatting = ""
+        for (number in numbers) {
+            formatting = formatting.plus(number).plus(", ")
+        }
+
+        return formatting.substring(0, formatting.length - 2)
     }
 
     fun printRequireWinningNumbers() {
@@ -36,23 +47,16 @@ class Display {
         println(REQUIRE_INPUT_BONUS_MESSAGE)
     }
 
-    fun printStatistics(matchingCounts: List<Int>, profit: Double) {
+    fun printStatistics(matchingResult: Pair<List<Int>, Double>) {
         val contents = MatchingContent.values()
+        val matchingCounts = matchingResult.first
+        val profit = matchingResult.second
 
         println()
         println("---")
         for(i in matchingCounts.indices) {
-            println(contents[i].content + matchingCounts[i] + "개")
+            println(contents[i].content.format(matchingCounts[i]))
         }
-
         println(PROFIT_RESULT.format(profit))
     }
-}
-
-enum class MatchingContent(val content: String) {
-    THREE("3개 일치 (5,000원) - "),
-    FOUR("4개 일치 (50,000원) - "),
-    FIVE("5개 일치 (1,500,000원) - "),
-    FIVE_AND_BONUS("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
-    SIX("6개 일치 (2,000,000,000원) - ");
 }

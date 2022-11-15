@@ -10,7 +10,7 @@ import kotlin.system.exitProcess
 class Client {
     private val rule = Rule()
     val lottos = mutableListOf<Lotto>()
-    var purchaseAmount = 0
+    private var purchaseAmount = 0
     var purchaseCount = 0
 
     fun inputPurchaseAmount(): Int {
@@ -19,7 +19,7 @@ class Client {
             rule.checkPurchaseAmount(input)
         } catch (e: IllegalArgumentException) {
             println(e.message)
-            return 0
+            return -1
         }
 
         this.purchaseAmount = input.toInt()
@@ -28,15 +28,16 @@ class Client {
     }
 
 
-    fun purchaseLotto() {
+    fun purchaseLotto(): List<Lotto> {
         for (i in 0 until this.purchaseCount) {
             val lotto = Lotto(makeLotto())
             lottos.add(lotto)
         }
+        return lottos
     }
 
     private fun makeLotto(): List<Int> {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6)
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
     }
 
     fun inputWinningNumbers(statistics: LottoStatistics) {

@@ -20,16 +20,17 @@ class LottoStatistics {
         this.bonusNumber = number
     }
 
-    fun matchingCalculator(client: Client) {
-        val lottos = client.lottos
+    fun matchingCalculator(purchaseAmount: Int, lottos: List<Lotto>): Pair<List<Int>, Double> {
         for (lotto in lottos) {
             val lottoNumbers = lotto.getNumbers()
             val matchingCount = calculateMatchingCount(lottoNumbers)
             val containsBonusNumber = lottoNumbers.contains(bonusNumber)
 
             setMatchingCounts(matchingCount, containsBonusNumber)
-            calculateProfit(client.purchaseAmount)
+            calculateProfit(purchaseAmount)
         }
+
+        return Pair(matchingCounts, profit)
     }
 
     private fun calculateMatchingCount(lottoNumbers: List<Int>): Int {
