@@ -2,10 +2,8 @@ package lotto.domainTest
 
 import lotto.Lotto
 import lotto.domain.CountRankings
-import lotto.domain.RandomGenerator
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
-import kotlin.random.Random
 
 class CountRankingsTest {
     @Test
