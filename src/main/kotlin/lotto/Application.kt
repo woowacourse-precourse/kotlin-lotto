@@ -4,7 +4,7 @@ fun main() {
     try{
         playLotto()
     }catch (e: IllegalArgumentException){
-        println("입력값은 숫자여야 합니다.")
+        println("[ERROR] 입력값은 숫자여야 합니다.")
     }
 }
 
