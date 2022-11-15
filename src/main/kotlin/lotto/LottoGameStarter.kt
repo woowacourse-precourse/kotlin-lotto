@@ -1,8 +1,17 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import kotlin.math.round
 
 class LottoGameStarter {
+    enum class LottoNumber(val prize: Int){
+        PRIZE_FOR_5th(5000),
+        PRIZE_FOR_4th(50000),
+        PRIZE_FOR_3rd(1500000),
+        PRIZE_FOR_2nd(30000000),
+        PRIZE_FOR_1st(2000000000),
+    }
+
     fun gameStarter(){
         val money = readLine()
         checkMoneyError(money)
@@ -37,6 +46,9 @@ class LottoGameStarter {
         println("5개 일치 (1,500,000원) - ${countLotteryWin[2]}개")
         println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${countLotteryWin[3]}개")
         println("6개 일치 (2,000,000,000원) - ${countLotteryWin[4]}개")
+
+        var profitRate = profitRate(countLotteryWin, purchasedLotto)
+        println("총 수익률은 ${profitRate}%입니다.")
     }
 
     fun checkMoneyError(money:String?){
@@ -79,5 +91,15 @@ class LottoGameStarter {
         if(count == 5 && winningNumbers.contains(bonusNumber)) count -= 6
 
         return count
+    }
+
+    fun profitRate(countLotteryWin: List<Int>, purchasedLotto: Int): Double{
+        var profitRate = round((LottoNumber.PRIZE_FOR_5th.prize * countLotteryWin[0]
+                + LottoNumber.PRIZE_FOR_4th.prize * countLotteryWin[1]
+                + LottoNumber.PRIZE_FOR_3rd.prize * countLotteryWin[2]
+                + LottoNumber.PRIZE_FOR_2nd.prize * countLotteryWin[3]
+                + LottoNumber.PRIZE_FOR_1st.prize * countLotteryWin[4]) / (purchasedLotto*1000).toDouble() * 100 * 10) / 10
+
+        return profitRate
     }
 }
