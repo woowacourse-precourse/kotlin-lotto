@@ -7,6 +7,12 @@ import java.util.Objects
 class Lotto(private val numbers: List<Int>) {
     private var lottoNumbers = listOf<Int>()
     private var bonusFlag: Boolean = false
+    var lotteryresult: Int = 0
+    var bonusresult: Boolean = false
+
+    private fun getbonusFlag():Boolean{
+        return bonusFlag
+    }
 
     init {
         require(numbers.size == 6)
@@ -28,13 +34,9 @@ class Lotto(private val numbers: List<Int>) {
         return string + this.numbers[5].toString() + "]"
     }
 
-    private fun printOneLotto(){
-        println(this.toString())
-    }
 
-    private fun checkLottery(winlottonum : Lotto, bonusnum: Int) : Int {
+    fun checkLottery(winlottonum : Lotto){
         var lottery: Int = 0
-        var bonusLottery = false
 
         val winnum = winlottonum.lottoNumbers
         val checknum = this.lottoNumbers
@@ -45,10 +47,12 @@ class Lotto(private val numbers: List<Int>) {
         if (lottery == 5){
             this.bonusFlag = true
         }
-        if(this.bonusFlag){
-            bonusLottery = bonusNumCheck(bonusnum)
-        }
-        return lottery
+
+        this.lotteryresult = lottery
+    }
+
+    fun checkBonus(bonusnum: Int) {
+        if(this.bonusFlag) { this.bonusresult = bonusNumCheck(bonusnum) }
     }
 
     private fun compareWithList(checkList: List<Int>, win: Int): Int{
@@ -62,11 +66,8 @@ class Lotto(private val numbers: List<Int>) {
     private fun bonusNumCheck(bonusnum : Int) : Boolean{
         // checks for bonus number
         val checknum = this.lottoNumbers
-        var lottery = 0
-        checknum.forEach() {it
-            lottery += compareWithList(checknum, it)
-        }
-        return lottery>=1
+        var lottery = compareWithList(checknum, bonusnum)
+        return (lottery>=1)
     }
 
 
@@ -74,7 +75,7 @@ class Lotto(private val numbers: List<Int>) {
 
 
 
-fun buyLotto(){
+fun buyLotto(): List<Lotto>{
     println("구매 금액을 입력해 주세요.")
     var userInput : Int? = readLine()!!.toIntOrNull()
     userInput = userInput?.div(1000)
@@ -84,9 +85,10 @@ fun buyLotto(){
     var lottoList = createLottoList(userInput!!)
     println("\n${userInput}개를 구매했습니다.\n")
     printLottos(lottoList)
+    return lottoList
 }
 
-fun winningNumber(){
+fun winningNumber(Lottos: List<Lotto>){
     println("당첨 번호를 입력해 주세요.")
     var winstr : List<String> = readLine()!!.split(",")
     var winint : List<Int>   = listOf()
@@ -99,12 +101,17 @@ fun winningNumber(){
     var bonus : Int? = readLine()!!.toIntOrNull()
     bonusNumCheck(bonus)
     
-    result(winint, bonus!!)
+    result(Lottos, winint, bonus!!)
 }
 
-fun result(winint: List<Int>, bonus: Int) {
-
+fun result(lottos: List<Lotto>, winint: List<Int>, bonus: Int) {
+    println("\n당첨 통계\n---")
+    lottos.forEach(){it
+        it.checkLottery(Lotto(winint))
+        it.checkBonus(bonus)
+    }
 }
+
 
 fun bonusNumCheck(bonus: Int?) {
     val E = ExceptionExplain.WrongBonusNum
