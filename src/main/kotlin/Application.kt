@@ -1,9 +1,8 @@
-package lotto
+package domain
 
 import camp.nextstep.edu.missionutils.Randoms
 import error.InputError
 import error.LottoError
-import lotto.Winning.Companion.formatPrize
 import resource.*
 
 fun main() {

@@ -1,7 +1,7 @@
 package error
 
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
-import lotto.Lotto
+import domain.Lotto
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows

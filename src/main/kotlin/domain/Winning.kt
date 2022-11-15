@@ -1,4 +1,4 @@
-package lotto
+package domain
 
 import resource.*
 import java.text.DecimalFormat
