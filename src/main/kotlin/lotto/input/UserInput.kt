@@ -1,7 +1,6 @@
-package lotto.user
+package lotto.input
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.lottoStore.LottoReward
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -50,27 +49,10 @@ fun checkLottoStandard(userInputNumber: String?) {
         throw IllegalArgumentException()
     }
 }
-fun inputBonusNumber(lottoNumber: String): Int {
-    print("input bonusnum")
-    val userInputNumber = inputUser()
-    checkBonusStandard(userInputNumber, lottoNumber)
-    println(userInputNumber.toInt())
-    return userInputNumber.toInt()
-}
-fun checkBonusStandard(userInputNumber: String?, lottoNumber: String) {
-    userInputNumber ?: throw IllegalArgumentException()
-    val lottoOverlapCheck = mutableListOf<String>()
-    if (userInputNumber.toInt() >= 46 || userInputNumber.toInt() < 1) throw IllegalArgumentException()
-    lottoOverlapCheck.add(userInputNumber)
-    checkInputMessagePatten(lottoOverlapCheck)
-    if (lottoOverlapCheck.size != 1 ||lottoNumber.contains(lottoOverlapCheck[0])){
-        println("[ERROR]")
-        throw IllegalArgumentException()
-    }
-}
+
 fun checkInputMessagePatten(checkOverlap: MutableList<String>) {
-    val rega1x1 = "^\\d*$"
-    val pattern: Pattern = Pattern.compile(rega1x1)
+    val regax = "^\\d*$"
+    val pattern: Pattern = Pattern.compile(regax)
     for (inputNum in checkOverlap) {
         val matcher: Matcher = pattern.matcher(inputNum)
         if (matcher.find().toString() == "false") {
