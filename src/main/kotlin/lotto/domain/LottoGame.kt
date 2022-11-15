@@ -8,18 +8,37 @@ import lotto.ui.Console
 class LottoGame {
 
     fun play() {
-        val money = Console.requestPurchaseAmount()
-        val lotteries = LottoShop.buy(money)
+        try {
+            val money = Console.requestPurchaseAmount()
+            val lotteries = makeLotteries(money)
+            val winningLotto = getWinningLotto()
 
-        Console.print(lotteries)
+            showWinningResults(money, lotteries, winningLotto)
+        } catch (e: Exception) {
+            println(e.message)
+        }
+    }
 
-        val winningLotto = WinningLotto(
+    private fun makeLotteries(money: Int): List<Lotto> {
+        return LottoShop.buy(money).also {
+            Console.print(it)
+        }
+    }
+
+    private fun getWinningLotto(): WinningLotto {
+        return WinningLotto(
             lotto = Lotto(Console.requestWinningNumbers()),
             bonus = Console.requestBonusNumber(),
         )
+    }
 
+    private fun showWinningResults(
+        money: Int,
+        lotteries: List<Lotto>,
+        winning: WinningLotto
+    ) {
         Console.print(
-            WinningTable(money, lotteries, winningLotto)
+            WinningTable(money, lotteries, winning)
         )
     }
 }
