@@ -49,7 +49,9 @@ class LottoShop(
         inputValidator.validate(input)
     }
 
-    private fun printTickets() {}
+    private fun printTickets() {
+        output.printTickets(tickets.map { lotto -> lotto.getTicket() })
+    }
 
     private fun printWinners() {}
 

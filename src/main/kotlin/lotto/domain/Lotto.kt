@@ -10,7 +10,7 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     fun getTicket(): String {
-        return ""
+        return numbers.toString()
     }
 
     private fun checkValidation() {
