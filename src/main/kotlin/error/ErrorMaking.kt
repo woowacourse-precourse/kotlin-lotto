@@ -18,6 +18,9 @@ enum class ErrorMaking {
     },
     NOT_INTEGER_VALUE {
         override fun getErrorMessage() = "숫자를 입력해야 합니다."
+    },
+    NEGATIVE_NUMBER {
+        override fun getErrorMessage() = "음수가 입력되었습니다."
     };
 
     abstract fun getErrorMessage(): String

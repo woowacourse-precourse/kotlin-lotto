@@ -57,6 +57,7 @@ fun getBonusNumber(winnings: Lotto): Int {
     InputError.checkInteger(value)
 
     val number = value!!.toInt()
+    InputError.checkNegative(number)
     LottoError.checkOutOfRange(number)
     LottoError.checkDuplicate(winnings, number)
 
@@ -71,8 +72,10 @@ fun getWinningNumbers(): Lotto {
 
     val winningNumbers = mutableListOf<Int>()
     winning!!.split(SEPARATOR)
-        .forEach { num ->
-            winningNumbers.add(num.trim().toInt())
+        .forEach { n ->
+            val num = n.trim().toInt()
+            InputError.checkNegative(num)
+            winningNumbers.add(num)
         }
 
     return Lotto(winningNumbers)
@@ -108,6 +111,7 @@ fun getPurchaseMoney(): Int {
     InputError.checkInteger(value)
 
     val money = value!!.toInt()
+    InputError.checkNegative(money)
     InputError.checkValidMoney(money)
 
     return money
