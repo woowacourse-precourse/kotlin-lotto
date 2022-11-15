@@ -46,7 +46,7 @@
 ---
 ### ✅️ Prize enum class
 #### ✅ 일치하는 숫자의 개수를 기반으로 Prize를 update하는 함수
-### ⬜️ Prize TEST
+### ✅ Prize TEST
 - 당첨 여부를 제대로 판단하는지 확인
 - 당첨 등수와 상금이 제대로 연결되었는지 확인
 
