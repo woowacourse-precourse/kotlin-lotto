@@ -1,7 +1,10 @@
 package lotto
 
 fun main() {
-    Lottery(
-        Computer()
-    ).start()
+    try {
+        Lottery(
+            Computer()
+        ).start()
+    } catch (_: IllegalArgumentException) {
+    }
 }
