@@ -231,7 +231,7 @@ class Lotto(private val numbers: List<Int>) {
 - [x] 일치하는 숫자 개수 파악
 - [x] 당첨 내역 확인
 - [x] 수익률 확인
-- [ ] 테스트 코드 작성
+- [x] 테스트 코드 작성
   - Lotto
   - Shop
 

@@ -5,7 +5,7 @@ import lotto.domain.Lotto
 import lotto.domain.MatchingCount
 import lotto.domain.Shop
 
-private val priceRegex = "\\d".toRegex()
+private val priceRegex = "\\d+".toRegex()
 private val winningNumbersRegex = "[0-9]{1,2}(,[0-9]{1,2}){5}".toRegex()
 
 fun main() {
@@ -29,8 +29,9 @@ fun main() {
 fun inputPrice(): Int {
     println("구입금액을 입력해 주세요.")
     val price = Console.readLine()
-    require(price.matches(priceRegex)) {
-        "[ERROR] 가격은 숫자여야만 한다."
+    if(price.matches(priceRegex).not()) {
+        println("[ERROR] 가격은 숫자여야만 한다.")
+        throw NoSuchElementException("[ERROR] 가격은 숫자여야만 한다.")
     }
 
     require(price.toInt() % 1000 == 0) {
