@@ -1,10 +1,16 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import java.security.cert.TrustAnchor
 
 class Lotto(private val numbers: List<Int>) {
+    private var lottoNumbers = listOf<Int>()
+    private var bonusFlag: Boolean = false
+
     init {
         require(numbers.size == 6)
+        this.lottoNumbers = numbers
+        this.bonusFlag = false
     }
 
     // TODO: 추가 기능 구현
@@ -24,30 +30,46 @@ class Lotto(private val numbers: List<Int>) {
     private fun printOneLotto(){
         println(this.toString())
     }
-    fun createOneLotto() : Lotto {
-        // 새로운 랜덤한 로또 용지 하나를 만드는 함수
 
-        var newLotto = mutableSetOf<Int>()
-        while (newLotto.size < 6)
-            newLotto+= Randoms.pickNumberInRange(1, 9)
-        return ListToLotto(newLotto.toList())
-    }
+    private fun checkLottery(winlottonum : Lotto, bonusnum: Int) : Int {
+        var lottery: Int = 0
+        var bonusLottery = false
 
-    fun ListToLotto(lottoInList: List<Int>) : Lotto {
-        return Lotto(lottoInList)
-    }
+        val winnum = winlottonum.lottoNumbers
+        val checknum = this.lottoNumbers
 
-    fun createLottoList(howMany : Int) : List<Lotto>{
-        // 로또 용지의 전체 리스트를 리턴함
-        var newLottoList: List<Lotto> = listOf<Lotto>()
-
-        for(i: Int in 0 until  howMany){
-            val aLotto= createOneLotto()
-            newLottoList += aLotto
+        winnum.forEach() {it
+            lottery += compareWithList(checknum, it)
         }
-        return newLottoList
+        if (lottery == 5){
+            this.bonusFlag = true
+        }
+        if(this.bonusFlag){
+            bonusLottery = bonusNumCheck(bonusnum)
+        }
+        return lottery
     }
+
+    private fun compareWithList(checkList: List<Int>, win: Int): Int{
+        if (checkList.contains(win)){
+            return 1
+        }
+        else
+            return 0
+    }
+
+    private fun bonusNumCheck(bonusnum : Int) : Boolean{
+        // checks for bonus number
+        val checknum = this.lottoNumbers
+        var lottery = 0
+        checknum.forEach() {it
+            lottery += compareWithList(checknum, it)
+        }
+        return lottery>=1
+    }
+
 
 }
+
 
 
