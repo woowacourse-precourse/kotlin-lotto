@@ -5,7 +5,7 @@ class LottoStart(userMainView: MainView) {
     fun sequences(userMainView: MainView){
 
 
-        fun createLottoNum() : List<List<Int>>?{
+        fun createLottoNums() : List<List<Int>>?{
             val boughtPrice = userMainView.getLottoPrice()
             val createLottos = boughtPrice?.let { CreateLottos.getLottoCount(it) }
             val boughtLottoNums = createLottos?.let { CreateLottos.getLottoNumsWithCount(it) }
@@ -16,10 +16,13 @@ class LottoStart(userMainView: MainView) {
             return boughtLottoNums
         }
 
-        val winInput = userMainView.getWinNums()
-        val winNums = winInput?.let { WinLotto.removeWinNumsComma(it) }
-        if (winNums != null) {
-            Lotto(winNums) //Lotto Class 를 리턴하는 getLottoWinNum 함수로 분리
+        fun getLottoWinNums() : List<Int>?{
+            val winInput = userMainView.getWinNums()
+            val winNums = winInput?.let { WinLotto.removeWinNumsComma(it) }
+            if (winNums != null) {
+                Lotto(winNums)
+            }
+            return winNums
         }
 
         val bonusInput = userMainView.getBonusNum()
