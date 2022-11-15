@@ -14,7 +14,7 @@ class LottoGame {
             val lottoPrizeMoney = LottoWin().calPrize(purchasedLotto, lottoWinNumber, lottoBonus)
             LottoWin().printProfitRate(lottoMoney, lottoPrizeMoney)
         } catch (e: IllegalArgumentException) {
-            println("${e.message}")
+            println("[ERROR] ${e.message}")
         }
     }
 }
