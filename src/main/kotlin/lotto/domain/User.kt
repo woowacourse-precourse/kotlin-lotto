@@ -16,9 +16,11 @@ class User {
     fun checkBonusNumber(bonusNumber: String) {
         if (!checkNumber(bonusNumber))
             throw IllegalArgumentException(ERROR_PRIZE_NUMBER_MESSAGE)
-
+        if (!checkRangeBonusNumber(bonusNumber))
+            throw IllegalArgumentException(ERROR_BIG_NUMBER_MESSAGE)
     }
 
+    private fun checkRangeBonusNumber(bonusNumber: String) = bonusNumber.toInt() < 1 || bonusNumber.toInt() > 46
 
     fun inputUserPrizeNumber() {
         println(PRIZE_NUMBER_PURCHASE_MESSAGE)
