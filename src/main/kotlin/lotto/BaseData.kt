@@ -29,10 +29,10 @@ class BaseData {
                 throw IllegalArgumentException("[ERROR] 구입금액은 숫자여야 합니다.")
             }
         }
-        if(inputMoney%1000 != 0) {
+        if(money.toInt()%1000 != 0) {
             throw IllegalArgumentException("[ERROR] 구입금액은 1000원 단위입니다.")
         }
-        if(inputMoney<1000) {
+        if(money.toInt()<1000) {
             throw IllegalArgumentException("[ERROR] 구입금액은 1000원 이상입니다.")
         }
     }
