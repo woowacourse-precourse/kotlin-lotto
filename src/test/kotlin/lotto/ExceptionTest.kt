@@ -45,4 +45,10 @@ class ExceptionTest {
         assertThat(ExceptionHandler.getIsThousandUnit(purchaseMoney)).isFalse
     }
 
+    @Test
+    fun `구입 금액이 0보다 작으면 false 를 반환`() {
+        val purchaseMoney = -4500
+        assertThat(ExceptionHandler.getIsPositiveNumber(purchaseMoney)).isFalse
+    }
+
 }
