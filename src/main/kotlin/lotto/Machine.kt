@@ -1,6 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.Message.Companion.NOT_INT_MESSAGE
 import lotto.Message.Companion.NOT_THOUSANDS_NUMBER_MESSAGE
 import lotto.Units.Companion.INIT_NUMBER
 import lotto.Units.Companion.REMINDER
@@ -19,9 +20,9 @@ class Machine() {
 
     private fun putinMoney(): Int {
         printInputMoney()
-        val money = Console.readLine().toInt()
-        moneyUnitCheck(money)
-        return money
+        val money = Console.readLine()
+        moneyCheck(money)
+        return money.toInt()
     }
 
     private fun makeLottoNumbers(ticket: Int): MutableList<List<Int>> {
@@ -35,8 +36,10 @@ class Machine() {
         return issuedLottery
     }
 
-    private fun moneyUnitCheck(money: Int) {
-        if (money % THOUSAND_UNIT != REMINDER) throw IllegalArgumentException(NOT_THOUSANDS_NUMBER_MESSAGE)
+    private fun moneyCheck(money: String) {
+        when {
+            !money.all { it.isDigit() } -> throw IllegalArgumentException(NOT_INT_MESSAGE)
+            money.toInt() % THOUSAND_UNIT != REMINDER -> throw IllegalArgumentException(NOT_THOUSANDS_NUMBER_MESSAGE)
+        }
     }
-
 }

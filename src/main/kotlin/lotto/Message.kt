@@ -9,6 +9,7 @@ class Message {
         const val PUTIN_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요."
         const val PUT_IN_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해주세요."
         const val NUMBER_IS_DUPLICATED_MESSAGE = "[ERROR] 당첨된 번호와 보너스번호가 중복입니다."
+        const val NOT_INT_MESSAGE = "[ERROR] 숫자만 입력해 주세요."
 
         const val BUY_LOTTO_MESSAGE = "개를 구매했습니다."
         const val INPUT_MONEY_MESSAGE = "구입 금액을 입력해주세요"

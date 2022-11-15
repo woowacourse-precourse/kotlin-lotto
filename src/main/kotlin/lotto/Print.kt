@@ -24,7 +24,6 @@ import lotto.Units.Companion.GRADE_SECOND
 fun printInputMoney() = println(INPUT_MONEY_MESSAGE)
 
 fun printButLotto(count: Int) {
-    println()
     println("${count}${BUY_LOTTO_MESSAGE}")
 }
 
@@ -36,17 +35,14 @@ fun printTickets(
 }
 
 fun printPutinWinningNumber() {
-    println()
     println(PUTIN_WINNING_NUMBER_MESSAGE)
 }
 
 fun printPutInBonusNumber() {
-    println()
     println(PUT_IN_BONUS_NUMBER_MESSAGE)
 }
 
 fun printStatistics() {
-    println()
     println(STATISTIC_MESSAGE)
     println(DASH_MESSAGE)
 }
