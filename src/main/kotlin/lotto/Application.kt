@@ -9,9 +9,8 @@ fun main() {
     lottoMachine.printCustomerBuyLottoCount()
     val producedLottoNumbers = lottoMachine.produceLottoNumbers()
 
-    printInputLottoWinNumber()
-    val lottoOrganizer = LottoOrganizer()
-    printInputLottoBonusNumber()
+    val lottoOrganizer = LottoOrganizer(producedLottoNumbers)
+    lottoOrganizer.printInputLottoWinNumber()
 
 
 }
@@ -22,10 +21,3 @@ private fun printInputLottoBuyPrice() {
     println(LottoProcessStatement.INPUT_LOTTO_BUY_PRICE)
 }
 
-private fun printInputLottoWinNumber() {
-    println(LottoProcessStatement.INPUT_LOTTO_WIN_NUMBER)
-}
-
-private fun printInputLottoBonusNumber() {
-    println(LottoProcessStatement.INPUT_LOTTO_BONUS_NUMBER)
-}
