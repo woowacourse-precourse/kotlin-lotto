@@ -37,14 +37,9 @@ class BaseData {
     fun buyLotto() {
         val purchasingVolume = countpurchasingVolume(inputMoney)
         for(i in 1..purchasingVolume){
-            purchasedLotto.add(randomLotto())
+            purchasedLotto.add(Randoms.pickUniqueNumbersInRange(1, 45, 6))
         }
         purchasedLotto
-    }
-
-    fun randomLotto(): MutableList<Int> {
-        val randomLotto = Randoms.pickUniqueNumbersInRange(1, 45, 6)
-        return randomLotto
     }
 
     fun inputLottoNum() {
