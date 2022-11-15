@@ -9,17 +9,7 @@ class WinningNumber(private val numbers: List<Int>, private val bonusNumber: Int
         require(bonusNumber !in numbers)
     }
 
-    fun getRank(lotto: Lotto): Rank {
-        val matchCount = numbers.count { lotto.numbers().contains(it) }
-        val matchedBonus = lotto.numbers().contains(bonusNumber)
+    fun numbers() = numbers
 
-        return when {
-            matchCount == 6 -> Rank.FIRST
-            matchCount == 5 && matchedBonus -> Rank.SECOND
-            matchCount == 5 && !matchedBonus -> Rank.THIRD
-            matchCount == 4 -> Rank.FOURTH
-            matchCount == 3 -> Rank.FIFTH
-            else -> Rank.NO_LUCK
-        }
-    }
+    fun bonusNumber() = bonusNumber
 }

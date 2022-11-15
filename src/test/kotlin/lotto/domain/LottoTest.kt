@@ -61,4 +61,85 @@ class LottoTest {
             }
         }
     }
+
+    @Nested
+    inner class `rankWhenWinningNumberIs 메소드는` {
+        @Nested
+        inner class `당첨 번호와 로또 번호가 모두 일치하면` {
+            private val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+            private val winningNumber = WinningNumber(listOf(1, 2, 3, 4, 5, 6), 7)
+
+            @Test
+            fun `1등을 반환한다`() {
+                val rank = lotto.rankWhenWinningNumberIs(winningNumber)
+
+                assertThat(rank).isEqualTo(Rank.FIRST)
+            }
+        }
+
+        @Nested
+        inner class `당첨 번호와 로또 번호가 5개 일치하고 보너스 번호가 일치하면` {
+            private val lotto = Lotto(listOf(1, 2, 3, 4, 5, 7))
+            private val winningNumber = WinningNumber(listOf(1, 2, 3, 4, 5, 6), 7)
+            
+            @Test
+            fun `2등을 반환한다`() {
+                val rank = lotto.rankWhenWinningNumberIs(winningNumber)
+
+                assertThat(rank).isEqualTo(Rank.SECOND)
+            }
+        }
+
+        @Nested
+        inner class `당첨 번호와 로또 번호가 5개 일치하고 보너스 번호가 일치하지 않는다면` {
+            private val lotto = Lotto(listOf(1, 2, 3, 4, 5, 8))
+            private val winningNumber = WinningNumber(listOf(1, 2, 3, 4, 5, 6), 7)
+
+            @Test
+            fun `3등을 반환한다`() {
+                val rank = lotto.rankWhenWinningNumberIs(winningNumber)
+
+                assertThat(rank).isEqualTo(Rank.THIRD)
+            }
+        }
+
+        @Nested
+        inner class `당첨 번호와 로또 번호가 4개 일치하면` {
+            private val lotto = Lotto(listOf(1, 2, 3, 4, 7, 8))
+            private val winningNumber = WinningNumber(listOf(1, 2, 3, 4, 5, 6), 7)
+
+            @Test
+            fun `4등을 반환한다`() {
+                val rank = lotto.rankWhenWinningNumberIs(winningNumber)
+
+                assertThat(rank).isEqualTo(Rank.FOURTH)
+            }
+        }
+
+        @Nested
+        inner class `당첨 번호와 로또 번호가 3개 일치하면` {
+            private val lotto = Lotto(listOf(1, 2, 3, 7, 8, 9))
+            private val winningNumber = WinningNumber(listOf(1, 2, 3, 4, 5, 6), 7)
+
+            @Test
+            fun `5등을 반환한다`() {
+                val rank = lotto.rankWhenWinningNumberIs(winningNumber)
+
+                assertThat(rank).isEqualTo(Rank.FIFTH)
+            }
+        }
+
+        @Nested
+        inner class `당첨 번호와 로또 번호가 일치하는 개수가 3개 미만이면` {
+            private val lotto = Lotto(listOf(1, 2, 7, 8, 9, 10))
+            private val winningNumber = WinningNumber(listOf(1, 2, 3, 4, 5, 6), 7)
+
+            @Test
+            fun `꽝을 반환한다`() {
+                val rank = lotto.rankWhenWinningNumberIs(winningNumber)
+
+                assertThat(rank).isEqualTo(Rank.NO_LUCK)
+            }
+        }
+    }
 }

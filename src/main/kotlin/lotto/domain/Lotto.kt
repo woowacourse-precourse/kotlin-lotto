@@ -12,4 +12,17 @@ class Lotto(private val numbers: List<Int>) {
 
     fun numbers() = numbers
 
+    fun rankWhenWinningNumberIs(winningNumber: WinningNumber): Rank {
+        val matchCount = numbers.count { winningNumber.numbers().contains(it) }
+        val matchedBonus = numbers.contains(winningNumber.bonusNumber())
+
+        return when {
+            matchCount == 6 -> Rank.FIRST
+            matchCount == 5 && matchedBonus -> Rank.SECOND
+            matchCount == 5 && !matchedBonus -> Rank.THIRD
+            matchCount == 4 -> Rank.FOURTH
+            matchCount == 3 -> Rank.FIFTH
+            else -> Rank.NO_LUCK
+        }
+    }
 }
