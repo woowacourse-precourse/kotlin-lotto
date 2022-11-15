@@ -1,6 +1,7 @@
 package view
 
 import camp.nextstep.edu.missionutils.Console
+import domain.CreateLottoNumber
 
 class InputView {
 
@@ -29,15 +30,11 @@ class InputView {
         val winningNumber = Console.readLine()
         try {
             val sixWinningNumber =  winningNumber.split(",").map { it.toInt() }
-            // 중복 체크 & 길이 체크
-            if (sixWinningNumber.toSet().size != 6)
-                throw IllegalArgumentException("$ERROR_MESSAGE_WINNING_NUMBER 입력 값: $winningNumber")
-            // 1 ~ 45 사이 값인지 체크
-            for (winningNumberIdx in sixWinningNumber){
-                if (winningNumberIdx !in 1..45)
-                    throw IllegalArgumentException("$ERROR_MESSAGE_WINNING_NUMBER 입력 값: $winningNumber")
-            }
-            return sixWinningNumber
+
+            if (CreateLottoNumber().isCorrectCreateLotto(sixWinningNumber))
+                return sixWinningNumber
+            else throw IllegalArgumentException("$ERROR_MESSAGE_WINNING_NUMBER 입력 값: $winningNumber")
+
         }catch (e:Exception){
             throw IllegalArgumentException("$ERROR_MESSAGE_WINNING_NUMBER 입력 값: $winningNumber")
         }

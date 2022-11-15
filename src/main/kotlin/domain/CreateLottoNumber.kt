@@ -12,11 +12,17 @@ class CreateLottoNumber {
     // 랜덤으로 로또 숫자 6개 생성
     fun createRandomLottoNumber(): List<Int>{
         val numbers = Randoms.pickUniqueNumbersInRange(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER, LOTTO_NUMBER)
-        // 중복된 숫자가 나왔을 경우 예외처리
-        if (numbers.toSet().size < 6)
-            throw IllegalArgumentException("$ERROR_MESSAGE_LOTTO_NUMBER ")
 
-        return numbers.sorted()
+        if (isCorrectCreateLotto(numbers)) return numbers.sorted()
+        throw IllegalArgumentException("$ERROR_MESSAGE_LOTTO_NUMBER ")
+    }
+
+    // 중복 체크와 길이 체크
+    fun isCorrectCreateLotto(lotto: List<Int>): Boolean{
+        // 범위에 맞는지
+        // 중복된 숫자가 나왔을 경우 예외처리
+        if (lotto.toSet().size < 6 || lotto.all { it !in 1..45 }) return false
+        return true
     }
 
 }
