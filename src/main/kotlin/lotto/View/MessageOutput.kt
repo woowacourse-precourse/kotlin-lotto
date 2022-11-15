@@ -1,4 +1,4 @@
-package lotto
+package lotto.View
 
 class MessageOutput {
     enum class Notice(val messages: String) {

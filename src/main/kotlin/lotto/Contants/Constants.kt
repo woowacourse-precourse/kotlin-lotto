@@ -1,4 +1,4 @@
-package lotto
+package lotto.Contants
 
 object Constants {
     const val LottoPrice = 1000
