@@ -7,36 +7,42 @@ class InputData {
     var LottoNum = mutableListOf<Int>()
     var bonusNum = 0
 
-    fun inputMoney(): Int {
-        println("구입금앱을 입력해 주세요.")
-        return Console.readLine().toInt()
+    fun InputData(){
+        inputMoney()
+        validInputMoney()
+        inputLottoNum()
+        inputBonus()
+        validInputBonus()
     }
 
-    fun validInputMoney(inputMoney : Int){
+    fun inputMoney() {
+        println("구입금앱을 입력해 주세요.")
+        inputMoney = Console.readLine().toInt()
+    }
+
+    fun validInputMoney(){
         if(inputMoney%1000 != 0) {
             throw IllegalArgumentException("[ERROR] 구입금액은 1000원 단위입니다.")
         }
     }
 
-    fun inputLottoNum(): MutableList<Int> {
+    fun inputLottoNum() {
         println("당첨 번호를 입력해 주세요.")
-        val Lotto = Console.readLine()
-        return makeLottoNum(Lotto)
+        var Lotto = Console.readLine()
+        makeLottoNum(Lotto)
     }
-    fun makeLottoNum(Lotto:String): MutableList<Int> {
-        val LottoNum = mutableListOf<Int>()
+    fun makeLottoNum(Lotto:String) {
         for(i in Lotto.replace(" ","").split(",")){
             LottoNum.add(i.toInt())
         }
-        return LottoNum
     }
-    fun inputBonus(): Int {
+    fun inputBonus() {
         println("보너스 번호를 입력해 주세요.")
-        return Console.readLine().toInt()
+        bonusNum = Console.readLine().toInt()
     }
-    fun validInputBonus(inputBonus: Int){
-        if(inputBonus >= 1
-            && inputBonus <= 45
+    fun validInputBonus(){
+        if(bonusNum >= 1
+            && bonusNum <= 45
         ){
             throw IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.")
         }
