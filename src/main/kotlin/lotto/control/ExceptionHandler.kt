@@ -12,7 +12,7 @@ object ExceptionHandler {
 
     fun checkNumber(): Int {
         try {
-            return Console.readLine().toInt()
+            return Console.readLine()!!.toInt()
         } catch (e: NumberFormatException) {
             throw IllegalArgumentException(Error.ONLY_NUMBER.string)
         }
