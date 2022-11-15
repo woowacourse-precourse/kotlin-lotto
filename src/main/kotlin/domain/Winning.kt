@@ -5,29 +5,30 @@ import java.text.DecimalFormat
 
 enum class Winning(
     val countMatching: Int,
-    val prize: Int
+    val prize: Int,
+    val message: String
 ) {
-    FIFTH(3, PRIZE_FIFTH) {
+    FIFTH(3, PRIZE_FIFTH, WINNING_FIFTH) {
         override fun getTotalPrize(num: Int): Int {
             return num * PRIZE_FIFTH
         }
     },
-    FOURTH(4, PRIZE_FOURTH) {
+    FOURTH(4, PRIZE_FOURTH, WINNING_FOURTH) {
         override fun getTotalPrize(num: Int): Int {
             return num * PRIZE_FOURTH
         }
     },
-    THIRD(5, PRIZE_THIRD) {
+    THIRD(5, PRIZE_THIRD, WINNING_THIRD) {
         override fun getTotalPrize(num: Int): Int {
             return num * PRIZE_THIRD
         }
     },
-    SECOND(5, PRIZE_SECOND) {
+    SECOND(5, PRIZE_SECOND, WINNING_SECOND) {
         override fun getTotalPrize(num: Int): Int {
             return num * PRIZE_SECOND
         }
     },
-    FIRST(6, PRIZE_FIRST) {
+    FIRST(6, PRIZE_FIRST, WINNING_FIRST) {
         override fun getTotalPrize(num: Int): Int {
             return num * PRIZE_FIRST
         }
@@ -50,6 +51,12 @@ enum class Winning(
             }
 
             return sum
+        }
+
+        fun printWinnings(winning: List<Int>) {
+            enumValues<Winning>().forEach {
+                println("${it.message}${formatPrize(it)} - ${winning[it.ordinal]}개")
+            }
         }
     }
 }

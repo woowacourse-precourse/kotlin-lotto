@@ -21,11 +21,7 @@ fun main() {
 
 fun printResult(result: List<Int>, rate: Double) {
     println("\n$WINNING_TITLE")
-    println("$WINNING_FIFTH${formatPrize(Winning.FIFTH)} - ${result[Winning.FIFTH.ordinal]}개")
-    println("$WINNING_FOURTH${formatPrize(Winning.FOURTH)} - ${result[Winning.FOURTH.ordinal]}개")
-    println("$WINNING_THIRD${formatPrize(Winning.THIRD)} - ${result[Winning.THIRD.ordinal]}개")
-    println("$WINNING_SECOND${formatPrize(Winning.SECOND)} - ${result[Winning.SECOND.ordinal]}개")
-    println("$WINNING_FIRST${formatPrize(Winning.FIRST)} - ${result[Winning.FIRST.ordinal]}개")
+    Winning.printWinnings(result)
     println("총 수익률은 ${rate}%입니다.")
 }
 
