@@ -9,7 +9,8 @@
   - [x] 등수에 따른 당첨 금액을 반환한다. - Calculator#prizeMoney()
   - [x] 구매 금액과 총 당첨 금액을 비교하여 수익률을 계산한다. - Calculator#calculateYield()
 - [x] 로또 게임을 시작한다. - LottoGames#startGame()
-- [ ] 돈을 입력받고 구매한 복권 개수를 출력한다. - LottoGames#purchaseLottos()
+- [x] 돈을 입력받고 구매한 복권 개수를 출력한다. - LottoGames#purchaseLottos()
+- [x] 등수를 구하고 총 당첨금 및 수익률 계산 - LottoGames#calculateLottos()
 
 ## 입춢력 목록
 - [x] 구입금액 입력 받기 - InputUi#inputMoney()
