@@ -34,6 +34,22 @@ fun calculateEarnings(winnings: Map<Prize,Int>, money: Int): Double {
     return round(totalPrize.toDouble()/money.toDouble()*1000) /10.0
 }
 
+/**
+ * @brief Calculate how many lotteries user won
+ * @param lotteryList : list of lotteries user bought
+ * @param winningNumbers : list of winning numbers
+ * @return map of (prize, the number of lotto won that prize)
+ */
+fun getWinnings(lotteryList: List<Lotto>, winningNumbers: List<Int>, bonusNumber: Int): Map<Prize, Int> {
+    val winnings = mutableMapOf<Prize, Int>()
+    for(lottery in lotteryList) {
+        val prize = lottery.winLottery(winningNumbers, bonusNumber)
+        if(winnings[prize] == null) winnings[prize] = 1
+        else winnings[prize] = winnings[prize]!! + 1
+    }
+    return winnings
+}
+
 fun main() {
     TODO("프로그램 구현")
 }
