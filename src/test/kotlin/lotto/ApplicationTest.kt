@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-class ApplicationTest : NsTest() {
+class                ApplicationTest : NsTest() {
 
     @Test
     fun `기능 테스트`() {
@@ -43,9 +43,17 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun `예외 테스트0`() {
         assertSimpleTest {
             runException("1000j")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `예외 테스트1`() {
+        assertSimpleTest {
+            runException("12,90,9,1,11,4")
             assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
