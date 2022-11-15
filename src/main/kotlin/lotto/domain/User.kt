@@ -13,7 +13,7 @@ class User {
     }
 
     fun checkBonusNumber(bonusNumber: String, userGamePrizeNumber: List<Int>) {
-        if (!checkNumber(bonusNumber))
+        if (!checkNumber(bonusNumber) || bonusNumber == "")
             throw IllegalArgumentException(ERROR_PRIZE_NUMBER_MESSAGE)
         if (checkRangeBonusNumber(bonusNumber))
             throw IllegalArgumentException(ERROR_BONUS_NUMBER_MESSAGE)
@@ -86,7 +86,7 @@ class User {
 
 
     fun checkAmount(userAmount: String) {
-        if (!checkNumber(userAmount))
+        if (!checkNumber(userAmount) || userAmount == "")
             throw IllegalArgumentException(ERROR_AMOUNT_NUMBER_MESSAGE)
         if (checkBigNum(userAmount) == null)
             throw IllegalArgumentException(ERROR_BIG_NUMBER_MESSAGE)
@@ -99,7 +99,7 @@ class User {
 
     private fun checkBigNum(userAmount: String) = userAmount.toIntOrNull()
     private fun checkDivideAmount(userAmount: String): Boolean {
-        if (userAmount.toInt() % 1000 != 0)
+        if (userAmount.toInt() % 1000 != 0 || userAmount.toInt() == 0)
             return false
         return true
     }
