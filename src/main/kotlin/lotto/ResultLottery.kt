@@ -1,6 +1,6 @@
 package lotto
 import kotlin.math.round
-class PrintLottery(private val ticketTypeCount : MutableList<Int>, private val lottoPay: Int) {
+class ResultLottery(private val ticketTypeCount : MutableList<Int>, private val lottoPay: Int) {
     private val resultLotto = ticketTypeCount[0] * 5000 + ticketTypeCount[1] * 50000 + ticketTypeCount[2] * 1500000 + ticketTypeCount[3] * 3000000 + ticketTypeCount[4] * 2000000000
     private val lottoProfit = round(resultLotto / lottoPay.toFloat() * 1000) /10
     init{
