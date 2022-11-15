@@ -1,8 +1,11 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
+import java.text.DecimalFormat
 
 class UI {
+    private val decFormat = DecimalFormat("###,###,###.0")
+
     /**
      * Functions named get[]()
      *
