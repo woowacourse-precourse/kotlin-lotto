@@ -21,32 +21,10 @@ class LottoTest {
         }
     }
 
-    // 아래에 추가 테스트 작성 가능
     @Test
     fun `1 ~ 45 범위를 벗어나면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
             Lotto(listOf(8, 12, 17, 26, 37, 56))
         }
     }
-
-    @Test
-    fun `6개의 로또 번호가 보너스 번호와 중복된다면 예외가 발생한다`() {
-
-        val lottoNumber = listOf(1, 2, 3, 4, 5, 6)
-        val bonusNumber = 5
-        assertThrows<IllegalArgumentException> {
-            BonusNumberError(lottoNumber, bonusNumber)
-        }
-    }
-
-    @Test
-    fun `보너스 번호가 1과 45 사이가 아니라면 예외가 발생한다`() {
-        val lottoNumber = listOf(1, 2, 3, 4, 5, 6)
-        val bonusNumber = 50
-        assertThrows<IllegalArgumentException> {
-            BonusNumberError(lottoNumber, bonusNumber)
-        }
-    }
-
-
 }
