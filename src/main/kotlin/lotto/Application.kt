@@ -6,7 +6,7 @@ import resource.*
 
 fun main() {
     val purchaseMoney = getPurchaseMoney()
-    val numberOfLotto = purchaseMoney / Number_OF_LOTTO
+    val numberOfLotto = purchaseMoney / LOTTO_PRICE
     val lottoNumbers = getLottoNumbers(numberOfLotto)
     printLottoNumbers(lottoNumbers)
 }
