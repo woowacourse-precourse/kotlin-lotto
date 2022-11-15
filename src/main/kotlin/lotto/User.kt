@@ -1,7 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
-import util.InputException
+import lotto.exception.InputException
 
 class User {
     private val inputCheck = InputException()
@@ -11,8 +11,11 @@ class User {
 
     fun inputMoney() {
         val input = userInput()
-        inputCheck.checkInputException(input)
-        _inputMoney = input.toInt()
+        try {
+            inputCheck.checkInputException(input)
+            _inputMoney = input.toInt()
+        } catch (e: Exception) {
+        }
     }
 
     fun getLottos() = _inputMoney / 1000
