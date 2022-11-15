@@ -4,6 +4,7 @@ import domain.EarningRateCalculator
 import domain.MatchStorage
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
+import program.LottoProgram
 
 class EarningRateCalculatorTest {
 
@@ -14,5 +15,6 @@ class EarningRateCalculatorTest {
         val obj = EarningRateCalculator(purchaseMoney)
         obj.calculateEarningRate()
         Assertions.assertThat(obj.earningRate).isEqualTo(3333.3)
+        initializeMatchStorage()
     }
 }
