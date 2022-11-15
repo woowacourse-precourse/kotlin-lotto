@@ -9,8 +9,7 @@ class LottoCheckError(private val numbers: List<Int>) {
 
     private fun throwLottoSizeException() {
         if (numbers.size != 6) {
-            println("[ERROR] 로또 번호는 6개의 숫자여야 합니다.")
-            throw IllegalArgumentException()
+            throw IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자여야 합니다.")
         }
     }
 
