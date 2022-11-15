@@ -1,13 +1,11 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.Console.readLine
+import camp.nextstep.edu.missionutils.Console
 
-class method_collection {
-
-
+class methodCollection {
 
     fun howMuchDoYouHave(): Int {
-        val usermoney = readLine()
+        val usermoney = Console.readLine()
         var money = ""
         if (usermoney == "") {
             throw IllegalArgumentException(error.inputSomething.message)
@@ -29,7 +27,7 @@ class method_collection {
     }
 
     fun enterWinningNumber(): List<Int> {
-        val userCheck = readLine()
+        val userCheck = Console.readLine()
         val winningNumber = mutableListOf<Int>()
         val number = userCheck.split(',')
         if (!userCheck.contains(',')) {
@@ -46,7 +44,7 @@ class method_collection {
     }
 
     fun enterBonusNumber(winningNumbers: List<Int>): Int {
-        val userCheck = readLine()
+        val userCheck = Console.readLine()
         if (!"^[0-9]*$".toRegex().matches(userCheck)) {
             throw IllegalArgumentException(error.wrongInput.message)
         }
@@ -117,5 +115,6 @@ class method_collection {
         profitRate = String.format("%.2f", (totalreward / price) * 100).toDouble() // 둘째자리에서 반올림
         return profitRate
     }
+
 
 }

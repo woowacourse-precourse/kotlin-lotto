@@ -3,7 +3,7 @@ package lotto
 fun main() {
     var cnt = 0
     var obj = LottoGames(numbers = listOf(0, 0, 0, 0, 0, 0))
-    var mt = method_collection()
+    var mt = methodCollection()
     var winningNumber = listOf<Int>()
     var bonusNumber = 0
     var lottoCollection = mutableListOf<List<Int>>()
