@@ -1,8 +1,5 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.Console.readLine
-import camp.nextstep.edu.missionutils.Randoms
-
 fun main() {
     val count : Int
     val money : Int

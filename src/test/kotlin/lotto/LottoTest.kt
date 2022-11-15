@@ -88,8 +88,9 @@ class LottoTest : NsTest() {
 
     @Test
     fun `로또 번호가 1 미만시 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(0, 2, 3, 4, 5, 6))
+        assertThrows<IllegalArgumentException> { // 이하부터 main() 테스트로 교체
+            run("2000", "0,2,3,4,5,6", "7")
+            assertThat(output()).contains("[ERROR]")
         }
     }
 
@@ -97,6 +98,14 @@ class LottoTest : NsTest() {
     fun `로또 구입후 남은금액이 존재할시 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
             runException("1234")
+            assertThat(output()).contains("[ERROR]")
+        }
+    }
+
+    @Test
+    fun `보너스 번호가 같을시 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            run("2000", "1,2,3,4,5,6", "6")
             assertThat(output()).contains("[ERROR]")
         }
     }

@@ -1,6 +1,6 @@
 package lotto
 
-class Lotto(private val numbers: List<Int>) {
+class Lotto(private val numbers: List<Int>) { // 로또 번호 예외 검출
     init {
         require(numbers.size == 6){"[ERROR] : 숫자가 6개가 아닙니다."}
         require(numbers.distinct().size==6){"[ERROR] : 숫자가 중복되어 있습니다."}
