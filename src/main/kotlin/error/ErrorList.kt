@@ -36,7 +36,7 @@ object LottoError {
         }
     }
 
-    fun checkDuplicate(numbers: Lotto, number: Int) {
+    fun checkDuplicate(numbers: List<Int>, number: Int) {
         if (numbers.contains(number)) {
             makeError(ErrorMaking.NUMBER_DUPLICATED)
         }
@@ -51,7 +51,7 @@ object InputError {
         checkMoneyDivided(value.toInt())
     }
 
-    fun checkIntegerValid(value: String?, winning: Lotto) {
+    fun checkIntegerValid(value: String?, winning: List<Int>) {
         checkInteger(value)
         LottoError.checkOutOfRange(value!!.toInt())
         LottoError.checkDuplicate(winning, value.toInt())

@@ -11,7 +11,7 @@ class LottoTest {
         fun case1() {
             assertThat(
                 Lotto(listOf(1, 3, 5, 14, 22, 45)).calculateWinnings(
-                    Lotto(listOf(1, 2, 3, 4, 5, 6)),
+                    listOf(1, 2, 3, 4, 5, 6),
                     7
                 )
             ).isEqualTo(Winning.FIFTH.ordinal)
@@ -20,7 +20,7 @@ class LottoTest {
         fun case2() {
             assertThat(
                 Lotto(listOf(1, 3, 5, 14, 22, 45)).calculateWinnings(
-                    Lotto(listOf(1, 22, 14, 5, 3, 45)),
+                    listOf(1, 22, 14, 5, 3, 45),
                     7
                 )
             ).isEqualTo(Winning.FIRST.ordinal)
@@ -29,7 +29,7 @@ class LottoTest {
         fun case3() {
             assertThat(
                 Lotto(listOf(1, 3, 5, 14, 22, 45)).calculateWinnings(
-                    Lotto(listOf(1, 3, 14, 22, 5, 7)),
+                    listOf(1, 3, 14, 22, 5, 7),
                     45
                 )
             ).isEqualTo(Winning.SECOND.ordinal)

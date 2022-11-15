@@ -36,7 +36,7 @@ class ErrorCheckingTest {
     @Test
     fun `보너스 숫자가 이미 당첨번호에 존재하면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
-            LottoError.checkDuplicate(Lotto(listOf(1, 2, 3, 4, 5, 6)), 6)
+            LottoError.checkDuplicate(listOf(1, 2, 3, 4, 5, 6), 6)
         }
     }
 

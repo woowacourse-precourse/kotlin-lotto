@@ -11,7 +11,7 @@ class Calculator {
         return roundDecimal(rate)
     }
 
-    fun calculateWinnings(lottos: List<Lotto>, winnings: Lotto, bonus: Int): List<Int> {
+    fun calculateWinnings(lottos: List<Lotto>, winnings: List<Int>, bonus: Int): List<Int> {
         val result = mutableListOf(0, 0, 0, 0, 0)
         for (lotto in lottos) {
             val prize = lotto.calculateWinnings(winnings, bonus)

@@ -17,7 +17,7 @@ class CalculatorTest {
                 Lotto(listOf(6, 5, 4, 3, 2, 1)),
                 Lotto(listOf(1, 3, 5, 14, 22, 45))
             ),
-            Lotto(listOf(1, 2, 3, 4, 5, 6)),
+            listOf(1, 2, 3, 4, 5, 6),
             7
         )).isEqualTo(listOf(1, 0, 1, 1, 1))
     }

@@ -45,7 +45,7 @@ fun getLottoNumbers(num: Int): List<Lotto> {
     return lottos
 }
 
-fun getBonusNumber(winnings: Lotto): Int {
+fun getBonusNumber(winnings: List<Int>): Int {
     println("\n$INPUT_BONUS_NUMBER")
 
     val number = readLine()?.trim()
@@ -54,7 +54,7 @@ fun getBonusNumber(winnings: Lotto): Int {
     return number!!.toInt()
 }
 
-fun getWinningNumbers(): Lotto {
+fun getWinningNumbers(): List<Int> {
     println("\n$INPUT_NUMBERS")
 
     val winning = readLine()
@@ -66,7 +66,7 @@ fun getWinningNumbers(): Lotto {
             winningNumbers.add(num.trim().toInt())
         }
 
-    return Lotto(winningNumbers)
+    return winningNumbers
 }
 
 fun printLottoNumbers(numbers: List<Lotto>) {

@@ -11,11 +11,11 @@ class Lotto(private val numbers: List<Int>) {
         println(numbers.toString())
     }
 
-    fun calculateWinnings(winningNumbers: Lotto, bonusNumber: Int): Int {
+    fun calculateWinnings(winningNumbers: List<Int>, bonusNumber: Int): Int {
         var countMatching = 0
 
         for (number in numbers) {
-            if (winningNumbers.numbers.contains(number)) {
+            if (winningNumbers.contains(number)) {
                 countMatching++
             }
         }
