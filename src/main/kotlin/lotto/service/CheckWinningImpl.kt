@@ -8,7 +8,6 @@ interface CheckWinning {
 class CheckWinningImpl : CheckWinning {
     override fun winningCount(checkWinningNumber: Int): MutableList<Int> {
         val resultWinning = mutableListOf(0, 0, 0, 0, 0)
-        println(checkWinningNumber)
         when (checkWinningNumber) {
             3 -> resultWinning[0] += 1
             4 -> resultWinning[1] += 1

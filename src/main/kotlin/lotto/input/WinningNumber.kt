@@ -9,11 +9,11 @@ interface WinningNumber {
 
 class WinningNumberImpl : WinningNumber {
 
-    private val userInputNumber = Input().inputUser()
-
     override fun inputWinningNumber(): String {
         println("당첨 번호를 입력해 주세요.")
+        val userInputNumber = Input().inputUser()
         checkLottoStandard(userInputNumber)
+        println(userInputNumber)
         return userInputNumber
     }
 

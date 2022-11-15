@@ -9,7 +9,7 @@ interface InputValidate{
     }
 class InputValidateReal :InputValidate{
     override fun checkInputMessagePatten(checkOverlap: MutableList<String>) {
-        val regax = "^\\d*$"
+        val regax = "^[0-9]*$"
         val pattern: Pattern = Pattern.compile(regax)
         for (inputNum in checkOverlap) {
             val matcher: Matcher = pattern.matcher(inputNum)

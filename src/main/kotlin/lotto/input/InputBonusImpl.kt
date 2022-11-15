@@ -1,6 +1,7 @@
 package lotto.input
 
 import lotto.util.Input
+import lotto.util.InputValidateReal
 
 interface InputBonus {
     fun inputBonusNumber(lottoNumber: String): Int
@@ -20,12 +21,12 @@ class InputBonusImpl : InputBonus {
         userInputNumber ?: throw IllegalArgumentException()
         val lottoOverlapCheck = mutableListOf<String>()
         val lottoNumber = lottoNumbers.split(",")
+        lottoOverlapCheck.add(userInputNumber)
+        InputValidateReal().checkInputMessagePatten(lottoOverlapCheck)
         if (userInputNumber.toInt() >= 46 || userInputNumber.toInt() < 1) {
             println("[ERROR]")
             throw IllegalArgumentException()
         }
-        lottoOverlapCheck.add(userInputNumber)
-        lotto.util.InputValidateReal().checkInputMessagePatten(lottoOverlapCheck)
         if (lottoOverlapCheck.size != 1 || lottoNumber.contains(lottoOverlapCheck[0])) {
             println("[ERROR]")
             throw IllegalArgumentException()

@@ -24,7 +24,6 @@ class CheckContainImpl : CheckContain {
                 checkWinning += 2
             }
         }
-        println(checkWinning)
         return checkWinning
     }
 }

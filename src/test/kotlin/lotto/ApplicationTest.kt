@@ -7,7 +7,6 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class ApplicationTest : NsTest() {
-
     @Test
     fun `기능 테스트`() {
         assertRandomUniqueNumbersInRangeTest(
@@ -42,7 +41,7 @@ class ApplicationTest : NsTest() {
         )
     }
     @Test
-    fun `3개 일치`() {
+    fun `기능 테스트1`() {
              assertRandomUniqueNumbersInRangeTest(
                  {
                      run("1000", "1,2,3,4,5,6", "7")
@@ -61,7 +60,7 @@ class ApplicationTest : NsTest() {
              )
          }
     @Test
-    fun `4개 일치`() {
+    fun `기능 테스트2`() {
         assertRandomUniqueNumbersInRangeTest(
                 {
                     run("1000", "1,2,3,4,5,6", "7")
@@ -80,7 +79,7 @@ class ApplicationTest : NsTest() {
         )
     }
     @Test
-    fun `5개 일치`() {
+    fun `기능 테스트3`() {
         assertRandomUniqueNumbersInRangeTest(
                 {
                     run("1000", "1,2,3,4,5,6", "7")
@@ -99,7 +98,7 @@ class ApplicationTest : NsTest() {
         )
     }
     @Test
-    fun `5개 일치,보너스 일치`() {
+    fun `기능 테스트4`() {
         assertRandomUniqueNumbersInRangeTest(
                 {
                     run("1000", "1,2,3,4,5,6", "7")
@@ -118,7 +117,7 @@ class ApplicationTest : NsTest() {
         )
     }
     @Test
-    fun `6개 일치`() {
+    fun `기능 테스트5`() {
         assertRandomUniqueNumbersInRangeTest(
                 {
                     run("1000", "1,2,3,4,5,6", "7")
@@ -153,6 +152,40 @@ class ApplicationTest : NsTest() {
                     )
                 },
                 listOf(8, 9, 10, 11, 12, 13)
+        )
+    }
+    @Test
+    fun `보너스 범위 초가`() {
+        assertRandomUniqueNumbersInRangeTest(
+                {
+                    run("1000", "1,2,3,4,5,6", "47")
+                    assertThat(output()).contains(ERROR_MESSAGE)
+                },
+                listOf(8, 9, 10, 11, 12, 13)
+
+        )
+    }
+    @Test
+    fun `보너스 중복`() {
+        assertRandomUniqueNumbersInRangeTest(
+                {
+                    run("1000", "1,2,3,4,5,6", "6")
+                    assertThat(output()).contains(ERROR_MESSAGE)
+                },
+                listOf(8, 9, 10, 11, 12, 13)
+
+        )
+    }
+
+    @Test
+    fun `구입금액 안쳤을때`() {
+        assertRandomUniqueNumbersInRangeTest(
+                {
+                    run("", "1,2,3,4,5,6", "ㄷ")
+                    assertThat(output()).contains(ERROR_MESSAGE)
+                },
+                listOf(8, 9, 10, 11, 12, 13)
+
         )
     }
     @Test
