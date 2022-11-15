@@ -6,6 +6,11 @@ import lotto.User.UserInput
 
 fun main() {
     MessageOutput().printStartMessage()
-    val price = UserInput().buyPrice()
-    NumberCreate()
+    val ticket = UserInput().buyPrice()
+    var lottoList : MutableList<List<Int>> = ArrayList()
+    for( i in 1..ticket){
+        var numbers = NumberCreate()
+        lottoList.add((numbers))
+    }
+    MessageOutput().printBuyMessage(ticket, lottoList)
 }
