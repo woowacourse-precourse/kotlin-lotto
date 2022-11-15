@@ -40,4 +40,24 @@ class ExceptionCheck {
             }
         }
     }
+
+    fun checkValidBonusNumber(userInput: String): String {
+        when {
+            checkValidInputType(userInput) -> {
+                println(Error.INPUT_TYPE_ERROR.message)
+                throw IllegalArgumentException()
+            }
+            checkValidNumberRange(userInput) -> {
+                println(Error.INPUT_RANGE_ERROR.message)
+                throw IllegalArgumentException()
+            }
+            userInput.length != 1 -> {
+                println(Error.INPUT_ONE_NUMBER_ERROR.message)
+                throw IllegalArgumentException()
+            }
+            else -> {
+                return userInput
+            }
+        }
+    }
 }
