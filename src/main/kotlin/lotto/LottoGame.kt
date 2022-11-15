@@ -84,14 +84,18 @@ class LottoGame {
 
     private fun showResult(lottoCount: Int) {
         println("당첨 통계\n---")
-        val resultList = listOf(Result.FIFTH, Result.FOURTH, Result.THIRD, Result.SECOND, Result.FIRST)
-        resultList.forEach { result -> result.print() }
-        println("총 수익률은 ${calculateEarningsRate(lottoCount, resultList)}%입니다.")
+        val results = listOf(Result.FIFTH, Result.FOURTH, Result.THIRD, Result.SECOND, Result.FIRST)
+        results.forEach { result ->
+            result.print()
+        }
+        println("총 수익률은 ${calculateEarningsRate(lottoCount, results)}%입니다.")
     }
 
-    private fun calculateEarningsRate(lottoCount: Int, resultList: List<Result>): Double {
+    private fun calculateEarningsRate(lottoCount: Int, results: List<Result>): Double {
         var totalEarning = 0
-        resultList.forEach { result -> totalEarning += result.getEarningRate() }
+        results.forEach { result ->
+            totalEarning += result.getEarningRate()
+        }
         val earningRate = totalEarning / (lottoCount.toDouble() * LOTTO_PRICE) * PERCENT
         return roundEarningRate(earningRate)
     }
