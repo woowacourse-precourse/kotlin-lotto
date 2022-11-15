@@ -19,7 +19,7 @@ class Number {
         return winnings
     }
 
-    fun checkDuplicateNumber(pre: String, next: String) {
+    private fun checkDuplicateNumber(pre: String, next: String) {
         if (pre == next) {
             throw IllegalArgumentException("[ERROR] numbers에 중복된 숫자가 포함되어 있습니다.")
         }
