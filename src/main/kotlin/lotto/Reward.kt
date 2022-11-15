@@ -42,16 +42,17 @@ class Reward {
         return countReward
     }
 
-    private fun whenCountFive(bonusNumber: Int, lottoNumber: List<Int>) {
+    private fun whenCountFive(bonusNumber: Int, lottoNumber: List<Int>): MutableList<Int> {
         if(lottoNumber.contains(bonusNumber)){
             countReward[3] =+ 1
+            return countReward
         }
         countReward[2] =+ 1
+        return countReward
     }
 
     fun calculateRevenue(money:Int, price:Int) {
-        revenue =(money.toFloat()/price.toFloat())*100
-        revenue = round(revenue*10) /10
+        revenue =(money.toFloat()/price)*100
         Output.printReward(countReward,revenue)
     }
 }
