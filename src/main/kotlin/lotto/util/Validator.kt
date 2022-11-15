@@ -6,6 +6,7 @@ class Validator {
         checkInputNullValidation(input)
         checkInputEmptyValidation(input!!)
         checkStringToIntValidation(input!!)
+        checkMoneyPositive(input)
         checkMoneyValueValidation(input)
     }
 
@@ -20,6 +21,10 @@ class Validator {
         checkInputEmptyValidation(input!!)
         checkStringToIntValidation(input!!)
         checkBonusNumberRangeValidation(input!!)
+    }
+
+    fun checkMoneyPositive(input: String) {
+        require(input.toInt() >= 0) { MONEY_VALUE_NEGATIVE_ERROR_MSG }
     }
 
     fun checkBonusNumberRangeValidation(input : String) {
@@ -61,6 +66,7 @@ class Validator {
         const val INPUT_NULL_ERROR_MSG = "[ERROR] 값이 입력되지 않았습니다."
         const val INPUT_EMPTY_ERROR_MSG = "[ERROR] 값이 입력되지 않았습니다."
         const val INPUT_VALUE_ERROR_MSG = "[ERROR] 값이 숫자로만 이루어져야합니다."
+        const val MONEY_VALUE_NEGATIVE_ERROR_MSG = "[ERROR] 돈은 양수가 입력되어야 합니다."
         const val MONEY_VALUE_ERROR_MSG = "[ERROR] 돈은 1000으로 나누어떨어지는 값이어야 합니다."
         const val BONUS_RANGE_ERROR_MSG = "[ERROR] 보너스는 1에서 45사이의 숫자여야 합니다."
     }
