@@ -45,16 +45,22 @@ class ApplicationTest : NsTest() {
     @Test
     fun `예외 테스트`() {
         assertSimpleTest {
-            runException("1000j")
+            runException("1000j", "1,11,11,13,14,16", "16")
             assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
+
 
     override fun runMain() {
         main()
     }
 
-    companion object {
+    companion object ErrorMessage{
         private const val ERROR_MESSAGE = "[ERROR]"
+        const val ErrorNotNumbers = ERROR_MESSAGE.plus("숫자만 입력해야합니다")
+        const val numberDuplicate = ERROR_MESSAGE.plus("중복된 숫자가 있습니다")
+        const val numberNotInRange = ERROR_MESSAGE.plus("범위가 잘못되었습니다")
+        const val numberSizeNot6 = ERROR_MESSAGE.plus("번호를 6개 입력해야합니다.")
+
     }
 }
