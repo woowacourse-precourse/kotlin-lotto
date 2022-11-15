@@ -4,11 +4,16 @@ import camp.nextstep.edu.missionutils.Randoms
 import java.lang.StringBuilder
 import kotlin.math.round
 
-class Lottos(amount: Int) {
-    private val lottos: MutableList<Lotto> = mutableListOf()
+class Lottos() {
+    private var lottos: MutableList<Lotto> = mutableListOf()
 
-    init {
+    constructor(amount: Int) : this() {
         produceLotto(amount)
+        require(lottos.size == amount) { "로또는 $amount 개 만큼 생성되어야 합니다." }
+    }
+
+    constructor(lottos: MutableList<Lotto>) : this() {
+        this.lottos = lottos
     }
 
     private fun produceLotto(amount: Int) {
@@ -29,14 +34,15 @@ class Lottos(amount: Int) {
         return rankMap
     }
 
-    fun calculateYield(winRanks: Map<LottoRank, Int>, lottoMoney: Int): Float {
+    fun calculateYield(winRanks: Map<LottoRank, Int>, lottoAmount: Int): Float {
         var winMoney = 0f
 
         for ((k, v) in winRanks) {
             winMoney += k.value * v
         }
 
-        return round((winMoney / (lottoMoney * 1000) * 1000)) / 10
+        val yieldRatio = (winMoney / (lottoAmount * 1000)) * 100
+        return round(yieldRatio * 100) / 100
     }
 
     override fun toString(): String {

@@ -35,7 +35,7 @@ class Input {
             if (lottoMoney % 1000 != 0)
                 throw IllegalArgumentException("구매 금액은 1000원 단위여야 합니다.")
 
-            return lottoMoney / 1000
+            return lottoMoney
         }
     }
 }

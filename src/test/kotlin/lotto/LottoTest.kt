@@ -27,7 +27,7 @@ class LottoTest {
     fun `입력 받은 구입 금액이 1000원 단위가 아니면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
             System.setIn("1001".byteInputStream())
-            getInputLottoMoney()
+            Input.getLottoMoney()
         }
     }
 
@@ -35,21 +35,15 @@ class LottoTest {
     fun `입력 받은 구입 금액이 숫자가 아니면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
             System.setIn("1000j".byteInputStream())
-            getInputLottoMoney()
+            Input.getLottoMoney()
         }
-    }
-
-    @Test
-    fun `로또를 알맞은 수량 발행했는지 테스트`() {
-        val lottos = produceLotto(8)
-        assertThat(lottos).hasSize(8)
     }
 
     @Test
     fun `당첨 번호가 6개가 아니면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
             System.setIn("1,2,3,4,5,6,7".byteInputStream())
-            getInputWinNumbers()
+            Input.getWinNumbers()
         }
     }
 
@@ -57,7 +51,7 @@ class LottoTest {
     fun `당첨 번호가 숫자가 아니면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
             System.setIn("j".byteInputStream())
-            getInputWinNumbers()
+            Input.getWinNumbers()
         }
     }
 
@@ -65,7 +59,7 @@ class LottoTest {
     fun `보너스 번호가 1개가 아니면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
             System.setIn("1,2".byteInputStream())
-            getInputBonusNumber()
+            Input.getBonusNumber()
         }
     }
 
@@ -73,14 +67,14 @@ class LottoTest {
     fun `보너스 번호가 숫자가 아니면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
             System.setIn("j".byteInputStream())
-            getInputBonusNumber()
+            Input.getBonusNumber()
         }
     }
 
     @Test
     fun `당첨 내역 테스트`() {
-        val winRanks = calculateWinRanks(
-            listOf(
+        val lottos = Lottos(
+            mutableListOf(
                 Lotto(listOf(8, 21, 23, 41, 42, 43)),
                 Lotto(listOf(3, 5, 11, 16, 32, 38)),
                 Lotto(listOf(7, 11, 16, 35, 36, 44)),
@@ -89,17 +83,19 @@ class LottoTest {
                 Lotto(listOf(7, 11, 30, 40, 42, 43)),
                 Lotto(listOf(2, 13, 22, 32, 38, 45)),
                 Lotto(listOf(1, 3, 5, 14, 22, 45))
-            ), listOf(1, 2, 3, 4, 5, 6), 7
+            )
         )
+        val winRanks = lottos.calculateWinRanks(listOf(1, 2, 3, 4, 5, 6), 7)
         assertThat(winRanks).isEqualTo(mapOf(LottoRank.FIFTH to 1, LottoRank.FAIL to 7))
     }
 
     @Test
     fun `수익률 테스트`() {
-        val yieldPercentage = calculateYield(
+        val lottos = Lottos()
+        val yieldPercentage = lottos.calculateYield(
             mapOf(
                 LottoRank.FIFTH to 1
-            ), 8000
+            ), 8
         )
         assertThat(yieldPercentage).isEqualTo(62.5f)
     }
