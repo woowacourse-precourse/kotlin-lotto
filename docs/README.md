@@ -16,41 +16,42 @@
 ```
 ---
 ## 기능 목록
-### `LottoPrint` _클래스_
+### `LottoInputOutput` _클래스_
   - [x] `lottoPurchaseAmount` : 구입 금액 입력
-  - [ ] `lottoCount` : 구매한 갯수
-  - [ ] `lottoLists` : 로또 목록 출력
-  - [ ] `lottoAnswer` : 당첨 번호 입력
-  - [ ] `lottoBonus` : 보너스 번호
+  - [x] `lottoCount` : 구매한 갯수
+  - [x] `lottoLists` : 로또 목록 출력
+  - [x] `lottoAnswer` : 당첨 번호 입력
+  - [x] `lottoBonus` : 보너스 번호 입력
   - [ ] `lottoStats` : 당첨 통계
   - [ ] `lottoRateOfReturn` : 수익률
 
 ### `LottoLogic` _클래스_
   - [x] `lottoGenerator` : 로또 생성기
   - [x] `lottoPurchaseAmount` : 로또 구입 금액
-  - [ ] `lottoCreateLists` : 구입한 수만큼 로또 생성
-  - [ ] `lottoMatchList` : 로또 당첨 여부  
+  - [x] `lottoCreateLists` : 구입한 수만큼 로또 생성
   - [ ] `lottoRateOfReturn` : 수익률 계산
 
 ### `LottoStats` _클래스(Enum)_
-  - [ ] `lottoStats` : 당첨 통계 및 수익률
+  - [x] `lottoMatchLists` : 당첨 통계
+  - [x] `lottoMatchList` : 로또 당첨 여부
+  - [x] `findRank` : 순위 찾기
 
 ### `Lotto` _클래스_
-  - [ ] `lottoAnswer` : 로또 당첨 번호
-  - [ ] `lottoBouns` : 로또 보너스 번호
+  - [x] `lottoAnswer` : 로또 당첨 번호
+  - [x] `lottoBouns` : 로또 보너스 번호
 ---
 ## 프로그래밍 요구 사항
-  - [ ] `ApplicatinTest`의 모든 테스트가 성공하는가?
-  - [ ] indent depth가 3이 넘지 않는가?
+  - [x] `ApplicatinTest`의 모든 테스트가 성공하는가?
+  - [x] indent depth가 3이 넘지 않는가?
   - [ ] 함수가 한 가지 일만 하는가?
-  - [ ] 기능 목록이 정상 동작하는가?
+  - [x] 기능 목록이 정상 동작하는가?
 ### 추가된 요구 사항
   - [ ] 함수의 길이가 15라인을 넘지 않는가?
-  - [ ] else를 지양하고 있는가?
-  - [ ] Enum클래스를 적용했는가?
-  - [ ] 도메인 로직에 단위 테스트를 구현했는가?
+  - [x] else를 지양하고 있는가?
+  - [x] Enum클래스를 적용했는가?
+  - [x] 도메인 로직에 단위 테스트를 구현했는가?
 ### 라이브러리
-  - [ ] `Randoms` API를 사용하는가?
-  - [ ] `Console` API를 사용하는가?
+  - [x] `Randoms` API를 사용하는가?
+  - [x] `Console` API를 사용하는가?
 ### Lotto 클래스
-  - [ ] 주어진 `Lotto` 클래스의 요구사항을 지켰는가?
+  - [x] 주어진 `Lotto` 클래스의 요구사항을 지켰는가?
