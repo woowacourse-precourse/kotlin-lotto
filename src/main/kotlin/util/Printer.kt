@@ -3,7 +3,7 @@ package util
 class Printer {
     fun printPurchaseMessage() = println("구입금액을 입력해 주세요.")
 
-    fun printCountLotto(count: Int) = println("\n${count}개를 구매했습니다.")
+    fun printCountLotto(count: Int) = println("${count}개를 구매했습니다.")
 
     fun printLottoIssue(lotto: List<Int>, lottoCount: Int) {
         for (cnt in 1..lottoCount) {
@@ -11,13 +11,13 @@ class Printer {
         }
     }
 
-    fun printInputLottoMessage() = println("\n당첨 번호를 입력해 주세요.")
+    fun printInputLottoMessage() = println("당첨 번호를 입력해 주세요.")
 
-    fun printInputBonusMessage() = println("\n보너스 번호를 입력해 주세요.")
+    fun printInputBonusMessage() = println("보너스 번호를 입력해 주세요.")
 
-    fun printLottoResultMessage() = println("\n당첨 통계\n---")
+    fun printLottoResultMessage() = println("당첨 통계\n---")
 
-    fun printReturnRate(rate: Float) = println("총 수익률은 " + "%.1f".format(rate * 100) + "%입니다.")
+    fun printReturnRate(rate: Float) = println("총 수익률은 " + "%.1f".format(rate) + "%입니다.")
 
     fun printLottoResultTable(winnings: List<Int>) {
         val winningsTable = listOf(FIVTH, FOURTH, THIRD, SECOND, FIRST)
