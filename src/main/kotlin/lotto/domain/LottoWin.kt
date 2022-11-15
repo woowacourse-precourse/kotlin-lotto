@@ -5,7 +5,7 @@ import java.text.DecimalFormat
 
 class LottoWin {
 
-    private var wonLotto = mutableListOf<Int>(0,0,0,0,0)
+    private var wonLotto = mutableListOf<Int>(0, 0, 0, 0, 0)
 
     fun calPrize(purchasedLotto: List<Lotto>, lottoWinningNumbers: List<Int>, lottoBonus: Int): Int {
         var prize = 0
@@ -41,7 +41,7 @@ class LottoWin {
     fun winningLotto(purchasedLotto: List<Int>, lottoWinningNumbers: List<Int>, lottoBonus: Int): LottoPrize {
         var winCount = 0
         var isBonus: Boolean = false
-        for(i in purchasedLotto.sorted()) {
+        for (i in purchasedLotto.sorted()) {
             when {
                 lottoWinningNumbers.contains(i) -> winCount++
                 i == lottoBonus -> isBonus = true
@@ -68,16 +68,16 @@ class LottoWin {
         print(ConstMessage.WIN_STATS)
         var i = 0
         LottoPrize.values().forEachIndexed { index, winStats ->
-            if(index < 5) {
+            if (index < 5) {
                 println("${winStats.matchCount}개 일치${winStats.bonusBall} (${dec.format(winStats.prize)}원) - ${wonLotto[i++]}개")
-            } else if(index > 5) {
+            } else if (index > 5) {
                 return
             }
         }
     }
 
     fun printProfitRate(lottoPurchasePrice: Int, winPrize: Int) {//수익률 계산
-        var profitRate : Double = (winPrize.toDouble() * 100)/lottoPurchasePrice.toDouble()
+        var profitRate: Double = (winPrize.toDouble() * 100) / lottoPurchasePrice.toDouble()
         val saveRoundDigit = roundDigit(profitRate, 1)
         println("총 수익률은 $saveRoundDigit%입니다.")
     }

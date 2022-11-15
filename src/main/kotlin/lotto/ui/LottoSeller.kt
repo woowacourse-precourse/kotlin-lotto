@@ -6,7 +6,7 @@ import lotto.domain.Lotto
 
 class LottoSeller {
 
-    fun chkNum(str: String) : Boolean {
+    fun chkNum(str: String): Boolean {
         var temp: Char
         var result = false
         for (i in 0 until str.length) {
@@ -29,9 +29,9 @@ class LottoSeller {
         return lottoCnt
     }
 
-    fun lottoNumbers(lottoCount : Int) : List<Lotto> {//로또 수량 및 번호 발행
+    fun lottoNumbers(lottoCount: Int): List<Lotto> {//로또 수량 및 번호 발행
         var saveLottoNumbers = ArrayList<Lotto>()
-        for(i in 0 until lottoCount) {
+        for (i in 0 until lottoCount) {
             val randomLottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
             println(randomLottoNumbers.sorted())
             saveLottoNumbers.add(Lotto(randomLottoNumbers))
@@ -43,7 +43,7 @@ class LottoSeller {
         println(ConstMessage.ENTER_WIN_NUMBER)
         val inputPrizeNumber = Console.readLine().split(",")
         inputPrizeNumberException(inputPrizeNumber)
-        for(i in 0 until inputPrizeNumber.size){
+        for (i in 0 until inputPrizeNumber.size) {
             lottoWinningNumbers.add(inputPrizeNumber[i])
         }
         return inputPrizeNumber.map { it.toInt() }
@@ -51,8 +51,8 @@ class LottoSeller {
 
     fun inputPrizeNumberException(inputPrizeNumber: List<String>) {
         val distinctPrizeNumber = inputPrizeNumber.distinct()
-        if(distinctPrizeNumber.size != inputPrizeNumber.size) throw IllegalArgumentException(ConstMessage.ENTER_DUPLICATION_NUMBER_EXCEPTION)
-        if(inputPrizeNumber.size > 6) throw IllegalArgumentException(ConstMessage.ENTER_MORE_NUMBER_EXCEPTION)
+        if (distinctPrizeNumber.size != inputPrizeNumber.size) throw IllegalArgumentException(ConstMessage.ENTER_DUPLICATION_NUMBER_EXCEPTION)
+        if (inputPrizeNumber.size > 6) throw IllegalArgumentException(ConstMessage.ENTER_MORE_NUMBER_EXCEPTION)
     }
 
     fun inputBonusNumber(): Int {//보너스 번호 입력

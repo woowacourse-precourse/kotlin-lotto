@@ -21,7 +21,7 @@ class LottoWinTest {
     fun `로또 수익률 계산 테스트`() {
         System.setOut(PrintStream(outputStreamCaptor))
 
-        LottoWin().printProfitRate(8000,5000)
+        LottoWin().printProfitRate(8000, 5000)
 
         val output = outputStreamCaptor.toString()
         org.assertj.core.api.Assertions.assertThat(output).contains("62.5")
@@ -63,32 +63,32 @@ class LottoWinTest {
     }
 
     @Test
-    fun `로또 6개 일치`(){
-        val lotto = LottoWin().lottoRank(6,false)
+    fun `로또 6개 일치`() {
+        val lotto = LottoWin().lottoRank(6, false)
         Assertions.assertEquals(lotto, LottoPrize.FIRST)
     }
 
     @Test
-    fun `로또 5개 일치, 보너스 볼 일치`(){
-        val lotto = LottoWin().lottoRank(5,true)
+    fun `로또 5개 일치, 보너스 볼 일치`() {
+        val lotto = LottoWin().lottoRank(5, true)
         Assertions.assertEquals(lotto, LottoPrize.SECOND)
     }
 
     @Test
-    fun `로또 5개 일치`(){
-        val lotto = LottoWin().lottoRank(5,false)
+    fun `로또 5개 일치`() {
+        val lotto = LottoWin().lottoRank(5, false)
         Assertions.assertEquals(lotto, LottoPrize.THIRD)
     }
 
     @Test
-    fun `로또 4개 일치`(){
-        val lotto = LottoWin().lottoRank(4,false)
+    fun `로또 4개 일치`() {
+        val lotto = LottoWin().lottoRank(4, false)
         Assertions.assertEquals(lotto, LottoPrize.FOURTH)
     }
 
     @Test
-    fun `로또 3개 일치`(){
-        val lotto = LottoWin().lottoRank(3,false)
+    fun `로또 3개 일치`() {
+        val lotto = LottoWin().lottoRank(3, false)
         Assertions.assertEquals(lotto, LottoPrize.FIFTH)
     }
 
