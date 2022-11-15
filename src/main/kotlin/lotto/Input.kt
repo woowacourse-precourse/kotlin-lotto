@@ -14,4 +14,19 @@ class Input {
             "ERROR"
         }
     }
+
+    fun inputWinningNumber(): List<String> {
+        println("당첨 번호를 입력해주세요.")
+        val lotteryNumbers = Console.readLine()
+            .replace(" ", "")
+            .split(",")
+
+        return lotteryNumbers
+    }
+
+    fun inputBonusNumber(): String {
+        println("보너스 번호를 입력해주세요.")
+        val bonusNumber = Console.readLine()
+        return bonusNumber
+    }
 }
