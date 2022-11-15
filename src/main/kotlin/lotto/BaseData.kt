@@ -9,7 +9,7 @@ class BaseData {
     var LottoNum = mutableListOf<Int>()
     var bonusNum = 0
 
-    fun BaseData(){
+    fun baseData(){
         inputMoney()
         validInputMoney()
         buyLotto()
@@ -38,8 +38,8 @@ class BaseData {
         val purchasingVolume = countpurchasingVolume(inputMoney)
         for(i in 1..purchasingVolume){
             purchasedLotto.add(Randoms.pickUniqueNumbersInRange(1, 45, 6))
+            println(purchasedLotto[i-1])
         }
-        purchasedLotto
     }
 
     fun inputLottoNum() {
@@ -57,8 +57,8 @@ class BaseData {
         bonusNum = Console.readLine().toInt()
     }
     fun validInputBonus(){
-        if(bonusNum >= 1
-            && bonusNum <= 45
+        if(bonusNum < 1
+            && bonusNum > 45
         ){
             throw IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.")
         }
