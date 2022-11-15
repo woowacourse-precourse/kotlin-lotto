@@ -10,8 +10,25 @@ class LottoOrganizer(private val producedLottoNumbers: MutableList<List<Int>>) {
     }
 
 
-    fun inputBonusLottoNumber() {
+    fun inputBonusLottoNumber(): Int {
         val userInput = Console.readLine()
+        if (bonusLottoNumberInputIsValid(userInput)) {
+            throw IllegalArgumentException()
+        }
+
+        return userInput.toInt()
+    }
+
+    private fun bonusLottoNumberInputIsValid(userInput: String?): Boolean {
+        if (userInput.isNullOrBlank()) {
+            return false
+        }
+
+        if (userInput.toInt() in 1..45) {
+            return false
+        }
+
+        return true
     }
 
 
