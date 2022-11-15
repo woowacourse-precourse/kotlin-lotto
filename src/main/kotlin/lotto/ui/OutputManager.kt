@@ -9,7 +9,7 @@ class OutputManager {
         StatisticsString.printStatics(winningResult, earningsRate)
     }
 
-    fun printPurchaseNumber(number: Int) {목록
+    fun printPurchaseNumber(number: Int) {
         OutputString.PURCHASE_NUMBER.print(number)
     }
 
