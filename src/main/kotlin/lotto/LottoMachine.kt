@@ -26,7 +26,7 @@ class LottoMachine {
 
         val winningLotto = convertNumbersToLotto(View.getWinningNumber())
 
-        val bonusNumber = View.getBonusNumber().toInt()
+        val bonusNumber = getBonusNumber(View.getBonusNumber())
         checkBonusNumberException(winningLotto, bonusNumber)
 
         calculateResult(lottos, winningLotto, bonusNumber)
@@ -69,6 +69,15 @@ class LottoMachine {
 
     fun convertNumbersToLotto(numbers: String): Lotto {
         return Lotto(numbers.split(",").map { it.toInt() }.toList().sorted())
+    }
+
+    fun getBonusNumber(number: String): Int {
+        try {
+            return number.toInt()
+        } catch (e: IllegalArgumentException) {
+            println(NUMBER_INPUT_ERROR)
+            throw NoSuchElementException(NUMBER_INPUT_ERROR)
+        }
     }
 
     fun checkBonusNumberException(winningLotto: Lotto, number: Int) {
