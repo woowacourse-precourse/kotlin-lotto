@@ -1,16 +1,10 @@
-package lotto
+package enterprise
 
-import lotto.util.readWinBonusNumber
-import lotto.util.readWinLottoNumbers
+import util.readWinBonusNumber
+import util.readWinLottoNumbers
+import winlotto.WinLotto
+import winlotto.WinLottoFactory
 
-/*
-* 당첨 번호 입력 받기
-* 보너스 번호 입력 받기
-* 로또 비교
-* 수익률 계산
-* 결과 출력
-* winLotto 가져오기
-* */
 class LottoEnterprise(
     private val winLottoFactory: WinLottoFactory,
 ) {

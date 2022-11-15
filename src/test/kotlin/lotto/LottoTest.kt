@@ -1,8 +1,8 @@
 package lotto
 
-import lotto.constant.LOTTO_MAX_GRADE
-import lotto.constant.LOTTO_MIN_GRADE
-import lotto.constant.LOTTO_NUM_RANGE_END
+import constant.LOTTO_MAX_GRADE
+import constant.LOTTO_MIN_GRADE
+import constant.LOTTO_NUM_RANGE_END
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows

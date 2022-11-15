@@ -1,9 +1,12 @@
 package lotto
 
-import lotto.constant.LOTTO_MAX_GRADE
-import lotto.constant.LOTTO_MIN_GRADE
-import lotto.util.printLottoEarningsRate
-import lotto.util.printLottoGradeCountToMessage
+import constant.LOTTO_MAX_GRADE
+import constant.LOTTO_MIN_GRADE
+import enterprise.LottoEnterprise
+import market.LottoMarket
+import util.printLottoEarningsRate
+import util.printLottoGradeCountToMessage
+import winlotto.WinLotto
 
 data class SameLottoResult(
     val lottoSameCount: Int,

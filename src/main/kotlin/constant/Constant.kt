@@ -1,4 +1,4 @@
-package lotto.constant
+package constant
 
 const val LOTTO_NUM_COUNT = 6
 const val LOTTO_BONUS_NUM_COUNT = 1

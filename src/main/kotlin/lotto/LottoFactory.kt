@@ -1,9 +1,9 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange
-import lotto.constant.LOTTO_NUM_COUNT
-import lotto.constant.LOTTO_NUM_RANGE_END
-import lotto.constant.LOTTO_NUM_RANGE_START
+import constant.LOTTO_NUM_COUNT
+import constant.LOTTO_NUM_RANGE_END
+import constant.LOTTO_NUM_RANGE_START
 
 class LottoFactory {
 

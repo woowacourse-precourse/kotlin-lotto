@@ -1,7 +1,7 @@
 package lotto
 
-import lotto.constant.LOTTO_NUM_RANGE_END
-import lotto.constant.LOTTO_NUM_RANGE_START
+import constant.LOTTO_NUM_RANGE_END
+import constant.LOTTO_NUM_RANGE_START
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 

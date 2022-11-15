@@ -1,7 +1,9 @@
-package lotto
+package market
 
-import lotto.constant.LOTTO_PRICE
-import lotto.util.readPaidMoney
+import constant.LOTTO_PRICE
+import lotto.Lotto
+import lotto.LottoFactory
+import util.readPaidMoney
 
 class LottoMarket(
     private val lottoFactory: LottoFactory,
