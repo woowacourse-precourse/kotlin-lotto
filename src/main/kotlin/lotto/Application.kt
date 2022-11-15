@@ -2,6 +2,7 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.constants.*
+import sun.awt.geom.Curve.round
 import java.lang.IllegalArgumentException
 
 lateinit var user: User
@@ -49,8 +50,7 @@ fun printLottoNumbers() {
 }
 
 fun calcEarningRate(earningMoney:Long,purchaseMoney:Long):Double{
-    //return round((earningMoney.toDouble()/purchaseMoney) *1000)/10
-    return earningMoney.toDouble()/purchaseMoney.toDouble()*100
+    return round((earningMoney.toDouble()/purchaseMoney) *1000)/10
 }
 fun printResult() {
     println(WIN_RESULT_MSG)
