@@ -4,6 +4,7 @@ private const val INTRO_MSG = "구입금액을 입력해 주세요."
 private const val ASK_WINNING_NUM="당첨 번호를 입력해 주세요."
 private const val ASK_BONUS_NUM="보너스 번호를 입력해 주세요."
 private const val WINNING_STATS="당첨 통계"
+
 class LottoPrinter {
 
     fun printIntroMsg() = println(INTRO_MSG)
