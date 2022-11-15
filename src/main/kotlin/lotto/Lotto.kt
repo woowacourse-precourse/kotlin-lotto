@@ -12,6 +12,12 @@ class Lotto(private val numbers: List<Int>) {
             checkedList.add(i)
         }
     }
-
-    // TODO: 추가 기능 구현
+    /**
+     * @return return lottery numbers in string format.
+     */
+    fun lottoToString(): String {
+        val sortedNumber = numbers.sorted()
+        return "[${sortedNumber[0]}, ${sortedNumber[1]}, ${sortedNumber[2]}, " +
+                "${sortedNumber[3]}, ${sortedNumber[4]}, ${sortedNumber[5]}]"
+    }
 }
