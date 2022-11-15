@@ -30,11 +30,16 @@ class InputView {
             handleMixedCharCase(it)
             handleOutOfRangeCase(it.toInt())
             if (numbers.contains(it.toInt()))
-                throw IllegalArgumentException(DUPLICATE_ERROR_MSG)
+                throw IllegalArgumentException(WINNING_DUPLICATE_ERROR_MSG)
             numbers.add(it.toInt())
         }
         handleSizeMismatchCase(numbers.size)
+        handleEmptyCase(numbers) // 비어있는 원소가 있는지 검사하기
         return numbers
+    }
+
+    private fun handleEmptyCase(numbers: List<Int>) {
+
     }
 
     // 보너스 번호를 입력 받는다.

@@ -11,7 +11,7 @@ class Lotto(private val winningNumber: List<Int>) {
 
         // 중복된 수를 입력한 경우
         require(winningNumber.toSet().size == winningNumber.size) {
-            throw IllegalArgumentException(DUPLICATE_ERROR_MSG)
+            throw IllegalArgumentException(WINNING_DUPLICATE_ERROR_MSG)
         }
 
         // 1~45까지의 범위를 벗어난 경우
