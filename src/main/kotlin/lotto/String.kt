@@ -26,3 +26,5 @@ const val LOTTO_WIN_FIVE_BONUS = "5개 일치, 보너스 볼 일치 (30,000,000�
 const val LOTTO_WIN_SIX = "6개 일치 (2,000,000,000원) - "
 const val NUMBER_THING = "개"
 
+const val PRICE_RATE_MESSAGE = "총 수익률은 %.1f%%입니다."
+
