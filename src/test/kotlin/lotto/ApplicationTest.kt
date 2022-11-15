@@ -43,6 +43,7 @@ class ApplicationTest : NsTest() {
     }
 
 
+
     @Test
     fun `예외 테스트`() {
         assertSimpleTest {
@@ -64,7 +65,162 @@ class ApplicationTest : NsTest() {
             assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
-
+    @Test
+    fun `당첨 번호가 6개가 안되는 경우`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                runException("2000", "1,2,3,4,5")
+                assertThat(output()).contains(
+                    ERROR_MESSAGE
+                )
+            },
+            listOf(8, 21, 23, 41, 42, 43),
+            listOf(3, 5, 11, 16, 32, 38),
+        )
+    }
+    @Test
+    fun `당첨 번호가 6개를 초과 하는 경우`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                runException("2000", "1,2,3,4,5,6,7")
+                assertThat(output()).contains(
+                    ERROR_MESSAGE
+                )
+            },
+            listOf(8, 21, 23, 41, 42, 43),
+            listOf(3, 5, 11, 16, 32, 38),
+        )
+    }
+    @Test
+    fun `당첨 번호에 잘못된 값이 있는 경우`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                runException("2000", "1,2,3,4,5,0")
+                assertThat(output()).contains(
+                    ERROR_MESSAGE
+                )
+            },
+            listOf(8, 21, 23, 41, 42, 43),
+            listOf(3, 5, 11, 16, 32, 38),
+        )
+    }
+    @Test
+    fun `당첨 번호에 잘못된 값이 있는 경우2 `() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                runException("1000", "1,2,3,4,5,46")
+                assertThat(output()).contains(
+                    ERROR_MESSAGE
+                )
+            },
+            listOf(8, 21, 23, 41, 42, 43),
+            listOf(3, 5, 11, 16, 32, 38),
+        )
+    }
+    @Test
+    fun `당첨 번호 번호에 잘못된 값이 있는 경우 3`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                runException("2000", "1,2,3,4,5,j")
+                assertThat(output()).contains(
+                    ERROR_MESSAGE
+                )
+            },
+            listOf(8, 21, 23, 41, 42, 43),
+            listOf(3, 5, 11, 16, 32, 38),
+        )
+    }
+    @Test
+    fun `당첨 번호 번호에 잘못된 값이 있는 경우 4`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                runException("2000", "1,2,3,4,5,5")
+                assertThat(output()).contains(
+                    ERROR_MESSAGE
+                )
+            },
+            listOf(8, 21, 23, 41, 42, 43),
+            listOf(3, 5, 11, 16, 32, 38),
+        )
+    }
+    @Test
+    fun `당첨 번호 번호에 잘못된 값이 있는 경우 5`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                runException("2000", "1,2,6,4,5,6")
+                assertThat(output()).contains(
+                    ERROR_MESSAGE
+                )
+            },
+            listOf(8, 21, 23, 41, 42, 43),
+            listOf(3, 5, 11, 16, 32, 38),
+        )
+    }
+    @Test
+    fun `보너스 번호 번호에 잘못된 값이 있는 경우 `() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                runException("2000", "1,2,6,4,5,6","j")
+                assertThat(output()).contains(
+                    ERROR_MESSAGE
+                )
+            },
+            listOf(8, 21, 23, 41, 42, 43),
+            listOf(3, 5, 11, 16, 32, 38),
+        )
+    }
+    @Test
+    fun `보너스 번호 번호에 잘못된 값이 있는 경우 2`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                runException("2000", "1,2,6,4,5,6","1")
+                assertThat(output()).contains(
+                    ERROR_MESSAGE
+                )
+            },
+            listOf(8, 21, 23, 41, 42, 43),
+            listOf(3, 5, 11, 16, 32, 38),
+        )
+    }
+    @Test
+    fun `보너스 번호 번호에 잘못된 값이 있는 경우 3`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                runException("2000", "1,2,6,4,5,6","0")
+                assertThat(output()).contains(
+                    ERROR_MESSAGE
+                )
+            },
+            listOf(8, 21, 23, 41, 42, 43),
+            listOf(3, 5, 11, 16, 32, 38),
+        )
+    }
+    @Test
+    fun `보너스 번호 번호에 잘못된 값이 있는 경우 4`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                runException("2000", "1,2,6,4,5,6","46")
+                assertThat(output()).contains(
+                    ERROR_MESSAGE
+                )
+            },
+            listOf(8, 21, 23, 41, 42, 43),
+            listOf(3, 5, 11, 16, 32, 38),
+        )
+    }
+    @Test
+    fun `보너스 번호 번호에 잘못된 값이 있는 경우 5`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                runException("2000", "1,2,6,4,5,6","7,8")
+                assertThat(output()).contains(
+                    ERROR_MESSAGE
+                )
+            },
+            listOf(8, 21, 23, 41, 42, 43),
+            listOf(3, 5, 11, 16, 32, 38),
+        )
+    }
 
     override fun runMain() {
         main()

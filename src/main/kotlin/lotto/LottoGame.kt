@@ -1,8 +1,11 @@
 package lotto
 import camp.nextstep.edu.missionutils.Console
-import org.mockito.internal.matchers.Null
+import java.lang.IllegalArgumentException
+import java.lang.NumberFormatException
 import kotlin.math.round
 import java.text.DecimalFormat
+import javax.print.attribute.standard.NumberUp
+
 class LottoGame private constructor(){
     private val RANGE_MIN = 1
     private val RANGE_MAX =45
@@ -54,14 +57,12 @@ class LottoGame private constructor(){
         return count
     }
     private fun checkNumberRange(number: Int){
-        if(number<RANGE_MIN || number>RANGE_MAX){
-            throw IllegalArgumentException("[ERROR] 범위를 초과한 입력입니다.")
-        }
+        try{if(number<RANGE_MIN || number>RANGE_MAX)return doErrorException(ErrorMessage.OUTOFRANGE.message) }
+        catch (e:NumberFormatException){}
     }
     private fun checkOverlapping(number: Int,numbers: List<Int>){
-        if(number in numbers){
-            throw IllegalArgumentException("[ERROR]잘못된 입력입니다.")
-        }
+        try{if(number in numbers) return doErrorException(ErrorMessage.OVERLAPPING.message) }
+        catch (e:NumberFormatException){}
     }
     private fun compareLottosWithWinNumber(){
         var count: Int
@@ -79,13 +80,16 @@ class LottoGame private constructor(){
         }
         return RankAndPrize.OUTOFRANGE
     }
+    private fun doErrorException(message: String){
+        println(message)
+    }
     private fun inputToInt(input: String): Int{
-        var temp: Int
+        var temp: Int=0
         try{
             temp = input.toInt()
         }
-        catch(e:java.lang.IllegalArgumentException){
-            throw IllegalArgumentException("[ERROR]잘못된 입력입니다.")
+        catch(e:NumberFormatException){
+            println(ErrorMessage.WRONGINPUT.message)
         }
         return temp
     }
@@ -105,9 +109,10 @@ class LottoGame private constructor(){
         val _input: String = Console.readLine()
         val input: Int = inputToInt(_input)
         val times: Int = input/MONEY_UNIT
-        if(input%MONEY_UNIT!=0){
-            throw IllegalArgumentException("[ERROR]1000원 단위로 입력해 주세요.")
+        try {
+            if(input%MONEY_UNIT!=0) return doErrorException(ErrorMessage.WRONGINPUT.message)
         }
+        catch (e: NumberFormatException){}
         for(i in 1..times){
             this.addLotto()
         }
@@ -130,7 +135,8 @@ class LottoGame private constructor(){
             checkOverlapping(_input,this.winNumbers)
             this.winNumbers.add(_input)
         }
-        if(this.winNumbers.size!=6) throw IllegalArgumentException("[ERROR]잘못된 입력입니다.")
+        try{if(this.winNumbers.size!=6) return doErrorException(ErrorMessage.WRONGINPUT.message)}
+        catch (e:NumberFormatException){}
         winNumbers.sorted()
     }
     private fun showMyLotto(){

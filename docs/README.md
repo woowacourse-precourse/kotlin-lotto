@@ -51,3 +51,8 @@
   - Lotto 객체에 5개의 숫자가 생성되었을때
   - Lotto 객체에 숫자가 0이 포함되어 있을때
   - Lotto 객체에 숫자가 45를 초과한 값을 가질때
+  - winNumber가 잘 못 입력 됬을 때
+  - bonus 넘버가 잘 못 입력 됫을 때
+  - winNumber나 bonus number가 범위를 초과 했을 때
+  - 경계값 분석 테스트 진행.
+  
