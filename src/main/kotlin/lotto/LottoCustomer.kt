@@ -25,6 +25,6 @@ class LottoCustomer {
 
 
     companion object {
-        const val CUSTOMER_BUY_PRICE_ERROR_MESSAGE = "[ERROR] 로또 구입 금액은 1,000원 단위의 정수여야 합니다."
+        const val CUSTOMER_BUY_PRICE_ERROR_MESSAGE = "[ERROR] 로또 구입 금액은 1000으로 나누어 떨어지는 정수값이어야 합니다."
     }
 }
