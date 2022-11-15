@@ -80,7 +80,8 @@ class LottoNumber {
         println("\n보너스 번호를 입력해 주세요.")
 
         val bonusNumber = Console.readLine().toInt()
-        require(!lottoNumber.contains(bonusNumber)) { "[ERROR] 같은 수가 포함되어 있다." }
+        require(!lottoNumber.contains(bonusNumber)) { "[ERROR] 로또 당첨 번호와 같은 수가 포함되어 있습니다." }
+        require(lottoNumber.all { it.toInt() in 1..45 }) { "[ERROR] 1 ~ 45까지의 숫자를 입력하세요." }
 
         println(bonusNumber)
         return bonusNumber
