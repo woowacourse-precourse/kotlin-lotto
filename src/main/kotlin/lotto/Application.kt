@@ -12,8 +12,11 @@ fun main() {
     val lottoOrganizer = LottoOrganizer(producedLottoNumbers)
     lottoOrganizer.printInputLottoWinNumber()
     lottoOrganizer.inputWinLottoNumber()
+    println()
+
     lottoOrganizer.printInputLottoBonusNumber()
     lottoOrganizer.inputBonusLottoNumber()
+    println()
 
     lottoOrganizer.produceLottoWinHistory()
 
