@@ -12,5 +12,7 @@ fun main() {
     println()
 
     val lotto_numbers=WinningNumber().InputLottoNumber()
+    val lotto_numbers_list=WinningNumber().MakeListLottoNumber(lotto_numbers)
+    println()
 }
 
