@@ -5,35 +5,34 @@ import camp.nextstep.edu.missionutils.Console
 class ui {
     fun moneyInput() : Int{
         var money  = 0
-        var control = 0
 
         try {
             println("구입금액을 입력해 주세요.")
             money = Console.readLine().toInt()
             MoneyTypeException(money.toString())
+            moneyInputNotDivideException(money)
         } catch (e : IllegalArgumentException){
-            println("[ERROR] 올바른 입력이 아닙니다.")
-            control = 1
+            println("[ERROR] 금액은 1000원으로 나누어 떨어지는 숫자여야 합니다.")
+            return 1
         }
-        if (control == 1){ return 1 }
-        if (control == 0){ moneyInputNotDivideException(money) }
         return money
     }
 
     fun correctNumber() : List<Int>{
         println("당첨 번호를 입력해 주세요.")
-
-        var correctNumberNew = mutableListOf<Int>()
         var correctNumberOld = Console.readLine().split(",")
         correctNumberTypeException(correctNumberOld)
-
-        for (i in 0..correctNumberOld.size-1){
-            correctNumberNew.add(correctNumberOld[i].toInt())
-        }
-        correctNumberNew.toList()
+        var correctNumberNew = correctNewNumberCreate(correctNumberOld)
         correctNumberRangeOverException(correctNumberNew)
 
         return correctNumberNew
+    }
+    fun correctNewNumberCreate(correctNumberOld : List<String>) : List<Int>{
+        var correctNumberNew = mutableListOf<Int>()
+        for (i in correctNumberOld){
+            correctNumberNew.add(i.toInt())
+        }
+        return correctNumberNew.toList()
     }
 
     fun bonusNumber() : Int {
@@ -69,11 +68,9 @@ enum class lottoWinningDetails(val message : String) {
 
 fun moneyInputNotDivideException(money : Int) {
     if ((money % 1000) != 0){
-        println("[ERROR] 금액이 1000원으로 나누어 떨어지지 않습니다.")
         throw IllegalArgumentException("[ERROR] 금액이 1000원으로 나누어 떨어지지 않습니다.")
     }
     if (money < 1000){
-        println("[ERROR] 금액이 1000원 이상이여야 합니다.")
         throw IllegalArgumentException("[ERROR] 금액이 1000원을 넘지 않습니다.")
     }
 }
