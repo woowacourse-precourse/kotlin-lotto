@@ -1,8 +1,11 @@
 package lotto.domain
 
+import lotto.exception.validateLottoNumbers
+
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6)
+        require(validateLottoNumbers(numbers))
     }
 
     fun checkMyLotto(winNumbers: List<Int>, bonusNumber: Int, numbers: List<Int> = this.numbers): Win {
