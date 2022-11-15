@@ -1,13 +1,6 @@
 package lotto.service
 
 class CheckWinning() {
-    enum class ranking(val value : Int) {
-        THREE(5000),
-        FOUR(50000),
-        FIVE(1500000),
-        SIX(2000000000),
-        FIVEBONUS(30000000)
-    }
     fun winningCount(checkWinningNumber: Int): MutableList<Int> {
         val resultWinning = mutableListOf(0, 0, 0, 0, 0)
         when (checkWinningNumber) {
