@@ -1,6 +1,7 @@
 package lotto.domain.model
 
 import lotto.utils.Constants.ERROR_MESSAGE
+import lotto.utils.Constants.LOTTO_CORRECT_LENGTH_TEXT
 import lotto.utils.Constants.PRIZE_FIVE
 import lotto.utils.Constants.PRIZE_FIVE_BONUS
 import lotto.utils.Constants.PRIZE_FOUR
@@ -54,7 +55,7 @@ enum class Rank(private val correctCnt: Int) {
                 }
             }
 
-            throw IllegalArgumentException("$ERROR_MESSAGE 잘못된 일치 번호입니다.")
+            throw IllegalArgumentException(LOTTO_CORRECT_LENGTH_TEXT)
         }
     }
 }

@@ -27,4 +27,6 @@ object Constants {
     const val BONUS_NOT_DUPLICATE_TEXT = "$ERROR_MESSAGE 보너스 번호와 당첨 번호는 중첩될 수 없습니다."
     const val LOTTO_LENGTH_MUST_SIX_TEXT = "$ERROR_MESSAGE 로또의 길이는 6이여야 합니다."
     const val LOTTO_NOT_DUPLICATE_TEXT = "$ERROR_MESSAGE 로또 번호는 중복된 숫자가 없어야 합니다."
+    const val LOTTO_CORRECT_LENGTH_TEXT = "$ERROR_MESSAGE 일치번호의 갯수가 잘못됐습니다."
+
 }
