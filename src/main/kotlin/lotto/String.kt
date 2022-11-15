@@ -17,3 +17,12 @@ const val ERROR_PRIZE_REPEAT_MESSAGE = "[ERROR] 당첨 번호에 중복이 있�
 const val ERROR_BONUS_NUMBER_MESSAGE = "[ERROR] 보너스 번호는 1~45입니다."
 const val ERROR_BONUS_REPEAT_MESSAGE = "[ERROR] 보너스 번호와 당첨 번호에 중복이 있으면 안됩니다."
 
+const val RESULT_MESSAGE = "당첨 통계"
+const val DIVIDE_LINE = "---"
+const val LOTTO_WIN_THREE = "3개 일치 (5,000원) - "
+const val LOTTO_WIN_FOUR = "4개 일치 (50,000원) - "
+const val LOTTO_WIN_FIVE = "5개 일치 (1,500,000원) - "
+const val LOTTO_WIN_FIVE_BONUS = "5개 일치, 보너스 볼 일치 (30,000,000원) - "
+const val LOTTO_WIN_SIX = "6개 일치 (2,000,000,000원) - "
+const val NUMBER_THING = "개"
+
