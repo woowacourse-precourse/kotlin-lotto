@@ -56,8 +56,15 @@ fun lottoWinCheck(lucky:MutableList<Int>, bonus:Int){
 }
 
 fun inputWinNumber(){
+
     println("당첨 번호를 입력해 주세요.")
     lucky = Console.readLine()!!.split(",").map { it.toInt() }.toMutableList()
+    for(i in 0 until 6) {
+        if(lucky[i] < 1 || lucky[i] >45){
+            println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+            throw(IllegalArgumentException())
+    }
+    }
     println()
 
     println("보너스 번호를 입력해 주세요.")
