@@ -11,7 +11,7 @@ class Cacher {
     val numberOfLotteries: Int get() = _numberOfLotteries
 
     fun returnCreatedLotteries(): List<Lotto> {
-        return ticketingMachine.createLottoNumbers(_numberOfLotteries)
+        return ticketingMachine.createLottoNumbers(numberOfLotteries)
     }
 
     fun receiveMoney(money: Int) {
