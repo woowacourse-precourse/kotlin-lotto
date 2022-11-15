@@ -10,30 +10,32 @@ fun main() {
 }
 
 fun launch() {
-    println("구입금액을 입력해 주세요.")
+    println(MainStrings.ENTER_PURCHASE_AMOUNT.message)
+
     val purchaseAmount = purchase(Console.readLine())
     val automaticLotteryTickets = AutomaticLotteryTickets(purchaseAmount)
+
     println()
 
-    println("${automaticLotteryTickets.countTickets()}개를 구매했습니다.")
+    println(MainAppendedStrings.GUIDE_PURCHASE_COUNT.append(automaticLotteryTickets.countTickets().toString()))
     for(ticket in automaticLotteryTickets) {
         println(ticket)
     }
+
     println()
 
-    println("당첨 번호를 입력해 주세요.")
+    println(MainStrings.ENTER_LOTTO_NUMBERS.message)
     val lottoNum = lottoNumbers(Console.readLine())
     val lotto = Lotto(lottoNum)
     println()
 
-    println("보너스 번호를 입력해 주세요.")
+    println(MainStrings.ENTER_BONUS_NUMBERS.message)
     val bonusNum = bonusNumber(Console.readLine())
     println()
 
     // 당첨 통계를 위한 LottoWinningStat 객체 생성
     val lottoWinningStat = LottoWinningStat(lotto, bonusNum, automaticLotteryTickets)
-    println("당첨 통계")
-    println("---")
+    println(MainStrings.GUIDE_WINNING_STATISTICS.message)
     println(lottoWinningStat.toString())
 }
 
