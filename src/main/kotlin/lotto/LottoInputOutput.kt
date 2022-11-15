@@ -2,9 +2,9 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 
-class LottoPrint {
+class LottoInputOutput {
+    private var lotto: Lotto? = null
     private val logic = LottoLogic()
-
     private var count = 0
     fun lottoPurchaseAmount(){
         println("구매금액을 입력해 주세요.")
@@ -18,7 +18,7 @@ class LottoPrint {
         count = logic.lottoPurchaseAmount(purchaseAmount)
         lottoCount(count)
         lottoLists(logic.lottoCreateLists(count))
-        lottoAnswer()
+        finalLotto()
     }
 
     private fun lottoCount(count : Int) {
@@ -31,7 +31,7 @@ class LottoPrint {
         }
     }
 
-    private fun lottoAnswer(){
+    private fun lottoAnswer() : List<Int>{
         println("당첨 번호를 입력해 주세요.")
         val inputAnswer = Console.readLine().split(",")
         val answerNumbers = mutableListOf<Int>()
@@ -42,6 +42,22 @@ class LottoPrint {
         } catch (e:Exception) {
             throw IllegalArgumentException("[ERROR] 숫자를 입력하셔야 합니다.")
         }
-        Lotto(answerNumbers).lottoAnswer(answerNumbers)
+        return answerNumbers
+    }
+
+    private fun lottoBonus() :Int{
+        println("보너스 번호를 입력해 주세요.")
+        val inputBonus = Console.readLine()
+        var bonusNumber = 0
+        try {
+            bonusNumber = inputBonus.toInt()
+        } catch (e:Exception) {
+            throw IllegalArgumentException("[ERROR] 숫자를 입력하셔야 합니다.")
+        }
+        return bonusNumber
+    }
+
+    private fun finalLotto(){
+        lotto = Lotto(lottoAnswer(), lottoBonus())
     }
 }
