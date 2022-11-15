@@ -49,4 +49,11 @@ class WinningCount{
             return
         }
     }
+    fun PrintWinningCount(winning_numbers_count:MutableMap<Int,Int>){
+        println("3개 일치 (5,000원) - ${winning_numbers_count[5000]}개")
+        println("4개 일치 (50,000원) - ${winning_numbers_count[50000]}개")
+        println("5개 일치 (1,500,000원) - ${winning_numbers_count[1500000]}개")
+        println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${winning_numbers_count[30000000]}개")
+        println("6개 일치 (2,000,000,000원) - ${winning_numbers_count[2000000000]}개")
+    }
 }
