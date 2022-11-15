@@ -16,7 +16,7 @@ class LottoList(private val lottoList: List<Lotto>) {
         lottoList.forEach {
             val (matches, bonusMatch)  = it.compare(winningLotto, bonusNumber)
             val winningRank = getWinningRank(matches, bonusMatch)?: WinningRank.NOTHING
-            result[winningRank] = result[winningRank]?.plus(1)?:0
+            result[winningRank] = result[winningRank]?.plus(1)?:1
         }
         return result
     }
