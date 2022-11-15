@@ -1,9 +1,12 @@
 package lotto.service
 
+import java.text.DecimalFormat
+
 interface Yield {
     fun plusMoney(buyLottoMoney: String, checkWinningScore: MutableList<Int>): Double
 }
 class YieldReal : Yield {
+    private val decimalFormat = DecimalFormat("#.#")
     enum class RankingReward(val value: Int) {
         THREE(5000),
         FOUR(50000),
@@ -20,8 +23,9 @@ class YieldReal : Yield {
         getMoney += checkWinningScore[2] * RankingReward.FIVE.value
         getMoney += checkWinningScore[3] * RankingReward.FIVEBONUS.value
         getMoney += checkWinningScore[4] * RankingReward.SIX.value
-        val yieldUser: Double = getMoney.toDouble() / buyLottoMoney.toDouble()
-        println("총 수익률은 " + yieldUser * 100 + "%입니다.")
+        val yieldUser: Double = getMoney.toDouble() / buyLottoMoney.toDouble() * 100
+        val yield = decimalFormat.format(yieldUser)
+        println("총 수익률은 $`yield`%입니다.")
         return yieldUser
     }
 }
