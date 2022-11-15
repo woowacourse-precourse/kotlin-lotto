@@ -8,6 +8,7 @@
   - [x] 총 당첨 금액을 계산한다. - Calculator#sumPrizes()
   - [x] 등수에 따른 당첨 금액을 반환한다. - Calculator#prizeMoney()
   - [x] 구매 금액과 총 당첨 금액을 비교하여 수익률을 계산한다. - Calculator#calculateYield()
+- [ ] 로또 게임을 시작한다. - LottoGames#startGame()
 
 ## 입춢력 목록
 - [x] 구입금액 입력 받기 - InputUi#inputMoney()
