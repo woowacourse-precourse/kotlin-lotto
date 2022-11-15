@@ -2,8 +2,11 @@ package lotto
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6)
+        require(numbers.size == 6) {
+            println("[ERROR]")
+       }
+        require(numbers.distinct().size==6){
+            println("[ERROR]")
+        }
     }
-
-    // TODO: 추가 기능 구현
 }
