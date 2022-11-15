@@ -93,7 +93,17 @@ class LottoOrganizer(private val producedLottoNumbers: MutableList<List<Int>>) {
             val matchCountPair = calculateLottoNumber(proLottoNumber)
             calculateTotalLotto(matchCountPair)
         }
+        printTotalLottoResult()
     }
+
+    private fun printTotalLottoResult(){
+        println(LottoProcessConstValue.LOTTO_RESULT_FIFTH + fifthClassCount)
+        println(LottoProcessConstValue.LOTTO_RESULT_FOURTH + fourthClassCount)
+        println(LottoProcessConstValue.LOTTO_RESULT_THIRD + thirdClassCount)
+        println(LottoProcessConstValue.LOTTO_RESULT_SECOND + secondClassCount)
+        println(LottoProcessConstValue.LOTTO_RESULT_FIRST + firstClassCount)
+    }
+
 
     private fun calculateLottoNumber(proLottoNumber: List<Int>): Pair<Int, Int> {
         var lottoNumberMatchCount = 0
