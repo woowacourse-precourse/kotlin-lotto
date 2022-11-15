@@ -1,6 +1,6 @@
 package lotto
 
-class CountLottoPrize {
+class LottoPrize {
 
     enum class WinPrize(val prize : String){
         FIRST("2,000,000,000"),
@@ -51,7 +51,6 @@ class CountLottoPrize {
         }
         return winCountWithoutBonus
     }
-
 
 
     //7. 수익률 계산하는 함수 생성
