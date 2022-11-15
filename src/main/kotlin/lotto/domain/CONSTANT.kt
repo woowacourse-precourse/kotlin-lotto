@@ -6,7 +6,9 @@ class CONSTANT() {
         LOTTOCOUNTOUPUT("개를 구매했습니다."),
         WINNINGINPUT("당첨 번호를 입력해 주세요."),
         BONUSINPUT("보너스 번호를 입력해 주세요."),
-        STATISTICSOUPUT("당첨 통계\n ---")
+        STATISTICSOUPUT("당첨 통계\n ---"),
+        RETURNOUTPUTFRONT("총 수익률은 "),
+        RETURNOUTPUTBACK("%입니다.")
     }
     enum class ERRORMESSAGE(val message:String) {
         PRICEINTERROR("[ERROR] 로또 구입 금액이 정수가 아닙니다."),
@@ -44,5 +46,12 @@ class CONSTANT() {
         FOURTH("4개 일치 (50,000원) - "),
         FIFTH("3개 일치 (5,000원) - "),
         UNIT("개")
+    }
+    enum class RATEOFRETURN(val params:Int){
+        FIRST(2000000000),
+        SECOND(30000000),
+        THIRD(1500000),
+        FOURTH(50000),
+        FIFTH(5000)
     }
 }

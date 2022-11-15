@@ -51,8 +51,8 @@ fun stage4(winning : Lotto): Int {
 }
 fun stage5(lottos:List<Lotto>,winning: Lotto,bonus:Int): MutableList<Int> {
     println(CONSTANT.STAGE.STATISTICSOUPUT.message)
-    val ranking = mutableListOf<Int>(0,0,0,0,0)
-    val rankingMessage = mutableListOf<String>(CONSTANT.RANKINGMESSAGE.FIFTH.message,CONSTANT.RANKINGMESSAGE.FOURTH.message,CONSTANT.RANKINGMESSAGE.THIRD.message,CONSTANT.RANKINGMESSAGE.SECOND.message,CONSTANT.RANKINGMESSAGE.FIRST.message)
+    val ranking = mutableListOf(0,0,0,0,0)
+    val rankingMessage = mutableListOf(CONSTANT.RANKINGMESSAGE.FIFTH.message,CONSTANT.RANKINGMESSAGE.FOURTH.message,CONSTANT.RANKINGMESSAGE.THIRD.message,CONSTANT.RANKINGMESSAGE.SECOND.message,CONSTANT.RANKINGMESSAGE.FIRST.message)
     for(lotto in lottos){
         when(CalculateRanking().calculateRanking(lotto,winning,bonus)){
             CONSTANT.RANKING.FIRST -> ranking[4] ++
@@ -68,6 +68,10 @@ fun stage5(lottos:List<Lotto>,winning: Lotto,bonus:Int): MutableList<Int> {
     }
     return ranking
 }
+fun stage6(ranking:List<Int>,price:Int){
+    val returnResult = CalculateRateOfReturn().calculateRateOfReturn(ranking,price)
+    print(CONSTANT.STAGE.RETURNOUTPUTFRONT.message+returnResult.toString()+CONSTANT.STAGE.RETURNOUTPUTBACK.message)
+}
 
 fun main() {
     val price = stage1()
@@ -78,6 +82,7 @@ fun main() {
     if (winning == -1) return
     val bonus = stage4(winning as Lotto)
     if (bonus == -1) return
-    val result = stage5(lottos as List<Lotto>, winning,bonus)
+    val rankingResult = stage5(lottos as List<Lotto>, winning,bonus)
+    stage6(rankingResult,price)
 
 }
