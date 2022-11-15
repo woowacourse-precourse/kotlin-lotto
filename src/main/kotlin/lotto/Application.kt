@@ -1,8 +1,6 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
-import camp.nextstep.edu.missionutils.Randoms
-import kotlin.math.round
 
 fun main() {
     println("구입금액을 입력해주세요")
@@ -17,7 +15,7 @@ fun main() {
 
     println("${lottoTicket}개를 구매했습니다.")
     var lotto = mutableListOf<List<Int>>()
-    playTicket(lottoTicket,lotto)
+    PrintLottery(lottoTicket,lotto)
     println("당첨 번호를 입력해 주세요.")
 
     //5등,4등,3등,2등,1등 티켓 종류 세기
@@ -38,7 +36,7 @@ fun main() {
     for (i in 0 until lotto.size)
         PlayLottery(lotto[i], userNum,ticketTypeCount,userBonus)
 
-    PrintLottery(ticketTypeCount,lottoPay.toInt())
+    ResultLottery(ticketTypeCount,lottoPay.toInt())
 
 }
 fun chkNum(str: String) {
@@ -52,12 +50,4 @@ fun chkNum(str: String) {
         }
     }
 
-}
-
-fun playTicket( lottoTicket : Int, lotto: MutableList<List<Int>>){
-    for(i in 0 until lottoTicket){
-        val numbers = Randoms.pickUniqueNumbersInRange(1,46,6).sorted()
-        println(numbers)
-        lotto.add(numbers)
-    }
 }
