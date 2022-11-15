@@ -10,6 +10,6 @@ class LottoGame {
     fun gameStart() {
         val userGameAmount = user.inputUserAmount()
         val purchase = LottoPurchase(userGameAmount).randomLottoPurchase()
-
+        val userGamePrizeNumber = user.inputUserPrizeNumber()
     }
 }

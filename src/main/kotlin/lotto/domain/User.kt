@@ -13,11 +13,20 @@ class User {
     }
 
     fun checkPrizeNumber(prizeNumber: String) {
-        val PrizeNumberGroup =changeCommaPrizeNumber(prizeNumber)
-        
+        val prizeNumberGroup = changeCommaPrizeNumber(prizeNumber)
+        if (!checkNumPrizeGroup(prizeNumberGroup))
+            throw IllegalArgumentException(ERROR_PRIZE_NUMBER_MESSAGE)
     }
 
-    fun changeCommaPrizeNumber(prizeNumber: String) = prizeNumber.split(",")
+    private fun checkNumPrizeGroup(prizeNumberGroup: List<String>): Boolean {
+        for (i in prizeNumberGroup) {
+            if (checkNumber(i))
+                return false
+        }
+        return true
+    }
+
+    private fun changeCommaPrizeNumber(prizeNumber: String) = prizeNumber.split(",")
 
 
     fun inputUserAmount(): Int {
@@ -31,7 +40,7 @@ class User {
 
 
     fun checkAmount(userAmount: String) {
-        if (!checkNumAmount(userAmount))
+        if (!checkNumber(userAmount))
             throw IllegalArgumentException(ERROR_AMOUNT_NUMBER_MESSAGE)
         if (checkBigNumAmount(userAmount) == null)
             throw IllegalArgumentException(ERROR_AMOUNT_BIG_NUMBER_MESSAGE)
@@ -39,7 +48,7 @@ class User {
             throw IllegalArgumentException(ERROR_AMOUNT_DIVIDE_MESSAGE)
     }
 
-    private fun checkNumAmount(userAmount: String): Boolean =
+    private fun checkNumber(userAmount: String): Boolean =
         userAmount.count() == userAmount.replace("\\D".toRegex(), "").count()
 
     private fun checkBigNumAmount(userAmount: String) = userAmount.toIntOrNull()
