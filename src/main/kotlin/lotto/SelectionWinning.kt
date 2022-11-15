@@ -18,9 +18,7 @@ class SelectionWinning {
     }
 
     fun getWinningWithoutBonus(
-        lottoCount: Int,
-        totalPublishNums: List<List<Int>>,
-        winNums: List<Int>,
+        lottoCount: Int, totalPublishNums: List<List<Int>>, winNums: List<Int>,
     ): List<String> {
         val winCountWithoutBonus = mutableListOf<String>()
         for (i in 0..lottoCount) {
@@ -35,10 +33,7 @@ class SelectionWinning {
     }
 
     fun getWinningListTotal(
-        lottoCount: Int,
-        totalPublishNums: List<List<Int>>,
-        winNums: List<Int>,
-        bonusNums: Int
+        lottoCount: Int, totalPublishNums: List<List<Int>>, winNums: List<Int>, bonusNums: Int
     ): List<String> {
         val totalWinCount = mutableListOf<String>()
         for (i in 0..lottoCount) {
