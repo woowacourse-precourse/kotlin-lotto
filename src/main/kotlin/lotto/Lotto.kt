@@ -6,6 +6,9 @@ class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == Constants.NUMBER_OF_LOTTO.constant)
         require(numbers.distinct() == numbers)
+        numbers.forEach { n ->
+            require(n in 1..45)
+        }
     }
 
     fun compareWinningNumber(winningNumber: List<Int>): Int {
