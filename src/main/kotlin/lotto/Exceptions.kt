@@ -1,7 +1,6 @@
 package lotto
 
 
-const val LOTTO_PRICE = 1000
 
 object Exceptions {
     fun checkMoney(money: String) {
@@ -16,22 +15,22 @@ object Exceptions {
     }
 
     fun checkLotto(numbers: List<Int>) {
-        checkRange(numbers, 45)
+        checkRange(numbers)
 
-        check(numbers)
+        checkSameDigit(numbers)
     }
 
     fun checkWiningNumber(winningNumber: List<String>) {
 
-        require(winningNumber.size == 6) { Message.SIZE_ERROR }
+        require(winningNumber.size == LOTTO_SIZE) { Message.SIZE_ERROR }
 
         winningNumber.forEach {
             checkDigit(it)
         }
 
-        checkRange(winningNumber.map { it.toInt() }, 45)
+        checkRange(winningNumber.map { it.toInt() })
 
-        check(winningNumber.map { it.toInt() })
+        checkSameDigit(winningNumber.map { it.toInt() })
     }
 
     fun checkBonus(winningNumber: List<String>, bonus: String) {
@@ -49,13 +48,13 @@ object Exceptions {
         }
     }
 
-    private fun checkRange(intList: List<Int>, range: Int) {
-        if (intList.any { it !in 1..range }) {
+    private fun checkRange(intList: List<Int>) {
+        if (intList.any { it !in MIN_VALUE..MAX_VALUE }) {
             throw IllegalArgumentException(Message.RANGE_ERROR)
         }
     }
 
-    private fun check(list: List<Int>) {
+    private fun checkSameDigit(list: List<Int>) {
         if (list.toSet().size != list.size) {
             throw IllegalArgumentException(Message.SAME_DIGIT_ERROR)
         }

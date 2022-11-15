@@ -4,7 +4,7 @@ const val NOTHING = -1
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6)
+        require(numbers.size == LOTTO_SIZE)
 
         Exceptions.checkLotto(numbers)
     }

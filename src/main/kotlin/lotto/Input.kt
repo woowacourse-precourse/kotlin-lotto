@@ -34,7 +34,7 @@ class Input {
             bonus
         } catch (e: IllegalArgumentException) {
             println("$e")
-            ""
+            "ERROR"
         }
     }
 

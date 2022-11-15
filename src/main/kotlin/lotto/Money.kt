@@ -1,6 +1,8 @@
 package lotto
 
+const val LOTTO_PRICE: Int = 1000
 class Money {
+
     var money: String = ""
 
     enum class WinMoney(private val prize: Int) {
@@ -23,7 +25,7 @@ class Money {
     }
 
     fun getNumberOfPurchases(): Int {
-        return money.toInt() / 1000
+        return money.toInt() / LOTTO_PRICE
     }
 
     fun getProfitRate(winningResult: List<Int>): Double {

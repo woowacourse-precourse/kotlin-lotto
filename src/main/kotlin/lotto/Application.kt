@@ -23,7 +23,7 @@ fun main() {
 
     println(Message.INPUT_BONUS_MASSAGE)
     val bonus = input.inputBonusNumber(winningNumber)
-    if (bonus == "") {
+    if (bonus == "ERROR") {
         return
     }
 
