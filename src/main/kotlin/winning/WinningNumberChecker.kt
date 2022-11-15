@@ -3,7 +3,7 @@ package winning
 import util.Constants
 import util.Error
 
-class WinningNumber(private val input: List<String>?) {
+class WinningNumberChecker(private val input: List<String>?) {
     init {
         checkSize()
         checkNumberFormat()
