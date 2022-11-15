@@ -1,12 +1,12 @@
-package lotto.util
+package util
 
 import camp.nextstep.edu.missionutils.Console.readLine
-import lotto.constant.LOTTO_MIN_GRADE
-import lotto.constant.LOTTO_NUM_COUNT
-import lotto.constant.LOTTO_NUM_RANGE_END
-import lotto.exception.DivisibleMoneyException
-import lotto.exception.DuplicateInputException
-import lotto.exception.InputCountException
+import enterprise.LOTTO_MIN_GRADE
+import enterprise.LOTTO_NUM_COUNT
+import enterprise.LOTTO_NUM_RANGE_END
+import exception.DivisibleMoneyException
+import exception.DuplicateInputException
+import exception.InputCountException
 
 fun readPaidMoney(): Int {
     return try {
