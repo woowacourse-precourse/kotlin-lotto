@@ -1,10 +1,9 @@
 package lotto
 
-class buyLottos {
+class buyLottos(userMainView: MainView) {
 
-    fun sequences(){
+    fun sequences(userMainView: MainView){
 
-        val userMainView = MainView()
 
         val boughtPrice = userMainView.getLottoPrice()
         val createLottos = boughtPrice?.let { CreateLottos.getLottoCount(it) }
