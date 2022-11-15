@@ -28,11 +28,11 @@ class Purchaser(private val purchasedLotto: List<Lotto>) {
         }
     }
 
-    private fun compareLottos(lotto: Lotto, winningNumbers: List<Int>, bonusNumber: Int): MatchedCount? {
-        val sameNumberCount = lotto.checkWinningNumbersMatching(winningNumbers)
-        if (sameNumberCount < MIN_SAME_COUNT) return null
+    private fun compareLotteries(lotto: Lotto, winningNumbers: List<Int>, bonusNumber: Int): MatchedCount? {
+        val sameCount = lotto.checkWinningNumbersMatching(winningNumbers)
+        if (sameCount < MIN_SAME_COUNT) return null
         val bonusMatch = lotto.checkBonusNumberMatching(bonusNumber)
-        return MatchedCount.matchRank(sameNumberCount, bonusMatch)
+        return MatchedCount.matchRank(sameCount, bonusMatch)
     }
 
     fun calculateEarningRate(money: Int): String {
