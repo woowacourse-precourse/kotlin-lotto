@@ -9,6 +9,10 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.toString()
     }
 
-    fun sort() : List<Int> = numbers.sorted()
+    fun sort(): List<Int> = numbers.sorted()
+
+    fun toSet(): Set<Int> = numbers.toSet()
+
+    fun contain(number: Int): Boolean = numbers.contains(number)
 }
 
