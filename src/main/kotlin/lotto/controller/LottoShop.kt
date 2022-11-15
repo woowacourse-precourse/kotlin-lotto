@@ -1,6 +1,7 @@
 package lotto.controller
 
 import lotto.domain.*
+import lotto.utils.parser.NumbersSplitParser
 import lotto.utils.validation.*
 import lotto.view.Input
 import lotto.view.Output
@@ -9,6 +10,7 @@ class LottoShop(
     private val input: Input,
     private val output: Output,
     private val lottoMachine: LottoMachine,
+    private val parser: NumbersSplitParser,
     private val ranks: List<Rank>,
     private val profitCalculator: ProfitCalculator
 ) {
@@ -35,12 +37,12 @@ class LottoShop(
         )
         checkInputValid(userInput, userInputVerifiers)
 
+        money = userInput.toInt()
         val moneyVerifiers = listOf(
             PositiveNumberVerifier(),
             DivisibilityVerifier(DIVISOR)
         )
-        checkInputValid(userInput.toInt(), moneyVerifiers)
-        money = userInput.toInt()
+        checkInputValid(money, moneyVerifiers)
     }
 
     private fun <T> checkInputValid(input: T, verifiers: List<Verifier<T>>) {
@@ -58,9 +60,27 @@ class LottoShop(
 
     private fun setBonusNumber() {}
 
-    private fun setWinningNumbers() {}
+    private fun setWinningNumbers() {
+        val userInput = input.getWinningNumbers()
+        val parsedUserInput = parser.parse(userInput)
+        val parsedUserInputVerifiers = listOf(
+            IntegersVerifier()
+        )
+        checkInputValid(parsedUserInput, parsedUserInputVerifiers)
+
+        winningNumbers = parsedUserInput.map { number -> number.toInt() }
+        val winningNumbersVerifiers = listOf(
+            ListSizeVerifier(WINNING_NUMBER_COUNT),
+            RangesVerifier(NUMBER_MIN, NUMBER_MAX),
+            DistinctVerifier()
+        )
+        checkInputValid(winningNumbers, winningNumbersVerifiers)
+    }
 
     companion object {
         const val DIVISOR = 1000
+        const val WINNING_NUMBER_COUNT = 6
+        const val NUMBER_MIN = 1
+        const val NUMBER_MAX = 45
     }
 }
