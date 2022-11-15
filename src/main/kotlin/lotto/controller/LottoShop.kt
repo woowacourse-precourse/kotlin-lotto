@@ -1,9 +1,6 @@
 package lotto.controller
 
-import lotto.domain.Generator
-import lotto.domain.Lotto
-import lotto.domain.ProfitCalculator
-import lotto.domain.Rank
+import lotto.domain.*
 import lotto.utils.validation.*
 import lotto.view.Input
 import lotto.view.Output
@@ -11,7 +8,7 @@ import lotto.view.Output
 class LottoShop(
     private val input: Input,
     private val output: Output,
-    private val generator: Generator,
+    private val lottoMachine: LottoMachine,
     private val ranks: List<Rank>,
     private val profitCalculator: ProfitCalculator
 ) {
@@ -27,6 +24,8 @@ class LottoShop(
 
     fun publish() {
         getMoney()
+        tickets.addAll(lottoMachine.publish(money))
+        printTickets()
     }
 
     private fun getMoney() {

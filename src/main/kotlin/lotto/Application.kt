@@ -1,6 +1,7 @@
 package lotto
 
 import lotto.controller.LottoShop
+import lotto.domain.LottoMachine
 import lotto.domain.ProfitCalculator
 import lotto.domain.RandomNumberGenerator
 import lotto.domain.Rank
@@ -17,9 +18,10 @@ fun main() {
     val input = Input()
     val output = Output()
     val generator = RandomNumberGenerator(GENERATOR_START_INCLUSIVE, GENERATOR_END_INCLUSIVE, GENERATOR_HOW_MANY)
+    val lottoMachine = LottoMachine(generator)
     val ranks = Rank.values().toList()
     val profitCalculator = ProfitCalculator()
-    val lottoShop = LottoShop(input, output, generator, ranks, profitCalculator)
+    val lottoShop = LottoShop(input, output, lottoMachine, ranks, profitCalculator)
 
     try {
         lottoShop.publish()
