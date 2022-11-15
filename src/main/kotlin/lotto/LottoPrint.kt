@@ -2,7 +2,7 @@ package lotto
 
 class LottoPrint {
     fun printPaymentMessage() {
-        println("구입금액을 입력해주세요")
+        println("구입금액을 입력해 주세요.")
     }
 
     fun printWinnerNumberMessage() {
