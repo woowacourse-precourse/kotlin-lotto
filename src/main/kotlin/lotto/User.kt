@@ -12,6 +12,8 @@ class User {
         return input.toInt()
     }
 
+    fun getLottos(money: Int) = money / 1000
+
     private fun checkInputException(input: String?) {
         inputCheck.checkTypeException(input)
         inputMoneyException(input!!)
