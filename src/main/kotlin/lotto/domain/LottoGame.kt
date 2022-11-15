@@ -14,7 +14,7 @@ class LottoGame {
             val winningLotto = getWinningLotto()
 
             showWinningResults(money, lotteries, winningLotto)
-        } catch (e: Exception) {
+        } catch (e: IllegalArgumentException) {
             println(e.message)
         }
     }
