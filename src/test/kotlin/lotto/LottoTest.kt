@@ -1,7 +1,9 @@
 package lotto
 
+import lotto.domain.Lotto
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.assertj.core.api.Assertions.assertThat
 
 
 class LottoTest {
@@ -21,4 +23,11 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @Test
+    fun `로또 번호 가져오기`() {
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        val result = lotto.getNumbers()
+        assertThat(result).isEqualTo(listOf(1, 2, 3, 4, 5, 6))
+    }
 }
+
