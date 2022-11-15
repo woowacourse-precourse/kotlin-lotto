@@ -30,8 +30,7 @@ enum class ErrorMaking {
 
     companion object {
         fun makeError(errorMaking: ErrorMaking) {
-            println("[ERROR] ${errorMaking.getErrorMessage()}")
-            throw IllegalArgumentException()
+            throw IllegalArgumentException("[ERROR] ${errorMaking.getErrorMessage()}")
         }
     }
 }
