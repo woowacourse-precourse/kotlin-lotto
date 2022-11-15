@@ -26,8 +26,18 @@ class InputView {
         return Lotto(winningNumbers)
     }
 
+    fun getBonusNumber(winningNumbers: Lotto): Int {
+        println(BONUS_NUMBER_INPUT_MESSAGE)
+        val input = Console.readLine()
+        val bonusNumber = inputValidation.checkInputInteger(input)
+        inputValidation.checkBonusNumberRange(bonusNumber)
+        inputValidation.checkWinningNumberContainBonusNumber(winningNumbers.getNumbers(),bonusNumber)
+        return bonusNumber
+    }
+
     companion object {
         const val PURCHASE_PRICE_INPUT_MESSAGE = "구입금액을 입력해 주세요."
         const val WINNING_NUMBER_INPUT_MESSAGE = "당첨 번호를 입력해 주세요."
+        const val BONUS_NUMBER_INPUT_MESSAGE = "보너스 번호를 입력해 주세요."
     }
 }
