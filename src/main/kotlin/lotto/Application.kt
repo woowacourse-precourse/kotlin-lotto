@@ -2,6 +2,7 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.domain.BonusNumberError
 
 enum class Rank(var reward: Int) {
 
@@ -69,7 +70,7 @@ class LottoNumber {
     private fun winnerNumber(): List<Int> {
         println("\n당첨 번호를 입력해 주세요.")
         val winNumber = Console.readLine().split(",").map { it.toInt() }
-        Lotto(winNumber)
+        Lotto(winNumber)  // 에러 체크
 
         println("당첨 번호 : $winNumber")
         return winNumber
@@ -80,8 +81,7 @@ class LottoNumber {
         println("\n보너스 번호를 입력해 주세요.")
 
         val bonusNumber = Console.readLine().toInt()
-        require(!lottoNumber.contains(bonusNumber)) { "[ERROR] 로또 당첨 번호와 같은 수가 포함되어 있습니다." }
-        require(lottoNumber.all { it.toInt() in 1..45 }) { "[ERROR] 1 ~ 45까지의 숫자를 입력하세요." }
+        BonusNumberError(lottoNumber, bonusNumber)    // 에러 체크
 
         println(bonusNumber)
         return bonusNumber
