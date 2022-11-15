@@ -17,5 +17,9 @@ class Error {
         fun overlapError() {
             println("[ERROR] 숫자끼리 겹쳐서는 안됩니다.")
         }
+
+        fun formError() {
+            println("[ERROR] 양식에 맞춰서 입력해주셔야 합니다.")
+        }
     }
 }
