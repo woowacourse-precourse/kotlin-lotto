@@ -6,9 +6,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
-//도메인 로직에 단위 테스트를 구현해야 한다. 단, UI(System.out, System.in, Scanner) 로직은 제외한다
-//단위 테스트 작성이 익숙하지 않다면 test/kotlin/lotto/LottoTest를 참고하여 학습한 후 테스트를 구현한다.
-//와 이것도 알고있었으면 정말 편했을텐데 너무 아쉽다.
+//이제야 존재를 알았다 :(  이것도 알고있었으면 정말 편했을텐데 너무 아쉽다.
 //이제라도 사용법을 배워보자..
 
 class LottoTest : NsTest() {
@@ -36,7 +34,7 @@ class LottoTest : NsTest() {
                 run("2000", "1,2,3,4,5,6", "7")
                 assertThat(output()).contains(
                     "당첨 번호를 입력해 주세요.",
-                    "1,2,3,4,5,6",
+                    "[1, 2, 3, 4, 5, 6]",
                     "보너스 번호를 입력해 주세요.",
                     "7",
                 )
@@ -58,7 +56,7 @@ class LottoTest : NsTest() {
                     "5개 일치 (1,500,000원) - 0개",
                     "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
                     "6개 일치 (2,000,000,000원) - 0개",
-                    "총 수익률은 0%입니다.",
+                    "총 수익률은 0.0%입니다.",
                 )
             },
             listOf(8, 21, 23, 41, 42, 43),
