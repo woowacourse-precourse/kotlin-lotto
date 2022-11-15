@@ -12,7 +12,7 @@ enum class Reward(val same: Int, val bonus: Boolean, val money: String) {
         fun getRank(cnt: Int, bonus: Boolean): String {
             return when {
                 cnt == FIRST.same -> "FIRST"
-                cnt == SECOND.same && SECOND.bonus -> "SECOND"
+                cnt == SECOND.same && bonus == SECOND.bonus -> "SECOND"
                 cnt == THIRD.same -> "THIRD"
                 cnt == FORTH.same -> "FORTH"
                 cnt == FIFTH.same -> "FIFTH"
