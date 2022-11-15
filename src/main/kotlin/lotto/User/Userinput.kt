@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console
 import lotto.utils.ErrorMessage
 
 public var ticket = 0
+public var answer: List<Int> = ArrayList()
+public var bonus = 0
 
 class UserInput {
     fun buyPrice(): Int {
@@ -21,11 +23,13 @@ class UserInput {
 
     fun answerNumbers(){
         val input = Console.readLine()
-        val buyPrice = input!!.split(',')
-        print(answerNumbers())
+        val answerSheet = input!!.split(',').map(String::toInt)
+        answer = answerSheet
     }
     fun bonusNumber(){
         val input = Console.readLine()
+        val bonusNumber = input.toInt()
+        bonus = bonusNumber
     }
 
 }
