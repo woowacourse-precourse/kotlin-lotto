@@ -15,9 +15,13 @@ class Score {
     }
 
     fun printWinningRate(winningCounts: MutableList<Int>, money: Int) {
+        val percent = calculateWinningRate(winningCounts, money)
+        return println("총 수익률은 " + "%.1f".format(percent) + "%입니다.")
+    }
+
+    fun calculateWinningRate(winningCounts: MutableList<Int>, money: Int): Float {
         var totalPrice = 5000 * winningCounts[3] + 50000 * winningCounts[4] + 1500000 * winningCounts[5]
         +2000000000 * winningCounts[6] + 30000000 * winningCounts[7]
-        var percent = totalPrice / money.toFloat() * 100
-        println("총 수익률은 " + "%.1f".format(percent) + "%입니다.")
+        return totalPrice / money.toFloat() * 100
     }
 }
