@@ -35,4 +35,11 @@ class InputValidationTest {
             inputValidation.checkBonusNumberRange(46)
         }
     }
+
+    @Test
+    fun `보너스 번호가 당첨 번호와 중복 될 경우 예외 발생`() {
+        assertThrows<IllegalArgumentException> {
+            inputValidation.checkWinningNumberContainBonusNumber(listOf(1,2,3,4,5),1)
+        }
+    }
 }
