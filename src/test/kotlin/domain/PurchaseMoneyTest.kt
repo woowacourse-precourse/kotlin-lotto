@@ -1,4 +1,4 @@
-package lotto
+package domain
 
 import domain.PurchaseMoney
 import org.junit.jupiter.api.Test
