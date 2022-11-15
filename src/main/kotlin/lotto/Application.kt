@@ -2,6 +2,7 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 import error.InputError
+import error.LottoError
 import resource.*
 
 fun main() {
@@ -11,6 +12,19 @@ fun main() {
     printLottoNumbers(lottoNumbers)
 
     val winningNumbers = getWinningNumbers()
+    val bonusNumber = getBonusNumber()
+}
+
+fun getBonusNumber(): Int {
+    println("\n$INPUT_BONUS_NUMBER")
+
+    val value = readLine()
+    InputError.checkInteger(value)
+
+    val number = value!!.toInt()
+    LottoError.checkOutOfRange(number)
+
+    return number
 }
 
 fun getWinningNumbers(): Lotto {
