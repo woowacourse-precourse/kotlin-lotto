@@ -38,13 +38,17 @@ class LottoStart(userMainView: MainView) {
             return winList
         }
 
-        val lottoPrizeResult = LottoResult()
-        lottoPrizeResult.getPrizeRanking(winList)
+//        fun getWinningPrize(winList : List<Int>){
+//            val lottoPrizeResult = LottoResult()
+//            lottoPrizeResult.getPrizeRanking(winList)
+//        }
 
-        //winning prize 함수로 분리
-
-        winningResultList.forEach{
-            val winningPrice += it
+        fun getWinPrice(winList : List<Int>) : Int{
+            var winningPrice = 0
+            winList.forEach{
+                winningPrice += it
+            }
+            return winningPrice
         }
 
         val earningRate = LottoResult().getEarningRate(boughtPrice, )
