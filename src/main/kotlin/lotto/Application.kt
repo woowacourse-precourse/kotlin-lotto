@@ -24,6 +24,12 @@ fun makeRandomNumbers(lottoCount: Int, lotto:MutableList<List<Int>>){
     println()
 }
 
+fun profit(money: Int): Int {
+    //수익/투자금액 * 100
+    val pro = five*5000 + four*50000 + three*1500000 + two*30000000 + one*2000000000
+    return pro / money *100
+}
+
 
 fun showResult(){
     println("당첨 통계")
@@ -34,8 +40,9 @@ fun showResult(){
     println("5개 일치 (1,500,000원) - ${three}개")
     println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${two}개")
     println("6개 일치 (2,000,000,000원) - ${one}개")
-    println("총 수익률은 ${stat}%입니다.")
 }
+
+
 
 fun lottoWinCheck(lucky:MutableList<Int>, bonus:Int){
 
@@ -58,7 +65,7 @@ fun lottoWinCheck(lucky:MutableList<Int>, bonus:Int){
 fun inputWinNumber(){
 
     println("당첨 번호를 입력해 주세요.")
-    lucky = Console.readLine()!!.split(",").map { it.toInt() }.toMutableList()
+    lucky = Console.readLine().split(",").map { it.toInt() }.toMutableList()
     for(i in 0 until 6) {
         if(lucky[i] < 1 || lucky[i] >45){
             println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
@@ -88,4 +95,6 @@ fun main() {
     makeRandomNumbers(lottoCount,lotto)
     inputWinNumber()
     showResult()
+    stat=profit(money)
+    println("총 수익률은 ${stat}%입니다.")
 }
