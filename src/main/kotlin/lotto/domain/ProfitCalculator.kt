@@ -1,7 +1,5 @@
 package lotto.domain
 
-import kotlin.math.roundToLong
-
 class ProfitCalculator {
     fun calculateTotalPrize(ranks: List<Rank>, totalRanks: List<Int>): Long {
         var totalPrize = 0L

@@ -15,7 +15,7 @@ class ExpectedNumberGeneratorTest {
 
     @Test
     fun `원하는 숫자를 가진 리스트를 넘겨주면 반환해준다`() {
-        for(expected in answers) {
+        for (expected in answers) {
             val actual = generator.generateNumbers()
             assertThat(actual).isEqualTo(expected)
         }

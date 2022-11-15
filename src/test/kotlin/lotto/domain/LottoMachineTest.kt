@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 class LottoMachineTest {
-    private val numbers = listOf(listOf(1, 2, 3, 4 , 5, 6), listOf(7, 8, 9, 10, 11, 12))
+    private val numbers = listOf(listOf(1, 2, 3, 4, 5, 6), listOf(7, 8, 9, 10, 11, 12))
     private val answers = listOf("[1, 2, 3, 4, 5, 6]", "[7, 8, 9, 10, 11, 12]")
     private lateinit var generator: ExpectedNumberGenerator
     private lateinit var lottoMachine: LottoMachine
