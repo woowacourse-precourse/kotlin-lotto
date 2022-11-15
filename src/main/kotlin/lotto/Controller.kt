@@ -3,11 +3,6 @@ package lotto
 import camp.nextstep.edu.missionutils.Randoms
 
 class Controller {
-    private var three = 0
-    private var four = 0
-    private var five = 0
-    private var fivePlus = 0
-    private var six = 0
     private var saveRandomNumber = mutableListOf<List<Int>>()
 
     fun getLotteryPaper(count: Int) {
@@ -64,7 +59,8 @@ class Controller {
     }
 
     private fun moneySum(): Int {
-        return three * 5_000 + four * 50_000 + five * 1_500_000 + fivePlus * 30_000_000 + six * 2_000_000_000
+        return WinningAmount.FIRST.firstIncome() + WinningAmount.SECOND.secondIncome() +
+                WinningAmount.THIRD.thirdIncome() + WinningAmount.FOURTH.fourthIncome() + WinningAmount.FIFTH.fifthIncome()
     }
 
     private fun getRandomNumber(): List<Int> {
