@@ -16,8 +16,8 @@ class LottoPurchase(userGameAmount: Int) {
     }
 
     private fun makeRandomLotto(): List<Int> {
-        val randomLotto = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+        val randomLotto = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
         println(randomLotto)
-        return randomLotto.sorted()
+        return randomLotto
     }
 }
