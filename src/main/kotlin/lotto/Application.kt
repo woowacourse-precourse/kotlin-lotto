@@ -67,4 +67,14 @@ class LottoNumber {
         // println(win)
         return win
     }
+
+    private fun printResult(resultArray: Array<Int>) {
+
+        println("3개 일치 (5,000원) - ${resultArray[3]}개")
+        println("4개 일치 (50,000원) - ${resultArray[4]}개")
+        println("5개 일치 (1,500,000원) - ${resultArray[5]}개")
+        println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${resultArray[7]}개")
+        println("6개 일치 (2,000,000,000원) - ${resultArray[6]}개")
+
+    }
 }
