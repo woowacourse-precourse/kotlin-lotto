@@ -1,5 +1,7 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Randoms
+
 class LottoGameStarter {
     fun gameStarter(){
         val money = readLine()
@@ -14,6 +16,22 @@ class LottoGameStarter {
 
         val purchasedLotto = lottoPurchase(money!!.toInt())
         println("${purchasedLotto}개를 구매했습니다.")
+
+        var countLotteryWin = mutableListOf<Int>(0, 0, 0, 0, 0)
+
+        for(purchased in 1..purchasedLotto){
+            val numbers = lottoNumbers()
+            println(numbers)
+
+            var count = rankLottery(numbers, winningNumbers, bonusNumber)
+
+            if(count == 3) countLotteryWin[0]++
+            else if (count == 4) countLotteryWin[1]++
+            else if (count == 5) countLotteryWin[2]++
+            else if (count == -1) countLotteryWin[3]++
+            else if (count == 6) countLotteryWin[4]++
+        }
+
     }
 
     fun checkMoneyError(money:String?){
@@ -39,5 +57,22 @@ class LottoGameStarter {
     fun lottoPurchase(money: Int): Int{
         val purchasedLotto = money / 1000
         return purchasedLotto
+    }
+
+    fun lottoNumbers(): List<Int>{
+        val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+        return numbers.sorted()
+    }
+
+    fun rankLottery(numbers: List<Int>, winningNumbers: List<String>, bonusNumber: String?): Int{
+        var count = 0
+
+        for(number in numbers){
+            if(winningNumbers.contains(number.toString())) count++
+        }
+
+        if(count == 5 && winningNumbers.contains(bonusNumber)) count -= 6
+
+        return count
     }
 }
