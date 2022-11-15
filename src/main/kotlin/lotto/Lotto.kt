@@ -13,8 +13,9 @@ class Lotto(private val numbers: List<Int>) {
     }
 }
 
-class AutomaticLotteryTickets(private val purchaseAmount: Int) {
+class AutomaticLotteryTickets(private val purchaseAmount: Int) : Iterator<List<Int>> {
     private val tickets = arrayListOf<List<Int>>()
+    private var index = 0
 
     init {
         require(purchaseAmount % 1000 == 0 && purchaseAmount > 0) { "[ERROR] 구입 금액이 1000원 단위가 아님" }
@@ -24,6 +25,18 @@ class AutomaticLotteryTickets(private val purchaseAmount: Int) {
 
     fun countTickets(): Int {
         return tickets.count()
+    }
+
+    override fun toString(): String {
+        return tickets.toString()
+    }
+
+    override fun next(): List<Int> {
+        return tickets[index++]
+    }
+
+    override fun hasNext(): Boolean {
+        return index < tickets.count()
     }
 }
 
