@@ -1,7 +1,7 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.Console
 import lotto.Computer.NumberCreate
+import lotto.Computer.earnCalculate
 import lotto.Computer.lottoList
 import lotto.View.MessageOutput
 import lotto.User.UserInput
@@ -26,15 +26,8 @@ fun main() {
     println(bonus)
 
     Lotto(answer).calculateWon()
+    earnCalculate()
 
     MessageOutput().printAverageInputMessage()
     MessageOutput().printMatchedNumberMessage()
-
-
-
-
-
-
-
-
 }

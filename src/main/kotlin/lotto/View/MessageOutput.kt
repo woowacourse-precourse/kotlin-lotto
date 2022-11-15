@@ -1,6 +1,7 @@
 package lotto.View
 
 import lotto.*
+import lotto.Computer.earning
 
 class MessageOutput {
     enum class Notice(val messages: String) {
@@ -17,7 +18,7 @@ class MessageOutput {
         FIVE("5개 일치 (1,500,000원) - "),
         BONUS("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
         SIX("6개 일치 (2,000,000,000원) - "),
-        EARNF("총 수익률은"),
+        EARNF("총 수익률은 "),
         EARNB("입니다.")
     }
 
@@ -48,7 +49,7 @@ class MessageOutput {
         println(Match.FIVE.messages + matchedFive + "개")
         println(Match.BONUS.messages + matchedBonus + "개")
         println(Match.SIX.messages + matchedSix + "개")
-        println(Match.EARNF.messages + Match.EARNB.messages )
+        println(Match.EARNF.messages + earning + "%" +  Match.EARNB.messages )
     }
 
 }

@@ -1,5 +1,6 @@
 package lotto
 
+import lotto.Computer.earnCalculate
 import lotto.Computer.lottoList
 import lotto.User.bonus
 import lotto.User.ticket
@@ -23,7 +24,6 @@ class Lotto(private val numbers: List<Int>) {
         for (i in 0 .. ticket-1){
             matchedLottoCount(lottoList[i])
         }
-
     }
 
     fun matchedLottoCount(lotto: List<Int>){
