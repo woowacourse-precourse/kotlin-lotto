@@ -13,7 +13,7 @@ class CustomerTest {
 
         assertSimpleTest {
             assertThrows<IllegalArgumentException> {
-                customer.throwPaymentException(5123)
+                customer.throwPaymentException("5123")
             }
         }
     }
