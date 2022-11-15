@@ -12,7 +12,6 @@ class View {
     val check = CheckException()
 
     fun inputPurchasemoney(): String {
-
         println(inputPurchaseMoney)
         var amount = Console.readLine()
         check.checkInput(amount)
