@@ -50,6 +50,14 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `1000보다 큰지 테스트`() {
+        assertSimpleTest {
+            runException("900")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
     override fun runMain() {
         main()
     }
