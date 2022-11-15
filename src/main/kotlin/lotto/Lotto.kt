@@ -15,5 +15,15 @@ class Lotto(private val numbers: List<Int>) {
         return winLotto
     }
 
+    fun countSameNum(purchasedLotto : List<Int>,bonusNum: Int): Int {
+        val purchasedLotto = purchasedLotto.toSet()
+        val lotto = numbers.toSet()
+        val sameNum=purchasedLotto.intersect(lotto)
+        if(sameNum.size == 5){
+            return checkWinBonus(lotto, bonusNum)
+        }
+        return sameNum.size
+
+    }
 
 }
