@@ -19,4 +19,25 @@ class ExceptionCheck {
             }
         }
     }
+
+    fun checkValidWinningNumbers(userInput: String): List<Int> {
+        val userInputNumber = userInput.split(",").map { it.toInt() }
+        when {
+            checkValidInputType(userInput) -> {
+                println(Error.INPUT_TYPE_ERROR.message)
+                throw IllegalArgumentException()
+            }
+            checkValidNumberRange(userInput) -> {
+                println(Error.INPUT_RANGE_ERROR.message)
+                throw IllegalArgumentException()
+            }
+            userInputNumber.size != 6 -> {
+                println(Error.INPUT_SIX_NUMBER_ERROR.message)
+                throw IllegalArgumentException()
+            }
+            else -> {
+                return userInputNumber
+            }
+        }
+    }
 }
