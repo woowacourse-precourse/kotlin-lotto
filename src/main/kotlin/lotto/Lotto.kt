@@ -9,8 +9,12 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.size == 6)
     }
     fun noSameNum(){
-        numbers.forEach{it->if(numbers.contains(it)) throw IllegalArgumentException("[ERROR] 로또 번호에 중복된 숫자가 있습니다")}
-        
+        numbers.forEach{it->if(countNum(it)>1) throw IllegalArgumentException("[ERROR] 로또 번호에 중복된 숫자가 있습니다")}
+    }
+    fun countNum(n:Int):Int{
+        var count = 0
+        numbers.forEach{it->if(it==n)count++}
+        return count
     }
     // TODO: 추가 기능 구현
     fun game(answer:Array<Int>,bonusNumber:Int):Int{
