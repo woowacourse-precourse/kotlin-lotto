@@ -1,6 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
+import lotto.domain.Customer
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
