@@ -21,7 +21,12 @@ class User {
             throw IllegalArgumentException(ERROR_PRIZE_SIZE_MESSAGE)
         if (!checkRangePrizeGroup(prizeNumberGroup))
             throw IllegalArgumentException(ERROR_PRIZE_RANGE_MESSAGE)
+        if (!checkRepeatPrizeGroup(prizeNumberGroup))
+            throw IllegalArgumentException(ERROR_PRIZE_REPEAT_MESSAGE)
     }
+
+    private fun checkRepeatPrizeGroup(prizeNumberGroup: List<String>) =
+        prizeNumberGroup.size == prizeNumberGroup.distinct().size
 
     private fun checkRangePrizeGroup(prizeNumberGroup: List<String>): Boolean {
         for (i in prizeNumberGroup) {
