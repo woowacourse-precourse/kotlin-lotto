@@ -25,10 +25,12 @@ fun main() {
     UserInput().bonusNumber()
     println(bonus)
 
-    Lotto(answer).MatchedLottoCount(lottoList[0])
+    Lotto(answer).calculateWon()
 
-    MessageOutput().printAverageInputMessage()
-    MessageOutput().printMatchedNumberMessage()
+    println(wonLottoList)
+
+//    MessageOutput().printAverageInputMessage()
+//    MessageOutput().printMatchedNumberMessage()
 
 
 
