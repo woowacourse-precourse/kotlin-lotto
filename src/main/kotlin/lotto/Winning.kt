@@ -10,4 +10,8 @@ class Winning {
         }
         return matchCount
     }
+
+    fun getCountOfMatchBonus(lottoNumbers: List<Int>, bonusNumber: String): Boolean{
+        return lottoNumbers.contains(bonusNumber.toInt())
+    }
 }
