@@ -25,4 +25,5 @@ object Constants {
     val ERROR_BONUS_NUMBER_NOT_BETWEEN_ONE_AND_FORTYFIVE = "${ERROR_MESSAGE} 보너스 번호는 1부터 45 사이의 숫자여야 합니다."
 
     val ERROR_PURCHASE_MONEY_NOT_THOUSAND_UNIT = "${ERROR_MESSAGE} 구입 금액은 1000원 단위여야 합니다."
+    val ERROR_PURCHASE_MONEY_NOT_POSITIVE_NUMBER = "${ERROR_MESSAGE} 구입 금액은 0보다 커야 합니다."
 }
