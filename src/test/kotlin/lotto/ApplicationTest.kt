@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import util.InputException
+import util.Printer
 
 class ApplicationTest : NsTest() {
 
@@ -58,7 +59,7 @@ class ApplicationTest : NsTest() {
     inner class UserTest {
         val user = User()
         val exception = InputException()
-
+        val printer = Printer()
         @Test
         fun `구매 금액 단위 테스트`() {
             val money = "1000"
@@ -69,6 +70,11 @@ class ApplicationTest : NsTest() {
             }
         }
 
+        @Test
+        fun `구입 안내 메세지 출력`() {
+            printer.printPurchaseMessage()
+            assertThat(output()).isEqualTo("구입금액을 입력해 주세요.")
+        }
     }
 
     @Nested
