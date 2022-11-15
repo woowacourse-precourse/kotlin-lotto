@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console
 class LottoCustomer {
     fun customerLottoBuyPriceInput(): Int {
         val userInput = Console.readLine()
-        if (customerPriceInputIsValid(userInput)) {
+        if (!customerPriceInputIsValid(userInput)) {
             throw IllegalArgumentException(CUSTOMER_BUY_PRICE_ERROR_MESSAGE)
         }
 
@@ -15,8 +15,7 @@ class LottoCustomer {
         if (userInput.isNullOrBlank()) {
             return false
         }
-
-        if ((userInput.toInt() % LottoProcessConstValue.LOTTO_UNIT_PRICE) == 0) {
+        if ((userInput.toInt() % LottoProcessConstValue.LOTTO_UNIT_PRICE) != 0) {
             return false
         }
 
