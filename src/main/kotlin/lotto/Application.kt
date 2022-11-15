@@ -47,6 +47,8 @@ class LottoGame {
 
         getBuyLotteries()
         printBuyLotteries()
+
+        getResult()
     }
 
     private fun getPurchaseAmount() {
@@ -183,6 +185,13 @@ class LottoGame {
     private fun printBuyLotteries() {
         for(i in 0 until lotteries) {
             println(buyLotteries[i].toString())
+        }
+    }
+
+    private fun getResult() {
+        for(lotto in buyLotteries) {
+            val result = lotto.checkRank(winningNumbers)
+            counts[result - 3]++
         }
     }
 }
