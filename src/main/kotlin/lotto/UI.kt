@@ -19,8 +19,9 @@ class UI {
     }
 
     fun inputBonusNumber(): Int {
-        val bonusNumber = Console.readLine().toInt()
-        return bonusNumber
+        val bonusNumber = Console.readLine()
+        validateUserInputBonusNumber(bonusNumber)
+        return bonusNumber.toInt()
     }
 
     fun printBlankLine() {
