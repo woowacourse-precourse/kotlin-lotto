@@ -6,7 +6,7 @@ class LottoCalculator {
             return price/1000
         }
 
-        fun calculateYield(price: Int, winningResult: Map<WinningType, Int>): Double {
+        fun calculateRate(price: Int, winningResult: Map<WinningType, Int>): Double {
             var total = 0
             for(i in winningResult.keys) {
                 total += (winningResult[i]!! * i.reward)
