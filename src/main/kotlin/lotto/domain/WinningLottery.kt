@@ -22,14 +22,6 @@ class WinningLottery(private val winningLottery: String, private val bonus: Int)
         bonusNumber = bonus
     }
 
-    fun getNumber(): List<Int> {
-        return numbers
-    }
-
-    fun getBonusNumber(): Int {
-        return bonusNumber
-    }
-
     private fun validateBonusNumber(bonus: Int) {
         require(bonus in LOTTO_MIN_RANGE..LOTTO_MAX_RANGE) { ERROR_NOT_NUMBER_IN_RANGE }
         require(!numbers.contains(bonus)) { ERROR_NUMBER_DUPLICATE }
@@ -43,5 +35,13 @@ class WinningLottery(private val winningLottery: String, private val bonus: Int)
         require(numbers.all { it.toInt() in LOTTO_MIN_RANGE..LOTTO_MAX_RANGE }) { ERROR_NOT_NUMBER_IN_RANGE }
 
         return numbers
+    }
+
+    fun getNumber(): List<Int> {
+        return numbers
+    }
+
+    fun getBonusNumber(): Int {
+        return bonusNumber
     }
 }
