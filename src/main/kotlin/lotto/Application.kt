@@ -15,6 +15,8 @@ enum class Rank(var match: Int, var reward: Int) {
 
 fun main() {
 
+    val lotto = LottoNumber()
+    lotto.execute()
 }
 
 class LottoNumber {
