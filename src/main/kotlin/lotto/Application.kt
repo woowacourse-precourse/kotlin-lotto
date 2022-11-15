@@ -15,6 +15,8 @@ fun main() {
     lottoOrganizer.printInputLottoBonusNumber()
     lottoOrganizer.inputBonusLottoNumber()
 
+    lottoOrganizer.produceLottoWinHistory()
+
 
 }
 

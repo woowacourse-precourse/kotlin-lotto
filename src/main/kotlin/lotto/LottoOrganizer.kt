@@ -4,6 +4,14 @@ import camp.nextstep.edu.missionutils.Console
 
 class LottoOrganizer(private val producedLottoNumbers: MutableList<List<Int>>) {
 
+    private lateinit var winLottoNumber: List<Int>
+    private var firstClassCount = 0
+    private var secondClassCount = 0
+    private var thirdClassCount = 0
+    private var fourthClassCount = 0
+    private var fifthClassCount = 0
+    private var nothingClassCount = 0
+
     fun inputWinLottoNumber() {
         val userInput = Console.readLine()
         if (!winLottoNumberInputIsValid(userInput)) {
@@ -19,9 +27,10 @@ class LottoOrganizer(private val producedLottoNumbers: MutableList<List<Int>>) {
         val validNumberCheck = IntArray(45)
         if (userInputSplit.size != 6) return false
         for (e in userInputSplit) {
-            if(!isNumber(e)) return false
+            if (!isNumber(e)) return false
             if (!isValidLottoNumber(e.toInt(), validNumberCheck)) return false
         }
+        winLottoNumber = userInputSplit.map { it.toInt() }
         return true
     }
 
@@ -77,6 +86,20 @@ class LottoOrganizer(private val producedLottoNumbers: MutableList<List<Int>>) {
         println(LottoProcessConstValue.INPUT_LOTTO_BONUS_NUMBER)
     }
 
+
+    fun produceLottoWinHistory() {
+        for (proLottoNumber in producedLottoNumbers) {
+            val matchCount = calculateLottoNumber(proLottoNumber)
+        }
+    }
+
+    private fun calculateLottoNumber(proLottoNumber: List<Int>): Int{
+        var lottoNumberMatchCount = 0
+        for (n in proLottoNumber) {
+            if (winLottoNumber.contains(n)) lottoNumberMatchCount += 1
+        }
+        return lottoNumberMatchCount
+    }
 
     companion object {
         const val BONUS_NUMBER_PRICE_ERROR_MESSAGE = "[ERROR] 보너스 번호는 1이상 45이하의 정수 값이어야 합니다."
