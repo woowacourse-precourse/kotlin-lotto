@@ -18,7 +18,7 @@ class Lotteries(lotteriesNumber: List<List<Int>>) {
 
     fun getNumberOfWinners(winningLottery: WinningLottery): Map<Rank, Int> {
         val winners = HashMap<Rank, Int>()
-        Rank.values().forEach { winners[it] = 0 }
+        Rank.values().forEach { winners[it] = INITIAL_RANK }
         winners.toMutableMap()
         randomLotteries.forEach {
             val rank = winningLottery.getRank(it)
@@ -31,5 +31,9 @@ class Lotteries(lotteriesNumber: List<List<Int>>) {
         if (rank != Rank.NOTHING) {
             winners[rank] = winners[rank]!! + 1
         }
+    }
+
+    companion object {
+        private const val INITIAL_RANK = 0
     }
 }
