@@ -106,11 +106,11 @@ fun compareBonusNumber(bonusNumber: Int, lotto: Lotto): Boolean {
 fun printResult(matchCount: List<Int>) {
     println("당첨 통계")
     println("---")
-    println("3개 일치 (5,000원) - ${matchCount[State.FIFTH.value]}")
-    println("4개 일치 (50,000원) - ${matchCount[State.FOURTH.value]}")
-    println("5개 일치 (1,500,000원) - ${matchCount[State.THIRD.value]}")
-    println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${matchCount[State.SECOND.value]}")
-    println("6개 일치 (2,000,000,000원) - ${matchCount[State.FIRST.value]}")
+    println("3개 일치 (5,000원) - ${matchCount[State.FIFTH.value]}개")
+    println("4개 일치 (50,000원) - ${matchCount[State.FOURTH.value]}개")
+    println("5개 일치 (1,500,000원) - ${matchCount[State.THIRD.value]}개")
+    println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${matchCount[State.SECOND.value]}개")
+    println("6개 일치 (2,000,000,000원) - ${matchCount[State.FIRST.value]}개")
 }
 
 fun calculateProfitRate(matchCount: List<Int>, money: Int) {
