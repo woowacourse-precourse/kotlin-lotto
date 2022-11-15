@@ -10,13 +10,13 @@ class Input {
             Exceptions.isInvalidMoney(money)
             money
         } catch (e: IllegalArgumentException) {
-            println("$e")
+            println("[ERROR]")
             "ERROR"
         }
     }
 
     fun inputWinningNumber(): List<String> {
-        println("당첨 번호를 입력해주세요.")
+        println("\n당첨 번호를 입력해주세요.")
         return try {
             val lotteryNumbers = Console.readLine()
                 .replace(" ", "")
@@ -30,9 +30,9 @@ class Input {
     }
 
     fun inputBonusNumber(winningNumber: List<String>): String {
-        println("보너스 번호를 입력해주세요.")
+        println("\n보너스 번호를 입력해주세요.")
         return try {
-            val bonusNumber =Console.readLine()
+            val bonusNumber = Console.readLine()
             Exceptions.isInvalidBonusNumber(winningNumber, bonusNumber)
             bonusNumber
         } catch (e: IllegalArgumentException) {

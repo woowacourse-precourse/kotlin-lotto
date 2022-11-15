@@ -11,11 +11,18 @@ fun main() {
     Lotto.createLotto(lotteryCount)
     Lotto.printLotto()
 
-
     val winningNumber = userInput.inputWinningNumber().toMutableList()
+
+    if (winningNumber.isEmpty())
+        return
+
     val bonusNumber = userInput.inputBonusNumber(winningNumber)
+
+    if (bonusNumber == "ERROR")
+        return
+
     winningNumber.add(bonusNumber)
 
     LottoResult.getWinningResult(winningNumber.map { it.toInt() })
-    print("총 수익률은 ${LottoResult.calculateProfit(money.toInt())}%입니다.")
+    LottoResult.print(money.toInt())
 }

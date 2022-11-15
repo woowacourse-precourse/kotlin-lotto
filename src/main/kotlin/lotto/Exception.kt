@@ -44,7 +44,7 @@ object Exceptions {
     }
 
     private fun checkDuplicateNumber(numbers: List<String>) {
-        if (numbers.toSet().size != 6)
+        if (numbers.toSet().size != numbers.size)
             throw IllegalArgumentException("같은 로또 번호가 입력되었습니다.")
     }
 }

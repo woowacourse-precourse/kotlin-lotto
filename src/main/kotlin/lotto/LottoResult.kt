@@ -1,5 +1,6 @@
 package lotto
 
+import java.text.DecimalFormat
 import kotlin.math.round
 
 enum class LottoResult(
@@ -7,13 +8,25 @@ enum class LottoResult(
     val price: Int,
     var count: Int = 0
 ) {
-    Rank5("3개일치", 5000, 0),
-    Rank4("4개일치", 50000, 0),
-    Rank3("5개일치", 1500000, 0),
-    Rank2("5개일치, 보너스 볼 일치", 30000000, 0),
-    Rank1("6개일치", 2000000000, 0);
+    Rank5("3개 일치", 5000, 0),
+    Rank4("4개 일치", 50000, 0),
+    Rank3("5개 일치", 1500000, 0),
+    Rank2("5개 일치, 보너스 볼 일치", 30000000, 0),
+    Rank1("6개 일치", 2000000000, 0);
 
     companion object {
+        fun print(allPrice: Int) {
+            println("\n당첨 통계")
+            println("---")
+            val dec = DecimalFormat("#,###")
+            enumValues<LottoResult>()
+                .map { "${it.rank} (${dec.format(it.price)}원) - ${it.count}개" }
+                .forEach { println(it) }
+            val returnRate = calculateProfit(allPrice)
+            println("총 수익률은 ${returnRate}%입니다.")
+        }
+
+
         fun getWinningResult(winningNumber: List<Int>) {
             Lotto.lotteries.forEach {
                 when (checkEqualNumber(winningNumber, it)) {
@@ -27,7 +40,7 @@ enum class LottoResult(
         }
 
 
-        fun calculateProfit(cost: Int): Double {
+        private fun calculateProfit(cost: Int): Double {
             var profitRate = 0.0
 
             for (prize in enumValues<LottoResult>()) {
