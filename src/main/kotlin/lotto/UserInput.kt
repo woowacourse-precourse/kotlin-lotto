@@ -5,7 +5,13 @@ import camp.nextstep.edu.missionutils.Console
 class UserInput {
     private var _lottoWinnerNumber = mutableListOf<String>()
     fun inputUserPayment(): Int {
-        val inputPayment = Console.readLine()
+        var inputPayment = Console.readLine()
+        inputPayment.forEach {
+            if(!it.isDigit()) {
+                println("[ERROR]")
+                return 0
+            }
+        }
         PurchaseValueException(inputPayment)
 
         return inputPayment.toInt()
