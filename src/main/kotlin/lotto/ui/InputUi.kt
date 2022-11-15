@@ -2,17 +2,18 @@ package lotto.ui
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.inputTypeException
+import lotto.inputUnitException
 
 class InputUi {
     private val printUi = PrintUi()
     fun inputMoney(): Int {
         printUi.pleaseInput("구입금액을")
         val money = Console.readLine()
+
+        //숫자 및 천단위 입력만 가능
         money.inputTypeException()
-        if(money.toInt() % 1000 != 0){
-            println("[ERROR] 1000원 단위로 입력해야 합니다")
-            throw IllegalArgumentException()
-        }
+        money.inputUnitException()
+
         return money.toInt()
     }
 

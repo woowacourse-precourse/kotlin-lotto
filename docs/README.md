@@ -22,6 +22,11 @@
 - [x] 수익률 출력 - PrintUi#printYield()
 - [x] 입력 요구 메세지 출력 - PrintUi#pleaseInput()
 
+## 예외 처리 목록
+- [x] 숫자가 아닌 입력 - String.inputTypeException()
+- [x] 숫자가 1000 단위가 아닌 입력 - String.inputUnitException()
+
+
 ## 기능 요구 사항
 
 로또 게임 기능을 구현해야 한다. 로또 게임은 아래와 같은 규칙으로 진행된다.
