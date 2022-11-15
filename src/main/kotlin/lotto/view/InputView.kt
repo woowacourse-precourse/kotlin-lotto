@@ -6,7 +6,6 @@ import lotto.utils.*
 class InputView {
     // 1000원 단위의 구입 금액을 입력 받는다.
     fun askUserMoney(): Int {
-        println(MONEY_INPUT_MSG)
         val money = Console.readLine()
         validateUserMoney(money)
         return money.toInt()
@@ -25,7 +24,6 @@ class InputView {
 
     // 쉼표로 구분된 당첨 번호를 입력 받는다.
     fun askWinningNumbers(): List<Int> {
-        println(WINNING_INPUT_MSG)
         val input = Console.readLine()
         return validateWinningNumbers(input)
     }
@@ -47,7 +45,6 @@ class InputView {
 
     // 보너스 번호를 입력 받는다.
     fun askBonusNumber(): Int {
-        println(BONUS_INPUT_MSG)
         val input = Console.readLine()
         return validateBonusNumber(input)
     }
