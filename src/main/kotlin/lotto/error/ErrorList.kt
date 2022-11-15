@@ -1,7 +1,7 @@
-package error
+package lotto.error
 
-import error.ErrorMaking.Companion.makeError
-import resource.*
+import lotto.error.ErrorMaking.Companion.makeError
+import lotto.resource.*
 
 object LottoError {
     fun checkLottoNumbers(numbers: List<Int>) {

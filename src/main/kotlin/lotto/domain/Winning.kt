@@ -1,6 +1,6 @@
-package domain
+package lotto.domain
 
-import resource.*
+import lotto.resource.*
 import java.text.DecimalFormat
 
 enum class Winning(

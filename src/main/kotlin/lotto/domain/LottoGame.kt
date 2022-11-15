@@ -1,8 +1,8 @@
-package domain
+package lotto.domain
 
 import camp.nextstep.edu.missionutils.Randoms
-import error.InputError
-import resource.*
+import lotto.error.InputError
+import lotto.resource.*
 
 class LottoGame {
     fun run() {

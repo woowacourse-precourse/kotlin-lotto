@@ -1,4 +1,4 @@
-package error
+package lotto.error
 
 enum class ErrorMaking {
     OUT_OF_RANGE {

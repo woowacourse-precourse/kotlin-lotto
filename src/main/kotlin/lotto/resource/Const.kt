@@ -1,4 +1,4 @@
-package resource
+package lotto.resource
 
 const val RANGE_START = 1
 const val RANGE_END = 45

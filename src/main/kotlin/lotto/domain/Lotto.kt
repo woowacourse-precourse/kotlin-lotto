@@ -1,6 +1,6 @@
-package domain
+package lotto.domain
 
-import error.LottoError
+import lotto.error.LottoError
 
 class Lotto(private val numbers: List<Int>) {
     init {

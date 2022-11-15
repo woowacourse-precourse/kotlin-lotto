@@ -1,4 +1,4 @@
-package error
+package lotto.error
 
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import org.junit.jupiter.api.Nested

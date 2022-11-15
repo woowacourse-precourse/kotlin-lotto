@@ -1,6 +1,6 @@
-package domain
+package lotto.domain
 
-import resource.DECIMAL_PLACES
+import lotto.resource.DECIMAL_PLACES
 import kotlin.math.roundToLong
 
 class Calculator {

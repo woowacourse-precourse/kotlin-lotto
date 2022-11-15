@@ -1,4 +1,4 @@
-package domain
+package lotto.domain
 
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import org.assertj.core.api.Assertions.assertThat
