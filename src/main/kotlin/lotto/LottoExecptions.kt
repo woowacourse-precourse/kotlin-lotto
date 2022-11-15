@@ -18,6 +18,14 @@ class LottoExecptions {
         throw IllegalArgumentException(JOptionPane.ERROR_MESSAGE.toString() + LOTTO_PURCHASE_ERROR)
     }
 
+    fun getLottoNumNumericException(input : String) : Boolean{
+        val lottoNums = input.split(",").toList()
+        lottoNums.forEach {
+            if(!(it.toIntOrNull() is Int)) throw IllegalArgumentException(JOptionPane.ERROR_MESSAGE.toString() + LOTTO_NUM_ERROR)
+        }
+        return true
+    }
+
 
     companion object{
         const val LOTTO_SIZE_ERROR = "로또 번호는 총 6개여야 합니다"

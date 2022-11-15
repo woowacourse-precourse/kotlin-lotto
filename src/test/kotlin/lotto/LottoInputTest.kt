@@ -19,5 +19,12 @@ class LottoInputTest {
         }
     }
 
+    @Test
+    fun `로또 당첨 번호 중 숫자가 아닌 다른 문자가 있다면 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            LottoExecptions().getLottoNumNumericException("1,2,5,a,6,7")
+        }
+    }
+
 
 }
