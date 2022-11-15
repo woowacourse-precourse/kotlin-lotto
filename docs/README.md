@@ -6,3 +6,8 @@
 -보너스 번호가 당첨 번호와 겹치는 경우 예외처리 구현
 -보너스 번호가 1~45 숫자 범위를 넘어가는 경우 예외처리 구현
 -playLottery(당첨된 복권 갯수) 및 playTicket(랜덤 복권 생성) 메서드 구현
+-LottoTest 추가테스트 작성
+-주석추가 및 변수이름 수정
+-PlayLottery 클래스 PrintLottery 클래스 생성
+-기존 PrintLottery 클래스 -> ResultLottery 클래스로 이름 변경
+-PrintLottery 클래스 생성
