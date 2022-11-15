@@ -18,7 +18,7 @@ fun main() {
     println("보너스 번호를 입력해 주세요.")
     val myBonus = Console.readLine()
     val bonusNumber = myBonus.toInt()
-    if (bonusNumber !in (1..45) )
+    if (bonusNumber !in (1..45))
         throw IllegalArgumentException("[ERROR] : 올바른 범위의 숫자를 입력해 주세요.(1~45)")
     if (myList.contains(bonusNumber))
         throw IllegalArgumentException("[ERROR] : 입력한 당첨 번호와 중복됩니다.")
@@ -27,7 +27,7 @@ fun main() {
     lottoStatistic.run()
 }
 
-fun makeRandomLotto(count:Int): MutableList<List<Int>> {
+fun makeRandomLotto(count: Int): MutableList<List<Int>> {
     var lottolist = mutableListOf<List<Int>>()
     for (i in 1..count) {
         val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
