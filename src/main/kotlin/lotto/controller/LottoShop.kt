@@ -54,7 +54,9 @@ class LottoShop(
         output.printTickets(tickets.map { lotto -> lotto.getTicket() })
     }
 
-    private fun printWinners() {}
+    private fun printWinners() {
+        output.printWinners(ranks.reversed(), totalRanks.reversed())
+    }
 
     private fun printYield(yield: Double) {}
 
