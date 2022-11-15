@@ -1,5 +1,9 @@
 package lotto
 
 fun main() {
-    TODO("프로그램 구현")
+    runCatching {
+        LottoProcessor(Seller(LottoGenerator()), Printer()).processLotto()
+    }.onFailure {
+        println(it)
+    }
 }
