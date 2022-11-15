@@ -4,9 +4,9 @@ import util.Constants
 import profit.ProfitCalculator
 import profit.ProfitPrinter
 import user.User
-import winning.BonusNumber
+import winning.BonusNumberInput
 import winning.WinningCalculator
-import winning.WinningNumber
+import winning.WinningNumberInput
 import winning.WinningPrinter
 
 fun main() {
@@ -16,9 +16,9 @@ fun main() {
     println()
     LottoPrinter().printLotto(lottoNumbers)
     println()
-    val winningNumber = WinningNumber().getWinningNumber()
+    val winningNumber = WinningNumberInput().getWinningNumber()
     println()
-    val bonusNumber = BonusNumber().getBonusNumber(winningNumber)
+    val bonusNumber = BonusNumberInput().getBonusNumber(winningNumber)
     val winningList = WinningCalculator().getResult(lottoNumbers, winningNumber, bonusNumber)
     val rateOfProfit = ProfitCalculator().calcRateOfProfit(winningList, money)
     println()

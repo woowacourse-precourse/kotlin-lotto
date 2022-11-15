@@ -4,7 +4,7 @@ import util.Constants
 import util.Game
 import util.Error
 
-class BonusNumber {
+class BonusNumberInput {
     fun getBonusNumber(winningNumber: List<Int>): Int {
         println(Game.BONUS_NUMBER_INPUT.message)
         val input = readLine()
