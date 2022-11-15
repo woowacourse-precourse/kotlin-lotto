@@ -11,7 +11,7 @@ class GetCorrectLotto {
         try {
             getAnswerLotto()
             getBonusLotto()
-        } catch(e: IllegalArgumentException){
+        } catch(e: IllegalArgumentException) {
             println("[ERROR] 당첨 로또값 입력 오류")
             exitProcess(0)
         }
@@ -25,7 +25,7 @@ class GetCorrectLotto {
         return bonus
     }
     private fun getAnswerLotto() {
-        println("당첨 번호를 입력해주세요.")
+        println("\n당첨 번호를 입력해주세요.")
         correctLotto = readLine()
             ?.split(',')
             ?.map { it.toInt() }
@@ -35,7 +35,7 @@ class GetCorrectLotto {
     }
 
     private fun getBonusLotto() {
-        println("보너스 번호를 입력해주세요.")
+        println("\n보너스 번호를 입력해주세요.")
         bonus = readLine()?.toInt() ?: throw IllegalArgumentException()
         LottoException().bonusException(correctLotto, bonus)
         println()

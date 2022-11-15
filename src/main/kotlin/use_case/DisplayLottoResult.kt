@@ -1,14 +1,12 @@
 package use_case
 
 import _enum.LottoEnum
-import kotlin.math.ceil
-import kotlin.math.roundToInt
 import kotlin.math.roundToLong
 
 class DisplayLottoResult(
     buyLotto: BuyLotto,
     getCorrectLotto: GetCorrectLotto
-){
+) {
     private var totalPrice: Long = 0L
     private val lottoList = buyLotto.getLottoList()
     private val correct = getCorrectLotto.getCorrectValue()
@@ -21,20 +19,20 @@ class DisplayLottoResult(
     }
 
     private fun compareLottos() {
-        for (lotto in lottoList){
+        for (lotto in lottoList) {
             lotto.compareLotto(correct, bonus)
             totalPrice += lotto.getTotalPrice()
         }
     }
 
-    private fun displayStatcis(){
-        println("당첨통계\n---")
-        for (i in LottoEnum.values()){
+    private fun displayStatcis() {
+        println("\n당첨통계\n---")
+        for (i in LottoEnum.values()) {
             println("${i.message} - ${i.count}개")
         }
     }
 
-    private fun displayProfitRate(){
+    private fun displayProfitRate() {
         var profitRate = totalPrice/(lottoList.size*10.0)
         profitRate = (profitRate*10.0.roundToLong())/10.0
         val formatted = String.format("%.1f", profitRate)

@@ -14,7 +14,7 @@ class BuyLotto {
         try {
             getTotalLottoPrice()
             createLottos()
-        } catch (e: IllegalArgumentException){
+        } catch (e: IllegalArgumentException) {
             println("[ERROR] 로또 가격값 입력 오류")
             exitProcess(0)
         }
@@ -33,7 +33,7 @@ class BuyLotto {
 
     private fun createLottos() {
         println("\n${lottoSize}개를 구매했습니다.")
-        for (i in 1..lottoSize){
+        for (i in 1..lottoSize) {
             val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
             numbers.sort()
             println(numbers)

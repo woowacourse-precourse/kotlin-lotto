@@ -3,9 +3,6 @@ package lotto
 import _enum.LottoEnum
 
 class Lotto(private val numbers: List<Int>) {
-    init {
-        require(numbers.size == 6)
-    }
 
     private var totalPrice = 0L
     private val lottoMap = mapOf(
@@ -15,6 +12,9 @@ class Lotto(private val numbers: List<Int>) {
         6 to LottoEnum.SIX_CORRECT,
         15 to LottoEnum.FIVE_CORRECT_BONUS
     )
+    init {
+        require(numbers.size == 6)
+    }
 
     fun compareLotto(correct: List<Int>, bonus: Int) {
         var count = numbers.intersect(correct.toSet()).size
