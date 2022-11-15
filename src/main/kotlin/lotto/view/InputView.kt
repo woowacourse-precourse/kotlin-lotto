@@ -3,6 +3,7 @@ package lotto.view
 import camp.nextstep.edu.missionutils.Console
 import lotto.domain.lotto.BonusNumber
 import lotto.domain.lotto.LottoNumber
+import lotto.domain.lotto.WinningNumber
 import lotto.domain.money.Money
 
 class InputView {
@@ -13,9 +14,7 @@ class InputView {
     }
 
     fun inputWinningNumber(): List<Int> {
-        val winningNumbers = Console.readLine()
-            .split(",")
-            .map { number -> number.toInt() }
+        val winningNumbers = getWinningNumbers(Console.readLine())
         checkWinningNumbers(winningNumbers)
         return winningNumbers
     }
@@ -29,5 +28,12 @@ class InputView {
 
     private fun checkWinningNumbers(winningNumbers: List<Int>) {
         winningNumbers.map { number -> LottoNumber(number) }
+    }
+
+    private fun getWinningNumbers(winningNumbers: String): List<Int> {
+        WinningNumber(winningNumbers)
+        return winningNumbers
+            .split(",")
+            .map { number -> number.toInt() }
     }
 }
