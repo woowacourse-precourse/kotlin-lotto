@@ -64,7 +64,7 @@ class MainView {
         const val WIN_FOURTH_MSG = "4개 일치 (50,000원) - "
         const val WIN_THIRD_MSG = "5개 일치 (1,500,000원) - "
         const val WIN_SECOND_MSG = "5개 일치, 보너스 볼 일치 (30,000,000원) - "
-        const val WIN_FIRST_MSG = "개 일치 (2,000,000,000원) - "
+        const val WIN_FIRST_MSG = "6개 일치 (2,000,000,000원) - "
 
         const val EARNING_RATE_START_MSG = "총 수익률은"
         const val EARNING_RATE_END_MSG = "%입니다."
