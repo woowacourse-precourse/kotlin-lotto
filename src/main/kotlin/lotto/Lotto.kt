@@ -17,7 +17,9 @@ class Lotto(private val numbers: List<Int>) {
                 throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
             }
         }
-
+        if(numbers.size != numbers.distinct().size){
+            throw IllegalArgumentException("[ERROR] 로또 번호는 중복되지 않는 숫자여야 합니다.")
+        }
     }
     fun checkAllWinLotto(purchasedLotto : List<List<Int>>,bonusNum : Int): MutableList<Int> {
         val winLotto = mutableListOf<Int>(0,0,0,0,0)
