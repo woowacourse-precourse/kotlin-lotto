@@ -1,6 +1,5 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import java.lang.StringBuilder
 import kotlin.math.round
@@ -33,40 +32,6 @@ fun produceLotto(amount: Int): List<Lotto> {
     return lottos
 }
 
-fun getInputBonusNumber(): Int {
-    val input = Console.readLine()
-    val bonusNumber = input.toIntOrNull() ?: throw IllegalArgumentException("보너스 번호는 1에서 45 사이의 숫자여야 합니다.")
-    if (bonusNumber < 1 || bonusNumber > 45)
-        throw IllegalArgumentException("보너스 번호는 1에서 45 사이의 숫자여야 합니다.")
-    return bonusNumber
-}
-
-fun getInputWinNumbers(): List<Int> {
-    val input = Console.readLine().split(",")
-
-    if (input.size != 6)
-        throw IllegalArgumentException("로또 번호는 6개만 입력되어야 합니다.")
-
-    val winNumbers = input.map {
-        val number = it.toIntOrNull() ?: throw IllegalArgumentException("로또 번호는 숫자여야 합니다.")
-        if (number < 1 || number > 45)
-            throw IllegalArgumentException("로또 번호는 1에서 45 사이의 숫자여야 합니다.")
-        number
-    }
-
-    return winNumbers
-}
-
-fun getInputLottoMoney(): Int {
-    val input = Console.readLine()
-    val lottoMoney = input.toIntOrNull() ?: throw IllegalArgumentException("구매 금액은 숫자로만 이루어져야 합니다.")
-
-    if (lottoMoney % 1000 != 0)
-        throw IllegalArgumentException("구매 금액은 1000원 단위여야 합니다.")
-
-    return lottoMoney / 1000
-}
-
 fun formatLottos(lottos: List<Lotto>): String {
     val formattedLottos = StringBuilder()
     for (i in lottos) {
@@ -92,17 +57,17 @@ fun formatYield(yield: Float): String {
 fun main() {
     try {
         println("구입금액을 입력해 주세요.")
-        val lottoMoney = getInputLottoMoney()
+        val lottoMoney = Input.getLottoMoney()
 
         println("${lottoMoney}개를 구매했습니다.")
         val lottos = produceLotto(lottoMoney)
         println(formatLottos(lottos))
 
         println("당첨 번호를 입력해 주세요.")
-        val winNumber = getInputWinNumbers()
+        val winNumber = Input.getWinNumbers()
 
         println("보너스 번호를 입력해 주세요.")
-        val bonusNumber = getInputBonusNumber()
+        val bonusNumber = Input.getBonusNumber()
 
         println("당첨 통계\n---")
         val winRanks = calculateWinRanks(lottos, winNumber, bonusNumber)
