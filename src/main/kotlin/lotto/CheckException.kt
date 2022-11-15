@@ -23,7 +23,7 @@ class CheckException() {
     fun checkInt(amount: String) {
 
         if (!isNumber(amount)) {
-            throw IllegalArgumentException("[ERROR]")
+            throw NoSuchElementException(println(Strings.Input_Only_Num.reward).toString())
         }
     }
 
