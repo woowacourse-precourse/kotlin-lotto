@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersI
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
 
@@ -62,6 +64,21 @@ class ApplicationTest : NsTest() {
             throw IllegalArgumentException()
         }
         print(result)
+    }
+
+    @Test
+    fun `자동 복권 생성 테스트`() {
+        val wrongMoney = 9100
+        val niceMoney = 9000
+
+        var autoTicket = AutomaticLotteryTickets(niceMoney)
+        for(ticket in autoTicket) {
+            println(ticket)
+        }
+
+        assertThrows<IllegalArgumentException> {
+            AutomaticLotteryTickets(wrongMoney)
+        }
     }
 
     override fun runMain() {
