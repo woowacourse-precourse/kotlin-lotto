@@ -28,8 +28,7 @@ class LottoNumber {
     fun execute() {
 
         // 구매 금액
-        println("구입금액을 입력해 주세요.")
-        money = Console.readLine().toInt()
+        money = inputMoney()
 
         // 구매한 로또 숫자
         number = money / 1000
@@ -50,6 +49,13 @@ class LottoNumber {
         // 총 수익률
         val rateOfReturn = String.format("%.1f", rateOfReturn(money, lottoResult))
         println("총 수익률은 ${rateOfReturn}%입니다.")
+    }
+
+    private fun inputMoney(): Int {
+        println("구입금액을 입력해 주세요.")
+        money = Console.readLine().toInt()
+
+        return money
     }
 
     private fun winnerNumber(): List<Int> {
@@ -146,5 +152,13 @@ class LottoNumber {
 
         // println(result.toFloat() / money * 100)
         return result.toDouble() / money * 100
+    }
+}
+
+fun checkedInput(input: String): Boolean {
+
+    return when (input.toIntOrNull()) {
+        null -> false
+        else -> true
     }
 }
