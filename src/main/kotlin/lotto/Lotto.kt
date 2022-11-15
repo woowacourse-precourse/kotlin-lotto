@@ -48,7 +48,7 @@ class LottoWinningStat(
     private val bonusNumber: Int,
     private val tickets: AutomaticLotteryTickets
 ) {
-    private var winningStat = mapOf(
+    private var winningStat = mutableMapOf(
         LotteryRank.ONE to 0,
         LotteryRank.TWO to 0,
         LotteryRank.THREE to 0,
@@ -73,7 +73,7 @@ class LottoWinningStat(
             5개 일치 (${df.format(LotteryConverter.PRICE3)}) - ${winningStat[LotteryRank.THREE]}개
             5개 일치, 보너스 볼 일치 (${df.format(LotteryConverter.PRICE2)}) - ${winningStat[LotteryRank.TWO]}개
             6개 일치 (${df.format(LotteryConverter.PRICE1)}) - ${winningStat[LotteryRank.ONE]}개
-            총 수익률은 ${String.format("%.2f", totalEarningRate)}%입니다.
+            총 수익률은 ${String.format("%.1f", totalEarningRate)}%입니다.
         """.trimIndent()
     }
 
@@ -83,8 +83,8 @@ class LottoWinningStat(
             var bonusCount = 0
             if (matchedNumberCount == 5 && checkBonusMatch())
                 bonusCount = 1
-
-            winningStat[LotteryConverter.getRankByCount(matchedNumberCount, bonusCount)]!! + 1
+            val rank = LotteryConverter.getRankByCount(matchedNumberCount, bonusCount)
+            winningStat[rank] = winningStat[rank]!! + 1
         }
     }
 
