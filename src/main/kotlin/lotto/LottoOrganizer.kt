@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console
 class LottoOrganizer(private val producedLottoNumbers: MutableList<List<Int>>) {
 
     private lateinit var winLottoNumber: List<Int>
+    private var bonusLottoNumber = 0
     private var firstClassCount = 0
     private var secondClassCount = 0
     private var thirdClassCount = 0
@@ -61,8 +62,8 @@ class LottoOrganizer(private val producedLottoNumbers: MutableList<List<Int>>) {
         if (!bonusLottoNumberInputIsValid(userInput)) {
             throw IllegalArgumentException(BONUS_NUMBER_PRICE_ERROR_MESSAGE)
         }
-
-        return userInput.toInt()
+        bonusLottoNumber = userInput.toInt()
+        return bonusLottoNumber
     }
 
     private fun bonusLottoNumberInputIsValid(userInput: String?): Boolean {
@@ -86,19 +87,35 @@ class LottoOrganizer(private val producedLottoNumbers: MutableList<List<Int>>) {
         println(LottoProcessConstValue.INPUT_LOTTO_BONUS_NUMBER)
     }
 
-
     fun produceLottoWinHistory() {
         for (proLottoNumber in producedLottoNumbers) {
-            val matchCount = calculateLottoNumber(proLottoNumber)
+            val matchCountPair = calculateLottoNumber(proLottoNumber)
+            calculateTotalLotto(matchCountPair)
         }
     }
 
-    private fun calculateLottoNumber(proLottoNumber: List<Int>): Int{
+    private fun calculateLottoNumber(proLottoNumber: List<Int>): Pair<Int, Int> {
         var lottoNumberMatchCount = 0
+        var bonusNumberMatchCount = 0
         for (n in proLottoNumber) {
             if (winLottoNumber.contains(n)) lottoNumberMatchCount += 1
+            if (n == bonusLottoNumber) bonusNumberMatchCount += 1
         }
-        return lottoNumberMatchCount
+
+        return Pair(lottoNumberMatchCount, bonusNumberMatchCount)
+    }
+
+    private fun calculateTotalLotto(matchCountPair : Pair<Int, Int>) {
+        when {
+            matchCountPair.first == 0  -> nothingClassCount += 1
+            matchCountPair.first == 1 -> nothingClassCount += 1
+            matchCountPair.first == 2 -> nothingClassCount += 1
+            matchCountPair.first == 3 -> fifthClassCount += 1
+            matchCountPair.first == 4 -> fourthClassCount += 1
+            matchCountPair.first == 5 && matchCountPair.second == 0 -> thirdClassCount += 1
+            matchCountPair.first == 5 && matchCountPair.second == 1-> secondClassCount += 1
+            matchCountPair.first == 6 -> firstClassCount += 1
+        }
     }
 
     companion object {
