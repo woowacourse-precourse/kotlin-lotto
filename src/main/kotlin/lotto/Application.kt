@@ -1,21 +1,46 @@
 package lotto
 
 fun main() {
-    val price = InputNumbers.inputPrice()
-    val lotto = LottoNumber()
-    lotto.calculatePrice(price)
+    playLotto()
+}
 
+fun playLotto(){
+    val price = checkPriceNumber()
+
+    val lottoNumber = LottoNumber(price)
+    lottoNumber.calculatePrice()
 
     val winning = InputNumbers.inputWinning()
     val winningNumber = WinningNumber()
     winningNumber.changeNumberList(winning)
 
-    val bonusNumber = InputNumbers.inputBonus()
-
+    val bonusNumber = checkBonusNumber()
+    winningNumber.checkBonus(bonusNumber)
     val reward = Reward()
-    reward.calculateSame(lotto.lottoNumber,winningNumber.winningNumber,bonusNumber)
+    reward.calculateSame(lottoNumber.lottoNumber,winningNumber.winningNumber,bonusNumber)
     reward.calculateRevenue(reward.money, price)
 }
+
+fun checkPriceNumber(): Int {
+    var price = 0
+    try{
+        price = InputNumbers.inputPrice()
+    }catch (e: IllegalArgumentException){
+        print("[ERROR] 입력값은 숫자로 이루어져야 합니다.")
+    }
+    return price
+}
+
+fun checkBonusNumber(): Int {
+    var bonusNumber = 0
+    try{
+        bonusNumber = InputNumbers.inputBonus()
+    }catch (e: IllegalArgumentException){
+        print("[ERROR] 입력값은 숫자로 이루어져야 합니다.")
+    }
+    return bonusNumber
+}
+
 
 
 enum class Message {
@@ -30,9 +55,3 @@ fun getMessage(message: Message) {
         Message.BONUS -> println("보너스 번호를 입력해 주세요.")
     }
 }
-
-
-//클래스 나누기
-//보너스 점수 중복 증명하기
-//45이상 숫자 예외처리
-//하드코딩 하지않기
