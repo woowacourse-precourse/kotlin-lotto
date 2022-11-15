@@ -27,8 +27,8 @@ class LottoCalculation {
     private fun countDuplicationTwoList(list1: List<Int>, list2: List<Int>): Int {
         var count: Int = 0
 
-        if (list1.find { list2.contains(it) } != null) {
-            count++
+        for(index in 0 until 6) {
+            if(list1.contains(list2[index])) count++
         }
 
         return count
@@ -64,7 +64,11 @@ class LottoCalculation {
     }
 
     fun rateOfReturn(price: Int, prize: Long): Double {
-        return round(((prize / price) * 100).toDouble()) / 100
+
+        val rateOfReturn = (prize.toDouble() / price) * 1000
+        val roundRateOfReturn = round(rateOfReturn) / 10
+
+        return roundRateOfReturn
     }
 
     fun generateRandomLotto(generateNumber: Int): List<List<Int>> {

@@ -24,9 +24,9 @@ class OutputHandler {
         println("총 수익률은 ${rateOfReturn}%입니다.")
     }
 
-    fun lottoStatus(lottoList: List<List<Int>>) {
+    fun lottoStatus(lottoList: List<List<Int>>, purchasesNumber: Int) {
         println()
-        println(PRINT_MESSAGE_PURCHASES_NUMBER)
+        println("${purchasesNumber}개를 구매했습니다.")
         lottoList.forEach { println(it) }
     }
 }
