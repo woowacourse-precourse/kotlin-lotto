@@ -40,4 +40,13 @@ class Lotto(private val numbers: List<Int>) {
             6 -> winLotto[4]+=1
         }
     }
+    fun printResult(winLotto : List<Int>,inputMoney: Int){
+        println("당첨 통계")
+        println("---")
+        val money = listOf<Int>(3,4,5,7,6)
+        for(i in 0..4){
+            printWinLotto(winLotto[i],money[i])
+        }
+        rateOfReturn(winLotto, inputMoney)
+    }
 }
