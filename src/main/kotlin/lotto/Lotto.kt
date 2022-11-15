@@ -1,7 +1,6 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
-import lotto.LotteryConverter
 import java.text.DecimalFormat
 
 class Lotto(private val numbers: List<Int>) {
@@ -20,7 +19,7 @@ class AutomaticLotteryTickets(private val purchaseAmount: Int) : Iterable<List<I
     private var index = 0
 
     init {
-        require(purchaseAmount % 1000 == 0 && purchaseAmount > 0) { "[ERROR] 구입 금액이 1000원 단위가 아님" }
+        require(purchaseAmount % 1000 == 0 && purchaseAmount > 0) { ErrorStrings.INVALID_PURCHASE_AMOUNT_UNITS.message }
         for (i in 0 until purchaseAmount / 1000)
             tickets.add(Randoms.pickUniqueNumbersInRange(1, 45, 6))
     }
@@ -66,7 +65,7 @@ class LottoWinningStat(
     private var totalEarningRate: Float = 0f
 
     init {
-        require(!lotto.contains(bonusNumber)) { "[ERROR] 보너스 번호가 당첨 번호와 중복됨" }
+        require(!lotto.contains(bonusNumber)) { ErrorStrings.DUPLICATION_NUMBER_BONUS_WINNING.message }
         updateWinningStat()
         updateTotalEarningRate()
     }
@@ -136,7 +135,7 @@ object LotteryConverter {
     }
 
     fun getRankByCount(matchedLottoNumber: Int, matchedBonusNumber: Int = 0): LotteryRank {
-        require(matchedLottoNumber + matchedBonusNumber <= 6 && matchedBonusNumber <= 1) { "[ERROR] LotteryConverter.getRankByCount: 잘못된 파라미터가 전달 되었음" }
+        require(matchedLottoNumber + matchedBonusNumber <= 6 && matchedBonusNumber <= 1) { ErrorStrings.INVALID_PARAMETER.message }
 
         val key = matchedLottoNumber.toFloat() + matchedBonusNumber.toFloat() * 0.5f
 
