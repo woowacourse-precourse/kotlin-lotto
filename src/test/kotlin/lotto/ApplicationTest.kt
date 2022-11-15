@@ -50,6 +50,84 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `1000보다 큰지 테스트`() {
+        assertSimpleTest {
+            runException("900")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `1000의 배수인지 테스트`() {
+        assertSimpleTest {
+            runException("1500")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `lotto번호로 숫자가 입력되었는지 체크`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("1000", "1,2,3,4,5,a")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            },
+            listOf(8, 21, 23, 41, 42, 43),
+
+        )
+    }
+
+    @Test
+    fun `lotto번호로 입력된 값중 ,말고 다른 문자가 있는지 체크`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("1000", "1,-2,3,4,5,6")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            },
+            listOf(8, 21, 23, 41, 42, 43),
+
+            )
+    }
+
+    @Test
+    fun `lotto번호로 입력된 값중 ,가 연속으로 입력되었는지 체크`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("1000", "1,,3,4,5,6")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            },
+            listOf(8, 21, 23, 41, 42, 43),
+
+            )
+    }
+
+    @Test
+    fun `lotto번호로 입력된 값중 수의 범위가 적당한지 체크`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("1000", "1,49, 253,4,5,6")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            },
+            listOf(8, 21, 23, 41, 42, 43),
+
+            )
+    }
+
+    @Test
+    fun `보너스 번호로 입력된 수가 적당한지 체크`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("1000", "1,2,3,4,5,6", "2")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            },
+            listOf(8, 21, 23, 41, 42, 43),
+
+            )
+    }
+
+
+
     override fun runMain() {
         main()
     }
