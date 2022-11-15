@@ -50,6 +50,7 @@ class LottoOrganizer(private val producedLottoNumbers: MutableList<List<Int>>) {
 
     private fun isNumber(elementString: String): Boolean {
         return try {
+            elementString.toInt()
             true
         } catch (e: NumberFormatException) {
             false
