@@ -5,6 +5,7 @@ import lotto.domain.Lotto
 private const val PLUS_COUNT = 1
 private const val MIN_SAME_COUNT = 3
 private const val ROUNDING_UNIT = "%.1f"
+private const val ZERO = 0
 
 class Calculator() {
     private val rankResult = mutableMapOf<MatchedCount, Int>()
@@ -12,11 +13,11 @@ class Calculator() {
     init {
         rankResult.putAll(
             mapOf<MatchedCount, Int>(
-                MatchedCount.TRHEE to 0,
-                MatchedCount.FOUR to 0,
-                MatchedCount.FIVE to 0,
-                MatchedCount.FIVE_BONUS to 0,
-                MatchedCount.SIX to 0
+                MatchedCount.TRHEE to ZERO,
+                MatchedCount.FOUR to ZERO,
+                MatchedCount.FIVE to ZERO,
+                MatchedCount.FIVE_BONUS to ZERO,
+                MatchedCount.SIX to ZERO
             )
         )
     }
@@ -49,7 +50,7 @@ class Calculator() {
     private fun getEarningSum(): Int {
         var totalEarning = 0
         rankResult.forEach { (matchedCount, count) ->
-            if (count == 0) return@forEach
+            if (count == ZERO) return@forEach
             totalEarning += matchedCount.prizeMoney
         }
         return totalEarning
