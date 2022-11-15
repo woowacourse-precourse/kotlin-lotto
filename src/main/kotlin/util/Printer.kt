@@ -9,7 +9,7 @@ class Printer {
 
     fun printInputBonusMessage() = println("보너스 번호를 입력해 주세요.")
 
-    fun printLottoResultMessage() = println("당첨 통계")
+    fun printLottoResultMessage() = println("당첨 통계\n---")
 
     fun printReturnRate(rate: Float) = println("총 수익률은" + "%.2f".format(rate) + "입니다.")
 
