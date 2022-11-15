@@ -19,7 +19,7 @@ class GuideLotto {
         )
     }
 
-    fun printIncomeRate(income: Float) {
+    fun printIncomeRate(income: Double) {
         println("총 수익률은 $income%입니다.")
     }
 }
