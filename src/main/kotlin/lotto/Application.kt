@@ -13,25 +13,20 @@ fun isNumber(string: String) = string.toIntOrNull() != null
 
 fun isThousands(number: String) = number.toInt() % 1000 == 0
 
-fun isPositiveNumber(number: String) = number.toInt() >= 0
-
-fun isNotWhiteSpace(string: String) = !string.contains(" ")
+fun isPositiveNumber(number: String) = number.toInt() > 0
 
 fun isSatisfyPriceConditions(string: String) =
         isNumber(string) &&
         isThousands(string) &&
-        isPositiveNumber(string) &&
-        isNotWhiteSpace(string)
+        isPositiveNumber(string)
 
 fun printEnterPriceMessage() = println("구매금액을 입력해주세요.")
 
 fun enterPurchasePrice(): Int {
     val purchasePrice = Console.readLine()
 
-    if (!isSatisfyPriceConditions(purchasePrice)) {
-        throw IllegalArgumentException()
-        println("[ERROR] 구매 금액은 공백 없이 천 단위의 수를 입력해주세요.")
-    }
+    if (!isSatisfyPriceConditions(purchasePrice))
+        throw IllegalArgumentException("[ERROR] 구매 금액은 공백 없이 천 단위의 수를 입력해주세요.")
 
     return purchasePrice.toInt()
 }
@@ -68,4 +63,3 @@ fun publishLottoNumbers(price: Int): ArrayList<MutableList<Int>> {
 
     return lottoNumbers
 }
-
