@@ -48,12 +48,15 @@ internal class InputViewTest {
         }.isInstanceOf(IllegalArgumentException::class.java)
             .hasMessageContaining(SIZE_BOUNDS_ERROR_MSG)
 
-//        assertThrows<IllegalArgumentException> {
-//            inputView.validateWinningNumbers("1,2,3,4,5,6,")
-//        }
-//        assertThrows<IllegalArgumentException> {
-//            inputView.validateWinningNumbers("1,,,4,5,6")
-//        }
+        assertThatThrownBy {
+            inputView.validateWinningNumbers("1,2,3,4,5,6,")
+        }.isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessageContaining(EMPTY_STRING_ERROR_MSG)
+
+        assertThatThrownBy {
+            inputView.validateWinningNumbers("1,,,4,5,6")
+        }.isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessageContaining(EMPTY_STRING_ERROR_MSG)
     }
 
     @Test

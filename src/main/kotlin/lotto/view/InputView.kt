@@ -27,6 +27,8 @@ class InputView {
     fun validateWinningNumbers(input: String): List<Int> {
         val numbers = mutableListOf<Int>()
         input.split(",").map {
+            if(it.isEmpty())
+                throw IllegalArgumentException(EMPTY_STRING_ERROR_MSG)
             handleMixedCharCase(it)
             handleOutOfRangeCase(it.toInt())
             if (numbers.contains(it.toInt()))
@@ -34,12 +36,7 @@ class InputView {
             numbers.add(it.toInt())
         }
         handleSizeMismatchCase(numbers.size)
-        handleEmptyCase(numbers) // 비어있는 원소가 있는지 검사하기
         return numbers
-    }
-
-    private fun handleEmptyCase(numbers: List<Int>) {
-
     }
 
     // 보너스 번호를 입력 받는다.
