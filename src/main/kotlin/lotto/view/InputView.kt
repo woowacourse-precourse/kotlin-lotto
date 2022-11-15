@@ -46,19 +46,17 @@ class InputView {
 
     // 쉼표로 구분된 문자열을 정수 리스트로 변환한다.
     fun validateWinningNumbers(input: String): List<Int> {
-        val result = input.split(",").map {
+        val numbers = mutableListOf<Int>()
+        input.split(",").map {
             for (item in it) {
-                require(Character.isDigit(item))
-                    throw IllegalArgumentException(MIXED_CHAR_ERROR_MSG)
+                if(!Character.isDigit(item)) throw IllegalArgumentException(MIXED_CHAR_ERROR_MSG)
             }
-            require(it.toInt() in MIN_VALUE..MAX_VALUE)
-                throw IllegalArgumentException(RANGE_BOUNDS_ERROR_MSG)
+            if(it.toInt() !in MIN_VALUE..MAX_VALUE) throw IllegalArgumentException(RANGE_BOUNDS_ERROR_MSG)
+            if(numbers.contains(it.toInt())) throw IllegalArgumentException(DUPLICATE_ERROR_MSG)
+            numbers.add(it.toInt())
         }
-        if(result.toSet().size != result.size)
-            throw IllegalArgumentException(DUPLICATE_ERROR_MSG)
-        if(result.size != LOTTO_NUM_LIMIT)
-            throw IllegalArgumentException(SIZE_BOUNDS_ERROR_MSG)
-        return result
+        if(numbers.size != LOTTO_NUM_LIMIT) throw IllegalArgumentException(SIZE_BOUNDS_ERROR_MSG)
+        return numbers
     }
 
     // 보너스 번호를 입력 받아서 리턴한다.
@@ -70,7 +68,7 @@ class InputView {
 
     fun validateBonusNumber(input: String): Int {
         for (item in input) {
-            require(Character.isDigit(item))
+            if(!Character.isDigit(item))
                 throw IllegalArgumentException(MIXED_CHAR_ERROR_MSG)
         }
         if (input.toInt() !in MIN_VALUE..MAX_VALUE)
