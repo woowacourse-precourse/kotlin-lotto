@@ -10,7 +10,7 @@ class LottoGame(private val theNumberOfLotto: Int) {
 
     private fun createLotto() {
         val lottoNumber = mutableListOf<List<Int>>()
-        for (i in 0 until theNumberOfLotto) {
+        for (numberOfLotto in 0 until theNumberOfLotto) {
             lottoNumber.add(RandomLottoGenerator().getRandomLotto())
         }
         lotteries = Lotteries(lottoNumber)
@@ -18,7 +18,7 @@ class LottoGame(private val theNumberOfLotto: Int) {
 
     fun createTestLotto() {
         val lottoNumber = mutableListOf<List<Int>>()
-        for (i in 0 until theNumberOfLotto) {
+        for (numberOfLotto in 0 until theNumberOfLotto) {
             lottoNumber.add(listOf(1, 2, 3, 11, 12, 13))
         }
         lotteries = Lotteries(lottoNumber)
@@ -33,12 +33,17 @@ class LottoGame(private val theNumberOfLotto: Int) {
     }
 
     fun makeRankPercent(rankResult: MutableMap<Rank, Int>): Double {
-        var incomeRate = 0
+        var incomeRate = ZERO_INCOME_RATE
         for (rank in rankResult.keys) {
-            incomeRate += rankResult[rank]?.times(rank.reward) ?: 0
+            incomeRate += rankResult[rank]?.times(rank.reward) ?: ZERO_INCOME_RATE
         }
-        return incomeRate.toDouble() / (theNumberOfLotto * 1000)
+        return incomeRate.toDouble() / (theNumberOfLotto * LOTTO_PRICE)
     }
 
     fun getLotteries() = lotteries.getRandomLotteries()
+
+    companion object {
+        private const val LOTTO_PRICE = 1000
+        private const val ZERO_INCOME_RATE = 0
+    }
 }
