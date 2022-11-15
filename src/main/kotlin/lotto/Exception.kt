@@ -38,7 +38,7 @@ object Exceptions {
 
     private fun checkRange(numbers: List<String>) {
         numbers.forEach {
-            if (it.toInt() in 1..45)
+            if (it.toInt() !in 1..45)
                 throw IllegalArgumentException("로또 번호의 범위 안에 들지 않는 값이 있습니다.")
         }
     }

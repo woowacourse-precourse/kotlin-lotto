@@ -17,16 +17,27 @@ class Input {
 
     fun inputWinningNumber(): List<String> {
         println("당첨 번호를 입력해주세요.")
-        val lotteryNumbers = Console.readLine()
-            .replace(" ", "")
-            .split(",")
-
-        return lotteryNumbers
+        return try {
+            val lotteryNumbers = Console.readLine()
+                .replace(" ", "")
+                .split(",")
+            Exceptions.isInvalidWinningNumber(lotteryNumbers)
+            lotteryNumbers
+        } catch (e: IllegalArgumentException) {
+            println("$e")
+            emptyList()
+        }
     }
 
-    fun inputBonusNumber(): String {
+    fun inputBonusNumber(winningNumber: List<String>): String {
         println("보너스 번호를 입력해주세요.")
-        val bonusNumber = Console.readLine()
-        return bonusNumber
+        return try {
+            val bonusNumber =Console.readLine()
+            Exceptions.isInvalidBonusNumber(winningNumber, bonusNumber)
+            bonusNumber
+        } catch (e: IllegalArgumentException) {
+            println("$e")
+            "ERROR"
+        }
     }
 }
