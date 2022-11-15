@@ -32,6 +32,20 @@ class Validator {
         return checkedList
     }
 
+    /**
+     * @brief Validate bonus number
+     * @param bonusString : String of bonus number
+     * @param lotteryNumberList : List of lottery number(String)
+     * @return Integer type bonus number if there is no exception case
+     */
+    fun validateBonusNumber(bonusString: String, lotteryNumberList: List<Int>): Int {
+        if(!isNumber(bonusString)) throw IllegalArgumentException("$TAG 문자가 포함되지 않은 숫자를 입력하세요.")
+        if(bonusString.toIntOrNull() == null) throw IllegalArgumentException("$TAG 보너스 번호는 ${NUMBER_RANGE.first}부터 ${NUMBER_RANGE.last} 사이의 숫자여야 합니다.")
+        if(lotteryNumberList.contains(bonusString.toInt())) throw IllegalArgumentException("$TAG 보너스 번호는 로또 번호와 겹칠 수 없습니다.")
+        if(!NUMBER_RANGE.contains(bonusString.toInt())) throw IllegalArgumentException("$TAG 보너스 번호는 ${NUMBER_RANGE.first}부터 ${NUMBER_RANGE.last} 사이의 숫자여야 합니다.")
+        return bonusString.toInt()
+    }
+
     private fun isNumber(str: String): Boolean {
         for (c in str) {
             if (!c.isDigit()) {
