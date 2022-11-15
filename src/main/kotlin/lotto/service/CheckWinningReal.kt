@@ -7,7 +7,7 @@ interface CheckWinning {
     fun printResult(resultWinning: MutableList<Int>)
 }
 
-class CheckWinningImpl : CheckWinning {
+class CheckWinningReal : CheckWinning {
     override fun winningCount(checkWinningNumber: Int): MutableList<Int> {
         val resultWinning = mutableListOf(0, 0, 0, 0, 0)
         when (checkWinningNumber) {

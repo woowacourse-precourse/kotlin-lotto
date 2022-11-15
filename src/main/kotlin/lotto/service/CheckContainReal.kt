@@ -5,7 +5,7 @@ interface CheckContain {
     fun containBonusNum(checkWinningNumber: Int, lottoNumber: List<Int>, bonus: Int): Int
 }
 
-class CheckContainImpl : CheckContain {
+class CheckContainReal : CheckContain {
     override fun containLottoNum(winningNumber: String, lottoNumber: List<Int>): Int {
         val winningNumbers = winningNumber.split(",")
         var checkWinningNumber = 0

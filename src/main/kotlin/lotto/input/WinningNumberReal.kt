@@ -8,7 +8,7 @@ interface WinningNumber {
     fun checkLottoStandard(userInputNumber: String?)
 }
 
-class WinningNumberImpl : WinningNumber {
+class WinningNumberReal : WinningNumber {
 
     override fun inputWinningNumber(): String {
         OutputMessage().winningNumberMsg()

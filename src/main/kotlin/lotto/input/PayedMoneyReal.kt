@@ -9,7 +9,7 @@ interface PayedMoney {
     fun checkMoneyStandard(userInputNumber: String?)
 }
 
-class PayedMoneyImpl : PayedMoney {
+class PayedMoneyReal : PayedMoney {
 
     override fun inputUserMoney(): String {
         OutputMessage().payedMoneyMsg()
@@ -18,7 +18,6 @@ class PayedMoneyImpl : PayedMoney {
         OutputMessage().lottoCountMsg(userInputNumber.replace("000", ""))
         return userInputNumber.replace("000", "")
     }
-
 
     override fun checkMoneyStandard(userInputNumber: String?) {
         userInputNumber ?: throw IllegalArgumentException()

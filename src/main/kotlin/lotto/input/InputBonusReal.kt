@@ -9,7 +9,7 @@ interface InputBonus {
     fun checkBonusStandard(userInputNumber: String?, lottoNumbers: String)
 }
 
-class InputBonusImpl : InputBonus {
+class InputBonusReal : InputBonus {
     override fun inputBonusNumber(lottoNumber: String): Int {
         print("보너스 번호를 입력해 주세요.")
         OutputMessage().bonusMsg()

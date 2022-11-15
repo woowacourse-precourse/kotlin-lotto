@@ -1,9 +1,8 @@
 package lotto
 
-import lotto.lottoStore.Lotto
+import lotto.lottostore.Lotto
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import org.mockito.internal.matchers.Null
 
 
 class LottoTest {

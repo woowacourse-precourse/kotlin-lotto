@@ -42,6 +42,4 @@ class OutputMessage : OutPutMsg {
     override fun yieldMsg(yield:String) {
         println("총 수익률은 $`yield`%입니다.")
     }
-
-
 }

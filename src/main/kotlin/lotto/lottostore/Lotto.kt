@@ -1,4 +1,4 @@
-package lotto.lottoStore
+package lotto.lottostore
 
 class Lotto(private val numbers: List<Int>) {
 
