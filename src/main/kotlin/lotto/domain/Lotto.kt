@@ -13,7 +13,7 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.contains(bonusNumber)
     }
 
-    fun printNumbers() {
-        println(numbers)
+    fun returnNumbers(): List<Int> {
+        return numbers
     }
 }
