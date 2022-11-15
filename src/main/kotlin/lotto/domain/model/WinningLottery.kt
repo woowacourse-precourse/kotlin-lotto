@@ -39,7 +39,7 @@ class WinningLottery(private val userWinningNum: String, private val userBonus: 
             Constants.LOTTO_NUM_IN_RANGE_TEXT
         }
         require(splitedNum.size == LOTTO_LENGTH) {
-            Constants.LOTTO_NUM_IN_RANGE_TEXT
+            Constants.LOTTO_LENGTH_MUST_SIX_TEXT
         }
         return splitedNum
     }
