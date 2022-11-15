@@ -1,6 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     println("구입금액을 입력해주세요")
