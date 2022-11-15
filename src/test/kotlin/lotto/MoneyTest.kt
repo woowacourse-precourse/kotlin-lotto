@@ -19,4 +19,9 @@ class MoneyTest {
         money.money = "8000"
         assertThat(result).isEqualTo(money.getProfitRate(listOf(1, 0, 0, 0, 0)))
     }
+    @Test
+    fun `addComma_1000000을 넣었을때_1,000,000로 콤마 찍기`(){
+        val result = "1,000,000.0"
+        assertThat(result).isEqualTo(money.addComma(1000000.0))
+    }
 }

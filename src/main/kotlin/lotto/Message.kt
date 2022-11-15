@@ -38,7 +38,7 @@ class Message {
         }
     }
 
-    fun printProfit(profitRate: Double) {
+    fun printProfit(profitRate: String) {
         print("총 수익률은 ${profitRate}%입니다.")
     }
 }

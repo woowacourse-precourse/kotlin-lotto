@@ -1,6 +1,8 @@
 package lotto
 
+
 const val LOTTO_PRICE: Int = 1000
+
 class Money {
 
     var money: String = ""
@@ -28,9 +30,12 @@ class Money {
         return money.toInt() / LOTTO_PRICE
     }
 
-    fun getProfitRate(winningResult: List<Int>): Double {
-        val totalPrize = getTotalPrize(winningResult)
-        return roundOff(calculateProfitRate(totalPrize))
+    fun getProfitRate(winningResult: List<Int>): String {
+        return formProfitRate(calculateProfitRate(getTotalPrize(winningResult)))
+    }
+
+    private fun formProfitRate(d :Double): String{
+        return  addComma(roundOff(d))
     }
 
     private fun getTotalPrize(winningResult: List<Int>): Int {
@@ -40,12 +45,18 @@ class Money {
         return totalPrize
     }
 
+    private fun roundOff(d: Double): Double {
+        return String.format("%.2f", d).toDouble()
+    }
+
     private fun calculateProfitRate(totalPrize: Int): Double {
         return (totalPrize / money.toDouble() * 100)
     }
 
-
-    private fun roundOff(d: Double): Double {
-        return String.format("%.2f", d).toDouble()
+    fun addComma(d: Double): String {
+        return d.toString().replace(Regex("\\B(?=(\\d{3})+(?!\\d))"), ",")
+        //문자와공백경계지점이 아닌 3자리숫자 + 숫자 조합 를 여러번 찾는다
     }
+
+
 }
