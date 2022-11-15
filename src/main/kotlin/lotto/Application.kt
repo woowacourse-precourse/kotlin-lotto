@@ -42,14 +42,14 @@ private fun pickWinningNumbers(): Pair<List<Int>, Int> {
     return Pair(inputWinningNumbers, inputWinningBonusNumber)
 }
 
-private fun pickWinningLottoList() : List<Int>{
+private fun pickWinningLottoList(): List<Int> {
     println("당첨 번호를 입력해 주세요.")
     val inputWinningNumbers = convertStringToIntList(Console.readLine())
     checkLottoListNumberScope(inputWinningNumbers)
     return inputWinningNumbers
 }
 
-private fun pickWinningBonusNumber() : Int{
+private fun pickWinningBonusNumber(): Int {
     println("\n보너스 번호를 입력해 주세요.")
     val inputWinningBonusNumber = convertStringToInt(Console.readLine())
     checkLottoNumberScope(inputWinningBonusNumber)
@@ -75,8 +75,8 @@ private fun convertStringToInt(input: String): Int {
     }
 }
 
-private fun checkLottoListNumberScope(numbers : List<Int>){
-    for(number in numbers){
+private fun checkLottoListNumberScope(numbers: List<Int>) {
+    for (number in numbers) {
         checkLottoNumberScope(number)
     }
 }

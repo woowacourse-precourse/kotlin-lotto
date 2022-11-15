@@ -21,12 +21,12 @@ class LottoCalculatorTest {
     @Test
     fun `5등 테스트`() {
         val result = lottoCalculator.calculateLotto()
-        Assertions.assertThat(result).isEqualTo(mutableListOf(0,0,0,0,1))
+        Assertions.assertThat(result).isEqualTo(mutableListOf(0, 0, 0, 0, 1))
     }
 
     @Test
-    fun `로또번호에 보너스 번호 포함 여부 테스트`(){
-        assertThrows<IllegalArgumentException>{
+    fun `로또번호에 보너스 번호 포함 여부 테스트`() {
+        assertThrows<IllegalArgumentException> {
             lottoCalculator =
                 LottoCalculator(
                     mutableListOf(mutableListOf(1, 2, 3, 4, 5, 6)),
