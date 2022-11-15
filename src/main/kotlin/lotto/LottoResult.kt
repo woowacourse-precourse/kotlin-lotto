@@ -1,6 +1,6 @@
 package lotto
 
-class LottoResult {
+class LottoResult{
 
     var first = 0
     var second = 0
@@ -8,11 +8,18 @@ class LottoResult {
     var fourth = 0
     var fifth = 0
 
-    fun getPrizeRanking(){
-
+    fun getPrizeRanking(totalWinningList : List<String>){
+        totalWinningList.forEach {
+            when(it){
+                Prize.valueOf("FIFTH").prize -> first++
+                Prize.valueOf("SECOND").prize -> second++
+                Prize.valueOf("THIRD").prize -> third++
+                Prize.valueOf("FOURTH").prize -> fourth++
+                Prize.valueOf("FIFTH").prize -> fifth++
+            }
+        }
     }
 
-    //7. 수익률 계산하는 함수 생성
     fun getEarningRate(inputPrice : Int, winPrice : Int) : String {
         val earningRate = (winPrice.toDouble() / inputPrice) * 100
         val earnRatePercent = String.format("%.2f", earningRate)
