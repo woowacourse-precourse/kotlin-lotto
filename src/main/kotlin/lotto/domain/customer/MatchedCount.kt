@@ -27,9 +27,9 @@ enum class MatchedCount(val matchCount: Int, val prizeMoney: Int) {
 
     abstract val gradeDescription: String
 
-    fun printLottoResult(count: Int) {
+    fun returnLottoResult(count: Int): String {
         val result = count.toString() + "개"
-        println(gradeDescription + result)
+        return gradeDescription + result
     }
 
     companion object {
