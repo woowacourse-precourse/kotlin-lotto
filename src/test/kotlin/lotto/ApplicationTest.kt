@@ -114,6 +114,18 @@ class ApplicationTest : NsTest() {
             )
     }
 
+    @Test
+    fun `보너스 번호로 입력된 수가 적당한지 체크`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("1000", "1,2,3,4,5,6", "2")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            },
+            listOf(8, 21, 23, 41, 42, 43),
+
+            )
+    }
+
 
 
     override fun runMain() {
