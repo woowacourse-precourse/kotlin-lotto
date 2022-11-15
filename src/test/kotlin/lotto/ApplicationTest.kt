@@ -42,23 +42,10 @@ class ApplicationTest : NsTest() {
             listOf(1, 3, 5, 14, 22, 45)
         )
     }
- @Test
-    fun errorUserMoney1() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("1234") }
-        }
-    }
 
     @Test
-    fun errorUserMoney2() {
+    fun `예외 테스트`() {
         assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("1000j") }
-        }
-    }
-
-    @Test
-    fun checkUserMoneyTest() {
-        assertThrows<IllegalArgumentException>{
             runException("1000j")
             assertThat(output()).contains(ERROR_MESSAGE)
         }
