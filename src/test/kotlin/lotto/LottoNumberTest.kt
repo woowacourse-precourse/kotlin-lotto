@@ -7,7 +7,7 @@ class LottoNumberTest {
     @Test
     fun `구매 금액이 1000원 단위여야 한다`() {
         assertThrows<IllegalArgumentException> {
-            val lottoNumber =LottoNumber(5300)
+            val lottoNumber = LottoNumber(5300)
             lottoNumber.calculatePrice()
         }
     }
@@ -30,7 +30,7 @@ class LottoNumberTest {
     @Test
     fun `구매 금액이 0원이면 안된다`() {
         assertThrows<IllegalArgumentException> {
-            val lottoNumber =LottoNumber(0)
+            val lottoNumber = LottoNumber(0)
             lottoNumber.calculatePrice()
         }
     }

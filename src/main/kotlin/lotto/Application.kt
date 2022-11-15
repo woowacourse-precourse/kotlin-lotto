@@ -4,7 +4,7 @@ fun main() {
     playLotto()
 }
 
-fun playLotto(){
+fun playLotto() {
     val price = checkPriceNumber()
 
     val lottoNumber = LottoNumber(price)
@@ -17,15 +17,15 @@ fun playLotto(){
     val bonusNumber = checkBonusNumber()
     winningNumber.checkBonus(bonusNumber)
     val reward = Reward()
-    reward.calculateSame(lottoNumber.lottoNumber,winningNumber.winningNumber,bonusNumber)
+    reward.calculateSame(lottoNumber.lottoNumber, winningNumber.winningNumber, bonusNumber)
     reward.calculateRevenue(reward.money, price)
 }
 
 fun checkPriceNumber(): Int {
     var price = 0
-    try{
+    try {
         price = InputNumbers.inputPrice()
-    }catch (e: IllegalArgumentException){
+    } catch (e: IllegalArgumentException) {
         print("[ERROR] 입력값은 숫자로 이루어져야 합니다.")
     }
     return price
@@ -33,14 +33,13 @@ fun checkPriceNumber(): Int {
 
 fun checkBonusNumber(): Int {
     var bonusNumber = 0
-    try{
+    try {
         bonusNumber = InputNumbers.inputBonus()
-    }catch (e: IllegalArgumentException){
+    } catch (e: IllegalArgumentException) {
         print("[ERROR] 입력값은 숫자로 이루어져야 합니다.")
     }
     return bonusNumber
 }
-
 
 
 enum class Message {
