@@ -48,4 +48,11 @@ class LottoGameTest{
         assertThat(result).isEqualTo(125.0)
     }
 
+    @Test
+    fun `play 메서드를 사용해 로또 게임을 진행한 결과를 반환`() {
+        val result = lottoGame.play()
+        println(result)
+        assertThat(result).isEqualTo(listOf(1, 0, 0, 1, 1) to 50_750_125.0)
+    }
+
 }
