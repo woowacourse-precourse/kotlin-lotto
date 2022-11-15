@@ -11,7 +11,7 @@ class LottoCalculatorTest {
     }
 
     @Test
-    fun `calculateYieldTest`() {
+    fun `calculateRateTest`() {
         val lottos = Lottos()
         lottos.addLotto(Lotto(listOf(8, 21, 23, 41, 42, 43)))
         lottos.addLotto(Lotto(listOf(3, 5, 11, 16, 32, 38)))
@@ -23,7 +23,7 @@ class LottoCalculatorTest {
         lottos.addLotto(Lotto(listOf(1, 3, 5, 14, 22, 45)))
 
         val result = lottos.matchLottos(listOf(1,2,3,4,5,6), 7)
-        assertThat(LottoCalculator.calculateYield(8000, result)).isEqualTo(62.5)
+        assertThat(LottoCalculator.calculateRate(8000, result)).isEqualTo(62.5)
     }
 
 }
