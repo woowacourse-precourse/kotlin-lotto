@@ -3,10 +3,10 @@ package lotto
 class Lotto(private val numbers: List<Int>) {
 
     init {
-        require(numbers.size == LIMIT_LOTTO_SIZE) { println(NUMBERS_SIZE_ERROR_MSG) }
-        require(numbers.toSet().size == LIMIT_LOTTO_SIZE) { println(NUMBERS_DISTINCT_ERROR_MSG) }
+        require(numbers.size == LIMIT_LOTTO_SIZE) { NUMBERS_SIZE_ERROR_MSG }
+        require(numbers.toSet().size == LIMIT_LOTTO_SIZE) { NUMBERS_DISTINCT_ERROR_MSG }
         numbers.forEach { num ->
-            require(MIN_NUM_LOTTO <= num && num <= MAX_NUM_LOTTO) { println(NUMBER_RANGE_ERROR_MSG) }
+            require(MIN_NUM_LOTTO <= num && num <= MAX_NUM_LOTTO) { NUMBER_RANGE_ERROR_MSG }
         }
     }
 
