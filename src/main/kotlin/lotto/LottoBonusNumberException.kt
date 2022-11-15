@@ -1,10 +1,11 @@
 package lotto
 
-class LottoBonusNumberException(private val lottoBonusNumber: String) {
+class LottoBonusNumberException(private val lottoBonusNumber: String, private val lottoWinnerNumber: List<String>) {
 
     init {
         isNotInteger()
         isNotLottoNumber()
+        isOverlap()
     }
 
     private fun isNotInteger() {
@@ -20,4 +21,8 @@ class LottoBonusNumberException(private val lottoBonusNumber: String) {
             throw IllegalArgumentException("[ERROR] 입력한 로또 번호 ${lottoBonusNumber}는 존재하지 않습니다.")
     }
 
+    private fun isOverlap() {
+        if(lottoWinnerNumber.contains(lottoBonusNumber))
+            throw IllegalArgumentException("[ERROR] 로또 번호는 중복 될 수 없습니다.")
+    }
 }
