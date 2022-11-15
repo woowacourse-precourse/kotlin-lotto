@@ -6,7 +6,7 @@ class Results(
     private val numberOfLotto: Int
 ) {
     var rankResults: MutableMap<WinningRank, Int> = mutableMapOf()
-    private var prizeMoney: Double
+    var prizeMoney: Double
     var earningsRate: Double
 
     init {
