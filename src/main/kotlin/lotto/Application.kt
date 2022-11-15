@@ -23,6 +23,33 @@ class LottoNumber {
     private var number = 0
     private var lottoNumberList = mutableListOf<List<Int>>()
 
+    fun execute() {
+
+        // 구매 금액
+        println("구입금액을 입력해 주세요.")
+        money = Console.readLine().toInt()
+
+        // 구매한 로또 숫자
+        number = money / 1000
+        println("\n${number}개를 구매했습니다.")
+        lottoNumberList = lottoRandomNumber(number)
+        lottoNumberList.forEach { println(it) }
+
+        // 당첨 번호와 보너스 번호
+        val winnerNumList = winnerNumber()
+        val bonusNumber = bonusNumber(winnerNumList)
+
+        // 당첨 결과
+        println("당첨 통계")
+        println("---")
+        val lottoResult = lottoResult(winnerNumList, bonusNumber)
+        printResult(lottoResult)
+
+        // 총 수익률
+        val rateOfReturn = String.format("%.1f", rateOfReturn(money, lottoResult))
+        println("총 수익률은 ${rateOfReturn}%입니다.")
+    }
+
     private fun winnerNumber(): List<Int> {
         println("\n당첨 번호를 입력해 주세요.")
         val winNumber = Console.readLine().split(",").map { it.toInt() }
