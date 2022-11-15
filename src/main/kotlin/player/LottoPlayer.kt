@@ -8,13 +8,13 @@ import enterprise.SameLottoResult
 import enterprise.lottoPrize
 import lotto.Lotto
 import market.LottoMarket
-import util.printLottoEarningsRate
-import util.printLottoGradeCountToMessage
+import view.PlayerUI
 import winlotto.WinLotto
 
 class LottoPlayer(
     private val lottoEnterprise: LottoEnterprise,
     private val lottoMarket: LottoMarket,
+    private val playerUI: PlayerUI,
 ) {
     private lateinit var lotties: List<Lotto>
     private var payMoney: Int = 0
@@ -50,7 +50,11 @@ class LottoPlayer(
     * */
     private fun showLottoEarningRate(gradeCounts: IntArray) {
         val lottoPrizeSum = getLottoPrizeSum(gradeCounts)
-        printLottoEarningsRate(lottoPrizeSum, payMoney)
+        playerUI.showUI(
+            PlayerUI.Companion.UI.ANSWER_EARNING_RATE,
+            lottoPrizeSum,
+            payMoney
+        )
     }
 
     /*
@@ -58,7 +62,11 @@ class LottoPlayer(
     * */
     private fun showLottoResultGrade(gradeCounts: IntArray) {
         for (grade in LOTTO_MAX_GRADE downTo LOTTO_MIN_GRADE) {
-            printLottoGradeCountToMessage(grade, gradeCounts[grade])
+            playerUI.showUI(
+                PlayerUI.Companion.UI.ANSWER_LOTTO_GRADE_RESULT,
+                grade,
+                gradeCounts[grade]
+            )
         }
     }
 
