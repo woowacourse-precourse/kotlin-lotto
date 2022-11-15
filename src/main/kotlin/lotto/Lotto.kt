@@ -1,9 +1,9 @@
 package lotto
 
-import lotto.Computer.earnCalculate
 import lotto.Computer.lottoList
 import lotto.User.bonus
 import lotto.User.ticket
+import lotto.utils.ErrorCheck
 
 public var matchedThree = 0
 public var matchedFour = 0
@@ -11,13 +11,12 @@ public var matchedFive = 0
 public var matchedSix = 0
 public var matchedBonus = 0
 
-
-
 private var count = 0
 class Lotto(private val numbers: List<Int>) {
 
     init {
         require(numbers.size == 6)
+        require(numbers.distinct().size == 6)
     }
 
     fun calculateWon(){
@@ -26,7 +25,7 @@ class Lotto(private val numbers: List<Int>) {
         }
     }
 
-    fun matchedLottoCount(lotto: List<Int>){
+    private fun matchedLottoCount(lotto: List<Int>){
         for ( number in lotto){
             if (number in numbers) count += 1
             if (number == bonus) count += 10

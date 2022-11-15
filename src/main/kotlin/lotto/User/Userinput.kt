@@ -26,6 +26,7 @@ class UserInput {
         val input = Console.readLine()
         val answerSheet = input!!.split(',').map(String::toInt)
         answer = answerSheet.sorted()
+        ErrorCheck().duplicatedNumber(answer)
     }
 
     fun bonusNumber() {

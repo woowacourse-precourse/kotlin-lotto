@@ -1,6 +1,7 @@
 package lotto.Computer
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.utils.ErrorCheck
 
 public val lottoList: MutableList<List<Int>> = ArrayList()
 
