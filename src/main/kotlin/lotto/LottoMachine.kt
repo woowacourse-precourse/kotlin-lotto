@@ -12,19 +12,15 @@ import lotto.Messages.Companion.NUMBER_RANGE_ERROR
 
 class LottoMachine {
 
-    private var numberOfLotto: Int = 0
     private var bonusNumber = 0
     private lateinit var rankResults: MutableMap<WinningRank, Int>
     private var prizeMoney = 0.0
 
     fun start() {
         val paymentInput = View.getPaymentAmount()
-        numberOfLotto = getNumberOfLottos(paymentInput)
+        val numberOfLotto = getNumberOfLottos(paymentInput)
 
-        val lottos: ArrayList<Lotto> = arrayListOf()
-        repeat(numberOfLotto) {
-            lottos.add(generateLotto())
-        }
+        val lottos = generateLottos(numberOfLotto)
 
         View.printNumberOfLottos(numberOfLotto)
         View.printLottos(lottos)
@@ -36,7 +32,7 @@ class LottoMachine {
         checkBonusNumberException(winningLotto, bonusNumber)
 
         calculateResult(lottos, winningLotto)
-        val earningsRate = getEarningsRate()
+        val earningsRate = getEarningsRate(numberOfLotto)
 
         View.printResultStats(rankResults, earningsRate)
     }
@@ -58,6 +54,14 @@ class LottoMachine {
             println(DIVISION_ERROR)
             throw IllegalArgumentException(DIVISION_ERROR)
         }
+    }
+
+    fun generateLottos(numberOfLottos: Int): ArrayList<Lotto> {
+        val lottos: ArrayList<Lotto> = arrayListOf()
+        repeat(numberOfLottos) {
+            lottos.add(generateLotto())
+        }
+        return lottos
     }
 
     fun generateLotto(): Lotto {
@@ -110,7 +114,7 @@ class LottoMachine {
         rankResults[rank] = rankResults[rank]!!.plus(1)
     }
 
-    fun getEarningsRate(): String {
+    fun getEarningsRate(numberOfLotto: Int): String {
         return String.format("%.1f", (prizeMoney / (numberOfLotto * LOTTO_PRICE)) * 100)
     }
 
