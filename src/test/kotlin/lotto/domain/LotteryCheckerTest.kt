@@ -2,6 +2,7 @@ package lotto.domain
 
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 
@@ -14,7 +15,8 @@ internal class LotteryCheckerTest {
     }
 
     @Test
-    fun `가지고있는 로또를 당첨번호와 비교하는 기능`() {
+    @DisplayName("당첨번호와 보너스 번호를 이용하여, 복권 당첨 등수 확인하는 테스트")
+    fun `복권_당첨_등수_확인`() {
         for (rank in Rank.values()) {
             when (rank) {
                 Rank.FAIL ->
@@ -26,7 +28,8 @@ internal class LotteryCheckerTest {
     }
 
     @Test
-    fun `총금액 구하는 기능`() {
+    @DisplayName("복권에 당첨된 모든 등수의 상금 합을 구하여 값이 맞는 지 확인하는 테스트")
+    fun `당첨된_모든_등수_총금액_비교_확인`() {
         val result: Long = 2031555000
         Assertions.assertThat(result).isEqualTo(lotteryChecker.getTotalWinnerPrice())
     }

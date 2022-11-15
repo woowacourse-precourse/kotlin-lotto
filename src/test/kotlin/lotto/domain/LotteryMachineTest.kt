@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test
 
 internal class LotteryMachineTest {
 
-    @DisplayName("발행하려는 숫자에 맞게 복권 만들기")
     @Test
-    fun operate() {
+    @DisplayName("구입금액으로 발행할 수 있는 복권 수에 맞게 복권을 만드는 기능 테스트")
+    fun `발행수에_맞게_복권을_발행했는지_확인`() {
         val lottoCount = 5
 
         val lottoTicket = LotteryMachine().operate(lottoCount = 5)

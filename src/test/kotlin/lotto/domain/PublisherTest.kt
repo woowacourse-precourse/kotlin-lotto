@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test
 
 internal class PublisherTest {
 
-    @DisplayName("발행인은 구입 금액에 맞게 복권을 발행하기")
     @Test
-    fun generateLottery() {
+    @DisplayName("입력 받은 구입 금액에 맞게 발행할 복권 수를 확인하는 테스트")
+    fun `복권_수_확인`() {
         val lottoTicket = publisher.generateLottery(money = Money(PURCHASING_AMOUNT))
         val lottoCount = lottoTicket.first
 
