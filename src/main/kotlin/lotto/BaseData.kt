@@ -27,6 +27,11 @@ class BaseData {
             throw IllegalArgumentException("[ERROR] 구입금액은 1000원 단위입니다.")
         }
     }
+    fun countpurchasingVolume(inputMoney: Int): Int {
+        var purchasingVolume = inputMoney/1000
+        println("${purchasingVolume}개를 구매했습니다.")
+        return purchasingVolume
+    }
 
     fun buyLotto() {
         val purchasingVolume = countpurchasingVolume(inputMoney)
