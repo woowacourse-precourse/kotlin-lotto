@@ -1,7 +1,5 @@
 package lotto
 
-private var lotteries = 0
-
 enum class ErrorType {
     AMOUNT {
         override fun print() {
@@ -16,27 +14,36 @@ enum class ErrorType {
 }
 
 fun main() {
-
+    val lottoGame = LottoGame()
+    lottoGame.simulate()
 }
 
-fun getPurchaseAmount() {
-    val inputAmount = getPurchaseAmountInput()
-    checkInputAmountValid(inputAmount)
-    initLotteries(inputAmount)
-}
+class LottoGame {
+    private var lotteries = 0
 
-fun getPurchaseAmountInput(): Int {
-    print("구입금액을 입력해 주세요.\n")
-    return readLine()?.toInt() ?: 0
-}
-
-fun checkInputAmountValid(amount: Int) {
-    if(amount == 0 || amount % 1000 != 0) {
-        ErrorType.AMOUNT.print()
-        throw IllegalArgumentException()
+    fun simulate() {
+        getPurchaseAmount()
     }
-}
 
-fun initLotteries(amount: Int) {
-    lotteries = amount / 1000
+    fun getPurchaseAmount() {
+        val inputAmount = getPurchaseAmountInput()
+        checkInputAmountValid(inputAmount)
+        initLotteries(inputAmount)
+    }
+
+    private fun getPurchaseAmountInput(): Int {
+        print("구입금액을 입력해 주세요.\n")
+        return readLine()?.toInt() ?: 0
+    }
+
+    private fun checkInputAmountValid(amount: Int) {
+        if(amount == 0 || amount % 1000 != 0) {
+            ErrorType.AMOUNT.print()
+            throw IllegalArgumentException()
+        }
+    }
+
+    private fun initLotteries(amount: Int) {
+        lotteries = amount / 1000
+    }
 }
