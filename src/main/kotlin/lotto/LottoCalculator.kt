@@ -11,7 +11,7 @@ class LottoCalculator {
             for(i in winningResult.keys) {
                 total += (winningResult[i]!! * i.reward)
             }
-            return total.toDouble()/price * 100
+            return 100 * total.toDouble()/price.toDouble()
         }
     }
 }
