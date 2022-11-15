@@ -50,6 +50,16 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `예외 테스트2`() {
+        assertSimpleTest {
+            runException("500")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+
+
     override fun runMain() {
         main()
     }
