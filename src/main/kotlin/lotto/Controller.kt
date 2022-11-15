@@ -39,11 +39,11 @@ class Controller {
 
     fun resultPrint() {
         Output.winningStatistics()
-        printStatistics(WinningAmount.THREE)
-        printStatistics(WinningAmount.FOUR)
-        printStatistics(WinningAmount.FIVE)
-        printStatistics(WinningAmount.FIVE_PLUS)
-        printStatistics(WinningAmount.SIX)
+        Output.resultFifth(WinningAmount.FIFTH.number)
+        Output.resultFourth(WinningAmount.FOURTH.number)
+        Output.resultThird(WinningAmount.THIRD.number)
+        Output.resultSecond(WinningAmount.SECOND.number)
+        Output.resultFirst(WinningAmount.FIRST.number)
     }
 
     fun getYield(amount: Int) {
@@ -69,15 +69,5 @@ class Controller {
 
     private fun getRandomNumber(): List<Int> {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6)
-    }
-
-    private fun printStatistics(w: WinningAmount) {
-        when (w) {
-            WinningAmount.THREE -> Output.resultThree(three)
-            WinningAmount.FOUR -> Output.resultFour(four)
-            WinningAmount.FIVE -> Output.resultFive(five)
-            WinningAmount.FIVE_PLUS -> Output.resultFivePlus(fivePlus)
-            WinningAmount.SIX -> Output.resultSix(six)
-        }
     }
 }

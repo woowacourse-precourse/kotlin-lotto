@@ -25,23 +25,23 @@ object Output {
         println("총 수익률은 ${number}%입니다.")
     }
 
-    fun resultThree(number: Int) {
+    fun resultFifth(number: Int) {
         println("3개 일치 (5,000원) - ${number}개")
     }
 
-    fun resultFour(number: Int) {
+    fun resultFourth(number: Int) {
         println("4개 일치 (50,000원) - ${number}개")
     }
 
-    fun resultFive(number: Int) {
+    fun resultThird(number: Int) {
         println("5개 일치 (1,500,000원) - ${number}개")
     }
 
-    fun resultFivePlus(number: Int) {
+    fun resultSecond(number: Int) {
         println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${number}개")
     }
 
-    fun resultSix(number: Int) {
+    fun resultFirst(number: Int) {
         println("6개 일치 (2,000,000,000원) - ${number}개")
     }
 }
