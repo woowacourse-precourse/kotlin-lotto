@@ -26,7 +26,7 @@ class Calculator {
 
     fun roundDecimal(number: Double): Double {
         var decimalPlaces = 1.0
-        for(i in 0 until DECIMAL_PLACES - 1) {
+        for (i in 0 until DECIMAL_PLACES - 1) {
             decimalPlaces *= 10
         }
 

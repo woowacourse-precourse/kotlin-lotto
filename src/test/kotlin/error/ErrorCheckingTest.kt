@@ -1,7 +1,6 @@
 package error
 
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
-import domain.Lotto
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -63,9 +62,9 @@ class ErrorCheckingTest {
 
     @Test
     fun `금액이 0인 경우 예외가 발생한다`() {
-         assertThrows<IllegalArgumentException> {
-             InputError.checkMoneyZero(0)
-         }
+        assertThrows<IllegalArgumentException> {
+            InputError.checkMoneyZero(0)
+        }
     }
 
     @Nested
@@ -76,12 +75,14 @@ class ErrorCheckingTest {
                 InputError.checkWinningsFormat("3. 5, 4. 6, 8")
             }
         }
+
         @Test
         fun case2() {
             assertThrows<IllegalArgumentException> {
                 InputError.checkWinningsFormat("4, a, 6, 7, 8")
             }
         }
+
         @Test
         fun case3() {
             assertThrows<IllegalArgumentException> {

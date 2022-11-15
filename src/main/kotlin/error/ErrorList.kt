@@ -1,7 +1,6 @@
 package error
 
 import error.ErrorMaking.Companion.makeError
-import domain.Lotto
 import resource.*
 
 object LottoError {

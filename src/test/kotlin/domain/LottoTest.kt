@@ -16,6 +16,7 @@ class LottoTest {
                 )
             ).isEqualTo(Winning.FIFTH.ordinal)
         }
+
         @Test
         fun case2() {
             assertThat(
@@ -25,6 +26,7 @@ class LottoTest {
                 )
             ).isEqualTo(Winning.FIRST.ordinal)
         }
+
         @Test
         fun case3() {
             assertThat(

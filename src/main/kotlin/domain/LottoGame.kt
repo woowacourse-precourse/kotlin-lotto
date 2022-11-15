@@ -2,7 +2,6 @@ package domain
 
 import camp.nextstep.edu.missionutils.Randoms
 import error.InputError
-import error.LottoError
 import resource.*
 
 class LottoGame {
