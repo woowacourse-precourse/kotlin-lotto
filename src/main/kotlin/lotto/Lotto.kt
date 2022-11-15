@@ -15,7 +15,7 @@ class Lotto(private val numbers: List<Int>) {
     }
 }
 
-class AutomaticLotteryTickets(private val purchaseAmount: Int) : Iterator<List<Int>> {
+class AutomaticLotteryTickets(private val purchaseAmount: Int) : Iterable<List<Int>> {
     private val tickets = arrayListOf<List<Int>>()
     private var index = 0
 
@@ -33,13 +33,20 @@ class AutomaticLotteryTickets(private val purchaseAmount: Int) : Iterator<List<I
         return tickets.toString()
     }
 
-    override fun next(): List<Int> {
-        return tickets[index++]
+    override fun iterator(): Iterator<List<Int>> {
+        return object : Iterator<List<Int>> {
+            var index = 0
+
+            override fun next(): List<Int> {
+                return tickets[index++]
+            }
+
+            override fun hasNext(): Boolean {
+                return index < tickets.count()
+            }
+        }
     }
 
-    override fun hasNext(): Boolean {
-        return index < tickets.count()
-    }
 }
 
 
@@ -68,11 +75,11 @@ class LottoWinningStat(
         val df = DecimalFormat("#,###")
 
         return """
-            3개 일치 (${df.format(LotteryConverter.PRICE5)}) - ${winningStat[LotteryRank.FIVE]}개
-            4개 일치 (${df.format(LotteryConverter.PRICE4)}) - ${winningStat[LotteryRank.FOUR]}개
-            5개 일치 (${df.format(LotteryConverter.PRICE3)}) - ${winningStat[LotteryRank.THREE]}개
-            5개 일치, 보너스 볼 일치 (${df.format(LotteryConverter.PRICE2)}) - ${winningStat[LotteryRank.TWO]}개
-            6개 일치 (${df.format(LotteryConverter.PRICE1)}) - ${winningStat[LotteryRank.ONE]}개
+            3개 일치 (${df.format(LotteryConverter.PRICE5)}원) - ${winningStat[LotteryRank.FIVE]}개
+            4개 일치 (${df.format(LotteryConverter.PRICE4)}원) - ${winningStat[LotteryRank.FOUR]}개
+            5개 일치 (${df.format(LotteryConverter.PRICE3)}원) - ${winningStat[LotteryRank.THREE]}개
+            5개 일치, 보너스 볼 일치 (${df.format(LotteryConverter.PRICE2)}원) - ${winningStat[LotteryRank.TWO]}개
+            6개 일치 (${df.format(LotteryConverter.PRICE1)}원) - ${winningStat[LotteryRank.ONE]}개
             총 수익률은 ${String.format("%.1f", totalEarningRate)}%입니다.
         """.trimIndent()
     }
@@ -83,8 +90,11 @@ class LottoWinningStat(
             var bonusCount = 0
             if (matchedNumberCount == 5 && checkBonusMatch())
                 bonusCount = 1
-            val rank = LotteryConverter.getRankByCount(matchedNumberCount, bonusCount)
-            winningStat[rank] = winningStat[rank]!! + 1
+
+            if(matchedNumberCount >= 3) {
+                val rank = LotteryConverter.getRankByCount(matchedNumberCount, bonusCount)
+                winningStat[rank] = winningStat[rank]!! + 1
+            }
         }
     }
 
@@ -94,8 +104,8 @@ class LottoWinningStat(
                     LotteryConverter.PRICE2 * winningStat[LotteryRank.TWO]!! +
                     LotteryConverter.PRICE3 * winningStat[LotteryRank.THREE]!! +
                     LotteryConverter.PRICE4 * winningStat[LotteryRank.FOUR]!! +
-                    LotteryConverter.PRICE5 * winningStat[LotteryRank.FIVE]!!) /
-                    (tickets.countTickets() * 1000)).toFloat()
+                    LotteryConverter.PRICE5 * winningStat[LotteryRank.FIVE]!!).toFloat() /
+                    (tickets.countTickets() * 1000)) * 100
     }
 
     private fun checkHowManyMatches(ticket: List<Int>): Int {
@@ -127,7 +137,9 @@ object LotteryConverter {
 
     fun getRankByCount(matchedLottoNumber: Int, matchedBonusNumber: Int = 0): LotteryRank {
         require(matchedLottoNumber + matchedBonusNumber <= 6 && matchedBonusNumber <= 1) { "[ERROR] LotteryConverter.getRankByCount: 잘못된 파라미터가 전달 되었음" }
+
         val key = matchedLottoNumber.toFloat() + matchedBonusNumber.toFloat() * 0.5f
+
         return countToRank[key]!!
     }
 
