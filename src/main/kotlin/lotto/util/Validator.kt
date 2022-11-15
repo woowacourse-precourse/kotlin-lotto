@@ -37,7 +37,7 @@ object Validator {
         if (winningNumber.size != LOTTO_SIZE) {
             throw IllegalArgumentException(ERROR_SIX_LENGTH)
         }
-        return winningNumber
+        return winningNumber.sorted()
     }
 
     fun checkBonusNumber(input: String): String {
