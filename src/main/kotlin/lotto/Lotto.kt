@@ -31,5 +31,13 @@ class Lotto(private val numbers: List<Int>) {
         }
         return 5
     }
-
+    fun checkWinLotto(sameNum : Int,winLotto: MutableList<Int>) {
+        when(sameNum){
+            3 -> winLotto[0]+=1
+            4 -> winLotto[1]+=1
+            5 -> winLotto[2]+=1
+            7 -> winLotto[3]+=1
+            6 -> winLotto[4]+=1
+        }
+    }
 }
