@@ -24,7 +24,10 @@ class MainView {
     fun getWinNums() : String? {
         println(GET_LOTTO_INPUT_MSG)
         val winNums = readLine()
-        //당첨 번호를 양식에 맞게 입력하지 않았을 때의 예외 사항 처리 필요
+        if (winNums != null) {
+            LottoExecptions().getLottoNumNumericException(winNums)
+            LottoExecptions().getLottoNumCommaException(winNums)
+        }
         return winNums
     }
 
