@@ -33,7 +33,7 @@ internal class LotteryCheckerTest {
 
     companion object {
         private var lotteryChecker: LotteryChecker = LotteryChecker()
-        private val winningLottery = WinningLottery("12,13,14,15,16,40", "30")
+        private val winningLottery = WinningLottery("12,13,14,15,16,40", 30)
         private val lottoTicket = mutableListOf<Lotto>()
 
         @BeforeAll

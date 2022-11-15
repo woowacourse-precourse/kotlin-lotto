@@ -4,7 +4,7 @@ object ErrorMessage {
     private const val ERROR = "[ERROR] "
 
     /** 입력 받은 구입금액 에러 메시지*/
-    const val ERROR_NOT_NUMBERS = ERROR.plus("숫자가 아닙니다. 숫자로 입력해주세요.")
+    const val ERROR_NOT_NUMBERS = ERROR.plus("유효한 숫자가 아닙니다.")
     const val ERROR_REMAINING_MONEY = ERROR.plus("적절한 입력 값이 아닙니다. 로또 개당 가격은 1,000원 입니다.")
 
     /** 입력 받은 당첨금액, 보너스 에러 메시지  */

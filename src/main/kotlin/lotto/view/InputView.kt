@@ -18,8 +18,8 @@ object InputView {
         return Console.readLine()
     }
 
-    fun inputBonusNumber(): String {
+    fun inputBonusNumber(): Int {
         println('\n'.plus(INPUT_BONUS_NUMBER))
-        return Console.readLine()
+        return Validator.checkBonusNumber(Console.readLine())
     }
 }
