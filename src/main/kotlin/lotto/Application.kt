@@ -1,5 +1,13 @@
 package lotto
 
+import lotto.controller.LottoController
+import lotto.util.Constant.Companion.ERROR_EXIT
+
 fun main() {
-    TODO("프로그램 구현")
+    try {
+        var lottoController = LottoController()
+        lottoController.startLotto()
+    } catch (e : IllegalArgumentException) {
+        println(ERROR_EXIT)
+    }
 }
