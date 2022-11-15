@@ -7,7 +7,9 @@ class MainView {
     fun getLottoPrice() : Int? {
         println(PURCHASE_MSG)
         val lottoPrice = readLine()?.toInt()
-        //구입 금액 입력 받을 때 생길 수 있는 예외 사항 처리 필요
+        if (lottoPrice != null) {
+            LottoExecptions().getInputLottoPriceUnitException(lottoPrice)
+        }
         return lottoPrice
     }
 

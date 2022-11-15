@@ -41,23 +41,9 @@ class LottoExecptions {
         throw IllegalArgumentException(JOptionPane.ERROR_MESSAGE.toString() + BONUS_TYPE_ERROR)
     }
 
-//    fun getBonusLengthException(input : String) : Boolean{
-//        if(input.length != 1){
-//            throw IllegalArgumentException(JOptionPane.ERROR_MESSAGE.toString() + BONUS_LENGTH_ERROR)
-//        }
-//        return true
-//    }
-
     fun getBonusDuplicateException(bonus : Int, winNumbers : List<Int>) : Boolean{
         winNumbers.forEach {
             if( it == bonus) throw IllegalArgumentException(JOptionPane.ERROR_MESSAGE.toString() + BONUS_DUPLICATE_WINNUM_ERROR)
-        }
-        return true
-    }
-
-    fun getBonusRangeException(bonus: Int) : Boolean{
-        if(bonus <= Lotto.LOTTO_RANGE_START || bonus >= Lotto.LOTTO_RANGE_END){
-            throw IllegalArgumentException(JOptionPane.ERROR_MESSAGE.toString() + BONUS_RANGE_ERROR)
         }
         return true
     }
