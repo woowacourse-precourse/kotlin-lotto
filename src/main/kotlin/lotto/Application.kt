@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 import error.InputError
 import error.LottoError
 import resource.*
+import kotlin.math.roundToLong
 
 fun main() {
     val purchaseMoney = getPurchaseMoney()
@@ -15,6 +16,19 @@ fun main() {
     val bonusNumber = getBonusNumber()
 
     val winningResult = calculateWinnings(lottoNumbers, winningNumbers, bonusNumber)
+    val winningRate = calculateWinningRate(winningResult, purchaseMoney)
+}
+
+fun calculateWinningRate(result: List<Int>, money: Int): Double {
+    var sum = 0
+    var rate = 0.0
+
+    for(index in result.indices) {
+        sum += result[index] * Winning.values()[index].prize
+    }
+
+    rate = (sum.toDouble() / money.toDouble()) * 100
+    return (Math.round(rate*10))/10.0
 }
 
 fun calculateWinnings(lottos: List<Lotto>, winnings: Lotto, bonus: Int): List<Int> {

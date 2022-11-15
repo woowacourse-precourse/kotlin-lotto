@@ -74,7 +74,17 @@ class ApplicationTest : NsTest() {
                 Lotto(listOf(4, 3, 2, 1, 7, 5)),
                 Lotto(listOf(6, 5, 4, 3, 2, 1)),
                 Lotto(listOf(1, 3, 5, 14, 22, 45))
-            ), Lotto(listOf(1, 2, 3, 4, 5, 6)), 7
+            ),
+            Lotto(listOf(1, 2, 3, 4, 5, 6)),
+            7
         )).isEqualTo(listOf(1, 0, 1, 1, 1))
+    }
+
+    @Test
+    fun `당첨 결과의 수익률 계산 테스트`() {
+        assertThat(calculateWinningRate(
+            listOf(1, 0, 0, 0, 0),
+            8000
+        )).isEqualTo(62.5)
     }
 }
