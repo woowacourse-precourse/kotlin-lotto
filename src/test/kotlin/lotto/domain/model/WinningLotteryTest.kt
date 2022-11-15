@@ -1,5 +1,7 @@
 package lotto.domain.model
 
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.assertThrows
@@ -13,6 +15,12 @@ import java.lang.IllegalArgumentException
 @DisplayName("당첨 로또 클래스 테스트")
 internal class WinningLotteryTest {
 
+    private lateinit var winningLottery: WinningLottery
+
+    @BeforeEach
+    fun setUp() {
+        winningLottery = WinningLottery("1,2,3,4,5,6", "7")
+    }
 
     @Nested
     @DisplayName("생성자 테스트")
@@ -49,7 +57,23 @@ internal class WinningLotteryTest {
     }
 
 
-    @Test
-    fun compareLotto() {
+    @Nested
+    @DisplayName("로또 비교 테스트")
+    inner class CompareTest {
+        @Test
+        @DisplayName("1등, 2등, 2등+보너스 결과 값을 반환하는지 체크")
+        fun compareLotto1() {
+            assertThat(winningLottery.compareLotto(Lotto(listOf(1, 2, 3, 4, 5, 6)))).isEqualTo(Rank.CORRECT_SIX)
+            assertThat(winningLottery.compareLotto(Lotto(listOf(1, 2, 3, 4, 5, 7)))).isEqualTo(Rank.CORRECT_FIVE_BONUS)
+            assertThat(winningLottery.compareLotto(Lotto(listOf(1, 2, 3, 4, 5, 10)))).isEqualTo(Rank.CORRECT_FIVE)
+        }
+
+        @Test
+        @DisplayName("3등, 4등 꼴등 결과 값을 반환하는지 체크")
+        fun compareLotto2() {
+            assertThat(winningLottery.compareLotto(Lotto(listOf(1, 2, 3, 10, 11, 12)))).isEqualTo(Rank.CORRECT_THREE)
+            assertThat(winningLottery.compareLotto(Lotto(listOf(1, 2, 3, 4, 10, 11)))).isEqualTo(Rank.CORRECT_FOUR)
+        }
     }
+
 }
