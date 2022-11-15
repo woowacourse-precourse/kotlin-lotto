@@ -1,9 +1,23 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    TODO("프로그램 구현")
+    println("구입금액을 입력해 주세요.")
+    val money = moneyValidCheck(Console.readLine())
+    val lottoCount : Int = money/1000
+    println("\n${lottoCount}개를 구매했습니다.")
+    val lottoPack = lottoMaker(lottoCount)
+    println("\n당첨번호를 입력해 주세요.")
+    var lottoNum = numberSizeCheck(sameCheck(lottoSizeCheck(toIntegerList(lottoLastNumberCheck(lottoCommaCheck(lottoZeroCheck(lottoNumberValidCheck(
+        Console.readLine().toCharArray()))))))))
+    println("\n보너스 번호를 입력해 주세요.")
+    var bonusNum = bonusLottNumCheck(bonusNumValidCheck(Console.readLine()),lottoNum)
+    println("\n당첨통계\n---")
+    var result =printResult(lottoStat(lottoPack, lottoNum, bonusNum))
+    var rateofreturn : Double =(result*100.0/money).toDouble()
+    println("총 수익률은 ${String.format("%.1f",rateofreturn.toDouble())}%입니다.")
 }
 
 fun moneyValidCheck(a : String) : Int {
