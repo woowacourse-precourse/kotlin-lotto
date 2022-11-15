@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class RandomLottoNumbersGenerator(purchaseAmount: Int) {
     private val randomLottoes = mutableListOf<List<Int>>()
-    
+
     init{
         createRandomLottoNumbers(purchaseAmount)
         showRandomLottoes()

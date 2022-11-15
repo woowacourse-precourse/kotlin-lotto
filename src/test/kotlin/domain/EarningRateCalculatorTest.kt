@@ -1,5 +1,7 @@
 package lotto
 
+import domain.EarningRateCalculator
+import domain.MatchStorage
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 

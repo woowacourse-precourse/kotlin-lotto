@@ -1,5 +1,6 @@
 package lotto
 
+import domain.MatchStorage
 import java.lang.Math.round
 
 class EarningRateCalculator(private val purchaseMoney: Int) {

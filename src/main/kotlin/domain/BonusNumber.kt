@@ -1,5 +1,5 @@
-package lotto
-import lotto.ExceptionHandler.throwExceptionForBonusNumbers
+package domain
+import utils.ExceptionHandler.throwExceptionForBonusNumbers
 class BonusNumber(private val bonusNumber: Int, private val lottoNumbers: List<Int>) {
 
     init {

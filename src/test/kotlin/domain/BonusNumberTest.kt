@@ -1,5 +1,6 @@
 package lotto
 
+import domain.BonusNumber
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 

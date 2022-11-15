@@ -1,5 +1,6 @@
 package lotto
 
+import domain.PurchaseMoney
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 

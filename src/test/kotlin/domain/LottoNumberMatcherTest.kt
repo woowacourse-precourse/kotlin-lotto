@@ -1,8 +1,9 @@
 package lotto
 
+import domain.LottoNumbersMatcher
+import domain.MatchStorage
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 
 class LottoNumberMatcherTest {
 

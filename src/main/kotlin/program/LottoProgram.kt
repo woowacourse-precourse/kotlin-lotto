@@ -1,8 +1,12 @@
 package lotto
-import lotto.Constants.ERROR_MESSAGE
-import lotto.ExceptionHandler.getIsInputFormRight
-import lotto.Constants.SHOW_MATCH_STATISTICS_MESSAGE
-import lotto.Constants.ERROR_WRONG_INPUT_FORM
+import domain.BonusNumber
+import domain.Lotto
+import domain.MatchStorage
+import domain.PurchaseMoney
+import utils.ExceptionHandler.getIsInputFormRight
+import utils.Constants
+import utils.Constants.SHOW_MATCH_STATISTICS_MESSAGE
+import utils.Constants.ERROR_WRONG_INPUT_FORM
 
 class LottoProgram {
     fun startProgram(){

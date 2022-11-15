@@ -1,9 +1,6 @@
 package lotto
-import lotto.Constants.MATCH_THREE_NUMBER_MESSAGE
-import lotto.Constants.MATCH_FOUR_NUMBER_MESSAGE
-import lotto.Constants.MATCH_FIVE_NUMBER_MESSAGE
-import lotto.Constants.MATCH_SIX_NUMBER_MESSAGE
-import lotto.Constants.MATCH_FIVE_WITH_BONUS_NUMBER_MESSAGE
+
+import domain.MatchStorage
 
 class LottoNumbersMatcher(private val numbers: List<Int>,
                         private val bonusNumber: Int,
