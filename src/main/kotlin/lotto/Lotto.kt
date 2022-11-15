@@ -77,15 +77,20 @@ class Lotto(private val numbers: List<Int>) {
 fun buyLotto(){
     print("구매 금액을 입력해 주세요.")
     var userInput : Int? = readLine()!!.toIntOrNull()
-    if(!userInputCheck(userInput)){
-        println("유효하지 않은 입력입니다.")
-    }
     userInput = userInput?.div(1000)
+    userInputCheck(userInput)
 
     var lottoList = createLottoList(userInput!!)
 }
 
-fun userInputCheck(userInput: Int?): Boolean {
+fun userInputCheck(userInput: Int?){
+    var E = ExceptionExplain.WrongPayment
+
+    if (1 > userInput!!)
+        E.checkAndThrowException()
+
+    if (userInput == null)
+        E.checkAndThrowException()
 
 }
 
@@ -116,7 +121,7 @@ fun createLottoList(howMany : Int) : List<Lotto> {
 enum class ExceptionExplain{
     WrongPayment{
         override fun checkAndThrowException() {
-            throw IllegalArgumentException("[ERROR] 입력 금액은 1000원 단위입니다.")
+            throw IllegalArgumentException("[ERROR] 입력 금액은 1000원 단위의 정수입니다.")
         }
     }, WrongWinNum{
         override fun checkAndThrowException() {
