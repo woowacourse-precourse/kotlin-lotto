@@ -11,19 +11,22 @@ class BaseData {
 
     fun baseData(){
         inputMoney()
-        validInputMoney()
         buyLotto()
         inputLottoNum()
         inputBonus()
-        validInputBonus()
     }
 
     fun inputMoney() {
         println("구입금앱을 입력해 주세요.")
-        inputMoney = Console.readLine().toInt()
+        val money=Console.readLine()
+        validInputMoney(money)
+        inputMoney = money.toInt()
     }
 
-    fun validInputMoney(){
+    fun validInputMoney(money : String){
+        if(money.elementAt(0).code <48 || money.elementAt(0).code>57){
+            throw IllegalArgumentException("[ERROR] 보너스 번호는 숫자여야 합니다.")
+        }
         if(inputMoney%1000 != 0) {
             throw IllegalArgumentException("[ERROR] 구입금액은 1000원 단위입니다.")
         }
@@ -54,13 +57,19 @@ class BaseData {
     }
     fun inputBonus() {
         println("보너스 번호를 입력해 주세요.")
-        bonusNum = Console.readLine().toInt()
+        val bonus=Console.readLine()
+        validInputBonus(bonus)
+        bonusNum = bonus.toInt()
     }
-    fun validInputBonus(){
-        if(bonusNum < 1
-            && bonusNum > 45
+    fun validInputBonus(bonus : String){
+        if(bonus.elementAt(0).code<48 || bonus.elementAt(0).code>57){
+            throw IllegalArgumentException("[ERROR] 보너스 번호는 숫자여야 합니다.")
+        }
+        if(bonus.toInt() < 1
+            || bonus.toInt() > 45
         ){
             throw IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.")
         }
+
     }
 }
