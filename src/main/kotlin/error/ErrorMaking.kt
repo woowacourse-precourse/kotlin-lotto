@@ -21,6 +21,9 @@ enum class ErrorMaking {
     },
     NEGATIVE_NUMBER {
         override fun getErrorMessage() = "음수가 입력되었습니다."
+    },
+    MONEY_ZERO {
+        override fun getErrorMessage() = "금액이 0입니다."
     };
 
     abstract fun getErrorMessage(): String

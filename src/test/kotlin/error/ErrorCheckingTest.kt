@@ -61,6 +61,13 @@ class ErrorCheckingTest {
         }
     }
 
+    @Test
+    fun `금액이 0인 경우 예외가 발생한다`() {
+         assertThrows<IllegalArgumentException> {
+             InputError.checkMoneyZero(0)
+         }
+    }
+
     @Nested
     inner class `당첨번호 입력 형식에 맞지 않는 경우 오류 테스트` {
         @Test

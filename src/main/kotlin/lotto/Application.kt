@@ -112,6 +112,7 @@ fun getPurchaseMoney(): Int {
 
     val money = value!!.toInt()
     InputError.checkNegative(money)
+    InputError.checkMoneyZero(money)
     InputError.checkValidMoney(money)
 
     return money

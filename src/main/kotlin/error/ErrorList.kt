@@ -53,7 +53,7 @@ object InputError {
     }
 
     fun checkNegative(number: Int) {
-        if(number < 0) {
+        if (number < 0) {
             makeError(ErrorMaking.NEGATIVE_NUMBER)
         }
     }
@@ -61,6 +61,12 @@ object InputError {
     fun checkValidMoney(money: Int) {
         if (money % LOTTO_PRICE != 0) {
             makeError(ErrorMaking.MONEY_UNIT_INCORRECT)
+        }
+    }
+
+    fun checkMoneyZero(money: Int) {
+        if (money == 0) {
+            makeError(ErrorMaking.MONEY_ZERO)
         }
     }
 
