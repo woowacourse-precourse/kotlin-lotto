@@ -2,7 +2,7 @@ package lotto
 import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
 import java.util.*
-import org.junit.platform.commons.logging.LoggerFactory
+
 
 enum class Grade(val money:Int){
     First(2000000000),
@@ -12,20 +12,16 @@ enum class Grade(val money:Int){
     Fifth(5000);
 }
 class Money{
-    private val log = LoggerFactory.getLogger(javaClass)
     fun checkUserMoney(userMoney:String):Int{
         var userMoney = userMoney.toIntOrNull()
         if(userMoney == null) {
-            log.error() { "[ERROR] 수를 입력하세요" }
-            throw IllegalArgumentException()
+            throw IllegalArgumentException("[ERROR] 숫자를 입력해주세요")
         }
         if(userMoney%1000 != 0) {
-            log.error() { "[ERROR] 1000으로 나누어 떨어지게 입력하세요" }
-            throw IllegalArgumentException()}
+            throw IllegalArgumentException("[ERROR] 1000으로 나누어 떨어지는 수를 입력해주세요")}
         return userMoney
     }
 }
-
 
 fun bonusSame(numbers: List<Int>, bonus: Int):Int{
     for(i in 0 until 6){
@@ -33,19 +29,23 @@ fun bonusSame(numbers: List<Int>, bonus: Int):Int{
     }
     return -1
 }
+
 fun checkSame(one:Int,two:Int,count:Int):Int{
     if(one == two) return count+1
     return count
 }
 
-fun checkGrade(numbers:List<Int>,userNum:List<String>,bonus: Int):Int{
+fun checkGrade(numbers:List<Int>,userNum:List<Int>,bonus: Int):Int{
     var count = 0
     for(i in 0 until 6) {
         for(j in 0 until 6) {
-            count = checkSame(numbers[i],userNum[j].toInt(),count)
+            count = checkSame(numbers[i],userNum[j],count)
         }
     }
     println(count)
+    return returnGrade(numbers,bonus,count)
+}
+fun returnGrade(numbers:List<Int>,bonus: Int,count: Int):Int{
     if(count==6) return 1
     else if(count == 5){
         if(bonusSame(numbers,bonus) == 1) return 2
@@ -56,7 +56,8 @@ fun checkGrade(numbers:List<Int>,userNum:List<String>,bonus: Int):Int{
     return 0
 }
 
-fun pickNum(Num:Int,userNum:List<String>,bonus:Int):Array<Int>{
+
+fun pickNum(Num:Int,userNum:List<Int>,bonus:Int):Array<Int>{
     var gradeNum = arrayOf(0,0,0,0,0,0)
     for(i in 1 until Num+1){
     val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
@@ -87,9 +88,13 @@ fun userNum(lottoNum:Int){
     println("당첨번호를 입력하세요")
     val userString = Console.readLine()!!.toString()
     val userNum = userString.split(",")
+    if(userNum.size!=6) throw IllegalArgumentException()
+    val userNumInt :List<Int> = arrayListOf(userNum[0].toInt(),userNum[1].toInt(),userNum[2].toInt(),userNum[3].toInt(),userNum[4].toInt(),userNum[5].toInt())
+    val ok = Lotto(userNumInt)
     println("보너스 점수를 입력하세요")
     var bonus = Console.readLine()!!.toInt()
-    var gradeNum = pickNum(lottoNum,userNum,bonus)
+    Bonus(bonus)
+    var gradeNum = pickNum(lottoNum,userNumInt,bonus)
    persent(gradeNum,lottoNum)
 }
 
@@ -101,9 +106,6 @@ fun persent(gradeNum: Array<Int>,lottoNum: Int){
     println("총 수익률은 ${earnMoney}%입니다.")
 }
 
-
-
-
 fun main() {
     var userMoney = Console.readLine()!!.toString()
     val money = Money()
@@ -111,7 +113,7 @@ fun main() {
     try{
     var checkUserMoneyOk = money.checkUserMoney(userMoney)}
     catch(e:IllegalArgumentException){
-        print("[ERROR] 잘못 입력하셨습니다.")
+        println("[ERROR] 잘못 입력하셨습니다.")
         return
     }
 
