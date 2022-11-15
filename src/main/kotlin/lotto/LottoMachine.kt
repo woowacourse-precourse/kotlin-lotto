@@ -18,10 +18,10 @@ class LottoMachine(private val customerBuyLottoPrice: Int) {
         val totalLottoNumbers = mutableListOf<List<Int>>()
         for (i in 0..customerBuyLottoCount) {
             val lottoNumbers = createCustomerLottoNumber()
+            println(lottoNumbers)
             totalLottoNumbers.add(lottoNumbers)
         }
     }
-
 
 
 
