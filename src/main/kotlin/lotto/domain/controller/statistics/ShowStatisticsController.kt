@@ -1,6 +1,5 @@
 package lotto.domain.controller.statistics
 
-import lotto.domain.calculator.LottoCalculator
 import lotto.domain.controller.Controller
 import lotto.domain.model.statistics.WinningTotalStatistics
 import lotto.ui.view.statistics.ShowStatisticsView
