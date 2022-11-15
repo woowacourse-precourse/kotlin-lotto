@@ -1,13 +1,15 @@
 package lotto.lottoStore
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.Lotto
+
 
 fun createLotto(inputUserNumber: String): MutableList<List<Int>> {
-    val a = mutableListOf<List<Int>>()
+    val lotto = mutableListOf<List<Int>>()
     for (i in 1..inputUserNumber.toInt()) {
         val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
         println(numbers.sorted())
-        a.add(numbers.sorted())
+        lotto.add(Lotto.Lotto(numbers.sorted()).getNumbers())
     }
-    return a
+    return lotto
 }
