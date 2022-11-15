@@ -1,5 +1,6 @@
 package error
 
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -36,6 +37,28 @@ class ErrorCheckingTest {
     fun `금액이 로또 가격으로 나누어 떨어지지 않으면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
             InputError.checkValidMoney(1450)
+        }
+    }
+
+    @Nested
+    inner class `당첨번호 입력 형식에 맞지 않는 경우 오류 테스트` {
+        @Test
+        fun case1() {
+            assertThrows<IllegalArgumentException> {
+                InputError.checkWinningsFormat("3. 5, 4. 6, 8")
+            }
+        }
+        @Test
+        fun case2() {
+            assertThrows<IllegalArgumentException> {
+                InputError.checkWinningsFormat("4, a, 6, 7, 8")
+            }
+        }
+        @Test
+        fun case3() {
+            assertThrows<IllegalArgumentException> {
+                InputError.checkWinningsFormat("1, 2, 3, 4, , 6")
+            }
         }
     }
 }

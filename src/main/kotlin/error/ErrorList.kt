@@ -46,4 +46,12 @@ object InputError {
             makeError(ErrorMaking.MONEY_UNIT_INCORRECT)
         }
     }
+
+    fun checkWinningsFormat(value: String?) {
+        try {
+            value!!.split(SEPARATOR).forEach { n -> n.trim().toInt() }
+        } catch (e: Exception) {
+            makeError(ErrorMaking.NUMBER_FORMAT_INCORRECT)
+        }
+    }
 }
