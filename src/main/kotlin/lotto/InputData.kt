@@ -34,5 +34,11 @@ class InputData {
         println("보너스 번호를 입력해 주세요.")
         return Console.readLine().toInt()
     }
-
+    fun validInputBonus(inputBonus: Int){
+        if(inputBonus >= 1
+            && inputBonus <= 45
+        ){
+            throw IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.")
+        }
+    }
 }
