@@ -21,7 +21,7 @@ fun main() {
         val bonus: Int = inputHandler.bonus()
 
         outputHandler.totalStatus(lottoList, jackpot, bonus, price)
-        
+
     } catch (e: Exception) {
         println("[ERROR]")
     }
