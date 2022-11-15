@@ -52,8 +52,16 @@ class LottoNumber {
     }
 
     private fun inputMoney(): Int {
+
         println("구입금액을 입력해 주세요.")
-        money = Console.readLine().toInt()
+        try {
+            val input = Console.readLine().toInt()
+            if ((input % 1000 != 0) && (input != 0)) {
+                throw IllegalArgumentException("[ERROR] 구입 금액은 1000원 단위입니다.")
+            }
+        } catch (_: NumberFormatException) {
+            throw IllegalArgumentException("[ERROR] 숫자가 아닌 수가 입력되었습니다.")
+        }
 
         return money
     }
@@ -91,7 +99,6 @@ class LottoNumber {
         // println(lottoNumberList)
         return lottoNumberList
     }
-
 
     private fun lottoResult(winnerNumList: List<Int>, bonusNumber: Int): Array<Int> {
 
@@ -152,13 +159,5 @@ class LottoNumber {
 
         // println(result.toFloat() / money * 100)
         return result.toDouble() / money * 100
-    }
-}
-
-fun checkedInput(input: String): Boolean {
-
-    return when (input.toIntOrNull()) {
-        null -> false
-        else -> true
     }
 }
