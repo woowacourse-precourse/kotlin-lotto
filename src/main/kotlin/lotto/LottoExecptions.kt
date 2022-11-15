@@ -1,5 +1,6 @@
 package lotto
 
+import java.util.function.BinaryOperator
 import javax.swing.JOptionPane
 
 class LottoExecptions {
@@ -49,11 +50,17 @@ class LottoExecptions {
 
     fun getBonusDuplicateException(bonus : Int, winNumbers : List<Int>) : Boolean{
         winNumbers.forEach {
-            if( it == bonus) throw IllegalArgumentException(JOptionPane.ERROR_MESSAGE.toString() + BONUS_DUPLICATE_WINNUM)
+            if( it == bonus) throw IllegalArgumentException(JOptionPane.ERROR_MESSAGE.toString() + BONUS_DUPLICATE_WINNUM_ERROR)
         }
         return true
     }
 
+    fun getBonusRangeException(bonus: Int) : Boolean{
+        if(bonus <= Lotto.LOTTO_RANGE_START || bonus >= Lotto.LOTTO_RANGE_END){
+            throw IllegalArgumentException(JOptionPane.ERROR_MESSAGE.toString() + BONUS_RANGE_ERROR)
+        }
+        return true
+    }
 
     companion object{
         const val LOTTO_SIZE_ERROR = "로또 번호는 총 6개여야 합니다"
@@ -70,7 +77,8 @@ class LottoExecptions {
 
         const val BONUS_TYPE_ERROR = "보너스 번호는 숫자여야 합니다"
         const val BONUS_LENGTH_ERROR = "보너스 번호는 1개만 입력할 수 있습니다"
-        const val BONUS_DUPLICATE_WINNUM = "보너스 번호는 6개의 당첨 번호와 중복될 수 없습니다"
+        const val BONUS_DUPLICATE_WINNUM_ERROR = "보너스 번호는 6개의 당첨 번호와 중복될 수 없습니다"
+        const val BONUS_RANGE_ERROR = "보너스 번호는 1부터 45 사이의 숫자여야 합니다"
     }
 
 }
