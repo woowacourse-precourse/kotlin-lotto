@@ -1,6 +1,6 @@
 package lotto
 
-class LottoPrize{
+class SelectionWinning{
 
     //6-1. 당첨 숫자를 게산하는 함수 생성
     fun getWinCount(publishNums: List<Int>, winNums: List<Int>): Int {
