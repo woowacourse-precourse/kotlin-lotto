@@ -81,6 +81,14 @@ fun buyLotto(){
     userInputCheck(userInput)
 
     var lottoList = createLottoList(userInput!!)
+    println("${userInput}개를 구매했습니다.")
+    printLottos(lottoList)
+}
+
+fun printLottos(lottoList: List<Lotto>){
+    lottoList.forEach(){
+        println(it.toString())
+    }
 }
 
 fun userInputCheck(userInput: Int?){
