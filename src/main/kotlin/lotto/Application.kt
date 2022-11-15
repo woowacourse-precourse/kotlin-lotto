@@ -2,6 +2,7 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import java.lang.Math.round
 
 val set = mutableSetOf<Int>()
 fun main() {
@@ -25,6 +26,7 @@ fun playLotto(){
     val result = checkMatch(userNumber, lottoNum)
     val lottoResult = compareBonus(userBonusNumber, lottoNum, result)
     printResult(lottoResult)
+    calProfit(lottoResult, count*1000)
 }
 fun inputUserMoney():Int{
     val userMoney = Console.readLine().toInt()
@@ -36,7 +38,7 @@ fun inputUserMoney():Int{
 
 fun printLottoNumber(count: Int): List<List<Int>>{
     val LottoNum = mutableListOf<List<Int>>()
-    for(i in 1..count){
+    for(i in 0..count){
         LottoNum[i] = issueLottoNumber()
     }
     return LottoNum
@@ -94,4 +96,11 @@ fun printResult(result: List<Int>){
     println("5개 일치 (1,500,000원) - ${result[2]}개")
     println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${result[3]}개")
     println("6개 일치 (2,000,000,000원) - ${result[4]}개")
+}
+
+fun calProfit(result: List<Int>, userMoney: Int){
+    var total = (result[0]*5000 + result[1]*50000 + result[2]*1500000 + result[3]*30000000 + result[4]*2000000000)
+    var toPercent = total.toDouble() / userMoney.toDouble() * 100.0
+    var profit = round(toPercent*10)/10
+    println("총 수익률은 ${profit}%입니다.")
 }
