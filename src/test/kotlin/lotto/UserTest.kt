@@ -51,4 +51,11 @@ class UserTest {
             userTest.checkPrizeNumber("1,2,3,4,5,5")
         }
     }
+
+    @Test
+    fun `보너스 번호가 숫자인지 확인한다`() {
+        assertThrows<IllegalArgumentException> {
+            userTest.checkBonusNumber("1e")
+        }
+    }
 }
