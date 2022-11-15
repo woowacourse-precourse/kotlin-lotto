@@ -14,10 +14,9 @@ fun main() {
     printLotto(paper)
 
 }
-
 fun printLotto(paper:Array<Lotto>){
     println("${paper.size}개를 구매했습니다.")
-    paper.forEach{println(it)}
+    paper.forEach{it.printNumber()}
 
 }
 fun moneyToCount(money:String):Int{

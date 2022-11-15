@@ -20,6 +20,9 @@ class Lotto(private val numbers: List<Int>) {
         return sameCnt
 
     }
+    fun printNumber(){
+        println(numbers.sorted())
+    }
 
     override fun toString(): String {
         return numbers.toString()
