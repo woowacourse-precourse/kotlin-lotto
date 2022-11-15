@@ -16,4 +16,8 @@ object LottoProcessConstValue {
     const val LOTTO_RESULT_SECOND = "5개 일치, 보너스 볼 일치 (30,000,000원) - "
     const val LOTTO_RESULT_FIRST = "6개 일치 (2,000,000,000원) - "
 
+    const val WINNING_HISTORY = "당첨 통계"
+    const val ONE_LINE = "---"
+
+
 }

@@ -106,17 +106,26 @@ class LottoOrganizer(private val producedLottoNumbers: MutableList<List<Int>>) {
         return Pair(lottoNumberMatchCount, bonusNumberMatchCount)
     }
 
-    private fun calculateTotalLotto(matchCountPair : Pair<Int, Int>) {
+    private fun calculateTotalLotto(matchCountPair: Pair<Int, Int>) {
         when {
-            matchCountPair.first == 0  -> nothingClassCount += 1
+            matchCountPair.first == 0 -> nothingClassCount += 1
             matchCountPair.first == 1 -> nothingClassCount += 1
             matchCountPair.first == 2 -> nothingClassCount += 1
             matchCountPair.first == 3 -> fifthClassCount += 1
             matchCountPair.first == 4 -> fourthClassCount += 1
             matchCountPair.first == 5 && matchCountPair.second == 0 -> thirdClassCount += 1
-            matchCountPair.first == 5 && matchCountPair.second == 1-> secondClassCount += 1
+            matchCountPair.first == 5 && matchCountPair.second == 1 -> secondClassCount += 1
             matchCountPair.first == 6 -> firstClassCount += 1
         }
+    }
+
+
+    fun printWinningHistory() {
+        println(LottoProcessConstValue.WINNING_HISTORY)
+    }
+
+    fun printOneLine() {
+        println(LottoProcessConstValue.ONE_LINE)
     }
 
     companion object {

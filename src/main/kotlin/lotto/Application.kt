@@ -18,6 +18,8 @@ fun main() {
     lottoOrganizer.inputBonusLottoNumber()
     println()
 
+    lottoOrganizer.printWinningHistory()
+    lottoOrganizer.printOneLine()
     lottoOrganizer.produceLottoWinHistory()
 
 
