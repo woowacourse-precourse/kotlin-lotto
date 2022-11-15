@@ -2,6 +2,8 @@ package lotto
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.assertj.core.api.Assertions.assertThat
 
 
 class LottoTest {
@@ -21,4 +23,13 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @Test
+    fun `발행 로또와 로또 당첨 번호 비교하기`(){
+        assertEquals(4,Lotto(listOf(1,13,14,32,35,45)).compare(listOf(1,13,14,32,33,36),4))
+    }
+
+    @Test
+    fun `보너스 번호가 들어있는지 비교하기`(){
+        assertEquals(7,Lotto(listOf(1,13,14,33,34,41)).bonusCoincidence(listOf(1,13,14,33,34,40),40))
+    }
 }
