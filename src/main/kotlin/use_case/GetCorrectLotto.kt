@@ -13,7 +13,7 @@ class GetCorrectLotto {
             getBonusLotto()
         } catch(e: IllegalArgumentException){
             println("[ERROR] 당첨 로또값 입력 오류")
-            exitProcess(-1)
+            exitProcess(0)
         }
     }
 

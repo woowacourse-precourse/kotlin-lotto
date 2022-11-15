@@ -16,7 +16,7 @@ class BuyLotto {
             createLottos()
         } catch (e: IllegalArgumentException){
             println("[ERROR] 로또 가격값 입력 오류")
-            exitProcess(-1)
+            exitProcess(0)
         }
     }
 
