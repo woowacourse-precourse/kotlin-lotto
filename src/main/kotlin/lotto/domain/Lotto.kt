@@ -7,6 +7,10 @@ class Lotto(private val numbers: List<Int>) {
         checkDuplicateNumberException()
     }
 
+    fun getNumbers():List<Int>{
+        return this.numbers
+    }
+
     fun checkLottoNumberCountException(){
         if(this.numbers.size!= LOTTO_NUMBER_COUNT) throw IllegalArgumentException(LOTTO_NUMBER_COUNT_ERROR_MESSAGE)
     }
