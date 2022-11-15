@@ -1,6 +1,14 @@
 package lotto
 import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
+import java.util.*
+enum class Grade(val money:Int){
+    First(2000000000),
+    Second(30000000),
+    Third(1500000),
+    Fourth(50000),
+    Fifth(5000);
+}
 
 fun checkUserMoney(userMoney:String):Int{
    var userMoney = userMoney.toIntOrNull()
@@ -72,6 +80,19 @@ fun main() {
     println("5개 일치 (1,500,000원) - ${gradeNum[3]}개")
     println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${gradeNum[2]}개")
     println("6개 일치 (2,000,000,000원) - ${gradeNum[1]}개")
+
+    var plusMoney : Double= 0.0
+    if(gradeNum[1] != 0) plusMoney+=Grade.First.money*gradeNum[1]
+    if(gradeNum[2] != 0) plusMoney+=Grade.Second.money*gradeNum[2]
+    if(gradeNum[3] != 0) plusMoney+=Grade.Third.money*gradeNum[3]
+    if(gradeNum[4] != 0) plusMoney+=Grade.Fourth.money*gradeNum[4]
+    if(gradeNum[5] != 0) plusMoney+=Grade.Fifth.money*gradeNum[5]
+
+    var earnMoney : Double = (plusMoney/(LottoNum*1000.0))*100.0
+    var earnMoneyRound = Math.ceil(earnMoney*10)/10.0
+
+    println("총 수익률은 ${earnMoney}%입니다.")
+
 
 
 }
