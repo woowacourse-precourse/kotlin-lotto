@@ -8,7 +8,7 @@ fun stage1(): Int {
     println(CONSTANT.STAGE.PRICEINPUT.message)
     return try {
         val lottoPrice = Console.readLine()
-        PriceChecker(lottoPrice)
+        Checker.Price(lottoPrice)
         lottoPrice.toInt()
     }catch (e: IllegalArgumentException){
         -1
@@ -42,7 +42,7 @@ fun stage4(winning : Lotto): Int {
     println(CONSTANT.STAGE.BONUSINPUT.message)
     val inputBonus = Console.readLine()
     return try {
-        BonusChecker(winning,inputBonus)
+        Checker.Bonus(winning,inputBonus)
         println(inputBonus)
         inputBonus.toInt()
     } catch (_: IllegalArgumentException) {
