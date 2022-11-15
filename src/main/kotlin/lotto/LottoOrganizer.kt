@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console
 
 class LottoOrganizer(private val producedLottoNumbers: MutableList<List<Int>>) {
 
-
     fun inputWinLottoNumber() {
         val userInput = Console.readLine()
         if (!winLottoNumberInputIsValid(userInput)) {
@@ -14,19 +13,37 @@ class LottoOrganizer(private val producedLottoNumbers: MutableList<List<Int>>) {
     }
 
     private fun winLottoNumberInputIsValid(userInput: String?): Boolean {
-        if (userInput.isNullOrBlank()) {
-            return false
-        }
+        if (userInput.isNullOrBlank()) return false
 
         val userInputSplit = userInput.split(',')
-
-//        if () {
-//            return false
-//        }
-
-        println(userInputSplit)
-
+        val validNumberCheck = IntArray(45)
+        if (userInputSplit.size != 6) return false
+        for (e in userInputSplit) {
+            if(!isNumber(e)) return false
+            if (!isValidLottoNumber(e.toInt(), validNumberCheck)) return false
+        }
         return true
+    }
+
+    private fun isValidLottoNumber(number: Int, validNumberCheck: IntArray): Boolean {
+        if (number < LottoProcessConstValue.LOTTO_NUMBER_RANGE_START || number > LottoProcessConstValue.LOTTO_NUMBER_RANGE_END) {
+            return false
+        }
+        if (validNumberCheck[number] == 1) {
+            return false
+        }
+        if (validNumberCheck[number] == 0) {
+            validNumberCheck[number] = 1
+        }
+        return true
+    }
+
+    private fun isNumber(elementString: String): Boolean {
+        return try {
+            true
+        } catch (e: NumberFormatException) {
+            false
+        }
     }
 
 
@@ -44,7 +61,7 @@ class LottoOrganizer(private val producedLottoNumbers: MutableList<List<Int>>) {
             return false
         }
 
-        if (userInput.toInt() <= LottoProcessConstValue.LOTTO_NUMBER_RANGE_START || userInput.toInt() >= LottoProcessConstValue.LOTTO_NUMBER_RANGE_END) {
+        if (userInput.toInt() < LottoProcessConstValue.LOTTO_NUMBER_RANGE_START || userInput.toInt() > LottoProcessConstValue.LOTTO_NUMBER_RANGE_END) {
             return false
         }
 
