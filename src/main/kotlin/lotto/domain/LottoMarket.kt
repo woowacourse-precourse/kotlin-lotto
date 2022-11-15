@@ -12,7 +12,7 @@ class LottoMarket {
         return lottos.toList()
     }
 
-    private fun createLotto(): List<Int> {
+    fun createLotto(): List<Int> {
         return Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, THE_NUMBER_OF_LOTTO_NUMBERS)
             .sorted()
     }
