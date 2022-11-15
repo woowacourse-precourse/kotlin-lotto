@@ -51,10 +51,27 @@ class LottoGame {
 
     private fun getWinningNumbers() {
         val inputNumbers = getInputWinningNumbers()
+
     }
 
     private fun getInputWinningNumbers(): String {
         println("당첨 번호를 입력해 주세요.")
         return readLine() ?: ""
+    }
+
+    private fun parseInputNumbers(numbers: String): ArrayList<Int> {
+        val splitNumbers = numbers.split(",")
+        val resultNumbers = ArrayList<Int>()
+
+        for(number in splitNumbers) {
+            checkWinningNumberValid(number)
+            resultNumbers.add(number.toInt())
+        }
+
+        return resultNumbers
+    }
+
+    private fun checkWinningNumberValid(number: String) {
+
     }
 }
