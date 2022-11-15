@@ -26,6 +26,7 @@ fun main() {
     println("당첨 번호를 입력해 주세요.")
     var Input = readLine()!!.split(",")
     var ans = ToInt(Input)
+    if (ans.size != ans.distinct().size) assertThrows<IllegalArgumentException> {"[ERROR] 중복된 숫자입니다."}
     if (ans.size != 6) assertThrows<IllegalArgumentException> {"[ERROR] 6자리가 아닙니다."}
     println("보너스 번호를 입력해 주세요.")
     val bonus = readLine()!!.toInt()
