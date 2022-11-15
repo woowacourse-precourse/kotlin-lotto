@@ -34,6 +34,4 @@ class InputUi {
         }
         return bonus
     }
-
-
 }

@@ -8,7 +8,7 @@ class RandomGeneratorTest {
     @Test
     fun `생성된 로또 개수 확인`() {
         val randomGenerator = RandomGenerator()
-        val lottos = randomGenerator.createRandomlottos(5000)
+        val lottos = randomGenerator.createRandomLottos(5000)
         val result = lottos.size
         assertThat(result).isEqualTo(5)
     }

@@ -14,7 +14,6 @@ class CalculatorTest {
         val result = calculator.sumPrizes(countRankings)
         Assertions.assertThat(result).isEqualTo(1_510_000)
     }
-
     @Test
     fun `등수로 당첨 금액 확인`() {
         val rank = 2

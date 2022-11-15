@@ -11,7 +11,7 @@ class LottoGames {
 
     fun startGame() {
         val inputMoney = purchaseLottos()
-        val lottos = RandomGenerator().createRandomlottos(inputMoney)
+        val lottos = RandomGenerator().createRandomLottos(inputMoney)
         printUi.printLottos(lottos)
 
         val winningNumber = inputUi.inputWinningNumbers()
