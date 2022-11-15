@@ -12,7 +12,6 @@ class LottoGame {
         val paidAmount = inputView.askUserMoney()
         val tryNumber = paidAmount / MONEY_UNIT
 
-
         val lottoNumbers = outputView.printLottoNumbers(tryNumber)
 
         val winningNumbers = inputView.askWinningNumbers()
