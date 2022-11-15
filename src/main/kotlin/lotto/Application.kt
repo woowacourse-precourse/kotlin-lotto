@@ -57,6 +57,7 @@ class LottoNumber {
     private fun inputMoney(): Int {
 
         println("구입금액을 입력해 주세요.")
+      //  val input = Console.readLine().toInt()
         money = InputNumberCheck().inputError()  // 에러체크
 
         return money
