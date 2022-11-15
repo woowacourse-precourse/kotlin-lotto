@@ -27,7 +27,7 @@ class LottoPrize{
         val totalWinCount = mutableListOf<String>()
         for (i in 0..lottoCount) {
             if (getBonusCount(totalPublishNums[i], winNums, bonusNums)) {
-                totalWinCount.add(WinPrize.valueOf("SECOND").prize)
+                totalWinCount.add(Prize.valueOf("SECOND").prize)
             } else if (!getBonusCount(totalPublishNums[i], winNums, bonusNums)) {
                 totalWinCount += getWinningWithoutBonus(lottoCount, totalPublishNums, winNums)
             }
@@ -43,10 +43,10 @@ class LottoPrize{
         val winCountWithoutBonus = mutableListOf<String>()
         for (i in 0..lottoCount) {
             when (getWinCount(totalPublishNums[i], winNums)) {
-                3 -> winCountWithoutBonus.add(WinPrize.valueOf("FIFTH").prize)
-                4 -> winCountWithoutBonus.add(WinPrize.valueOf("FOURTH").prize)
-                5 -> winCountWithoutBonus.add(WinPrize.valueOf("THIRD").prize)
-                6 -> winCountWithoutBonus.add(WinPrize.valueOf("FIRST").prize)
+                3 -> winCountWithoutBonus.add(Prize.valueOf("FIFTH").prize)
+                4 -> winCountWithoutBonus.add(Prize.valueOf("FOURTH").prize)
+                5 -> winCountWithoutBonus.add(Prize.valueOf("THIRD").prize)
+                6 -> winCountWithoutBonus.add(Prize.valueOf("FIRST").prize)
             }
         }
         return winCountWithoutBonus
