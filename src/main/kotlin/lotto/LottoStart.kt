@@ -1,8 +1,6 @@
 package lotto
 
-class LottoStart(userMainView: MainView) {
-
-    fun sequences(userMainView: MainView){
+class LottoStart(private val userMainView: MainView) {
 
 
         fun createLottoNums() : List<List<Int>>?{
@@ -38,10 +36,11 @@ class LottoStart(userMainView: MainView) {
             return winList
         }
 
-//        fun getWinningPrize(winList : List<Int>){
-//            val lottoPrizeResult = LottoResult()
-//            lottoPrizeResult.getPrizeRanking(winList)
-//        }
+        fun getWinningPrizeRanking(winList : List<Int>, earnRate : String){
+            val lottoPrizeResult = LottoResult()
+            lottoPrizeResult.getPrizeRanking(winList)
+            userMainView.winTotal(lottoPrizeResult, earnRate)
+        }
 
         fun getWinPrice(winList : List<Int>) : Int{
             var winningPrice = 0
@@ -56,6 +55,5 @@ class LottoStart(userMainView: MainView) {
             return earnRate
         }
 
-    }
 
 }

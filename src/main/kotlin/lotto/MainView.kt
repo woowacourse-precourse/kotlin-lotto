@@ -40,14 +40,14 @@ class MainView {
         return bonusNum?.toInt()
     }
 
-    fun winTotal(winCount : List<Int>, earningRate : String){
+    fun winTotal(lottoResultCount : LottoResult, earningRate : String){
         println(WIN_TOTAL_GUIDE_MSG)
         println(WIN_TOTAL_DIVIDE_LINE)
-        println(WIN_FIFTH_MSG + winCount[0] + COUNT_UNIT)
-        println(WIN_FOURTH_MSG + winCount[1] + COUNT_UNIT)
-        println(WIN_THIRD_MSG + winCount[2] + COUNT_UNIT)
-        println(WIN_SECOND_MSG + winCount[3] + COUNT_UNIT)
-        println(WIN_FIRST_MSG + winCount[4] + COUNT_UNIT)
+        println(WIN_FIFTH_MSG + lottoResultCount.fifth + COUNT_UNIT)
+        println(WIN_FOURTH_MSG + lottoResultCount.fourth + COUNT_UNIT)
+        println(WIN_THIRD_MSG + lottoResultCount.third + COUNT_UNIT)
+        println(WIN_SECOND_MSG + lottoResultCount.second + COUNT_UNIT)
+        println(WIN_FIRST_MSG + lottoResultCount.first + COUNT_UNIT)
         println(EARNING_RATE_START_MSG + earningRate + EARNING_RATE_END_MSG)
     }
 
