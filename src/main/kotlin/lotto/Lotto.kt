@@ -20,10 +20,10 @@ class Lotto(private val numbers: List<Int>) {
 
     fun checkLottoRange(numbers: List<Int>): Boolean {
         numbers.forEach {
-            if (it >= LOTTO_RANGE_START && it <= LOTTO_RANGE_END)
-                return true
+            if (it <= LOTTO_RANGE_START || it >= LOTTO_RANGE_END)
+                return false
         }
-        return false
+        return true
     }
 
     fun checkLottoDuplicated(numbers: List<Int>): Boolean {
