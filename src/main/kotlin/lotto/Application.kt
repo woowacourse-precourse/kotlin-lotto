@@ -1,5 +1,10 @@
 package lotto
 
 fun main() {
-    TODO("프로그램 구현")
+    try {
+        val lottoGame = LottoGameStarter()
+        lottoGame.gameStarter()
+    } catch (e: Exception) {
+        println(e.message)
+    }
 }
