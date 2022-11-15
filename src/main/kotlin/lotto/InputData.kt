@@ -23,6 +23,13 @@ class InputData {
         val Lotto = Console.readLine()
         return makeLottoNum(Lotto)
     }
+    fun makeLottoNum(Lotto:String): MutableList<Int> {
+        val LottoNum = mutableListOf<Int>()
+        for(i in Lotto.replace(" ","").split(",")){
+            LottoNum.add(i.toInt())
+        }
+        return LottoNum
+    }
     fun inputBonus(): Int {
         println("보너스 번호를 입력해 주세요.")
         return Console.readLine().toInt()
