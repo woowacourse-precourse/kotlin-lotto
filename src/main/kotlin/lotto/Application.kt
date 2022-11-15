@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import lotto.domain.BonusNumberError
 import lotto.domain.InputNumberCheck
+import lotto.domain.Lotto
 
 enum class Rank(var reward: Int) {
 
