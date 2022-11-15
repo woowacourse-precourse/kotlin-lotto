@@ -28,7 +28,7 @@ class UI {
 
     /**
      * @brief Print lotteryList
-     * @param List of lotto instances
+     * @param lotteryList: List of lotto instances
      */
     fun printLottery(lotteryList: List<Lotto>) {
         println("${lotteryList.size}개를 구매했습니다.")
