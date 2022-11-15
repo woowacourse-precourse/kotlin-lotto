@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console
 
 class LottoCustomer {
     fun customerLottoBuyPriceInput(): Int {
-        println(LottoProcessStatement.INPUT_LOTTO_BUY_PRICE)
         val userInput = Console.readLine()
         if (customerPriceInputIsValid(userInput)) {
             throw IllegalArgumentException(CUSTOMER_BUY_PRICE_ERROR_MESSAGE)
@@ -23,6 +22,8 @@ class LottoCustomer {
 
         return true
     }
+
+
 
     companion object {
         const val CUSTOMER_BUY_PRICE_ERROR_MESSAGE = "[ERROR] 로또 구입 금액은 1,000원 단위의 정수여야 합니다."
