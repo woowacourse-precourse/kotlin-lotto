@@ -1,33 +1,33 @@
 package lotto.controller
 
-import lotto.input.InputBonus
-import lotto.input.PayedMoney
-import lotto.input.WinningNumber
-import lotto.lottoStore.LottoCreate
-import lotto.service.CheckContain
-import lotto.service.CheckWinning
-import lotto.service.Yeild
-import lotto.util.input
+import lotto.input.InputBonusImpl
+import lotto.input.PayedMoneyImpl
+import lotto.input.WinningNumberImpl
+import lotto.lottoStore.LottoCreateImpl
+import lotto.service.CheckContainImpl
+import lotto.service.CheckWinningImpl
+import lotto.service.YeildImpl
+
 
 class LottoController {
-    private val buyMoney = PayedMoney().inputUserMoney()
-    val Lotto = LottoCreate().createLotto(buyMoney)
-    val winningNumber = WinningNumber().inputWinningNumber()
-    val checkWinningScore = checkWinaLotto(Lotto, InputBonus(winningNumber).inputBonusNumber(), winningNumber)
+    private val buyMoney = PayedMoneyImpl().inputUserMoney()
+    val Lotto = LottoCreateImpl().LottoCreate(buyMoney)
+    val winningNumber = WinningNumberImpl().inputWinningNumber()
+    val checkWinningScore = checkWinaLotto(Lotto, InputBonusImpl().inputBonusNumber(winningNumber), winningNumber)
 
     fun GameStart(){
-        Yeild().plusMoney(buyMoney, checkWinningScore)
+        YeildImpl().plusMoney(buyMoney, checkWinningScore)
     }
 
     fun checkWinaLotto(lottoNumber: MutableList<List<Int>>, bonusNumber: Int, winningNumber: String): MutableList<Int> {
         var count: Int
         var lottoWinningAll = mutableListOf(0, 0, 0, 0, 0)
         for (lottonum in lottoNumber) {
-            count = CheckContain().containLottoNum(winningNumber, lottonum)
-            count = CheckContain().containBonusNum(count, lottonum, bonusNumber)
-            lottoWinningAll = CheckWinning().winningCount(count)
+            count = CheckContainImpl().containLottoNum(winningNumber, lottonum)
+            count = CheckContainImpl().containBonusNum(count, lottonum, bonusNumber)
+            lottoWinningAll = CheckWinningImpl().winningCount(count)
         }
-        CheckWinning().printresult(lottoWinningAll)
+        CheckWinningImpl().printresult(lottoWinningAll)
         return lottoWinningAll
     }
 }

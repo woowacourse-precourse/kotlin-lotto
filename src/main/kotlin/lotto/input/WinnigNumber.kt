@@ -1,12 +1,13 @@
 package lotto.input
 
-interface WinnigNumber{
+interface WinnigNumber {
     fun inputWinningNumber(): String
     fun checkLottoStandard(userInputNumber: String?)
 }
-class WinningNumberImpl:WinnigNumber {
 
-    private val userInputNumber= lotto.util.input().inputUser()
+class WinningNumberImpl : WinnigNumber {
+
+    private val userInputNumber = lotto.util.input().inputUser()
 
     override fun inputWinningNumber(): String {
         println("당첨 번호를 입력해 주세요.")
@@ -28,6 +29,4 @@ class WinningNumberImpl:WinnigNumber {
             throw IllegalArgumentException()
         }
     }
-
-
 }
