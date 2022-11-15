@@ -8,6 +8,11 @@ fun main() {
 }
 
 class LottoNumber {
+
+    private var money = 0
+    private var number = 0
+    private var lottoNumberList = mutableListOf<List<Int>>()
+
     private fun winnerNumber(): List<Int> {
         println("\n당첨 번호를 입력해 주세요.")
         val winNumber = Console.readLine().split(",").map { it.toInt() }
@@ -42,4 +47,24 @@ class LottoNumber {
         return lottoNumberList
     }
 
+
+    private fun lottoResult(winnerNumList: List<Int>, bonusNumber: Int): Array<Int> {
+
+        var win = Array(8) { 0 }
+
+        lottoNumberList.forEach { lottoNumber ->
+
+            val size = lottoNumber.filter { it in winnerNumList }.size
+
+            if (size >= 3) {
+                win[size] += 1
+            }
+            if (size == 5 && lottoNumber.contains(bonusNumber)) {
+                win[5] -= 1
+                win[7] += 1
+            }
+        }
+        // println(win)
+        return win
+    }
 }
