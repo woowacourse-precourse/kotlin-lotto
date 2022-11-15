@@ -18,12 +18,12 @@ class LottoCalculator(
     fun calculateLotto(): List<Int> {
         val winnings = mutableListOf<Int>(0, 0, 0, 0, 0)
         for (consumerLotto in consumerLottos) {
-            addWinning(consumerLotto,winnings)
+            addWinning(consumerLotto, winnings)
         }
         return winnings
     }
 
-    private fun addWinning(consumerLotto : List<Int>, winnings : MutableList<Int>){
+    private fun addWinning(consumerLotto: List<Int>, winnings: MutableList<Int>) {
         val correctCount = compareNumbers(consumerLotto)
         if (correctCount == SECOND_PLACE_COUNT && consumerLotto.contains(bonusNumber)) {
             winnings[SECOND_PLACE_INDEX]++
