@@ -71,4 +71,12 @@ class Lotto(private val numbers: List<Int>) {
         }
         return 0
     }
+    fun rateOfReturn(winLotto : List<Int>,inputMoney: Int){
+        var sumMoney =0.0
+        val money = listOf<Int>(3,4,5,7,6)
+        for(i in 0..4){
+            sumMoney += winMoney(winLotto[i],money[i])
+        }
+        println("총 수익률은 ${Math.round(sumMoney / inputMoney * 1000).toDouble()/10}%입니다.")
+    }
 }
