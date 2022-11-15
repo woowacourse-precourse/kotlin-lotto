@@ -11,13 +11,13 @@ internal class PublisherTest {
     @Test
     fun generateLottery() {
         val lottoTicket = publisher.generateLottery(money = Money(PURCHASING_AMOUNT))
-        val lottoCount = lottoTicket.size
+        val lottoCount = lottoTicket.first
 
-        Assertions.assertThat(lottoCount).isEqualTo(PURCHASING_AMOUNT.toInt() / LOTTO_PRICE)
+        Assertions.assertThat(lottoCount).isEqualTo(PURCHASING_AMOUNT / LOTTO_PRICE)
     }
 
     companion object {
         private val publisher = Publisher()
-        private const val PURCHASING_AMOUNT: Long = 30000
+        private const val PURCHASING_AMOUNT: Long = 30000L
     }
 }

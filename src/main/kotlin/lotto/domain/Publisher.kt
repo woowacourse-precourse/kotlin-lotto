@@ -1,21 +1,16 @@
 package lotto.domain
 
 import lotto.utils.Constants.LOTTO_PRICE
-import lotto.view.OutputView
 
 class Publisher {
 
-    fun generateLottery(money: Money): List<Lotto> {
+    fun generateLottery(money: Money): Pair<Long, List<Lotto>> {
         val lottoCount = money.getAmountOfMoney() / LOTTO_PRICE
-        OutputView.printLottoCount(lottoCount)
-
-        return operateMachine(lottoCount)
+        val lottoNumbers = operateMachine(lottoCount)
+        return Pair(lottoCount, lottoNumbers)
     }
 
     private fun operateMachine(lottoCount: Long): List<Lotto> {
-        val lottoTicket = LotteryMachine().operate(lottoCount)
-        OutputView.printLottoNumber(lottoTicket)
-
-        return lottoTicket
+        return LotteryMachine().operate(lottoCount)
     }
 }
