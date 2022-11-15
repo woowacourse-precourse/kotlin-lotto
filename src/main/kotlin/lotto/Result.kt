@@ -19,9 +19,7 @@ enum class Result(
         println("${matchCount}개 일치${extraString} (${decimal.format(price)}원) - ${winCount}개")
     }
 
-    fun getEarningRate(): Int {
-        return this.price * this.winCount
-    }
+    fun getEarningRate() = this.price * this.winCount
 
     fun addWinCount() {
         this.winCount++

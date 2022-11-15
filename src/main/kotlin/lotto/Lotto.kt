@@ -5,9 +5,7 @@ class Lotto(private val numbers: List<Int>) {
         LottoCheckError(numbers).checkLottoThrowException()
     }
 
-    fun getNumbers(): List<Int> {
-        return numbers
-    }
+    fun getNumbers() = numbers
 
     fun print() {
         println(numbers.toString())

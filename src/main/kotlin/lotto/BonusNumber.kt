@@ -5,7 +5,5 @@ class BonusNumber(private val bonusNumber: String, winningNumbers: Lotto) {
         BonusNumberCheckError(bonusNumber, winningNumbers).checkBonusNumberThrowException()
     }
 
-    fun getBonusNumber(): Int {
-        return bonusNumber.toInt()
-    }
+    fun getBonusNumber() = bonusNumber.toInt()
 }
