@@ -12,6 +12,6 @@ class EarningsRate(
     }
 
     private fun calculateRate(): Double {
-        return ((finalMoney.toDouble() / inputPrice.toDouble()) * 100.00)
+        return ((finalMoney.toDouble() / inputPrice.toDouble()) * 100.0)
     }
 }

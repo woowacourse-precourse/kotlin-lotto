@@ -25,7 +25,7 @@ object Message {
     }
 
     fun showRate(rate: Double) {
-        println("총 수익률은 $rate%입니다.")
+        println("총 수익률은 ${String.format("%.1f", rate)}%입니다.")
     }
 
     fun showCorrect(message: String, count: Int) {
