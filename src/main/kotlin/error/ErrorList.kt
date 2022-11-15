@@ -12,32 +12,32 @@ object LottoError {
     }
 
     fun checkNumOfLotto(numbers: List<Int>) {
-        if(numbers.size != Number_OF_LOTTO) {
+        if (numbers.size != Number_OF_LOTTO) {
             makeError(ErrorMaking.INCORRECT_NUMBER)
         }
     }
 
     fun checkOutOfRange(number: Int) {
-        if(number !in RANGE_START..RANGE_END) {
+        if (number !in RANGE_START..RANGE_END) {
             makeError(ErrorMaking.OUT_OF_RANGE)
         }
     }
 
     fun checkOutOfRange(numbers: List<Int>) {
-        for(number in numbers) {
+        for (number in numbers) {
             checkOutOfRange(number)
         }
     }
 
     fun checkDuplicate(numbers: List<Int>) {
         val set = numbers.toSet()
-        if(set.size != numbers.size) {
+        if (set.size != numbers.size) {
             makeError(ErrorMaking.NUMBER_DUPLICATED)
         }
     }
 
     fun checkDuplicate(numbers: Lotto, number: Int) {
-        if(numbers.contains(number)) {
+        if (numbers.contains(number)) {
             makeError(ErrorMaking.NUMBER_DUPLICATED)
         }
     }
@@ -53,7 +53,7 @@ object InputError {
     }
 
     fun checkValidMoney(money: Int) {
-        if(money % LOTTO_PRICE != 0) {
+        if (money % LOTTO_PRICE != 0) {
             makeError(ErrorMaking.MONEY_UNIT_INCORRECT)
         }
     }

@@ -32,9 +32,9 @@ fun printResult(result: List<Int>, rate: Double) {
 
 fun calculateWinningRate(result: List<Int>, money: Int): Double {
     val sum = Winning.getAllPrize(result)
-    val rate =  (sum.toDouble() / money.toDouble()) * 100
+    val rate = (sum.toDouble() / money.toDouble()) * 100
 
-    return (Math.round(rate*10))/10.0
+    return (Math.round(rate * 10)) / 10.0
 }
 
 fun calculateWinnings(lottos: List<Lotto>, winnings: Lotto, bonus: Int): List<Int> {

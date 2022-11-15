@@ -32,6 +32,7 @@ enum class Winning(
             return num * PRIZE_FIRST
         }
     };
+
     abstract fun getTotalPrize(num: Int): Int
 
     companion object {
@@ -44,7 +45,7 @@ enum class Winning(
         fun getAllPrize(winning: List<Int>): Int {
             var sum = 0
 
-            for(i in winning.indices) {
+            for (i in winning.indices) {
                 sum += enumValues<Winning>()[i].getTotalPrize(winning[i])
             }
 
