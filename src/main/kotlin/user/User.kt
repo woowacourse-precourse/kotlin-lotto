@@ -9,8 +9,6 @@ class User {
         println(Game.USER_INPUT.message)
         val input = readLine()
 
-        Money(input)
-
-        return input?.toInt() ?: Constants.ZERO.constant
+        return Money(input).changeInputToInt()
     }
 }
