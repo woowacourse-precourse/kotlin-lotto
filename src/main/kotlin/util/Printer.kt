@@ -11,12 +11,12 @@ class Printer {
 
     fun printLottoResultMessage() = println("당첨 통계\n---")
 
-    fun printReturnRate(rate: Float) = println("총 수익률은" + "%.2f".format(rate) + "%입니다.")
+    fun printReturnRate(rate: Float) = println("총 수익률은 " + "%.1f".format(rate * 100) + "%입니다.")
 
     fun printLottoResultTable(winnings: List<Int>) {
         val winningsTable = listOf(FIVTH, FOURTH, THIRD, SECOND, FIRST)
         winnings.forEachIndexed { idx, it ->
-            println("${winningsTable[idx]}$it")
+            println("${winningsTable[idx]}${it}개")
         }
     }
 
