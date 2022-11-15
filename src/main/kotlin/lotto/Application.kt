@@ -48,16 +48,16 @@ fun issueLotto(): Lotto {
     return Lotto(lottoNum)
 }
 fun validateAmount(amountPaid: String): Int{
-    if(amountPaid.toIntOrNull() == null){
-        throw IllegalArgumentException(ErrorCode.NUMERIC_REQUIRED.message)
+    try{
+        val price = amountPaid.toInt()
+        if(price%1000>0){
+            throw IllegalArgumentException(ErrorCode.PRICE_UNQUALIFIED.message)
+        }
+        return price/1000
+    }catch (exception: IllegalArgumentException){
+        println(ErrorCode.PRICE_UNQUALIFIED.message)
     }
-
-    val price = amountPaid.toInt()
-    if(price%1000>0){
-        throw IllegalArgumentException(ErrorCode.PRICE_UNQUALIFIED.message)
-    }
-
-    return price/1000
+    return 0
 }
 
 fun validateWinningNum(pickedNum: String): List<String> {
