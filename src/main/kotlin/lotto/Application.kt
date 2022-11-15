@@ -1,16 +1,21 @@
 package lotto
 
-import lotto.View.MessageOutput
 import lotto.Computer.NumberCreate
+import lotto.Computer.lottoList
+import lotto.View.MessageOutput
 import lotto.User.UserInput
+import lotto.User.ticket
+
 
 fun main() {
     MessageOutput().printStartMessage()
-    val ticket = UserInput().buyPrice()
-    var lottoList: MutableList<List<Int>> = ArrayList()
-    for (i in 1..ticket) {
-        var numbers = NumberCreate()
-        lottoList.add((numbers))
-    }
+    UserInput().buyPrice()
+
+    NumberCreate(ticket)
     MessageOutput().printBuyMessage(ticket, lottoList)
+
+    MessageOutput().printAnswerInputMessage()
+    UserInput().answerNumbers()
+
+
 }
