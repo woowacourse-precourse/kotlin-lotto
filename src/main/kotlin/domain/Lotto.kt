@@ -1,6 +1,6 @@
-package lotto
+package domain
 
-import lotto.ExceptionHandler.throwExceptionForLottoNumbers
+import utils.ExceptionHandler.throwExceptionForLottoNumbers
 class Lotto(private val numbers: List<Int>) {
 
     init {
