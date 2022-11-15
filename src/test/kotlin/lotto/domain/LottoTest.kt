@@ -8,6 +8,7 @@ import org.junit.jupiter.api.assertThrows
 
 class LottoTest {
     lateinit var lotto: Lotto
+
     @BeforeEach
     fun `lotto 초기화`() {
         lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
@@ -39,7 +40,7 @@ class LottoTest {
     @Test
     fun `contains 메서드를 사용해 로또 번호 숫자 중 인자로 주어진 숫자가 있는지 확인`() {
         val method =
-        lotto.javaClass.getDeclaredMethod("contains", Int::class.java)
+            lotto.javaClass.getDeclaredMethod("contains", Int::class.java)
         method.isAccessible = true
 
         val input = 3
@@ -48,7 +49,7 @@ class LottoTest {
     }
 
     @Test
-    fun `compare 메서드에 당첨 번호와 보너스 번호를 인자로 주어 각각에 대해 일치 여부를 반환`(){
+    fun `compare 메서드에 당첨 번호와 보너스 번호를 인자로 주어 각각에 대해 일치 여부를 반환`() {
         val inputWinningLotto = Lotto(listOf(1, 2, 3, 4, 5, 9))
         val inputBonusNumber = BonusNumber(6)
         val result = lotto.compare(inputWinningLotto, inputBonusNumber)

@@ -15,9 +15,9 @@ class LottoList(private val lottoList: List<Lotto>) {
     fun compare(winningLotto: Lotto, bonusNumber: BonusNumber): Map<WinningRank, Int> {
         val result = hashMapOf<WinningRank, Int>()
         lottoList.forEach {
-            val (matches, bonusMatch)  = it.compare(winningLotto, bonusNumber)
-            val winningRank = getWinningRank(matches, bonusMatch)?: WinningRank.NOTHING
-            result[winningRank] = result[winningRank]?.plus(1)?:1
+            val (matches, bonusMatch) = it.compare(winningLotto, bonusNumber)
+            val winningRank = getWinningRank(matches, bonusMatch) ?: WinningRank.NOTHING
+            result[winningRank] = result[winningRank]?.plus(1) ?: 1
         }
         return result
     }

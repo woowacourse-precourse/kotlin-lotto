@@ -25,12 +25,12 @@ class InputValidator {
     }
 
     fun validateBonusNumber(input: String) {
-        if(!input.isNumberString())
+        if (!input.isNumberString())
             throw IllegalArgumentException(ErrorString.NOT_DIGIT.string)
     }
 
     fun validateDrawnNumber(winningNumbers: List<Int>, bonusNumber: BonusNumber) {
-        if(bonusNumber.isMatched(winningNumbers))
+        if (bonusNumber.isMatched(winningNumbers))
             throw IllegalArgumentException(ErrorString.DUPLICATED_DRAWN_NUMBERS.string)
     }
 }

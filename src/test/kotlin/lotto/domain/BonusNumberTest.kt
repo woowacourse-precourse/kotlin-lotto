@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-class BonusNumberTest{
+class BonusNumberTest {
     @Test
     fun `로또 번호 범위를 벗어나는 보너스 번호면 예외가 발생한다`() {
         org.junit.jupiter.api.assertThrows<IllegalArgumentException> {

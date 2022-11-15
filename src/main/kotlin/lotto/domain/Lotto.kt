@@ -11,8 +11,9 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.distinct().size == Configuration.LOTTO_SIZE.number) {
             ErrorString.DUPLICATED_DRAWN_NUMBERS
         }
-        require(numbers.all{ number ->
-            number in Configuration.START_LOTTO_NUMBER.number..Configuration.END_LOTTO_NUMBER.number}){
+        require(numbers.all { number ->
+            number in Configuration.START_LOTTO_NUMBER.number..Configuration.END_LOTTO_NUMBER.number
+        }) {
             ErrorString.OUT_OF_BOUND
         }
     }

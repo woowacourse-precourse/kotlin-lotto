@@ -27,7 +27,7 @@ class InputManager(private val inputValidator: InputValidator) {
         return input.toInt()
     }
 
-    fun askDrawnNumbers(): Pair<Lotto, BonusNumber>{
+    fun askDrawnNumbers(): Pair<Lotto, BonusNumber> {
         val winningNumbers = askWinningNumbers()
         println()
         val winningLotto = Lotto(winningNumbers)

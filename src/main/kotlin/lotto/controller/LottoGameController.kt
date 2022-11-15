@@ -8,8 +8,8 @@ import lotto.enum.Configuration
 import lotto.ui.UIManager
 
 class LottoGameController(private val uiManager: UIManager) {
-    fun play(){
-        try{
+    fun play() {
+        try {
             val purchaseAmount = uiManager.askPurchaseAmount()
             uiManager.printPurchaseNumber(purchaseAmount / Configuration.LOTTO_PRICE.number)
 
@@ -20,10 +20,11 @@ class LottoGameController(private val uiManager: UIManager) {
             val lottoGame = LottoGame(winningLotto, bonusNumber, userLotto)
             val gameResult = lottoGame.play()
             uiManager.printWinningStatistics(winningList = gameResult.first, earningsRate = gameResult.second)
-        } catch (exception: IllegalArgumentException){
+        } catch (exception: IllegalArgumentException) {
             println(exception.message)
         }
     }
+
     private fun getUserLotto(purchaseAmount: Int): LottoList {
         val result = mutableListOf<Lotto>()
         for (i in 0 until purchaseAmount / Configuration.LOTTO_PRICE.number) {
