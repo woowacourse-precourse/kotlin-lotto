@@ -15,7 +15,7 @@ class BonusNumberCheckError(private val bonusNumber: String, private val winning
     }
 
     private fun throwBonusNumberRangeException() {
-        if (bonusNumber in "1".."45")
+        if (bonusNumber.toInt() !in 1..45)
             throw IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.")
     }
 
