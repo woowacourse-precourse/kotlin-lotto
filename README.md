@@ -230,8 +230,11 @@ class Lotto(private val numbers: List<Int>) {
 - [x] 당첨 번호 및 보너스 번호 입력 받기
 - [x] 일치하는 숫자 개수 파악
 - [x] 당첨 내역 확인
-- [ ] 수익률 확인
+- [x] 수익률 확인
+- [ ] 테스트 코드 작성
+  - Lotto
+  - Shop
 
 ### 주의 사항
-- Enum class 활용
-- else 지양
+- [x] Enum class 활용
+- [x] else 지양
