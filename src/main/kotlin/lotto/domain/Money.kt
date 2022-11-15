@@ -13,7 +13,7 @@ class Money(private val purchasingAmount: Long) {
         amount = purchasingAmount
     }
 
-    fun getAmountOfMoney(): Long {
+    fun value(): Long {
         return amount
     }
 }

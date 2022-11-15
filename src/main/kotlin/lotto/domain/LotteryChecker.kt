@@ -8,8 +8,8 @@ class LotteryChecker {
 
     fun checkLotteryNumber(winningLottery: WinningLottery, lottoTicket: List<Lotto>) {
         lottoTicket.forEach { Lotto ->
-            val count = countRightLottoNumbers(winningLottery.getNumber(), Lotto.getNumbers())
-            val bonus = isBonusNumber(winningLottery, Lotto.getNumbers())
+            val count = countRightLottoNumbers(winningLottery.getNumber(), Lotto.value())
+            val bonus = isBonusNumber(winningLottery, Lotto.value())
             val rank = Rank.valueOf(count, bonus)
 
             addCount(rank)
@@ -24,6 +24,7 @@ class LotteryChecker {
 
         return count
     }
+
     private fun isBonusNumber(winningLottery: WinningLottery, lotto: List<Int>): Boolean {
         return lotto.contains(winningLottery.getBonusNumber())
     }
@@ -32,8 +33,7 @@ class LotteryChecker {
         winner[rank] = winner.getOrDefault(rank, 0) + 1
     }
 
-
-    fun getWinnerScore(rank: Rank): Int {
+    fun score(rank: Rank): Int {
         return winner[rank]!!
     }
 

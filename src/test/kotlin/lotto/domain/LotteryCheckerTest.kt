@@ -20,9 +20,9 @@ internal class LotteryCheckerTest {
         for (rank in Rank.values()) {
             when (rank) {
                 Rank.FAIL ->
-                    Assertions.assertThat(3).isEqualTo(lotteryChecker.getWinnerScore(rank))
+                    Assertions.assertThat(3).isEqualTo(lotteryChecker.score(rank))
                 else ->
-                    Assertions.assertThat(1).isEqualTo(lotteryChecker.getWinnerScore(rank))
+                    Assertions.assertThat(1).isEqualTo(lotteryChecker.score(rank))
             }
         }
     }

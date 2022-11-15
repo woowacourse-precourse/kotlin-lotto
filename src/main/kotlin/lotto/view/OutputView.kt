@@ -15,7 +15,7 @@ object OutputView {
 
     fun printLottoNumber(lottoTicket: List<Lotto>) {
         lottoTicket.forEach { lotto: Lotto ->
-            builder.append(lotto.getNumbers()).append('\n')
+            builder.append(lotto.value()).append('\n')
         }
 
         println(builder)
@@ -40,7 +40,7 @@ object OutputView {
             rank.getCount(),
             hasBonusNumber(rank),
             rank.getPrice(),
-            lotteryChecker.getWinnerScore(rank)
+            lotteryChecker.score(rank)
         )
     }
 
@@ -54,6 +54,6 @@ object OutputView {
     }
 
     private fun calculateRatingOfProfit(money: Money, totalPrice: Long): Double {
-        return (totalPrice / money.getAmountOfMoney().toDouble() * 100)
+        return (totalPrice / money.value().toDouble() * 100)
     }
 }

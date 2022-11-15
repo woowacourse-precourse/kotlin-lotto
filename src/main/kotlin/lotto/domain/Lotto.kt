@@ -8,7 +8,7 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.toSet().size == LOTTO_NUMBER_COUNT)
     }
 
-    fun getNumbers(): List<Int> {
+    fun value(): List<Int> {
         return numbers
     }
 }
