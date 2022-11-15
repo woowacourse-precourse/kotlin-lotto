@@ -32,9 +32,9 @@ class MakeLottos {
 
     fun bonusNumber(winningNumber: List<Int>): Int {
         println(Output.BonusNumber.message)
-        val input = Console.readLine().toInt()
-        checkBonusNumber(winningNumber, input)
-        return input
+        val input = Console.readLine()
+        checkBonusNumber(winningNumber, input.toInt())
+        return input.toInt()
     }
 
     private fun checkBonusNumber(winningNumber: List<Int>, bonusNumber: Int): Boolean {

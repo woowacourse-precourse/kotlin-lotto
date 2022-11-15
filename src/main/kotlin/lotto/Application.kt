@@ -25,7 +25,7 @@ fun main() {
 fun printEarningRate(money: Long, numberOfLotto: Int) {
     val rate = (money.toDouble() / (numberOfLotto.toDouble() * 1000) * 100)
     val format = String.format("%.1f", rate)
-    print("${Output.EarningRate.message}$format%입니다")
+    print("${Output.EarningRate.message}$format%입니다.")
 }
 
 fun printStart() {

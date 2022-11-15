@@ -58,10 +58,10 @@ class ResultLotto {
     }
 
     private fun printResult(prizeResult: List<Int>) {
-        println("${Output.ThreeMatch.message} ${prizeResult[0]}개")
-        println("${Output.FourMatch.message} ${prizeResult[1]}개")
-        println("${Output.FiveMatch.message} ${prizeResult[2]}개")
-        println("${Output.FiveAndBonusMatch.message} ${prizeResult[3]}개")
-        println("${Output.SixMatch.message} ${prizeResult[4]}개")
+        println("${Output.ThreeMatch.message}${prizeResult[0]}개")
+        println("${Output.FourMatch.message}${prizeResult[1]}개")
+        println("${Output.FiveMatch.message}${prizeResult[2]}개")
+        println("${Output.FiveAndBonusMatch.message}${prizeResult[3]}개")
+        println("${Output.SixMatch.message}${prizeResult[4]}개")
     }
 }
