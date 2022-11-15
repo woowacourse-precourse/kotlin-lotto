@@ -59,7 +59,8 @@ class LottoWinningStat(
         LotteryRank.TWO to 0,
         LotteryRank.THREE to 0,
         LotteryRank.FOUR to 0,
-        LotteryRank.FIVE to 0
+        LotteryRank.FIVE to 0,
+        LotteryRank.NONE to 0
     )  // 각각의 등수가 몇 개 존재하는지를 나타낸다.
 
     private var totalEarningRate: Float = 0f
@@ -90,10 +91,8 @@ class LottoWinningStat(
             if (matchedNumberCount == 5 && checkBonusMatch())
                 bonusCount = 1
 
-            if(matchedNumberCount >= 3) {
-                val rank = LotteryConverter.getRankByCount(matchedNumberCount, bonusCount)
-                winningStat[rank] = winningStat[rank]!! + 1
-            }
+            val rank = LotteryConverter.getRankByCount(matchedNumberCount, bonusCount)
+            winningStat[rank] = winningStat[rank]!! + 1
         }
     }
 
@@ -120,7 +119,7 @@ class LottoWinningStat(
 }
 
 enum class LotteryRank {
-    ONE, TWO, THREE, FOUR, FIVE
+    ONE, TWO, THREE, FOUR, FIVE, NONE
 }
 
 object LotteryConverter {
@@ -138,6 +137,9 @@ object LotteryConverter {
         require(matchedLottoNumber + matchedBonusNumber <= 6 && matchedBonusNumber <= 1) { ErrorStrings.INVALID_PARAMETER.message }
 
         val key = matchedLottoNumber.toFloat() + matchedBonusNumber.toFloat() * 0.5f
+
+        if (!countToRank.containsKey(key))
+            return LotteryRank.NONE
 
         return countToRank[key]!!
     }
