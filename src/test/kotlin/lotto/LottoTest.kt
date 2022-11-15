@@ -27,12 +27,6 @@ class LottoTest {
         }
     }
 
-    @Test
-    fun `로또 번호에 9보다 큰 수가 있으면 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(5,1,2,3,4,15))
-        }
-    }
 
     @Test
     fun `로또 번호에 0보다 작은 수가 있으면 예외가 발생한다`() {
