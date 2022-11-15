@@ -23,8 +23,8 @@ fun main() {
     if (myList.contains(bonusNumber))
         throw IllegalArgumentException("[ERROR] : 입력한 당첨 번호와 중복됩니다.")
 
-    val lottoStatistic = Calculate(randomlotto, myList, bonusNumber, moneyInput.toInt())
-    lottoStatistic.run()
+    val lottotStatistic = Lotto(myList)
+    lottotStatistic.run(randomlotto, myList, bonusNumber, moneyInput.toInt())
 }
 
 fun makeRandomLotto(count: Int): MutableList<List<Int>> {

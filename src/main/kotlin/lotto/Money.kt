@@ -6,7 +6,7 @@ class Money(private val money: String) {
             print("[ERROR] : 숫자 형태로 입력해 주세요.")
             throw NoSuchElementException()
         }
-        require(money!!.toInt() % 1000 == 0) {
+        require(money.toInt() % 1000 == 0) {
             "[ERROR] : 1000원 단위로 입력해 주세요."
         }
     }
@@ -25,7 +25,7 @@ class Money(private val money: String) {
     }
 
     fun run(): Int {
-        var lottoCount = money!!.toInt() / 1000
+        var lottoCount = money.toInt() / 1000
         return lottoCount
     }
 }
