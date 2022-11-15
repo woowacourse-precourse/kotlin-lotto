@@ -14,13 +14,15 @@ class LottoMachine(private val customerBuyLottoPrice: Int) {
         return Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_RANGE_START, LOTTO_NUMBER_RANGE_END, LOTTO_NUMBER_SIZE).sorted()
     }
 
-    fun produceLottoNumbers() {
+    fun produceLottoNumbers(): MutableList<List<Int>> {
         val totalLottoNumbers = mutableListOf<List<Int>>()
         for (i in 0..customerBuyLottoCount) {
             val lottoNumbers = createCustomerLottoNumber()
             println(lottoNumbers)
             totalLottoNumbers.add(lottoNumbers)
         }
+
+        return totalLottoNumbers
     }
 
 

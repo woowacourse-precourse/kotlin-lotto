@@ -7,7 +7,7 @@ fun main() {
 
     val lottoMachine = LottoMachine(customerBuyPrice)
     lottoMachine.printCustomerBuyLottoCount()
-    lottoMachine.produceLottoNumbers()
+    val producedLottoNumbers = lottoMachine.produceLottoNumbers()
 
     printInputLottoWinNumber()
     val lottoOrganizer = LottoOrganizer()
