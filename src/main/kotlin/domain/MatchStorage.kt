@@ -1,4 +1,6 @@
-package lotto
+package domain
+
+import utils.Constants
 
 enum class MatchStorage(val matchMessage: String,
                         val matchPrice: Int,
