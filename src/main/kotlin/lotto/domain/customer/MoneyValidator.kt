@@ -1,14 +1,11 @@
-package lotto
-
-import camp.nextstep.edu.missionutils.Console.readLine
+package lotto.domain.customer
 
 private const val UNIT_NOT_THOUSAND = "[ERROR] 구입금액은 1000원 단위여야합니다."
 private const val MONEY_NOT_NATURAL_NUMBER = "[ERROR] 구입금액은 자연수여야합니다."
 private const val THOUSAND_UNIT = "000"
 
-class Reader {
-    fun enterMoney(): Int {
-        val money = readLine()
+class MoneyValidator {
+    fun checkInputValid(money: String): Int {
         isNumber(money)
         isThousandUnit(money)
         return money.toInt()
