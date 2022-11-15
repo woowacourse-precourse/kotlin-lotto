@@ -21,10 +21,10 @@ enum class LottoValue(val earning : Int, val correctNumbers : Int, open var amou
 fun firstPay(): Int {
     var deposit = Console.readLine().toString()
     try {
-        deposit.toInt()
+        deposit.toIntOrNull() ?: throw IllegalArgumentException()
         deposit.toInt() % lottoCost != 0
     } catch (e : NumberFormatException){
-        println(ErrorMessages.MONEY_ERROR.messages)
+        throw IllegalArgumentException(ErrorMessages.MONEY_ERROR.messages)
     } catch (e : IllegalArgumentException){
         println(ErrorMessages.MONEY_ERROR.messages)
     }
@@ -42,7 +42,7 @@ fun lottoGenerator(amount : Int) : MutableList<List<Int>>{
 
 fun lottoWinningNumber() : List<Int>{
     try {
-        val numbers = readLine().toString().split(",")
+        val numbers = Console.readLine().split(",")
         val winningNumbers = mutableListOf<Int>()
         for (elements in numbers){
             winningNumbers.add(elements.toInt())
@@ -50,20 +50,20 @@ fun lottoWinningNumber() : List<Int>{
         winningNumbers.distinct().size != 6
         return winningNumbers.toList().sorted()
     } catch (e : IllegalArgumentException){
-        throw (IllegalArgumentException("[ERROR] 올바르지 않은 당첨 번호입니다."))
+        throw (IllegalArgumentException(ErrorMessages.ANSWER_ERROR.messages))
     }
 }
 
 fun lottoBonusNumber(normalNumber: List<Int>) : List<Int>{
     try{
-        val bonus = readLine()?.toIntOrNull() ?: throw (IllegalArgumentException("[ERROR] 올바르지 않은 보너스 번호입니다."))
+        val bonus = Console.readLine()?.toIntOrNull() ?: throw (IllegalArgumentException(ErrorMessages.BONUS_ERROR.messages))
         val bonusNumber = mutableListOf<Int>()
-        if (bonus !in 1..45) throw (IllegalArgumentException("[ERROR] 올바르지 않은 보너스 번호입니다."))
-        if (normalNumber.contains(bonus)) throw (IllegalArgumentException("[ERROR] 올바르지 않은 보너스 번호입니다."))
+        if (bonus !in 1..45) throw (IllegalArgumentException(ErrorMessages.BONUS_ERROR.messages))
+        if (normalNumber.contains(bonus)) throw (IllegalArgumentException(ErrorMessages.BONUS_ERROR.messages))
         bonusNumber.add(bonus)
         return bonusNumber
     } catch (e : NumberFormatException){
-        throw (NumberFormatException("[ERROR] 올바르지 않은 보너스 번호입니다."))
+        throw (IllegalArgumentException(ErrorMessages.BONUS_ERROR.messages))
     }
 }
 
@@ -129,40 +129,44 @@ fun receipt(earningRatio : String){
     println("5개 일치 (1,500,000원) - " + LottoValue.THIRD.amount + "개")
     println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + LottoValue.SECOND.amount + "개")
     println("6개 일치 (2,000,000,000원) - " + LottoValue.FIRST.amount + "개")
-    println("총 수익률은 " + earningRatio + "%입니다.")
+    println("총 수익률은 $earningRatio%입니다.")
 }
 
 fun main() {
-    println("구입금액을 입력해 주세요.")
-    val paidMoney = firstPay()
-    val lottoPapers = paidMoney!! / lottoCost
-    println("")
+    try{
+        println("구입금액을 입력해 주세요.")
+        val paidMoney = firstPay()
+        val lottoPapers = paidMoney!! / lottoCost
+        println("")
 
-    print(lottoPapers)
-    println("개를 구매했습니다.")
-    val lottoBundles = lottoGenerator(lottoPapers)
-    for (count in 0 until lottoBundles.size){
-        println(lottoBundles[count])
+        print(lottoPapers)
+        println("개를 구매했습니다.")
+        val lottoBundles = lottoGenerator(lottoPapers)
+        for (count in 0 until lottoBundles.size){
+            println(lottoBundles[count])
+        }
+        println("")
+
+        println("당첨 번호를 입력해 주세요.")
+        val winningNumber = lottoWinningNumber()
+        println("")
+
+        println("보너스 번호를 입력해 주세요")
+        val bonusNumber = lottoBonusNumber(winningNumber)
+        println("")
+
+        for (count in 0 until lottoPapers){
+            val normalCoincidence = lottoCompareNormal(winningNumber, lottoBundles[count])
+            val specialCoincidence = lottoCompareSpecial(bonusNumber, lottoBundles[count])
+            val lottoValues = findValue(normalCoincidence, specialCoincidence)
+            calculatePrize(lottoValues)
+        }
+
+        val earnedPrize = calculateEarns()
+        val ratio = earningsRatio(paidMoney, earnedPrize)
+
+        receipt(ratio)
+    } catch (e : IllegalArgumentException){
+        println(e.message)
     }
-    println("")
-
-    println("당첨 번호를 입력해 주세요.")
-    val winningNumber = lottoWinningNumber()
-    println("")
-
-    println("보너스 번호를 입력해 주세요")
-    val bonusNumber = lottoBonusNumber(winningNumber)
-    println("")
-
-    for (count in 0 until lottoPapers){
-        val normalCoincidence = lottoCompareNormal(winningNumber, lottoBundles[count])
-        val specialCoincidence = lottoCompareSpecial(bonusNumber, lottoBundles[count])
-        val lottoValues = findValue(normalCoincidence, specialCoincidence)
-        calculatePrize(lottoValues)
-    }
-    
-    val earnedPrize = calculateEarns()
-    val ratio = earningsRatio(paidMoney, earnedPrize)
-    
-    receipt(ratio)
 }
