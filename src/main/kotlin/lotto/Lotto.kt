@@ -5,5 +5,14 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.size == 6)
     }
 
-    // TODO: 추가 기능 구현
+    override fun toString(): String {
+        return numbers.toString()
+    }
+
+    fun sort(): List<Int> = numbers.sorted()
+
+    fun toSet(): Set<Int> = numbers.toSet()
+
+    fun contain(number: Int): Boolean = numbers.contains(number)
 }
+
