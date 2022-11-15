@@ -10,9 +10,18 @@ class LottoMachine(private val customerBuyLottoPrice: Int) {
         println("$customerBuyLottoCount" + LottoProcessStatement.COUNT_LOTTO_BUY + "\n")
     }
 
-    fun createCustomerLottoNumber(): List<Int>{
+    private fun createCustomerLottoNumber(): List<Int>{
         return Randoms.pickUniqueNumbersInRange(1, 45, 6)
     }
+
+    fun produceLottoNumbers() {
+        val totalLottoNumbers = mutableListOf<List<Int>>()
+        for (i in 0..customerBuyLottoCount) {
+            val lottoNumbers = createCustomerLottoNumber()
+            totalLottoNumbers.add(lottoNumbers)
+        }
+    }
+
 
 
 }
