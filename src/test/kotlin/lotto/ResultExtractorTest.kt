@@ -1,8 +1,6 @@
 package lotto
 
-import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -16,7 +14,7 @@ class ResultExtractorTest {
     fun `extractor check a fifth place`(purchasedLotto: List<Lotto>, winningNumber: List<Int>, bonusNumber: Int) {
         assertThat(ResultExtractor.extractResult(purchasedLotto,
             winningNumber,
-            bonusNumber)).isEqualTo(mapOf(LottoPrice.FIFTH_PLACE to 1))
+            bonusNumber)).isEqualTo(mapOf(LottoPlace.FIFTH_PLACE to 1))
     }
 
     private fun generateFifthPlace(): Stream<Arguments> {
@@ -32,7 +30,7 @@ class ResultExtractorTest {
     fun `extractor check two fifth place`(purchasedLotto: List<Lotto>, winningNumber: List<Int>, bonusNumber: Int) {
         assertThat(ResultExtractor.extractResult(purchasedLotto,
             winningNumber,
-            bonusNumber)).isEqualTo(mapOf(LottoPrice.FIFTH_PLACE to 2))
+            bonusNumber)).isEqualTo(mapOf(LottoPlace.FIFTH_PLACE to 2))
     }
 
     private fun generateTwoFifthPlace(): Stream<Arguments> {
@@ -60,7 +58,7 @@ class ResultExtractorTest {
     fun `extractor check two fourth place`(purchasedLotto: List<Lotto>, winningNumber: List<Int>, bonusNumber: Int) {
         assertThat(ResultExtractor.extractResult(purchasedLotto,
             winningNumber,
-            bonusNumber)).isEqualTo(mapOf(LottoPrice.FOURTH_PLACE to 2))
+            bonusNumber)).isEqualTo(mapOf(LottoPlace.FOURTH_PLACE to 2))
     }
 
     private fun generateTwoFourthPlace(): Stream<Arguments> {
@@ -88,7 +86,7 @@ class ResultExtractorTest {
     fun `extractor check two third place`(purchasedLotto: List<Lotto>, winningNumber: List<Int>, bonusNumber: Int) {
         assertThat(ResultExtractor.extractResult(purchasedLotto,
             winningNumber,
-            bonusNumber)).isEqualTo(mapOf(LottoPrice.THIRD_PLACE to 2))
+            bonusNumber)).isEqualTo(mapOf(LottoPlace.THIRD_PLACE to 2))
     }
 
     private fun generateTwoThirdPlace(): Stream<Arguments> {
@@ -111,7 +109,7 @@ class ResultExtractorTest {
     fun `extractor check two second place`(purchasedLotto: List<Lotto>, winningNumber: List<Int>, bonusNumber: Int) {
         assertThat(ResultExtractor.extractResult(purchasedLotto,
             winningNumber,
-            bonusNumber)).isEqualTo(mapOf(LottoPrice.SECOND_PLACE to 2))
+            bonusNumber)).isEqualTo(mapOf(LottoPlace.SECOND_PLACE to 2))
     }
 
     private fun generateTwoSecondPlace(): Stream<Arguments> {
@@ -134,7 +132,7 @@ class ResultExtractorTest {
     fun `extractor check two first place`(purchasedLotto: List<Lotto>, winningNumber: List<Int>, bonusNumber: Int) {
         assertThat(ResultExtractor.extractResult(purchasedLotto,
             winningNumber,
-            bonusNumber)).isEqualTo(mapOf(LottoPrice.FIRST_PLACE to 2))
+            bonusNumber)).isEqualTo(mapOf(LottoPlace.FIRST_PLACE to 2))
     }
 
     private fun generateTwoFirstPlace(): Stream<Arguments> {
