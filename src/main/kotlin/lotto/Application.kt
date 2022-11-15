@@ -1,6 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import java.lang.IllegalArgumentException
 import java.lang.Math.abs
 import java.math.RoundingMode
 import java.text.DecimalFormat
@@ -105,6 +106,52 @@ fun calculateRevenue(userPayMoney: Double, totalWinningMoney: Double){
 
 
 }
+/**
+ * 예외처리 - 사용자 구입 금액
+ */
+
+
+/**
+ * 예외처리 - 당첨 번호
+ */
+
+// 사용자에게 당첨 번호를 받고 올바른 형식인지 확인
+fun exceptionWinLottoNumberFormat(winLottoNumberString: String): List<Int> {
+    try {
+        if ( ' ' in winLottoNumberString ) throw IllegalArgumentException("[ERROR] 당첨 번호 사이는 띄어쓰기 없는 ,(콤마)로 구분해 주세요.")
+    }catch (e: NumberFormatException){
+        throw IllegalArgumentException("[ERROR] 당첨 번호 사이는 띄어쓰기 없는 ,(콤마)로 구분해 주세요.")
+    }
+
+    // 올바른 형식이라면
+    return winLottoNumberString.split(",").map { it.toInt() }
+}
+
+// 당첨번호가 1 ~ 45사이 숫자인지 확인
+fun exceptionWinLottoNumberRange(winLottoNumber: List<Int>): List<Int> {
+    try {
+        winLottoNumber.forEach { i ->
+            if ( i <= 0 || i > 45 ) { throw IllegalArgumentException("[ERROR] 당첨 번호는 1 ~ 45 사이의 숫자여야 합니다.") }
+        }
+    } catch (e:NumberFormatException) {
+        throw IllegalArgumentException("[ERROR] 당첨 번호는 1 ~ 45 사이의 숫자여야 합니다.")
+    }
+
+    return winLottoNumber
+}
+
+// 당첨번호가 unique한 6자리의 수인지 확인
+fun exceptionWinLottoNumberDigit(winLottoNumber: List<Int>): List<Int> {
+    try {
+        if ( winLottoNumber.size != 6 ) throw IllegalArgumentException("[ERROR] 당첨 번호는 6자리 숫자여야 합니다.")
+        if ( winLottoNumber.size != winLottoNumber.distinct().count() ) throw IllegalArgumentException("[ERROR] 당첨 번호는 중복이 없어야 합니다.")
+    } catch (e: IllegalArgumentException) {
+        throw IllegalArgumentException("[ERROR] 당첨 번호는 중복 없는 6자리 숫자여야 합니다.")
+    }
+
+    return winLottoNumber
+}
+
 
 fun main() {
     // 1. 사용자 입력 받기
@@ -120,8 +167,12 @@ fun main() {
 
     // 로또 당첨 번호 입력
     println("\n당첨 번호를 입력해 주세요.")
-    val winLottoNumberString = readLine()!!.toString()
-    val winLottoNumber = winLottoNumberString.split(",").map { it.toInt() }
+    val winLottoNumber = exceptionWinLottoNumberFormat(readLine()!!.toString())
+
+    // 예외 처리
+    exceptionWinLottoNumberRange(winLottoNumber)
+    exceptionWinLottoNumberDigit(winLottoNumber)
+
 
     // 보너스 번호 입력
     println("\n보너스 번호를 입력해 주세요.")
