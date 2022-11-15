@@ -1,6 +1,4 @@
-package lotto
-
-import domain.MatchStorage
+package domain
 
 class LottoNumbersMatcher(private val numbers: List<Int>,
                         private val bonusNumber: Int,
