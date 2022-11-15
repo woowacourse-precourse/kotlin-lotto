@@ -13,4 +13,9 @@ class UserInput {
         val userInput = Console.readLine()
         return ExceptionCheck().checkValidWinningNumbers(userInput)
     }
+
+    fun getBonusNumber(): String {
+        val userInput = Console.readLine()
+        return ExceptionCheck().checkValidBonusNumber(userInput)
+    }
 }
