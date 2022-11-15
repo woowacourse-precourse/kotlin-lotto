@@ -16,21 +16,29 @@ class LottoMachineTest {
 
     @Test
     fun `로또 구입 금액 입력이 숫자가 아니면 예외 발생`() {
-        assertThrows<IllegalArgumentException> {
+        assertThrows<Exception> {
             lottoMachine.checkPaymentException("1000j")
         }
     }
 
     @Test
     fun `로또 구입 금액이 1000원 단위가 아니면 예외 발생`() {
-        assertThrows<IllegalArgumentException> {
+        assertThrows<Exception> {
             lottoMachine.checkPaymentException("9800")
         }
     }
 
     @Test
+    fun `당첨 번호 입력을 로또로 변환`() {
+        val numbers = "1,2,3,4,5,6"
+        val answer = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        val result = lottoMachine.convertNumbersToLotto(numbers)
+        assertThat(result.getNumbers()).isEqualTo(answer.getNumbers())
+    }
+
+    @Test
     fun `당첨 번호 입력 형식이 아닐 때 예외 발생`() {
-        assertThrows<IllegalArgumentException> {
+        assertThrows<Exception> {
             lottoMachine.convertNumbersToLotto("1 2 3 4 5 6")
         }
     }
@@ -84,5 +92,4 @@ class LottoMachineTest {
             lottoMachine.checkBonusNumberException(Lotto(listOf(1, 2, 3, 4, 5, 6)), 2)
         }
     }
-
 }
