@@ -2,10 +2,6 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 
-enum class WinningAmount {
-    THREE, FOUR, FIVE, FIVE_PLUS, SIX
-}
-
 class Controller {
     private var three = 0
     private var four = 0
