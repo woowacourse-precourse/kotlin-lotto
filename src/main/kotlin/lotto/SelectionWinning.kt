@@ -18,10 +18,10 @@ class SelectionWinning {
     }
 
     fun getWinningWithoutBonus(
-        lottoCount: Int, totalPublishNums: List<List<Int>>, winNums: List<Int>,
-    ): List<String> {
-        val winCountWithoutBonus = mutableListOf<String>()
-        for (i in 0..lottoCount) {
+        totalPublishNums: List<List<Int>>, winNums: List<Int>,
+    ): List<Int> {
+        val winCountWithoutBonus = mutableListOf<Int>()
+        for (i in 0 until totalPublishNums.size) {
             when (getWinCount(totalPublishNums[i], winNums)) {
                 3 -> winCountWithoutBonus.add(Prize.valueOf("FIFTH").prize)
                 4 -> winCountWithoutBonus.add(Prize.valueOf("FOURTH").prize)
@@ -33,14 +33,14 @@ class SelectionWinning {
     }
 
     fun getWinningListTotal(
-        lottoCount: Int, totalPublishNums: List<List<Int>>, winNums: List<Int>, bonusNums: Int
-    ): List<String> {
-        val totalWinCount = mutableListOf<String>()
-        for (i in 0..lottoCount) {
+        totalPublishNums: List<List<Int>>, winNums: List<Int>, bonusNums: Int
+    ): List<Int> {
+        val totalWinCount = mutableListOf<Int>()
+        for (i in 0 until totalPublishNums.size) {
             if (getBonusCount(totalPublishNums[i], winNums, bonusNums)) {
                 totalWinCount.add(Prize.valueOf("SECOND").prize)
             } else if (!getBonusCount(totalPublishNums[i], winNums, bonusNums)) {
-                totalWinCount += getWinningWithoutBonus(lottoCount, totalPublishNums, winNums)
+                totalWinCount += getWinningWithoutBonus(totalPublishNums, winNums)
             }
         }
         return totalWinCount

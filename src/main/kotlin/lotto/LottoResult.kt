@@ -8,7 +8,7 @@ class LottoResult{
     var fourth = 0
     var fifth = 0
 
-    fun getPrizeRanking(totalWinningList : List<String>){
+    fun getPrizeRanking(totalWinningList : List<Int>){
         totalWinningList.forEach {
             when(it){
                 Prize.valueOf("FIFTH").prize -> first++
