@@ -21,7 +21,7 @@ fun main() {
 }
 
 fun publishLotto(lottoCount: Int): Array<IntArray> {
-    var allLotto = Array<IntArray>(lottoCount) { IntArray(6) }
+    var allLotto = Array(lottoCount) { IntArray(6) }
     for (i in 0 until lottoCount) {
         val numbers = Randoms.pickUniqueNumbersInRange(1, 20, 6)
         Lotto(numbers)
