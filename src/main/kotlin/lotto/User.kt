@@ -11,48 +11,24 @@ class User {
 
     fun inputMoney() {
         val input = userInput()
-        checkInputException(input)
+        inputCheck.checkInputException(input)
         _inputMoney = input.toInt()
     }
 
     fun getLottos() = _inputMoney / 1000
 
-    private fun checkInputException(input: String?) {
-        with(inputCheck) {
-            checkTypeException(input)
-            inputMoneyException(input!!)
-        }
-    }
-
     private fun userInput() = Console.readLine()
 
     fun inputNumbers(): List<Int> {
         val input = userInput()
-        checkInputNumbersException(input)
+        inputCheck.checkInputNumbersException(input)
         return input.split(",").map { it.toInt() }.sorted()
     }
 
     fun inputBonus(): Int {
         val input = userInput()
-        checkBonusException(input)
+        inputCheck.checkBonusException(input)
         return input.toInt()
     }
 
-    private fun checkBonusException(input: String?) {
-        with(inputCheck) {
-            checkNullException(input)
-            checkTypeException(input)
-            checkRangeException(input?.toInt()!!)
-        }
-    }
-
-    private fun checkInputNumbersException(input: String?) {
-        with(inputCheck) {
-            checkNullException(input)
-            input?.split(",")?.let { this.checkTypeException(it) }
-            val numbers = input?.split(",")?.map { it.toInt() }!!
-            checkRangeException(numbers)
-            checkOverlapException(numbers)
-        }
-    }
 }

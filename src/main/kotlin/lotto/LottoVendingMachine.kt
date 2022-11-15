@@ -68,7 +68,7 @@ class LottoVendingMachine(
     private fun issueLotto() {
         val lottoCount = user.getLottos()
         printer.printCountLotto(lottoCount)
-        printer.printLottoIssue(machine.issueLottos(),lottoCount)
+        printer.printLottoIssue(machine.issueLottos(), lottoCount)
     }
 
     private fun inputLottoNumbers(): List<Int> {
@@ -79,7 +79,7 @@ class LottoVendingMachine(
     private fun inputBonusNumber(numbers: List<Int>): Int {
         printer.printInputBonusMessage()
         val bonus = user.inputBonus()
-        if (numbers.contains(bonus)) inputException.checkOverlapException()
+        if (numbers.contains(bonus)) inputException.checkBonusException(numbers, bonus)
         return bonus
     }
 

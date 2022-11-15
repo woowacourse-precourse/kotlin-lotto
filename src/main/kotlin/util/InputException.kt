@@ -3,7 +3,33 @@ package util
 import lotto.User
 
 class InputException {
-    fun checkTypeException(input: String?) {
+
+    fun checkInputNumbersException(input: String?) {
+        checkNullException(input)
+        input?.split(",")?.let { this.checkTypeException(it) }
+        val numbers = input?.split(",")?.map { it.toInt() }!!
+        checkRangeException(numbers)
+        checkOverlapException(numbers)
+    }
+
+    fun checkBonusException(input: String?) {
+        checkNullException(input)
+        checkTypeException(input)
+        checkRangeException(input?.toInt()!!)
+    }
+
+    fun checkInputException(input: String?) {
+        checkTypeException(input)
+        inputMoneyException(input!!)
+    }
+
+    fun checkBonusException(numbers: List<Int>, bonus: Int) {
+        if (numbers.contains(bonus))
+            invalidException(OVERLAP_EXCEPTION)
+    }
+
+
+    private fun checkTypeException(input: String?) {
         try {
             input?.toInt()
         } catch (e: Exception) {
@@ -11,7 +37,7 @@ class InputException {
         }
     }
 
-    fun checkTypeException(input: List<String>) {
+    private fun checkTypeException(input: List<String>) {
         try {
             input.map { it.toInt() }
         } catch (e: Exception) {
@@ -19,34 +45,36 @@ class InputException {
         }
     }
 
-    fun checkNullException(input: String?) {
+    private fun checkNullException(input: String?) {
         if (input.isNullOrEmpty()) {
             invalidException(NULL_EXCEPTION)
         }
     }
 
-    fun inputMoneyException(money: String) {
+    private fun inputMoneyException(money: String) {
         if (money.toInt() % 1000 != 0) invalidException(VALUE_EXCEPTION)
     }
 
-    fun checkRangeException(numbers: List<Int>) {
+    private fun checkRangeException(numbers: List<Int>) {
         numbers.forEach { num ->
             if (num !in 1..45) invalidException(VALUE_EXCEPTION)
         }
     }
 
-    fun checkRangeException(number: Int) {
+    private fun checkRangeException(number: Int) {
         if (number !in 1..45) invalidException(VALUE_EXCEPTION)
     }
 
-    fun checkOverlapException(numbers: List<Int>) {
+    private fun checkOverlapException(numbers: List<Int>) {
         if (numbers.size != numbers.toSet().size)
             invalidException(OVERLAP_EXCEPTION)
         else if (numbers.size != 6)
             invalidException(LENGTH_EXCEPTION)
     }
 
-    fun checkOverlapException() = invalidException(OVERLAP_EXCEPTION)
+    private fun checkOverlapException(numbers: List<Int>, bonus: Int) {
+        if (numbers.contains(bonus)) invalidException(OVERLAP_EXCEPTION)
+    }
 
     private fun invalidException(message: String) {
         throw IllegalArgumentException("[ERROR] : $message")
