@@ -13,6 +13,10 @@ class OutputView {
         println(MESSAGE_HOW_MUCH_BUY_TICKET)
     }
 
+    fun outputMoney(money:Long){
+        println("$money")
+    }
+
     fun outputWinningNumber(){
         println(MESSAGE_WINNING_NUMBER)
     }
@@ -48,7 +52,7 @@ class OutputView {
 
     // 수익률 출력
     fun outputTotalYield(userPayMoney:Long ,income: Int){
-        val totalYield = String.format("%.1f", (income/(userPayMoney*1000)).toDouble()*100)
+        val totalYield = String.format("%.1f", (income.toDouble()/userPayMoney.toDouble())*100)
         println("총 수익률은 ${totalYield}%입니다.")
     }
 

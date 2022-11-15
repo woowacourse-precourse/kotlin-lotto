@@ -1,9 +1,9 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.Console
 import domain.*
 import view.InputView
 import view.OutputView
+
 
 fun main() {
 
@@ -14,12 +14,14 @@ fun main() {
 
     // 구입할 금액 메시지 출력
     outputView.outputHowMuchBuy()
+    val money = inputView.inputMoney()
 
-    // 구매 티켓 개수
-    val availableTickets = inputView.inputMoney()
+    outputView.outputMoney(money)
     outputView.newLine()
 
+
     // 구매 가능한 티켓 출력
+    val availableTickets = CalculateNumberOfTickets().calculateNumberOfTickets(money)
     outputView.outputAvailableTickets(availableTickets)
 
     // 로또 생성
@@ -34,19 +36,25 @@ fun main() {
     outputView.outputWinningNumber()
     // 담청 번호 입력
     val winningNumber = inputView.inputWinningNumber()
-
     outputView.newLine()
+
     // 보너스 번호 메시지 출력
     outputView.outputBonusNumber()
     // 보너스 번호 입력
     val bonusNumber = inputView.inputBonusNumber(winningNumber)
+    println(bonusNumber)
+    outputView.newLine()
 
     // 당첨 통계 메세지
     outputView.outputWinningStatistics()
     // 당첨 통계 출력
-    val income = WinningStatistics().winningStatistics(listOfLotto, winningNumber, bonusNumber)
+    val winningLotto = WinningStatistics().winningStatistics(listOfLotto, winningNumber, bonusNumber)
+    val winningMap = WinningStatistics().winningMap(winningLotto)
+    outputView.outputWinningStatisticsResult(winningMap)
+
 
     // 총 수익률 출력
-    outputView.outputTotalYield(availableTickets, income)
+    val income = WinningStatistics().incomeCalculation(winningLotto)
+    outputView.outputTotalYield(money, income)
 
 }
