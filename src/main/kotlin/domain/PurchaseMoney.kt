@@ -1,5 +1,5 @@
-package lotto
-import lotto.ExceptionHandler.throwExceptionForPurchaseMoney
+package domain
+import utils.ExceptionHandler.throwExceptionForPurchaseMoney
 
 class PurchaseMoney(private val purchaseMoney: Int) {
 
