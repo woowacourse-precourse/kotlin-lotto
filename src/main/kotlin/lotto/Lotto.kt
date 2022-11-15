@@ -6,21 +6,21 @@ class Lotto(private val numbers: List<Int>) {
         require(!numbers.map { it.toString() }.hasOverLappedNumber())
     }
 
-    fun printLottoNumbers() = println(numbers.sorted())
+    fun checkLottoNumbers() = numbers
 
-    fun checkLotto(winningNumber: List<Int>, bonusNumber: Int): LottoPrice {
+    fun checkLotto(winningNumber: List<Int>, bonusNumber: Int): LottoPlace {
         val catchCount = numbers.filter { number -> winningNumber.contains(number) }.size
-        var result = LottoPrice.NONE
+        var result = LottoPlace.NONE
 
         when (catchCount) {
-            3 -> result = LottoPrice.FIFTH_PLACE
-            4 -> result = LottoPrice.FOURTH_PLACE
+            3 -> result = LottoPlace.FIFTH_PLACE
+            4 -> result = LottoPlace.FOURTH_PLACE
             5 -> result = if (!numbers.contains(bonusNumber)) {
-                LottoPrice.THIRD_PLACE
+                LottoPlace.THIRD_PLACE
             } else {
-                LottoPrice.SECOND_PLACE
+                LottoPlace.SECOND_PLACE
             }
-            6 -> result = LottoPrice.FIRST_PLACE
+            6 -> result = LottoPlace.FIRST_PLACE
         }
         return result
     }
