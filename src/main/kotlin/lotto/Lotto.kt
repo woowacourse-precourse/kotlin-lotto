@@ -1,5 +1,5 @@
 package lotto
-
+import kotlin.math.*
 class Lotto(_numbers: List<Int>, _bonus: Int) {
     private var numbers = mutableListOf<Int>()
     init {
@@ -12,6 +12,17 @@ class Lotto(_numbers: List<Int>, _bonus: Int) {
         lottoBonus(_numbers, _bonus)
         numbers.addAll(_numbers)
         numbers.add(_bonus)
+        for(i in 0 until userLottoList.size){
+            LottoStats.lottoMatchLists(userLottoList[i], numbers)
+        }
+        var sumPrice = 0
+        println("\n당첨 통계\n---")
+        LottoStats.values().forEach{
+            println("${it.message} - ${it.Cnt}개")
+            sumPrice += (it.price/1000 * it.Cnt)
+        }
+        val rateOfReturn = ((sumPrice.toDouble() / userLottoList.size.toDouble())*100.0)
+        println("총 수익률은 ${round(rateOfReturn*10)/10}%입니다.")
     }
 
     private fun lottoAnswer(answers : List<Int>) {
