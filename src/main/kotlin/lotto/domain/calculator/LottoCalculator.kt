@@ -23,7 +23,7 @@ object LottoCalculator {
         winningHistories.forEach { (lottoWinningResult, ticketCount) ->
             totalProfit += lottoWinningResult.profit * ticketCount
         }
-
+        println(roundProfitRate(((totalProfit / lottoTicket.ticketMoney) * 100)))
         return roundProfitRate(((totalProfit / lottoTicket.ticketMoney) * 100))
     }
 
