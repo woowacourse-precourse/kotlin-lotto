@@ -1,6 +1,6 @@
 package lotto.domain
 
-enum class Rank(private val prize: Long, val message: String) {
+enum class Rank(val prize: Long, val message: String) {
     FIRST(2000000000L, "6개 일치"),
     SECOND(30000000L, "5개 일치, 보너스 볼 일치"),
     THIRD(1500000L, "5개 일치"),

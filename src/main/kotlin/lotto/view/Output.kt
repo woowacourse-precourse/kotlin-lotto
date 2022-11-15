@@ -1,6 +1,7 @@
 package lotto.view
 
 import lotto.domain.Rank
+import java.text.DecimalFormat
 
 class Output {
     fun printTickets(tickets: List<String>) {
@@ -9,9 +10,13 @@ class Output {
     }
 
     fun printWinners(ranks: List<Rank>, totalRanks: List<Int>) {
+        val decimalFormat = DecimalFormat("#,###")
         println(WINNER_MESSAGE_TITLE)
         for (index in totalRanks.indices) {
-            println("${ranks[index].message} - ${totalRanks[index]}개")
+            val rankMessage = ranks[index].message
+            val rankPrize = decimalFormat.format(ranks[index].prize)
+            val winners = totalRanks[index]
+            println("$rankMessage (${rankPrize}원) - ${winners}개")
         }
     }
 
