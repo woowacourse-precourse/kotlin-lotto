@@ -11,6 +11,10 @@ class Customer() {
         return payment
     }
 
+    fun calculateIncome(money: Int, payment: Int): Float {
+        return money.toFloat() / payment.toFloat() * 100
+    }
+
     fun throwPaymentException(payment: Int) {
         if ((payment % 1000) != 0) throw IllegalArgumentException(Message.PAYMENT_RULE.message)
     }
