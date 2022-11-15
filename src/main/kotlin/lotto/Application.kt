@@ -5,5 +5,7 @@ fun main() {
     val customerBuyCount = lottoCustomer.customerLottoBuyPriceInput()
 
     val lottoMachine = LottoMachine(customerBuyCount)
+    lottoMachine.printCustomerBuyLottoCount()
+
 
 }
