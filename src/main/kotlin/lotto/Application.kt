@@ -5,7 +5,7 @@ import kotlin.math.round
 
 const val LOTTERY_PRICE = 1000
 const val LOTTERY_SIZE = 6
-const val TAG = "ERROR"
+const val TAG = "[ERROR]"
 val NUMBER_RANGE = 1..45
 
 /**
