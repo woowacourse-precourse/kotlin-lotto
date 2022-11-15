@@ -43,7 +43,7 @@ fun compareNumbers(lotto: Lotto, savedLottoNumbers: ArrayList<List<Int>>, bonusN
     val winningCount = MutableList<Int>(5) { 0 }
     for (i in savedLottoNumbers) {
         when (lotto.compareLottoNumbers(i)) {
-            Rank.ZERO, Rank.ONE, Rank.TWO -> null
+            Rank.ZERO, Rank.ONE, Rank.TWO,Rank.ERROR -> null
             Rank.THREE -> winningCount[0]++
             Rank.FOUR -> winningCount[1]++
             Rank.FIVE -> {
@@ -100,17 +100,18 @@ fun createLottoNumber(savedLottoNumbers: ArrayList<List<Int>>) {
 
 fun inputBuyLottoPrice(): Int {
     println("로또 구입금액을 입력해 주세요.")
-    val price = readLine().toString()
     try {
-        if (price.toInt() % 1000 != 0) {
+        val price = readLine().toString().toInt()
+        if (price % 1000 != 0) {
             printException("[ERROR] 구입 금액은 1,000원 단위입니다.")
         }
-        println("\n${price.toInt() / 1000}개를 구매했습니다.")
-        return price.toInt()
+        println("\n${price / 1000}개를 구매했습니다.")
+
+        return price
     } catch (e: NumberFormatException) {
         printException("[ERROR] 로또 번호는 1부터 45사이의 숫자여야 합니다.")
     }
-    throw IllegalArgumentException()
+    return 0
 }
 
 fun printException(message: String) {
