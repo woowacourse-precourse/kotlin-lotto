@@ -45,11 +45,11 @@ class LottoGame {
         getPurchaseAmount()
         printLotteriesNumber()
 
-        getWinningNumbers()
-        getBonusNumber()
-
         getBuyLotteries()
         printBuyLotteries()
+
+        getWinningNumbers()
+        getBonusNumber()
 
         getResult()
         printResult()
@@ -174,7 +174,7 @@ class LottoGame {
     }
 
     private fun printLotteriesNumber() {
-        println("{$lotteries}개를 구매했습니다.")
+        println("${lotteries}개를 구매했습니다.")
     }
 
     private fun getLotteriesNumber(): List<Int> {
