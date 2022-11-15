@@ -8,4 +8,9 @@ class UserInput {
         val userInput = Console.readLine()
         return ExceptionCheck().checkValidPrice(userInput)
     }
+
+    fun getWinningNumbers(): List<Int> {
+        val userInput = Console.readLine()
+        return ExceptionCheck().checkValidWinningNumbers(userInput)
+    }
 }
