@@ -1,6 +1,6 @@
 package lotto
 
-private var purchaseAmount = 0
+private var lotteries = 0
 
 enum class ErrorType {
     AMOUNT {
@@ -22,7 +22,7 @@ fun main() {
 fun getPurchaseAmount() {
     val inputAmount = getPurchaseAmountInput()
     checkInputAmountValid(inputAmount)
-
+    initLotteries(inputAmount)
 }
 
 fun getPurchaseAmountInput(): Int {
@@ -35,4 +35,8 @@ fun checkInputAmountValid(amount: Int) {
         ErrorType.AMOUNT.print()
         throw IllegalArgumentException()
     }
+}
+
+fun initLotteries(amount: Int) {
+    lotteries = amount / 1000
 }
