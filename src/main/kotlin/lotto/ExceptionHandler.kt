@@ -84,6 +84,8 @@ object ExceptionHandler {
         when {
             !getIsThousandUnit(purchaseMoney) ->
                 throw IllegalArgumentException(Constants.ERROR_PURCHASE_MONEY_NOT_THOUSAND_UNIT)
+            !getIsPositiveNumber(purchaseMoney) ->
+                throw IllegalArgumentException(Constants.ERROR_PURCHASE_MONEY_NOT_POSITIVE_NUMBER)
         }
     }
 
@@ -92,5 +94,12 @@ object ExceptionHandler {
      */
     fun getIsThousandUnit(purchaseMoney: Int): Boolean {
         return purchaseMoney.toDouble() % 1000.0 == 0.0
+    }
+
+    /**
+     *  구입 금액이 양수가 아니라면 false 를 반환하는 함수
+     */
+    fun getIsPositiveNumber(purchaseMoney: Int): Boolean{
+        return purchaseMoney > 0
     }
 }
