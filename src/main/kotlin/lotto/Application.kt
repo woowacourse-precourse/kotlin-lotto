@@ -8,12 +8,15 @@ import lotto.view.Input
 import lotto.view.Output
 import java.lang.IllegalArgumentException
 
+const val GENERATOR_START_INCLUSIVE = 1
+const val GENERATOR_END_INCLUSIVE = 45
+const val GENERATOR_HOW_MANY = 6
 const val ERROR_HEADER = "[ERROR]"
 
 fun main() {
     val input = Input()
     val output = Output()
-    val generator = RandomNumberGenerator()
+    val generator = RandomNumberGenerator(GENERATOR_START_INCLUSIVE, GENERATOR_END_INCLUSIVE, GENERATOR_HOW_MANY)
     val ranks = Rank.values().toList()
     val profitCalculator = ProfitCalculator()
     val lottoShop = LottoShop(input, output, generator, ranks, profitCalculator)
