@@ -24,9 +24,9 @@ fun firstPay(): Int {
         deposit.toInt()
         deposit.toInt() % lottoCost != 0
     } catch (e : NumberFormatException){
-        throw NumberFormatException(ErrorMessages.MONEY_ERROR.messages)
+        println(ErrorMessages.MONEY_ERROR.messages)
     } catch (e : IllegalArgumentException){
-        throw IllegalArgumentException(ErrorMessages.MONEY_ERROR.messages)
+        println(ErrorMessages.MONEY_ERROR.messages)
     }
     return deposit.toInt()
 }
