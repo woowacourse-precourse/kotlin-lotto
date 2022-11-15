@@ -1,7 +1,9 @@
 package lotto
 import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
-import java.util.*
+import jdk.internal.net.http.common.Log
+
+
 enum class Grade(val money:Int){
     First(2000000000),
     Second(30000000),
@@ -11,14 +13,16 @@ enum class Grade(val money:Int){
 }
 
 fun checkUserMoney(userMoney:String):Int{
+    val ERROR_MESSAGE = "[ERROR]"
+
    var userMoney = userMoney.toIntOrNull()
     if(userMoney == null) {
-        print("[ERROR] 수를 입력하세요")
+        println(ERROR_MESSAGE)
         throw IllegalArgumentException()
     }
 
     if(userMoney%1000 != 0) {
-        print("[ERROR] 1000으로 나누어 떨어지는 수를 입력하세요")
+        println(ERROR_MESSAGE)
         throw IllegalArgumentException()}
     return userMoney
 }
@@ -65,7 +69,13 @@ fun pickNum(Num:Int,userNum:List<String>,bonus:Int):Array<Int>{
 
 fun main() {
    var userMoney = Console.readLine()!!.toString()
-    var LottoNum = (checkUserMoney(userMoney))/1000
+    var userMoneyOk = 0
+    try {
+         userMoneyOk = checkUserMoney(userMoney)
+    }catch(e:IllegalArgumentException){
+        return
+    }
+    var LottoNum = (userMoneyOk)/1000
     println("${LottoNum}개를 구매했습니다.")
     println("당첨번호를 입력하세요")
     val userString = Console.readLine()!!.toString()
@@ -92,7 +102,5 @@ fun main() {
     var earnMoneyRound = Math.ceil(earnMoney*10)/10.0
 
     println("총 수익률은 ${earnMoney}%입니다.")
-
-
 
 }
