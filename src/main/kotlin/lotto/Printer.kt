@@ -44,7 +44,7 @@ class Printer {
 
     fun printLottoResult(result: Map<MatchedCount, Int>) {
         result.forEach { (matchedCount, count) ->
-            matchedCount.printLottoResult(count)
+            println(matchedCount.returnLottoResult(count))
         }
     }
 
