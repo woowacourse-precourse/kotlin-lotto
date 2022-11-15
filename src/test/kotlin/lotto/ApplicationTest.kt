@@ -63,4 +63,18 @@ class ApplicationTest : NsTest() {
         val num = 3
         assertThat(getLottoNumbers(num).size).isEqualTo(num)
     }
+
+    @Test
+    fun `당첨 결과를 담은 리스트의 값이 정확한지 테스트`() {
+        assertThat(calculateWinnings(
+            listOf(
+                Lotto(listOf(8, 21, 23, 41, 42, 43)),
+                Lotto(listOf(3, 5, 11, 16, 32, 38)),
+                Lotto(listOf(6, 5, 4, 3, 2, 9)),
+                Lotto(listOf(4, 3, 2, 1, 7, 5)),
+                Lotto(listOf(6, 5, 4, 3, 2, 1)),
+                Lotto(listOf(1, 3, 5, 14, 22, 45))
+            ), Lotto(listOf(1, 2, 3, 4, 5, 6)), 7
+        )).isEqualTo(listOf(1, 0, 1, 1, 1))
+    }
 }

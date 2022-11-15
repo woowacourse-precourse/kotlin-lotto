@@ -13,6 +13,21 @@ fun main() {
 
     val winningNumbers = getWinningNumbers()
     val bonusNumber = getBonusNumber()
+
+    val winningResult = calculateWinnings(lottoNumbers, winningNumbers, bonusNumber)
+}
+
+fun calculateWinnings(lottos: List<Lotto>, winnings: Lotto, bonus: Int): List<Int> {
+    val result = mutableListOf(0, 0, 0, 0, 0)
+    for (lotto in lottos) {
+        val prize = lotto.calculateWinnings(winnings, bonus)
+        if (prize == -1) {
+            continue
+        }
+        result[prize]++
+    }
+
+    return result
 }
 
 fun getBonusNumber(): Int {
@@ -37,7 +52,7 @@ fun getWinningNumbers(): Lotto {
     winning!!.split(SEPARATOR)
         .forEach { num ->
             winningNumbers.add(num.trim().toInt())
-    }
+        }
 
     return Lotto(winningNumbers)
 }
@@ -45,7 +60,7 @@ fun getWinningNumbers(): Lotto {
 fun printLottoNumbers(numbers: List<Lotto>) {
     println("\n${numbers.size}$PURCHASE_LOTTO")
 
-    for(number in numbers) {
+    for (number in numbers) {
         number.print()
     }
 }
@@ -53,7 +68,7 @@ fun printLottoNumbers(numbers: List<Lotto>) {
 fun getLottoNumbers(num: Int): List<Lotto> {
     val lottos = mutableListOf<Lotto>()
 
-    for(i in 0 until num) {
+    for (i in 0 until num) {
         lottos.add(Lotto(generateNumbers()))
     }
 
