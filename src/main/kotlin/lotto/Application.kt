@@ -3,6 +3,7 @@ package lotto
 import enterprise.LottoEnterprise
 import market.LottoMarket
 import player.LottoPlayer
+import view.EnterpriseUI
 import winlotto.WinLottoFactory
 
 fun main() {
@@ -13,7 +14,8 @@ fun main() {
 
 private fun getPlayer(): LottoPlayer {
     val lottoEnterprise = LottoEnterprise(
-        WinLottoFactory()
+        WinLottoFactory(),
+        EnterpriseUI()
     )
     val lottoMarket = LottoMarket(
         LottoFactory()

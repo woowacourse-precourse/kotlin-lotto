@@ -2,6 +2,7 @@ package enterprise
 
 import util.readWinBonusNumber
 import util.readWinLottoNumbers
+import view.EnterpriseUI
 import winlotto.WinLotto
 import winlotto.WinLottoFactory
 
@@ -42,6 +43,7 @@ data class SameLottoResult(
 
 class LottoEnterprise(
     private val winLottoFactory: WinLottoFactory,
+    private val enterpriseUI: EnterpriseUI,
 ) {
     fun getWinLotto(): WinLotto {
         val winLottoNumbers = getWinLottoNumbers()
@@ -53,12 +55,12 @@ class LottoEnterprise(
     }
 
     private fun getWinLottoNumbers(): List<Int> {
-        println("당첨 번호를 입력해 주세요.")
+        enterpriseUI.showUI(EnterpriseUI.Companion.UI.ASK_WIN_LOTTO_NUMBERS_INPUT)
         return readWinLottoNumbers()
     }
 
     private fun getWinBonusNumber(winLottoNumbers: List<Int>): Int {
-        println("보너스 번호를 입력해 주세요.")
+        enterpriseUI.showUI(EnterpriseUI.Companion.UI.ASK_WIN_LOTTO_BONUS_NUMBER_INPUT)
         return readWinBonusNumber(winLottoNumbers)
     }
 }

@@ -25,3 +25,11 @@ fun printLottoEarningsRate(lottoPrizeSum: Long, paidMoney: Int) {
     val ratio = lottoPrizeSum / paidMoney.toDouble()
     println("총 수익률은 ${String.format("%.1f", (ratio * 100))}%입니다.")
 }
+
+fun printAskWinLottoNumbersInput(){
+    println("당첨 번호를 입력해 주세요.")
+}
+
+fun printAskWinBonusNumberInput(){
+    println("보너스 번호를 입력해 주세요.")
+}
