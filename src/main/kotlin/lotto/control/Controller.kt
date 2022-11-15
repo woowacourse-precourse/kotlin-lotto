@@ -18,18 +18,12 @@ class Controller {
 
     fun winningStatistics(winningNumber: List<Int>, bonusNumber: Int) {
         saveRandomNumber.forEach { saveNumber ->
-            var cnt = 0
-            winningNumber.forEach { winning ->
-                if (saveNumber.contains(winning)) {
-                    cnt++
-                }
+            val count = matchWinningNumber(saveNumber, winningNumber)
+            if (count == 5) {
+                includeBonusNumber(saveNumber, bonusNumber)
+            } else {
+                resultCorrect(count)
             }
-            if (cnt == 5) {
-                if (saveNumber.contains(bonusNumber)) {
-                    cnt = 7
-                }
-            }
-            resultCorrect(cnt)
         }
     }
 
@@ -49,13 +43,29 @@ class Controller {
         Output.resultYield(resultTotalYield)
     }
 
+    private fun matchWinningNumber(saveNumber: List<Int>, winningNumber: List<Int>): Int {
+        var count = 0
+        winningNumber.forEach { winning ->
+            if (saveNumber.contains(winning)) {
+                count++
+            }
+        }
+        return count
+    }
+
+    private fun includeBonusNumber(saveNumber: List<Int>, bonusNumber: Int) {
+        if (saveNumber.contains(bonusNumber)) {
+            WinningAmount.SECOND.number++
+        } else {
+            WinningAmount.THIRD.number++
+        }
+    }
+
     private fun resultCorrect(count: Int) {
         when (count) {
             3 -> WinningAmount.FIFTH.number++
             4 -> WinningAmount.FOURTH.number++
-            5 -> WinningAmount.THIRD.number++
             6 -> WinningAmount.FIRST.number++
-            7 -> WinningAmount.SECOND.number++
         }
     }
 
