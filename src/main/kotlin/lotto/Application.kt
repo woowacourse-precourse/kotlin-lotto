@@ -69,7 +69,6 @@ fun getWinningNumber(): List<Int> {
 
     var numbers = inputNumbers.split(",")
     val winningNumber = mutableListOf<Int>()
-
     for (i in numbers) {
         winningNumber.add(i.toInt())
     }
@@ -80,7 +79,6 @@ fun getWinningNumber(): List<Int> {
         print("${Message.ERROR_MESSAGE.msg} 잘못된 입력입니다.")
         throw NoSuchElementException()
     }
-
     return winningNumber
 }
 
@@ -142,22 +140,13 @@ fun printResult(matchCount: List<Int>) {
 
 fun calculateProfitRate(matchCount: List<Int>, money: Int) {
     var total = 0.0
-    if (matchCount[State.FIFTH.value] != 0) {
-        total += matchCount[State.FIFTH.value] * State.FIFTH.price
-    }
-    if (matchCount[State.FOURTH.value] != 0) {
-        total += matchCount[State.FOURTH.value] * State.FOURTH.price
-    }
-    if (matchCount[State.THIRD.value] != 0) {
-        total += matchCount[State.THIRD.value] * State.THIRD.price
-    }
-    if (matchCount[State.SECOND.value] != 0) {
-        total += matchCount[State.SECOND.value] * State.SECOND.price
-    }
-    if (matchCount[State.FIRST.value] != 0) {
-        total += matchCount[State.FIRST.value] * State.FIRST.price
+
+    for(state in State.values()){
+        if(matchCount[state.value] != 0){
+            total += matchCount[state.value] * state.price
+        }
     }
 
-    var result = ((total / money) * 1000).roundToInt() / 10f
+    val result = ((total / money) * 1000).roundToInt() / 10f
     println("총 수익률은 ${result}%입니다.")
 }
