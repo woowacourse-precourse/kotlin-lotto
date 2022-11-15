@@ -3,6 +3,7 @@ package lotto
 import camp.nextstep.edu.missionutils.Randoms
 import java.security.cert.TrustAnchor
 import java.util.Objects
+import kotlin.math.round
 
 class Lotto(private val numbers: List<Int>) {
     private var lottoNumbers = listOf<Int>()
@@ -16,7 +17,7 @@ class Lotto(private val numbers: List<Int>) {
 
     init {
         require(numbers.size == 6)
-        this.lottoNumbers = numbers
+        this.lottoNumbers = numbers.sorted()
         this.bonusFlag = false
     }
 
@@ -26,12 +27,12 @@ class Lotto(private val numbers: List<Int>) {
         // function to make class Lotto to String
         // - to print out -
         var string = "["
-        this.numbers
+        this.lottoNumbers
         for (i in 0 until 5){
-            string += this.numbers[i].toString() + ", "
+            string += this.lottoNumbers[i].toString() + ", "
         }
 
-        return string + this.numbers[5].toString() + "]"
+        return string + this.lottoNumbers[5].toString() + "]"
     }
 
 
@@ -74,7 +75,6 @@ class Lotto(private val numbers: List<Int>) {
 }
 
 
-
 fun buyLotto(): List<Lotto>{
     println("구매 금액을 입력해 주세요.")
     var userInput : Int? = readLine()!!.toIntOrNull()
@@ -92,10 +92,10 @@ fun winningNumber(Lottos: List<Lotto>){
     println("당첨 번호를 입력해 주세요.")
     var winstr : List<String> = readLine()!!.split(",")
     var winint : List<Int>   = listOf()
-    winningNumCheck(winint)
     winstr.forEach() {
         winint += it.toInt()
     }
+    winningNumCheck(winint)
 
     println("\n보너스 번호를 입력해 주세요.")
     var bonus : Int? = readLine()!!.toIntOrNull()
@@ -104,12 +104,14 @@ fun winningNumber(Lottos: List<Lotto>){
     result(Lottos, winint, bonus!!)
 }
 
-fun result(lottos: List<Lotto>, winint: List<Int>, bonus: Int) {
+fun result(lottolist: List<Lotto>, winint: List<Int>, bonus: Int) {
     println("\n당첨 통계\n---")
-    lottos.forEach(){it
+    lottolist.forEach(){it
         it.checkLottery(Lotto(winint))
         it.checkBonus(bonus)
     }
+    var lottos = Lottos(lottolist)
+    lottos.printres()
 }
 
 
@@ -186,17 +188,49 @@ fun createLottoList(howMany : Int) : List<Lotto> {
 
 enum class ExceptionExplain{
     WrongPayment{
-        override fun checkAndThrowException() {
-            throw IllegalArgumentException("[ERROR] 입력 금액은 1000원 단위의 정수입니다.")
-        }
+        override fun checkAndThrowException() { throw IllegalArgumentException("[ERROR] 입력 금액은 1000원 단위의 정수입니다.") }
     }, WrongWinNum{
-        override fun checkAndThrowException() {
-            throw IllegalArgumentException("[ERROR] 당첨 번호는 1이상 45이하입니다.")
-        }
+        override fun checkAndThrowException() { throw IllegalArgumentException("[ERROR] 당첨 번호는 1이상 45이하입니다.") }
     }, WrongBonusNum{
-        override fun checkAndThrowException() {
-            throw IllegalArgumentException("[ERROR] 당첨 번호는 1이상 45이하입니다.")
-        }
+        override fun checkAndThrowException() { throw IllegalArgumentException("[ERROR] 당첨 번호는 1이상 45이하입니다.") }
     };
     abstract fun checkAndThrowException()
+}
+
+class Lottos(private val lottos: List<Lotto>){
+    var lottoslist : List<Lotto> = this.lottos
+
+    private fun calculate(i: Int, lottos: List<Lotto>): Int{
+        var cnt = 0
+        lottos.forEach(){ if(it.lotteryresult == i) cnt += 1}
+        if (i == 5) return cnt - calcBonus(lottos)
+
+        return cnt
+    }
+
+    private fun calcBonus(lottos: List<Lotto>): Int {
+        var cnt = 0
+        lottos.forEach(){ if(it.bonusresult) cnt += cnt}
+        return cnt
+    }
+
+    private var cntThree = calculate(3, lottos)
+    private var cntFour = calculate(4,lottos)
+    private var cntFive = calculate(5, lottos)
+    private var cntBonus = calcBonus(lottos)
+    private var cntSix = calculate(6, lottos)
+
+    private var totalres = cntThree*5 + cntFour* 50 + cntFive*1500 + cntBonus*30000 + cntSix*2000000
+
+    private var earned :Float = (totalres.toFloat() / lottos.size.toFloat())
+
+    fun printres(){
+        println("3개 일치 (5,000원) - ${this.cntThree}개")
+        println("4개 일치 (50,000원) - ${this.cntFour}개")
+        println("5개 일치 (1,500,000원) - ${this.cntFive}개")
+        println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${this.cntBonus}개")
+        println("6개 일치 (2,000,000,000원) - ${this.cntSix}개")
+        println("총 수익률은 ${round(this.earned*10)/10}% 입니다.")
+    }
+
 }
