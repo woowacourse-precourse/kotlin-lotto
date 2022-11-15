@@ -27,12 +27,14 @@ class UserInput {
         val answerSheet = input!!.split(',').map(String::toInt)
         answer = answerSheet.sorted()
         ErrorCheck().duplicatedNumber(answer)
+        ErrorCheck().ListnumberRange(answer)
     }
 
     fun bonusNumber() {
         val input = Console.readLine()
         val bonusNumber = input.toInt()
         bonus = bonusNumber
+        ErrorCheck().NumberRange(bonus)
     }
 
 }
