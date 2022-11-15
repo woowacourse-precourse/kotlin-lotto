@@ -5,9 +5,20 @@ import java.text.DecimalFormat
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6)
+        validLottoNum()
     }
 
     // TODO: 추가 기능 구현
+    fun validLottoNum(){
+        for(number in numbers){
+            if(number >= 1
+                && number <= 45
+            ){
+                throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
+            }
+        }
+
+    }
     fun checkAllWinLotto(purchasedLotto : List<List<Int>>,bonusNum : Int): MutableList<Int> {
         val winLotto = mutableListOf<Int>(0,0,0,0,0)
         for(i in purchasedLotto){
