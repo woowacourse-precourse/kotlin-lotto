@@ -9,7 +9,7 @@ class InputException {
         }
     }
 
-    private fun invalidException(message: String) {
+    fun invalidException(message: String) {
         throw IllegalArgumentException("[ERROR] : $message")
     }
 
