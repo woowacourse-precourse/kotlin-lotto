@@ -16,15 +16,4 @@ class CreateLottoNumber {
         if (numbers.toSet().size == 6 && numbers.all { it in 1..45 }) return numbers.sorted()
         else throw IllegalArgumentException("$ERROR_MESSAGE_LOTTO_NUMBER ")
     }
-
-    // 중복 체크와 길이 체크
-    /*fun isCorrectCreateLotto(lotto: List<Int>): Boolean{
-        // 범위에 맞는지
-        // 중복된 숫자가 나왔을 경우 예외처리
-        println("$lotto ?? ${lotto.toSet().size != 6}\n")
-        println("$lotto ???${lotto.all { it !in 1..45 }}")
-        println("$lotto ??? ${(lotto.toSet().size != 6 || lotto.all { it !in 1..45 })}")
-        return !(lotto.toSet().size != 6 || lotto.all { it !in 1..45 })
-    }*/
-
 }
