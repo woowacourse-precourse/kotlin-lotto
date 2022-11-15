@@ -20,4 +20,12 @@ class UI {
         val lotteryNumber = Console.readLine()
         return lotteryNumber.split(",")
     }
+
+    /**
+     * Returns string of bonus number from user input
+     */
+    fun getBonusNumber(): String {
+        println("보너스 번호를 입력해 주세요.")
+        return Console.readLine()
+    }
 }
