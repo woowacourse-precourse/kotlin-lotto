@@ -19,6 +19,16 @@ class User {
             throw IllegalArgumentException(ERROR_PRIZE_NUMBER_MESSAGE)
         if (!checkSizePrizeGroup(prizeNumberGroup))
             throw IllegalArgumentException(ERROR_PRIZE_SIZE_MESSAGE)
+        if (!checkRangePrizeGroup(prizeNumberGroup))
+            throw IllegalArgumentException(ERROR_PRIZE_RANGE_MESSAGE)
+    }
+
+    private fun checkRangePrizeGroup(prizeNumberGroup: List<String>): Boolean {
+        for (i in prizeNumberGroup) {
+            if (i.toInt() < 1 || i.toInt() > 46)
+                return false
+        }
+        return true
     }
 
     private fun checkNumPrizeGroup(prizeNumberGroup: List<String>): Boolean {
