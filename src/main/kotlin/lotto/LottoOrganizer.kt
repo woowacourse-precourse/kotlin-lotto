@@ -24,7 +24,7 @@ class LottoOrganizer(private val producedLottoNumbers: MutableList<List<Int>>) {
             return false
         }
 
-        if (userInput.toInt() in 1..45) {
+        if (userInput.toInt() in LottoProcessConstValue.LOTTO_NUMBER_RANGE_START..LottoProcessConstValue.LOTTO_NUMBER_RANGE_END) {
             return false
         }
 
