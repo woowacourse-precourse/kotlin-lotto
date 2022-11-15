@@ -1,6 +1,7 @@
-package lotto
+package control
 
 import camp.nextstep.edu.missionutils.Console
+import message.Error
 import org.junit.platform.commons.logging.LoggerFactory
 
 object ExceptionHandler {

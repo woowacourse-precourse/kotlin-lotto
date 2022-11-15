@@ -1,5 +1,7 @@
 package lotto
 
+import message.Error
+
 class Lotto(private val numbers: List<Int>) {
 
     private var winningNumber = listOf<Int>()

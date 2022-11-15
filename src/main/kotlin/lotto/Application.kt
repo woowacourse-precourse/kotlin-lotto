@@ -1,5 +1,9 @@
 package lotto
 
+import control.Controller
+import control.ExceptionHandler
+import message.Output
+
 fun main() {
     val control = Controller()
     val amount = getInputLotteryAmount()
