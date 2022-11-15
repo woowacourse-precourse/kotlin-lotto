@@ -22,7 +22,7 @@ class Lotto(private val numbers: List<Int>) {
         }
     }
 
-    fun getLottoNumberList(): List<Int> {
+    fun getLottoNumbers(): List<Int> {
         return numbers
     }
 

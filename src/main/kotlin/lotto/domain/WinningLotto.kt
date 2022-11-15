@@ -10,7 +10,7 @@ class WinningLotto(private val winningLotto: Lotto, private val bonusNumber: Int
         var count = 0
         var hasLottoBonusNumber = false
         for (i in lotto) {
-            if (winningLotto.getLottoNumberList().contains(i)) {
+            if (winningLotto.getLottoNumbers().contains(i)) {
                 count += 1
             }
             if (i == bonusNumber) {
@@ -21,8 +21,8 @@ class WinningLotto(private val winningLotto: Lotto, private val bonusNumber: Int
     }
 
     private fun isValidBonusNumber() {
-        val lottoNumList = winningLotto.getLottoNumberList()
-        if (lottoNumList.contains(bonusNumber)) {
+        val lottoNums = winningLotto.getLottoNumbers()
+        if (lottoNums.contains(bonusNumber)) {
             throw IllegalArgumentException("[ERROR]: 당첨 번호와 보너스 번호는 중복될 수 없다.")
         }
     }

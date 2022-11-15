@@ -5,12 +5,12 @@ import camp.nextstep.edu.missionutils.Randoms
 class LottoGenerator {
 
     fun issueLottos(numberOfPurchaseLotto: Int): Lottos {
-        val purchasedLottoList = mutableListOf<Lotto>()
+        val purchasedLottos = mutableListOf<Lotto>()
         for (i in 0 until numberOfPurchaseLotto) {
             val lotto = issueLotto()
-            purchasedLottoList.add(lotto)
+            purchasedLottos.add(lotto)
         }
-        return Lottos(purchasedLottoList)
+        return Lottos(purchasedLottos)
     }
 
     private fun issueLotto(): Lotto {

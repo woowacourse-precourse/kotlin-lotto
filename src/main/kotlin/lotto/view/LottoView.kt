@@ -24,9 +24,9 @@ class LottoView {
 
     fun printIssuedLottos(lottos: Lottos, issuedNumberOfLotto: Int) {
         println("\n${issuedNumberOfLotto}개를 구매했습니다.")
-        val issuedLottoList = lottos.getLottosList()
-        for (lotto in issuedLottoList) {
-            println(lotto.getLottoNumberList())
+        val issuedLotto = lottos.getLottosList()
+        for (lotto in issuedLotto) {
+            println(lotto.getLottoNumbers())
         }
     }
 
@@ -42,8 +42,8 @@ class LottoView {
         return WinningLottoNumbers
     }
 
-    private fun validWinningLotto(lottoNumList: List<String>) {
-        for (lottoNum in lottoNumList) {
+    private fun validWinningLotto(lottoNumbers: List<String>) {
+        for (lottoNum in lottoNumbers) {
             if (!isNumber(lottoNum) || !isValidNumberRange(lottoNum.toInt())) {
                 throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
             }
