@@ -12,7 +12,7 @@ class Lotto(private val numbers: List<Int>) {
     fun validLottoNum(){
         for(number in numbers){
             if(number < 1
-                && number > 45
+                || number > 45
             ){
                 throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
             }
