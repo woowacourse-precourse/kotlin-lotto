@@ -1,4 +1,4 @@
-package lotto
+package lotto.domain.customer
 
 private const val THREE_PRIZE = 5000
 private const val FOUR_PRIZE = 50000
