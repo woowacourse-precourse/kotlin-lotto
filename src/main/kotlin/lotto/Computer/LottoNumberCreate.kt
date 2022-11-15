@@ -6,7 +6,7 @@ public val lottoList: MutableList<List<Int>> = ArrayList()
 
 fun NumberCreate(ticket : Int) : MutableList<List<Int>> {
     for (i in 1..ticket) {
-        val numbers = RandomCreate()
+        val numbers = RandomCreate().sorted()
         lottoList.add((numbers))
     }
     return lottoList

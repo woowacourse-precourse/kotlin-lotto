@@ -19,7 +19,19 @@ fun main() {
 
     MessageOutput().printAnswerInputMessage()
     UserInput().answerNumbers()
+    println(answer)
+
+    MessageOutput().printBonusInputMessage()
     UserInput().bonusNumber()
+    println(bonus)
+
+    Lotto(answer).MatchedLottoCount(lottoList[0])
+
+    MessageOutput().printAverageInputMessage()
+    MessageOutput().printMatchedNumberMessage()
+
+
+
 
 
 

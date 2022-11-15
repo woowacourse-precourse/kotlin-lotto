@@ -14,7 +14,8 @@ class MessageOutput {
         FOUR("4개 일치 (50,000원) - 0개"),
         FIVE("5개 일치 (1,500,000원) - 0개"),
         BONUS("5개 일치, 보너스 볼 일치 (30,000,000원) - 0개"),
-        SIX("6개 일치 (2,000,000,000원) - 0개")
+        SIX("6개 일치 (2,000,000,000원) - 0개"),
+        EARN("총 수익률은 62.5%입니다.")
     }
 
     fun printStartMessage() {
@@ -29,4 +30,22 @@ class MessageOutput {
     fun printAnswerInputMessage(){
         println(Notice.ANSWER.messages)
     }
+
+    fun printBonusInputMessage(){
+        println(Notice.BONUS.messages)
+    }
+
+    fun printAverageInputMessage(){
+        println(Notice.AVERAGE.messages)
+    }
+
+    fun printMatchedNumberMessage(){
+        println(Match.THREE.messages)
+        println(Match.FOUR.messages)
+        println(Match.FIVE.messages)
+        println(Match.BONUS.messages)
+        println(Match.SIX.messages)
+        println(Match.EARN.messages)
+    }
+
 }

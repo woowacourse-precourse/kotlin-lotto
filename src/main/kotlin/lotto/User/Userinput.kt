@@ -24,7 +24,7 @@ class UserInput {
     fun answerNumbers(){
         val input = Console.readLine()
         val answerSheet = input!!.split(',').map(String::toInt)
-        answer = answerSheet
+        answer = answerSheet.sorted()
     }
     fun bonusNumber(){
         val input = Console.readLine()
