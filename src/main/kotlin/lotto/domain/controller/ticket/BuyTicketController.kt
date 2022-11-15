@@ -12,7 +12,6 @@ class BuyTicketController(
     private val buyTicketView: BuyTicketView,
     private val lottoTicket: LottoTicket
 ) : Controller() {
-    private val _lottos = mutableListOf<Lotto>()
 
     override fun run() {
         // 티켓 금액을 입력받는다.
@@ -49,6 +48,8 @@ class BuyTicketController(
     }
 
     private fun makeLottoTicket() {
+        val lottos = mutableListOf<Lotto>()
+
         repeat(lottoTicket.ticketCount) {
             val numbers = Randoms.pickUniqueNumbersInRange(
                 START_LOTTO_NUMBER,
@@ -57,9 +58,9 @@ class BuyTicketController(
             ).sorted()
 
             val lotto = Lotto(numbers = numbers)
-            _lottos.add(lotto)
+            lottos.add(lotto)
         }
-        lottoTicket.lottos = _lottos.toList()
+        lottoTicket.lottos = lottos.toList()
     }
 
     private fun printTicketCount() {
