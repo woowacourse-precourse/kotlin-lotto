@@ -28,4 +28,18 @@ class LottoNumber {
         return bonusNumber
     }
 
+    private fun lottoRandomNumber(number: Int): MutableList<List<Int>> {
+
+        val lottoNumberList = mutableListOf<List<Int>>()
+
+        for (i in 1..number) {
+            val lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+            Lotto(lottoNumber)    // 에러 체크
+            lottoNumberList.add(lottoNumber)
+        }
+
+        // println(lottoNumberList)
+        return lottoNumberList
+    }
+
 }
