@@ -24,7 +24,7 @@ class ErrorCheck() {
     }
     fun duplicatedNumber(answer : List<Int>){
         val deleteDuple = answer.distinct()
-        if (deleteDuple.size != 6 ){
+        if (deleteDuple.size != Constants.LottoNumber){
             throw IllegalArgumentException(ErrorMessage.ERROR_DUPLE.messages)
         }
 

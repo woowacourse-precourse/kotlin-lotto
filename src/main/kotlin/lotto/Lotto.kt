@@ -3,6 +3,7 @@ package lotto
 import lotto.Computer.lottoList
 import lotto.User.bonus
 import lotto.User.ticket
+import lotto.utils.Constants.LottoNumber
 import lotto.utils.ErrorCheck
 
 public var matchedThree = 0
@@ -15,7 +16,7 @@ private var count = 0
 class Lotto(private val numbers: List<Int>) {
 
     init {
-        require(numbers.size == 6)
+        require(numbers.size == LottoNumber)
         require(numbers.distinct().size == 6)
     }
 
