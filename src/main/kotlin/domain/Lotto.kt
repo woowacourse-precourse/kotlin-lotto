@@ -23,12 +23,17 @@ class Lotto(private val numbers: List<Int>) {
         return when (countMatching) {
             Winning.FIFTH.countMatching -> Winning.FIFTH.ordinal
             Winning.FOURTH.countMatching -> Winning.FOURTH.ordinal
-            Winning.THIRD.countMatching -> {
-                if (numbers.contains(bonusNumber)) { Winning.SECOND.ordinal }
-                else { Winning.THIRD.ordinal }
-            }
+            Winning.THIRD.countMatching -> getBonusRank(bonusNumber)
             Winning.FIRST.countMatching -> Winning.FIRST.ordinal
             else -> -1
+        }
+    }
+
+    fun getBonusRank(bonusNumber: Int): Int {
+        return if (numbers.contains(bonusNumber)) {
+            Winning.SECOND.ordinal
+        } else {
+            Winning.THIRD.ordinal
         }
     }
 
