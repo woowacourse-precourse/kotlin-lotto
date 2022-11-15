@@ -58,7 +58,20 @@ class LottoShop(
 
     private fun printYield(yield: Double) {}
 
-    private fun setBonusNumber() {}
+    private fun setBonusNumber() {
+        val userInput = input.getBonusNumber()
+        val userInputVerifiers = listOf(
+            IntegerVerifier()
+        )
+        checkInputValid(userInput, userInputVerifiers)
+
+        bonusNumber = userInput.toInt()
+        val bonusNumberVerifiers = listOf(
+            RangeVerifier(NUMBER_MIN, NUMBER_MAX),
+            UniquenessVerifier(winningNumbers)
+        )
+        checkInputValid(bonusNumber, bonusNumberVerifiers)
+    }
 
     private fun setWinningNumbers() {
         val userInput = input.getWinningNumbers()
