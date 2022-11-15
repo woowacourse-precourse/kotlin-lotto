@@ -1,12 +1,11 @@
 package lotto
 
 import kotlin.math.round
-import lotto.LottoNumber
 
 class Reward {
-    val countReward: MutableList<Int> = mutableListOf(0,0,0,0,0)
+    private val countReward: MutableList<Int> = mutableListOf(0,0,0,0,0)
     var money = 0
-    var revenue:Float = 0.0F
+    private var revenue:Float = 0.0F
 
     fun calculateSame(lottoNumber: MutableList<MutableList<Int>>, winningNumber:  List<Int>, bonusNumber: Int) {
         for(i:Int in lottoNumber.indices){
@@ -17,7 +16,6 @@ class Reward {
                 countReward[index] = countReward[index] + countWinning[index]
             }
         }
-        println(countReward)
         calculateMoney(countReward)
     }
 
@@ -38,19 +36,17 @@ class Reward {
         when(duplicationCount){
             3 -> countReward[0]=+1
             4 -> countReward[1]=+1
-            5 -> whenCountFive(countReward, bonusNumber, lottoNumber)
+            5 -> whenCountFive(bonusNumber, lottoNumber)
             6 -> countReward[4]+=1
         }
         return countReward
     }
 
-    private fun whenCountFive(countReward: MutableList<Int>, bonusNumber: Int, lottoNumber: List<Int>): MutableList<Int> {
+    private fun whenCountFive(bonusNumber: Int, lottoNumber: List<Int>) {
         if(lottoNumber.contains(bonusNumber)){
             countReward[3] =+ 1
-            return countReward
         }
         countReward[2] =+ 1
-        return  countReward
     }
 
     fun calculateRevenue(money:Int, price:Int) {
