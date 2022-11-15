@@ -2,6 +2,7 @@ package lotto
 
 import lotto.control.Controller
 import lotto.control.ExceptionHandler
+import lotto.control.WinningAmount
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -86,5 +87,13 @@ class LottoTest {
             }
         }
         assertThat(count).isEqualTo(5)
+    }
+    @Test
+    fun `enum 클래스의 값이 변화하는지`() {
+        WinningAmount.FIFTH.number = 0
+        when (3) {
+            3 -> WinningAmount.FIFTH.number++
+        }
+        assertThat(WinningAmount.FIFTH.number).isEqualTo(1)
     }
 }
