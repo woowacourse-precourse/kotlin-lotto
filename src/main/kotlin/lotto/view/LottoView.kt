@@ -30,7 +30,7 @@ class LottoView {
         }
     }
 
-    fun getWinningLotto(): List<Int> {
+    fun inputWinningLottoNumbers(): List<Int> {
         val WinningLottoNumbers = mutableListOf<Int>()
         println("당첨 번호를 입력해 주세요.")
         val inputWinningLottoNumbers = Console.readLine()
@@ -50,7 +50,7 @@ class LottoView {
         }
     }
 
-    fun getBonusNumber(): Int {
+    fun inputBonusNumber(): Int {
         println("\n보너스 번호를 입력해 주세요.")
         val inputBonusNumber = Console.readLine()
         if (!isNumber(inputBonusNumber) || !isValidNumberRange(inputBonusNumber.toInt())) {

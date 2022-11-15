@@ -14,9 +14,9 @@ class LottoController {
         val numberOfIssueLotto = lottoMoneyManager.getPurchaseLottoAmount()
         val issuedLottos = lottoGenerator.issueLottos(numberOfIssueLotto)
         lottoView.printIssuedLottos(issuedLottos, numberOfIssueLotto)
-        val inputWinningLottoNumber = lottoView.getWinningLotto()
+        val inputWinningLottoNumber = lottoView.inputWinningLottoNumbers()
         val winningLottoNumbers = Lotto(inputWinningLottoNumber)
-        val bonusNumber = lottoView.getBonusNumber()
+        val bonusNumber = lottoView.inputBonusNumber()
 
         val winningLotto = WinningLotto(winningLottoNumbers, bonusNumber)
         val lottoRankingResult = issuedLottos.matchingLottoNum(winningLotto)
