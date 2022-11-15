@@ -175,6 +175,7 @@ class NumberInput{
         val regex = Regex("([1-9]([0-9]?),){5}[1-9]([0-9]?)")
 
         if(!regex.matches(winningNumberInput))
+
             throw IllegalArgumentException("[ERROR] 콤마로 구분된 6개의 숫자를 입력해주세요.")
 
         val winningNumberList: List<Int> = winningNumberInput.split(",").map{ it.trim().toInt() }
@@ -202,6 +203,7 @@ class NumberInput{
             throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
 
         if(this.winningNumberList.contains(bonusNumber))
+
             throw IllegalArgumentException("[ERROR] 보너스 숫자는 당첨숫자 6개와 겹치지 말아야 합니다.")
 
 
