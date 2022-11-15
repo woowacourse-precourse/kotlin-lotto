@@ -18,6 +18,6 @@ internal class PublisherTest {
 
     companion object {
         private val publisher = Publisher()
-        private const val PURCHASING_AMOUNT = "30000"
+        private const val PURCHASING_AMOUNT: Long = 30000
     }
 }

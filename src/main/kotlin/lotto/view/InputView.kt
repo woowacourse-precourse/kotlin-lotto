@@ -4,12 +4,13 @@ import camp.nextstep.edu.missionutils.Console
 import lotto.utils.Constants.INPUT_BONUS_NUMBER
 import lotto.utils.Constants.INPUT_PURCHASING_AMOUNT
 import lotto.utils.Constants.INPUT_WINNING_LOTTERY
+import lotto.utils.Validator
 
 object InputView {
 
-    fun inputPurchasingAmount(): String {
+    fun inputPurchasingAmount(): Long {
         println(INPUT_PURCHASING_AMOUNT)
-        return Console.readLine()
+        return Validator.checkNumber(Console.readLine())
     }
 
     fun inputWinningLottery(): String {

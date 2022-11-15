@@ -5,7 +5,7 @@ object Constants {
     const val INPUT_WINNING_LOTTERY = "당첨 번호를 입력해 주세요."
     const val INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요."
 
-    const val ZERO = 0
+    const val ZERO = 0L
     const val LOTTO_PRICE = 1_000
 
     const val LOTTO_NUMBER_COUNT = 6
