@@ -10,6 +10,8 @@ class Lotto(_numbers: List<Int>, _bonus: Int) {
         }
         lottoAnswer(_numbers)
         lottoBonus(_numbers, _bonus)
+        numbers.addAll(_numbers)
+        numbers.add(_bonus)
     }
 
     private fun lottoAnswer(answers : List<Int>) {
