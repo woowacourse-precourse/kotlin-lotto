@@ -7,4 +7,7 @@ class input() {
         val userInputMoney = Console.readLine()
         return userInputMoney.toString()
     }
+    companion object{
+        val inputuser=lotto.util.input()
+    }
 }

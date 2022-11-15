@@ -6,9 +6,10 @@ import java.util.regex.Pattern
 
 class WinningNumber() {
 
+    private val userInputNumber= lotto.util.input().inputUser()
+
     fun inputWinningNumber(): String {
         println("당첨 번호를 입력해 주세요.")
-        val userInputNumber = inputUser()
         checkLottoStandard(userInputNumber)
         return userInputNumber
     }
@@ -21,7 +22,7 @@ class WinningNumber() {
                 println("[ERROR]")
                 throw IllegalArgumentException()
             }
-        checkInputMessagePatten(checkLotto)
+        lotto.util.InputValidable().checkInputMessagePatten(checkLotto)
         if (checkLotto.distinct().size != 6) {
             println("[ERROR]")
             throw IllegalArgumentException()
