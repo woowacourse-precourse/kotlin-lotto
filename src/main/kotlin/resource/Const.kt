@@ -12,3 +12,4 @@ const val PRIZE_FOURTH = 50_000
 const val PRIZE_FIFTH = 5_000
 
 const val SEPARATOR = ","
+const val DECIMAL_PLACES = 2

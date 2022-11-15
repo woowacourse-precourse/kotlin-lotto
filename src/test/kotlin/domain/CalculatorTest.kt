@@ -1,6 +1,7 @@
 package domain
 
 import camp.nextstep.edu.missionutils.test.Assertions
+import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
@@ -23,7 +24,7 @@ class CalculatorTest {
 
     @Test
     fun `당첨 결과의 수익률 계산 테스트`() {
-        Assertions.assertSimpleTest {
+        assertSimpleTest {
             assertThat(
                 Calculator().calculateWinningRate(
                     listOf(1, 0, 0, 0, 0),
@@ -37,6 +38,21 @@ class CalculatorTest {
                     50000
                 )
             ).isEqualTo(10.0)
+        }
+    }
+
+    @Test
+    fun `반올림 테스트`() {
+        assertSimpleTest {
+            assertThat(
+                Calculator().roundDecimal(63.4656)
+            ).isEqualTo(63.5)
+            assertThat(
+                Calculator().roundDecimal(63.4321)
+            ).isEqualTo(63.4)
+            assertThat(
+                Calculator().roundDecimal(63.0)
+            ).isEqualTo(63.0)
         }
     }
 }
