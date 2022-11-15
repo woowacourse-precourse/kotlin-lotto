@@ -1,6 +1,6 @@
 package lotto.model
 
-enum class Price(val reward : String) {
+enum class Strings(val reward: String) {
     THREE("3개 일치 (5,000원) - "),
     FOUR("4개 일치 (50,000원) - "),
     FIVE("5개 일치 (1,500,000원) - "),

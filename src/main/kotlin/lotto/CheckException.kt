@@ -5,6 +5,10 @@ import org.mockito.internal.matchers.Null
 
 class CheckException() {
 
+    fun checkInput(amount: String) {
+        checkInt(amount)
+        checkMod(amount)
+    }
 
     fun checkMod(amount: String) {
 
@@ -23,6 +27,12 @@ class CheckException() {
 
     fun isNumber(string: String): Boolean {
         return !string.isNullOrEmpty() && string.matches(Regex("\\d+"))
+    }
+
+    fun checkLottoGroup(numGroup: List<Int>) {
+        checkListSize(numGroup)
+        checkRange(numGroup)
+        checkDuplicate(numGroup)
     }
 
     fun checkListSize(numGroup: List<Int>) {
@@ -47,9 +57,9 @@ class CheckException() {
         }
     }
 
-    fun checkBonusNum(num : Int , numGroup: List<Int>){
+    fun checkBonusNum(num: Int, numGroup: List<Int>) {
 
-        if(numGroup.contains(num)){
+        if (numGroup.contains(num)) {
             throw IllegalArgumentException("[ERROR] 당첨 번호와 중복된 번호입니다.")
         }
     }

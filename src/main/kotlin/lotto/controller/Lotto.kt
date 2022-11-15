@@ -1,7 +1,5 @@
 package lotto.controller
 
-import lotto.model.Price
-
 class Lotto(private val numbers: List<Int>) {
 
     init {

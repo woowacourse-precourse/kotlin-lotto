@@ -2,7 +2,7 @@ package lotto.controller
 
 import lotto.model.LottoNumber
 import lotto.model.Number
-import lotto.model.Price
+import lotto.model.Strings
 import lotto.view.View
 
 class LottoController {
@@ -11,12 +11,12 @@ class LottoController {
     private val myLotto = LottoNumber()
     private var winningNum = ArrayList<Int>()
 
-    var sameThree = 0
-    var sameFour = 0
-    var sameFive = 0
-    var sameFiveWithBonus = 0
-    var sameSix = 0
-    var count = 0
+    var sameThree = Number.Base.value
+    var sameFour = Number.Base.value
+    var sameFive = Number.Base.value
+    var sameFiveWithBonus = Number.Base.value
+    var sameSix = Number.Base.value
+    var count = Number.Base.value
 
     val money = view.inputPurchasemoney()
     var myLottoGroup = myLotto.getLottoNumber(money)
@@ -27,7 +27,7 @@ class LottoController {
 
         val bonus = view.inputBonusNum(winningNum)
 
-        println(Price.RESULT.reward)
+        println(Strings.RESULT.reward)
 
         arrangeResult(bonus)
 
@@ -44,12 +44,10 @@ class LottoController {
             when (count) {
                 3 -> {
                     sameThree++
-
                 }
 
                 4 -> {
                     sameFour++
-
                 }
 
                 5 -> {
@@ -70,15 +68,11 @@ class LottoController {
     }
 
     fun countEarn(): Int {
-        return (sameThree * Number.Fifth.value) +
-                (sameFour * Number.Fourth.value) +
-                (sameFive * Number.Third.value) +
-                (sameFiveWithBonus * Number.Second.value) +
-                (sameSix * Number.First.value)
+        return (sameThree * Number.Fifth.value) + (sameFour * Number.Fourth.value) + (sameFive * Number.Third.value) + (sameFiveWithBonus * Number.Second.value) + (sameSix * Number.First.value)
     }
 
     fun countYield(): String {
-        return "%.1f".format(countEarn().toDouble() / money.toDouble() * 100)
+        return "%.1f".format(countEarn().toDouble() / money.toDouble() * Number.Percent.value)
     }
 
 }

@@ -4,9 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class LottoNumber {
 
-
     var myLotto = ArrayList<List<Int>>()
-
 
     fun getLottoNumber(money: String): ArrayList<List<Int>> {
         val count = countLotto(money)
@@ -22,10 +20,10 @@ class LottoNumber {
     }
 
     fun countLotto(money: String): Int {
-        val count = money.toInt() / 1000
-        var price = Price.COUNT
+        val count = money.toInt() / Number.Cost.value
+        var strings = Strings.COUNT
 
-        println("$count"+price.reward)
+        println("$count" + strings.reward)
 
         return count
     }
