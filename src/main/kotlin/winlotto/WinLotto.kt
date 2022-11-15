@@ -8,7 +8,7 @@ import util.ErrorType
 import util.printErrorMessage
 import util.showError
 
-class WinLotto(val numbers: List<Int>) {
+class WinLotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == LOTTO_NUM_COUNT + LOTTO_BONUS_NUM_COUNT) {
             printErrorMessage(ErrorType.WRONG_WIN_LOTTO_NUMBERS_COUNT)
@@ -27,4 +27,5 @@ class WinLotto(val numbers: List<Int>) {
         }
     }
 
+    fun getNumbers(): List<Int> = numbers
 }
