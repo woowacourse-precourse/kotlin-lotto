@@ -8,9 +8,10 @@ class InputBonus {
         println(userInputNumber.toInt())
         return userInputNumber.toInt()
     }
-    fun checkBonusStandard(userInputNumber: String?, lottoNumber: String) {
+    fun checkBonusStandard(userInputNumber: String?, lottoNumbers: String) {
         userInputNumber ?: throw IllegalArgumentException()
         val lottoOverlapCheck = mutableListOf<String>()
+        val lottoNumber =lottoNumbers.split(",")
         if (userInputNumber.toInt() >= 46 || userInputNumber.toInt() < 1) throw IllegalArgumentException()
         lottoOverlapCheck.add(userInputNumber)
         checkInputMessagePatten(lottoOverlapCheck)
