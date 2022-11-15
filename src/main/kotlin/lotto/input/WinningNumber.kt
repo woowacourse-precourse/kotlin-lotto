@@ -1,6 +1,7 @@
 package lotto.input
 
 import lotto.util.Input
+import lotto.util.OutputMessage
 
 interface WinningNumber {
     fun inputWinningNumber(): String
@@ -10,7 +11,7 @@ interface WinningNumber {
 class WinningNumberImpl : WinningNumber {
 
     override fun inputWinningNumber(): String {
-        println("당첨 번호를 입력해 주세요.")
+        OutputMessage().winningNumberMsg()
         val userInputNumber = Input().inputUser()
         checkLottoStandard(userInputNumber)
         println(userInputNumber)
@@ -22,12 +23,12 @@ class WinningNumberImpl : WinningNumber {
         val checkLotto = userInputNumber.split(",").toList() as MutableList<String>
         for (i in checkLotto)
             if (i.toInt() >= 46 || i.toInt() < 1) {
-                println("[ERROR]")
+                OutputMessage().errorMsg()
                 throw IllegalArgumentException()
             }
         lotto.util.InputValidateReal().checkInputMessagePatten(checkLotto)
         if (checkLotto.distinct().size != 6) {
-            println("[ERROR]")
+            OutputMessage().errorMsg()
             throw IllegalArgumentException()
         }
     }

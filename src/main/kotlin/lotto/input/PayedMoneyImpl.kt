@@ -2,6 +2,7 @@ package lotto.input
 
 import lotto.util.Input
 import lotto.util.InputValidateReal
+import lotto.util.OutputMessage
 
 interface PayedMoney {
     fun inputUserMoney(): String
@@ -11,12 +12,13 @@ interface PayedMoney {
 class PayedMoneyImpl : PayedMoney {
 
     override fun inputUserMoney(): String {
-        println("구입금액을 입력해 주세요.")
+        OutputMessage().payedMoneyMsg()
         val userInputNumber = Input().inputUser()
         checkMoneyStandard(userInputNumber)
-        println(userInputNumber.replace("000", "") + "개를 구매했습니다.")
+        OutputMessage().lottoCountMsg(userInputNumber.replace("000", ""))
         return userInputNumber.replace("000", "")
     }
+
 
     override fun checkMoneyStandard(userInputNumber: String?) {
         userInputNumber ?: throw IllegalArgumentException()
@@ -24,7 +26,7 @@ class PayedMoneyImpl : PayedMoney {
         InputValidateReal().checkInputMessagePatten(checkMoney)
         println(userInputNumber.toInt())
         if (userInputNumber.toInt() % 1000 != 0 || userInputNumber.toInt() == 0 ) {
-            println("[ERROR]")
+            OutputMessage().errorMsg()
             throw IllegalArgumentException()
         }
     }

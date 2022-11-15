@@ -14,7 +14,7 @@ class InputValidateReal :InputValidate{
         for (inputNum in checkOverlap) {
             val matcher: Matcher = pattern.matcher(inputNum)
             if (matcher.find().toString() == "false") {
-                println("[ERROR]")
+                OutputMessage().errorMsg()
                 throw IllegalArgumentException()
             }
         }

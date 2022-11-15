@@ -2,6 +2,7 @@ package lotto.input
 
 import lotto.util.Input
 import lotto.util.InputValidateReal
+import lotto.util.OutputMessage
 
 interface InputBonus {
     fun inputBonusNumber(lottoNumber: String): Int
@@ -11,6 +12,7 @@ interface InputBonus {
 class InputBonusImpl : InputBonus {
     override fun inputBonusNumber(lottoNumber: String): Int {
         print("보너스 번호를 입력해 주세요.")
+        OutputMessage().bonusMsg()
         val userInputNumber = Input().inputUser()
         checkBonusStandard(userInputNumber, lottoNumber)
         println(userInputNumber.toInt())

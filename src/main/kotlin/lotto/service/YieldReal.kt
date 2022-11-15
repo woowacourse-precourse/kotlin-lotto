@@ -1,5 +1,6 @@
 package lotto.service
 
+import lotto.util.OutputMessage
 import java.text.DecimalFormat
 
 interface Yield {
@@ -25,7 +26,7 @@ class YieldReal : Yield {
         getMoney += checkWinningScore[4] * RankingReward.SIX.value
         val yieldUser: Double = getMoney.toDouble() / buyLottoMoney.toDouble() * 100
         val yield = decimalFormat.format(yieldUser)
-        println("총 수익률은 $`yield`%입니다.")
+        OutputMessage().yieldMsg(`yield`)
         return yieldUser
     }
 }
