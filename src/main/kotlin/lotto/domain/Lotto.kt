@@ -4,11 +4,20 @@ import java.util.Collections.sort
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == LOTTO_NUMBERS_SIZE)
-        require(numbers.all { it in LOTTO_NUMBER_RANGE_START..LOTTO_NUMBER_RANGE_END })
-        require(numbers.toSet().size == numbers.size)
+        validateNumbersSize()
+        validateNumbersRange()
+        validateNumbersDuplicated()
         sort(numbers)
     }
+
+    private fun validateNumbersSize() =
+        require(numbers.size == LOTTO_NUMBERS_SIZE)
+
+    private fun validateNumbersRange() =
+        require(numbers.all { it in LOTTO_NUMBER_RANGE_START..LOTTO_NUMBER_RANGE_END })
+
+    private fun validateNumbersDuplicated() =
+        require(numbers.toSet().size == numbers.size)
 
     fun numbers() = numbers
 

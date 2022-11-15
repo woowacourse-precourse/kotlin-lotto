@@ -9,12 +9,16 @@ class WinningStatistics(lotteries: List<Lotto>, winningNumber: WinningNumber) {
     private val yields: BigDecimal
 
     init {
+        initiateWinningCounts(lotteries, winningNumber)
+        this.yields = calculateYields(lotteries)
+    }
+
+    private fun initiateWinningCounts(lotteries: List<Lotto>, winningNumber: WinningNumber) {
         Rank.values().forEach { winningCounts[it] = 0 }
         lotteries.forEach {
             winningCounts[it.rankWhenWinningNumberIs(winningNumber)] =
                 winningCounts[it.rankWhenWinningNumberIs(winningNumber)]!! + 1
         }
-        this.yields = calculateYields(lotteries)
     }
 
     private fun calculateYields(lotteries: List<Lotto>): BigDecimal =

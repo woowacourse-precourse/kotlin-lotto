@@ -44,6 +44,18 @@ internal class WinningNumberTest {
         }
 
         @Nested
+        inner class `보너스 번호가 1에서 45 사이의 숫자가 아니라면` {
+            private val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
+            private val bonusNumber = 46
+
+            @Test
+            fun `예외를 던진다`() {
+                assertThatThrownBy { WinningNumber(winningNumbers, bonusNumber) }
+                    .isInstanceOf(IllegalArgumentException::class.java)
+            }
+        }
+
+        @Nested
         inner class `보너스 번호가 당첨 번호에 포함되었다면` {
             private val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
             private val bonusNumber = 6

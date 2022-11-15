@@ -7,8 +7,11 @@ object LottoShop {
     fun lottoPrice() = LOTTO_PRICE
 
     fun purchaseLotteries(purchaseAmount: Int): List<Lotto> {
-        require(purchaseAmount % LOTTO_PRICE == 0)
+        validatePurchaseAmountDivisible(purchaseAmount)
         val purchaseCount = purchaseAmount / LOTTO_PRICE
         return (1..purchaseCount).map { LottoFactory.createRandomLotto() }
     }
+
+    private fun validatePurchaseAmountDivisible(purchaseAmount: Int) =
+        require(purchaseAmount % LOTTO_PRICE == 0)
 }
