@@ -1,5 +1,13 @@
 package lotto
 
+import lotto.exception.InputException
+import util.Printer
+
 fun main() {
-    TODO("프로그램 구현")
+    LottoVendingMachine(
+        user = User(),
+        machine = Machine(),
+        printer = Printer(),
+        inputException = InputException()
+    ).execution()
 }
