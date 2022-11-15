@@ -1,6 +1,7 @@
 package domain
 
 import values.*
+import java.lang.Exception
 
 class Inspection {
 
@@ -9,7 +10,7 @@ class Inspection {
             println(ERROR_MESSAGE_ONLY_NUMBER)
             throw IllegalArgumentException(ERROR_MESSAGE_ONLY_NUMBER)
         }
-        else if (input.toInt() % 1000 != 0) {
+        if (input.toInt() % 1000 != 0) {
             println(ERROR_MESSAGE_ONLY_UNIT_1000)
             throw IllegalArgumentException(ERROR_MESSAGE_ONLY_UNIT_1000)
         }
