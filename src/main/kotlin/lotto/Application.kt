@@ -1,8 +1,8 @@
 package lotto
 
-import control.Controller
-import control.ExceptionHandler
-import message.Output
+import lotto.control.Controller
+import lotto.control.ExceptionHandler
+import lotto.message.Output
 
 fun main() {
     val control = Controller()

@@ -1,4 +1,4 @@
-package control
+package lotto.control
 
 enum class WinningAmount(private val winningAmount: Int, var number: Int) {
     FIRST(2_000_000_000, 0),

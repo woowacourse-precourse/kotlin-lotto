@@ -1,4 +1,4 @@
-package message
+package lotto.message
 
 enum class Error (val string:String){
     DIVIDE("[ERROR] 1000으로 나누어 떨어지게 입력하세요"),

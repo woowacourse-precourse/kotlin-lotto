@@ -1,7 +1,7 @@
-package control
+package lotto.control
 
 import camp.nextstep.edu.missionutils.Randoms
-import message.Output
+import lotto.message.Output
 
 class Controller {
     private var saveRandomNumber = mutableListOf<List<Int>>()

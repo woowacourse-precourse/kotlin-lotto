@@ -1,6 +1,6 @@
 package lotto
 
-import message.Error
+import lotto.message.Error
 
 class Lotto(private val numbers: List<Int>) {
 

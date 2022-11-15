@@ -1,7 +1,7 @@
-package control
+package lotto.control
 
 import camp.nextstep.edu.missionutils.Console
-import message.Error
+import lotto.message.Error
 
 object ExceptionHandler {
     fun checkAmount(amount: Int) {

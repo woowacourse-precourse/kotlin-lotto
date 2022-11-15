@@ -1,4 +1,4 @@
-package message
+package lotto.message
 
 object Output {
     fun purchaseAmount() {
