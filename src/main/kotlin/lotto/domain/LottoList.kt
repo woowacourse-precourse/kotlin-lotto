@@ -1,5 +1,6 @@
 package lotto.domain
 
+import lotto.enum.Configuration
 import lotto.enum.WinningRank
 
 class LottoList(private val lottoList: List<Lotto>) {
@@ -26,4 +27,6 @@ class LottoList(private val lottoList: List<Lotto>) {
             it.isWinning(matches, bonusMatch)
         }
     }
+
+    fun purchaseAmount() = lottoList.size * Configuration.LOTTO_PRICE.number
 }
