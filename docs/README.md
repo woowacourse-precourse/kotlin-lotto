@@ -2,21 +2,21 @@
 ## MileStones & Progresses 
 
 ---
-### ⬜️ Lotto class
+### 🚧️ Lotto class
 #### ✅️ 생성자 &️ 예외처리
 - 6개 이하의 숫자
 - 서로 다른 숫자
 - 1에서 45 사이의 숫자
-#### ⬜️ 당첨 여부 확인하는 함수(return Prize)
+#### 🚧 당첨 여부 확인하는 함수(return Prize)
 #### ✅️ Lotto 숫자를 오름차순 string으로 변환하는 함수
 
 ---
-### ⬜️ UI class
+### 🚧️ UI class
 #### ✅ 돈을 입력받는 함수
 #### ✅ 당첨 번호를 입력받는 함수
 #### ✅ 보너스 번호를 입력받는 함수
-#### 🚧 lottery list를 출력하는 함수
-#### ⬜️ 당첨 통계를 출력하는 함수
+#### ✅ lottery list를 출력하는 함수
+#### ⬜ 당첨 통계를 출력하는 함수
 
 ---
 ### ⬜️ Validation class
