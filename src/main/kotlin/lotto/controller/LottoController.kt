@@ -38,8 +38,8 @@ class LottoController {
 
     fun arrangeResult(bonusNum: Int) {
 
-        for (i in 0 until myLottoGroup.size) {
-            count = Lotto(myLottoGroup[i]).countSameLotto(winningNum, myLottoGroup[i])
+        for (num in 0 until myLottoGroup.size) {
+            count = Lotto(myLottoGroup[num]).countSameLotto(winningNum, myLottoGroup[num])
 
             when (count) {
                 3 -> {
@@ -51,10 +51,10 @@ class LottoController {
                 }
 
                 5 -> {
-                    if (Lotto(myLottoGroup[i]).countSameWithBonus(myLottoGroup[i], bonusNum)) {
+                    if (Lotto(myLottoGroup[num]).countSameWithBonus(myLottoGroup[num], bonusNum)) {
                         sameFiveWithBonus++
                     }
-                    if (!Lotto(myLottoGroup[i]).countSameWithBonus(myLottoGroup[i], bonusNum)) {
+                    if (!Lotto(myLottoGroup[num]).countSameWithBonus(myLottoGroup[num], bonusNum)) {
                         sameFive++
                     }
                 }
