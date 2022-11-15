@@ -60,28 +60,14 @@ fun inputUserBonusNumber():Int{
     println(userBonusNumber)
     return userBonusNumber
 }
-fun compareNums(userNumber:String): List<String>{
-    val userNumberInt = userNumber.split(",")
-    for(i in userNumberInt.indices){
-        val result = userNumberInt[i]
-        if(result.toInt() == null){
-            throw IllegalArgumentException("[ERROR]")
-        }
-        if(result.toInt() > 45 || result.toInt() < 1){
-            throw IllegalArgumentException("[ERROR]")
-        }
-
-    }
-    return userNumberInt
-}
 
 fun compareBonus(bonusNum: Int, lottoNum: List<List<Int>>, result:Array<Int>):List<Int>{
     var lottoResult = result.toMutableList()
     if(bonusNum == null){
-        throw IllegalArgumentException("[ERROR]")
+        throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
     }
     if(bonusNum > 45 || bonusNum < 1){
-        throw IllegalArgumentException("[ERROR]")
+        throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
     }
     for(i in 1..6){
         if(lottoNum[i].contains(bonusNum)){
