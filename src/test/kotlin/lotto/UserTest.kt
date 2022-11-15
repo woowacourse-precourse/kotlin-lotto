@@ -27,4 +27,10 @@ class UserTest {
             userTest.checkAmount("1001")
         }
     }
+    @Test
+    fun `로또 번호가 숫자인지 확인한다`() {
+        assertThrows<IllegalArgumentException> {
+            userTest.checkPrizeNumber("1,2,3,4,5,a")
+        }
+    }
 }
