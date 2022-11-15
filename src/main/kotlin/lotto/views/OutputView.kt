@@ -1,7 +1,6 @@
 package lotto.views
 
 import lotto.constants.Constant.Companion.START_INDEX
-import lotto.constants.Message
 import lotto.constants.Message.Companion.MESSAGE_COUNT_UNIT
 import lotto.constants.Message.Companion.MESSAGE_INPUT_BONUS_NUMBER
 import lotto.constants.Message.Companion.MESSAGE_INPUT_MONEY

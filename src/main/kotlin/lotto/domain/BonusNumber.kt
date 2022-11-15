@@ -33,9 +33,9 @@ class BonusNumber {
         }
     }
 
-    fun checkDuplicationWithWinningNumber(winningLotto: Lotto, bonusNumber: String){
+    fun checkDuplicationWithWinningNumber(winningLotto: Lotto, bonusNumber: String) {
         val winningNumbers = winningLotto.getNumbers()
-        if(winningNumbers.contains(bonusNumber.toInt())){
+        if (winningNumbers.contains(bonusNumber.toInt())) {
             OutputView.printExceptionMessage(EXCEPTION_DUPLICATED_BONUS_NUMBER)
             throw IllegalArgumentException(EXCEPTION_DUPLICATED_BONUS_NUMBER)
         }

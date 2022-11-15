@@ -1,11 +1,8 @@
 package lotto.domain
 
-import camp.nextstep.edu.missionutils.test.Assertions.*
 import lotto.views.OutputView
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import org.assertj.core.api.Assertions.assertThat
-import java.lang.IllegalArgumentException
 
 class PurchaseTest {
     @Test
