@@ -1,16 +1,19 @@
-package lotto
+package lotto.ui
 
-import camp.nextstep.edu.missionutils.Randoms
+import lotto.LottoExecptions
+import lotto.LottoResult
 
 class MainView {
 
     fun getLottoPrice() : Int? {
         println(PURCHASE_MSG)
-        val lottoPrice = readLine()?.toInt()
+        val lottoPrice = readLine()
         if (lottoPrice != null) {
-            LottoExecptions().getInputLottoPriceUnitException(lottoPrice)
+            if(LottoExecptions().getInputLottoPriceNotNumericException(lottoPrice)){
+                LottoExecptions().getInputLottoPriceUnitException(lottoPrice.toInt())
+            }
         }
-        return lottoPrice
+        return lottoPrice?.toInt()
     }
 
     fun showLottoNums(lottoNums : Int, createdLottos : List<List<Int>>){

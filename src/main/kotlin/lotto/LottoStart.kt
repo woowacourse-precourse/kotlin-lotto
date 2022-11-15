@@ -1,5 +1,7 @@
 package lotto
 
+import lotto.ui.MainView
+
 class LottoStart(private val userMainView: MainView) {
 
         fun calcWinPrice(){

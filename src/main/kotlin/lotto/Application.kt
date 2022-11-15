@@ -1,6 +1,6 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.Randoms
+import lotto.ui.MainView
 
 fun main() {
 //    TODO("프로그램 구현")

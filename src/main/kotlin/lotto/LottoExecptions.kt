@@ -6,10 +6,11 @@ import javax.swing.JOptionPane
 class LottoExecptions {
 
     fun getInputLottoPriceNotNumericException(input : String) : Boolean{
-        if(input.toIntOrNull() is Int){
-            return true
+        val num = input.toIntOrNull()
+        return when(num) {
+            null -> throw IllegalArgumentException("[ERROR] " + LOTTO_PURCHASE_TYPE_ERROR)
+            else -> true
         }
-        throw IllegalArgumentException(JOptionPane.ERROR_MESSAGE.toString() + LOTTO_PURCHASE_TYPE_ERROR)
     }
 
     fun getInputLottoPriceUnitException(input : Int) : Boolean{
