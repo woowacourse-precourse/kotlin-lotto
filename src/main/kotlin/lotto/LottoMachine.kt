@@ -10,7 +10,7 @@ class LottoMachine {
 
     private var numberOfLotto: Int = 0
     private var bonusNumber = 0
-    private lateinit var rankCount: MutableList<Int>
+    private lateinit var rankResults: MutableMap<WinningRank, Int>
     private var prizeMoney = 0.0
 
     fun start() {
@@ -34,7 +34,7 @@ class LottoMachine {
         calculateResult(lottos, winningLotto)
         val earningsRate = getEarningsRate()
 
-        View.printResultStats(rankCount, earningsRate)
+        View.printResultStats(rankResults, earningsRate)
     }
 
     fun getNumberOfLottos(payment: String): Int {
@@ -46,7 +46,7 @@ class LottoMachine {
         var price = -1
         try {
             price = payment.toInt()
-        } catch (e: IllegalArgumentException){
+        } catch (e: IllegalArgumentException) {
             println(NUMBER_INPUT_ERROR)
             throw NoSuchElementException(NUMBER_INPUT_ERROR)
         }
@@ -75,36 +75,35 @@ class LottoMachine {
     }
 
     fun calculateResult(lottos: List<Lotto>, winningLotto: Lotto) {
-        rankCount = mutableListOf(0, 0, 0, 0, 0)
-        prizeMoney = 0.0
+        initializeResults()
         lottos.forEach { calculateLottoResult(it, winningLotto) }
+    }
+
+    fun initializeResults() {
+        rankResults = mutableMapOf()
+        for (rank in WinningRank.values()) {
+            rankResults[rank] = 0
+        }
+        prizeMoney = 0.0
     }
 
     fun calculateLottoResult(lotto: Lotto, winningLotto: Lotto) {
         val matchCount = lotto.getNumbers().count { winningLotto.getNumbers().contains(it) }
-        when (matchCount) {
-            6 -> {
-                prizeMoney += 2000000000
-                rankCount[0]++
-            }
+        val rank = when (matchCount) {
+            6 -> WinningRank.FIRST
             5 -> {
                 if (lotto.getNumbers().contains(bonusNumber)) {
-                    prizeMoney += 30000000
-                    rankCount[1]++
+                    WinningRank.SECOND
                 } else {
-                    prizeMoney += 1500000
-                    rankCount[2]++
+                    WinningRank.THIRD
                 }
             }
-            4 -> {
-                prizeMoney += 50000
-                rankCount[3]++
-            }
-            3 -> {
-                prizeMoney += 5000
-                rankCount[4]++
-            }
+            4 -> WinningRank.FORTH
+            3 -> WinningRank.FIFTH
+            else -> WinningRank.NOTHING
         }
+        prizeMoney += rank.prizeMoney
+        rankResults[rank] = rankResults[rank]!!.plus(1)
     }
 
     fun getEarningsRate(): String {

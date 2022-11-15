@@ -41,14 +41,14 @@ class View {
             return Console.readLine()
         }
 
-        fun printResultStats(rankCount: List<Int>, earningsRate: String) {
+        fun printResultStats(rankResults: Map<WinningRank, Int>, earningsRate: String) {
             val sb = StringBuilder()
             sb.append(STATS_TITLE).append('\n')
-            sb.append(MATCH_3.format(rankCount[4])).append('\n')
-            sb.append(MATCH_4.format(rankCount[3])).append('\n')
-            sb.append(MATCH_5.format(rankCount[2])).append('\n')
-            sb.append(MATCH_5_BONUS.format(rankCount[1])).append('\n')
-            sb.append(MATCH_6.format(rankCount[0])).append('\n')
+            sb.append(MATCH_3.format(rankResults[WinningRank.FIFTH])).append('\n')
+            sb.append(MATCH_4.format(rankResults[WinningRank.FORTH])).append('\n')
+            sb.append(MATCH_5.format(rankResults[WinningRank.THIRD])).append('\n')
+            sb.append(MATCH_5_BONUS.format(rankResults[WinningRank.SECOND])).append('\n')
+            sb.append(MATCH_6.format(rankResults[WinningRank.FIRST])).append('\n')
             sb.append(EARNINGS_RATE_MESSAGE.format(earningsRate))
             print(sb.toString())
         }
