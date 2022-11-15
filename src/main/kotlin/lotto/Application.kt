@@ -11,7 +11,7 @@ private var two =0
 private var three =0
 private var four =0
 private var five =0
-private var stat=0
+//private var stat=0
 
 
 fun makeRandomNumbers(lottoCount: Int, lotto:MutableList<List<Int>>){
@@ -31,25 +31,11 @@ fun profit(money: Int): Int {
 }
 
 
-fun showResult(){
-    println("당첨 통계")
-    println("---")
-    lottoWinCheck(lucky,bonus) //로또 당첨판 함수
-    println("3개 일치 (5,000원) - ${five}개")
-    println("4개 일치 (50,000원) - ${four}개")
-    println("5개 일치 (1,500,000원) - ${three}개")
-    println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${two}개")
-    println("6개 일치 (2,000,000,000원) - ${one}개")
-}
-
-
-
-fun lottoWinCheck(lucky:MutableList<Int>, bonus:Int){
+fun lottoWinCheck(lotto: MutableList<List<Int>>, lucky:MutableList<Int>, bonus:Int){
 
     //사용자가 입력한 로또 번호(+보너스번호)를 luckylist로 매핑
-    val luckyList = lucky+bonus
-    val map = luckyList.groupBy{it}
-
+    val luckyList = lotto + lucky
+    val map = luckyList.groupBy { it }.filter { it.value.size > 1 }.flatMap { it.value }.distinct()
     if (map.count() == 3)//5등
         five++
     if (map.count() == 4)//4등
@@ -94,7 +80,15 @@ fun main() {
     val lotto= mutableListOf<List<Int>>()//사용자가 구매한 로또(랜덤번호로)
     makeRandomNumbers(lottoCount,lotto)
     inputWinNumber()
-    showResult()
-    stat=profit(money)
+    println("당첨 통계")
+    println("---")
+    lottoWinCheck(lotto,lucky,bonus) //로또 당첨판 함수
+    println("3개 일치 (5,000원) - ${five}개")
+    println("4개 일치 (50,000원) - ${four}개")
+    println("5개 일치 (1,500,000원) - ${three}개")
+    println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${two}개")
+    println("6개 일치 (2,000,000,000원) - ${one}개")
+
+    val stat=profit(money)
     println("총 수익률은 ${stat}%입니다.")
 }
