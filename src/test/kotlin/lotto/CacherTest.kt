@@ -21,7 +21,7 @@ class CacherTest {
     }
 
     @Test
-    fun `생성된 로또에 중복값이 없는지 확인`(){
+    fun `생성된 로또에 중복값이 없는지 확인`() {
         cacher.receiveMoney(5000)
         val lottereis = cacher.returnCreatedLotteries()
         assertThat(lottereis.toSet().size).isEqualTo(cacher.numberOfLotteries)
