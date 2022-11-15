@@ -7,13 +7,14 @@ import lotto.domain.Win.*
 class UI {
 
     fun inputPurchasingAmount(): Long {
-        val purchasingAmount = Console.readLine().toLong()
-        return purchasingAmount
+        val purchasingAmount = Console.readLine()
+        validateUserInputPurchasingAmount(purchasingAmount)
+        return purchasingAmount.toLong()
     }
 
     fun inputWinNumbers(): List<Int> {
         val winNumbers = Console.readLine()
-        validationUserInputWinNumbers(winNumbers)
+        validateUserInputWinNumbers(winNumbers)
         return winNumbers.split(",").map { it.toInt() }
     }
 
