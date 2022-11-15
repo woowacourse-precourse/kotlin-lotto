@@ -1,30 +1,17 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.Randoms
 import javax.swing.JOptionPane.ERROR_MESSAGE
 
 class Lotto(private val numbers: List<Int>) {
 
-    enum class Sizes(val size: Int) {
-        LOTTO_NUMBER_SIZE(6),
-        LOTTO_RANGE_END(45),
-        LOTTO_RANGE_START(1);
-    }
-
-    enum class Errors(val message : String){
-        LOTTO_SIZE_ERROR("로또 번호는 총 6개여야 합니다."),
-        LOTTO_RANGE_ERROR("로또 번호는 1부터 45 사이의 숫자여야 합니다."),
-        LOTTO_DUPLICATE_ERROR("로또 번호는 서로 중복되는 숫자가 아니어야 합니다.")
-    }
-
     init {
-        require(numbers.size == Sizes.valueOf("LOTTO_NUMBER_SIZE").size) {
+        require(numbers.size == LOTTO_NUMBER_SIZE) {
             throw IllegalArgumentException(ERROR_MESSAGE.toString() + Errors.LOTTO_SIZE_ERROR)
         }
-        require(checkLottoRange(numbers) == true) {
+        require(checkLottoRange(numbers)) {
             throw IllegalArgumentException(ERROR_MESSAGE.toString() + Errors.LOTTO_RANGE_ERROR)
         }
-        require(checkLottoDuplicated(numbers) == true) {
+        require(checkLottoDuplicated(numbers)) {
             throw IllegalArgumentException(ERROR_MESSAGE.toString() + Errors.LOTTO_DUPLICATE_ERROR)
         }
     }
@@ -33,7 +20,7 @@ class Lotto(private val numbers: List<Int>) {
 
     fun checkLottoRange(numbers: List<Int>): Boolean {
         numbers.forEach {
-            if (Sizes.valueOf("LOTTO_RANGE_START").size <= it && it <= Sizes.valueOf("LOTTO_RANGE_END").size)
+            if (it in LOTTO_RANGE_START..LOTTO_RANGE_END)
                 return true
         }
         return false
@@ -47,11 +34,14 @@ class Lotto(private val numbers: List<Int>) {
         return true
     }
 
+    fun arrangePublishNums(publishNums: List<Int>): List<Int> {
+        return publishNums.sorted()
+    }
 
-    //3-2. 로또 발행 번호를 오름차순으로 정렬
-    fun arrangePublishNums(publishNums : List<Int>) : List<Int>{
-        val arrangedNums = publishNums.sorted()
-        return arrangedNums
+    companion object{
+        const val LOTTO_NUMBER_SIZE = 6
+        const val LOTTO_RANGE_END = 45
+        const val LOTTO_RANGE_START = 1
     }
 
 
