@@ -2,14 +2,16 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 
-class InputData {
+class BaseData {
     var inputMoney = 0
+    var purchasedLotto = mutableListOf<MutableList<Int>>()
     var LottoNum = mutableListOf<Int>()
     var bonusNum = 0
 
-    fun InputData(){
+    fun BaseData(){
         inputMoney()
         validInputMoney()
+        buyLotto()
         inputLottoNum()
         inputBonus()
         validInputBonus()
@@ -24,6 +26,14 @@ class InputData {
         if(inputMoney%1000 != 0) {
             throw IllegalArgumentException("[ERROR] 구입금액은 1000원 단위입니다.")
         }
+    }
+
+    fun buyLotto() {
+        val purchasingVolume = countpurchasingVolume(inputMoney)
+        for(i in 1..purchasingVolume){
+            purchasedLotto.add(randomLotto())
+        }
+        purchasedLotto
     }
 
     fun inputLottoNum() {
