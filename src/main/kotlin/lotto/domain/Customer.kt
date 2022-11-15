@@ -2,6 +2,7 @@ package lotto.domain
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.data.Message
+import java.text.DecimalFormat
 
 class Customer() {
 
@@ -11,8 +12,9 @@ class Customer() {
         return payment
     }
 
-    fun calculateIncome(money: Int, payment: Int): Float {
-        return money.toFloat() / payment.toFloat() * 100
+    fun calculateIncome(money: Int, payment: Int): Double {
+        val formattingNum = DecimalFormat("##00.0")
+        return formattingNum.format(money.toDouble() / payment.toDouble() * 100).toDouble()
     }
 
     fun throwPaymentException(payment: Int) {
