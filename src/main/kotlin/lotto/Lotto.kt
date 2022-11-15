@@ -31,6 +31,9 @@ class Lotto(private val numbers: List<Int>) {
             Winning.FIRST.countMatching -> Winning.FIRST.ordinal
             else -> -1
         }
+    }
 
+    fun contains(number: Int): Boolean {
+        return numbers.contains(number)
     }
 }

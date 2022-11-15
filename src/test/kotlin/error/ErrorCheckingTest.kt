@@ -1,6 +1,7 @@
 package error
 
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
+import lotto.Lotto
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -29,6 +30,13 @@ class ErrorCheckingTest {
     fun `로또 번호에 중복된 숫자가 있으면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
             LottoError.checkDuplicate(listOf(1, 2, 3, 4, 5, 5))
+        }
+    }
+
+    @Test
+    fun `보너스 숫자가 이미 당첨번호에 존재하면 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            LottoError.checkDuplicate(Lotto(listOf(1, 2, 3, 4, 5, 6)), 6)
         }
     }
 

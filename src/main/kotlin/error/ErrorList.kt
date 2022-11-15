@@ -1,6 +1,7 @@
 package error
 
 import error.ErrorMaking.Companion.makeError
+import lotto.Lotto
 import resource.*
 
 object LottoError {
@@ -31,6 +32,12 @@ object LottoError {
     fun checkDuplicate(numbers: List<Int>) {
         val set = numbers.toSet()
         if(set.size != numbers.size) {
+            makeError(ErrorMaking.NUMBER_DUPLICATED)
+        }
+    }
+
+    fun checkDuplicate(numbers: Lotto, number: Int) {
+        if(numbers.contains(number)) {
             makeError(ErrorMaking.NUMBER_DUPLICATED)
         }
     }

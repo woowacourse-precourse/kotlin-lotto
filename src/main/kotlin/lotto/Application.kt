@@ -13,7 +13,7 @@ fun main() {
     printLottoNumbers(lottoNumbers)
 
     val winningNumbers = getWinningNumbers()
-    val bonusNumber = getBonusNumber()
+    val bonusNumber = getBonusNumber(winningNumbers)
 
     val winningResult = calculateWinnings(lottoNumbers, winningNumbers, bonusNumber)
     val winningRate = calculateWinningRate(winningResult, purchaseMoney)
@@ -55,7 +55,7 @@ fun calculateWinnings(lottos: List<Lotto>, winnings: Lotto, bonus: Int): List<In
     return result
 }
 
-fun getBonusNumber(): Int {
+fun getBonusNumber(winnings: Lotto): Int {
     println("\n$INPUT_BONUS_NUMBER")
 
     val value = readLine()
@@ -63,6 +63,7 @@ fun getBonusNumber(): Int {
 
     val number = value!!.toInt()
     LottoError.checkOutOfRange(number)
+    LottoError.checkDuplicate(winnings, number)
 
     return number
 }
