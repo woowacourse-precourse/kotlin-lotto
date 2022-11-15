@@ -1,6 +1,7 @@
 package lotto
 
 import resource.*
+import java.text.DecimalFormat
 
 enum class Winning(
     val countMatching: Int,
@@ -11,4 +12,12 @@ enum class Winning(
     THIRD(5, PRIZE_THIRD),
     SECOND(5, PRIZE_SECOND),
     FIRST(6, PRIZE_FIRST);
+
+    companion object {
+        private val format = DecimalFormat("#,###")
+
+        fun formatPrize(winning: Winning): String {
+            return "(${format.format(winning.prize)}원)"
+        }
+    }
 }
