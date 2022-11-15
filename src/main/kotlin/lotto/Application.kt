@@ -2,6 +2,8 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import java.lang.NumberFormatException
+import java.util.NoSuchElementException
 import kotlin.math.round
 import kotlin.math.roundToInt
 
@@ -21,7 +23,14 @@ fun main() {
 fun getMoney(): Int {
     println("구입금액을 입력해 주세요.")
     val money = Console.readLine().trim()
-    ExceptionHandler.checkInputMoney(money)
+
+    try {
+        ExceptionHandler.checkInputMoney(money)
+    } catch (e: IllegalArgumentException) {
+        print("${Message.ERROR_MESSAGE.msg} 잘못된 입력입니다.")
+        throw NoSuchElementException()
+    }
+
     return money.toInt()
 }
 
@@ -52,6 +61,15 @@ fun printLottoList(lottos: List<Lotto>) {
 fun getWinningNumber(): List<Int> {
     println("당첨 번호를 입력해 주세요.")
     val numbers = Console.readLine().trim()
+
+//    ExceptionHandler.checkWinningNumber(numbers)
+    try {
+        ExceptionHandler.checkWinningNumber(numbers)
+    } catch (e: IllegalArgumentException) {
+        print("${Message.ERROR_MESSAGE.msg} 잘못된 입력입니다.")
+        throw NoSuchElementException()
+    }
+
     var numberList = numbers.split(",")
     val winningNumberList = mutableListOf<Int>()
 
@@ -59,14 +77,27 @@ fun getWinningNumber(): List<Int> {
         winningNumberList.add(i.toInt())
     }
 
-    ExceptionHandler.checkNumberList(winningNumberList)
+//    ExceptionHandler.checkNumberList(winningNumberList)
+    try {
+        ExceptionHandler.checkNumberList(winningNumberList)
+    } catch (e: IllegalArgumentException) {
+        print("${Message.ERROR_MESSAGE.msg} 잘못된 입력입니다.")
+        throw NoSuchElementException()
+    }
+
     return winningNumberList
 }
 
 fun getBonusNumber(winningNumber: List<Int>): Int {
     println("보너스 번호를 입력해 주세요.")
     val number = Console.readLine().trim()
-    ExceptionHandler.checkBonusNumber(number, winningNumber)
+//    ExceptionHandler.checkBonusNumber(number, winningNumber)
+    try {
+        ExceptionHandler.checkBonusNumber(number, winningNumber)
+    } catch (e: IllegalArgumentException) {
+        print("${Message.ERROR_MESSAGE.msg} 잘못된 입력입니다.")
+        throw NoSuchElementException()
+    }
 
     return number.toInt()
 }
