@@ -28,5 +28,6 @@ const val ERROR_BONUS_CONTAIN_LOTTO = "[ERROR] 보너스 번호가 로또 번호
 const val ERROR_LOTTO_NOT_SIX = "[ERROR] 6개의 숫자가 아닙니다."
 const val ERROR_LOTTO_DUPLICATION = "[ERROR] 중복된 숫자가 있습니다."
 
+const val INPUT_MONEY = "구입금액을 입력해 주세요."
 const val INPUT_BONUS_NUMBER = "\n보너스 번호를 입력해 주세요."
 const val INPUT_LOTTO_NUMBER = "당첨 번호를 입력해 주세요."

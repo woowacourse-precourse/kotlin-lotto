@@ -19,6 +19,7 @@ fun main() {
 }
 
 private fun orderLotto() {
+    println(INPUT_MONEY)
     val money = Console.readLine()
     try {
         consumer = Consumer(money.toInt())
