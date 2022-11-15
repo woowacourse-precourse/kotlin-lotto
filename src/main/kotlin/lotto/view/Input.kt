@@ -9,17 +9,25 @@ class Input {
     }
 
     fun getBonusNumber(): String {
+        startOfNewLine()
         println(INPUT_BONUS_NUMBER_GUIDE)
         return get()
     }
 
     fun getWinningNumbers(): String {
+        startOfNewLine()
         println(INPUT_WINNING_NUMBERS_GUIDE)
         return get()
     }
 
+    private fun startOfNewLine() {
+        println()
+    }
+
     private fun get(): String {
-        return Console.readLine()
+        val userInput = Console.readLine()
+        println(userInput)
+        return userInput
     }
 
     companion object {

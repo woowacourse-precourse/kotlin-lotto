@@ -5,12 +5,15 @@ import java.text.DecimalFormat
 
 class Output {
     fun printTickets(tickets: List<String>) {
+        startOfNewLine()
         println("${tickets.size}$TICKET_COUNT_MESSAGE")
         tickets.map { ticket -> println(ticket) }
     }
 
     fun printWinners(ranks: List<Rank>, totalRanks: List<Int>) {
         val decimalFormat = DecimalFormat("#,###")
+
+        startOfNewLine()
         println(WINNER_MESSAGE_TITLE)
         for (index in totalRanks.indices) {
             val rankMessage = ranks[index].message
@@ -22,6 +25,10 @@ class Output {
 
     fun printYield(yieldPercentage: String) {
         println("총 수익률은 $yieldPercentage%입니다.")
+    }
+
+    private fun startOfNewLine() {
+        println()
     }
 
     companion object {
