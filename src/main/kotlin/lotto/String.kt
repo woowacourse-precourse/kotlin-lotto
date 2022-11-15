@@ -15,4 +15,5 @@ const val ERROR_PRIZE_SIZE_MESSAGE = "[ERROR] 당첨 번호 길이는 6입니다
 const val ERROR_PRIZE_RANGE_MESSAGE = "[ERROR] 당첨 번호는 1~45입니다."
 const val ERROR_PRIZE_REPEAT_MESSAGE = "[ERROR] 당첨 번호에 중복이 있으면 안됩니다."
 const val ERROR_BONUS_NUMBER_MESSAGE = "[ERROR] 보너스 번호는 1~45입니다."
-const val ERROR_BONUS_REPEAT_MESSAGE = "[ERROR] 보너스 번호는 1~45입니다."
+const val ERROR_BONUS_REPEAT_MESSAGE = "[ERROR] 보너스 번호와 당첨 번호에 중복이 있으면 안됩니다."
+
