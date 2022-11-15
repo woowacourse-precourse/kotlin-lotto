@@ -10,4 +10,10 @@ object LottoProcessConstValue {
     const val LOTTO_NUMBER_RANGE_END = 45
     const val LOTTO_NUMBER_SIZE = 6
 
+    const val LOTTO_RESULT_FIFTH = "3개 일치 (5,000원) - "
+    const val LOTTO_RESULT_FOURTH = "4개 일치 (50,000원) - "
+    const val LOTTO_RESULT_THIRD = "5개 일치 (1,500,000원) - "
+    const val LOTTO_RESULT_SECOND = "5개 일치, 보너스 볼 일치 (30,000,000원) - "
+    const val LOTTO_RESULT_FIRST = "6개 일치 (2,000,000,000원) - "
+
 }
