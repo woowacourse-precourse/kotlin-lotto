@@ -36,13 +36,14 @@ fun inputPrice(): Int {
     val price = Console.readLine()
 
     try {
-        if (price.toInt() % 1000 != 0)
-            throw IllegalArgumentException(Error.NotDivideThousand.message)
+        if (price.toInt() % 1000 != 0) {
+            println(Error.NotDivideThousand.message)
+            return -1
+        }
     } catch (e: NumberFormatException) {
-        throw NumberFormatException(Error.NotNumber.message)
+        println(Error.NotNumber.message)
+        return -1
     }
-
-
     return price.toInt() / 1000
 }
 
