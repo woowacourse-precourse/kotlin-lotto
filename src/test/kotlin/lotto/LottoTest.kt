@@ -1,5 +1,6 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -7,23 +8,7 @@ import org.junit.jupiter.api.assertThrows
 
 
 class LottoTest : NsTest() {
-//    @Test
-//    fun `로또 번호의 개수가 6개가 넘어가면 예외가 발생한다`() {
-//        assertThrows<IllegalArgumentException> {
-//            Lotto(listOf(1, 2, 3, 4, 5, 6, 7))
-//        }
-//    }
-//
-//    // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
-//    @Test
-//    fun `로또 번호에 중복된 숫자가 있으면 예외가 발생한다`() {
-//        assertThrows<IllegalArgumentException> {
-//            Lotto(listOf(1, 2, 3, 4, 5, 5))
-//        }
-//    }
-
     // 아래에 추가 테스트 작성 가능
-
     @Test
     fun `로또 숫자가 6개 인가` (){
         val lg = LottoLogic()
@@ -42,20 +27,23 @@ class LottoTest : NsTest() {
 
     @Test
     fun `구매금액 입력에 문자가 있는가` (){
-        assertThrows<IllegalArgumentException>{
-            run("ab000")
+        assertSimpleTest {
+            runException("ab000")
+            assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
     @Test
     fun `구매금액 입력이 1,000원 이상인가` (){
-        assertThrows<IllegalArgumentException>{
-            run("500")
+        assertSimpleTest {
+            runException("500")
+            assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
     @Test
     fun `구매금액 입력이 1,000원 단위인가` (){
-        assertThrows<IllegalArgumentException>{
-            run("13600")
+        assertSimpleTest {
+            runException("13600")
+            assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
     @Test
@@ -72,26 +60,33 @@ class LottoTest : NsTest() {
     }
     @Test
     fun `로또 정답 숫자에 문자가 있는가` (){
-        assertThrows<IllegalArgumentException>{
-            run("5000", "1,2,3,4,5,s", "8")
+        assertSimpleTest {
+            runException("5000", "1,2,3,4,5,s", "8")
+            assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
     @Test
     fun `로또 정답 숫자가 중복되지 않는가` (){
-        assertThrows<IllegalArgumentException>{
-            run("5000", "1,2,3,4,5,5", "8")
+        assertSimpleTest {
+            runException("5000", "1,2,3,4,5,5", "8")
+            assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
     @Test
     fun `로또 정답 숫자가 범위에 드는가` (){
-        assertThrows<IllegalArgumentException>{
-            run("5000", "1,2,3,4,5,55", "8")
+        assertSimpleTest {
+            runException("5000", "1,2,3,4,5,55", "8")
+            assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
     @Test
     fun `로또 보너스 숫자가 중복이 되는가` (){
-        assertThrows<IllegalArgumentException>{
-            run("5000", "1,2,3,4,5,6", "1")
+        assertSimpleTest {
+            runException("5000", "1,2,3,4,5,6", "1")
+            assertThat(output()).contains(ERROR_MESSAGE)
         }
+    }
+    companion object {
+        private const val ERROR_MESSAGE = "[ERROR]"
     }
 }
