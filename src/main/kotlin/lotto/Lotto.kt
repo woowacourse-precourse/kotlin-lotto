@@ -1,7 +1,8 @@
 package lotto
 
-import constant.LOTTO_NUM_COUNT
-import constant.LOTTO_NUM_RANGE_END
+import enterprise.LOTTO_NUM_COUNT
+import enterprise.LOTTO_NUM_RANGE_END
+import enterprise.SameLottoResult
 import exception.DuplicateInputException
 import util.ErrorType
 import util.printErrorMessage

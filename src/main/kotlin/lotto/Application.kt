@@ -2,6 +2,7 @@ package lotto
 
 import enterprise.LottoEnterprise
 import market.LottoMarket
+import player.LottoPlayer
 import winlotto.WinLottoFactory
 
 fun main() {

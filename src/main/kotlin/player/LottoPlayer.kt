@@ -1,28 +1,15 @@
-package lotto
+package player
 
-import constant.LOTTO_MAX_GRADE
-import constant.LOTTO_MIN_GRADE
+import enterprise.LOTTO_MAX_GRADE
+import enterprise.LOTTO_MIN_GRADE
 import enterprise.LottoEnterprise
+import enterprise.SameLottoResult
+import enterprise.lottoPrize
+import lotto.Lotto
 import market.LottoMarket
 import util.printLottoEarningsRate
 import util.printLottoGradeCountToMessage
 import winlotto.WinLotto
-
-data class SameLottoResult(
-    val lottoSameCount: Int,
-    val isBonusSame: Boolean,
-) {
-    fun parseResultToGrade(): Int = when (this.lottoSameCount) {
-        3 -> 5
-        4 -> 4
-        5 -> {
-            if (this.isBonusSame) 2
-            else 3
-        }
-        6 -> 1
-        else -> 0
-    }
-}
 
 class LottoPlayer(
     private val lottoEnterprise: LottoEnterprise,
@@ -38,7 +25,7 @@ class LottoPlayer(
 
     fun matchLotties() {
         val winLotto = lottoEnterprise.getWinLotto()
-        val lottoGrades = getSameLottiesResult(winLotto, lotties).map { it.parseResultToGrade() }
+        val lottoGrades = getSameLottiesResult(winLotto, lotties).map { it.parseSameResultToGrade() }
         val gradeCounts = getGradeCounts(lottoGrades)
         showLottoResults(gradeCounts)
     }
@@ -61,21 +48,8 @@ class LottoPlayer(
 
     private fun getLottoPrizeSum(gradeCounts: IntArray): Long {
         return gradeCounts.mapIndexed { grade, count ->
-            parseGradeToPrize(grade, count)
+            lottoPrize[grade] * count
         }.sum()
-    }
-
-    private fun parseGradeToPrize(grade: Int, count: Int): Long {
-        val prize = when (grade) {
-            5 -> 5_000
-            4 -> 50_000
-            3 -> 1_500_000
-            2 -> 30_000_000
-            1 -> 2_000_000_000
-            else -> 0
-        }
-        return prize * count.toLong()
-
     }
 
     private fun getSameLottiesResult(

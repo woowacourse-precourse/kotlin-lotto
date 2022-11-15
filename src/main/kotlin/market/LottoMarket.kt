@@ -1,6 +1,6 @@
 package market
 
-import constant.LOTTO_PRICE
+import enterprise.LOTTO_PRICE
 import lotto.Lotto
 import lotto.LottoFactory
 import util.readPaidMoney

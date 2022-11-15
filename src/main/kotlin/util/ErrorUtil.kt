@@ -1,7 +1,7 @@
 package util
 
-import constant.LOTTO_NUM_RANGE_END
-import constant.LOTTO_NUM_RANGE_START
+import enterprise.LOTTO_NUM_RANGE_END
+import enterprise.LOTTO_NUM_RANGE_START
 import exception.DivisibleMoneyException
 import exception.InputCountException
 

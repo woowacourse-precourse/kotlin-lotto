@@ -1,9 +1,9 @@
 package util
 
 import camp.nextstep.edu.missionutils.Console.readLine
-import constant.LOTTO_MIN_GRADE
-import constant.LOTTO_NUM_COUNT
-import constant.LOTTO_NUM_RANGE_END
+import enterprise.LOTTO_MIN_GRADE
+import enterprise.LOTTO_NUM_COUNT
+import enterprise.LOTTO_NUM_RANGE_END
 import exception.DivisibleMoneyException
 import exception.DuplicateInputException
 import exception.InputCountException
