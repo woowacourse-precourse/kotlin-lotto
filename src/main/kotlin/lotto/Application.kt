@@ -127,7 +127,7 @@ fun numberSizeCheck(lottoNumbers : MutableList<Int>) : MutableList<Int>{
     return lottoNumbers
 }
 
-un bonusNumValidCheck(input : String) : Int {
+fun bonusNumValidCheck(input : String) : Int {
     val bonusNum : Int
     try{
         bonusNum = input.toInt()
@@ -146,5 +146,29 @@ fun bonusLottNumCheck(input : Int, lottoNum: MutableList<Int>) : Int{
     }
     return input
 
+}
+
+fun lottoStat(lottoPack : MutableList<Lotto>, lottoNum : MutableList<Int>, bonusNum : Int) : MutableList<Int>{
+    var lottoResult : MutableList<Int> = mutableListOf(0,0,0,0,0)
+    for(i : Int in 0..lottoPack.size-1){
+        var result =lottoPack[i].winLottoCheck(lottoNum,bonusNum)
+        lottoResult = resultConfirm(result, lottoResult)
+    }
+    return lottoResult
+}
+
+fun resultConfirm(result : Int, lottoResult : MutableList<Int>) : MutableList<Int>{
+    var lottoResultTemp = lottoResult
+    if(result == 3)
+        lottoResultTemp[0] = lottoResultTemp[0] +1
+    if(result == 4)
+        lottoResultTemp[1] = lottoResultTemp[1] +1
+    if(result == 5)
+        lottoResultTemp[2] = lottoResultTemp[2] +1
+    if(result == 6)
+        lottoResultTemp[3] = lottoResultTemp[3] +1
+    if(result == 7)
+        lottoResultTemp[4] = lottoResultTemp[4] +1
+    return lottoResultTemp
 }
 
