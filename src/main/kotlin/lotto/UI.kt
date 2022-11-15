@@ -12,8 +12,9 @@ class UI {
     }
 
     fun inputWinNumbers(): List<Int> {
-        val winNumbers = Console.readLine().split(",").map { it.toInt() }
-        return winNumbers
+        val winNumbers = Console.readLine()
+        validationUserInputWinNumbers(winNumbers)
+        return winNumbers.split(",").map { it.toInt() }
     }
 
     fun inputBonusNumber(): Int {
