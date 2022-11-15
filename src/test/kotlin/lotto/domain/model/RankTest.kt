@@ -1,6 +1,7 @@
 package lotto.domain.model
 
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
+import lotto.utils.Constants.LOTTO_CORRECT_LENGTH_TEXT
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -34,9 +35,10 @@ internal class RankTest {
     )
     @DisplayName("7이상의 숫자가 입력되면 예외를 발생한다.")
     fun valueOfExceiption(correctCnt: Int, checkBonus: Boolean) {
-        assertThrows<IllegalArgumentException> {
+        val thrown = assertThrows<IllegalArgumentException> {
             Rank.valueOf(correctCnt, checkBonus)
         }
+        assertThat(thrown.message).contains(LOTTO_CORRECT_LENGTH_TEXT)
     }
 
 }

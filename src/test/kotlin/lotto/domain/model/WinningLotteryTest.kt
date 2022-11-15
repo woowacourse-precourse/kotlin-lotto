@@ -1,5 +1,8 @@
 package lotto.domain.model
 
+import lotto.utils.Constants.BONUS_NOT_DUPLICATE_TEXT
+import lotto.utils.Constants.LOTTO_LENGTH_MUST_SIX_TEXT
+import lotto.utils.Constants.LOTTO_NUM_MUST_NUMBER_TEXT
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -8,7 +11,6 @@ import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.CsvSource
 import org.junit.jupiter.params.provider.ValueSource
 import java.lang.IllegalArgumentException
 
@@ -28,31 +30,34 @@ internal class WinningLotteryTest {
         @Test
         @DisplayName("보너스 번호와 로또 번호가 중첩되면 예외가 발생한다")
         fun duplicateTest() {
-            assertThrows<IllegalArgumentException> {
+            val thrown = assertThrows<IllegalArgumentException> {
                 WinningLottery("1,2,3,4,5,6", "6")
             }
+            assertThat(thrown.message).contains(BONUS_NOT_DUPLICATE_TEXT)
         }
 
         @ParameterizedTest
         @ValueSource(
-            strings = ["1,2,3,4,5,a", "1,2,ㅁ,ㅇ,ㅊ,ㄷ", "1,2,3,4,5,!"]
+            strings = ["", "1,2,3,4,5,a", "1,2,ㅁ,ㅇ,ㅊ,ㄷ", "1,2,3,4,5,!"]
         )
         @DisplayName("로또 번호에 숫자가 아닌 값이 입력되면 예외가 발생한다")
         fun numberTest(winningNum: String) {
-            assertThrows<IllegalArgumentException> {
+            val thrown = assertThrows<IllegalArgumentException> {
                 WinningLottery(winningNum, "9")
             }
+            assertThat(thrown.message).contains(LOTTO_NUM_MUST_NUMBER_TEXT)
         }
 
         @ParameterizedTest
         @ValueSource(
-            strings = ["", "1,2,3", "1", "1,2,3,4,5"]
+            strings = ["1,2,3", "1", "1,2,3,4,5"]
         )
         @DisplayName("로또 번호가 6자리가 아니라면 예외가 발생한다")
         fun lengthTest(winningNum: String) {
-            assertThrows<IllegalArgumentException> {
+            val thrown = assertThrows<IllegalArgumentException> {
                 WinningLottery(winningNum, "9")
             }
+            assertThat(thrown.message).contains(LOTTO_LENGTH_MUST_SIX_TEXT)
         }
     }
 
