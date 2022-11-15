@@ -9,7 +9,7 @@ class Controller {
     fun getLotteryPaper(count: Int) {
         Output.resultPurchase(count)
         repeat(count) {
-            val randomNumber = getRandomNumber()
+            val randomNumber = getRandomNumber().sorted()
             saveRandomNumber.add(randomNumber)
             println(randomNumber)
         }
