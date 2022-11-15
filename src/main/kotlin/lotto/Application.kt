@@ -27,10 +27,8 @@ fun main() {
 
     Lotto(answer).calculateWon()
 
-    println(wonLottoList)
-
-//    MessageOutput().printAverageInputMessage()
-//    MessageOutput().printMatchedNumberMessage()
+    MessageOutput().printAverageInputMessage()
+    MessageOutput().printMatchedNumberMessage()
 
 
 
