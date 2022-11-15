@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 import values.*
 import domain.*
 
-class Input {
+class InputHandler {
     private val inspection: Inspection = Inspection()
 
     fun price(): Int {
@@ -16,6 +16,7 @@ class Input {
 
     fun jackpot(): List<Int> {
         val input: String = Console.readLine()
+        println()
         println(REQUIRE_MESSAGE_JACKPOT_NUMBER)
         inspection.jackpot(input)
         return input.split(",").map { it.toInt() }
@@ -23,6 +24,7 @@ class Input {
 
     fun bonus(): Int {
         val input: String = Console.readLine()
+        println()
         println(REQUIRE_MESSAGE_BONUS_NUMBER)
         inspection.bonus(input)
         return input.toInt()

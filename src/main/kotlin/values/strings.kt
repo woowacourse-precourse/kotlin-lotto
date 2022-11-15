@@ -16,3 +16,6 @@ const val REQUIRE_MESSAGE_BONUS_NUMBER = "보너스 번호를 입력해 주세�
 // Print Message
 var purchasesNumber: Int = 0
 var PRINT_MESSAGE_PURCHASES_NUMBER = "${purchasesNumber}개를 구매했습니다."
+
+const val PRINT_MESSAGE_TOTAL_JACKPOT = "당첨 통계"
+const val DIVIDE_LINE = "---"
