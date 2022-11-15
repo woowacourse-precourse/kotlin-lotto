@@ -17,6 +17,7 @@ class Constant {
         val ERROR_NUMERIC = "[ERROR] 숫자 형태로 입력해주세요."
         val ERROR_1_45_RANGE = "[ERROR] 1~45 범위 내 숫자를 입력해주세요."
         val ERROR_ALREADY_IN = "[ERROR] 당첨 번호에 이미 존재하는 숫자입니다."
+        val ERROR_EXIT = "[ERROR] 종료합니다."
 
         val LOTTO_RESULT = "당첨 통계"
         val SEPERATOR = "- - -"
