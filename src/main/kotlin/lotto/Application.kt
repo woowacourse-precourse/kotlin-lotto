@@ -1,8 +1,6 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
-import kotlin.math.round
-
 
 private var winNum: MutableList<Int> = ArrayList()
 private var lottoBuyPrice : Int = 0
@@ -23,7 +21,7 @@ fun lottoPrice(): Int {
         throw IllegalArgumentException(ExceptionMessage.illegalErrorMessage)
     }
     if (lottoBuyPrice == 0) {
-        throw IllegalArgumentException(ExceptionMessage.containErrorMessage)
+        throw IllegalArgumentException(ExceptionMessage.nullErrorMessage)
     }
     myLotto = lottoBuyPrice / 1000
     myLottoCount(myLotto)
@@ -90,8 +88,8 @@ fun winStatistic(win: MutableList<Int>, bonus: Int) {
 }
 
 fun winCount(countSet: MutableList<Int>) {
-    val result = (countSet[0] * 20000000000) + (countSet[1] * 30000000) + (countSet[2] * 1500000) + (countSet[3] * 50000) + (countSet[4] * 5000)
-    val resultPerSent = String.format("%.1f", (result / lottoBuyPrice.toDouble() * 100)).toDouble()
+    val result = (countSet[0] * 2000000000) + (countSet[1] * 30000000) + (countSet[2] * 1500000) + (countSet[3] * 50000) + (countSet[4] * 5000)
+    val resultPerSent = String.format("%.1f", ((result.toDouble() / lottoBuyPrice.toDouble()) * 100)).toBigDecimal()
     println("\n당첨 통계")
     println("---")
     println("3개 일치 (5,000원) - ${countSet[4]}개")
