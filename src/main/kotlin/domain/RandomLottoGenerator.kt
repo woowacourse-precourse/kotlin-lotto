@@ -9,8 +9,8 @@ class RandomLottoGenerator {
     fun getRandomLotto(): List<Int> = randomLotto
 
     companion object {
-        const val LOTTO_MIN_BOUND = 1
-        const val LOTTO_MAX_BOUND = 45
-        const val LOTTO_SIZE = 6
+        private const val LOTTO_MIN_BOUND = 1
+        private const val LOTTO_MAX_BOUND = 45
+        private const val LOTTO_SIZE = 6
     }
 }
