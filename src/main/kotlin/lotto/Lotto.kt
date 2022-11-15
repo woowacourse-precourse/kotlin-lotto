@@ -2,8 +2,16 @@ package lotto
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6)
+        LottoCheckError(numbers).checkLottoThrowException()
     }
 
-    // TODO: 추가 기능 구현
+    fun getNumbers() = numbers
+
+    fun print() {
+        println(numbers.toString())
+    }
+
+    fun isContainedNumber(number: Int) = numbers.contains(number)
+
+    fun isContainedNumber(bonusNumber: BonusNumber) = numbers.contains(bonusNumber.getBonusNumber())
 }
