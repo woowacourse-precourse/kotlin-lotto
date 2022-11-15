@@ -32,6 +32,9 @@ class BaseData {
         if(inputMoney%1000 != 0) {
             throw IllegalArgumentException("[ERROR] 구입금액은 1000원 단위입니다.")
         }
+        if(inputMoney<1000) {
+            throw IllegalArgumentException("[ERROR] 구입금액은 1000원 이상입니다.")
+        }
     }
     fun countpurchasingVolume(inputMoney: Int): Int {
         val purchasingVolume = inputMoney/1000
@@ -61,7 +64,7 @@ class BaseData {
     fun validInputLotto(lotto : String){
         for(i in 0 until lotto.length step 2){
             if(lotto.elementAt(i).code <48 || lotto.elementAt(i).code>57){
-                throw IllegalArgumentException("[ERROR] 구입금액은 숫자여야 합니다.")
+                throw IllegalArgumentException("[ERROR] 로또번호는 숫자여야 합니다.")
             }
         }
         for(i in 1 until lotto.length step 2){
