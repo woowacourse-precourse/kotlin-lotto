@@ -10,3 +10,4 @@ const val ERROR_AMOUNT_NUMBER_MESSAGE = "[ERROR] 구입금액은 숫자여야 �
 const val ERROR_AMOUNT_BIG_NUMBER_MESSAGE = "[ERROR] 숫자가 너무 큽니다."
 const val ERROR_AMOUNT_DIVIDE_MESSAGE = "[ERROR] 1000원으로 나누어 떨어지지 않습니다."
 const val ERROR_PRIZE_NUMBER_MESSAGE = "[ERROR] 당첨 번호는 숫자여야 합니다."
+const val ERROR_PRIZE_SIZE_MESSAGE = "[ERROR] 당첨 번호 길이는 6입니다."

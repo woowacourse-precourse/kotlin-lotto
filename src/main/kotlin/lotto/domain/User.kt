@@ -12,10 +12,13 @@ class User {
         checkPrizeNumber(prizeNumber)
     }
 
+
     fun checkPrizeNumber(prizeNumber: String) {
         val prizeNumberGroup = changeCommaPrizeNumber(prizeNumber)
         if (!checkNumPrizeGroup(prizeNumberGroup))
             throw IllegalArgumentException(ERROR_PRIZE_NUMBER_MESSAGE)
+        if (!checkSizePrizeGroup(prizeNumberGroup))
+            throw IllegalArgumentException(ERROR_PRIZE_SIZE_MESSAGE)
     }
 
     private fun checkNumPrizeGroup(prizeNumberGroup: List<String>): Boolean {
@@ -25,6 +28,8 @@ class User {
         }
         return true
     }
+
+    private fun checkSizePrizeGroup(prizeNumberGroup: List<String>) = prizeNumberGroup.size == 6
 
     private fun changeCommaPrizeNumber(prizeNumber: String) = prizeNumber.split(",")
 
