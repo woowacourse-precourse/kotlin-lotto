@@ -81,6 +81,25 @@ fun checkEarnMoney(gradeNum: Array<Int>):Double{
     if(gradeNum[5] != 0) plusMoney+=Grade.Fifth.money*gradeNum[5]
     return plusMoney
 }
+fun userNum(lottoNum:Int){
+    println("${lottoNum}개를 구매했습니다.")
+    println("당첨번호를 입력하세요")
+    val userString = Console.readLine()!!.toString()
+    val userNum = userString.split(",")
+    println("보너스 점수를 입력하세요")
+    var bonus = Console.readLine()!!.toInt()
+    var gradeNum = pickNum(lottoNum,userNum,bonus)
+   persent(gradeNum,lottoNum)
+}
+
+fun persent(gradeNum: Array<Int>,lottoNum: Int){
+    printGrade(gradeNum)
+    var plusMoney = checkEarnMoney(gradeNum)
+    var earnMoney : Double = (plusMoney/(lottoNum*1000.0))*100.0
+    var earnMoneyRound = Math.ceil(earnMoney*10)/10.0
+    println("총 수익률은 ${earnMoney}%입니다.")
+}
+
 
 
 
@@ -96,18 +115,7 @@ fun main() {
     }
 
     var checkUserMoneyOk = money.checkUserMoney(userMoney)
-    var LottoNum = (checkUserMoneyOk)/1000
+    var lottoNum = (checkUserMoneyOk)/1000
 
-    println("${LottoNum}개를 구매했습니다.")
-    println("당첨번호를 입력하세요")
-    val userString = Console.readLine()!!.toString()
-    val userNum = userString.split(",")
-    println("보너스 점수를 입력하세요")
-    var bonus = Console.readLine()!!.toInt()
-    var gradeNum = pickNum(LottoNum,userNum,bonus)
-    printGrade(gradeNum)
-    var plusMoney = checkEarnMoney(gradeNum)
-    var earnMoney : Double = (plusMoney/(LottoNum*1000.0))*100.0
-    var earnMoneyRound = Math.ceil(earnMoney*10)/10.0
-    println("총 수익률은 ${earnMoney}%입니다.")
+    userNum(lottoNum)
 }
