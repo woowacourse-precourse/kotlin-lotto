@@ -9,6 +9,12 @@ class User {
     private var _inputMoney = 0
     val inputMoney get() = _inputMoney
 
+    private val _lottoNumbers = mutableListOf<Int>()
+    val lottoNumbers get() = _lottoNumbers as List<Int>
+
+    private var _bonus = 0
+    val bonus get() = _bonus
+
     fun inputMoney(): Int {
         val input = userInput()
         checkInputException(input)
