@@ -20,6 +20,10 @@ class LottoVendingMachine(
     private fun issueLotto() {
         val lottoCount = user.getLottos()
         printer.printCountLotto(lottoCount)
-
+        for (cnt in 1..lottoCount) {
+            val lotto = machine.issueLottos()
+            println(lotto)
+        }
     }
+
 }
