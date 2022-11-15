@@ -8,20 +8,21 @@ interface PayedMoney {
 }
 
 class PayedMoneyImpl : PayedMoney {
-    private val userInputNumber = Input().inputUser()
+
     override fun inputUserMoney(): String {
-        println("구입금액을 입력해 주세요.")
+        print("구입금액을 입력해 주세요.")
+        val userInputNumber = Input().inputUser()
         checkMoneyStandard(userInputNumber)
         println(userInputNumber.replace("000", "") + "개를 구매했습니다.")
         return userInputNumber.replace("000", "")
     }
 
     override fun checkMoneyStandard(userInputNumber: String?) {
-        userInputNumber ?: throw IllegalArgumentException("[ERROR]")
+        userInputNumber ?: throw IllegalArgumentException()
         val checkMoney = userInputNumber.split(",").toList() as MutableList<String>
         lotto.util.InputValidateReal().checkInputMessagePatten(checkMoney)
         println(userInputNumber.toInt())
-        if (userInputNumber.toInt() % 1000 != 0 || userInputNumber.toInt() == 0) {
+        if (userInputNumber.toInt() % 1000 != 0 || userInputNumber.toInt() == 0 ) {
             println("[ERROR]")
             throw IllegalArgumentException()
         }
