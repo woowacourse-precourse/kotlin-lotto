@@ -216,3 +216,15 @@ class Lotto(private val numbers: List<Int>) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
   - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+
+## 구현할  기능 목록
+- 로또를 구매하는 함수를 메인 함수에서 실행한다.
+- 몇 장을 구매할 것인지를 입력받고, 
+- `toString`을 오버라이딩해 로또 한장을 출력하는 함수를 만든다.
+- `lotto` 클래스 내에서 몇 개 맞췄는지 정의하도록 하고, 이 함수가 몇 개를 맞췄는지 정의하는 클래스 내 변수를 정의할 수 있게 한다.
+- 예외처리는 enum class를 활용한다.
+- 수익률와 몇개 맞췄는지를 좀 더 직관적으로 이해할 수 있도록, class Lottos를 만든다.
+
+  - 이 클래스 내부에서 로또 결과를 출력하는 함수를 지정하도록 한다.
+  - 수익률 출력도 이 클래스 내에서 한다.
