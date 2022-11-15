@@ -51,8 +51,10 @@ class LottoStart(userMainView: MainView) {
             return winningPrice
         }
 
-        val earningRate = LottoResult().getEarningRate(boughtPrice, )
-        //earning rate 함수로 분리
+        fun getEarningRate(boughtPrice : Int, winPrice : Int) : String{
+            val earnRate = LottoResult().getEarningRate(boughtPrice, winPrice)
+            return earnRate
+        }
 
     }
 
