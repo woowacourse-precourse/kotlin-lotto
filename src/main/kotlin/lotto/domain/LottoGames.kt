@@ -15,7 +15,7 @@ class LottoGames {
         printUi.printLottos(lottos)
 
         val winningNumber = inputUi.inputWinningNumbers()
-        val bonusNumber = inputUi.inputBonusNumber()
+        val bonusNumber = inputUi.inputBonusNumber(winningNumber)
 
         calculateLottos(inputMoney, winningNumber, bonusNumber, lottos)
     }

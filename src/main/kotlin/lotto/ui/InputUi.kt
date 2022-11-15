@@ -2,6 +2,7 @@ package lotto.ui
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.*
+import lotto.data.ErrorMessage.ERROR_BONUS_DUPLICATION_WITH_WIN
 
 class InputUi {
     private val printUi = PrintUi()
@@ -24,10 +25,13 @@ class InputUi {
         return winningNumbers.getNumbers()
     }
 
-    fun inputBonusNumber():Int{
+    fun inputBonusNumber(winning:List<Int>):Int{
         printUi.pleaseInput("보너스 번호를")
         val bonus = Console.readLine().toInt()
         bonus.inputRangeException()
+        if(bonus in winning){
+            throw IllegalArgumentException(ERROR_BONUS_DUPLICATION_WITH_WIN)
+        }
         return bonus
     }
 
