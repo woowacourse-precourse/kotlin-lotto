@@ -39,8 +39,10 @@ private fun printConsumerLotto() {
 private fun pickWinningNumbers(): Pair<List<Int>, Int> {
     println("당첨 번호를 입력해 주세요.")
     val inputWinningNumbers = convertStringToIntList(Console.readLine())
+    checkLottoListNumberScope(inputWinningNumbers)
     println("\n보너스 번호를 입력해 주세요.")
     val inputWinningBonusNumber = convertStringToInt(Console.readLine())
+    checkLottoNumberScope(inputWinningBonusNumber)
     return Pair(inputWinningNumbers, inputWinningBonusNumber)
 }
 
@@ -60,6 +62,18 @@ private fun convertStringToInt(input: String): Int {
     } catch (exception: NumberFormatException) {
         println("[ERROR] 입력값이 올바르지 않습니다.")
         throw IllegalArgumentException()
+    }
+}
+
+private fun checkLottoListNumberScope(numbers : List<Int>){
+    for(number in numbers){
+        checkLottoNumberScope(number)
+    }
+}
+
+private fun checkLottoNumberScope(number: Int) {
+    if (number > 45 || number < 1) {
+        require(false) { println("[ERROR] 로또 범위가 아닙니다.") }
     }
 }
 
