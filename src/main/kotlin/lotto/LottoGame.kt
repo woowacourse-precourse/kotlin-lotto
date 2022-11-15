@@ -21,7 +21,7 @@ class LottoGame {
             }
             showResult(lottoCount)
         } catch (e: IllegalArgumentException) {
-
+            println(e.message)
         }
     }
 
