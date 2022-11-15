@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test
 class ApplicationTest : NsTest() {
 
     @Test
-    fun `기능 테스트`() {
+    fun `기능테스트`() {
         assertRandomUniqueNumbersInRangeTest(
             {
                 run("8000", "1,2,3,4,5,6", "7")
@@ -43,9 +43,25 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun `구입금액입력_숫자외문자포함_예외`() {
         assertSimpleTest {
             runException("1000j")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `당첨번호입력_숫자5개_예외`() {
+        assertSimpleTest {
+            runException("1000", "1,2,3,4,5")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `당첨보너스번호입력_중복숫자_예외`() {
+        assertSimpleTest {
+            runException("1000", "1,2,3,4,5,6", "6")
             assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
