@@ -25,7 +25,7 @@ class LottoVendingMachine(
     private fun inputWinningNumbers(): List<Int> {
         val numbers = inputLottoNumbers()
         val bonus = inputBonusNumber(numbers)
-        return resultLottoWinnings(numbers, bonus)
+        return Lotto(numbers).lottoCalculate(machine.lottos, bonus)
     }
 
     private fun outputLottoResult(totalPrize: Int, winnings: List<Int>) {
@@ -40,26 +40,6 @@ class LottoVendingMachine(
     private fun calculatePrize(winnings: List<Int>): Int {
         val prizes = listOf(FIVTH_PRIZE, FOURTH_PRIZE, THIRD_PRIZE, SECOND_PRIZE, FIRST_PRIZE)
         return winnings.mapIndexed { idx, count -> count * prizes[idx] }.sum()
-    }
-
-    private fun resultLottoWinnings(numbers: List<Int>, bonus: Int): List<Int> {
-        val lotto = Lotto(numbers)
-        return lottoCalculate(lotto, bonus)
-    }
-
-    private fun lottoCalculate(lotto: Lotto, bonus: Int): List<Int> {
-        val lottoResult = mutableListOf(0, 0, 0, 0, 0, 0, 0, 0)
-        machine.lottos.forEach { it ->
-            val count = lotto.winningsCount(it)
-            if (it.contains(bonus) || count == 6) {
-                println(count)
-                lottoResult[count + 1]++
-                return@forEach
-            }
-            lottoResult[count]++
-        }
-        println(lottoResult)
-        return lottoResult.takeLast(5)
     }
 
     private fun purchaseLotto() {
