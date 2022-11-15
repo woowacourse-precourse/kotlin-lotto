@@ -3,8 +3,8 @@ import lotto.Constants.ERROR_MESSAGE
 import lotto.ExceptionHandler.getIsInputFormRight
 import lotto.Constants.SHOW_MATCH_STATISTICS_MESSAGE
 import lotto.Constants.ERROR_WRONG_INPUT_FORM
-class LottoProgram {
 
+class LottoProgram {
     fun startProgram(){
         try{
             val purchaseMoney = PurchaseMoney(getPurchaseMoney()).getPurchaseMoney()
@@ -85,7 +85,7 @@ class LottoProgram {
     }
 
     /**
-     * 당첨 통계를 보여주는 함수
+     * 당첨 통계를 보여주는 함수수
      */
     fun showStatistics(){
         val matches = enumValues<MatchStorage>()
