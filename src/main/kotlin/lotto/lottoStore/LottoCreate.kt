@@ -12,7 +12,7 @@ class LottoCreateImpl : LottoCreate {
         val lotto = mutableListOf<List<Int>>()
         for (i in 1..inputUserNumber.toInt()) {
             val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
-            println(numbers.sorted())
+            println(Lotto(numbers.sorted()).getValue())
             lotto.add(Lotto(numbers.sorted()).getNumbers())
         }
         return lotto

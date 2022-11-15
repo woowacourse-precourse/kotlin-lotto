@@ -20,6 +20,12 @@ class LottoTest {
             Lotto(listOf(1, 2, 3, 4, 5, 5))
         }
     }
+    @Test
+    fun `빈 로또 번호일시 예외`() {
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf())
+        }
+    }
 
     // 아래에 추가 테스트 작성 가능
 }
