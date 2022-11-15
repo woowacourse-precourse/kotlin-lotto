@@ -25,9 +25,12 @@ class DomainServiceTest {
         val bonusNumber = 7
         assertThat(domainService.isWinningLotto(lottoNumbers, winningNumber, bonusNumber)
             .also { println(it.toString()) })
-            .isEqualTo(mutableListOf(Rating.LOSE, Rating.LOSE, Rating.LOSE, Rating.LOSE, Rating.LOSE,
-                Rating.LOSE, Rating.LOSE, Rating.FIFTH
-            ))
+            .isEqualTo(
+                mutableListOf(
+                    Rating.LOSE, Rating.LOSE, Rating.LOSE, Rating.LOSE, Rating.LOSE,
+                    Rating.LOSE, Rating.LOSE, Rating.FIFTH
+                )
+            )
     }
 
     @Test

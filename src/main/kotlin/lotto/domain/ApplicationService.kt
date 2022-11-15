@@ -5,12 +5,6 @@ import lotto.domain.InputExceptionHandler.checkInputPurchasingAmount
 import lotto.domain.InputExceptionHandler.checkInputWinningNumbers
 
 class ApplicationService {
-    companion object {
-        const val PURCHASING_AMOUNT_EXCEPTION_MESSAGE = "[ERROR] 구입금액은 1000원 단위로 입력해야 합니다."
-        const val WINNING_NUMBERS_EXCEPTION_MESSAGE = "[ERROR] 당첨 번호는 1 ~ 45 숫자 6개를 중복되지 않게 ,로 구분하여 입력해야 합니다."
-        const val BONUS_NUMBER_EXCEPTION_MESSAGE = "[ERROR] 보너스 번호는 1 ~ 45 숫자 1개를 당첨 번호와 중복되지 않게 입력해야 합니다."
-    }
-
     private val view = View
 
     /**
@@ -104,5 +98,11 @@ class ApplicationService {
             bonusNumber = applicationService.getBonusNumber(winningNumbers)
         } while (bonusNumber == 0)
         return bonusNumber
+    }
+
+    companion object {
+        const val PURCHASING_AMOUNT_EXCEPTION_MESSAGE = "[ERROR] 구입금액은 1000원 단위로 입력해야 합니다."
+        const val WINNING_NUMBERS_EXCEPTION_MESSAGE = "[ERROR] 당첨 번호는 1 ~ 45 숫자 6개를 중복되지 않게 ,로 구분하여 입력해야 합니다."
+        const val BONUS_NUMBER_EXCEPTION_MESSAGE = "[ERROR] 보너스 번호는 1 ~ 45 숫자 1개를 당첨 번호와 중복되지 않게 입력해야 합니다."
     }
 }

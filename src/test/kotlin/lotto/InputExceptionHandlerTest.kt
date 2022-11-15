@@ -8,21 +8,6 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
 
 class InputExceptionHandlerTest {
-    companion object {
-        const val PURCHASING_AMOUNT_HAS_REMAINDER = "14001"
-        const val PURCHASING_AMOUNT_IS_NOT_NUMBER = "abcd1"
-
-        const val WINNING_NUMBERS_IS_NOT_NUMBER = "1,2,3,4,5,a"
-        const val WINNING_NUMBERS_HAS_NOT_ELEMENTS = "1,2,3,4,5"
-        const val WINNING_NUMBERS_IS_NOT_CORRECT_RANGE = "1,2,3,4,56,6"
-        const val WINNING_NUMBERS_IS_NOT_UNIQUE = "1,2,3,4,5,5"
-
-        val TEST_WINNING_NUMBER = Lotto(listOf(1, 2, 3, 4, 5, 6))
-        const val BONUS_NUMBER_IS_NOT_NUMBER = "a"
-        const val BONUS_NUMBER_IS_NOT_CORRECT_RANGE = "50"
-        const val BONUS_NUMBER_IS_NOT_UNIQUE = "6"
-    }
-
     private val inputExceptionHandler = InputExceptionHandler
 
     @ParameterizedTest
@@ -69,5 +54,20 @@ class InputExceptionHandlerTest {
         } catch (e: IllegalArgumentException) {
             println("[ERROR]")
         }
+    }
+
+    companion object {
+        const val PURCHASING_AMOUNT_HAS_REMAINDER = "14001"
+        const val PURCHASING_AMOUNT_IS_NOT_NUMBER = "abcd1"
+
+        const val WINNING_NUMBERS_IS_NOT_NUMBER = "1,2,3,4,5,a"
+        const val WINNING_NUMBERS_HAS_NOT_ELEMENTS = "1,2,3,4,5"
+        const val WINNING_NUMBERS_IS_NOT_CORRECT_RANGE = "1,2,3,4,56,6"
+        const val WINNING_NUMBERS_IS_NOT_UNIQUE = "1,2,3,4,5,5"
+
+        val TEST_WINNING_NUMBER = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        const val BONUS_NUMBER_IS_NOT_NUMBER = "a"
+        const val BONUS_NUMBER_IS_NOT_CORRECT_RANGE = "50"
+        const val BONUS_NUMBER_IS_NOT_UNIQUE = "6"
     }
 }

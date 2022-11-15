@@ -11,7 +11,6 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class ApplicationServiceTest : NsTest() {
-
     private val applicationService = ApplicationService()
     private val domainService = DomainService()
 

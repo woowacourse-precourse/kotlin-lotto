@@ -36,7 +36,7 @@ class DomainService {
      * 2등 이외에는 보너스 정보가 필요 없으므로 bonus 값을 false로 고정하는 함수
      * */
     fun isBonusNecessary(hit: Int, bonus: Boolean): Pair<Int, Boolean> {
-        if ((hit != 5) and bonus) {
+        if ((hit != HIT_FIVE) and bonus) {
             return hit to false
         }
         return hit to bonus
@@ -47,11 +47,11 @@ class DomainService {
      * */
     fun getRank(hitAndBonus: Pair<Int, Boolean>): Rating {
         when (hitAndBonus) {
-            6 to false -> return Rating.FIRST
-            5 to true -> return Rating.SECOND
-            5 to false -> return Rating.THIRD
-            4 to false -> return Rating.FOURTH
-            3 to false -> return Rating.FIFTH
+            HIT_SIX to false -> return Rating.FIRST
+            HIT_FIVE to true -> return Rating.SECOND
+            HIT_FIVE to false -> return Rating.THIRD
+            HIT_FOUR to false -> return Rating.FOURTH
+            HIT_THREE to false -> return Rating.FIFTH
         }
         return Rating.LOSE
     }
@@ -72,5 +72,12 @@ class DomainService {
             sum += countRank(resultOfLotto, rank) * rank.getPrize()
         }
         return round((sum / (countOfLotto * 1000) * 100) * 10) / 10
+    }
+
+    companion object {
+        const val HIT_SIX = 6
+        const val HIT_FIVE = 5
+        const val HIT_FOUR = 4
+        const val HIT_THREE = 3
     }
 }
