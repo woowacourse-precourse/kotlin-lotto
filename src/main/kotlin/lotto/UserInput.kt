@@ -3,6 +3,7 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 
 class UserInput {
+    private var _lottoWinnerNumber = mutableListOf<String>()
     fun inputUserPayment(): Int {
         val inputPayment = Console.readLine()
         PurchaseValueException(inputPayment)
@@ -13,6 +14,8 @@ class UserInput {
     fun inputWinnerNumber(): List<Int> {
         val inputWinnerNumber = Console.readLine()
         LottoWinnerNumberException(inputWinnerNumber)
+
+        _lottoWinnerNumber = LottoNumberSplit(inputWinnerNumber).getLottoNumbers().toMutableList()
 
         val tmpWinnerNumbers = LottoNumberSplit(inputWinnerNumber).getLottoNumbers()
         val winnerNumbers = mutableListOf<Int>()
@@ -26,7 +29,7 @@ class UserInput {
 
     fun inputBonusNumber(): Int {
         val inputBonusNumber = Console.readLine()
-        LottoBonusNumberException(inputBonusNumber)
+        LottoBonusNumberException(inputBonusNumber, _lottoWinnerNumber)
 
         return inputBonusNumber.toInt()
     }
