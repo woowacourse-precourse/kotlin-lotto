@@ -1,5 +1,13 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Randoms
+
 fun main() {
-    TODO("프로그램 구현")
+    printHowManyLottoBuy(2000)
+}
+
+fun printHowManyLottoBuy(money: Int) {
+    var result: Int = money / 1000
+    println("${result}개를 구매했습니다.")
+
 }
