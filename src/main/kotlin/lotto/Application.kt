@@ -109,10 +109,12 @@ fun String.exceptionUserPayMoney(): Int {
 
     } catch (e:IllegalArgumentException) {
         throw IllegalArgumentException("[ERROR] 구입 금액을 잘못 입력하셨습니다.")
+    } catch (e:NumberFormatException) {
+        throw IllegalArgumentException("[ERROR] 구입 금액을 잘못 입력하셨습니다.")
     }
+
     return this.toInt()
 }
-
 
 /**
  * 예외처리 - 당첨 번호
@@ -169,13 +171,12 @@ fun exceptionBonusNumber(bonusNumber: Int, winLottoNumber: List<Int>): Int {
     return bonusNumber
 }
 
-
-fun main() {
+fun lottoGame() {
     // 1. 사용자 입력 받기
     // 1000원 = 1장
     println("구매금액을 입력해 주세요.")
 
-    val userPayMoney = readLine()!!.exceptionUserPayMoney()
+    val userPayMoney = readLine()!!.toString().exceptionUserPayMoney()
     val userAmountToBuy = userPayMoney / 1000
     val lottoList = buyLotto(userAmountToBuy)
 
@@ -199,4 +200,12 @@ fun main() {
 
     // 수익률 계산
     calculateRevenue(userPayMoney.toDouble(), totalWinningMoney.toDouble())
+}
+
+fun main() {
+    try {
+        lottoGame()
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+    }
 }
