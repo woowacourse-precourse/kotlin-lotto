@@ -7,6 +7,7 @@ val result= Array<Int>(6){0}
 fun main() {
     //금액설정
 //    val moneyString:String = "3000"
+    println("구입금액을 입력해 주세요.")
     val moneyString:String = Console.readLine()
 
     //몇장인지 설정
@@ -27,7 +28,7 @@ fun main() {
     }
 
     println("보너스 번호를 입력해 주세요.")
-    val bonus = 7
+    val bonus = Console.readLine().toInt()
 
     paper.forEach{
         result[it.rank(solutionList,bonus)]++
