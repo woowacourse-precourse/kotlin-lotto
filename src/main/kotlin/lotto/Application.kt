@@ -2,6 +2,14 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
+const val lottoCost = 1000
+
+enum class ErrorMessages(val messages : String){
+    MONEY_ERROR("[ERROR] 올바르지 않은 금액입니다."),
+    ANSWER_ERROR("[ERROR] 올바르지 않은 당첨 번호입니다."),
+    BONUS_ERROR("[ERROR] 올바르지 않은 보너스 번호입니다."),
+}
+
 enum class LottoValue(val earning : Int, val correctNumbers : Int, open var amount : Int){
     FIRST(2000000000,6, 0),
     SECOND( 3000000,5, 0),
@@ -10,12 +18,17 @@ enum class LottoValue(val earning : Int, val correctNumbers : Int, open var amou
     FIFTH(5000,3, 0)
 }
 
-fun firstPay() : Int {
-    val pay = Console.readLine().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] 올바르지 않은 금액입니다.")
-    if (pay % 1000 != 0){
-        throw IllegalArgumentException("[ERROR] 올바르지 않은 금액입니다.")
+fun firstPay(): Int {
+    var deposit = Console.readLine().toString()
+    try {
+        deposit.toInt()
+        deposit.toInt() % lottoCost != 0
+    } catch (e : NumberFormatException){
+        throw NumberFormatException(ErrorMessages.MONEY_ERROR.messages)
+    } catch (e : IllegalArgumentException){
+        throw IllegalArgumentException(ErrorMessages.MONEY_ERROR.messages)
     }
-    return pay
+    return deposit.toInt()
 }
 
 fun lottoGenerator(amount : Int) : MutableList<List<Int>>{
@@ -29,16 +42,13 @@ fun lottoGenerator(amount : Int) : MutableList<List<Int>>{
 
 fun lottoWinningNumber() : List<Int>{
     try {
-        val numbers = readLine()!!.split(",")
-        val winningNumbers = numbers!!.map { it.toInt() }
-        if (winningNumbers.distinct().size != 6){
-            throw (NumberFormatException("[ERROR] 올바르지 않은 당첨 번호입니다."))
+        val numbers = readLine().toString().split(",")
+        val winningNumbers = mutableListOf<Int>()
+        for (elements in numbers){
+            winningNumbers.add(elements.toInt())
         }
+        winningNumbers.distinct().size != 6
         return winningNumbers.toList().sorted()
-    } catch (e : NumberFormatException){
-        throw (NumberFormatException("[ERROR] 올바르지 않은 당첨 번호입니다."))
-    } catch (e : NullPointerException){
-        throw (NullPointerException("[ERROR] 값을 입력하지 않았습니다."))
     } catch (e : IllegalArgumentException){
         throw (IllegalArgumentException("[ERROR] 올바르지 않은 당첨 번호입니다."))
     }
@@ -46,7 +56,7 @@ fun lottoWinningNumber() : List<Int>{
 
 fun lottoBonusNumber(normalNumber: List<Int>) : List<Int>{
     try{
-        val bonus = readLine()!!.toInt()
+        val bonus = readLine()?.toIntOrNull() ?: throw (IllegalArgumentException("[ERROR] 올바르지 않은 보너스 번호입니다."))
         val bonusNumber = mutableListOf<Int>()
         if (bonus !in 1..45) throw (IllegalArgumentException("[ERROR] 올바르지 않은 보너스 번호입니다."))
         if (normalNumber.contains(bonus)) throw (IllegalArgumentException("[ERROR] 올바르지 않은 보너스 번호입니다."))
@@ -54,10 +64,6 @@ fun lottoBonusNumber(normalNumber: List<Int>) : List<Int>{
         return bonusNumber
     } catch (e : NumberFormatException){
         throw (NumberFormatException("[ERROR] 올바르지 않은 보너스 번호입니다."))
-    } catch (e : NullPointerException){
-        throw (NullPointerException("[ERROR] 값을 입력하지 않았습니다."))
-    } catch (e : IllegalArgumentException){
-        throw (IllegalArgumentException("[ERROR] 올바르지 않은 보너스 번호입니다."))
     }
 }
 
@@ -109,7 +115,7 @@ fun calculateEarns() : Int{
 
 fun earningsRatio (payment : Int, earnings : Int) : String {
     try {
-        return String.format("%.2f", (earnings.toDouble() / payment.toDouble() * 100).toFloat())
+        return String.format("%.1f", (earnings.toDouble() / payment.toDouble() * 100).toFloat())
     } catch (e: NullPointerException) {
         throw (NullPointerException("[ERROR] 값을 입력하지 않았습니다."))
     }
@@ -129,7 +135,7 @@ fun receipt(earningRatio : String){
 fun main() {
     println("구입금액을 입력해 주세요.")
     val paidMoney = firstPay()
-    val lottoPapers = paidMoney!! / 1000
+    val lottoPapers = paidMoney!! / lottoCost
     println("")
 
     print(lottoPapers)
