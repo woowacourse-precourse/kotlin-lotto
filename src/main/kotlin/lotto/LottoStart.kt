@@ -33,8 +33,10 @@ class LottoStart(userMainView: MainView) {
             return bonusInput
         }
 
-        val winList = SelectionWinning().getWinningListTotal(boughtLottoNums, winNums, bonusInput)
-        //winning list를 만드는 함수로 분리
+        fun getWinningResult(boughtLottoNums : List<List<Int>>, winNums : List<Int>, bonusInput : Int) : List<Int>{
+            val winList = SelectionWinning().getWinningListTotal(boughtLottoNums, winNums, bonusInput)
+            return winList
+        }
 
         val lottoPrizeResult = LottoResult()
         lottoPrizeResult.getPrizeRanking(winList)
