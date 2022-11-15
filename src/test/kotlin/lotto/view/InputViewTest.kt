@@ -37,6 +37,12 @@ internal class InputViewTest {
         assertThrows<IllegalArgumentException> {
             inputView.validateWinningNumbers("1,2,3,4,5,6,7")
         }
+//        assertThrows<IllegalArgumentException> {
+//            inputView.validateWinningNumbers("1,2,3,4,5,6,")
+//        }
+//        assertThrows<IllegalArgumentException> {
+//            inputView.validateWinningNumbers("1,,,4,5,6")
+//        }
     }
 
     @Test

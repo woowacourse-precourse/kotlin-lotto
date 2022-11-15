@@ -12,14 +12,9 @@ class InputView {
     }
 
     fun validateUserMoney(money: String) {
-        for (item in money) {
-            require(Character.isDigit(item)) {
-                throw IllegalArgumentException(MIXED_CHAR_ERROR_MSG)
-            }
-        }
-        require(money.toInt() % MONEY_UNIT == 0) {
+        handleMixedCharCase(money)
+        if(money.toInt() % MONEY_UNIT != 0)
             throw IllegalArgumentException(DIVISION_ERROR_MSG)
-        }
     }
 
     // 쉼표로 구분된 당첨 번호를 입력 받는다.
@@ -32,14 +27,13 @@ class InputView {
     fun validateWinningNumbers(input: String): List<Int> {
         val numbers = mutableListOf<Int>()
         input.split(",").map {
-            for (item in it) {
-                if (!Character.isDigit(item)) throw IllegalArgumentException(MIXED_CHAR_ERROR_MSG)
-            }
-            if (it.toInt() !in MIN_VALUE..MAX_VALUE) throw IllegalArgumentException(RANGE_BOUNDS_ERROR_MSG)
-            if (numbers.contains(it.toInt())) throw IllegalArgumentException(DUPLICATE_ERROR_MSG)
+            handleMixedCharCase(it)
+            handleOutOfRangeCase(it.toInt())
+            if (numbers.contains(it.toInt()))
+                throw IllegalArgumentException(DUPLICATE_ERROR_MSG)
             numbers.add(it.toInt())
         }
-        if (numbers.size != LOTTO_NUM_LIMIT) throw IllegalArgumentException(SIZE_BOUNDS_ERROR_MSG)
+        handleSizeMismatchCase(numbers.size)
         return numbers
     }
 
@@ -50,14 +44,27 @@ class InputView {
     }
 
     fun validateBonusNumber(input: String, winningNumbers: List<Int>): Int {
-        for (item in input) {
-            if (!Character.isDigit(item))
-                throw IllegalArgumentException(MIXED_CHAR_ERROR_MSG)
-        }
-        if (input.toInt() !in MIN_VALUE..MAX_VALUE)
-            throw IllegalArgumentException(RANGE_BOUNDS_ERROR_MSG)
+        handleMixedCharCase(input)
+        handleOutOfRangeCase(input.toInt())
         if(winningNumbers.contains(input.toInt()))
             throw IllegalArgumentException(BONUS_DUPLICATE_ERROR_MSG)
         return input.toInt()
+    }
+
+    private fun handleMixedCharCase(token: String) {
+        for (ch in token) {
+            if (!Character.isDigit(ch))
+                throw IllegalArgumentException(MIXED_CHAR_ERROR_MSG)
+        }
+    }
+
+    private fun handleOutOfRangeCase(num: Int) {
+        if (num !in MIN_VALUE..MAX_VALUE)
+            throw IllegalArgumentException(RANGE_BOUNDS_ERROR_MSG)
+    }
+
+    private fun handleSizeMismatchCase(size: Int) {
+        if (size != LOTTO_NUM_LIMIT)
+            throw IllegalArgumentException(SIZE_BOUNDS_ERROR_MSG)
     }
 }
