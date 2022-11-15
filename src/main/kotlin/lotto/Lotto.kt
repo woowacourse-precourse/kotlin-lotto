@@ -65,7 +65,7 @@ class LottoWinningStat(
     private var totalEarningRate: Float = 0f
 
     init {
-        require(!lotto.contains(bonusNumber)) { ErrorStrings.DUPLICATION_NUMBER_BONUS_WINNING.message }
+        require(!lotto.contains(bonusNumber)) { ErrorStrings.INVALID_DUPLICATION_NUMBER_BONUS_WINNING.message }
         updateWinningStat()
         updateTotalEarningRate()
     }

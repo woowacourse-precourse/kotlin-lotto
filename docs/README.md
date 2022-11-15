@@ -18,6 +18,7 @@
 |4|`LotteryRank`|등수에 관한 `enum` 클래스이다. 1등 부터 차례로 `ONE`, `TWO`, `THREE`, `FOUR`, `FIVE로` 구성된다.|
 |5|`LotteryConverter`| 등수에 대한 당첨금액을 관리한다. x등일 때 얼마를 받을 수 있는지, 몇개를 맞추었을 때 `LotteryRank`가 어떻게 되는지 변환하는 함수를 제공한다.|
 
+
 ### Lotto
 
 `Lotto` 클래스는 당첨 번호가 들어 있는 `List`를 매개변수로 받아 당첨 번호를 관리한다. 당첨 번호는 총 6게의 수이다. 만일 당첨 번호의 개수가 6개가 되지 않거나 중복되는 당첨 번호가 있다면 에러 메세지를
@@ -56,3 +57,15 @@
 |`getPriceByRank`| `LotteryRank` |`Int`|매개변수로 `LotteryRank`를 전달 받아 해당 등수에 대한 당첨금을 반환한다.|
 |`getRankByCount`| `Int`, `Int`    |`LotteryRank`| 매개변수로 티켓이 맞춘 번호의 개수와 맞춘 보너스 번호의 개수를 전달받아 해당 티켓의 등수를 반환한다. 맞춘 보너스 번호의 개수는 기본값 0을 가지며 만일 잘못된 매개변수를 전달 받는다면 예외 처리한다.|
 
+
+## Strings.kt
+
+`Strings.kt`는 로또 게임에서 출력할 안내 문구들을 `enum class`를 이용하여 관리한다.
+
+핵심 기능 클래스 목록
+
+|No| Class Name              | Explanation                                                                                    |
+|---|-------------------------|------------------------------------------------------------------------------------------------|
+|1| `ErrorStrings`                   | `ErrorStrings`는 error message에 대한 안내 문구들을 관리하며 열거체 이름은 `INVALID`로 시작한다.                        |
+|2| `MainStrings` | `MainStrings`는 UI를 통해 출력할 안내 문구들을 관리하며 입력을 요청하는 열거체는 `ENTER`로 시작하고 진행 상황을 안내하는 문구는 `GUID`로 시작한다. |
+|3| `MainAppendedStrings`        | `MainAppendedStrings`는 UI를 통해 출력할 안내 문구를 관리하는 `MainStrings`에서 상황별 추가될 문자열이 있는 안내 문구들을 관리한다.|
