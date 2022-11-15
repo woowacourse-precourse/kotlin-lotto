@@ -6,13 +6,13 @@ class Lotto(private val numbers: List<Int>) {
 
     init {
         require(numbers.size == LOTTO_NUMBER_SIZE) {
-            throw IllegalArgumentException(ERROR_MESSAGE.toString() + Errors.LOTTO_SIZE_ERROR)
+            throw IllegalArgumentException(ERROR_MESSAGE.toString() + LottoExecptions.LOTTO_SIZE_ERROR)
         }
         require(checkLottoRange(numbers)) {
-            throw IllegalArgumentException(ERROR_MESSAGE.toString() + Errors.LOTTO_RANGE_ERROR)
+            throw IllegalArgumentException(ERROR_MESSAGE.toString() + LottoExecptions.LOTTO_RANGE_ERROR)
         }
         require(checkLottoDuplicated(numbers)) {
-            throw IllegalArgumentException(ERROR_MESSAGE.toString() + Errors.LOTTO_DUPLICATE_ERROR)
+            throw IllegalArgumentException(ERROR_MESSAGE.toString() + LottoExecptions.LOTTO_DUPLICATE_ERROR)
         }
     }
 
