@@ -6,13 +6,16 @@ import util.InputException
 class User {
     private val inputCheck = InputException()
 
+    private var _inputMoney = 0
+    val inputMoney get() = _inputMoney
+
     fun inputMoney(): Int {
         val input = Console.readLine()
         checkInputException(input)
         return input.toInt()
     }
 
-    fun getLottos(money: Int) = money / 1000
+    fun getLottos() = _inputMoney / 1000
 
     private fun checkInputException(input: String?) {
         inputCheck.checkTypeException(input)
