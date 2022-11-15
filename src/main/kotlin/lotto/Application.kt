@@ -18,6 +18,7 @@ fun makeRandomNumbers(lottoCount: Int, lotto:MutableList<List<Int>>){
     for(i in 0 until lottoCount){
         val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6) //로또 번호 랜덤으로 생성
         lotto.add(numbers)
+        numbers.sort()
         println(numbers)
     }
     println()
@@ -67,10 +68,10 @@ fun inputWinNumber(){
 fun main() {
     println("구입 금액을 입력하세요")
     val money = Console.readLine()!!.toInt() //정수형 변환
-    if(money%0!=0){
-        println("[ERROR] 로또 1장의 가격은 1000원입니다. 1000원 단위로 입력해주세요")
-        throw IllegalArgumentException()
-    }
+    //if(money%0!=0){
+      //  println("[ERROR] 로또 1장의 가격은 1000원입니다. 1000원 단위로 입력해주세요")
+        //throw IllegalArgumentException()
+    //}
     val lottoCount = money/1000 //로또 횟수
 
     print("\n")
