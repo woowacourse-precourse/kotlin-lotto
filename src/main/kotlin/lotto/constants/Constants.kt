@@ -14,10 +14,11 @@ fun earningRateMSG(rate: Double): String {
 
 
 const val INPUT_PURCHASE_AMOUNT_ERROR_MSG = "[ERROR] 로또 구입 금액은 1000원 단위의 숫자여야 합니다."
-const val INPUT_WIN_NUM_SCOPE_ERROR_MSG = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."
+const val INPUT_WIN_NUM_SCOPE_ERROR_MSG = "[ERROR] 당첨 번호는 1부터 45 사이의 숫자여야 합니다."
 const val INPUT_BONUS_NUM_SCOPE_ERROR_MSG = "[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다."
+const val INPUT_WIN_NUM_DUPLICATION_ERROR_MSG = "[ERROR] 당첨 번호가 중복되어 입력되었습니다."
 const val INPUT_BONUS_NUM_DUPLICATION_ERROR_MSG="[ERROR] 보너스 번호는 로또 번호와 중복되어선 안됩니다."
-const val INPUT_WIN_NUM_SIZE_ERROR_MSG = "[ERROR] 로또 번호는 총 6개가 입력되어야 합니다."
+const val INPUT_WIN_NUM_SIZE_ERROR_MSG = "[ERROR] 당첨 번호는 총 6개가 입력되어야 합니다."
 
 const val MAKE_LOTTO_NUM_SCOPE_ERROR_MSG = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."
 const val MAKE_LOTTO_NUM_DUPLICATION_ERROR_MSG = "[ERROR] 로또 번호가 중복되어 생성되었습니다."
