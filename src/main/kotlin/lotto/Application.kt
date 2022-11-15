@@ -20,12 +20,14 @@ fun main() {
 
 class LottoGame {
     private var lotteries = 0
+    private val winningNumbers = ArrayList<Int>()
 
     fun simulate() {
         getPurchaseAmount()
+        getWinningNumbers()
     }
 
-    fun getPurchaseAmount() {
+    private fun getPurchaseAmount() {
         val inputAmount = getPurchaseAmountInput()
         checkInputAmountValid(inputAmount)
         initLotteries(inputAmount)
@@ -45,5 +47,14 @@ class LottoGame {
 
     private fun initLotteries(amount: Int) {
         lotteries = amount / 1000
+    }
+
+    private fun getWinningNumbers() {
+        val inputNumbers = getInputWinningNumbers()
+    }
+
+    private fun getInputWinningNumbers(): String {
+        println("당첨 번호를 입력해 주세요.")
+        return readLine() ?: ""
     }
 }
