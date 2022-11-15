@@ -1,4 +1,4 @@
-package lotto
+package lotto.exception
 
 const val ERROR = "[ERROR] "
 const val IS_EMPTY_VALUE = "빈 값은 입력될 수 없습니다."
