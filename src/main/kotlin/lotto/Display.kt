@@ -19,8 +19,7 @@ class Display {
         println()
         println(PURCHASE_COUNT_MESSAGE.format(count))
     }
-    
-    // todo 여기 좀 쉽게 리팩터
+
     fun printLottos(lottos: List<Lotto>) {
         for(lotto in lottos) {
             val numbers = lotto.getNumbers()

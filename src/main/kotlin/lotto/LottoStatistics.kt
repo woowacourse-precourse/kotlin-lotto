@@ -67,13 +67,5 @@ class LottoStatistics {
         profit = 100 + (prizeAmount - purchaseAmount) / purchaseAmount.toDouble() * 100
         profit = round(profit * 10) / 10
     }
-
-    fun getMatchingCounts(): List<Int> {
-        return this.matchingCounts
-    }
-
-    fun getProfit(): Double {
-        return this.profit
-    }
 }
 

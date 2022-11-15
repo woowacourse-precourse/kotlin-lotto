@@ -6,7 +6,6 @@ class LottoGame {
     private val statistics = LottoStatistics()
     fun start() {
         display.printRequirePurchaseAmount()
-
         val purchaseAmount = client.inputPurchaseAmount()
         val purchaseLottos = client.purchaseLotto()
         if(purchaseAmount < 0)

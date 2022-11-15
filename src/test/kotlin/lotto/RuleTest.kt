@@ -7,7 +7,6 @@ import org.junit.jupiter.api.assertThrows
 import utils.Constants
 
 class RuleTest {
-
     @Test
     fun `구입 금액 숫자 외 문자일 경우 예외 발생`() {
         assertThrows<IllegalArgumentException> {
