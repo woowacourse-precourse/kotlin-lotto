@@ -3,6 +3,15 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
+enum class Rank(var match: Int, var reward: Int) {
+
+    FIRST(6, 2000000000),
+    SECOND(7, 30000000),
+    THIRD(5, 1500000),
+    FOURTH(4, 50000),
+    FIFTH(3, 5000)
+
+}
 fun main() {
 
 }
