@@ -36,13 +36,7 @@ object LottoCalculator {
     ): MutableMap<LottoWinningResult, Int> {
 
         /** 당첨내역 : 당첨결과 to 당첨 티켓 개수 **/
-        val winningHistories = mutableMapOf(
-            LottoWinningResult.FIFTH to 0,
-            LottoWinningResult.FOURTH to 0,
-            LottoWinningResult.THIRD to 0,
-            LottoWinningResult.SECOND to 0,
-            LottoWinningResult.FIRST to 0,
-        )
+        val winningHistories = WinningTotalStatistics.emptyWinningHistories
 
         lottoTicket.lottos.forEach { lotto ->
             val lottoResult = checkLottoResult(lottoNumbers = lotto.getLottoNumbers(), winningLotto = winningLotto)
