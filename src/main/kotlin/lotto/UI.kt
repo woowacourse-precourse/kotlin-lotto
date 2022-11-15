@@ -3,6 +3,9 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 import lotto.domain.Win
 import lotto.domain.Win.*
+import lotto.exception.validateUserInputBonusNumber
+import lotto.exception.validateUserInputPurchasingAmount
+import lotto.exception.validateUserInputWinNumbers
 
 class UI {
 
