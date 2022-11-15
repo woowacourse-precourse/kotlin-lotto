@@ -231,7 +231,7 @@ class Lotto(private val numbers: List<Int>) {
   - 5개 일치 (1,500,000원)
   - 5개 일치, 보너스 볼 일치 (30,000,000원)
   - 6개 일치 (2,000,000,000원)
-- [x] 총 수익률을 소수점 둘째 자리에서 반올림하여 출력 - LottoViewModel#getProfit()
+- [x] 총 수익률에 천단위 콤마를 추가한 후, 소수점 둘째 자리에서 반올림하여 출력 - LottoViewModel#getProfit()
 - [x] 예외 처리 - LottoBonus, LottoPurchase, LottoWinning.kt
 
 ### ☑️ 예외 처리

@@ -1,7 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
-import kotlin.math.round
+import java.text.DecimalFormat
 
 class LottoViewModel {
     var issuedNumbers = mutableMapOf<Int, MutableList<Int>>()
@@ -24,7 +24,7 @@ class LottoViewModel {
         }
     }
 
-    fun getProfit(purchaseAmount: String): Double = round(calculateProfit(purchaseAmount) * 10) / 10
+    fun getProfit(purchaseAmount: String): String? = DecimalFormat("#,###.0").format(calculateProfit(purchaseAmount))
 
     private fun calculateWinning() {
         when (matchedWinningNumbers.size) {
