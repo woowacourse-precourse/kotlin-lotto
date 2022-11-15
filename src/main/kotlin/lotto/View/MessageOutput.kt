@@ -21,9 +21,9 @@ class MessageOutput {
         println(Notice.START.messages)
     }
 
-    fun printBuyMessage( ticket : Int , list : MutableList<List<Int>> ){
+    fun printBuyMessage(ticket: Int, list: MutableList<List<Int>>) {
         println("$ticket${Notice.BUY.messages}")
-        for ( number in 0..ticket-1)
-        println(list[number])
+        for (number in 0..ticket - 1)
+            println(list[number])
     }
 }
