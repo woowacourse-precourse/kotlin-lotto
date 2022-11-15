@@ -17,9 +17,9 @@ class Money {
 
     fun isError(): Boolean {
         if (money == "ERROR") {
-            return false
+            return true
         }
-        return true
+        return false
     }
 
     fun getNumberOfPurchases(): Int {
