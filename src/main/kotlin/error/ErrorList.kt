@@ -16,11 +16,15 @@ object LottoError {
         }
     }
 
+    fun checkOutOfRange(number: Int) {
+        if(number !in RANGE_START..RANGE_END) {
+            makeError(ErrorMaking.OUT_OF_RANGE)
+        }
+    }
+
     fun checkOutOfRange(numbers: List<Int>) {
         for(number in numbers) {
-            if(number !in RANGE_START..RANGE_END) {
-                makeError(ErrorMaking.OUT_OF_RANGE)
-            }
+            checkOutOfRange(number)
         }
     }
 

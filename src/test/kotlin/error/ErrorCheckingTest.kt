@@ -1,5 +1,6 @@
 package error
 
+import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -14,8 +15,13 @@ class ErrorCheckingTest {
 
     @Test
     fun `로또 번호가 범위 밖이면 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> {
-            LottoError.checkOutOfRange(listOf(1, 2, 3, 4, 5, 50))
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                LottoError.checkOutOfRange(0)
+            }
+            assertThrows<IllegalArgumentException> {
+                LottoError.checkOutOfRange(listOf(1, 2, 3, 4, 5, 50))
+            }
         }
     }
 
