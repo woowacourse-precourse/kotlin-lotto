@@ -3,7 +3,7 @@ package lotto
 object ExceptionHandler {
     fun checkWinningNumber(numbers: String): Boolean {
         for (i in numbers) {
-            if (!(i.digitToInt() in 49..57 || i.digitToInt() == 44)) {
+            if (!(i-'0' in 1..9 || i == ',')) {
                 println("${Message.ERROR_MESSAGE.msg} 잘못된 입력입니다.")
                 throw IllegalArgumentException("${Message.ERROR_MESSAGE.msg} checkWinningNumber : 잘못된 입력입니다.")
             }
