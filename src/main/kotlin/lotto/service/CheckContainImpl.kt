@@ -1,10 +1,11 @@
 package lotto.service
 
-interface CheckContain{
+interface CheckContain {
     fun containLottoNum(winningNumber: String, lottoNumber: List<Int>): Int
     fun containBonusNum(checkWinningNumber: Int, lottoNumber: List<Int>, bonus: Int): Int
 }
-class CheckContainImpl : CheckContain{
+
+class CheckContainImpl : CheckContain {
     override fun containLottoNum(winningNumber: String, lottoNumber: List<Int>): Int {
         val winningNumbers = winningNumber.split(",")
         var checkWinningNumber = 0
