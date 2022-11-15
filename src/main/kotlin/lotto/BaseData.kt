@@ -65,7 +65,8 @@ class BaseData {
             }
         }
         for(i in 1 until lotto.length step 2){
-            if(lotto.elementAt(i)==','){
+            if(lotto.elementAt(i)!=','){
+                print(lotto.elementAt(i))
                 throw IllegalArgumentException("[ERROR] 로또번호는 ,로 구분해야 합니다.")
             }
         }
