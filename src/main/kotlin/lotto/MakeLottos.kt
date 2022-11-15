@@ -22,8 +22,8 @@ class MakeLottos {
     }
 
     fun winningNumber(): List<Int> {
-      intln(Output.WinningNumber.message)
-        pr val input = Console.readLine()
+        println(Output.WinningNumber.message)
+        val input = Console.readLine()
             .split(",")
             .map { number -> number.toInt() }
         Lotto(input)
