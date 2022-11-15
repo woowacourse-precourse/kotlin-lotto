@@ -14,10 +14,10 @@ class LottoGame {
         val winningLottery = WinningLottery(InputView.inputWinningLottery(), InputView.inputBonusNumber())
 
         lotteryChecker.checkLotteryNumber(winningLottery, lottoTicket)
-        printResult(money, lotteryChecker)
+        printResult(money)
     }
 
-    private fun printResult(money: Money, lotteryChecker: LotteryChecker) {
+    private fun printResult(money: Money) {
         OutputView.printResult(lotteryChecker)
         OutputView.printRateOfProfit(money, lotteryChecker.getTotalWinnerPrice())
     }
