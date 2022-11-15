@@ -1,6 +1,5 @@
 package lotto
 
-import lotto.User.UserInput
 import lotto.utils.ErrorCheck
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -26,6 +25,13 @@ class LottoTest {
     fun `로또 번호 범위를 초과한 숫자가 있으면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
             ErrorCheck().ListnumberRange(listOf(51, 2, 3, 4, 5, 5))
+        }
+    }
+
+    @Test
+    fun `보너스 번호가 로또 번호와 중복되지 않는다`() {
+        assertThrows<IllegalArgumentException> {
+            ErrorCheck().isNotIncludedNumbers(3, listOf(1, 2, 3, 4, 5, 5))
         }
     }
 }

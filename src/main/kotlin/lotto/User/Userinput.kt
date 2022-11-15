@@ -35,6 +35,7 @@ class UserInput {
         val bonusNumber = input.toInt()
         bonus = bonusNumber
         ErrorCheck().NumberRange(bonus)
+        ErrorCheck().isNotIncludedNumbers(bonus, answer)
     }
 
 }
