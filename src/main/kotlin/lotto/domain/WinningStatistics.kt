@@ -22,11 +22,13 @@ class WinningStatistics(lotteries: List<Lotto>, winningNumber: WinningNumber) {
     }
 
     private fun calculateYields(lotteries: List<Lotto>): BigDecimal =
-        totalRevenue().multiply(BigDecimal(100))
-            .divide(BigDecimal(lotteries.size).multiply(BigDecimal(LottoShop.lottoPrice())), 1, RoundingMode.HALF_EVEN)
+        totalRevenue().multiply(BigDecimal(100)).divide(purchaseAmount(lotteries), 1, RoundingMode.HALF_EVEN)
 
     private fun totalRevenue() =
         winningCounts.entries.sumOf { BigDecimal(it.key.winnings).multiply(BigDecimal(it.value)) }
+
+    private fun purchaseAmount(lotteries: List<Lotto>) =
+        BigDecimal(lotteries.size).multiply(BigDecimal(LottoShop.lottoPrice()))
 
     fun winningCounts() = winningCounts.toMap()
 
