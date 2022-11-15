@@ -1,15 +1,9 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
-
+var userLottoList = mutableListOf<List<Int>>()
 const val PRICE = 1000
 class LottoLogic {
-
-    private var userLottoList = mutableListOf<List<Int>>()
-    private var userPurchaseAmount = ""
-    private var lottoCount = 0
-
     fun lottoGenerator(): List<Int>{
         var userLotto = mutableListOf<Int>()
         userLotto.clear()
@@ -18,14 +12,15 @@ class LottoLogic {
         return userLotto
     }
 
-    fun lottoPurchaseAmount(lottoCount: Int): Int {
-        if (lottoCount < PRICE) {
+    fun lottoPurchaseAmount(lottoPay: Int): Int {
+        if (lottoPay < PRICE) {
             println("[ERROR] 1,000원 이상을 입력하셔야 합니다.")
             throw IllegalArgumentException("[ERROR] 1,000원 이상을 입력하셔야 합니다.")
-        } else if (lottoCount % PRICE != 0) {
+        } else if (lottoPay % PRICE != 0) {
             throw IllegalArgumentException("[ERROR] 1,000원 단위를 입력하셔야 합니다.")
         }
-        return lottoCount / PRICE
+        var purchaseAmout = lottoPay / PRICE
+        return purchaseAmout
     }
 
     fun lottoCreateLists(count : Int):List<List<Int>>{
@@ -34,5 +29,4 @@ class LottoLogic {
         }
         return userLottoList
     }
-
 }
