@@ -7,7 +7,7 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.size == 6)
     }
 
-    private var totalPrice = 0
+    private var totalPrice = 0L
     private val lottoMap = mapOf(
         3 to LottoEnum.THREE_CORRECT,
         4 to LottoEnum.FOUR_CORRECT,
@@ -23,7 +23,7 @@ class Lotto(private val numbers: List<Int>) {
         lottoMap[count]!!.count += 1
         totalPrice += lottoMap[count]!!.price
     }
-    fun getTotalPrice(): Int {
+    fun getTotalPrice(): Long {
         return totalPrice
     }
 }
