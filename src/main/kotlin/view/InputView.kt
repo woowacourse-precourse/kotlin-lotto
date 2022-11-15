@@ -7,8 +7,8 @@ class InputView {
     private val REGULAR_CORRECT_MONEY = "^[0-9]+0{3,}$"
 
     private val ERROR_MESSAGE_WINNING_NUMBER = "[ERROR] 당첨 번호 규칙에 맞지 않습니다."
-
     private val ERROR_MESSAGE_BONUS_NUMBER = "[ERROR] 보너스 번호 규칙에 맞지 않습니다."
+    private val ERROR_MESSAGE_BONUS_NUMBER_OVERLAP = "[ERROR] 보너스 번호와 당첨 번호가 중복됩니다.."
 
     // 구입할 금액 입력
     fun inputMoney(): Long {
@@ -41,18 +41,18 @@ class InputView {
         }catch (e:Exception){
             throw IllegalArgumentException("$ERROR_MESSAGE_WINNING_NUMBER 입력 값: $winningNumber")
         }
-        throw IllegalArgumentException("$ERROR_MESSAGE_WINNING_NUMBER 입력 값: $winningNumber")
     }
 
-    fun inputBonusNumber(): Int{
+    fun inputBonusNumber(correctLotto: List<Int>): Int{
         // todo cosole readLine 체인지
-        val bonusNumber = readLine()!!
+        var inputBonusNumber = readLine()!!
         try {
-            if (bonusNumber.toInt() in 1..45) return bonusNumber.toInt()
+            val bonusNumber = inputBonusNumber.toInt()
+            if (bonusNumber !in correctLotto && bonusNumber in 1..45) return bonusNumber
         }catch (e: Exception){
-            throw IllegalArgumentException("$ERROR_MESSAGE_BONUS_NUMBER 입력 값: $bonusNumber")
+            throw IllegalArgumentException("$ERROR_MESSAGE_BONUS_NUMBER 입력 값: $inputBonusNumber")
         }
-        throw IllegalArgumentException("$ERROR_MESSAGE_BONUS_NUMBER 입력 값: $bonusNumber")
+        throw IllegalArgumentException("$ERROR_MESSAGE_BONUS_NUMBER 입력 값: $inputBonusNumber")
     }
 
 }

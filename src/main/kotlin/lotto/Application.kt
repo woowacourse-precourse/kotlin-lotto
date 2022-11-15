@@ -38,7 +38,7 @@ fun main() {
     // 보너스 번호 메시지 출력
     outputView.outputBonusNumber()
     // 보너스 번호 입력
-    val bonusNumber = inputView.inputBonusNumber()
+    val bonusNumber = inputView.inputBonusNumber(winningNumber)
 
     // 당첨 통계 메세지
     outputView.outputWinningStatistics()
