@@ -1,9 +1,9 @@
 package lotto
 
-import lotto.ErrorMessage.ERROR_NOT_COMMA
-import lotto.ErrorMessage.ERROR_NOT_NUMBERS
-import lotto.ErrorMessage.ERROR_NOT_THOUSANDS
-import lotto.ErrorMessage.ERROR_NUM_NOT_IN_RANGE
+import lotto.data.ErrorMessage.ERROR_NOT_COMMA
+import lotto.data.ErrorMessage.ERROR_NOT_NUMBERS
+import lotto.data.ErrorMessage.ERROR_NOT_THOUSANDS
+import lotto.data.ErrorMessage.ERROR_NUM_NOT_IN_RANGE
 
 fun String.inputTypeException() {
     try {
@@ -13,18 +13,18 @@ fun String.inputTypeException() {
     }
 }
 
-fun String.inputUnitException(){
-    require(this.toInt() % 1000==0){ERROR_NOT_THOUSANDS}
+fun String.inputUnitException() {
+    require(this.toInt() % 1000 == 0) { ERROR_NOT_THOUSANDS }
 }
 
 
-fun Int.inputRangeException(){
-    require(this in 1..45){ ERROR_NUM_NOT_IN_RANGE}
+fun Int.inputRangeException() {
+    require(this in 1..45) { ERROR_NUM_NOT_IN_RANGE }
 }
 
-fun String.inputCommaException(){
+fun String.inputCommaException() {
     val input = this.chunked(1)
-    for(index in input.indices){
-        require(this[index].code == 44 || this[index].code in 48..57 ){ERROR_NOT_COMMA}
+    for (index in input.indices) {
+        require(this[index].code == 44 || this[index].code in 48..57) { ERROR_NOT_COMMA }
     }
 }

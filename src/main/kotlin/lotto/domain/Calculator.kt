@@ -4,7 +4,7 @@ import lotto.data.Prizes
 import lotto.data.Ranks
 
 class Calculator {
-    fun sumPrizes(rankingCounts:HashMap<Int,Int>):Int {
+    fun sumPrizes(rankingCounts: HashMap<Int, Int>): Int {
         var sumPrizes = 0
         for (key in 1..5) {
             sumPrizes += prizeMoney(key) * rankingCounts[key]!!
@@ -12,7 +12,7 @@ class Calculator {
         return sumPrizes
     }
 
-    fun prizeMoney(rank:Int): Int {
+    fun prizeMoney(rank: Int): Int {
         var prize = 0
         when (rank) {
             Ranks.FIRST.rank -> prize = Prizes.FIRST.money
@@ -24,7 +24,7 @@ class Calculator {
         return prize
     }
 
-    fun calculateYield(purchase:Int,sumPrizes:Int):Double{
-        return sumPrizes.toDouble()/purchase * 100
+    fun calculateYield(purchase: Int, sumPrizes: Int): Double {
+        return sumPrizes.toDouble() / purchase * 100
     }
 }

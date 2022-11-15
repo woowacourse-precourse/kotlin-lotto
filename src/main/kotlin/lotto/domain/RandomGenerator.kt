@@ -8,10 +8,10 @@ class RandomGenerator {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6)
     }
 
-    fun createRandomlottos(inputMoney:Int): List<Lotto>{
+    fun createRandomlottos(inputMoney: Int): List<Lotto> {
         val lottos = mutableListOf<Lotto>()
-        val count = inputMoney/1000
-        for (index in 0 until count){
+        val count = inputMoney / 1000
+        for (index in 0 until count) {
             val lotto = Lotto(createRandomNumbers())
             lottos.add(lotto)
         }

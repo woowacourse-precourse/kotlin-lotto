@@ -2,7 +2,6 @@ package lotto.ui
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.*
-import lotto.ErrorMessage.ERROR_NUM_NOT_IN_RANGE
 
 class InputUi {
     private val printUi = PrintUi()
