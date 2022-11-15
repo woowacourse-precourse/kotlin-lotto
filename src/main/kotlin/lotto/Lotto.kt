@@ -14,5 +14,5 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.contains(number)
     }
 
-    val numberList get() = this.numbers
+    val lotteryNumber get() = this.numbers
 }
