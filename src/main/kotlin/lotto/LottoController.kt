@@ -3,7 +3,6 @@ package lotto
 import camp.nextstep.edu.missionutils.Randoms
 import lotto.Model.Lotto
 import lotto.Model.Money
-import lotto.Model.Rank
 import lotto.View.OutputView
 import kotlin.math.roundToLong
 
@@ -28,7 +27,7 @@ class LottoController {
         for (lotto in lottoList) {
             val rank = lotto.calculateWinningResult(winningNumber, bonusNumber)
             earnedMoney += rank.prizeMoney
-            prizeResult[countPrizeResult(rank)]++
+            prizeResult[rank.rankNum]++
         }
 
         prizeResult[0] = earnedMoney
@@ -39,17 +38,6 @@ class LottoController {
     fun concludeEarningRate(earnedMoney: Int, moneyPut: Double) {
         val percentage = calculateEarningRate(earnedMoney, moneyPut)
         OutputView().printEarningsRate(percentage)
-    }
-
-    private fun countPrizeResult(rank: Rank): Int {
-        return when (rank) {
-            Rank.First -> 1
-            Rank.Second -> 2
-            Rank.Third -> 3
-            Rank.Fourth -> 4
-            Rank.Fifth -> 5
-            else -> 0
-        }
     }
 
     private fun calculateEarningRate(totalEarnedMoney: Int, moneyPut: Double): Double {
