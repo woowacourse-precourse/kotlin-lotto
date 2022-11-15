@@ -4,11 +4,13 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import lotto.constants.*
 import java.lang.IllegalArgumentException
+import kotlin.math.round
 
 lateinit var user: User
 lateinit var lottoNums: List<Lotto>
 lateinit var lottoWinNums: LottoWinNums
-val winCase = MutableList(5) { 0 }
+
+var winCase = MutableList(5) { 0 }
 var earningMoney = 0L
 
 fun inputPurchasingAmount(): Int {
@@ -52,12 +54,15 @@ fun printLottoWinNumbers() {
     for (case in lottoNums) case.printLottoWinNum()
 }
 
+fun calcEarningRate(earningMoney:Long,purchaseMoney:Long):Double{
+    return round((earningMoney.toDouble()/purchaseMoney) *1000)/10
+}
 fun printResult() {
     println(WIN_RESULT_MSG)
     for (i in 0 until 5) {
         println(LottoWinCaseMsg.getMsg(i) + winCase[i] + "개")
     }
-    println(earningRateMSG((earningMoney.toDouble() / user.purchaseMoney) * 100))
+    println(earningRateMSG(calcEarningRate(earningMoney , user.purchaseMoney)))
 
 }
 
