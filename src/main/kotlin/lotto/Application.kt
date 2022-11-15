@@ -3,6 +3,7 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import lotto.domain.BonusNumberError
+import lotto.domain.InputNumberCheck
 
 enum class Rank(var reward: Int) {
 
@@ -55,14 +56,7 @@ class LottoNumber {
     private fun inputMoney(): Int {
 
         println("구입금액을 입력해 주세요.")
-        try {
-            val input = Console.readLine().toInt()
-            if ((input % 1000 != 0) && (input != 0)) {
-                throw IllegalArgumentException("[ERROR] 구입 금액은 1000원 단위입니다.")
-            }
-        } catch (_: NumberFormatException) {
-            throw IllegalArgumentException("[ERROR] 숫자가 아닌 수가 입력되었습니다.")
-        }
+        money = InputNumberCheck().inputError()  // 에러체크
 
         return money
     }
