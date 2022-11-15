@@ -11,7 +11,6 @@ enum class LottoStats(val message: String, val price: Int, private var Cnt: Int)
     fun lottoMatchLists(userLottoList : List<Int>, comLottoList : List<Int>) {
         var answerCnt = 0
         var bonusCnt = 0
-        var cnt = 0
         for (target in userLottoList){
             if(comLottoList.subList(0,6).contains(target)){
                 answerCnt += 1
@@ -22,10 +21,9 @@ enum class LottoStats(val message: String, val price: Int, private var Cnt: Int)
         if(answerCnt == 6){
             answerCnt += 1
         } else if (answerCnt == 5 && bonusCnt == 1){
-            cnt = 6
+            answerCnt += 1
         }
-        cnt = answerCnt
-        return findRank(cnt)
+        return findRank(answerCnt)
     }
 
     private fun findRank(cnt : Int){
