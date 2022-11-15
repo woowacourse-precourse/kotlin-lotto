@@ -8,6 +8,13 @@ fun main() {
     val purchaseMoney = getPurchaseMoney()
     val numberOfLotto = purchaseMoney / Number_OF_LOTTO
     val lottoNumbers = getLottoNumbers(numberOfLotto)
+    printLottoNumbers(lottoNumbers)
+}
+
+fun printLottoNumbers(numbers: List<Lotto>) {
+    for(number in numbers) {
+        number.print()
+    }
 }
 
 fun getLottoNumbers(num: Int): List<Lotto> {

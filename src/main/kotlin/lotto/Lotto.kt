@@ -8,4 +8,8 @@ class Lotto(private val numbers: List<Int>) {
 
         LottoError.checkLottoNumbers(numbers)
     }
+
+    fun print() {
+        println(numbers.toString())
+    }
 }
