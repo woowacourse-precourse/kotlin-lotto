@@ -1,6 +1,7 @@
 package lotto.ui
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.domain.LottoWinningDetails
 
 class ui {
     fun moneyInput() : Int{
@@ -45,25 +46,17 @@ class ui {
 
     fun printLottoResult(three : Int, four : Int, five : Int, fivebonus : Int, six : Int){
         println("당첨 통계\n---")
-        print(lottoWinningDetails.THREE.message)
+        print(LottoWinningDetails.THREE.message)
         println(" - "+three.toString()+"개")
-        print(lottoWinningDetails.FOUR.message)
+        print(LottoWinningDetails.FOUR.message)
         println(" - "+four.toString()+"개")
-        print(lottoWinningDetails.FIVE.message)
+        print(LottoWinningDetails.FIVE.message)
         println(" - "+five.toString()+"개")
-        print(lottoWinningDetails.FIVEBONUS.message)
+        print(LottoWinningDetails.FIVEBONUS.message)
         println(" - "+fivebonus.toString()+"개")
-        print(lottoWinningDetails.SIX.message)
+        print(LottoWinningDetails.SIX.message)
         println(" - "+six.toString()+"개")
     }
-}
-
-enum class lottoWinningDetails(val message : String) {
-    THREE("3개 일치 (5,000원)"),
-    FOUR("4개 일치 (50,000원)"),
-    FIVE("5개 일치 (1,500,000원)"),
-    FIVEBONUS("5개 일치, 보너스 볼 일치 (30,000,000원)"),
-    SIX("6개 일치 (2,000,000,000원)")
 }
 
 fun moneyInputNotDivideException(money : Int) {
