@@ -1,5 +1,7 @@
 package lotto
 
+import java.text.DecimalFormat
+
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6)
@@ -48,5 +50,15 @@ class Lotto(private val numbers: List<Int>) {
             printWinLotto(winLotto[i],money[i])
         }
         rateOfReturn(winLotto, inputMoney)
+    }
+    fun printWinLotto(sameNum : Int, money : Int){
+        val dec= DecimalFormat("#,###")
+        when(money){
+            3 -> println("3개 일치 (${dec.format(Money.THREE.money)}원) - ${sameNum}개")
+            4 -> println("4개 일치 (${dec.format(Money.FOUR.money)}원) - ${sameNum}개")
+            5 -> println("5개 일치 (${dec.format(Money.FIVE.money)}원) - ${sameNum}개")
+            7 -> println("5개 일치, 보너스 볼 일치 (${dec.format(Money.BONUS.money)}원) - ${sameNum}개")
+            6 -> println("6개 일치 (${dec.format(Money.SIX.money)}원) - ${sameNum}개")
+        }
     }
 }
