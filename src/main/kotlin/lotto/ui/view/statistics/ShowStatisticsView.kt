@@ -39,6 +39,6 @@ class ShowStatisticsView {
         private const val OUTPUT_WINNING_MATCH_BONUS_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원) - %d개"
         private const val OUTPUT_TOTAL_PROFIT_RATE_MESSAGE = "총 수익률은 %s%%입니다."
         private val profitFormat = DecimalFormat("#,###")
-        private val profitRateFormat = DecimalFormat("#,###.0")
+        private val profitRateFormat = DecimalFormat("#,###0.0")
     }
 }

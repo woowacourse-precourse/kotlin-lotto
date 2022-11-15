@@ -6,6 +6,8 @@ object InputValidator {
 
     /** 사용자가 입력한 구입 금액이 올바른지 검증 **/
     fun validateTicketMoney(input: String): ErrorType {
+        if (input.isEmpty()) return ErrorType.EMPTY
+
         (input.isDigit() && input.isThousandUnit()).let { isCorrectInput ->
             if (!isCorrectInput) return ErrorType.MONEY
         }
@@ -14,6 +16,8 @@ object InputValidator {
 
     /** 사용자가 입력한 로또 번호 6개가 올바른지 검증 **/
     fun validateWinningLottoNumbers(input: String): ErrorType {
+        if (input.isEmpty()) return ErrorType.EMPTY
+
         if (input.split(",").contains(""))
             return ErrorType.RANGE
 
@@ -21,7 +25,7 @@ object InputValidator {
 
         return if (!inputs.isWinningNumberCount())
             ErrorType.COUNT
-        else if (!(inputs.isCorrectRange() && inputs.isWinningNumberAllDigit()))
+        else if (!inputs.isWinningNumberAllDigit() || !inputs.isCorrectRange())
             ErrorType.RANGE
         else if (inputs.isWinningNumberDuplicated())
             ErrorType.DUPLICATION
@@ -30,6 +34,8 @@ object InputValidator {
 
     /** 사용자가 입력한 보너스 번호가 올바른지 검증 **/
     fun validateBonusLottoNumber(winningNumbers: List<Int>, bonusNumber: String): ErrorType {
+        if (bonusNumber.isEmpty()) return ErrorType.EMPTY
+
         return if (!(bonusNumber.isDigit() && bonusNumber.isCorrectRange()))
             ErrorType.RANGE
         else if (winningNumbers.contains(bonusNumber.toInt()))
@@ -41,7 +47,7 @@ object InputValidator {
         this.all { eachChar -> eachChar.isDigit() }
 
     private fun String.isThousandUnit(): Boolean =
-        this.toInt() / THOUSAND > 0
+        this.toInt() > 0 && this.toInt() % THOUSAND == 0
 
     private fun String.isCorrectRange(): Boolean =
         this.toInt() in START_LOTTO_NUMBER..END_LOTTO_NUMBER

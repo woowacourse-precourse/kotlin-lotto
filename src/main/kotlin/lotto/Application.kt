@@ -14,6 +14,7 @@ import lotto.ui.view.winning.MakeWinningNumberView
 fun main() {
     val buyTicketView = BuyTicketView()
     val lottoTicket = LottoTicket.emptyLottoTicket() // 구매한 로또 티켓 데이터
+
     val buyTicketController =
         BuyTicketController(
             buyTicketView = buyTicketView,
@@ -22,6 +23,7 @@ fun main() {
 
     val makeWinningNumberView = MakeWinningNumberView()
     val winningLotto = WinningLotto.emptyWinningLotto() // 당첨 로또 번호 데이터
+
     val makeWinningNumberController =
         MakeWinningNumberController(
             makeWinningNumberView = makeWinningNumberView,
@@ -32,7 +34,9 @@ fun main() {
     makeWinningNumberController.run()
 
     val showStatisticsView = ShowStatisticsView()
-    val winningTotalStatistics = LottoCalculator.getWinningTotalStatistics(lottoTicket = lottoTicket, winningLotto = winningLotto)
+    val winningTotalStatistics =
+        LottoCalculator.getWinningTotalStatistics(lottoTicket = lottoTicket, winningLotto = winningLotto)
+
     val showStatisticsController = ShowStatisticsController(
         showStatisticsView = showStatisticsView,
         winningTotalStatistics = winningTotalStatistics
