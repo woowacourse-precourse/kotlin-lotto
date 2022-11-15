@@ -1,6 +1,6 @@
 package lotto
 
-import util.InputException
+import lotto.exception.InputException
 import util.Printer
 
 fun main() {

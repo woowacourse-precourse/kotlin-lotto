@@ -1,4 +1,4 @@
-package util
+package lotto.exception
 
 class InputException {
 
@@ -70,6 +70,7 @@ class InputException {
     }
 
     private fun invalidException(message: String) {
+        println("[ERROR] : $message")
         throw IllegalArgumentException("[ERROR] : $message")
     }
 

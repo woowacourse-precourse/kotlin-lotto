@@ -11,7 +11,7 @@ class Machine {
         return lotto
     }
 
-    fun winningsRate(money: Int, profit: Int) = profit.toFloat() / money.toFloat()
+    fun winningsRate(money: Int, profit: Int) = (profit.toFloat() / money.toFloat()) * 100
 
 
 }
