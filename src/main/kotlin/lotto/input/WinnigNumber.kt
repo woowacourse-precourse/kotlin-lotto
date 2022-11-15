@@ -22,7 +22,7 @@ class WinningNumberImpl:WinnigNumber {
                 println("[ERROR]")
                 throw IllegalArgumentException()
             }
-        lotto.util.InputValidable().checkInputMessagePatten(checkLotto)
+        lotto.util.InputValidableImpl().checkInputMessagePatten(checkLotto)
         if (checkLotto.distinct().size != 6) {
             println("[ERROR]")
             throw IllegalArgumentException()

@@ -1,6 +1,9 @@
 package lotto.service
 
-class Yeild {
+interface Yeild{
+    fun plusMoney(buyLottoMoney: String, checkWinningScore: MutableList<Int>): Double
+}
+class YeildImpl:Yeild {
     enum class ranking(val value : Int) {
         THREE(5000),
         FOUR(50000),
@@ -8,7 +11,7 @@ class Yeild {
         SIX(2000000000),
         FIVEBONUS(30000000)
     }
-    fun plusMoney(buyLottoMoney: String, checkWinningScore: MutableList<Int>): Double {
+    override fun plusMoney(buyLottoMoney: String, checkWinningScore: MutableList<Int>): Double {
         val buyLottoMoney = buyLottoMoney.toInt() * 1000
         var getMoney = 0
         getMoney += checkWinningScore[0] * ranking.THREE.value
@@ -17,7 +20,7 @@ class Yeild {
         getMoney += checkWinningScore[3] * ranking.FIVEBONUS.value
         getMoney += checkWinningScore[4] * ranking.SIX.value
         val yieldUser: Double = getMoney.toDouble() / buyLottoMoney.toDouble()
-        println(yieldUser * 100)
+        println("총 수익률은 "+yieldUser * 100+"%입니다.")
         return yieldUser
     }
 }

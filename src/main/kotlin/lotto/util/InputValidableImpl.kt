@@ -3,8 +3,12 @@ package lotto.util
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
-class InputValidable {
-    fun checkInputMessagePatten(checkOverlap: MutableList<String>) {
+interface InputValidable{
+    fun checkInputMessagePatten(checkOverlap: MutableList<String>)
+
+    }
+class InputValidableImpl :InputValidable{
+    override fun checkInputMessagePatten(checkOverlap: MutableList<String>) {
         val regax = "^\\d*$"
         val pattern: Pattern = Pattern.compile(regax)
         for (inputNum in checkOverlap) {

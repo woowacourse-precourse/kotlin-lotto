@@ -7,5 +7,4 @@ class input() {
         val userInputMoney = Console.readLine()
         return userInputMoney.toString()
     }
-
 }

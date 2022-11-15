@@ -15,7 +15,7 @@ class PayedMoneyImpl:PayedMoney {
     override fun checkMoneyStandard(userInputNumber: String?) {
         userInputNumber ?: throw IllegalArgumentException("[ERROR]")
         val checkMoney = userInputNumber.split(",").toList() as MutableList<String>
-        lotto.util.InputValidable().checkInputMessagePatten(checkMoney)
+        lotto.util.InputValidableImpl().checkInputMessagePatten(checkMoney)
         println(userInputNumber.toInt())
         if (userInputNumber.toInt() % 1000 != 0 || userInputNumber.toInt() == 0) {
             println("[ERROR]")

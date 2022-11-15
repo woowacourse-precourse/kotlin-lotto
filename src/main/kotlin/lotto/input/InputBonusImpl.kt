@@ -18,7 +18,7 @@ class InputBonusImpl:InputBonus {
         val lottoNumber =lottoNumbers.split(",")
         if (userInputNumber.toInt() >= 46 || userInputNumber.toInt() < 1) throw IllegalArgumentException()
         lottoOverlapCheck.add(userInputNumber)
-        lotto.util.InputValidable().checkInputMessagePatten(lottoOverlapCheck)
+        lotto.util.InputValidableImpl().checkInputMessagePatten(lottoOverlapCheck)
         if (lottoOverlapCheck.size != 1 ||lottoNumber.contains(lottoOverlapCheck[0])){
             println("[ERROR]")
             throw IllegalArgumentException()
