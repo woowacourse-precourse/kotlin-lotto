@@ -18,6 +18,7 @@ class InputView {
         val money = Console.readLine()
         try{
             if (money.matches(REGULAR_CORRECT_MONEY.toRegex()))
+                println(money)
                 return money.toLong()/TICKET_PRICES
         }catch (e: Exception){
             throw IllegalArgumentException("$ERROR_MESSAGE_BUY_TICKET 입력 값: $money")

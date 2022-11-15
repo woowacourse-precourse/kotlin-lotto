@@ -1,5 +1,6 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Console
 import domain.*
 import view.InputView
 import view.OutputView
