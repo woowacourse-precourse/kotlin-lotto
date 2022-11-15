@@ -21,4 +21,17 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @Test
+    fun `당첨 번호 입력 예외 테스트`() {
+        val string = "1,2,3,4,5,z"
+        val result: Set<Int>
+        try {
+            result = string.split(",").map { it.toInt() }.toSet()
+
+        } catch (_: NumberFormatException) {
+            print("[ERROR] 정수를 입력해야 하는데 문자가 입력됨")
+            throw IllegalArgumentException()
+        }
+        print(result)
+    }
 }
