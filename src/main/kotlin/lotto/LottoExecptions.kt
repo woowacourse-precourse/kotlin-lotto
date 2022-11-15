@@ -47,6 +47,13 @@ class LottoExecptions {
         return true
     }
 
+    fun getBonusDuplicateException(bonus : Int, winNumbers : List<Int>) : Boolean{
+        winNumbers.forEach {
+            if( it == bonus) throw IllegalArgumentException(JOptionPane.ERROR_MESSAGE.toString() + BONUS_DUPLICATE_WINNUM)
+        }
+        return true
+    }
+
 
     companion object{
         const val LOTTO_SIZE_ERROR = "로또 번호는 총 6개여야 합니다"

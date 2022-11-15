@@ -47,4 +47,15 @@ class LottoInputTest {
         }
     }
 
+    @Test
+    fun `로또 보너스 번호가 당첨 번호와 중복이라면 예외가 발생한다`() {
+
+        val bonus = 3
+        val winNumbers = listOf(1,2,3,4,5,6)
+
+        assertThrows<IllegalArgumentException> {
+            LottoExecptions().getBonusDuplicateException(bonus, winNumbers)
+        }
+    }
+
 }
