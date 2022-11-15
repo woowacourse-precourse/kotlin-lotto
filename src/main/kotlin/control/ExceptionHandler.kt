@@ -2,15 +2,11 @@ package control
 
 import camp.nextstep.edu.missionutils.Console
 import message.Error
-import org.junit.platform.commons.logging.LoggerFactory
 
 object ExceptionHandler {
-
-    private val log = LoggerFactory.getLogger(javaClass)
     fun checkAmount(amount: Int) {
         if (amount % 1000 != 0) {
-            log.error() { Error.DIVIDE.string }
-            throw IllegalArgumentException()
+            throw IllegalArgumentException(Error.DIVIDE.string)
         }
     }
 
@@ -18,8 +14,7 @@ object ExceptionHandler {
         try {
             return Console.readLine().toInt()
         } catch (e: NumberFormatException) {
-            log.error() { Error.ONLY_NUMBER.string }
-            throw IllegalArgumentException()
+            throw IllegalArgumentException(Error.ONLY_NUMBER.string)
         }
     }
 
@@ -27,20 +22,17 @@ object ExceptionHandler {
         try {
             return Console.readLine()!!.split(",").map { it.toInt() }
         } catch (e: NumberFormatException) {
-            log.error() { Error.ONLY_NUMBER.string }
-            throw IllegalArgumentException()
+            throw IllegalArgumentException(Error.ONLY_NUMBER.string)
         }
     }
 
     fun checkBonusNumber(bonusNumber: Int, winningNumber: List<Int>) {
         if (bonusNumber > 45 || bonusNumber < 1) {
-            log.error() { Error.RANGE.string }
-            throw IllegalArgumentException()
+            throw IllegalArgumentException(Error.RANGE.string)
         }
         repeat(winningNumber.size) {
             if (winningNumber.contains(bonusNumber)) {
-                log.error() { Error.OVERLAP.string }
-                throw IllegalArgumentException()
+                throw IllegalArgumentException(Error.OVERLAP.string)
             }
         }
     }
