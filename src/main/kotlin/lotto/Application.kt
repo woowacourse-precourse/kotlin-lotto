@@ -11,6 +11,7 @@ enum class Grade(val money:Int){
     Fourth(50000),
     Fifth(5000);
 }
+
 class Money{
     fun checkUserMoney(userMoney:String):Int{
         var userMoney = userMoney.toIntOrNull()
@@ -45,6 +46,7 @@ fun checkGrade(numbers:List<Int>,userNum:List<Int>,bonus: Int):Int{
     println(count)
     return returnGrade(numbers,bonus,count)
 }
+
 fun returnGrade(numbers:List<Int>,bonus: Int,count: Int):Int{
     if(count==6) return 1
     else if(count == 5){
@@ -56,7 +58,6 @@ fun returnGrade(numbers:List<Int>,bonus: Int,count: Int):Int{
     return 0
 }
 
-
 fun pickNum(Num:Int,userNum:List<Int>,bonus:Int):Array<Int>{
     var gradeNum = arrayOf(0,0,0,0,0,0)
     for(i in 1 until Num+1){
@@ -67,6 +68,7 @@ fun pickNum(Num:Int,userNum:List<Int>,bonus:Int):Array<Int>{
     }
     return gradeNum
 }
+
 fun printGrade(gradeNum : Array<Int>){
     println("3개 일치 (5,000원) - ${gradeNum[5]}개")
     println("4개 일치 (50,000원) - ${gradeNum[4]}개")
@@ -74,15 +76,7 @@ fun printGrade(gradeNum : Array<Int>){
     println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${gradeNum[2]}개")
     println("6개 일치 (2,000,000,000원) - ${gradeNum[1]}개")
 }
-fun checkEarnMoney(gradeNum: Array<Int>):Double{
-    var plusMoney : Double= 0.0
-    if(gradeNum[1] != 0) plusMoney+=Grade.First.money*gradeNum[1]
-    if(gradeNum[2] != 0) plusMoney+=Grade.Second.money*gradeNum[2]
-    if(gradeNum[3] != 0) plusMoney+=Grade.Third.money*gradeNum[3]
-    if(gradeNum[4] != 0) plusMoney+=Grade.Fourth.money*gradeNum[4]
-    if(gradeNum[5] != 0) plusMoney+=Grade.Fifth.money*gradeNum[5]
-    return plusMoney
-}
+
 fun userNum(lottoNum:Int){
     println("${lottoNum}개를 구매했습니다.")
     println("당첨번호를 입력하세요")
@@ -93,12 +87,22 @@ fun userNum(lottoNum:Int){
     val ok = Lotto(userNumInt)
     println("보너스 점수를 입력하세요")
     var bonus = Console.readLine()!!.toInt()
-    Bonus(bonus)
+    Bonus(userNumInt,bonus)
     var gradeNum = pickNum(lottoNum,userNumInt,bonus)
-   persent(gradeNum,lottoNum)
+    EarnMoneyPersent(gradeNum,lottoNum)
 }
 
-fun persent(gradeNum: Array<Int>,lottoNum: Int){
+fun checkEarnMoney(gradeNum: Array<Int>):Double{
+    var plusMoney : Double= 0.0
+    if(gradeNum[1] != 0) plusMoney+=Grade.First.money*gradeNum[1]
+    if(gradeNum[2] != 0) plusMoney+=Grade.Second.money*gradeNum[2]
+    if(gradeNum[3] != 0) plusMoney+=Grade.Third.money*gradeNum[3]
+    if(gradeNum[4] != 0) plusMoney+=Grade.Fourth.money*gradeNum[4]
+    if(gradeNum[5] != 0) plusMoney+=Grade.Fifth.money*gradeNum[5]
+    return plusMoney
+}
+
+fun EarnMoneyPersent(gradeNum: Array<Int>,lottoNum: Int){
     printGrade(gradeNum)
     var plusMoney = checkEarnMoney(gradeNum)
     var earnMoney : Double = (plusMoney/(lottoNum*1000.0))*100.0
