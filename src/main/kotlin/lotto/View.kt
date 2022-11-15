@@ -37,7 +37,7 @@ class View {
             sb.append("4개 일치 (50,000원) - ${rankCount[3]}개").append('\n')
             sb.append("5개 일치 (1,500,000원) - ${rankCount[2]}개").append('\n')
             sb.append("5개 일치, 보너스 볼 일치 (30,000,000원) - ${rankCount[1]}개").append('\n')
-            sb.append("6개 일치, (2,000,000,000원) - ${rankCount[0]}개").append('\n')
+            sb.append("6개 일치 (2,000,000,000원) - ${rankCount[0]}개").append('\n')
             sb.append("총 수익률은 $earningsRate%입니다.")
             print(sb.toString())
         }
