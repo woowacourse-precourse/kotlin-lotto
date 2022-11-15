@@ -33,8 +33,11 @@ class MainView {
 
     fun getBonusNum(): Int? {
         println(GET_BONUS_INPUT_MSG)
-        //보너스 번호가 양식에 맞게 입력되지 않았을 때의 예외 사항 처리 필요
-        return readLine()?.toInt()
+        val bonusNum = readLine()
+        if (bonusNum != null) {
+            LottoExecptions().getBonusNumericException(bonusNum)
+        }
+        return bonusNum?.toInt()
     }
 
     fun winTotal(winCount : List<Int>, earningRate : String){
