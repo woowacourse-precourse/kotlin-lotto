@@ -2,8 +2,8 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.constants.*
-import sun.awt.geom.Curve.round
 import java.lang.IllegalArgumentException
+import kotlin.math.round
 
 lateinit var user: User
 lateinit var lottoWinNums: LottoWinNums
