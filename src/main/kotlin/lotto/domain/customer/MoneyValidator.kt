@@ -1,5 +1,7 @@
 package lotto.domain.customer
 
+import lotto.util.throwException
+
 private const val UNIT_NOT_THOUSAND = "[ERROR] 구입금액은 1000원 단위여야합니다."
 private const val MONEY_NOT_NATURAL_NUMBER = "[ERROR] 구입금액은 자연수여야합니다."
 private const val THOUSAND_UNIT = "000"
@@ -13,13 +15,13 @@ class MoneyValidator {
 
     private fun isNumber(inputMoney: String) {
         if (!inputMoney.all { Character.isDigit(it) }) {
-            throw IllegalArgumentException(MONEY_NOT_NATURAL_NUMBER)
+            throwException(MONEY_NOT_NATURAL_NUMBER)
         }
     }
 
     private fun isThousandUnit(inputMoney: String) {
         if (inputMoney.takeLast(3) != THOUSAND_UNIT) {
-            throw IllegalArgumentException(UNIT_NOT_THOUSAND)
+            throwException(UNIT_NOT_THOUSAND)
         }
     }
 }

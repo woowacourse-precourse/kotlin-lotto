@@ -1,6 +1,7 @@
 package lotto.domain
 
 import camp.nextstep.edu.missionutils.Console.readLine
+import lotto.util.throwException
 
 private const val INPUT_NOT_NATURAL_NUMBER = "[ERROR] 로또번호는 자연수여야합니다."
 private const val INVALID_NUMBER_RANGE = "[ERROR] 입력된 숫자가 1에서 45사이가 아닙니다."
@@ -28,7 +29,7 @@ class LottoMachine {
 
     private fun checkNumberOfWinningNumbers(numbers: List<Int>) {
         if (numbers.size != LOTTO_SIZE) {
-            throw IllegalArgumentException(INVALID_NUMBER_OF_WINNING_NUMBERS)
+            throwException(INVALID_NUMBER_OF_WINNING_NUMBERS)
         }
     }
 
@@ -40,7 +41,7 @@ class LottoMachine {
 
     private fun checkBonusDuplication(number: String) {
         if (winningNumbers.contains(number.toInt())) {
-            throw IllegalArgumentException(BONUS_DUPLICATED)
+            throwException(BONUS_DUPLICATED)
         }
     }
 
@@ -51,13 +52,13 @@ class LottoMachine {
 
     private fun isNumber(number: String) {
         if (!number.all { Character.isDigit(it) }) {
-            throw IllegalArgumentException(INPUT_NOT_NATURAL_NUMBER)
+            throwException(INPUT_NOT_NATURAL_NUMBER)
         }
     }
 
     private fun isNumberInRange(number: Int) {
         if (number !in 1..45) {
-            throw IllegalArgumentException(INVALID_NUMBER_RANGE)
+            throwException(INVALID_NUMBER_RANGE)
         }
     }
 }
