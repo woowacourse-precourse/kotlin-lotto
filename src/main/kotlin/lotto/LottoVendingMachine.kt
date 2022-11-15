@@ -1,12 +1,13 @@
 package lotto
 
-import util.InputException
+import lotto.exception.InputException
 import util.Printer
 import util.Printer.Companion.FIRST_PRIZE
 import util.Printer.Companion.FIVTH_PRIZE
 import util.Printer.Companion.FOURTH_PRIZE
 import util.Printer.Companion.SECOND_PRIZE
 import util.Printer.Companion.THIRD_PRIZE
+import util.RankPrize
 
 class LottoVendingMachine(
     private val user: User,
@@ -14,6 +15,7 @@ class LottoVendingMachine(
     private val printer: Printer,
     private val inputException: InputException
 ) {
+
     fun execution() {
         purchaseLotto()
         issueLotto()
@@ -29,6 +31,7 @@ class LottoVendingMachine(
     }
 
     private fun outputLottoResult(totalPrize: Int, winnings: List<Int>) {
+        println()
         printer.apply {
             printLottoResultMessage()
             printLottoResultTable(winnings)
@@ -38,8 +41,10 @@ class LottoVendingMachine(
     }
 
     private fun calculatePrize(winnings: List<Int>): Int {
-        val prizes = listOf(FIVTH_PRIZE, FOURTH_PRIZE, THIRD_PRIZE, SECOND_PRIZE, FIRST_PRIZE)
-        return winnings.mapIndexed { idx, count -> count * prizes[idx] }.sum()
+        val prizes = listOf("FIFTH", "FOURTH", "THIRD", "SECOND", "FIRST")
+        return winnings.mapIndexed { idx, count ->
+            RankPrize.valueOf(prizes[idx]).getPrize(count)
+        }.sum()
     }
 
     private fun purchaseLotto() {
@@ -49,16 +54,21 @@ class LottoVendingMachine(
 
     private fun issueLotto() {
         val lottoCount = user.getLottos()
+        println()
         printer.printCountLotto(lottoCount)
-        printer.printLottoIssue(machine.issueLottos(), lottoCount)
+        for (count in 1..lottoCount) {
+            printer.printLottoIssue(machine.issueLottos(), lottoCount)
+        }
     }
 
     private fun inputLottoNumbers(): List<Int> {
+        println()
         printer.printInputLottoMessage()
         return user.inputNumbers()
     }
 
     private fun inputBonusNumber(numbers: List<Int>): Int {
+        println()
         printer.printInputBonusMessage()
         val bonus = user.inputBonus()
         if (numbers.contains(bonus)) inputException.checkBonusException(numbers, bonus)
