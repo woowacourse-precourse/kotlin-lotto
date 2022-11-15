@@ -2,6 +2,9 @@ package lotto.domain.model
 
 import lotto.utils.Constants
 import lotto.utils.Constants.BONUS_NOT_DUPLICATE_TEXT
+import lotto.utils.Constants.LOTTO_LENGTH
+import lotto.utils.Constants.MAX_LOTTO_NUM
+import lotto.utils.Constants.MIN_LOTTO_NUM
 import lotto.utils.Constants.ZERO
 
 class WinningLottery(private val userWinningNum: String, private val userBonus: String) {
@@ -32,7 +35,10 @@ class WinningLottery(private val userWinningNum: String, private val userBonus: 
         require(userInput.isNotBlank() && splitedNum.joinToString("").all { it.isDigit() }) {
             Constants.LOTTO_NUM_MUST_NUMBER_TEXT
         }
-        require(splitedNum.all { it.toInt() in Constants.MIN_LOTTO_NUM..Constants.MAX_LOTTO_NUM }) {
+        require(splitedNum.all { it.toInt() in MIN_LOTTO_NUM..MAX_LOTTO_NUM }) {
+            Constants.LOTTO_NUM_IN_RANGE_TEXT
+        }
+        require(splitedNum.size == LOTTO_LENGTH) {
             Constants.LOTTO_NUM_IN_RANGE_TEXT
         }
         return splitedNum
