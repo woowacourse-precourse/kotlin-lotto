@@ -47,10 +47,7 @@ fun main() {
     println(bonusNumber)
     outputView.newLine()
 
-    // 당첨 통계 메세지
-    outputView.outputWinningStatistics()
-
-    // 당첨 통계 출력
+    // 당첨 통계 메세지 출력
     val winningLotto = WinningStatistics().winningStatistics(listOfLotto, winningNumber, bonusNumber)
     val winningMap = WinningStatistics().winningMap(winningLotto)
     outputView.outputWinningStatisticsResult(winningMap)

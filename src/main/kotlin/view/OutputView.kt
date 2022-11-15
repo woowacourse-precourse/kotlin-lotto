@@ -38,13 +38,10 @@ class OutputView {
         println(listOfLotto.joinToString("\n"))
     }
 
-    fun outputWinningStatistics(){
-        println(MESSAGE_WINNING_STATISTICS)
-        println("---")
-    }
-
     // 당첨 통계 출력
     fun outputWinningStatisticsResult(lottoMap:Map<String, Int>){
+        println(MESSAGE_WINNING_STATISTICS)
+        println("---")
         for (i in lottoMap){
             println("${i.key} - ${i.value}개")
         }
