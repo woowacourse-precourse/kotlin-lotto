@@ -39,4 +39,14 @@ class LottoTest {
         }
     }
 
+    @Test
+    fun `보너스 번호가 1과 45 사이가 아니라면 예외가 발생한다`() {
+        val lottoNumber = listOf(1, 2, 3, 4, 5, 6)
+        val bonusNumber = 50
+        assertThrows<IllegalArgumentException> {
+            BonusNumberError(lottoNumber, bonusNumber)
+        }
+    }
+
+
 }
