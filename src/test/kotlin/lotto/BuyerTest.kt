@@ -1,7 +1,7 @@
 package lotto
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -112,17 +112,20 @@ class BuyerTest() {
         assertThat(exception.message).isEqualTo(WRONG_RANGE_NUMBER)
     }
 
-    @BeforeEach
-    fun `중복 테스트를 위한 당첨 번호 setting`() {
-        Buyer.enterWinningNumber("1,2,3,4,5,6")
-    }
-
     @Test
     fun `보너스 번호 입력 시 당첨 번호 안에 중복값이 있는 경우 예외 발생`() {
         val exception = assertThrows<IllegalArgumentException> {
             Buyer.enterBonusNumber("4")
         }
         assertThat(exception.message).isEqualTo(DUPLICATE_NUMBER)
+    }
+
+    companion object {
+        @JvmStatic
+        @BeforeAll
+        fun `중복 테스트를 위한 당첨 번호 setting`() {
+            Buyer.enterWinningNumber("1,2,3,4,5,6")
+        }
     }
 
 
