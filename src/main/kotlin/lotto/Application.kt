@@ -2,7 +2,6 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 import java.lang.IllegalArgumentException
-import java.lang.Math.abs
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
@@ -23,7 +22,7 @@ fun buyLotto(userAmountTobuy: Int): List<Lotto> {
     println("\n"+"$userAmountTobuy"+"개를 구매했습니다.")
 
     // 전체 로또번호를 담을 리스트
-    var lottoList: MutableList<Lotto> = mutableListOf()
+    val lottoList: MutableList<Lotto> = mutableListOf()
 
     // 리스트에 갯수만큼 로또를 생성하여 담아준다
     for ( i in 0..userAmountTobuy - 1 ) {
@@ -48,9 +47,10 @@ fun returnLottoResult(lottoList: List<Lotto>, winLottoNumber: List<Int>, bonusNu
     println("\n당첨 통계")
     println("---")
 
+    // 당첨 결과 횟수를 담을 리스트
     val winPlaceCount: MutableList<Int> = mutableListOf(0, 0, 0, 0, 0, 0)
-    var totalWinningMoney = 0
-    // 로또 리스트를 돌면서 각 로또의 당첨 결과 출력
+    var totalWinningMoney = 0 // 총 당첨 금액
+    // 로또 리스트를 돌면서 각 로또의 당첨 결과와 당첨 금액 더하기
     lottoList.forEach { lotto ->
         val result = lotto.generateResult(winLottoNumber, bonusNumber)
         // println(result)
@@ -88,23 +88,19 @@ fun returnLottoResult(lottoList: List<Lotto>, winLottoNumber: List<Int>, bonusNu
 }
 
 /*
-* Parameters:
+* Parameters: 사용자가 지불한 돈, 당첨 금액
 * Return: None
-* Do:
+* Do: 수익률을 반올림하여 계산
 * */
 fun calculateRevenue(userPayMoney: Double, totalWinningMoney: Double){
-    var revenue = 0.0
-
     if ( totalWinningMoney != 0.0 ) {
-        revenue = ( totalWinningMoney / userPayMoney ) * 100
+        val revenue = ( totalWinningMoney / userPayMoney ) * 100
         val df = DecimalFormat("#.#")
-        df.roundingMode = RoundingMode.HALF_UP
+        df.roundingMode = RoundingMode.HALF_UP // 반올림
         println("총 수익률은 ${df.format(revenue)}%입니다.")
     }else{
         println("총 수익률은 0.0%입니다.")
     }
-
-
 }
 /**
  * 예외처리 - 사용자 구입 금액
