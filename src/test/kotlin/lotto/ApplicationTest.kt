@@ -82,9 +82,20 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `당첨 결과의 수익률 계산 테스트`() {
-        assertThat(calculateWinningRate(
-            listOf(1, 0, 0, 0, 0),
-            8000
-        )).isEqualTo(62.5)
+        assertSimpleTest {
+            assertThat(
+                calculateWinningRate(
+                    listOf(1, 0, 0, 0, 0),
+                    8000
+                )
+            ).isEqualTo(62.5)
+
+            assertThat(
+                calculateWinningRate(
+                    listOf(1, 0, 0, 0, 0),
+                    50000
+                )
+            ).isEqualTo(10.0)
+        }
     }
 }
