@@ -1,19 +1,17 @@
 package lotto
 
-import values.*
 import ui.InputHandler
 import ui.OutputHandler
-import java.lang.Error
 
 fun main() {
     try {
-        val calc = LottoCalculation()
+        val calc = LottoCalculator()
         val inputHandler = InputHandler()
         val outputHandler = OutputHandler()
 
         val price: Int = inputHandler.price()
         val purchasesNumber = calc.priceToCount(price)
-        val lottoList: List<List<Int>> = LottoCalculation().generateRandomLotto(purchasesNumber)
+        val lottoList: List<List<Int>> = LottoCalculator().generateRandomLotto(purchasesNumber)
 
         outputHandler.lottoStatus(lottoList, purchasesNumber)
 

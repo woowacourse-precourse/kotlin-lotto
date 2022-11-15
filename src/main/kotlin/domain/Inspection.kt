@@ -1,7 +1,6 @@
 package domain
 
 import values.*
-import java.lang.Exception
 
 class Inspection {
 

@@ -50,6 +50,36 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `로또 개수가 6개가 아닌 경우`() {
+        assertSimpleTest {
+            runException("1000", "1,2,3,4,5,6,9", "7")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `당첨 금액이 Int의 범위를 벗어난 경우`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("2000", "10,15,20,25,30,35", "40")
+                assertThat(output()).contains(
+                    "2개를 구매했습니다.",
+                    "[10, 15, 20, 25, 30, 40]",
+                    "[10, 15, 20, 25, 30, 35]",
+                    "3개 일치 (5,000원) - 0개",
+                    "4개 일치 (50,000원) - 0개",
+                    "5개 일치 (1,500,000원) - 0개",
+                    "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개",
+                    "6개 일치 (2,000,000,000원) - 1개",
+                    "총 수익률은 101500000.0%입니다."
+                )
+            },
+            listOf(10, 15, 20, 25, 30, 40),
+            listOf(10, 15, 20, 25, 30, 35)
+        )
+    }
+
     override fun runMain() {
         main()
     }

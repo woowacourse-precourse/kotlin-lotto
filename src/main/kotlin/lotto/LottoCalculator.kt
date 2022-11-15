@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 import values.*
 import kotlin.math.round
 
-class LottoCalculation {
+class LottoCalculator {
 
     fun priceToCount(price: Int): Int {
         return price / 1000

@@ -1,12 +1,12 @@
 package ui
 
-import lotto.LottoCalculation
+import lotto.LottoCalculator
 import values.*
 
 class OutputHandler {
 
     fun totalStatus(lottoList: List<List<Int>>, jackpot: List<Int>, bonus: Int, price: Int) {
-        val calc = LottoCalculation()
+        val calc = LottoCalculator()
         val countJackpot: List<Int> = calc.countJackpot(lottoList, jackpot, bonus)
         val prize: Long = calc.calculatePrize(countJackpot)
         val rateOfReturn: Double = calc.rateOfReturn(price, prize)
@@ -21,7 +21,8 @@ class OutputHandler {
         println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${countJackpot[INDEX_FIVE_AND_BONUS_COINCIDENCE]}개")
         println("6개 일치 (2,000,000,000원) - ${countJackpot[INDEX_SIX_COINCIDENCE]}개")
 
-        println("총 수익률은 ${rateOfReturn}%입니다.")
+        val roundRateOfReturn = "%.1f".format(rateOfReturn)
+        println("총 수익률은 ${roundRateOfReturn}%입니다.")
     }
 
     fun lottoStatus(lottoList: List<List<Int>>, purchasesNumber: Int) {
