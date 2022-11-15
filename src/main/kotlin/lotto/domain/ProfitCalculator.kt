@@ -11,6 +11,7 @@ class ProfitCalculator {
 
     fun calculateYield(totalPrize: Long, totalMoney: Int): String {
         val yieldPercentage = totalPrize.toDouble() / totalMoney.toDouble() * 100
-        return "${"%.1f".format(yieldPercentage)}"
+        val format = "%,.1f"
+        return "${format.format(yieldPercentage)}"
     }
 }

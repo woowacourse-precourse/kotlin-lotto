@@ -26,7 +26,7 @@ class ProfitCalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = ["5000, 8000, 62.5", "2000000000, 5000, 40000000.0", "2000, 7000, 28.6"])
+    @CsvSource(value = ["5000:8000:62.5", "2000000000:5000:40,000,000.0", "2000:7000:28.6"], delimiter = ':')
     fun `총 수익률 계산`(totalPrize: Long, totalMoney: Int, expected: String) {
         val actual = calculator.calculateYield(totalPrize, totalMoney)
         assertThat(actual).isEqualTo(expected)
