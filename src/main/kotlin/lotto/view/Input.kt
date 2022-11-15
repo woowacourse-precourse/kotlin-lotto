@@ -8,6 +8,11 @@ class Input {
         return get()
     }
 
+    fun getBonusNumber(): String {
+        println(INPUT_BONUS_NUMBER_GUIDE)
+        return get()
+    }
+
     fun getWinningNumbers(): String {
         println(INPUT_WINNING_NUMBERS_GUIDE)
         return get()
@@ -20,5 +25,6 @@ class Input {
     companion object {
         const val INPUT_MONEY_GUIDE = "구입금액을 입력해 주세요."
         const val INPUT_WINNING_NUMBERS_GUIDE = "당첨 번호를 입력해 주세요."
+        const val INPUT_BONUS_NUMBER_GUIDE = "보너스 번호를 입력해 주세요."
     }
 }
