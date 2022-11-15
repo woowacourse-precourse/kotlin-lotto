@@ -27,10 +27,12 @@ fun main() {
 class LottoGame {
     private var lotteries = 0
     private val winningNumbers = ArrayList<Int>()
+    private var bonusNumber = 0
 
     fun simulate() {
         getPurchaseAmount()
         getWinningNumbers()
+        getBonusNumber()
     }
 
     private fun getPurchaseAmount() {
@@ -57,7 +59,8 @@ class LottoGame {
 
     private fun getWinningNumbers() {
         val inputNumbers = getInputWinningNumbers()
-
+        val parsedNumbers = parseInputNumbers(inputNumbers)
+        initWinningNumbers(parsedNumbers)
     }
 
     private fun getInputWinningNumbers(): String {
@@ -111,5 +114,19 @@ class LottoGame {
             ErrorType.WINNING_NUMBER.print()
             throw IllegalArgumentException()
         }
+    }
+
+    private fun initWinningNumbers(numbers: ArrayList<Int>) {
+        winningNumbers.addAll(numbers)
+    }
+
+    private fun getBonusNumber() {
+        val inputBonusNumber = getBonusNumberInput()
+
+    }
+
+    private fun getBonusNumberInput(): String {
+        println("보너스 번호를 입력해 주세요.")
+        return readLine() ?: ""
     }
 }
