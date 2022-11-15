@@ -6,6 +6,10 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import lotto.constants.earningRateMSG
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.CsvSource
+import org.junit.jupiter.params.provider.ValueSource
+
 
 class ApplicationTest : NsTest() {
 
@@ -31,6 +35,14 @@ class ApplicationTest : NsTest() {
     @Test
     fun `로또 개수가 구입한 가격에 맞게 계산되는지 test`(){
         assertThat(User("10000").numOfLotto).isEqualTo(10)
+    }
+    @ParameterizedTest
+    @CsvSource("1,2,3,4,5,6/4","1,2,3,4,5,7/3","1,2,3,4,5,8/2","1,2,3,4,8,9/1","1,2,3,8,9,20/0", delimiter = '/')
+    fun `당첨 등수 계산 test`(nums:String,expected:Int){
+        val lottoWinNums=LottoWinNums(listOf(1,2,3,4,5,6),7)
+        val lottoNums=Lotto(nums.split(",").map{it.toInt()})
+
+        assertThat(lottoNums.calcWin(lottoWinNums)).isEqualTo(expected)
     }
 
     @Test
