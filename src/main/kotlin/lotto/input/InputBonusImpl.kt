@@ -9,9 +9,9 @@ interface InputBonus {
 }
 
 class InputBonusImpl : InputBonus {
-    private val userInputNumber = Input().inputUser()
     override fun inputBonusNumber(lottoNumber: String): Int {
         print("보너스 번호를 입력해 주세요.")
+        val userInputNumber = Input().inputUser()
         checkBonusStandard(userInputNumber, lottoNumber)
         println(userInputNumber.toInt())
         return userInputNumber.toInt()
