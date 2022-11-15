@@ -51,5 +51,20 @@ fun getWinnings(lotteryList: List<Lotto>, winningNumbers: List<Int>, bonusNumber
 }
 
 fun main() {
-    TODO("프로그램 구현")
+    val ui = UI()
+    val validator = Validator()
+
+    try {
+        val money = validator.validateMoney(ui.getMoney())
+        val lotteryList = buyLottery(money)
+        ui.printLottery(lotteryList)
+        val winningNumbers = validator.validateLotteryNumber(ui.getLotteryNumber())
+        val bonusNumber = validator.validateBonusNumber(ui.getBonusNumber(), winningNumbers)
+        val winnings = getWinnings(lotteryList, winningNumbers, bonusNumber)
+        ui.printStatistics(winnings, calculateEarnings(winnings, money))
+
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+        return
+    }
 }
