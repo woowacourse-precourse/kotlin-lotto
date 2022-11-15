@@ -7,5 +7,6 @@ fun main() {
     println()
 
     val buy_count = Number().BuyLottoCount(buy)
+    val total_numbers=Number().PrintNumberList(buy_count)
 }
 
