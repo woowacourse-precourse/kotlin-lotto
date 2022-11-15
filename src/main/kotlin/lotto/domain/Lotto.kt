@@ -57,7 +57,7 @@ class Lotto(private val numbers: List<Int>) {
         matchingCount.sum(MatchingCount.THREE) + matchingCount.sum(MatchingCount.FOUR) +
         matchingCount.sum(MatchingCount.FIVE) + matchingCount.sum(MatchingCount.FIVE_BONUS) +
         matchingCount.sum(MatchingCount.SIX)
-    ) / price.toDouble()
+    ) * 100 / price.toDouble()
 
     private fun MutableMap<MatchingCount, Int>.sum(matchingCount: MatchingCount): Int =
         getOrDefault(matchingCount, 0) * matchingCount.profit

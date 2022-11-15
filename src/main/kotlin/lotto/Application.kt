@@ -5,6 +5,7 @@ import lotto.domain.Lotto
 import lotto.domain.MatchingCount
 import lotto.domain.Shop
 
+private val priceRegex = "\\d".toRegex()
 private val winningNumbersRegex = "[0-9]{1,2}(,[0-9]{1,2}){5}".toRegex()
 
 fun main() {
@@ -12,6 +13,7 @@ fun main() {
 
     val shop = Shop()
     val myLotto = shop.buyLotto(price)
+    printMyLotto(myLotto)
 
     val winningNumbers = inputWinningNumbers()
     val bonusNumber = inputBonusNumber()
@@ -21,17 +23,28 @@ fun main() {
     printMatchingCount(matchingCount)
 
     val returnRate = lotto.getReturnRate(matchingCount, price)
-    println("총 수익률은 ${String.format("%.2f", returnRate)}%입니다.")
+    println("총 수익률은 ${String.format("%.1f", returnRate)}%입니다.")
 }
 
 fun inputPrice(): Int {
     println("구입금액을 입력해 주세요.")
-    val price = Console.readLine().toInt()
-    require(price % 1000 == 0) {
+    val price = Console.readLine()
+    require(price.matches(priceRegex)) {
+        "[ERROR] 가격은 숫자여야만 한다."
+    }
+
+    require(price.toInt() % 1000 == 0) {
         "[ERROR] 구입금액은 1000으로 나누어 떨어져야한다."
     }
 
-    return price
+    return price.toInt()
+}
+
+fun printMyLotto(myLotto: List<List<Int>>) {
+    println("${myLotto.size}개를 구매했습니다.")
+    myLotto.forEach { numbers ->
+        println(numbers.toString())
+    }
 }
 
 fun inputWinningNumbers(): List<Int> {
