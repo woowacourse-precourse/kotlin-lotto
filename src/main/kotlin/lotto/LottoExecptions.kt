@@ -4,11 +4,18 @@ import javax.swing.JOptionPane
 
 class LottoExecptions {
 
-    fun getInputLottoPriceException(input : String) : Boolean{
+    fun getInputLottoPriceNotNumericException(input : String) : Boolean{
         if(input.toIntOrNull() is Int){
             return true
         }
         throw IllegalArgumentException(JOptionPane.ERROR_MESSAGE.toString() + LOTTO_PURCHASE_TYPE_ERROR)
+    }
+
+    fun getInputLottoPriceUnitException(input : Int) : Boolean{
+        if((input % LOTTO_PURCHASE_UNIT) == 0){
+            return true
+        }
+        throw IllegalArgumentException(JOptionPane.ERROR_MESSAGE.toString() + LOTTO_PURCHASE_ERROR)
     }
 
 
@@ -20,6 +27,8 @@ class LottoExecptions {
         const val LOTTO_NUM_ERROR = "로또 번호는 숫자여야 합니다"
         const val LOTTO_PURCHASE_TYPE_ERROR ="로또 구입 금액은 숫자로 입력해주세요"
         const val LOTTO_PURCHASE_ERROR = "로또는 1,000원 단위로 구입할 수 있습니다"
+
+        const val LOTTO_PURCHASE_UNIT = 1000
 
         const val LOTTO_WINNUM_COMMA_ERROR = "당첨 번호는 쉼표로 구분될 수 있도록 입력해주세요"
         const val LOTTO_WINNUM_TYPE_ERROR = "당첨 번호는 숫자만 입력해주세요"
