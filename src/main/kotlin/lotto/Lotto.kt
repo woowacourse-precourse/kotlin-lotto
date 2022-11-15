@@ -1,9 +1,13 @@
 package lotto
 
-class Lotto(private val numbers: List<Int>) {
-    init {
-        require(numbers.size == 6)
-    }
+import camp.nextstep.edu.missionutils.Randoms
 
-    // TODO: 추가 기능 구현
+class Lotto(private val numbers: List<Int>){
+    init {
+        require(numbers.size == 6){"[ERROR] 로또는 6자리로 구성되어 있어야 합니다."}
+        require(numbers.distinct().size==6){"[ERROR] 로또는 중복되지 않는 수로 구성되어 있어야 합니다."}
+    }
+    fun lottoNumbers() : List<Int>{
+        return numbers
+    }
 }
