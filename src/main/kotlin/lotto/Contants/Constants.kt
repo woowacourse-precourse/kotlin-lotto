@@ -7,3 +7,4 @@ object Constants {
     const val LottoMinimum = 1
     const val LottoMaximum = 45
 }
+
