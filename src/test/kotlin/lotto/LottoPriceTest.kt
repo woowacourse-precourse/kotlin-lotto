@@ -1,5 +1,6 @@
 package lotto
 
+import lotto.domain.Lotto
 import lotto.domain.LottoProfit
 import lotto.domain.LottoWin
 import org.assertj.core.api.Assertions

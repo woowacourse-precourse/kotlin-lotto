@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 import lotto.*
 
 class User {
-    fun inputUserBonusNumber(userGamePrizeNumber: List<Int>): Int {
+    fun inputUserBonusNumber(userGamePrizeNumber: Lotto): Int {
         println(BONUS_NUMBER_MESSAGE)
         val bonusNumber = Console.readLine()
 
@@ -12,7 +12,7 @@ class User {
         return bonusNumber.toInt()
     }
 
-    fun checkBonusNumber(bonusNumber: String, userGamePrizeNumber: List<Int>) {
+    fun checkBonusNumber(bonusNumber: String, userGamePrizeNumber: Lotto) {
         if (!checkNumber(bonusNumber) || bonusNumber == "")
             throw IllegalArgumentException(ERROR_PRIZE_NUMBER_MESSAGE)
         if (checkRangeBonusNumber(bonusNumber))
@@ -21,8 +21,8 @@ class User {
             throw IllegalArgumentException(ERROR_BONUS_REPEAT_MESSAGE)
     }
 
-    private fun checkRepeatBonusNumber(bonusNumber: String, userGamePrizeNumber: List<Int>): Int? {
-        return userGamePrizeNumber.find {
+    private fun checkRepeatBonusNumber(bonusNumber: String, userGamePrizeNumber: Lotto): Int? {
+        return userGamePrizeNumber.getNumbers().find {
             it == bonusNumber.toInt()
         }
     }
@@ -30,7 +30,7 @@ class User {
 
     private fun checkRangeBonusNumber(bonusNumber: String) = bonusNumber.toInt() < 1 || bonusNumber.toInt() > 45
 
-    fun inputUserPrizeNumber(): List<Int> {
+    fun inputUserPrizeNumber(): Lotto {
         println(PRIZE_NUMBER_PURCHASE_MESSAGE)
         val prizeNumber = Console.readLine()
 
@@ -38,21 +38,14 @@ class User {
     }
 
 
-    fun checkPrizeNumber(prizeNumber: String): List<Int> {
+    fun checkPrizeNumber(prizeNumber: String): Lotto {
         val prizeNumberGroup = changeCommaPrizeNumber(prizeNumber)
         if (!checkNumPrizeGroup(prizeNumberGroup))
             throw IllegalArgumentException(ERROR_PRIZE_NUMBER_MESSAGE)
-        if (!checkSizePrizeGroup(prizeNumberGroup))
-            throw IllegalArgumentException(ERROR_PRIZE_SIZE_MESSAGE)
         if (!checkRangePrizeGroup(prizeNumberGroup))
             throw IllegalArgumentException(ERROR_PRIZE_RANGE_MESSAGE)
-        if (!checkRepeatPrizeGroup(prizeNumberGroup))
-            throw IllegalArgumentException(ERROR_PRIZE_REPEAT_MESSAGE)
-        return prizeNumberGroup.map { it.toInt() }
+        return Lotto(prizeNumberGroup.map { it.toInt() })
     }
-
-    private fun checkRepeatPrizeGroup(prizeNumberGroup: List<String>) =
-        prizeNumberGroup.size == prizeNumberGroup.distinct().size
 
     private fun checkRangePrizeGroup(prizeNumberGroup: List<String>): Boolean {
         for (i in prizeNumberGroup) {
@@ -69,8 +62,6 @@ class User {
         }
         return true
     }
-
-    private fun checkSizePrizeGroup(prizeNumberGroup: List<String>) = prizeNumberGroup.size == 6
 
     private fun changeCommaPrizeNumber(prizeNumber: String) = prizeNumber.split(",")
 

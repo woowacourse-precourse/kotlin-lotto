@@ -6,18 +6,18 @@ import lotto.RESULT_AMOUNT_PURCHASE_MESSAGE
 class LottoPurchase(userGameAmount: Int) {
     private val lottoCount = userGameAmount / 1000
 
-    fun randomLottoPurchase(): MutableList<List<Int>> {
+    fun randomLottoPurchase(): MutableList<Lotto> {
         println("$lottoCount" + RESULT_AMOUNT_PURCHASE_MESSAGE)
-        val randomLottoGroup = mutableListOf<List<Int>>()
+        val randomLottoGroup = mutableListOf<Lotto>()
         for (i in 0 until lottoCount)
             randomLottoGroup.add(makeRandomLotto())
 
         return randomLottoGroup
     }
 
-    private fun makeRandomLotto(): List<Int> {
+    private fun makeRandomLotto(): Lotto {
         val randomLotto = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
         println(randomLotto)
-        return randomLotto
+        return Lotto(randomLotto)
     }
 }

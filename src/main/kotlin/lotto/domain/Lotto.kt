@@ -6,5 +6,8 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.size == numbers.distinct().size)
     }
 
+    fun getNumbers(): List<Int> = numbers
+
+    fun getNumbersSize(): Int = numbers.size
     // TODO: 추가 기능 구현
 }

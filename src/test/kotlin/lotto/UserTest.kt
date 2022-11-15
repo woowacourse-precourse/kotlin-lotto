@@ -1,5 +1,6 @@
 package lotto
 
+import lotto.domain.Lotto
 import lotto.domain.User
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -59,21 +60,21 @@ class UserTest {
     @Test
     fun `보너스 번호가 숫자인지 확인한다`() {
         assertThrows<IllegalArgumentException> {
-            userTest.checkBonusNumber("1e", listOf(1, 2, 3, 4, 5, 6))
+            userTest.checkBonusNumber("1e", Lotto(listOf(1, 2, 3, 4, 5, 6)))
         }
     }
 
     @Test
     fun `보너스 번호가 1~45인지 확인한다`() {
         assertThrows<IllegalArgumentException> {
-            userTest.checkBonusNumber("46", listOf(1, 2, 3, 4, 5, 6))
+            userTest.checkBonusNumber("46", Lotto(listOf(1, 2, 3, 4, 5, 6)))
         }
     }
 
     @Test
     fun `보너스 번호와 당첨 번호가 겹치는지 확인한다`() {
         assertThrows<IllegalArgumentException> {
-            userTest.checkBonusNumber("6", listOf(1, 2, 3, 4, 5, 6))
+            userTest.checkBonusNumber("6", Lotto(listOf(1, 2, 3, 4, 5, 6)))
         }
     }
 }

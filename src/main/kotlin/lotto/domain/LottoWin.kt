@@ -2,7 +2,7 @@ package lotto.domain
 
 import lotto.*
 
-class LottoWin(val purchase: List<List<Int>>, val userGamePrizeNumber: List<Int>, val bonusNumber: Int) {
+class LottoWin(val purchase: List<Lotto>, val userGamePrizeNumber: Lotto, val bonusNumber: Int) {
 
     fun findLottoWin(): MutableList<Int> {
         val resultLotto = mutableListOf(0, 0, 0, 0, 0)
@@ -16,15 +16,17 @@ class LottoWin(val purchase: List<List<Int>>, val userGamePrizeNumber: List<Int>
         return resultLotto
     }
 
-    fun checkRepeatLotto(purchaseNumber: List<Int>, userGamePrizeNumber: List<Int>): Int {
-        val winCount = userGamePrizeNumber.size - userGamePrizeNumber.toSet().minus(purchaseNumber.toSet()).size
+    fun checkRepeatLotto(purchaseNumber: Lotto, userGamePrizeNumber: Lotto): Int {
+        val winCount = userGamePrizeNumber.getNumbersSize() - userGamePrizeNumber.getNumbers().toSet()
+            .minus(purchaseNumber.getNumbers().toSet()).size
         if ((winCount == 5 && checkBonusLotto(purchaseNumber, bonusNumber) != null) || winCount == 6)
             return winCount - 2
         return winCount - 3
     }
 
 
-    fun checkBonusLotto(purchaseNumber: List<Int>, bonusNumber: Int) = purchaseNumber.find { it == bonusNumber }
+    fun checkBonusLotto(purchaseNumber: Lotto, bonusNumber: Int) =
+        purchaseNumber.getNumbers().find { it == bonusNumber }
 
     fun printLottoWin(resultLotto: MutableList<Int>) {
         println(RESULT_MESSAGE)

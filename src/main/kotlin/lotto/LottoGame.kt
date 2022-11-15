@@ -1,9 +1,6 @@
 package lotto
 
-import lotto.domain.LottoProfit
-import lotto.domain.LottoPurchase
-import lotto.domain.LottoWin
-import lotto.domain.User
+import lotto.domain.*
 
 class LottoGame {
     val user = User()
