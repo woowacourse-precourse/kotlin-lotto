@@ -1,6 +1,10 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.Lotto.Companion.LOTTO_PRICE
+import lotto.Lotto.Companion.LOTTO_SIZE
+import lotto.Lotto.Companion.MAX_NUMBER
+import lotto.Lotto.Companion.MIN_NUMBER
 import lotto.Messages.Companion.DIVISION_ERROR
 import lotto.Messages.Companion.DUPLICATE_NUMBER_ERROR
 import lotto.Messages.Companion.NUMBER_INPUT_ERROR
@@ -39,7 +43,7 @@ class LottoMachine {
 
     fun getNumberOfLottos(payment: String): Int {
         checkPaymentException(payment)
-        return payment.toInt() / 1000
+        return payment.toInt() / LOTTO_PRICE
     }
 
     fun checkPaymentException(payment: String) {
@@ -50,14 +54,14 @@ class LottoMachine {
             println(NUMBER_INPUT_ERROR)
             throw NoSuchElementException(NUMBER_INPUT_ERROR)
         }
-        if (price % 1000 != 0) {
+        if (price % LOTTO_PRICE != 0) {
             println(DIVISION_ERROR)
             throw IllegalArgumentException(DIVISION_ERROR)
         }
     }
 
     fun generateLotto(): Lotto {
-        val randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
+        val randomNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_SIZE).sorted()
         return Lotto(randomNumbers)
     }
 
@@ -66,7 +70,7 @@ class LottoMachine {
     }
 
     fun checkBonusNumberException(winningLotto: Lotto, number: Int) {
-        if (number !in 1..45) {
+        if (number !in MIN_NUMBER..MAX_NUMBER) {
             throw IllegalArgumentException(NUMBER_RANGE_ERROR)
         }
         if (winningLotto.getNumbers().contains(number)) {
@@ -107,7 +111,7 @@ class LottoMachine {
     }
 
     fun getEarningsRate(): String {
-        return String.format("%.1f", (prizeMoney / (numberOfLotto * 1000.0)) * 100)
+        return String.format("%.1f", (prizeMoney / (numberOfLotto * LOTTO_PRICE)) * 100)
     }
 
 }
