@@ -23,7 +23,9 @@ class LottoVendingMachine(
     }
 
     private fun inputWinningNumbers(): List<Int> {
-        val numbers = inputLottoNumbers()
+        printer.printInputLottoMessage()
+        val numbers = user.inputNumbers()
+        printer.printInputBonusMessage()
         val bonus = inputBonusNumber(numbers)
         return Lotto(numbers).lottoCalculate(machine.lottos, bonus)
     }
@@ -53,16 +55,9 @@ class LottoVendingMachine(
         printer.printLottoIssue(machine.issueLottos(), lottoCount)
     }
 
-    private fun inputLottoNumbers(): List<Int> {
-        printer.printInputLottoMessage()
-        return user.inputNumbers()
-    }
-
     private fun inputBonusNumber(numbers: List<Int>): Int {
-        printer.printInputBonusMessage()
         val bonus = user.inputBonus()
         if (numbers.contains(bonus)) inputException.checkBonusException(numbers, bonus)
         return bonus
     }
-
 }
