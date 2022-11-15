@@ -1,7 +1,5 @@
 package util
 
-import lotto.User
-
 class InputException {
 
     fun checkInputNumbersException(input: String?) {
@@ -27,7 +25,6 @@ class InputException {
         if (numbers.contains(bonus))
             invalidException(OVERLAP_EXCEPTION)
     }
-
 
     private fun checkTypeException(input: String?) {
         try {
@@ -70,10 +67,6 @@ class InputException {
             invalidException(OVERLAP_EXCEPTION)
         else if (numbers.size != 6)
             invalidException(LENGTH_EXCEPTION)
-    }
-
-    private fun checkOverlapException(numbers: List<Int>, bonus: Int) {
-        if (numbers.contains(bonus)) invalidException(OVERLAP_EXCEPTION)
     }
 
     private fun invalidException(message: String) {

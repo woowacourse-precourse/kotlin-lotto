@@ -51,12 +51,14 @@ class LottoVendingMachine(
         val lottoResult = mutableListOf(0, 0, 0, 0, 0, 0, 0, 0)
         machine.lottos.forEach { it ->
             val count = lotto.winningsCount(it)
-            if (lotto.isBonusTrue(bonus) || count == 6) {
+            if (it.contains(bonus) || count == 6) {
+                println(count)
                 lottoResult[count + 1]++
                 return@forEach
             }
             lottoResult[count]++
         }
+        println(lottoResult)
         return lottoResult.takeLast(5)
     }
 

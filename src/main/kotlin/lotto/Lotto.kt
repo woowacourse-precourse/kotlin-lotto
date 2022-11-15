@@ -9,6 +9,4 @@ class Lotto(private val numbers: List<Int>) {
         lotto.contains(it)
     }.size
 
-    fun isBonusTrue(bonus: Int): Boolean = numbers.contains(bonus)
-
 }
