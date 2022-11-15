@@ -1,5 +1,7 @@
 package view
 
+import camp.nextstep.edu.missionutils.Console
+
 class InputView {
 
     private val TICKET_PRICES = 1000
@@ -12,10 +14,9 @@ class InputView {
 
     // 구입할 금액 입력
     fun inputMoney(): Long {
-        // todo cosole readLine 체인지
-        val money = readLine()
+        val money = Console.readLine()
         try{
-            if (money!!.matches(REGULAR_CORRECT_MONEY.toRegex()))
+            if (money.matches(REGULAR_CORRECT_MONEY.toRegex()))
                 return money.toLong()/TICKET_PRICES
         }catch (e: Exception){
             throw IllegalArgumentException("$ERROR_MESSAGE_BUY_TICKET 입력 값: $money")
@@ -25,8 +26,7 @@ class InputView {
 
     // 당첨 번호 입력
     fun inputWinningNumber(): List<Int>{
-        // todo cosole readLine 체인지
-        val winningNumber = readLine()!!
+        val winningNumber = Console.readLine()
         try {
             val sixWinningNumber =  winningNumber.split(",").map { it.toInt() }
             // 중복 체크 & 길이 체크
@@ -44,8 +44,7 @@ class InputView {
     }
 
     fun inputBonusNumber(correctLotto: List<Int>): Int{
-        // todo cosole readLine 체인지
-        var inputBonusNumber = readLine()!!
+        val inputBonusNumber = Console.readLine()
         try {
             val bonusNumber = inputBonusNumber.toInt()
             if (bonusNumber !in correctLotto && bonusNumber in 1..45) return bonusNumber
