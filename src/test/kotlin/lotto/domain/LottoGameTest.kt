@@ -2,6 +2,7 @@ package lotto.domain
 
 import lotto.enum.WinningRank
 import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -34,7 +35,17 @@ class LottoGameTest{
         method.isAccessible = true
         val input = userLotto.compare(winningLotto, bonusNumber)
         val result = method.invoke(lottoGame, input)
-        Assertions.assertThat(result).isEqualTo(2_030_005_000)
+        assertThat(result).isEqualTo(2_030_005_000)
+    }
+
+    @Test
+    fun `calculateEarningRate 메서드에 총 당첨 금액을 인자로 넘겨 수익률을 구한다`() {
+        val method =
+            lottoGame.javaClass.getDeclaredMethod("calculateEarningRate", Int::class.java)
+        method.isAccessible = true
+        val input = 5000
+        val result = method.invoke(lottoGame, input)
+        assertThat(result).isEqualTo(125.0)
     }
 
 }
