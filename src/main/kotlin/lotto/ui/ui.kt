@@ -93,17 +93,17 @@ fun bonusNumberRangeOverException(bonusNumber: Int){
 
 fun MoneyTypeException(money : String){
     money.toIntOrNull()
-        ?: throw IllegalArgumentException("[ERROR] 올바른 입력이 아닙니다.")
+        ?: throw IllegalArgumentException("[ERROR] 금액은 숫자여야 합니다.")
 }
 
 fun correctNumberTypeException(correctNumber: List<String>){
     for (i in correctNumber) {
         i.toIntOrNull()
-            ?: throw IllegalArgumentException("[ERROR] 올바른 입력이 아닙니다.")
+            ?: throw IllegalArgumentException("[ERROR] 당첨 번호는 숫자여야 합니다.")
     }
 }
 
 fun bonusNumberTypeException(bonusNumber: String){
     bonusNumber.toIntOrNull()
-        ?: throw IllegalArgumentException("[ERROR] 올바른 입력이 아닙니다.")
+        ?: throw IllegalArgumentException("[ERROR] 보너스 번호는 숫자여야 합니다.")
 }
