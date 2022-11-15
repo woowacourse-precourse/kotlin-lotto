@@ -7,7 +7,7 @@ class Bonus(private val number: String, private val list: List<Int>) {
             print("[ERROR] : 숫자 형태로 입력해 주세요.")
             throw NoSuchElementException()
         }
-        require(number.toInt() <= 45 && number.toInt() > 1) {
+        require(number.toInt() <= 45 && number.toInt() >= 1) {
             "[ERROR] : 올바른 범위의 숫자를 입력해 주세요.(1~45)."
         }
         require(!(list.contains(number.toInt()))) {
