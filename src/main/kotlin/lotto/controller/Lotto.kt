@@ -1,9 +1,11 @@
 package lotto.controller
 
+import lotto.model.Strings
+
 class Lotto(private val numbers: List<Int>) {
 
     init {
-        require(numbers.toSet().size == 6) { "[ERROR] 로또는 서로 다른 6개의 숫자만 가능합니다" }
+        require(numbers.toSet().size == 6) { Strings.Input_Six_WinningNum.reward }
     }
 
 
@@ -19,13 +21,9 @@ class Lotto(private val numbers: List<Int>) {
         return count
     }
 
-    fun countSameWithBonus(lottoNumbers: List<Int>, bonusNum : Int) : Boolean{
+    fun countSameWithBonus(lottoNumbers: List<Int>, bonusNum: Int): Boolean {
 
         return lottoNumbers.contains(bonusNum)
     }
-
-
-
-
 
 }

@@ -1,5 +1,7 @@
 package lotto
 
+import lotto.model.Number
+import lotto.model.Strings
 import org.mockito.internal.matchers.Not
 import org.mockito.internal.matchers.Null
 
@@ -12,8 +14,8 @@ class CheckException() {
 
     fun checkMod(amount: String) {
 
-        if (amount.toInt() % 1000 != 0) {
-            throw IllegalArgumentException("[ERROR] 1000원 단위로 입력해주세요!")
+        if (amount.toInt() % Number.Cost.value != 0) {
+            throw IllegalArgumentException(Strings.Input_1000_Unit.reward)
         }
 
     }
@@ -21,7 +23,7 @@ class CheckException() {
     fun checkInt(amount: String) {
 
         if (!isNumber(amount)) {
-            throw IllegalArgumentException("[ERROR] 숫자 형태로 입력해주세요!")
+            throw IllegalArgumentException(Strings.Input_Only_Num.reward)
         }
     }
 
@@ -38,14 +40,14 @@ class CheckException() {
     fun checkListSize(numGroup: List<Int>) {
 
         if (numGroup.size != 6) {
-            throw IllegalArgumentException("[ERROR] 6개의 당첨 번호를 입력해 주세요.")
+            throw IllegalArgumentException(Strings.Input_Six_WinningNum.reward)
         }
     }
 
     fun checkRange(numGroup: List<Int>) {
         for (i in 0 until numGroup.size) {
             if (numGroup[i].toInt() < 1 || numGroup[i].toInt() > 45) {
-                throw IllegalArgumentException("[ERROR] 1~45사이의 숫자를 입력해 주세요.")
+                throw IllegalArgumentException(Strings.Input_Correct_Range.reward)
             }
         }
     }
@@ -53,14 +55,14 @@ class CheckException() {
     fun checkDuplicate(numGroup: List<Int>) {
 
         if (numGroup.size != numGroup.distinct().count()) {
-            throw IllegalArgumentException("[ERROR] 당첨 번호는 서로 다른 숫자로 입력해 주세요.")
+            throw IllegalArgumentException(Strings.Input_EachOther_Num.reward)
         }
     }
 
     fun checkBonusNum(num: Int, numGroup: List<Int>) {
 
         if (numGroup.contains(num)) {
-            throw IllegalArgumentException("[ERROR] 당첨 번호와 중복된 번호입니다.")
+            throw IllegalArgumentException(Strings.This_Duplicate_Num.reward)
         }
     }
 
