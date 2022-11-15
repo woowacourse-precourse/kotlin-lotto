@@ -1,6 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import kotlin.math.roundToInt
 
 enum class ErrorType {
     AMOUNT {
@@ -38,7 +39,7 @@ class LottoGame {
     private val winningNumbers = ArrayList<Int>()
     private var bonusNumber = 0
     private val buyLotteries = ArrayList<Lotto>()
-    private var counts = arrayOf(0, 0, 0, 0)
+    private var counts = arrayOf(0, 0, 0, 0, 0, 0, 0)
     private var bonusCounts = 0
 
     fun simulate() {
@@ -132,7 +133,9 @@ class LottoGame {
     }
 
     private fun checkWinningNumbersLength(numbers: ArrayList<Int>) {
-        if(numbers.size != 6) {
+        val numberSet = HashSet<Int>()
+        numberSet.addAll(numbers)
+        if(numberSet.size != 6) {
             ErrorType.WINNING_NUMBER.print()
             throw IllegalArgumentException()
         }
@@ -197,33 +200,34 @@ class LottoGame {
         for(lotto in buyLotteries) {
             val result = lotto.checkRank(winningNumbers)
             val isBonus = lotto.isContainNumber(bonusNumber, winningNumbers)
-            counts[result - 3]++
+            checkBonus(isBonus, result)
         }
     }
 
-    private fun checkBonus(isBonus: Boolean, count: Int) {
+    private fun checkBonus(isBonus: Boolean, result: Int) {
         if(isBonus) {
             bonusCounts++
-        } else {
-            counts[count - 3]++
+            return
         }
+
+        counts[result]++
     }
 
     private fun printResult() {
-        println("3개 일치 (5,000원) - ${counts[0]}개")
-        println("4개 일치 (50,000원) - ${counts[1]}개")
-        println("5개 일치 (1,500,000원) - ${counts[2]}개")
+        println("3개 일치 (5,000원) - ${counts[3]}개")
+        println("4개 일치 (50,000원) - ${counts[4]}개")
+        println("5개 일치 (1,500,000원) - ${counts[5]}개")
         println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${bonusCounts}개")
-        println("6개 일치 (2,000,000,000원) - ${counts[3]}개")
+        println("6개 일치 (2,000,000,000원) - ${counts[6]}개")
     }
 
     private fun printRatio() {
         var sum = 0L
-        sum += 5000 * counts[0]
-        sum += 50000 * counts[1]
-        sum  += 1500000 * counts[2]
+        sum += 5000 * counts[3]
+        sum += 50000 * counts[4]
+        sum  += 1500000 * counts[5]
         sum += 30000000 * bonusCounts
-        sum += 2000000000 * counts[3]
-        println("총 수익률은 ${sum / inputAmount.toDouble()}%입니다.")
+        sum += 2000000000 * counts[6]
+        println("총 수익률은 ${(sum * 100 / inputAmount.toDouble()).roundToInt() / 100.0}%입니다.")
     }
 }
