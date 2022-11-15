@@ -22,17 +22,11 @@ object InputExceptionHandler {
     }
 
     private fun hasRemainderOfPurchasingAmount(inputPurchasingAmount: String): Boolean {
-        if (inputPurchasingAmount.toInt() % 1000 > 0) {
-            return false
-        }
-        return true
+        return inputPurchasingAmount.toInt() % 1000 <= 0
     }
 
     private fun isNumberOfPurchasingAmount(inputPurchasingAmount: String): Boolean {
-        if (!inputPurchasingAmount.all { it.isDigit() }) {
-            return false
-        }
-        return true
+        return inputPurchasingAmount.all { it.isDigit() }
     }
 
     /**
@@ -60,40 +54,21 @@ object InputExceptionHandler {
     }
 
     private fun isNumberOfWinningNumbers(winningNumbers: List<String>): Boolean {
-        if (!winningNumbers
-                .joinToString("")
-                .all { it.isDigit() }
-        ) {
-            return false
-        }
-        return true
+        return winningNumbers
+            .joinToString("")
+            .all { it.isDigit() }
     }
 
     private fun hasElementOfWinningNumbers(winningNumbers: List<String>): Boolean {
-        if (winningNumbers.size != 6) {
-            return false
-        }
-        return true
+        return winningNumbers.size == 6
     }
 
     private fun isCorrectRangeOfWinningNumbers(winningNumbers: List<String>): Boolean {
-        for (number in winningNumbers) {
-            if (number.toInt() !in 1..45) {
-                return false
-            }
-        }
-        return true
+        return winningNumbers.all { it.toInt() in 1..45 }
     }
 
     private fun isUniqueOfWinningNumbers(winningNumbers: List<String>): Boolean {
-        if (winningNumbers.size
-            != winningNumbers
-                .distinct()
-                .count()
-        ) {
-            return false
-        }
-        return true
+        return winningNumbers.size == winningNumbers.distinct().count()
     }
 
     /**
@@ -117,27 +92,14 @@ object InputExceptionHandler {
     }
 
     private fun isNumberOfBonusNumber(bonusNumber: String): Boolean {
-        if (!bonusNumber.all { it.isDigit() }) {
-            return false
-        }
-        return true
+        return bonusNumber.all { it.isDigit() }
     }
 
     private fun isCorrectRangeOfBonusNumber(bonusNumber: String): Boolean {
-        if (bonusNumber.toInt() !in 1..45) {
-            return false
-        }
-        return true
+        return bonusNumber.toInt() in 1..45
     }
 
     private fun isUniqueOfBonusNumber(winningNumbers: Lotto, bonusNumber: String): Boolean {
-        if (winningNumbers.getLottoNumbers()
-                .contains(
-                    bonusNumber.toInt()
-                )
-        ) {
-            return false
-        }
-        return true
+        return !winningNumbers.getLottoNumbers().contains(bonusNumber.toInt())
     }
 }

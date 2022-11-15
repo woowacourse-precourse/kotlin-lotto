@@ -62,7 +62,7 @@ class InputExceptionHandlerTest {
 
         const val WINNING_NUMBERS_IS_NOT_NUMBER = "1,2,3,4,5,a"
         const val WINNING_NUMBERS_HAS_NOT_ELEMENTS = "1,2,3,4,5"
-        const val WINNING_NUMBERS_IS_NOT_CORRECT_RANGE = "1,2,3,4,56,6"
+        const val WINNING_NUMBERS_IS_NOT_CORRECT_RANGE = "1,2,3,4,5,56"
         const val WINNING_NUMBERS_IS_NOT_UNIQUE = "1,2,3,4,5,5"
 
         val TEST_WINNING_NUMBER = Lotto(listOf(1, 2, 3, 4, 5, 6))
