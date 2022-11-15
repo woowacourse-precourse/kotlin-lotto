@@ -1,5 +1,8 @@
 package lotto
 
+import lotto.domain.Lotto
+import lotto.domain.customer.MatchedCount
+
 private const val ENTER_PURCHASE_MOENY = "구입금액을 입력해 주세요."
 private const val PURCHASE_HOW_MANY = "개를 구매했습니다."
 private const val ENTER_WINNING_NUMBERS = "당첨 번호를 입력해 주세요."
@@ -14,13 +17,13 @@ class Printer {
         println(ENTER_PURCHASE_MOENY)
     }
 
-    fun printNumberOfPurchaseLottos(numberOfLottos: Int) {
+    fun printNumberOfPurchaseLotteries(numberOfLotteries: Int) {
         println()
-        println(numberOfLottos.toString() + PURCHASE_HOW_MANY)
+        println(numberOfLotteries.toString() + PURCHASE_HOW_MANY)
     }
 
-    fun printPurchasedLottos(lottos: List<Lotto>) {
-        lottos.forEach { it.printNumbers() }
+    fun printPurchasedLotteries(lottereis: List<Lotto>) {
+        lottereis.forEach { println(it.returnNumbers()) }
     }
 
     fun printEnterWinningNumbers() {
