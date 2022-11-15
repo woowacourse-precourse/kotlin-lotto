@@ -28,32 +28,10 @@ class LottoGame {
     private fun generateLottoCount(): Int {
         println("구입금액을 입력해 주세요.")
         val money = Console.readLine()
-        checkMoneyThrowException(money)
+        MoneyCheckError(money).checkMoneyThrowException()
         val lottoCount = money.toInt() / LOTTO_PRICE
         println("${lottoCount}개를 구매했습니다.")
         return lottoCount
-    }
-
-    private fun checkMoneyThrowException(userInput: String) {
-        throwIsMoneyNumberException(userInput)
-        throwMoneyUnitException(userInput)
-    }
-
-    private fun throwIsMoneyNumberException(userInput: String) {
-        val numbers = userInput.toCharArray().filter { number ->
-            number in '0'..'9'
-        }
-        if (numbers.size != userInput.length) {
-            println("[ERROR] 구입 금액은 숫자여야 합니다.")
-            throw IllegalArgumentException()
-        }
-    }
-
-    private fun throwMoneyUnitException(userInput: String) {
-        if (userInput.toInt() % LOTTO_PRICE != 0) {
-            println("[ERROR] 구입 금액은 1,000원 단위여야 합니다.")
-            throw IllegalArgumentException()
-        }
     }
 
     private fun generateWinningNumbers(): Lotto {
