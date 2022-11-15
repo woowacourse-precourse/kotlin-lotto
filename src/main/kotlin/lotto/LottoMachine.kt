@@ -11,7 +11,7 @@ class LottoMachine(private val customerBuyLottoPrice: Int) {
     }
 
     private fun createCustomerLottoNumber(): List<Int>{
-        return Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_RANGE_START, LOTTO_NUMBER_RANGE_END, LOTTO_NUMBER_SIZE).sorted()
+        return Randoms.pickUniqueNumbersInRange(LottoProcessStatement.LOTTO_NUMBER_RANGE_START, LottoProcessStatement.LOTTO_NUMBER_RANGE_END, LottoProcessStatement.LOTTO_NUMBER_SIZE).sorted()
     }
 
     fun produceLottoNumbers(): MutableList<List<Int>> {
@@ -27,11 +27,11 @@ class LottoMachine(private val customerBuyLottoPrice: Int) {
 
 
 
-    companion object {
-        const val LOTTO_NUMBER_RANGE_START = 1
-        const val LOTTO_NUMBER_RANGE_END = 45
-        const val LOTTO_NUMBER_SIZE = 6
-    }
+//    companion object {
+//        const val LOTTO_NUMBER_RANGE_START = 1
+//        const val LOTTO_NUMBER_RANGE_END = 45
+//        const val LOTTO_NUMBER_SIZE = 6
+//    }
 
 
 
