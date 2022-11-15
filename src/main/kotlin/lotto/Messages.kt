@@ -16,6 +16,6 @@ class Messages {
         const val THIRD_PRIZE_RESULT = "5개 일치 (1,500,000원) - %d개"
         const val SECOND_PRIZE_RESULT = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개"
         const val FIRST_PRIZE_RESULT = "6개 일치 (2,000,000,000원) - %d개"
-        const val EARNINGS_RATE_MESSAGE = "총 수익률은 %s%%입니다."
+        const val EARNINGS_RATE_MESSAGE = "총 수익률은 %.1f%%입니다."
     }
 }

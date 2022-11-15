@@ -7,18 +7,19 @@ class Results(
 ) {
     var rankResults: MutableMap<WinningRank, Int> = mutableMapOf()
     private var prizeMoney: Double
-    lateinit var earningsRate: String
+    var earningsRate: Double
 
     init {
         for (rank in WinningRank.values()) {
             rankResults[rank] = 0
         }
         prizeMoney = 0.0
+        earningsRate = 0.0
     }
 
     fun calculateResult(lottos: List<Lotto>, winningLotto: Lotto, bonusNumber: Int) {
         lottos.forEach { calculateLottoResult(it, winningLotto, bonusNumber) }
-        earningsRate = String.format("%.1f", (prizeMoney / (numberOfLotto * LOTTO_PRICE)) * 100)
+        earningsRate = (prizeMoney / (numberOfLotto * LOTTO_PRICE)) * 100
     }
 
     private fun calculateLottoResult(lotto: Lotto, winningLotto: Lotto, bonusNumber: Int) {
