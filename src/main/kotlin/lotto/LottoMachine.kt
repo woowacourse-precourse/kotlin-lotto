@@ -39,8 +39,15 @@ class LottoMachine {
     }
 
     fun checkPaymentException(payment: String) {
-        val price = payment.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] 잘못된 입력입니다.")
+        var price = -1
+        try {
+            price = payment.toInt()
+        } catch (e: IllegalArgumentException){
+            println("[ERROR] 숫자만 입력해 주세요.")
+            throw NoSuchElementException("[ERROR] 숫자만 입력해 주세요.")
+        }
         if (price % 1000 != 0) {
+            println("[ERROR] 1000원으로 나눠지지 않습니다.")
             throw IllegalArgumentException("[ERROR] 1000원으로 나눠지지 않습니다.")
         }
     }
@@ -52,10 +59,6 @@ class LottoMachine {
 
     fun convertNumbersToLotto(numbers: String): Lotto {
         return Lotto(numbers.split(",").map { it.toInt() }.toList().sorted())
-    }
-
-    fun checkWinningNumberException() {
-        TODO()
     }
 
     fun checkBonusNumberException(winningLotto: Lotto, number: Int) {
