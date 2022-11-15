@@ -73,3 +73,41 @@ class Lotto(private val numbers: List<Int>) {
 
 
 
+fun buyLotto(){
+    print("구매 금액을 입력해 주세요.")
+    var userInput : Int? = readLine()!!.toIntOrNull()
+    if(!userInputCheck(userInput)){
+        println("유효하지 않은 입력입니다.")
+    }
+    userInput = userInput?.div(1000)
+
+    createLottoList(userInput!!)
+}
+
+//fun userInputCheck(userInput: Int?): Boolean {
+//
+//}
+
+fun createOneLotto() : Lotto {
+    // 새로운 랜덤한 로또 용지 하나를 만드는 함수
+
+    var newLotto = mutableSetOf<Int>()
+    while (newLotto.size < 6)
+        newLotto+= Randoms.pickNumberInRange(1, 9)
+    return ListToLotto(newLotto.toList())
+}
+
+fun ListToLotto(lottoInList: List<Int>) : Lotto {
+    return Lotto(lottoInList)
+}
+
+fun createLottoList(howMany : Int) : List<Lotto> {
+    // 로또 용지의 전체 리스트를 리턴함
+    var newLottoList: List<Lotto> = listOf()
+
+    for (i: Int in 0 until howMany) {
+        val aLotto = createOneLotto()
+        newLottoList += aLotto
+    }
+    return newLottoList
+}
