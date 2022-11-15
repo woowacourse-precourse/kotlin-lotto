@@ -3,7 +3,10 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 
 class LottoInputOutput {
-    private var lotto: Lotto? = null
+    private var lotto : Lotto? = null
+    private var stats : LottoStats? = null
+    private var userList = mutableListOf<List<Int>>()
+    private var comList = mutableListOf<Int>()
     private val logic = LottoLogic()
     private var count = 0
     fun lottoPurchaseAmount(){
@@ -13,19 +16,20 @@ class LottoInputOutput {
         try {
             purchaseAmount = userPurchaseAmount.toInt()
         } catch (e:Exception) {
+            //println("[ERROR] 범위 내 숫자를 입력하셔야 합니다.")
             throw IllegalArgumentException("[ERROR] 범위 내 숫자를 입력하셔야 합니다.")
         }
         count = logic.lottoPurchaseAmount(purchaseAmount)
         lottoCount(count)
-        lottoLists(logic.lottoCreateLists(count))
-        finalLotto()
     }
 
     private fun lottoCount(count : Int) {
         println("\n${count}개를 구매했습니다.")
+        lottoLists(logic.lottoCreateLists(count))
+        finalLotto()
     }
 
-    private fun lottoLists(listLotto : List<List<Int>>){
+    private fun lottoLists(listLotto : List<List<Int>>) {
         for(i in listLotto.indices){
             println(listLotto[i])
         }
