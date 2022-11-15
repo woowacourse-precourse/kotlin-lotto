@@ -1,12 +1,25 @@
 package lotto.domain
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.AMOUNT_PURCHASE_MESSAGE
-import lotto.ERROR_AMOUNT_BIG_NUMBER_MESSAGE
-import lotto.ERROR_AMOUNT_DIVIDE_MESSAGE
-import lotto.ERROR_AMOUNT_NUMBER_MESSAGE
+import lotto.*
 
 class User {
+
+    fun inputUserPrizeNumber() {
+        println(PRIZE_NUMBER_PURCHASE_MESSAGE)
+        val prizeNumber = Console.readLine()
+
+        checkPrizeNumber(prizeNumber)
+    }
+
+    fun checkPrizeNumber(prizeNumber: String) {
+        val PrizeNumberGroup =changeCommaPrizeNumber(prizeNumber)
+        
+    }
+
+    fun changeCommaPrizeNumber(prizeNumber: String) = prizeNumber.split(",")
+
+
     fun inputUserAmount(): Int {
         println(AMOUNT_PURCHASE_MESSAGE)
         val userAmount = Console.readLine()
