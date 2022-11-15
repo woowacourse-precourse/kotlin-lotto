@@ -26,7 +26,7 @@
 #### ✅ 당첨 통계를 출력하는 함수
 
 ---
-### 🚧️ Validation class
+### ✅️ Validation class
 #### ✅ 돈을 validate하는 함수
 - 금액에 숫자가 아닌 character가 있는 경우 예외처리
 - 금액이 범위를 벗어나는 경우(범위 : INT_MAX 이하 양의 정수) 예외처리
