@@ -2,6 +2,7 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 import java.security.cert.TrustAnchor
+import java.util.Objects
 
 class Lotto(private val numbers: List<Int>) {
     private var lottoNumbers = listOf<Int>()
@@ -81,12 +82,12 @@ fun buyLotto(){
     }
     userInput = userInput?.div(1000)
 
-    createLottoList(userInput!!)
+    var lottoList = createLottoList(userInput!!)
 }
 
-//fun userInputCheck(userInput: Int?): Boolean {
-//
-//}
+fun userInputCheck(userInput: Int?): Boolean {
+
+}
 
 fun createOneLotto() : Lotto {
     // 새로운 랜덤한 로또 용지 하나를 만드는 함수
@@ -110,4 +111,21 @@ fun createLottoList(howMany : Int) : List<Lotto> {
         newLottoList += aLotto
     }
     return newLottoList
+}
+
+enum class ExceptionExplain{
+    WrongPayment{
+        override fun checkAndThrowException() {
+            throw IllegalArgumentException("[ERROR] 입력 금액은 1000원 단위입니다.")
+        }
+    }, WrongWinNum{
+        override fun checkAndThrowException() {
+            throw IllegalArgumentException("[ERROR] 당첨 번호는 1이상 45이하입니다.")
+        }
+    }, WrongBonusNum{
+        override fun checkAndThrowException() {
+            throw IllegalArgumentException("[ERROR] 당첨 번호는 1이상 45이하입니다.")
+        }
+    };
+    abstract fun checkAndThrowException()
 }
