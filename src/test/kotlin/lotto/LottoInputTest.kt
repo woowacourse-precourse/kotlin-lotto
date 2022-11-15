@@ -26,5 +26,11 @@ class LottoInputTest {
         }
     }
 
+    @Test
+    fun `로또 당첨 번호가 쉼표로 구분되지 않는다면 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            LottoExecptions().getLottoNumCommaException("1,2,346,7")
+        }
+    }
 
 }
