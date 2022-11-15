@@ -9,28 +9,39 @@ fun main() {
     publishLottoNumbers(price)
 }
 
-fun isNumber(string: String) = string.toIntOrNull() != null
+// 기능 1번
+fun isNumber(string: String){
+    if(string.toIntOrNull() == null)
+        throw IllegalArgumentException("[ERROR] 구매 금액은 공백 없이 정수 형태여야 합니다.")
+}
 
-fun isThousands(number: String) = number.toInt() % 1000 == 0
+fun isThousands(number: String) {
+    if (number.toInt() % 1000 != 0)
+        throw IllegalArgumentException("[ERROR] 구매 금액은 천 단위의 수여야 합니다.")
+}
 
-fun isPositiveNumber(number: String) = number.toInt() > 0
+fun isPositiveNumber(number: String) {
+    if (number.toInt() <= 0)
+        throw IllegalArgumentException("[ERROR] 구매 금액은 0보다 큰 수여야 합니다.")
+}
 
-fun isSatisfyPriceConditions(string: String) =
-        isNumber(string) &&
-        isThousands(string) &&
-        isPositiveNumber(string)
+fun isSatisfyPriceConditions(string: String) {
+    isNumber(string)
+    isThousands(string)
+    isPositiveNumber(string)
+}
 
 fun printEnterPriceMessage() = println("구매금액을 입력해주세요.")
 
 fun enterPurchasePrice(): Int {
     val purchasePrice = Console.readLine()
 
-    if (!isSatisfyPriceConditions(purchasePrice))
-        throw IllegalArgumentException("[ERROR] 구매 금액은 공백 없이 천 단위의 수를 입력해주세요.")
+    isSatisfyPriceConditions(purchasePrice)
 
     return purchasePrice.toInt()
 }
 
+// 기능 2번
 fun getLottoCount(price: Int) = price / 1000
 
 fun printLottoPurchaseCountMessage(price: Int) = println("${getLottoCount(price)}개를 구매했습니다.")
