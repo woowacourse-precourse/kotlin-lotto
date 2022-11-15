@@ -24,9 +24,9 @@
 - main()
 - inputLottoPrice : 로또 구입 금액 입력 받는 메소드
 - printLottoCount : 로또 장수 출력하는 메소드
-- inputWinningLotto : 당첨 번호와 보너스 번호를 입력 받는 메소드
-- printYield : 수익률 출력 메소드
-- printWinningStats : 당첨 통계를 출력하는 메소드
+- inputWinningLotto : 당첨 번호를 입력 받는 메소드
+- inputBonusNumber : 보너스 번호를 입력 받는 메소드
+- printWinningResult : 당첨 통계를 출력하는 메소드
 
 ## LottoCreator
 ### Method
@@ -36,7 +36,7 @@
 ## LottoCalculator
 ### Method
 - calculateLottoCount : 입력받은 로또 구입 금액 -> 로또 장수 계산하는 메소드
-- calculateYield : 수익률 계산하는 메소드
+- calculateRate : 수익률 계산하는 메소드
 
 ## Lottos
 ### Field
