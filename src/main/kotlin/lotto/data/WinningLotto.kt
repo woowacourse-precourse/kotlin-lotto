@@ -4,17 +4,17 @@ import lotto.error.ErrorMessages
 
 private typealias WinningLottoError = ErrorMessages.WinningLottoEnum
 
-class WinningLotto(numbers: List<Int>, bonusNumber: Int) {
+class WinningLotto constructor(lotto: Lotto, bonus: Int) {
 
     private val lotto: Lotto
     private val bonus: Int
 
     init {
-        require(bonusNumber in Lotto.Range) { WinningLottoError.OutOfRangeNumbers }
-        require(!numbers.contains(bonusNumber)) { WinningLottoError.NotDuplicated }
+        require(bonus in Lotto.Range) { WinningLottoError.OutOfRangeNumbers }
+        require(!lotto.contains(bonus)) { WinningLottoError.NotDuplicated }
 
-        lotto = Lotto(numbers)
-        bonus = bonusNumber
+        this.lotto = lotto
+        this.bonus = bonus
     }
 
     fun matches(lotto: Lotto): Pair<Int, Boolean> {

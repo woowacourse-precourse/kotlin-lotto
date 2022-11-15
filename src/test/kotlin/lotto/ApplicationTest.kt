@@ -5,12 +5,11 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
 
     @Test
-    fun `기능 테스트`() {
+    fun `기능테스트`() {
         assertRandomUniqueNumbersInRangeTest(
             {
                 run("8000", "1,2,3,4,5,6", "7")
@@ -44,12 +43,18 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun `구입금액입력_숫자외문자포함_예외`() {
         assertSimpleTest {
-            val throws = assertThrows<IllegalArgumentException> {
-                runException("1000j")
-            }
-            assertThat(throws.message).contains(ERROR_MESSAGE)
+            runException("1000j")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `당첨번호입력_숫자5개_예외`() {
+        assertSimpleTest {
+            runException("1000", "1,2,3,4,5")
+            assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
 

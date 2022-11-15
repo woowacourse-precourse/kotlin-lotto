@@ -86,14 +86,14 @@ class LottoTest {
     @Test
     fun `당첨번호_중복보너스숫자_에러`() {
         assertSimpleThrows {
-            WinningLotto(listOf(1, 2, 3, 4, 5, 6), 3)
+            WinningLotto(Lotto(listOf(1, 2, 3, 4, 5, 6)), 3)
         }
     }
 
     @Test
     fun `로또당첨번호_비교`() {
         val lotto = Lotto(listOf(15, 7, 3, 24, 32, 37))
-        val winning = WinningLotto(listOf(24, 9, 37, 32, 3, 15), 7)
+        val winning = WinningLotto(Lotto(listOf(24, 9, 37, 32, 3, 15)), 7)
         val (hitCount, isBonusHit) = winning.matches(lotto)
         Assertions.assertThat(hitCount).isEqualTo(5)
         Assertions.assertThat(isBonusHit).isEqualTo(true)

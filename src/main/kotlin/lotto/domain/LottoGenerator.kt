@@ -14,7 +14,7 @@ object LottoGenerator {
 
     fun generateWinningNumbers(): WinningLotto {
         return Randoms.pickUniqueNumbersInRange(Lotto.MIN_NUMBER, Lotto.MAX_NUMBER, Lotto.LENGTH + 1).let {
-            WinningLotto(it.take(Lotto.LENGTH), it.last())
+            WinningLotto(Lotto(it.take(Lotto.LENGTH)), it.last())
         }
     }
 }

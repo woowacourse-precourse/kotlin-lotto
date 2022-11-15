@@ -1,5 +1,6 @@
 package lotto.domain
 
+import lotto.data.Lotto
 import lotto.data.WinningLotto
 import lotto.data.WinningTable
 import lotto.ui.Console
@@ -13,8 +14,8 @@ class LottoGame {
         Console.print(lotteries)
 
         val winningLotto = WinningLotto(
-            numbers = Console.requestWinningNumbers(),
-            bonusNumber = Console.requestBonusNumber(),
+            lotto = Lotto(Console.requestWinningNumbers()),
+            bonus = Console.requestBonusNumber(),
         )
 
         Console.print(
