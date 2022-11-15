@@ -2,19 +2,17 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
-import java.lang.NumberFormatException
 import java.util.NoSuchElementException
-import kotlin.math.round
 import kotlin.math.roundToInt
 
 fun main() {
     val money = getMoney()
-    val lottoList = makeLottoList(money)
-    printLottoList(lottoList)
+    val lottos = makeLottos(money)
+    printLottos(lottos)
 
     val winningNumber = getWinningNumber()
     val bonusNumber = getBonusNumber(winningNumber)
-    val result = compareWinningNumber(winningNumber, lottoList, bonusNumber)
+    val result = compareWinningNumber(winningNumber, lottos, bonusNumber)
 
     printResult(result)
     calculateProfitRate(result, money)
@@ -39,18 +37,18 @@ fun makeLotto(): Lotto {
     return Lotto(numbers.sorted())
 }
 
-fun makeLottoList(money: Int): List<Lotto> {
-    val lottoList = mutableListOf<Lotto>()
+fun makeLottos(money: Int): List<Lotto> {
+    val lottos = mutableListOf<Lotto>()
     val cnt = money / 1000
 
     for (i in 1..cnt) {
-        lottoList.add(makeLotto())
+        lottos.add(makeLotto())
     }
 
-    return lottoList
+    return lottos
 }
 
-fun printLottoList(lottos: List<Lotto>) {
+fun printLottos(lottos: List<Lotto>) {
     val cnt = lottos.size
     println("${cnt}개를 구매했습니다.")
     for (lotto in lottos) {
@@ -60,38 +58,36 @@ fun printLottoList(lottos: List<Lotto>) {
 
 fun getWinningNumber(): List<Int> {
     println("당첨 번호를 입력해 주세요.")
-    val numbers = Console.readLine().trim()
+    val inputNumbers = Console.readLine().trim()
 
-//    ExceptionHandler.checkWinningNumber(numbers)
     try {
-        ExceptionHandler.checkWinningNumber(numbers)
+        ExceptionHandler.checkWinningNumber(inputNumbers)
     } catch (e: IllegalArgumentException) {
         print("${Message.ERROR_MESSAGE.msg} 잘못된 입력입니다.")
         throw NoSuchElementException()
     }
 
-    var numberList = numbers.split(",")
-    val winningNumberList = mutableListOf<Int>()
+    var numbers = inputNumbers.split(",")
+    val winningNumber = mutableListOf<Int>()
 
-    for (i in numberList) {
-        winningNumberList.add(i.toInt())
+    for (i in numbers) {
+        winningNumber.add(i.toInt())
     }
 
-//    ExceptionHandler.checkNumberList(winningNumberList)
     try {
-        ExceptionHandler.checkNumberList(winningNumberList)
+        ExceptionHandler.checkNumberList(winningNumber)
     } catch (e: IllegalArgumentException) {
         print("${Message.ERROR_MESSAGE.msg} 잘못된 입력입니다.")
         throw NoSuchElementException()
     }
 
-    return winningNumberList
+    return winningNumber
 }
 
 fun getBonusNumber(winningNumber: List<Int>): Int {
     println("보너스 번호를 입력해 주세요.")
     val number = Console.readLine().trim()
-//    ExceptionHandler.checkBonusNumber(number, winningNumber)
+
     try {
         ExceptionHandler.checkBonusNumber(number, winningNumber)
     } catch (e: IllegalArgumentException) {
@@ -104,7 +100,7 @@ fun getBonusNumber(winningNumber: List<Int>): Int {
 
 fun countInWinningNumber(winningNumber: List<Int>, lotto: Lotto): Int {
     var cnt = 0
-    for (number in lotto.numberList) {
+    for (number in lotto.lotteryNumber) {
         if (winningNumber.contains(number)) {
             cnt += 1
         }
