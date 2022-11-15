@@ -1,5 +1,6 @@
-package lotto
+package winlotto
 
+import enterprise.LOTTO_BONUS_NUM_COUNT
 import enterprise.LOTTO_NUM_COUNT
 import enterprise.LOTTO_NUM_RANGE_END
 import exception.DuplicateInputException
@@ -7,9 +8,9 @@ import util.ErrorType
 import util.printErrorMessage
 import util.showError
 
-class Lotto(private val numbers: List<Int>) {
+class WinLotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == LOTTO_NUM_COUNT) {
+        require(numbers.size == LOTTO_NUM_COUNT + LOTTO_BONUS_NUM_COUNT) {
             printErrorMessage(ErrorType.WRONG_WIN_LOTTO_NUMBERS_COUNT)
         }
         lottoNumberDuplicationCheck()
