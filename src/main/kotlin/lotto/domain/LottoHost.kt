@@ -31,7 +31,7 @@ class LottoHost {
             add(pickBonusNumber)
         }
 
-        throwLottoException(pickWinningNumber, pickBonusNumber, winningNumber)
+        throwLottoException(pickWinningNumber, pickBonusNumber)
 
         return winningNumber
     }
@@ -46,14 +46,13 @@ class LottoHost {
 
     fun throwLottoException(
         winningNumber: List<Int>,
-        bonusNumber: Int,
-        createdWinningNumber: MutableList<Int>
+        bonusNumber: Int
     ) {
 
         if (winningNumber.size != 6) throw IllegalArgumentException("당첨 번호는 6개의 숫자만 입력 가능합니다")
         if (winningNumber.distinct().size != 6) throw IllegalArgumentException("중복된 숫자가 존재합니다")
 
-        for (number in createdWinningNumber.indices) {
+        for (number in winningNumber.indices) {
             if (winningNumber[number] !in 1 until 46)
                 throw IllegalArgumentException(Message.LOTTO_NUMBER_RULE.message)
         }

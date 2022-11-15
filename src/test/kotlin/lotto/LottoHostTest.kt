@@ -15,8 +15,8 @@ class LottoHostTest {
                 lottoHost.throwLottoException(
                     listOf(1, 2, 3, 4, 4, 6),
                     7,
-                    mutableListOf(1, 2, 3, 4, 4, 6, 7)
-                )
+
+                    )
             }
         }
     }
@@ -28,8 +28,8 @@ class LottoHostTest {
                 lottoHost.throwLottoException(
                     listOf(1, 2, 3, 4, 5),
                     7,
-                    mutableListOf(1, 2, 3, 4, 5, 7)
-                )
+
+                    )
             }
         }
     }
@@ -50,8 +50,8 @@ class LottoHostTest {
                 lottoHost.throwLottoException(
                     listOf(1, 2, 3, 4, 5, 50),
                     7,
-                    mutableListOf(1, 2, 3, 4, 5, 50, 7)
-                )
+
+                    )
             }
         }
     }
@@ -75,8 +75,8 @@ class LottoHostTest {
                 lottoHost.throwLottoException(
                     listOf(1, 2, 3, 4, 5, 6),
                     5,
-                    mutableListOf(1, 2, 3, 4, 5, 6, 5)
-                )
+
+                    )
             }
         }
     }
