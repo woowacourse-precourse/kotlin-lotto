@@ -9,7 +9,7 @@ class User(money: String) {
     var earningMoney: Long
     val purchaseMoney: Long
     private lateinit var lottoNums: List<Lotto>
-    var winCase= MutableList(5){0}
+    var winCase = MutableList(5) { 0 }
 
     init {
         for (i in money) {
@@ -21,12 +21,15 @@ class User(money: String) {
         numOfLotto = (purchaseMoney / 1000).toInt()
         earningMoney = 0L
     }
-    fun makeLottoNum(){
+
+    fun makeLottoNum() {
         lottoNums = List(numOfLotto) { Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)) }
     }
-    fun printLottoNum(){
+
+    fun printLottoNum() {
         for (case in lottoNums) case.printLottoNum()
     }
+
     fun calcResult() {
         for (case in lottoNums) {
             val caseNum = case.calcWin(lottoWinNums)
