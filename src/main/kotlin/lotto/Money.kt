@@ -17,7 +17,7 @@ class Money(private val money: String) {
 
         for (i in str.indices) {
             element = str.elementAt(i)
-            if (element.toInt() < 48 || element.toInt() > 57) {
+            if (element.code < 48 || element.code > 57) {
                 flag = false
             }
         }

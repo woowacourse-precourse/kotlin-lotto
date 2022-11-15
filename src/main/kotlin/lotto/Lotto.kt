@@ -4,7 +4,7 @@ import kotlin.math.round
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6){
+        require(numbers.size == 6) {
             "[ERROR] : 6자리의 숫자가 아닙니다."
         }
         require(numbers.toSet().size == 6) {
@@ -15,7 +15,7 @@ class Lotto(private val numbers: List<Int>) {
         }
     }
 
-    fun run(lists: MutableList<List<Int>>,numbers: List<Int>,bonus: Int,money: Int){
+    fun run(lists: MutableList<List<Int>>, numbers: List<Int>, bonus: Int, money: Int) {
         var emd1 = 0
         var emd2 = 0
         var emd3 = 0

@@ -14,16 +14,18 @@ class Bonus(private val number: String, private val list: List<Int>) {
             "[ERROR] : 입력한 당첨 번호와 중복됩니다."
         }
     }
-    fun run(): Int{
+
+    fun run(): Int {
         return number.toInt()
     }
+
     fun stringCheck(str: String): Boolean {
         var element: Char
         var flag = true
 
         for (i in str.indices) {
             element = str.elementAt(i)
-            if (element.toInt() < 48 || element.toInt() > 57) {
+            if (element.code < 48 || element.code > 57) {
                 flag = false
             }
         }
