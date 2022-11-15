@@ -1,10 +1,11 @@
-package lotto.ui
+package lotto.controller
 
 import camp.nextstep.edu.missionutils.Randoms
 import lotto.domain.Lotto
 import lotto.domain.LottoGame
 import lotto.domain.LottoList
 import lotto.enum.Configuration
+import lotto.ui.UIManager
 
 class LottoGameController(private val uiManager: UIManager) {
     fun play(){
