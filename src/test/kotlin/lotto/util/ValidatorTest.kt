@@ -16,6 +16,13 @@ class ValidatorTest {
     }
 
     @Test
+    fun `입력값이 빈 문자열일 때 예외 테스트`() {
+        assertThrows<IllegalArgumentException> {
+            validator.checkInputEmptyValidation("")
+        }
+    }
+
+    @Test
     fun `입력값을 int로 변환 시 예외 테스트`() {
         assertThrows<IllegalArgumentException> {
             validator.checkStringToIntValidation("1000j")
@@ -23,6 +30,13 @@ class ValidatorTest {
 
         assertThrows<IllegalArgumentException> {
             validator.checkStringToIntValidation(",?")
+        }
+    }
+
+    @Test
+    fun `입력된 돈이 양수인지 예외 테스트`() {
+        assertThrows<IllegalArgumentException> {
+            validator.checkMoneyPositive("-12000")
         }
     }
 
