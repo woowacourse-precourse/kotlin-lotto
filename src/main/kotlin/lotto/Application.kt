@@ -9,7 +9,7 @@ fun main() {
     lottoMachine.printCustomerBuyLottoCount()
     val producedLottoNumbers = lottoMachine.produceLottoNumbers()
 
-    val lottoOrganizer = LottoOrganizer(producedLottoNumbers)
+    val lottoOrganizer = LottoOrganizer(producedLottoNumbers, customerBuyPrice)
     lottoOrganizer.printInputLottoWinNumber()
     lottoOrganizer.inputWinLottoNumber()
     println()

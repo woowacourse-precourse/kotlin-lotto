@@ -2,7 +2,7 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 
-class LottoOrganizer(private val producedLottoNumbers: MutableList<List<Int>>) {
+class LottoOrganizer(private val producedLottoNumbers: MutableList<List<Int>>, private val customerBuyLottoPrice: Int) {
 
     private lateinit var winLottoNumber: List<Int>
     private var bonusLottoNumber = 0
@@ -94,9 +94,34 @@ class LottoOrganizer(private val producedLottoNumbers: MutableList<List<Int>>) {
             calculateTotalLotto(matchCountPair)
         }
         printTotalLottoResult()
+        printLottoRate(roundDouble(produceEarningRate()) * 100)
     }
 
-    private fun printTotalLottoResult(){
+
+    private fun printLottoRate(rate: Double) {
+        println(LottoProcessConstValue.TOTAL_RATE + " ${rate}" + "%입니다.")
+    }
+
+
+    private fun produceEarningRate(): Double {
+        return calculateEarnPrice().toDouble() / customerBuyLottoPrice
+
+    }
+
+    private fun calculateEarnPrice(): Int {
+        return (fifthClassCount * LottoResult.FIFTH.getWinMoney()) +
+                (fourthClassCount * LottoResult.FOURTH.getWinMoney()) +
+                (thirdClassCount * LottoResult.THIRD.getWinMoney()) +
+                (secondClassCount * LottoResult.SECOND.getWinMoney()) +
+                (firstClassCount * LottoResult.FIRST.getWinMoney())
+    }
+
+    private fun roundDouble(value: Double): Double {
+        return String.format("%.1f", value).toDouble()
+    }
+
+
+    private fun printTotalLottoResult() {
         println(LottoProcessConstValue.LOTTO_RESULT_FIFTH + fifthClassCount)
         println(LottoProcessConstValue.LOTTO_RESULT_FOURTH + fourthClassCount)
         println(LottoProcessConstValue.LOTTO_RESULT_THIRD + thirdClassCount)

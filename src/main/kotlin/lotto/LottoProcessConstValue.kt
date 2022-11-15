@@ -19,5 +19,8 @@ object LottoProcessConstValue {
     const val WINNING_HISTORY = "당첨 통계"
     const val ONE_LINE = "---"
 
+    const val TOTAL_RATE = "총 수익률은"
+
+
 
 }
