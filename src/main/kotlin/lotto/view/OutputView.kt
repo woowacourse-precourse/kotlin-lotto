@@ -1,10 +1,9 @@
 package lotto.view
 
 import lotto.domain.Lotto
-import lotto.domain.Prize
 import lotto.domain.PrizeResult
 
-class outputView {
+class OutputView {
 
     fun printLotteriesCount(lotteriesCount:Int){
         println("${lotteriesCount}${LOTTO_COUNT_OUTPUT_MESSAGE}")
