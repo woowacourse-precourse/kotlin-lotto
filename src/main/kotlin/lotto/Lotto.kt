@@ -5,6 +5,7 @@ class Lotto(private val numbers: List<Int>) {
     // 생성자 초기화 블럭
     init {
         require(numbers.size == 6)
+        require(numbers.size == numbers.distinct().count())
     }
 
     // 생성된 로또 출력

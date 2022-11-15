@@ -1,7 +1,5 @@
 package lotto
 
-import java.text.DecimalFormat
-
 enum class LottoWinningPlace (
     val winningMoney: Int,
     val correctNum: Int,

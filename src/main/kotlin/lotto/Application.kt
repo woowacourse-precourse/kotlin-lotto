@@ -36,11 +36,6 @@ fun buyLotto(userAmountTobuy: Int): List<Lotto> {
 * Parameters: 로또 리스트, 당첨 번호, 보너스 숫자
 * Returns: 당첨 금액의 합계
 * Do: 결과 출력
-*   3개 일치 (5,000원) - 1개
-    4개 일치 (50,000원) - 0개
-    5개 일치 (1,500,000원) - 0개
-    5개 일치, 보너스 볼 일치 (30,000,000원) - 0개
-    6개 일치 (2,000,000,000원) - 0개
 * */
 
 fun returnLottoResult(lottoList: List<Lotto>, winLottoNumber: List<Int>, bonusNumber: Int): Int {
@@ -106,16 +101,16 @@ fun calculateRevenue(userPayMoney: Double, totalWinningMoney: Double){
  * 예외처리 - 사용자 구입 금액
  */
 
-fun exceptionUserPayMoney(userPayMoney: Int): Int {
+fun String.exceptionUserPayMoney(): Int {
     try {
-        if ( userPayMoney < 1000 ) throw IllegalArgumentException("[ERROR] 적어도 1000원 이상의 금액이 필요합니다.")
-        if ( userPayMoney % 1000 != 0 ) throw IllegalArgumentException("[ERROR] 구입 금액은 1000원으로 나누어 떨어져야 합니다.")
+        if ( this.toIntOrNull() == null ) throw IllegalArgumentException("[ERROR] 구입 금액을 잘못 입력하셨습니다.")
+        if ( this.toInt() < 1000 ) throw IllegalArgumentException("[ERROR] 적어도 1000원 이상의 금액이 필요합니다.")
+        if ( this.toInt() % 1000 != 0 ) throw IllegalArgumentException("[ERROR] 구입 금액은 1000원으로 나누어 떨어져야 합니다.")
 
     } catch (e:IllegalArgumentException) {
-        throw IllegalArgumentException("[ERROR] 구입 금액은 1000원으로 나누어 떨어져야 합니다.")
+        throw IllegalArgumentException("[ERROR] 구입 금액을 잘못 입력하셨습니다.")
     }
-
-    return userPayMoney
+    return this.toInt()
 }
 
 
@@ -160,7 +155,6 @@ fun exceptionWinLottoNumberDigit(winLottoNumber: List<Int>): List<Int> {
     return winLottoNumber
 }
 
-
 /**
  * 예외처리 - 보너스 번호
  */
@@ -176,15 +170,12 @@ fun exceptionBonusNumber(bonusNumber: Int, winLottoNumber: List<Int>): Int {
 }
 
 
-
-
-
 fun main() {
     // 1. 사용자 입력 받기
-    // 로또 구입 금액 입력
     // 1000원 = 1장
     println("구매금액을 입력해 주세요.")
-    val userPayMoney = exceptionUserPayMoney(readLine()!!.toInt())
+
+    val userPayMoney = readLine()!!.exceptionUserPayMoney()
     val userAmountToBuy = userPayMoney / 1000
     val lottoList = buyLotto(userAmountToBuy)
 
@@ -198,7 +189,6 @@ fun main() {
     // 예외 처리
     exceptionWinLottoNumberRange(winLottoNumber)
     exceptionWinLottoNumberDigit(winLottoNumber)
-
 
     // 보너스 번호 입력
     println("\n보너스 번호를 입력해 주세요.")
