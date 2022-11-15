@@ -10,7 +10,7 @@ class LottoResult(
     fun result(inputNumbers: List<String>, bonusNumber: String) {
         Message.showTitle()
         calculateLotto(inputNumbers, bonusNumber)
-        val finalMoney = CalculateMoney(lottoCount).result()
+        val finalMoney = CalculateMoney(correctLotteries).result()
         //수익률 계산 클래스
         EarningsRate(finalMoney, inputPrice).result()
     }
@@ -22,7 +22,7 @@ class LottoResult(
                 isBonus = true
             }
             val count = lottoNumbers.count { inputNumbers.contains(it.toString()) }
-            if (lottoCount.containsKey(count)) {
+            if (correctLotteries.containsKey(count)) {
                 countLotto(count, isBonus)
             }
         }
@@ -31,14 +31,14 @@ class LottoResult(
     private fun countLotto(count: Int, isBonus: Boolean) {
         val countOne = 1
         if (count == Print.FIVE && isBonus) {
-            lottoCount[Print.FIVE_BONUS] = lottoCount.getValue(Print.FIVE_BONUS) + countOne
+            correctLotteries[Print.FIVE_BONUS] = correctLotteries.getValue(Print.FIVE_BONUS) + countOne
         } else {
-            lottoCount[count] = lottoCount.getValue(count) + countOne
+            correctLotteries[count] = correctLotteries.getValue(count) + countOne
         }
     }
 
     companion object {
-        val lottoCount = with(Print) {
+        val correctLotteries = with(Print) {
             mutableMapOf(
                 THREE to ZERO, FOUR to ZERO, FIVE to ZERO, FIVE_BONUS to ZERO, SIX to ZERO
             )
