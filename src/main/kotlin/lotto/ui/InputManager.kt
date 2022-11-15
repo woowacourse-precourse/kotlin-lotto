@@ -29,9 +29,10 @@ class InputManager(private val inputValidator: InputValidator) {
 
     fun askDrawnNumbers(): Pair<Lotto, BonusNumber>{
         val winningNumbers = askWinningNumbers()
-        val winningLotto = Lotto(winningNumbers)
         println()
+        val winningLotto = Lotto(winningNumbers)
         val bonusNumber = BonusNumber(askBonusNumber())
+        println()
         inputValidator.validateDrawnNumber(winningNumbers, bonusNumber)
         return winningLotto to bonusNumber
     }
