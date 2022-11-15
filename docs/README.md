@@ -43,6 +43,9 @@
   - printProfit()함수를 통해 출력한다
   - calculateProfit()을 통해 순익을 계산한다.
       - 소수점을 계산하기 위해 10.0을 곱하고 다시 나누어 주었다.
+- enumClass 생성
+  - 등수별 인덱스와 상금 관리 출력 수정.
+- import java.text.DecimalFormat 를 추가하여 출력시 prize에 1,000 단위로 delimeter생성
 
 - 예외처리 테스트 케이스 추가 
   - Lotto 객체에 5개의 숫자가 생성되었을때

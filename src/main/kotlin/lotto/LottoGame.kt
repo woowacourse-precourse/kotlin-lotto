@@ -1,7 +1,8 @@
 package lotto
 import camp.nextstep.edu.missionutils.Console
+import org.mockito.internal.matchers.Null
 import kotlin.math.round
-
+import java.text.DecimalFormat
 class LottoGame private constructor(){
     private val RANGE_MIN = 1
     private val RANGE_MAX =45
@@ -27,9 +28,13 @@ class LottoGame private constructor(){
         this.myLotto.add(Lotto.newLotto())
     }
     private fun calculateProfit(): Double{
-        val profit:Int = (this.winChart[4]*5)+(this.winChart[3]*50)+(this.winChart[2]*1500)+(this.winChart[1]*30000)+(this.winChart[0]*2000000)
-        val spended:Double = (this.expenditure/MONEY_UNIT).toDouble()
-        return round(((profit*100)/spended)*10.0)/10.0
+        val profit:Long = (this.winChart[RankAndPrize.FIFTH.index]*RankAndPrize.FIFTH.prize)
+                        +(this.winChart[RankAndPrize.FOURTH.index]*RankAndPrize.FOURTH.prize)
+                        +(this.winChart[RankAndPrize.THIRD.index]*RankAndPrize.THIRD.prize)
+                        +(this.winChart[RankAndPrize.SECOND.index]*RankAndPrize.SECOND.prize)
+                        +(this.winChart[RankAndPrize.FIRST.index]*RankAndPrize.FIRST.prize).toLong()
+        val profit_:Double = (((profit).toDouble()/this.expenditure)*100)
+        return round(profit_*10)/10
     }
     private fun checkNumber(lotto: List<Int>): Int{
         var count: Int = 0
@@ -65,14 +70,14 @@ class LottoGame private constructor(){
             if(count>=3) winNumberCount(count,bonusNumber in it.getter())
         }
     }
-    private fun countToIndex(rank: Int,bonus: Boolean):Int{
+    private fun countToIndex(rank: Int,bonus: Boolean):RankAndPrize{
         when(rank){
-            3 -> return 4
-            4 -> return 3
-            5 -> return if(bonus) 1 else 2
-            6 -> return 0
+            3 -> return RankAndPrize.FIFTH
+            4 -> return RankAndPrize.FOURTH
+            5 -> return if(bonus) RankAndPrize.SECOND else RankAndPrize.THIRD
+            6 -> return RankAndPrize.FIRST
         }
-        return 5
+        return RankAndPrize.OUTOFRANGE
     }
     private fun inputToInt(input: String): Int{
         var temp: Int
@@ -85,13 +90,14 @@ class LottoGame private constructor(){
         return temp
     }
     private fun printProfit(){
+        val toDecimalForm = DecimalFormat("#,###")
         println("당첨 통계")
         println("---")
-        println("3개 일치 (5,000원) - ${this.winChart[4]}개")
-        println("4개 일치 (50,000원) - ${this.winChart[3]}개")
-        println("5개 일치 (1,500,000원) - ${this.winChart[2]}개")
-        println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${this.winChart[1]}개")
-        println("6개 일치 (2,000,000,000원) - ${this.winChart[0]}개")
+        println("3개 일치 (${toDecimalForm.format(RankAndPrize.FIFTH.prize)}원) - ${this.winChart[4]}개")
+        println("4개 일치 (${toDecimalForm.format(RankAndPrize.FOURTH.prize)}원) - ${this.winChart[3]}개")
+        println("5개 일치 (${toDecimalForm.format(RankAndPrize.THIRD.prize)}원) - ${this.winChart[2]}개")
+        println("5개 일치, 보너스 볼 일치 (${toDecimalForm.format(RankAndPrize.SECOND.prize)}원) - ${this.winChart[1]}개")
+        println("6개 일치 (${toDecimalForm.format(RankAndPrize.FIRST.prize)}원) - ${this.winChart[0]}개")
         println("총 수익률은 ${calculateProfit()}%입니다.")
     }
     private fun purchaseLotto(){
@@ -100,7 +106,7 @@ class LottoGame private constructor(){
         val input: Int = inputToInt(_input)
         val times: Int = input/MONEY_UNIT
         if(input%MONEY_UNIT!=0){
-            throw IllegalArgumentException("[Error]1000원 단위로 입력해 주세요.")
+            throw IllegalArgumentException("[ERROR]1000원 단위로 입력해 주세요.")
         }
         for(i in 1..times){
             this.addLotto()
@@ -136,9 +142,9 @@ class LottoGame private constructor(){
         }
     }
     private fun winNumberCount(count: Int,flag: Boolean){
-        val rankIndex: Int = countToIndex(count,flag)
-        if(rankIndex!=5){
-            winChart[rankIndex]++
+        val Rank: RankAndPrize = countToIndex(count,flag)
+        if(Rank.index!=5){
+            winChart[Rank.index]++
         }
     }
     companion object{
