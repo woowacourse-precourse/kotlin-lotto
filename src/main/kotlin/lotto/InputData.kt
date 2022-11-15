@@ -23,6 +23,9 @@ class InputData {
         val Lotto = Console.readLine()
         return makeLottoNum(Lotto)
     }
-
+    fun inputBonus(): Int {
+        println("보너스 번호를 입력해 주세요.")
+        return Console.readLine().toInt()
+    }
 
 }
