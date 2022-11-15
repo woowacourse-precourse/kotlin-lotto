@@ -22,14 +22,14 @@ class PurchaseLotto {
         return money / 1000
     }
 
-    fun getLottoTicket(lottoList : MutableList<Lotto>, countLottoTicket : Int) : List<Lotto> {
+    fun getLottoTicket(lottoList : MutableList<Lotto>, countLottoTicket : Int) {
         println("\n${countLottoTicket}개를 구매했습니다.")
+
         for(i in 0 until countLottoTicket) {
             val lotto = Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6))
             lottoList.add(lotto)
             printIssuedLottoList(lotto.getLottoNumbers())
         }
-        return lottoList
     }
 
     private fun printIssuedLottoList(lottoList : List<Int>) {
