@@ -21,10 +21,33 @@ class LottoGame {
     }
 }
 
-fun printResult(result: List<Int>, rate: Double) {
-    println("\n$WINNING_TITLE")
-    Winning.printWinnings(result)
-    println("총 수익률은 ${rate}%입니다.")
+fun generateNumbers(): List<Int> {
+    val numbers = Randoms.pickUniqueNumbersInRange(RANGE_START, RANGE_END, Number_OF_LOTTO)
+    return numbers.sorted()
+}
+
+fun getPurchaseMoney(): Int {
+    println(INPUT_MONEY)
+
+    val value = readLine()?.trim()
+    InputError.checkInteger(value)
+
+    val money = value!!.toInt()
+    InputError.checkNegative(money)
+    InputError.checkMoneyZero(money)
+    InputError.checkValidMoney(money)
+
+    return money
+}
+
+fun getLottoNumbers(num: Int): List<Lotto> {
+    val lottos = mutableListOf<Lotto>()
+
+    for (i in 0 until num) {
+        lottos.add(Lotto(generateNumbers()))
+    }
+
+    return lottos
 }
 
 fun getBonusNumber(winnings: Lotto): Int {
@@ -66,31 +89,8 @@ fun printLottoNumbers(numbers: List<Lotto>) {
     }
 }
 
-fun getLottoNumbers(num: Int): List<Lotto> {
-    val lottos = mutableListOf<Lotto>()
-
-    for (i in 0 until num) {
-        lottos.add(Lotto(generateNumbers()))
-    }
-
-    return lottos
-}
-
-fun generateNumbers(): List<Int> {
-    val numbers = Randoms.pickUniqueNumbersInRange(RANGE_START, RANGE_END, Number_OF_LOTTO)
-    return numbers.sorted()
-}
-
-fun getPurchaseMoney(): Int {
-    println(INPUT_MONEY)
-
-    val value = readLine()?.trim()
-    InputError.checkInteger(value)
-
-    val money = value!!.toInt()
-    InputError.checkNegative(money)
-    InputError.checkMoneyZero(money)
-    InputError.checkValidMoney(money)
-
-    return money
+fun printResult(result: List<Int>, rate: Double) {
+    println("\n$WINNING_TITLE")
+    Winning.printWinnings(result)
+    println("총 수익률은 ${rate}%입니다.")
 }
