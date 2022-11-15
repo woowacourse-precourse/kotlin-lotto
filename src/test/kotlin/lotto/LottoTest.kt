@@ -1,5 +1,6 @@
 package lotto
 
+import lotto.domain.Lotto
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -37,5 +38,10 @@ class LottoTest {
 
         assertThat(lotto.checkBonusNumberMatching(bonusNumber))
             .isEqualTo(true)
+    }
+
+    @Test
+    fun `로또 숫자 반환 확인`() {
+        assertThat(lotto.returnNumbers()).isEqualTo(listOf(1, 2, 3, 4, 5, 30))
     }
 }
