@@ -75,9 +75,9 @@
 
 - [x] 로또 구입 개수 구하기 => `getNumberOfLottos`
     - 로또 구입 금액 구하기(입력받기)
-    - [x] 금액 예외 처리 => `checkPaymentException`
-        - 숫자 입력이 아닌 경우 예외 처리
-        - 1000원 단위로 나누어 떨어지지 않으면 예외 처리
+- [x] 금액 예외 처리 => `checkPaymentException`
+    - 숫자 입력이 아닌 경우 예외 처리
+    - 1000원 단위로 나누어 떨어지지 않으면 예외 처리
 - [x] 구입한 로또 개수만큼 로또 번호 생성 => `generateLottos`
 - [x] 로또 하나 생성 => `generateLotto`
     - `pickUniqueNumbersInRange()` 사용
@@ -88,9 +88,9 @@
 - [x] 보너스 번호 구하기 => `getBonusNumber`
     - 보너스 번호 구하기(입력받기)
     - 숫자인지 확인
-    - [x] 당첨 번호 예외처리 => `checkBonusNumberException`
-        - 1~45 범위 확인
-        - 당첨 번호와 중복되는지 확인
+- [x] 당첨 번호 예외처리 => `checkBonusNumberException`
+    - 1~45 범위 확인
+    - 당첨 번호와 중복되는지 확인
 
 ### Results
 
