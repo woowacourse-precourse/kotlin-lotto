@@ -5,15 +5,15 @@ import lotto.utils.*
 
 class Lotto(private val winningNumber: List<Int>) {
     init {
+        // 당첨 번호가 6개가 아닌 경우
+        require(winningNumber.size == LOTTO_NUM_LIMIT) {
+            throw IllegalArgumentException(SIZE_BOUNDS_ERROR_MSG)
+        }
+
         // 중복된 수를 입력한 경우
         val temp = winningNumber.toSet()
         require(temp.size == winningNumber.size){
             throw IllegalArgumentException(DUPLICATE_ERROR_MSG)
-        }
-
-        // 당첨 번호가 6개가 아닌 경우
-        require(winningNumber.size == LOTTO_NUM_LIMIT) {
-            throw IllegalArgumentException(SIZE_BOUNDS_ERROR_MSG)
         }
 
         // 1~45까지의 범위를 벗어난 경우
