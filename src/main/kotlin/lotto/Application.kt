@@ -165,6 +165,24 @@ fun exceptionWinLottoNumberDigit(winLottoNumber: List<Int>): List<Int> {
 }
 
 
+/**
+ * 예외처리 - 보너스 번호
+ */
+
+fun exceptionBonusNumber(bonusNumber: Int, winLottoNumber: List<Int>): Int {
+    try {
+        if ( winLottoNumber.contains(bonusNumber) ) throw IllegalArgumentException("[ERROR] 당첨 번호와 보너스 번호는 중복되지 않아야 합니다.")
+    } catch(e:IllegalArgumentException){
+        throw IllegalArgumentException("[ERROR] 당첨 번호와 보너스 번호는 중복되지 않아야 합니다.")
+    }
+
+    return bonusNumber
+}
+
+
+
+
+
 fun main() {
     // 1. 사용자 입력 받기
     // 로또 구입 금액 입력
@@ -188,7 +206,7 @@ fun main() {
 
     // 보너스 번호 입력
     println("\n보너스 번호를 입력해 주세요.")
-    val bonusNumber = readLine()!!.toInt()
+    val bonusNumber = exceptionBonusNumber(readLine()!!.toInt(), winLottoNumber)
 
     // 당첨 내역 출력
     val totalWinningMoney = returnLottoResult(lottoList, winLottoNumber, bonusNumber)
