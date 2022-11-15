@@ -8,5 +8,9 @@ fun main() {
 
     val buy_count = Number().BuyLottoCount(buy)
     val total_numbers=Number().PrintNumberList(buy_count)
+
+    println()
+
+    val lotto_numbers=WinningNumber().InputLottoNumber()
 }
 
