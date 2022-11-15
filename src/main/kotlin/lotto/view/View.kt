@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 import lotto.CheckException
 import lotto.model.Price
 
-class Input {
+class View {
 
     var inputPurchaseMoney = Price.INPUT_PURCHASE_CENTENCE.reward
     var inputWinningNumber = Price.INPUT_WINNING_NUMBER.reward
@@ -45,6 +45,16 @@ class Input {
 
         return bonusNum
     }
+
+    fun outputSameLotto(three : Int , four : Int , five : Int ,fiveBonus : Int , six : Int){
+
+        println(Price.THREE.reward + three + "개")
+        println(Price.FOUR.reward + four + "개")
+        println(Price.FIVE.reward + five + "개")
+        println(Price.FIVE_WITH_BONUS.reward + fiveBonus + "개")
+        println(Price.SIX.reward + six + "개")
+    }
+
 
 
 

@@ -1,12 +1,8 @@
 package lotto.controller
 
-class Lotto(private val numbers: List<Int>) {
+import lotto.model.Price
 
-    var sameThree = 0
-    var sameFour = 0
-    var sameFive = 0
-    var sameFiveWithBonus = 0
-    var sameSix = 0
+class Lotto(private val numbers: List<Int>) {
 
     init {
         require(numbers.toSet().size == 6) { "[ERROR] 로또는 서로 다른 6개의 숫자만 가능합니다" }
@@ -29,6 +25,7 @@ class Lotto(private val numbers: List<Int>) {
 
         return lottoNumbers.contains(bonusNum)
     }
+
 
 
 
