@@ -8,12 +8,13 @@ class MakeLottos {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
     }
 
-    fun getLottos(count: Int): List<Lotto> {
-        val lottos = mutableListOf<Lotto>()
+    fun getLottos(count: Int): List<List<Int>> {
+        val lottos = mutableListOf<List<Int>>()
 
         repeat(count) {
             val lotto = getRandomNumber()
-            lottos.add(Lotto(lotto))
+            Lotto(lotto)
+            lottos.add(lotto)
             println(lotto)
         }
 
@@ -21,8 +22,8 @@ class MakeLottos {
     }
 
     fun winningNumber(): List<Int> {
-        println(Output.WinningNumber.message)
-        val input = Console.readLine()
+      intln(Output.WinningNumber.message)
+        pr val input = Console.readLine()
             .split(",")
             .map { number -> number.toInt() }
         Lotto(input)
