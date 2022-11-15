@@ -10,7 +10,7 @@ class User {
     val inputMoney get() = _inputMoney
 
     fun inputMoney(): Int {
-        val input = Console.readLine()
+        val input = userInput()
         checkInputException(input)
         return input.toInt()
     }
@@ -18,15 +18,27 @@ class User {
     fun getLottos() = _inputMoney / 1000
 
     private fun checkInputException(input: String?) {
-        inputCheck.checkTypeException(input)
-        inputMoneyException(input!!)
+        with(inputCheck) {
+            checkTypeException(input)
+            inputMoneyException(input!!)
+        }
     }
 
-    private fun inputMoneyException(money: String) {
-        if (money.toInt() % 1000 != 0) inputCheck.invalidException(VALUE_EXCEPTION)
+    private fun userInput() = Console.readLine()
+
+    fun inputNumbers(): List<Int> {
+        val input = userInput()
+        checkInputNumbersException(input)
+        return input.toList().map { it.digitToInt() }
     }
 
-    companion object {
-        const val VALUE_EXCEPTION = "잘못된 값입니다."
+    private fun checkInputNumbersException(input: String?) {
+        with(inputCheck) {
+            checkNullException(input)
+            input?.split(",")?.let { this.checkTypeException(it) }
+            val numbers = input?.split(",")?.map { it.toInt() }!!
+            checkRangeException(numbers)
+            checkOverlapException(numbers)
+        }
     }
 }
