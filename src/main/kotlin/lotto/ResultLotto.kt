@@ -44,4 +44,12 @@ class ResultLotto {
         printResult(prizeResult)
         return money
     }
+
+    private fun compareWinningNumber(lotto: List<Int>, winningNumber: List<Int>): Int {
+        var match = 0
+        winningNumber.forEach {
+            if (lotto.contains(it)) match++
+        }
+        return match
+    }
 }
