@@ -29,6 +29,7 @@ fun main() {
     if (ans.size != 6) assertThrows<IllegalArgumentException> {"[ERROR] 6자리가 아닙니다."}
     println("보너스 번호를 입력해 주세요.")
     val bonus = readLine()!!.toInt()
+    if (ans.contains(bonus)) assertThrows<IllegalArgumentException> {"[ERROR] 보너스 번호가 중복됩니다."}
     var stat = mutableListOf<Int>(0, 0, 0, 0, 0, 0)
     for (i in list){
         var cor = Lotto_Cmp(i, ans, bonus)
