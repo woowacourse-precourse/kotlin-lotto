@@ -35,8 +35,15 @@ class InputException {
         }
     }
 
+    fun checkRangeException(number: Int) {
+        if (number !in 1..45) invalidException(VALUE_EXCEPTION)
+    }
+
     fun checkOverlapException(numbers: List<Int>) {
-        if (numbers.size != numbers.toSet().size) invalidException(OVERLAP_EXCEPTION)
+        if (numbers.size != numbers.toSet().size)
+            invalidException(OVERLAP_EXCEPTION)
+        else if (numbers.size != 6)
+            invalidException(LENGTH_EXCEPTION)
     }
 
     fun checkOverlapException() = invalidException(OVERLAP_EXCEPTION)
@@ -50,5 +57,6 @@ class InputException {
         const val NULL_EXCEPTION = "아무 것도 입력하지 않았습니다."
         const val VALUE_EXCEPTION = "잘못된 값입니다."
         const val OVERLAP_EXCEPTION = "중복된 값이 존재 합니다."
+        const val LENGTH_EXCEPTION = "6개 입력이 아닙니다."
     }
 }
