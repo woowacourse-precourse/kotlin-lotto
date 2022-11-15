@@ -2,13 +2,16 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class LottoNumber() {
+class LottoNumber(private var price: Int) {
     val lottoNumber: MutableList<MutableList<Int>> = mutableListOf()
     var lottoCount = 0
-
-    fun calculatePrice(price: Int) {
+    fun calculatePrice() {
         if (price % 1000 != 0) {
             throw IllegalArgumentException("[ERROR] 로또는 1000원 단위로 구매 가능합니다.")
+        }
+
+        if(price == 0){
+            throw IllegalArgumentException("[ERROR] 로또는 0원을 구매할 수 없습니다.")
         }
         lottoCount = price/1000
         pickNumber(lottoCount)
