@@ -21,10 +21,14 @@ class LottoExecptions {
     fun getLottoNumNumericException(input : String) : Boolean{
         val lottoNums = input.split(",").toList()
         lottoNums.forEach {
-            if(!(it.toIntOrNull() is Int)) throw IllegalArgumentException(JOptionPane.ERROR_MESSAGE.toString() + LOTTO_NUM_ERROR)
+            if(!(it.toIntOrNull() is Int)) throw IllegalArgumentException(JOptionPane.ERROR_MESSAGE.toString() + LOTTO_WINNUM_TYPE_ERROR)
         }
         return true
     }
+
+//    fun getLottoNumCommaException(input : String) : Boolean{
+//
+//    }
 
 
     companion object{
