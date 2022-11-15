@@ -1,5 +1,4 @@
 package lotto
-
 import camp.nextstep.edu.missionutils.Console
 
 fun main() {
@@ -42,23 +41,23 @@ fun purchase(string: String): Int {
     try {
         val amount: Int = string.toInt()
         if (amount % 1000 != 0)
-            throw IllegalArgumentException("[ERROR] 구입 금액 입력이 올바르지 않음")
+            throw IllegalArgumentException(ErrorStrings.INVALID_PURCHASE_AMOUNT_ENTERED.message + ErrorStrings.INVALID_PURCHASE_AMOUNT_UNITS.message)
         return amount
 
     } catch (_: NumberFormatException) {
-        throw IllegalArgumentException("[ERROR] 구입 금액 입력이 올바르지 않음")
+        throw IllegalArgumentException(ErrorStrings.INVALID_PURCHASE_AMOUNT_ENTERED.message)
     }
 }
 
 fun lottoNumbers(string: String): List<Int> {
-    var result: Set<Int>
+    val result: Set<Int>
     try {
         result = string.split(",").map {
             validateNumberRange(it.toInt())
             it.toInt()
         }.toSet()
     } catch (_: NumberFormatException) {
-        throw IllegalArgumentException("[ERROR] 당첨 번호 입력이 올바르지 않음")
+        throw IllegalArgumentException(ErrorStrings.INVALID_WINNING_NUMBER_ENTERED.message)
     }
 
     return result.toList()
@@ -69,13 +68,13 @@ fun bonusNumber(string: String): Int {
         validateNumberRange(string.toInt())
         string.toInt()
     } catch (_: NumberFormatException) {
-        throw IllegalArgumentException("[ERROR] 보너스 번호가 올바르게 입력되지 않음")
+        throw IllegalArgumentException(ErrorStrings.INVALID_BONUS_NUMBER_ENTERED.message)
     }
 }
 
 fun validateNumberRange(number: Int) {
     if (number < 1 || number > 45) {
-        throw IllegalArgumentException("[ERROR] 당첨 번호 입력이 올바르지 않음")
+        throw IllegalArgumentException(ErrorStrings.INVALID_BONUS_NUMBER_ENTERED.message)
     }
 }
 
