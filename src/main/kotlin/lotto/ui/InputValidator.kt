@@ -19,6 +19,8 @@ class InputValidator {
                 throw IllegalArgumentException(ErrorString.NOT_DIGIT.string)
             input.toInt() % Configuration.LOTTO_PRICE.number != 0 ->
                 throw IllegalArgumentException(ErrorString.PURCHASE_AMOUNT_UNIT.string)
+            input.toInt() < Configuration.LOTTO_PRICE.number ->
+                throw IllegalArgumentException(ErrorString.MIN_PURCHASE_AMOUNT.string)
         }
     }
 
