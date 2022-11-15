@@ -1,6 +1,18 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Console
+
 class LottoOrganizer(private val producedLottoNumbers: MutableList<List<Int>>) {
+
+
+    fun inputWinLottoNumber() {
+        val userInput = Console.readLine()
+    }
+
+
+    fun inputBonusLottoNumber() {
+        val userInput = Console.readLine()
+    }
 
 
     fun printInputLottoWinNumber() {
