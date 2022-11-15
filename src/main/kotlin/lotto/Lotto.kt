@@ -25,5 +25,11 @@ class Lotto(private val numbers: List<Int>) {
         return sameNum.size
 
     }
+    fun checkWinBonus(lotto : Set<Int>,bonusNum: Int): Int {
+        if(lotto.contains(bonusNum)){
+            return 7
+        }
+        return 5
+    }
 
 }
