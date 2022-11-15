@@ -5,7 +5,7 @@ import lotto.PRICE_RATE_MESSAGE
 class LottoProfit(val lottoWinner: List<Int>, val userGameAmount: Int) {
 
     init{
-        print(PRICE_RATE_MESSAGE.format(calLottoProfit()))
+        print(PRICE_RATE_MESSAGE.format(calLottoProfit()*100))
     }
 
     fun calLottoProfit(): Double {
