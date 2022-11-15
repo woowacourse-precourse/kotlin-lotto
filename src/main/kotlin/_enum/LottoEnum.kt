@@ -1,4 +1,4 @@
-package lotto
+package _enum
 
 enum class LottoEnum(val message: String, var count: Int, val price: Int) {
     THREE_CORRECT("3개 일치 (5,000원)",0, 5000),
