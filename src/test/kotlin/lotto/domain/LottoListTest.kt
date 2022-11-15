@@ -9,13 +9,17 @@ import org.junit.jupiter.api.Test
 
 class LottoListTest {
     lateinit var lottoList: LottoList
+
     @BeforeEach
     fun `lottoList 초기화`() {
-        lottoList = LottoList(listOf(
-            Lotto(listOf(1, 2, 3, 4, 5, 6)),
-            Lotto(listOf(1, 2, 3, 4, 5, 6)),
-            Lotto(listOf(1, 2, 3, 4, 5, 6)),
-            Lotto(listOf(1, 2, 3, 4, 5, 6))))
+        lottoList = LottoList(
+            listOf(
+                Lotto(listOf(1, 2, 3, 4, 5, 6)),
+                Lotto(listOf(1, 2, 3, 4, 5, 7)),
+                Lotto(listOf(10, 12, 13, 14, 15, 16)),
+                Lotto(listOf(1, 2, 3, 14, 15, 16))
+            )
+        )
     }
 
     @Test
@@ -34,5 +38,20 @@ class LottoListTest {
         val inputBonusMatch = true
         val result = method.invoke(lottoList, inputMatches, inputBonusMatch)
         assertThat(result).isEqualTo(WinningRank.SECOND)
+    }
+
+    @Test
+    fun `compare 메서드에 당첨 번호와 보너스 번호를 인자로 구매 로또들의 당첨 여부를 확인`() {
+        val inputWinningLotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        val inputBonusNumber = BonusNumber(7)
+        val result = lottoList.compare(inputWinningLotto, inputBonusNumber)
+        assertThat(result).isEqualTo(
+            mapOf(
+                WinningRank.FIRST to 1,
+                WinningRank.SECOND to 1,
+                WinningRank.NOTHING to 1,
+                WinningRank.FIFTH to 1
+            )
+        )
     }
 }
