@@ -6,6 +6,15 @@ class LottoCalculator(
     private val winningLotto: Lotto,
     private val bonusNumber: Int
 ) {
+
+    init {
+        require(!checkLottoContainBonusNumber()) { println("[ERROR] 보너스 번호가 로또 번호에 포함되어 있습니다.") }
+    }
+
+    fun checkLottoContainBonusNumber(): Boolean {
+        return winningLotto.contains(bonusNumber)
+    }
+
     fun calculateLotto(): List<Int> {
         val winnings = mutableListOf<Int>(0, 0, 0, 0, 0)
         for (consumerLotto in consumerLottos) {
