@@ -96,6 +96,14 @@ class LottoTest : NsTest() {
         }
     }
 
+    @Test
+    fun `당첨 번호 기준이 쉼표가 아닐시 예외가 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            run("5000", "21,22/23,24,25,26", "2")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
     override fun runMain() {
         main()
     }
