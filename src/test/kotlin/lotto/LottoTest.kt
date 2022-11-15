@@ -46,13 +46,15 @@ class LottoTest {
         method.isAccessible = true
 
         val input = 3
-        assertThat(method.invoke(lotto, input)).isEqualTo(true)
+        val result = method.invoke(lotto, input)
+        assertThat(result).isEqualTo(true)
     }
 
     @Test
     fun `compare 메서드에 당첨 번호와 보너스 번호를 인자로 주어 각각에 대해 일치 여부를 반환`(){
         val inputWinningLotto = Lotto(listOf(1, 2, 3, 4, 5, 9))
         val inputBonusNumber = BonusNumber(6)
-        assertThat(lotto.compare(inputWinningLotto, inputBonusNumber)).isEqualTo(5 to true)
+        val result = lotto.compare(inputWinningLotto, inputBonusNumber)
+        assertThat(result).isEqualTo(5 to true)
     }
 }
