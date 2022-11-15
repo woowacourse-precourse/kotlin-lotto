@@ -33,6 +33,7 @@ fun main() {
 }
 
 class LottoGame {
+    private var inputAmount = 0
     private var lotteries = 0
     private val winningNumbers = ArrayList<Int>()
     private var bonusNumber = 0
@@ -52,11 +53,13 @@ class LottoGame {
 
         getResult()
         printResult()
+        printRatio()
     }
 
     private fun getPurchaseAmount() {
         val inputAmount = getPurchaseAmountInput()
         checkInputAmountValid(inputAmount)
+        this.inputAmount = inputAmount
         initLotteries(inputAmount)
     }
 
@@ -212,5 +215,15 @@ class LottoGame {
         println("5개 일치 (1,500,000원) - ${counts[2]}개")
         println("5개 일치, 보너스 볼 일치 (30,000,000원) - ${bonusCounts}개")
         println("6개 일치 (2,000,000,000원) - ${counts[3]}개")
+    }
+
+    private fun printRatio() {
+        var sum = 0L
+        sum += 5000 * counts[0]
+        sum += 50000 * counts[1]
+        sum  += 1500000 * counts[2]
+        sum += 30000000 * bonusCounts
+        sum += 2000000000 * counts[3]
+        println("총 수익률은 ${sum / inputAmount.toDouble()}%입니다.")
     }
 }
