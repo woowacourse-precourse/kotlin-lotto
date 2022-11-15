@@ -44,6 +44,20 @@ object LottoError {
 }
 
 object InputError {
+    fun checkMoneyValid(value: String?) {
+        checkInteger(value)
+        checkNegative(value!!.toInt())
+        checkMoneyZero(value.toInt())
+        checkMoneyDivided(value.toInt())
+    }
+
+    fun checkIntegerValid(value: String?, winning: Lotto) {
+        checkInteger(value)
+        checkNegative(value!!.toInt())
+        LottoError.checkOutOfRange(value.toInt())
+        LottoError.checkDuplicate(winning, value.toInt())
+    }
+
     fun checkInteger(value: String?) {
         try {
             value!!.toInt()
@@ -58,7 +72,7 @@ object InputError {
         }
     }
 
-    fun checkValidMoney(money: Int) {
+    fun checkMoneyDivided(money: Int) {
         if (money % LOTTO_PRICE != 0) {
             makeError(ErrorMaking.MONEY_UNIT_INCORRECT)
         }

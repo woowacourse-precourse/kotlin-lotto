@@ -57,7 +57,7 @@ class ErrorCheckingTest {
     @Test
     fun `금액이 로또 가격으로 나누어 떨어지지 않으면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
-            InputError.checkValidMoney(1450)
+            InputError.checkMoneyDivided(1450)
         }
     }
 

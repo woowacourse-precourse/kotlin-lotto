@@ -29,15 +29,10 @@ fun generateNumbers(): List<Int> {
 fun getPurchaseMoney(): Int {
     println(INPUT_MONEY)
 
-    val value = readLine()?.trim()
-    InputError.checkInteger(value)
+    val money = readLine()?.trim()
+    InputError.checkMoneyValid(money)
 
-    val money = value!!.toInt()
-    InputError.checkNegative(money)
-    InputError.checkMoneyZero(money)
-    InputError.checkValidMoney(money)
-
-    return money
+    return money!!.toInt()
 }
 
 fun getLottoNumbers(num: Int): List<Lotto> {
@@ -53,15 +48,10 @@ fun getLottoNumbers(num: Int): List<Lotto> {
 fun getBonusNumber(winnings: Lotto): Int {
     println("\n$INPUT_BONUS_NUMBER")
 
-    val value = readLine()?.trim()
-    InputError.checkInteger(value)
+    val number = readLine()?.trim()
+    InputError.checkIntegerValid(number, winnings)
 
-    val number = value!!.toInt()
-    InputError.checkNegative(number)
-    LottoError.checkOutOfRange(number)
-    LottoError.checkDuplicate(winnings, number)
-
-    return number
+    return number!!.toInt()
 }
 
 fun getWinningNumbers(): Lotto {
