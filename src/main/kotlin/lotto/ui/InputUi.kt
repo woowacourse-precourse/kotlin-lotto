@@ -1,9 +1,8 @@
 package lotto.ui
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.Lotto
-import lotto.inputTypeException
-import lotto.inputUnitException
+import lotto.*
+import lotto.ErrorMessage.ERROR_NUM_NOT_IN_RANGE
 
 class InputUi {
     private val printUi = PrintUi()
@@ -27,9 +26,7 @@ class InputUi {
     fun inputBonusNumber():Int{
         printUi.pleaseInput("보너스 번호를")
         val bonus = Console.readLine().toInt()
-        if (bonus !in 1..45){
-            throw IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.")
-        }
+        bonus.inputRangeException()
         return bonus
     }
 

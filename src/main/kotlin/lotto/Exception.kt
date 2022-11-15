@@ -15,3 +15,8 @@ fun String.inputTypeException() {
 fun String.inputUnitException(){
     require(this.toInt() % 1000==0){ERROR_NOT_THOUSANDS}
 }
+
+
+fun Int.inputRangeException(){
+    require(this in 1..45){ ERROR_NUM_NOT_IN_RANGE}
+}
