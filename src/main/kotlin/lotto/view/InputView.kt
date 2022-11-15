@@ -1,7 +1,6 @@
 package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.domain.NumberGenerator
 import lotto.utils.*
 
 class InputView {
@@ -19,7 +18,7 @@ class InputView {
                 throw IllegalArgumentException(MIXED_CHAR_ERROR_MSG)
             }
         }
-        require(money.toInt() % MONEY_UNIT == 0){
+        require(money.toInt() % MONEY_UNIT == 0) {
             throw IllegalArgumentException(DIVISION_ERROR_MSG)
         }
     }
@@ -36,13 +35,13 @@ class InputView {
         val numbers = mutableListOf<Int>()
         input.split(",").map {
             for (item in it) {
-                if(!Character.isDigit(item)) throw IllegalArgumentException(MIXED_CHAR_ERROR_MSG)
+                if (!Character.isDigit(item)) throw IllegalArgumentException(MIXED_CHAR_ERROR_MSG)
             }
-            if(it.toInt() !in MIN_VALUE..MAX_VALUE) throw IllegalArgumentException(RANGE_BOUNDS_ERROR_MSG)
-            if(numbers.contains(it.toInt())) throw IllegalArgumentException(DUPLICATE_ERROR_MSG)
+            if (it.toInt() !in MIN_VALUE..MAX_VALUE) throw IllegalArgumentException(RANGE_BOUNDS_ERROR_MSG)
+            if (numbers.contains(it.toInt())) throw IllegalArgumentException(DUPLICATE_ERROR_MSG)
             numbers.add(it.toInt())
         }
-        if(numbers.size != LOTTO_NUM_LIMIT) throw IllegalArgumentException(SIZE_BOUNDS_ERROR_MSG)
+        if (numbers.size != LOTTO_NUM_LIMIT) throw IllegalArgumentException(SIZE_BOUNDS_ERROR_MSG)
         return numbers
     }
 
@@ -55,7 +54,7 @@ class InputView {
 
     fun validateBonusNumber(input: String): Int {
         for (item in input) {
-            if(!Character.isDigit(item))
+            if (!Character.isDigit(item))
                 throw IllegalArgumentException(MIXED_CHAR_ERROR_MSG)
         }
         if (input.toInt() !in MIN_VALUE..MAX_VALUE)

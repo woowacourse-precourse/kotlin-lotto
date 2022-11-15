@@ -5,7 +5,7 @@ import lotto.domain.LottoGame
 fun main() {
     try {
         LottoGame().run()
-    }catch (e: IllegalArgumentException){
+    } catch (e: IllegalArgumentException) {
         println(e.message)
     }
 }

@@ -1,9 +1,8 @@
 package lotto.domain
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
-
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 
 internal class CalculatorTest {
     lateinit var calculator: Calculator
@@ -12,9 +11,10 @@ internal class CalculatorTest {
     fun setUp() {
         calculator = Calculator()
     }
+
     @Test
     fun `수익금을 계산한다`() {
-        val winners = listOf(1,0,0,1,0)
+        val winners = listOf(1, 0, 0, 1, 0)
         val actual = calculator.calcProfits(winners)
         val expected = 30005000
         assertThat(actual).isEqualTo(expected)

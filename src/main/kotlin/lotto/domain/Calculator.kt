@@ -9,7 +9,7 @@ class Calculator {
     fun calcProfits(winners: List<Int>): Int {
         var profits = 0
         val rank = Ranking.values()
-        for(i in rank.indices){
+        for (i in rank.indices) {
             profits += winners[i] * rank[i].prize
         }
         return profits
