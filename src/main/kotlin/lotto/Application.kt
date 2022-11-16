@@ -1,5 +1,13 @@
 package lotto
 
+import lotto.controller.LottoGameController
+import lotto.ui.*
+
 fun main() {
-    TODO("프로그램 구현")
+    val inputValidator = InputValidator()
+    val inputManager = InputManager(inputValidator)
+    val outputManager = OutputManager()
+    val uiManager = UIManager(inputManager, outputManager)
+    val lottoGameController = LottoGameController(uiManager)
+    lottoGameController.play()
 }
