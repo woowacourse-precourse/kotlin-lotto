@@ -1,0 +1,15 @@
+package values
+
+// Coincidence List Index
+const val INDEX_THREE_COINCIDENCE: Int = 0
+const val INDEX_FOUR_COINCIDENCE: Int = 1
+const val INDEX_FIVE_COINCIDENCE: Int = 2
+const val INDEX_FIVE_AND_BONUS_COINCIDENCE: Int = 3
+const val INDEX_SIX_COINCIDENCE: Int = 4
+
+// Jackpot Prize
+const val PRIZE_THREE_COINCIDENCE: Int = 5000
+const val PRIZE_FOUR_COINCIDENCE: Int = 50000
+const val PRIZE_FIVE_COINCIDENCE: Int = 1500000
+const val PRIZE_FIVE_AND_BONUS_COINCIDENCE: Int = 30000000
+const val PRIZE_SIX_COINCIDENCE: Int = 2000000000
