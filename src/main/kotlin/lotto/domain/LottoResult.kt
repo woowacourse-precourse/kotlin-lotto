@@ -1,6 +1,6 @@
 package lotto.domain
 
-import kotlin.math.round
+import lotto.Reward
 
 class LottoResult() {
     private val ranks = listOf("FIFTH", "FORTH", "THIRD", "SECOND", "FIRST")
@@ -22,6 +22,7 @@ class LottoResult() {
                 println("${Reward.getSameCount(rank)}개 일치, 보너스 볼 일치 (${Reward.getPrizeMoney(rank)}원) - ${results[rank]}개")
                 continue
             }
+            // println(Reward.FIRST.same)
             println("${Reward.getSameCount(rank)}개 일치 (${Reward.getPrizeMoney(rank)}원) - ${results[rank]}개")
         }
         println("총 수익률은 " + getProfit(results, playerCost) + "%입니다.")

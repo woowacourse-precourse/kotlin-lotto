@@ -6,5 +6,6 @@ fun main() {
     try {
         LottoGame().start()
     } catch (_: IllegalArgumentException) {
+        
     }
 }

@@ -1,5 +1,7 @@
 package lotto.domain
 
+import lotto.Reward
+
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == LOTTO_SIZE) { LOTTO_SIZE_EXCEPTION }
