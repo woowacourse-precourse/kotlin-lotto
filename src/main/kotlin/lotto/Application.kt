@@ -1,5 +1,11 @@
 package lotto
 
+import lotto.domain.LottoGame
+
 fun main() {
-    TODO("프로그램 구현")
+    try {
+        LottoGame().start()
+    } catch (_: IllegalArgumentException) {
+        
+    }
 }
