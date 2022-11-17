@@ -1,5 +1,6 @@
 package lotto.domain
 
+import lotto.Win
 import lotto.exception.validateLottoNumbers
 
 class Lotto(private val numbers: List<Int>) {

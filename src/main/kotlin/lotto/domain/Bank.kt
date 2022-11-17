@@ -1,5 +1,6 @@
 package lotto.domain
 
+import lotto.Win
 import java.util.*
 
 class Bank(private val lottos: List<List<Int>>) {

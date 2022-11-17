@@ -1,4 +1,4 @@
-package lotto.domain
+package lotto
 
 enum class Win {
     FIRST_PLACE,
