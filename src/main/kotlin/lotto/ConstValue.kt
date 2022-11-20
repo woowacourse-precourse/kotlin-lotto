@@ -1,0 +1,7 @@
+package lotto
+
+const val FIRSTREWARD = 2000000000
+const val SECONEREWARD = 30000000
+const val THIRDREWARD = 1500000
+const val FOURTHREWARD = 50000
+const val FIFTHREWARD = 5000
