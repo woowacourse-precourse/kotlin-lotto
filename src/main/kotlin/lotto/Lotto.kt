@@ -1,9 +1,26 @@
 package lotto
 
+import util.Constants
+
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6)
+        require(numbers.size == Constants.NUMBER_OF_LOTTO.constant)
+        require(numbers.distinct() == numbers)
+        numbers.forEach { n ->
+            require(n in 1..45)
+        }
     }
 
-    // TODO: 추가 기능 구현
+    fun compareWinningNumber(winningNumber: List<Int>): Int {
+        var result = Constants.ZERO.constant
+        winningNumber.forEach { n ->
+            if (numbers.contains(n)) result++
+        }
+        return result
+    }
+
+    fun compareBonusNumber(bonusNumber: Int): Boolean {
+        if (numbers.contains(bonusNumber)) return true
+        return false
+    }
 }
