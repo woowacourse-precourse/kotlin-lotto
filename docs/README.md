@@ -1,46 +1,46 @@
 ## 📮 기능 목록
 
-1. 구입금액을 입력해주세요. 출력 - showInputPurchasingAmount()
+1. 구입금액을 입력해주세요. 출력 - `showInputPurchasingAmount()`
 
-2. 구입금액 입력 - getPurchasingAmount()
-   - 예외처리 - checkInputPurchasingAmount()
-     1. 1,000원 단위로 나누어 떨어지지 않을 때 - hasRemainderOfPurchasingAmount()
-     2. 숫자가 아닐 때 - isNumberOfPurchasingAmount()
+2. 구입금액 입력 - `getPurchasingAmount()`
+   - 예외처리 - `checkInputPurchasingAmount()`
+     1. 1,000원 단위로 나누어 떨어지지 않을 때 - `hasRemainderOfPurchasingAmount()`
+     2. 숫자가 아닐 때 - `isNumberOfPurchasingAmount()`
 
-3. 입력한 금액 만큼 로또 번호 생성 후 오름차순 정렬 - getLottoNumbers()
+3. 입력한 금액 만큼 로또 번호 생성 후 오름차순 정렬 - `getLottoNumbers()`
 
-4. 구매 갯수 및 로또 번호 출력 - getLottoNumbers()
+4. 구매 갯수 및 로또 번호 출력 - `getLottoNumbers()`
 
-5. 당첨 번호를 입력해 주세요. 출력 - showInputWinningNumber()
+5. 당첨 번호를 입력해 주세요. 출력 - `showInputWinningNumber()`
 
-6. 당첨번호 입력 - getWinningNumbers()
-   - 예외처리 - checkInputWinningNumbers()
-     1. split 했을 때 숫자가 아닐 때 - isNumberOfWinningNumbers()
-     2. split 했을 때 요소 수가 6개가 아닐 때 - hasElementOfWinningNumbers()
-     3. 로또 범위 내 숫자가 아닐 때 - isCorrectRangeOfWinningNumbers()
-     4. 중복이 있을 때 - isUniqueOfWinningNumbers()
+6. 당첨번호 입력 - `getWinningNumbers()`
+   - 예외처리 - `checkInputWinningNumbers()`
+     1. split 했을 때 숫자가 아닐 때 - `isNumberOfWinningNumbers()`
+     2. split 했을 때 요소 수가 6개가 아닐 때 - `hasElementOfWinningNumbers()`
+     3. 로또 범위 내 숫자가 아닐 때 - `isCorrectRangeOfWinningNumbers()`
+     4. 중복이 있을 때 - `isUniqueOfWinningNumbers()`
 
-7. 보너스 번호를 입력해 주세요. 출력 - showInputBonusNumber()
+7. 보너스 번호를 입력해 주세요. 출력 - `showInputBonusNumber()`
 
-8. 보너스 번호 입력 - getBonusNumber()
-   - 예외처리 - checkInputBonusNumber()
-     1. 숫자가 아닐 때 - isNumberOfBonusNumber()
-     2. 로또 범위 내 숫자가 아닐 때 - isCorrectRangeOfBonusNumber()
-     3. 당첨 번호와 중복일 때 - isUniqueOfBonusNumber()
+8. 보너스 번호 입력 - `getBonusNumber()`
+   - 예외처리 - `checkInputBonusNumber()`
+     1. 숫자가 아닐 때 - `isNumberOfBonusNumber()`
+     2. 로또 범위 내 숫자가 아닐 때 - `isCorrectRangeOfBonusNumber()`
+     3. 당첨 번호와 중복일 때 - `isUniqueOfBonusNumber()`
 
-9. 구입한 로또 번호와 당첨 번호 비교 - compareNumbers()
+9. 구입한 로또 번호와 당첨 번호 비교 - `compareNumbers()`
 
-10. 보너스 정보가 필요없는 등수 false로 고정 - isBonusNecessary()
+10. 보너스 정보가 필요없는 등수 false로 고정 - `isBonusNecessary()`
 
-11. 구입한 각 로또 번호의 등수 매칭 - getRank()
+11. 구입한 각 로또 번호의 등수 매칭 - `getRank()`
 
-12. 구입한 전체 번호의 당첨 정보 전달 - isWinningLotto()
+12. 구입한 전체 번호의 당첨 정보 전달 - `isWinningLotto()`
 
-13. 당첨 통계 중 순위 당 갯수 계산 - countRank()
+13. 당첨 통계 중 순위 당 갯수 계산 - `countRank()`
 
-14. 당첨 통계 중 수익률 계산 - calculateIncome()
+14. 당첨 통계 중 수익률 계산 - `calculateIncome()`
 
-13. 다음과 같은 양식으로 당첨 통계 출력 - showResultOfLotto()
+13. 다음과 같은 양식으로 당첨 통계 출력 - `showResultOfLotto()`
 ```kotlin
 /**
 당첨 통계
