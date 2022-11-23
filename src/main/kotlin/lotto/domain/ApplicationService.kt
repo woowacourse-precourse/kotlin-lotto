@@ -3,6 +3,7 @@ package lotto.domain
 import lotto.domain.InputExceptionHandler.checkInputBonusNumber
 import lotto.domain.InputExceptionHandler.checkInputPurchasingAmount
 import lotto.domain.InputExceptionHandler.checkInputWinningNumbers
+import lotto.util.Util
 
 class ApplicationService {
     private val view = View
@@ -10,15 +11,14 @@ class ApplicationService {
     /**
      * 구입금액을 입력 받고 구매 갯수를 리턴하는 함수
      * */
-    fun getPurchasingAmount(): Int {
+    private fun getPurchasingAmount(): Int {
         view.showInputPurchasingAmount()
         val inputPurchasingAmount = Util.readLine()
         return try {
             checkInputPurchasingAmount(inputPurchasingAmount)
-            (inputPurchasingAmount.toInt() / 1000)
-                .also { view.showCountOfLotto(it) }
+            (inputPurchasingAmount.toInt() / 1000).also { view.showCountOfLotto(it) }
         } catch (e: IllegalArgumentException) {
-            println(PURCHASING_AMOUNT_EXCEPTION_MESSAGE)
+            println(e.message)
             0
         }
     }

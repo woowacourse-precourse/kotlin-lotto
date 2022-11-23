@@ -1,9 +1,12 @@
 package lotto.domain
 
 object InputExceptionHandler {
-    private const val PURCHASING_AMOUNT_EXCEPTION_MESSAGE = "[ERROR] 구입금액이 올바르지 않습니다."
-    private const val WINNING_NUMBERS_EXCEPTION_MESSAGE = "[ERROR] 당첨번호가 올바르지 않습니다."
-    private const val BONUS_NUMBER_EXCEPTION_MESSAGE = "[ERROR] 보너스 번호가 올바르지 않습니다."
+    private const val PREFIX = "[ERROR]"
+    private const val DIGIT_EXCEPTION = "숫자가 아닙니다."
+    private const val REMAINDER_EXCEPTION = "나머지가 존재합니다."
+
+    private const val WINNING_NUMBERS_EXCEPTION_MESSAGE = "당첨번호가 올바르지 않습니다."
+    private const val BONUS_NUMBER_EXCEPTION_MESSAGE = "보너스 번호가 올바르지 않습니다."
 
     /**
      * 구입 금액 예외 처리
@@ -13,20 +16,8 @@ object InputExceptionHandler {
      * 2. 숫자가 아닐 때
      * */
     fun checkInputPurchasingAmount(inputPurchasingAmount: String) {
-        if (!isNumberOfPurchasingAmount(inputPurchasingAmount)) {
-            throw IllegalArgumentException(PURCHASING_AMOUNT_EXCEPTION_MESSAGE)
-        }
-        if (!hasRemainderOfPurchasingAmount(inputPurchasingAmount)) {
-            throw IllegalArgumentException(PURCHASING_AMOUNT_EXCEPTION_MESSAGE)
-        }
-    }
-
-    private fun hasRemainderOfPurchasingAmount(inputPurchasingAmount: String): Boolean {
-        return inputPurchasingAmount.toInt() % 1000 <= 0
-    }
-
-    private fun isNumberOfPurchasingAmount(inputPurchasingAmount: String): Boolean {
-        return inputPurchasingAmount.all { it.isDigit() }
+        require(inputPurchasingAmount.all { it.isDigit() }) { "$PREFIX $DIGIT_EXCEPTION" }
+        require(inputPurchasingAmount.toInt() % 1000 != 0) {"$PREFIX $REMAINDER_EXCEPTION"}
     }
 
     /**
