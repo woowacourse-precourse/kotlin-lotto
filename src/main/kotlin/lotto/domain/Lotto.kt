@@ -48,12 +48,4 @@ data class Lotto(private val numbers: List<Int>) {
         }
         return "$string]"
     }
-
-    companion object {
-        private const val PREFIX = "[ERROR]"
-        private const val DIGIT_EXCEPTION = "숫자가 아닙니다."
-        private const val SIZE_EXCEPTION = "갯수가 맞지 않습니다."
-        private const val RANGE_EXCEPTION = "범위를 벗어났습니다."
-        private const val DISTINCT_EXCEPTION = "중복이 있습니다."
-    }
 }

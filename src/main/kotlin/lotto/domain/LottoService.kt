@@ -4,9 +4,7 @@ import lotto.enums.Rating
 import kotlin.math.round
 
 class LottoService {
-    /**
-     * 당첨 여부 정보를 리턴하는 함수
-     * */
+
     fun isWinningLotto(lottoNumbers: MutableList<Lotto>, winningNumbers: Lotto, bonusNumber: Int): MutableList<Rating> {
         val ranks: MutableList<Rating> = mutableListOf()
         for (lottoNumber in lottoNumbers) {
@@ -16,17 +14,11 @@ class LottoService {
         return ranks
     }
 
-    /**
-     * 구입한 로또 번호와 당첨 번호를 비교하는 함수
-     * */
     fun compareNumbers(lottoNumber: Lotto, winningNumbers: Lotto, bonusNumber: Int): Pair<Int, Boolean> {
         var (hit, bonus) = lottoNumber.compare(winningNumbers, bonusNumber)
         return isBonusNecessary(hit, bonus)
     }
 
-    /**
-     * 2등 이외에는 보너스 정보가 필요 없으므로 bonus 값을 false로 고정하는 함수
-     * */
     fun isBonusNecessary(hit: Int, bonus: Boolean): Pair<Int, Boolean> {
         if ((hit != HIT_FIVE) and bonus) {
             return hit to false
@@ -34,9 +26,6 @@ class LottoService {
         return hit to bonus
     }
 
-    /**
-     * 당첨 번호와 일치하는 수, 보너스 번호 일치 여부에 맞춰 등수를 반환하는 함수
-     * */
     fun getRank(hitAndBonus: Pair<Int, Boolean>): Rating {
         when (hitAndBonus) {
             HIT_SIX to false -> return Rating.FIRST
@@ -48,16 +37,10 @@ class LottoService {
         return Rating.LOSE
     }
 
-    /**
-     * 당첨 통계 중 순위 당 갯수를 계산하는 함수
-     * */
     fun countRank(resultOfLotto: MutableList<Rating>, rating: Rating): Int {
         return resultOfLotto.count { it == rating }
     }
 
-    /**
-     * 당첨 통계 중 수익률을 계산하는 함수
-     * */
     fun calculateIncome(resultOfLotto: MutableList<Rating>, countOfLotto: Int): Double {
         var sum = 0.0
         for (rank in Rating.values()) {
