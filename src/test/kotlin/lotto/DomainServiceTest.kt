@@ -2,7 +2,7 @@ package lotto
 
 import lotto.domain.DomainService
 import lotto.domain.Lotto
-import lotto.domain.Rating
+import lotto.enums.Rating
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 

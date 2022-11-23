@@ -1,5 +1,6 @@
 package lotto.domain
 
+import lotto.enums.Rating
 import kotlin.math.round
 
 class DomainService {

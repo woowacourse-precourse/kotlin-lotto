@@ -1,4 +1,4 @@
-package lotto.domain
+package lotto.enums
 
 enum class Rating(
     private val hit: Int,

@@ -11,6 +11,7 @@ fun main() {
 fun playLotto() {
     val applicationService = ApplicationService()
     val domainService = DomainService()
+
     val countOfLotto = applicationService.retryGetPurchasingAmount(applicationService)
     val lottoNumbers = applicationService.getLottoNumbers(countOfLotto)
     val winningNumbers = applicationService.retryGetWinningNumbers(applicationService)

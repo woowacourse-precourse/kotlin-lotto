@@ -1,4 +1,4 @@
-package lotto.domain
+package lotto.enums
 
 interface RatingInterface {
     fun getHit(): Int
