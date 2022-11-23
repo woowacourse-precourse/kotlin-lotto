@@ -1,5 +1,7 @@
-package lotto.domain
+package lotto.ui
 
+import lotto.domain.DomainService
+import lotto.domain.Lotto
 import lotto.enums.Rating
 
 object View {
@@ -10,7 +12,7 @@ object View {
     /**
      * 구입 금액 입력 메시지를 출력하는 함수
      * */
-    fun showInputPurchasingAmount() {
+    fun showPurchasingAmount() {
         println(INPUT_PURCHASING_AMOUNT)
     }
 
@@ -31,7 +33,7 @@ object View {
     /**
      * 구매한 로또 장 수를 출력하는 함수
      * */
-    fun showCountOfLotto(countOfLotto: Int) {
+    fun showCount(countOfLotto: Int) {
         println("${countOfLotto}개를 구매했습니다.")
     }
 
