@@ -1,14 +1,14 @@
 package lotto
 
-import lotto.domain.InputExceptionHandler
+import lotto.domain.LottoShopChecker
 import lotto.domain.Lotto
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
 
-class InputExceptionHandlerTest {
-    private val inputExceptionHandler = InputExceptionHandler
+class LottoShopCheckerTest {
+    private val lottoShopChecker = LottoShopChecker
 
     @ParameterizedTest
     @CsvSource(
@@ -17,21 +17,7 @@ class InputExceptionHandlerTest {
     )
     fun `구입 금액 예외처리 테스트`(inputPurchasingAmount: String) {
         assertThrows<IllegalArgumentException> {
-            inputExceptionHandler.checkInputPurchasingAmount(inputPurchasingAmount)
-        }
-    }
-
-    @ParameterizedTest
-    @CsvSource(
-        WINNING_NUMBERS_IS_NOT_NUMBER,
-        WINNING_NUMBERS_HAS_NOT_ELEMENTS,
-        WINNING_NUMBERS_IS_NOT_CORRECT_RANGE,
-        WINNING_NUMBERS_IS_NOT_UNIQUE,
-        delimiter = ' '
-    )
-    fun `당첨번호 예외처리 테스트`(inputWinningNumbers: String) {
-        assertThrows<IllegalArgumentException> {
-            inputExceptionHandler.checkInputWinningNumbers(inputWinningNumbers)
+            lottoShopChecker.checkPurchasingAmount(inputPurchasingAmount)
         }
     }
 
@@ -43,14 +29,14 @@ class InputExceptionHandlerTest {
     )
     fun `보너스 번호 예외처리`(inputBonusNumber: String) {
         assertThrows<IllegalArgumentException> {
-            inputExceptionHandler.checkInputBonusNumber(TEST_WINNING_NUMBER, inputBonusNumber)
+            lottoShopChecker.checkBonusNumber(TEST_WINNING_NUMBER, inputBonusNumber)
         }
     }
 
     @Test
     fun `try catch exception println() test`() {
         try {
-            inputExceptionHandler.checkInputPurchasingAmount("1000j")
+            lottoShopChecker.checkPurchasingAmount("1000j")
         } catch (e: IllegalArgumentException) {
             println("[ERROR]")
         }

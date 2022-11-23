@@ -3,7 +3,7 @@ package lotto.domain
 import lotto.enums.Rating
 import kotlin.math.round
 
-class DomainService {
+class LottoService {
     /**
      * 당첨 여부 정보를 리턴하는 함수
      * */
@@ -20,16 +20,7 @@ class DomainService {
      * 구입한 로또 번호와 당첨 번호를 비교하는 함수
      * */
     fun compareNumbers(lottoNumber: Lotto, winningNumbers: Lotto, bonusNumber: Int): Pair<Int, Boolean> {
-        var hit = 0
-        var bonus = false
-        for (number in lottoNumber.getLottoNumbers()) {
-            if (winningNumbers.getLottoNumbers().contains(number)) {
-                hit += 1
-            }
-            if (number == bonusNumber) {
-                bonus = true
-            }
-        }
+        var (hit, bonus) = lottoNumber.compare(winningNumbers, bonusNumber)
         return isBonusNecessary(hit, bonus)
     }
 

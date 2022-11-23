@@ -1,21 +1,21 @@
 package lotto
 
-import lotto.domain.View
-import lotto.domain.ApplicationService
+import lotto.ui.View
+import lotto.domain.LottoShop
 import org.junit.jupiter.api.Test
 
 class ViewTest {
     @Test
     fun `구입한 로또 장 수 출력`() {
         val countOfLotto = 14
-        View.showCountOfLotto(countOfLotto)
+        View.showCount(countOfLotto)
     }
 
     @Test
     fun `구입한 로또 번호 출력`() {
-        val applicationService = ApplicationService()
+        val lottoShop = LottoShop()
         val countOfLotto = 8
-        val lottoNumbers = applicationService.getLottoNumbers(countOfLotto)
-        View.showPurchasedLottoNumbers(lottoNumbers)
+        val lottoNumbers = lottoShop.getLottoNumbers(countOfLotto)
+        View.showPurchasedLotteries(lottoNumbers)
     }
 }

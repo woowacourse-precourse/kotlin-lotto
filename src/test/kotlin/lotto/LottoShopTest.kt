@@ -1,18 +1,17 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import lotto.domain.Lotto
-import lotto.domain.View
-import lotto.domain.ApplicationService
-import lotto.domain.DomainService
+import lotto.ui.View
+import lotto.domain.LottoShop
+import lotto.domain.LottoService
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-class ApplicationServiceTest : NsTest() {
-    private val applicationService = ApplicationService()
-    private val domainService = DomainService()
+class LottoShopTest : NsTest() {
+    private val lottoShop = LottoShop()
+    private val lottoService = LottoService()
 
 //    @Test
 //    fun `구입 금액 입력 함수 테스트 - 1`() {
@@ -75,21 +74,21 @@ class ApplicationServiceTest : NsTest() {
         // 1번 테스트: val countOfLottoNumber = applicationService.retryGetPurchasingAmount(applicationService)
         // 2번 테스트: applicationService.getLottoNumbers(countOfLottoNumber)
         // 3번 테스트:
-        val winningNumbers = applicationService.getWinningNumbers()
+        val winningNumbers = lottoShop.getWinningNumbers()
         // 4번 테스트:
         if (winningNumbers != null) {
-            applicationService.getBonusNumber(winningNumbers)
+            lottoShop.getBonusNumber(winningNumbers)
         }
     }
 
     @Test
     fun `winningLotto 정상 출력 테스트`() {
         val countOfLotto = 8
-        val lottoNumbers = applicationService.getLottoNumbers(countOfLotto)
-        View.showPurchasedLottoNumbers(lottoNumbers)
+        val lottoNumbers = lottoShop.getLottoNumbers(countOfLotto)
+        View.showPurchasedLotteries(lottoNumbers)
         val winningNumbers = Lotto(listOf(4, 3, 7, 9, 12, 36))
         val bonusNumber = 45
-        val winningLotto = domainService.isWinningLotto(lottoNumbers, winningNumbers, bonusNumber)
+        val winningLotto = lottoService.isWinningLotto(lottoNumbers, winningNumbers, bonusNumber)
         println(winningLotto.toString())
     }
 }
