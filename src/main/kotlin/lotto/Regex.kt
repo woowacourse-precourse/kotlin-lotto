@@ -3,38 +3,80 @@ package lotto
 import java.util.regex.Pattern
 
 object Regex {
+
+    fun userInputMoneyRegexes(userInput: String): Boolean {
+        return try {
+            checkItOnlyContainsNumber(userInput)
+            checkItCanDivideWithThousand(changeStringToInt(userInput))
+            checkInputIsNull(userInput)
+            true
+        } catch (e: IllegalArgumentException) {
+            false
+        }
+    }
+
+    fun userInputWinningRegexes(userInput: String): String {
+        checkUserInputOnlyContainsNumber(userInput)
+        checkUserWinNumberInputLength(userInput)
+        getUserInputIsInRange(userInput)
+        checkUserWinNumberInputIsNotDuplicated(userInput)
+        return userInput
+    }
+
+    fun userInputBonusRegexes(userInput: String): Boolean {
+        return try {
+            checkUserInputOnlyContainsNumber(userInput)
+            getUserInputIsInRange(userInput)
+            checkInputIsNull(userInput)
+            true
+        } catch (e: IllegalArgumentException) {
+            false
+        }
+    }
+
     private fun convertStringToList(input: String): List<String> {
         return input.split(",").filter { it != "" }
     }
 
-    fun checkItCanDivideWithThousand(userInputPrice: Int): Boolean {
-        return (userInputPrice % LOTTO_EACH_PRICE == 0)
+    private fun checkItCanDivideWithThousand(userInputPrice: Int) {
+        if (userInputPrice % LOTTO_EACH_PRICE != 0) {
+            Error.showError(ErrorType.NotDivideWithThousand)
+        }
     }
 
-    fun checkItOnlyContainsNumber(userInput: String): Boolean {
-        return Pattern.matches("^[0-9]*$", userInput)
+    private fun checkItOnlyContainsNumber(userInput: String) {
+        if (!Pattern.matches("^[0-9]*$", userInput)) {
+            Error.showError(ErrorType.NotOnlyNumber)
+        }
     }
 
-    fun checkUserInputOnlyContainsNumber(userInput: String): Boolean {
+    private fun checkUserInputOnlyContainsNumber(userInput: String) {
         val numberList = convertStringToList(userInput)
         for (i in numberList) {
-            if (!checkItOnlyContainsNumber(i)) {
-                return false
-            }
+            checkItOnlyContainsNumber(i)
         }
-        return true
     }
 
-    fun checkUserWinNumberInputLength(userInput: String): Boolean {
-        return convertStringToList(userInput).size == 6
+    private fun checkUserWinNumberInputLength(userInput: String) {
+        if (convertStringToList(userInput).size != 6) {
+            Error.showError(ErrorType.NotEnoughLength)
+        }
     }
 
-    fun checkUserWinNumberInputIsNotDuplicated(userInput: String): Boolean {
+    private fun checkUserWinNumberInputIsNotDuplicated(userInput: String) {
         val userWinNumberList = convertStringToList(userInput)
-        return userWinNumberList.size == userWinNumberList.distinct().size
+        if (userWinNumberList.size != userWinNumberList.distinct().size) {
+            Error.showError(ErrorType.WinNumberListIsDuplicated)
+        }
     }
 
-    fun checkUserInputIsInRange(userInput: String): Boolean {
+    private fun getUserInputIsInRange(userInput: String) {
+        if (!checkUserInputIsInRange(userInput)) {
+            Error.showError(ErrorType.NotInRange)
+        }
+    }
+
+    private fun checkUserInputIsInRange(userInput: String): Boolean {
         val numberList = convertStringToList(userInput)
         for (i in numberList) {
             if (i.toInt() !in 1..45) {
@@ -48,7 +90,18 @@ object Regex {
         return WinNumbers.contains(BonusNumber)
     }
 
-    fun checkInputIsNull(userInput: String): Boolean {
-        return userInput.isNotEmpty()
+    private fun checkInputIsNull(userInput: String) {
+        if (userInput.isEmpty()) {
+            Error.showError(ErrorType.InputIsNull)
+        }
+    }
+
+    fun changeStringToInt(userInput: String): Int {
+        return try {
+            userInput.toInt()
+        } catch (exception: Exception) {
+            println(exception.message)
+            return INPUT_ERROR_CODE
+        }
     }
 }

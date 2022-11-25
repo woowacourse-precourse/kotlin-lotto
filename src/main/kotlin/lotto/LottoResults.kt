@@ -6,11 +6,11 @@ class LottoResults(private val userInputPrice: Int, private val prizeCountList: 
     fun printPrizeResults() {
         for (i in prizeCountList.indices) {
             when (i) {
-                0 -> println(EnumPrize().checkPrizeType(EnumPrizeType.FIFTH, prizeCountList[i]))
-                1 -> println(EnumPrize().checkPrizeType(EnumPrizeType.FOURTH, prizeCountList[i]))
-                2 -> println(EnumPrize().checkPrizeType(EnumPrizeType.THIRD, prizeCountList[i]))
-                3 -> println(EnumPrize().checkPrizeType(EnumPrizeType.SECOND, prizeCountList[i]))
-                4 -> println(EnumPrize().checkPrizeType(EnumPrizeType.FIRST, prizeCountList[i]))
+                0 -> EnumPrize().checkPrizeType(EnumPrizeType.FIFTH, prizeCountList[i])
+                1 -> EnumPrize().checkPrizeType(EnumPrizeType.FOURTH, prizeCountList[i])
+                2 -> EnumPrize().checkPrizeType(EnumPrizeType.THIRD, prizeCountList[i])
+                3 -> EnumPrize().checkPrizeType(EnumPrizeType.SECOND, prizeCountList[i])
+                4 -> EnumPrize().checkPrizeType(EnumPrizeType.FIRST, prizeCountList[i])
             }
         }
         PrintForm().printGainPercent(calculateRevenuePercent())

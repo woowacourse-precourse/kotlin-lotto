@@ -8,15 +8,9 @@ class UserBonusNumber(private val userWinNumbers: List<String>, private val user
     }
 
     private fun checkUserBonusNumberRegex(userInput: String): Int {
-        if (!Regex.checkUserInputOnlyContainsNumber(userInput)) {
-            Error.showError(ErrorType.NotOnlyNumber)
-        }
-        if (!Regex.checkUserInputIsInRange(userInput)) {
-            Error.showError(ErrorType.NotInRange)
-        }
-        if (!Regex.checkInputIsNull(userInput)) {
-            Error.showError(ErrorType.InputIsNull)
-        }
+        try {
+            Regex.userInputBonusRegexes(userInput)
+        } catch (_ : Exception) {}
         return userInput.toInt()
     }
 
