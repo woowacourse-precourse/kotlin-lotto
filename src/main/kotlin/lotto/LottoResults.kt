@@ -13,7 +13,7 @@ class LottoResults(private val userInputPrice: Int, private val prizeCountList: 
                 4 -> println(EnumPrize().checkPrizeType(EnumPrizeType.FIRST, prizeCountList[i]))
             }
         }
-        println("총 수익률은 ${calculateRevenuePercent()}%입니다.")
+        PrintForm().printGainPercent(calculateRevenuePercent())
     }
 
     private fun calculateRevenuePercent(): Float {
