@@ -8,10 +8,11 @@ class UserBonusNumber(private val userWinNumbers: List<String>, private val user
     }
 
     private fun checkUserBonusNumberRegex(userInput: String): Int {
-        try {
-            Regex.userInputBonusRegexes(userInput)
-        } catch (_ : Exception) {}
-        return userInput.toInt()
+        return if(Regex.userInputBonusRegexes(userInput)) {
+            userInput.toInt()
+        } else {
+            INPUT_ERROR_CODE
+        }
     }
 
     private fun checkIsBonusNumberDuplicatedWithWinNumbers(WinNumberList: List<String>, BonusNumber: String) {
