@@ -5,7 +5,7 @@ import lotto.utils.Constants.INPUT_BONUS_NUMBER_TEXT
 import lotto.utils.Constants.INPUT_PURCHASE_PRIZE_TEXT
 import lotto.utils.Constants.INPUT_WINNING_NUMBER_TEXT
 
-object InputView {
+class InputView {
 
     fun inputMoney(): String {
         println(INPUT_PURCHASE_PRIZE_TEXT)

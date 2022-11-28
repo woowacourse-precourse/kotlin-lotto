@@ -4,7 +4,7 @@ import lotto.domain.model.Lotto
 import lotto.domain.model.Rank
 import java.text.DecimalFormat
 
-object OutputView {
+class OutputView {
 
     fun purchasingLottos(lottos: List<Lotto>) {
         println("${lottos.size}개를 구매했습니다.")
