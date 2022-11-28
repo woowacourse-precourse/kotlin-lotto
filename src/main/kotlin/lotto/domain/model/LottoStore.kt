@@ -15,7 +15,7 @@ class LottoStore : GenerateLottoNumber {
         LottoNumber.valueOf(it)
     })
 
-    fun buyLotto(money: Long): List<Lotto> {
+    fun purchaseLotto(money: Long): List<Lotto> {
         val purchaseLottos = mutableListOf<Lotto>()
         repeat((money / Lotto.LOTTO_PRIZE).toInt()) {
             purchaseLottos.add(generateLotto())
