@@ -8,7 +8,7 @@ import lotto.utils.Constants.LOTTO_NUM_IN_RANGE_TEXT
 import lotto.utils.Constants.MAX_LOTTO_NUM
 import lotto.utils.Constants.MIN_LOTTO_NUM
 
-class Lotto(private val numbers: List<Int>) {
+class Lotto(private val numbers: List<LottoNumber>) : List<LottoNumber> by numbers {
     init {
         checkValidation()
     }
@@ -17,7 +17,7 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.toString()
     }
 
-    fun contains(number: Int) = numbers.contains(number)
+    fun contains(number: Int) = numbers.contains(LottoNumber.valueOf(number))
 
     private fun checkValidation() {
         require(numbers.size == LOTTO_LENGTH) {
@@ -26,21 +26,9 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.distinct().size == LOTTO_LENGTH) {
             LOTTO_NOT_DUPLICATE_TEXT
         }
-        numbers.forEach { number ->
-            require(number in MIN_LOTTO_NUM..MAX_LOTTO_NUM) {
-                LOTTO_NUM_IN_RANGE_TEXT
-            }
-        }
     }
 
     companion object {
-
-        const val LOTTO_PRIZE = 1000
-        fun newInstance(): Lotto {
-            return Lotto(makeRandomNum())
-        }
-
-        private fun makeRandomNum(): List<Int> =
-            Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUM, MAX_LOTTO_NUM, LOTTO_LENGTH).sorted()
+        const val LOTTO_PRIZE = 1_000
     }
 }
