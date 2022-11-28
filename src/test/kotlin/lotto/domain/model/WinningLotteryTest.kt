@@ -68,17 +68,83 @@ internal class WinningLotteryTest {
         @Test
         @DisplayName("1등, 2등, 2등+보너스 결과 값을 반환하는지 체크")
         fun compareLotto1() {
-            assertThat(winningLottery.compareLotto(Lotto(listOf(1, 2, 3, 4, 5, 6)))).isEqualTo(Rank.CORRECT_SIX)
-            assertThat(winningLottery.compareLotto(Lotto(listOf(1, 2, 3, 4, 5, 7)))).isEqualTo(Rank.CORRECT_FIVE_BONUS)
-            assertThat(winningLottery.compareLotto(Lotto(listOf(1, 2, 3, 4, 5, 10)))).isEqualTo(Rank.CORRECT_FIVE)
+            assertThat(
+                winningLottery.compareLotto(
+                    Lotto(
+                        listOf(
+                            LottoNumber.valueOf(1),
+                            LottoNumber.valueOf(2),
+                            LottoNumber.valueOf(3),
+                            LottoNumber.valueOf(4),
+                            LottoNumber.valueOf(5),
+                            LottoNumber.valueOf(6),
+                        )
+                    )
+                )
+            ).isEqualTo(Rank.CORRECT_SIX)
+            assertThat(
+                winningLottery.compareLotto(
+                    Lotto(
+                        listOf(
+                            LottoNumber.valueOf(1),
+                            LottoNumber.valueOf(2),
+                            LottoNumber.valueOf(3),
+                            LottoNumber.valueOf(4),
+                            LottoNumber.valueOf(5),
+                            LottoNumber.valueOf(7)
+                        )
+                    )
+                )
+            ).isEqualTo(Rank.CORRECT_FIVE_BONUS)
+            assertThat(
+                winningLottery.compareLotto(
+                    Lotto(
+                        listOf(
+                            LottoNumber.valueOf(1),
+                            LottoNumber.valueOf(2),
+                            LottoNumber.valueOf(3),
+                            LottoNumber.valueOf(4),
+                            LottoNumber.valueOf(5),
+                            LottoNumber.valueOf(10),
+                        )
+                    )
+                )
+            ).isEqualTo(Rank.CORRECT_FIVE)
         }
 
         @Test
         @DisplayName("3등, 4등 꼴등 결과 값을 반환하는지 체크")
         fun compareLotto2() {
-            assertThat(winningLottery.compareLotto(Lotto(listOf(1, 2, 3, 10, 11, 12)))).isEqualTo(Rank.CORRECT_THREE)
-            assertThat(winningLottery.compareLotto(Lotto(listOf(1, 2, 3, 4, 10, 11)))).isEqualTo(Rank.CORRECT_FOUR)
+            assertThat(
+                winningLottery.compareLotto(
+                    Lotto(
+                        listOf(
+                            LottoNumber.valueOf(1),
+                            LottoNumber.valueOf(2),
+                            LottoNumber.valueOf(3),
+                            LottoNumber.valueOf(10),
+                            LottoNumber.valueOf(11),
+                            LottoNumber.valueOf(12),
+                        )
+                    )
+                )
+            ).isEqualTo(Rank.CORRECT_THREE)
+            assertThat(
+                winningLottery.compareLotto(
+                    Lotto(
+                        listOf(
+                            LottoNumber.valueOf(1),
+                            LottoNumber.valueOf(2),
+                            LottoNumber.valueOf(3),
+                            LottoNumber.valueOf(4),
+                            LottoNumber.valueOf(10),
+                            LottoNumber.valueOf(11),
+                        )
+                    )
+                )
+            ).isEqualTo(Rank.CORRECT_FOUR)
         }
+
     }
 
 }
