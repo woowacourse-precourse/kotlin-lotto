@@ -12,8 +12,10 @@ class Money(private val userInput: String) {
         amount = userInput.toLong()
     }
 
+    fun getMoney() = this.amount
+
     fun calEarningRate(totalPrice: Long): Double {
-        return (totalPrice / amount * 100.0)
+        return (totalPrice / amount.toDouble() * 100.0)
     }
 
     private fun validatePurchaseNum(userInput: String) {
