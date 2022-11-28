@@ -20,6 +20,7 @@ class LottoNumber(private val number: Int) {
         }
 
         fun valueOf(number: Int): LottoNumber {
+            validationNumber(number)
             return CACHED_LOTTO_NUMBER[number - 1]
         }
 
