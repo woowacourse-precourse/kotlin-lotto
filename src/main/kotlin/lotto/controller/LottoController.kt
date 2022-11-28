@@ -16,7 +16,7 @@ class LottoController {
 
         val winningLottery = WinningLottery(inputView.inputWinningNum(), inputView.inputBonusNum())
         val statistics = calStatistics(winningLottery, purchaseLottos)
-        val earningRate = calEarningRate(inputMoney, getTotalPrice(statistics))
+        val earningRate = inputMoney.calEarningRate(getTotalPrice(statistics)))
         printResult(statistics, earningRate)
     }
 
@@ -33,10 +33,6 @@ class LottoController {
             printSummary(statistics)
             earningRate(earningRate)
         }
-    }
-
-    private fun calEarningRate(purchasePrize: Money, totalPrice: Long): Double {
-        return (totalPrice / purchasePrize.getMoney().toDouble() * 100.0)
     }
 
     private fun calStatistics(winningLottery: WinningLottery, purchaseLottos: List<Lotto>): List<Rank> {

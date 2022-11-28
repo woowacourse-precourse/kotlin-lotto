@@ -12,7 +12,9 @@ class Money(private val userInput: String) {
         amount = userInput.toLong()
     }
 
-    fun getMoney() = this.amount
+    fun calEarningRate(totalPrice: Long): Double {
+        return (totalPrice / amount * 100.0)
+    }
 
     private fun validatePurchaseNum(userInput: String) {
         require(userInput.isNotBlank() && userInput.all { Character.isDigit(it) }) {
