@@ -1,8 +1,10 @@
 package lotto.controller
 
 import lotto.model.Buyer.lottoCount
+import lotto.model.Buyer.lottos
+import lotto.model.LottoData.bonusNumber
+import lotto.model.LottoData.winningNumber
 import lotto.model.LottoMaker
-import lotto.model.WinningNumber
 import lotto.view.InputVIew
 import lotto.view.OutputView
 
@@ -23,7 +25,8 @@ class LottoController {
 
     fun generateLotto() {
         val lottoMaker = LottoMaker()
-        val lottos = lottoMaker.generateLotto()
+        val randLottos = lottoMaker.generateLotto()
+        lottos = randLottos
         printLottos(lottos)
     }
 
@@ -33,8 +36,9 @@ class LottoController {
 
     fun inputWinningNumber() {
         outputView.requestWinningNumber()
-        val number = inputView.inputWinningNumber()
-        //WinningNumber(number, bonus)
+        winningNumber = inputView.inputWinningNumber()
+        outputView.requestBonusNumber()
+        bonusNumber = inputView.inputBonusNumber()
     }
 
 /*    fun startLotto() {

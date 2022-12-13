@@ -5,6 +5,8 @@ object Buyer {
         set(money) {
             field = money / 1000
         }
+
+    lateinit var lottos: List<List<Int>>
 /*    companion object {
         var payMoney = ""
         var buyCount = 0
