@@ -1,8 +1,7 @@
 package lotto.model
 
-import kotlin.properties.Delegates
+data class WinningLotto(val number: List<Int>, val bonus:Int)
 
 object LottoData {
-    lateinit var winningNumber: List<Int>
-    var bonusNumber by Delegates.notNull<Int>()
+    lateinit var winningLotto: WinningLotto
 }

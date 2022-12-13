@@ -6,7 +6,7 @@ object Buyer {
             field = money / 1000
         }
 
-    lateinit var lottos: List<List<Int>>
+    val lottos = mutableListOf<Lotto>()
 /*    companion object {
         var payMoney = ""
         var buyCount = 0

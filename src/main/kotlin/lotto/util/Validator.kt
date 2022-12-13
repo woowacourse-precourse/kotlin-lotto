@@ -1,6 +1,6 @@
 package lotto.util
 
-import lotto.model.LottoData.winningNumber
+import lotto.model.LottoData.winningLotto
 import java.lang.IllegalArgumentException
 
 object Validator {
@@ -36,12 +36,13 @@ object Validator {
         if (number.toInt() !in 1..45) {
             throw IllegalArgumentException("[ERROR] 1~45 사이 숫자를 입력해주세요.")
         }
-        if (number.toInt() in winningNumber) {
+    }
+
+    fun checkBonusInNumber(bonus: Int, winningNumber: List<Int>) {
+        if (bonus in winningNumber) {
             throw IllegalArgumentException("[ERROR] 당첨 번호에 없는 숫자를 입력해주세요.")
         }
     }
-
-
 /*    fun checkPurchaseAmount(input: String): String {
         if (input.toIntOrNull() == null) {
             throw IllegalArgumentException(ERROR_INT_OR_NULL)

@@ -2,9 +2,11 @@ package lotto.controller
 
 import lotto.model.Buyer.lottoCount
 import lotto.model.Buyer.lottos
-import lotto.model.LottoData.bonusNumber
-import lotto.model.LottoData.winningNumber
+import lotto.model.Lotto
+import lotto.model.LottoData.winningLotto
 import lotto.model.LottoMaker
+import lotto.model.WinningLotto
+import lotto.util.Validator.checkBonusInNumber
 import lotto.view.InputVIew
 import lotto.view.OutputView
 
@@ -14,20 +16,24 @@ class LottoController {
     fun startLotto() {
         inputMoney()
         inputWinningNumber()
+        generateLotto()
+        compareLotto()
     }
 
     fun inputMoney(){
         outputView.requestMoney()
         val money = inputView.inputMoney()
         lottoCount = money
-        generateLotto()
     }
 
     fun generateLotto() {
         val lottoMaker = LottoMaker()
         val randLottos = lottoMaker.generateLotto()
-        lottos = randLottos
-        printLottos(lottos)
+        for (lotto in randLottos) {
+            lottos.add(Lotto(lotto))
+        }
+        println(lottos)
+        printLottos(randLottos)
     }
 
     fun printLottos(lottos: List<List<Int>>) {
@@ -36,9 +42,17 @@ class LottoController {
 
     fun inputWinningNumber() {
         outputView.requestWinningNumber()
-        winningNumber = inputView.inputWinningNumber()
+        val number = inputView.inputWinningNumber()
         outputView.requestBonusNumber()
-        bonusNumber = inputView.inputBonusNumber()
+        val bonus = inputView.inputBonusNumber()
+        checkBonusInNumber(bonus,number)
+        winningLotto = WinningLotto(number,bonus)
+    }
+
+    fun compareLotto() {
+        for (lotto in lottos) {
+            lotto.countMatchNumber(winningLotto)
+        }
     }
 
 /*    fun startLotto() {
