@@ -2,6 +2,7 @@ package lotto.controller
 
 import lotto.model.Buyer.lottoCount
 import lotto.model.LottoMaker
+import lotto.model.WinningNumber
 import lotto.view.InputVIew
 import lotto.view.OutputView
 
@@ -9,6 +10,11 @@ class LottoController {
     val outputView = OutputView()
     val inputView = InputVIew()
     fun startLotto() {
+        inputMoney()
+        inputWinningNumber()
+    }
+
+    fun inputMoney(){
         outputView.requestMoney()
         val money = inputView.inputMoney()
         lottoCount = money
@@ -23,6 +29,12 @@ class LottoController {
 
     fun printLottos(lottos: List<List<Int>>) {
         outputView.printLottos(lottoCount, lottos)
+    }
+
+    fun inputWinningNumber() {
+        outputView.requestWinningNumber()
+        val number = inputView.inputWinningNumber()
+        //WinningNumber(number, bonus)
     }
 
 /*    fun startLotto() {

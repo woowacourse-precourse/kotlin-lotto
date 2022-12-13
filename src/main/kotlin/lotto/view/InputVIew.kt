@@ -2,6 +2,7 @@ package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.util.Validator.checkMoney
+import lotto.util.Validator.checkWinningNumber
 import java.lang.IllegalArgumentException
 
 class InputVIew {
@@ -12,6 +13,16 @@ class InputVIew {
             money = Console.readLine()
             checkMoney(money)
             return money.toInt()
+        } catch (e: IllegalArgumentException){
+            throw IllegalArgumentException(e.message)
+        }
+    }
+
+    fun inputWinningNumber(): List<Int> {
+        val number: String
+        try {
+            number = Console.readLine()
+            return checkWinningNumber(number)
         } catch (e: IllegalArgumentException){
             throw IllegalArgumentException(e.message)
         }

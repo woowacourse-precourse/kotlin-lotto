@@ -12,6 +12,22 @@ object Validator {
         }
     }
 
+    fun checkWinningNumber(number: String): List<Int> {
+        val winningNumber = mutableListOf<Int>()
+        number.split(',').forEach {
+            it.toIntOrNull()?.let { winningNumber.add(it) }
+        }
+        if (winningNumber.distinct().size != 6) {
+            throw IllegalArgumentException("[ERROR] 중복되지 않는 숫자 6개를 콤마로 구분해 입력해주세요.")
+        }
+        for (number in winningNumber) {
+            if (number !in 1..45) {
+                throw IllegalArgumentException("[ERROR] 1~45 사이의 숫자를 입력해주세요.")
+            }
+        }
+        return winningNumber.sorted().toList()
+    }
+
 /*    fun checkPurchaseAmount(input: String): String {
         if (input.toIntOrNull() == null) {
             throw IllegalArgumentException(ERROR_INT_OR_NULL)
