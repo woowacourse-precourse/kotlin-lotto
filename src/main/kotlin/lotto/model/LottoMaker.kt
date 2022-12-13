@@ -1,10 +1,7 @@
 package lotto.model
 
-import camp.nextstep.edu.missionutils.Randoms
-import lotto.util.Constant.Companion.LOTTO_SIZE
-
 class LottoMaker {
-    companion object {
+/*    companion object {
         var winningNumber = listOf<Int>()
         var bonusNumber = ""
         var allRandomRotto = mutableListOf<List<Int>>()
@@ -16,5 +13,5 @@ class LottoMaker {
             println(randLotto)
             allRandomRotto.add(randLotto)
         }
-    }
+    }*/
 }

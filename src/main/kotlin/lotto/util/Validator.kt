@@ -1,18 +1,8 @@
 package lotto.util
 
-import lotto.model.LottoMaker.Companion.winningNumber
-import lotto.util.Constant.Companion.ERROR_1_45_RANGE
-import lotto.util.Constant.Companion.ERROR_ALREADY_IN
-import lotto.util.Constant.Companion.ERROR_INT_OR_NULL
-import lotto.util.Constant.Companion.ERROR_NUMERIC
-import lotto.util.Constant.Companion.ERROR_SIX_LENGTH
-import lotto.util.Constant.Companion.ERROR_THOUSAND
-import lotto.util.Constant.Companion.LOTTO_PRICE
-import lotto.util.Constant.Companion.LOTTO_SIZE
-
 object Validator {
 
-    fun checkPurchaseAmount(input: String): String {
+/*    fun checkPurchaseAmount(input: String): String {
         if (input.toIntOrNull() == null) {
             throw IllegalArgumentException(ERROR_INT_OR_NULL)
         }
@@ -49,5 +39,5 @@ object Validator {
             throw IllegalArgumentException(ERROR_ALREADY_IN)
         }
         return input
-    }
+    }*/
 }

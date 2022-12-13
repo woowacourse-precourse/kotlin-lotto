@@ -1,13 +1,7 @@
 package lotto.view
 
-import lotto.util.Constant.Companion.BONUS_NUMBER
-import lotto.util.Constant.Companion.BUY_LOTTO
-import lotto.util.Constant.Companion.LOTTO_RESULT
-import lotto.util.Constant.Companion.REQUEST_MONEY
-import lotto.util.Constant.Companion.SEPERATOR
-import lotto.util.Constant.Companion.WINNING_LOTTO
-
-object Print {
+class OutputView {
+/*
     fun requestMoney() {
         println(REQUEST_MONEY)
     }
@@ -43,5 +37,6 @@ object Print {
     fun returnRate(rate: String) {
         println("총 수익률은 ${rate}%입니다.")
     }
+*/
 
 }

@@ -1,18 +1,8 @@
 package lotto.controller
 
-import lotto.model.Buyer
-import lotto.model.Lotto
-import lotto.model.LottoMaker
-import lotto.model.LottoMaker.Companion.allRandomRotto
-import lotto.model.LottoMaker.Companion.bonusNumber
-import lotto.model.LottoMaker.Companion.winningNumber
-import lotto.util.Validator
-import lotto.view.Input
-import lotto.view.Print
-
 class LottoController {
 
-    fun startLotto() {
+/*    fun startLotto() {
         askBuyer()
         generateLotto()
         askWinningLotto()
@@ -56,6 +46,6 @@ class LottoController {
         getLottoReward(lotto)
         lotto.produceLottoStats()
         showReturnRate(lotto)
-    }
+    }*/
 }
 

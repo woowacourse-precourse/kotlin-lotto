@@ -1,15 +1,11 @@
 package lotto.model
 
-import lotto.util.Constant.Companion.LOTTO_SIZE
-import lotto.model.LottoMaker.Companion.bonusNumber
-import lotto.view.Print
-
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6)
     }
 
-    fun getMatchingNumber(lottoNumber: List<List<Int>>): MutableList<String> {
+/*    fun getMatchingNumber(lottoNumber: List<List<Int>>): MutableList<String> {
         var matchingResult = mutableListOf<String>()
 
         for (randLotto in lottoNumber) {
@@ -74,5 +70,5 @@ class Lotto(private val numbers: List<Int>) {
             }
             Print.lottoResult(reward.correctNum, reward.rewardMoney, rewardCount)
         }
-    }
+    }*/
 }

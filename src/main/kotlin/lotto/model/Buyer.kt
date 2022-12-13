@@ -1,8 +1,8 @@
 package lotto.model
 
 class Buyer {
-    companion object {
+/*    companion object {
         var payMoney = ""
         var buyCount = 0
-    }
+    }*/
 }

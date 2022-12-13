@@ -1,14 +1,12 @@
 package lotto
 
 import lotto.model.Lotto
-import lotto.model.LottoMaker.Companion.winningNumber
 import lotto.util.Validator
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
-
 class LottoTest {
-
+/*
     @Test
     fun `로또 번호의 개수가 6개가 넘어가면 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
@@ -54,5 +52,5 @@ class LottoTest {
             winningNumber = listOf<Int>(1,2,18,23,39,40)
             Validator.checkBonusNumber("23")
         }
-    }
+    }*/
 }

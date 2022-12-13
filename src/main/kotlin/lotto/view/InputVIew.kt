@@ -1,11 +1,8 @@
 package lotto.view
 
-import camp.nextstep.edu.missionutils.Console
-import lotto.util.Validator
+class InputVIew {
 
-object Input {
-
-    fun buyLotto(): String{
+/*    fun buyLotto(): String{
         Print.requestMoney()
         var payMoney = Console.readLine()
         return Validator.checkPurchaseAmount(payMoney)
@@ -23,5 +20,5 @@ object Input {
         Print.bonusNumber()
         var input = Console.readLine()
         return Validator.checkBonusNumber(input)
-    }
+    }*/
 }

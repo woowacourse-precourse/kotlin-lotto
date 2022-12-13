@@ -1,5 +1,6 @@
 package lotto.model
 
+/*
 enum class Reward(val rewardMoney: String, var correctNum: String) {
     FIFTH("5,000","3"),
     Four("50,000","4"),
@@ -16,3 +17,5 @@ object RewardInfo {
         }
     }
 }
+*/
+
