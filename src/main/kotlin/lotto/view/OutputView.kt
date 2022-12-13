@@ -1,6 +1,10 @@
 package lotto.view
 
 class OutputView {
+    fun requestMoney() {
+        println("구입금액을 입력해 주세요.")
+    }
+
 /*
     fun requestMoney() {
         println(REQUEST_MONEY)

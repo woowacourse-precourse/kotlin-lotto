@@ -1,6 +1,16 @@
 package lotto.util
 
+import java.lang.IllegalArgumentException
+
 object Validator {
+    fun checkMoney(money: String){
+        if (money.toIntOrNull() == null) {
+            throw IllegalArgumentException("[ERROR] 숫자 형태로 입력해주세요.")
+        }
+        if (money.toInt() % 1000 != 0) {
+            throw IllegalArgumentException("[ERROR] 1000원 단위로 입력해주세요.")
+        }
+    }
 
 /*    fun checkPurchaseAmount(input: String): String {
         if (input.toIntOrNull() == null) {
