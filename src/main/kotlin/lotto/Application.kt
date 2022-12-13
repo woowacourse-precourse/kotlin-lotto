@@ -6,7 +6,7 @@ import java.lang.IllegalArgumentException
 fun main() {
     val lottoController = LottoController()
     try {
-        lottoController.lottoStart()
+        lottoController.startLotto()
     } catch (e: IllegalArgumentException) {
         println(e.message)
         return

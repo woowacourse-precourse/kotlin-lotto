@@ -5,6 +5,13 @@ class OutputView {
         println("구입금액을 입력해 주세요.")
     }
 
+    fun printLottos(count: Int, lottos: List<List<Int>>) {
+        println("${count}개를 구매했습니다.")
+        for(lotto in lottos){
+            println(lotto)
+        }
+    }
+
 /*
     fun requestMoney() {
         println(REQUEST_MONEY)

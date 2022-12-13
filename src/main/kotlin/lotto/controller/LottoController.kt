@@ -1,20 +1,29 @@
 package lotto.controller
 
-import lotto.model.Buyer
+import lotto.model.Buyer.lottoCount
+import lotto.model.LottoMaker
 import lotto.view.InputVIew
 import lotto.view.OutputView
 
 class LottoController {
     val outputView = OutputView()
     val inputView = InputVIew()
-    val buyer = Buyer()
-    fun lottoStart() {
+    fun startLotto() {
         outputView.requestMoney()
         val money = inputView.inputMoney()
-        buyer.lottoCount = money
-        println(buyer.lottoCount)
+        lottoCount = money
+        generateLotto()
     }
 
+    fun generateLotto() {
+        val lottoMaker = LottoMaker()
+        val lottos = lottoMaker.generateLotto()
+        printLottos(lottos)
+    }
+
+    fun printLottos(lottos: List<List<Int>>) {
+        outputView.printLottos(lottoCount, lottos)
+    }
 
 /*    fun startLotto() {
         askBuyer()

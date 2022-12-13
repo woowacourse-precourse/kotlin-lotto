@@ -1,8 +1,8 @@
 package lotto.model
 
-class Buyer {
+object Buyer {
     var lottoCount: Int = 0
-        set(money: Int) {
+        set(money) {
             field = money / 1000
         }
 /*    companion object {
