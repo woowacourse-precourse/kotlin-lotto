@@ -1,11 +1,12 @@
 package lotto.controller
 
+import lotto.model.*
 import lotto.model.Buyer.lottoCount
 import lotto.model.Buyer.lottos
-import lotto.model.Lotto
 import lotto.model.LottoData.winningLotto
-import lotto.model.LottoMaker
-import lotto.model.WinningLotto
+import lotto.model.RewardInfo.add
+import lotto.model.RewardInfo.init
+import lotto.model.RewardInfo.lottoResult
 import lotto.util.Validator.checkBonusInNumber
 import lotto.view.InputVIew
 import lotto.view.OutputView
@@ -32,7 +33,6 @@ class LottoController {
         for (lotto in randLottos) {
             lottos.add(Lotto(lotto))
         }
-        println(lottos)
         printLottos(randLottos)
     }
 
@@ -51,7 +51,18 @@ class LottoController {
 
     fun compareLotto() {
         for (lotto in lottos) {
-            lotto.countMatchNumber(winningLotto)
+            val matchCount = lotto.countMatchNumber(winningLotto)
+            matchReward(matchCount)
+        }
+        println(lottoResult)
+    }
+
+    fun matchReward(matchCount: String) {
+        val lottoReward = LottoReward(matchCount)
+        val reward = lottoReward.matchReward()
+        lottoResult.init()
+        if (reward != "NONE") {
+            lottoResult.add(reward as Reward)
         }
     }
 

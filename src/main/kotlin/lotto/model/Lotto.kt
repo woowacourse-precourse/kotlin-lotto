@@ -5,10 +5,17 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.size == 6)
     }
 
-    fun countMatchNumber(winningLotto: WinningLotto) {
-        var count = numbers.size - (winningLotto.number - numbers).size
-        println("$numbers 와 ${winningLotto.number} 는 $count 개 겹칩니다.")
+    fun countMatchNumber(winningLotto: WinningLotto): String {
+        val count = numbers.size - (winningLotto.number - numbers).size
+        if (count == 5) {
+            if (isBonusCorrect(winningLotto.bonus)) {
+                return "5bonus"
+            }
+        }
+        return count.toString()
     }
+
+    fun isBonusCorrect(bonus: Int):Boolean = bonus in numbers
 
 /*    fun getMatchingNumber(lottoNumber: List<List<Int>>): MutableList<String> {
         var matchingResult = mutableListOf<String>()
