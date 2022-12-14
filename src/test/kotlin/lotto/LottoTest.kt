@@ -1,56 +1,28 @@
 package lotto
 
 import lotto.model.Lotto
+import lotto.model.LottoReward
+import lotto.model.WinningLotto
+import lotto.util.Constant.FIFTH_BONUS
+import lotto.util.Constant.MISS
 import lotto.util.Validator
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 
 class LottoTest {
-/*
     @Test
-    fun `로또 번호의 개수가 6개가 넘어가면 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, 6, 7))
-        }
+    fun `5개 번호가 일치하면 보너스 번호를 확인한다`() {
+        val lotto = Lotto(listOf(1,2,3,4,5,6))
+        val winningLotto = WinningLotto(listOf(1,2,3,4,5,7),6)
+        assertEquals(lotto.countMatchNumber(winningLotto), FIFTH_BONUS)
     }
 
-    // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
-    @Test
-    fun `로또 번호에 중복된 숫자가 있으면 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, 5))
-        }
+    @ValueSource(strings = ["0", "1", "2"])
+    @ParameterizedTest
+    fun `당첨 내역이 없으면 MISS를 반환한다`(input: String) {
+        val lottoReward = LottoReward()
+        assertEquals(lottoReward.matchReward(input), MISS)
     }
-
-    @Test
-    fun `당첨 번호가 6자리가 아니면 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> {
-            var lottoNumber  = "1,2,18,23,25"
-            Validator.checkWinningNumber(lottoNumber)
-        }
-    }
-
-    @Test
-    fun `당첨 번호가 1~45 사이 숫자가 아니면 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> {
-            var lottoNumber  = "1,2,18,23,44,50"
-            Validator.checkWinningNumber(lottoNumber)
-        }
-    }
-
-    @Test
-    fun `중복된 당첨 번호를 입력하면 예외가 발생한다`(){
-        assertThrows<IllegalArgumentException> {
-            var lottoNumber  = "1,2,18,23,23,40"
-            Validator.checkWinningNumber(lottoNumber)
-        }
-    }
-
-    @Test
-    fun `보너스 번호가 당첨 번호에 이미 있다면 예외가 발생한다`() {
-        assertThrows<IllegalArgumentException> {
-            winningNumber = listOf<Int>(1,2,18,23,39,40)
-            Validator.checkBonusNumber("23")
-        }
-    }*/
 }
