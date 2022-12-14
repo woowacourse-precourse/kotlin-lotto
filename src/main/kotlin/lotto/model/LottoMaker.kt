@@ -1,12 +1,12 @@
 package lotto.model
 
+import lotto.model.Buyer.getBuyCount
 import camp.nextstep.edu.missionutils.Randoms
-import lotto.model.Buyer.lottoCount
 
 class LottoMaker {
-    fun generateLotto(): List<List<Int>> {
+    fun generateLotto(count: Int): List<List<Int>> {
         val lottos = mutableListOf<List<Int>>()
-        for (i in 0 until lottoCount) {
+        for (i in 0 until count) {
             var lotto = Randoms.pickUniqueNumbersInRange(1,45,6)
             lottos.add(lotto.sorted())
         }

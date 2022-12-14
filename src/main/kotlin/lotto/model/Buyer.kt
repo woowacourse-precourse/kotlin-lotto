@@ -1,12 +1,15 @@
 package lotto.model
 
+import kotlin.properties.Delegates
+
 object Buyer {
-    var lottoCount: Int = 0
-        set(money) {
-            field = money / 1000
-        }
+    var amount by Delegates.notNull<Int>()
 
     val lottos = mutableListOf<Lotto>()
+
+    fun getBuyCount(): Int {
+        return amount / 1000
+    }
 /*    companion object {
         var payMoney = ""
         var buyCount = 0

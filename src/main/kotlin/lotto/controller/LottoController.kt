@@ -1,7 +1,8 @@
 package lotto.controller
 
 import lotto.model.*
-import lotto.model.Buyer.lottoCount
+import lotto.model.Buyer.amount
+import lotto.model.Buyer.getBuyCount
 import lotto.model.Buyer.lottos
 import lotto.model.LottoData.winningLotto
 import lotto.model.RewardInfo.add
@@ -24,13 +25,12 @@ class LottoController {
 
     fun inputMoney(){
         outputView.requestMoney()
-        val money = inputView.inputMoney()
-        lottoCount = money
+        amount= inputView.inputMoney()
     }
 
     fun generateLotto() {
         val lottoMaker = LottoMaker()
-        val randLottos = lottoMaker.generateLotto()
+        val randLottos = lottoMaker.generateLotto(getBuyCount())
         for (lotto in randLottos) {
             lottos.add(Lotto(lotto))
         }
@@ -38,7 +38,7 @@ class LottoController {
     }
 
     fun printLottos(lottos: List<List<Int>>) {
-        outputView.printLottos(lottoCount, lottos)
+        outputView.printLottos(lottos)
     }
 
     fun inputWinningNumber() {
@@ -58,8 +58,8 @@ class LottoController {
     }
 
     fun matchReward(matchCount: String) {
-        val lottoReward = LottoReward(matchCount)
-        val reward = lottoReward.matchReward()
+        val lottoReward = LottoReward()
+        val reward = lottoReward.matchReward(matchCount)
         lottoResult.init()
         if (reward != "NONE") {
             lottoResult.add(reward as Reward)
@@ -74,6 +74,13 @@ class LottoController {
                 else -> outputView.printResult(reward, result.value)
             }
         }
+        printProfit()
+    }
+
+    fun printProfit() {
+        val lottoReward = LottoReward()
+        val profit = lottoReward.calcProfit(lottoResult)
+        outputView.printProfit(profit)
     }
 
 /*    fun startLotto() {

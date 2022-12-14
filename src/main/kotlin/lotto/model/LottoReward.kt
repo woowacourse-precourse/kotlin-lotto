@@ -1,7 +1,9 @@
 package lotto.model
 
-class LottoReward(val count: String) {
-    fun matchReward(): Any {
+import lotto.model.Buyer.amount
+
+class LottoReward() {
+    fun matchReward(count: String): Any {
         return when (count) {
             "3" -> Reward.FIFTH
             "4" -> Reward.FOUR
@@ -10,5 +12,16 @@ class LottoReward(val count: String) {
             "6" -> Reward.FIRST
             else -> "NONE"
         }
+    }
+
+    fun calcProfit(results: Map<Reward, Int>): Float {
+        val result = results.filterValues { it > 0 }
+        var total = 0.0
+        for ((reward, count) in result) {
+            val prize = reward.prize.split(",").joinToString("").toDouble()
+            total += (prize * count)
+        }
+        val profit = (total / amount) * 100
+        return String.format("%,.1f",profit).toFloat()
     }
 }
