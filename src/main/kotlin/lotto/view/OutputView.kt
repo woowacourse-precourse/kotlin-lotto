@@ -37,7 +37,7 @@ class OutputView {
     }
 
     fun printResult(reward: Reward, count: Int) {
-        println(RESULT(reward,count))
+        println(RESULT(reward, count))
     }
 
     fun printBonusResult(reward: Reward, count: Int) {

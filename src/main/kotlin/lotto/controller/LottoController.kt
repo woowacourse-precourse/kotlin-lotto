@@ -24,9 +24,9 @@ class LottoController {
         printFinalResult()
     }
 
-    fun inputMoney(){
+    fun inputMoney() {
         outputView.requestMoney()
-        amount= inputView.inputMoney()
+        amount = inputView.inputMoney()
     }
 
     fun generateLotto() {
@@ -47,8 +47,8 @@ class LottoController {
         val number = inputView.inputWinningNumber()
         outputView.requestBonusNumber()
         val bonus = inputView.inputBonusNumber()
-        checkBonusInNumber(bonus,number)
-        winningLotto = WinningLotto(number,bonus)
+        checkBonusInNumber(bonus, number)
+        winningLotto = WinningLotto(number, bonus)
     }
 
     fun compareLotto() {

@@ -46,7 +46,7 @@ class InputTest {
 
     @Test
     fun `보너스 번호가 당첨 번호에 있으면 예외 발생`() {
-        val winningNumber = listOf(1,2,3,4,5,6)
+        val winningNumber = listOf(1, 2, 3, 4, 5, 6)
         assertThrows<IllegalArgumentException> {
             checkBonusInNumber(5, winningNumber)
         }

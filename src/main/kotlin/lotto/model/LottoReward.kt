@@ -1,6 +1,5 @@
 package lotto.model
 
-import lotto.model.Buyer.amount
 import lotto.util.Constant.FIFTH
 import lotto.util.Constant.FIFTH_BONUS
 import lotto.util.Constant.FOURTH
