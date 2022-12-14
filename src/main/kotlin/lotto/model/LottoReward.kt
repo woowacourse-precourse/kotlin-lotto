@@ -20,7 +20,7 @@ class LottoReward() {
         }
     }
 
-    fun calcProfit(results: Map<Reward, Int>): Float {
+    fun calcProfit(amount: Int, results: Map<Reward, Int>): String {
         val result = results.filterValues { it > 0 }
         var total = 0.0
         for ((reward, count) in result) {
@@ -28,6 +28,6 @@ class LottoReward() {
             total += (prize * count)
         }
         val profit = (total / amount) * 100
-        return String.format("%,.1f", profit).toFloat()
+        return String.format("%,.1f", profit)
     }
 }

@@ -44,7 +44,7 @@ class OutputView {
         println(BONUS_RESULT(reward, count))
     }
 
-    fun printProfit(profit: Float) {
+    fun printProfit(profit: String) {
         println(PROFIT(profit))
     }
 }

@@ -80,7 +80,7 @@ class LottoController {
 
     fun printProfit() {
         val lottoReward = LottoReward()
-        val profit = lottoReward.calcProfit(lottoResult)
+        val profit = lottoReward.calcProfit(amount, lottoResult)
         outputView.printProfit(profit)
     }
 }

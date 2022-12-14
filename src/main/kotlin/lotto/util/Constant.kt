@@ -34,5 +34,5 @@ object Constant {
         "${match}개 일치, ${bonus} 볼 일치 (${reward.prize}원) - ${count}개"
     }
 
-    val PROFIT = { profit: Float -> "총 수익률은 ${profit}%입니다."}
+    val PROFIT = { profit: String -> "총 수익률은 ${profit}%입니다."}
 }
