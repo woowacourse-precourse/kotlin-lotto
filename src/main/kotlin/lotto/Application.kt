@@ -11,10 +11,4 @@ fun main() {
         println(e.message)
         return
     }
-/*    try {
-        var lottoController = LottoController()
-        lottoController.startLotto()
-    } catch (e : IllegalArgumentException) {
-        println(ERROR_EXIT)
-    }*/
 }

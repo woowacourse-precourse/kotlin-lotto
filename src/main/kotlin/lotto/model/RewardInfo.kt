@@ -11,13 +11,13 @@ enum class Reward(val prize: String, val match: String) {
 object RewardInfo {
     val lottoResult = LinkedHashMap<Reward, Int>()
 
-    fun LinkedHashMap<Reward,Int>.init() {
+    fun LinkedHashMap<Reward, Int>.init() {
         for (reward in Reward.values()) {
             RewardInfo.lottoResult[reward] = 0
         }
     }
 
-    fun LinkedHashMap<Reward,Int>.add(reward: Reward) {
+    fun LinkedHashMap<Reward, Int>.add(reward: Reward) {
         lottoResult[reward] = lottoResult[reward]!! + 1
     }
 }

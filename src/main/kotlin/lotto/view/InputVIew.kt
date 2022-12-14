@@ -14,7 +14,7 @@ class InputVIew {
             money = Console.readLine()
             checkMoney(money)
             return money.toInt()
-        } catch (e: IllegalArgumentException){
+        } catch (e: IllegalArgumentException) {
             throw IllegalArgumentException(e.message)
         }
     }
@@ -24,7 +24,7 @@ class InputVIew {
         try {
             number = Console.readLine()
             return checkWinningNumber(number)
-        } catch (e: IllegalArgumentException){
+        } catch (e: IllegalArgumentException) {
             throw IllegalArgumentException(e.message)
         }
     }
@@ -35,27 +35,8 @@ class InputVIew {
             number = Console.readLine()
             checkBonusNumber(number)
             return number.toInt()
-        } catch (e: IllegalArgumentException){
+        } catch (e: IllegalArgumentException) {
             throw IllegalArgumentException(e.message)
         }
     }
-/*    fun buyLotto(): String{
-        Print.requestMoney()
-        var payMoney = Console.readLine()
-        return Validator.checkPurchaseAmount(payMoney)
-    }
-
-    fun winningNumber(): List<Int>{
-        println()
-        Print.winningLotto()
-        var input = Console.readLine()
-        return Validator.checkWinningNumber(input)
-    }
-
-    fun bonusNumber(): String{
-        println()
-        Print.bonusNumber()
-        var input = Console.readLine()
-        return Validator.checkBonusNumber(input)
-    }*/
 }

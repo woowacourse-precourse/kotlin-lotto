@@ -10,8 +10,4 @@ object Buyer {
     fun getBuyCount(): Int {
         return amount / 1000
     }
-/*    companion object {
-        var payMoney = ""
-        var buyCount = 0
-    }*/
 }

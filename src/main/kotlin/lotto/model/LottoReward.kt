@@ -22,6 +22,6 @@ class LottoReward() {
             total += (prize * count)
         }
         val profit = (total / amount) * 100
-        return String.format("%,.1f",profit).toFloat()
+        return String.format("%,.1f", profit).toFloat()
     }
 }
