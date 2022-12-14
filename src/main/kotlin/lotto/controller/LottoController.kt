@@ -8,6 +8,7 @@ import lotto.model.LottoData.winningLotto
 import lotto.model.RewardInfo.add
 import lotto.model.RewardInfo.init
 import lotto.model.RewardInfo.lottoResult
+import lotto.util.Constant.MISS
 import lotto.util.Validator.checkBonusInNumber
 import lotto.view.InputVIew
 import lotto.view.OutputView
@@ -61,7 +62,7 @@ class LottoController {
         val lottoReward = LottoReward()
         val reward = lottoReward.matchReward(matchCount)
         lottoResult.init()
-        if (reward != "NONE") {
+        if (reward != MISS) {
             lottoResult.add(reward as Reward)
         }
     }

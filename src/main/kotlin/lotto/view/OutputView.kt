@@ -1,42 +1,50 @@
 package lotto.view
 
 import lotto.model.Reward
+import lotto.util.Constant.BONUS_RESULT
+import lotto.util.Constant.BUY_COUNT
+import lotto.util.Constant.PROFIT
+import lotto.util.Constant.REQUEST_BONUS_NUMBER
+import lotto.util.Constant.REQUEST_MONEY
+import lotto.util.Constant.REQUEST_WINNING_NUMBER
+import lotto.util.Constant.RESULT
+import lotto.util.Constant.REWARD_RESULT
+import lotto.util.Constant.SEPARATOR
 
 class OutputView {
     fun requestMoney() {
-        println("구입금액을 입력해 주세요.")
+        println(REQUEST_MONEY)
     }
 
     fun printLottos(lottos: List<List<Int>>) {
-        println("${lottos.size}개를 구매했습니다.")
+        println("${lottos.size}${BUY_COUNT}")
         for (lotto in lottos) {
             println(lotto)
         }
     }
 
     fun requestWinningNumber() {
-        println("당첨 번호를 입력해 주세요.")
+        println(REQUEST_WINNING_NUMBER)
     }
 
     fun requestBonusNumber() {
-        println("보너스 번호를 입력해 주세요.")
+        println(REQUEST_BONUS_NUMBER)
     }
 
     fun printResultTitle() {
-        println("당첨 통계")
-        println("---")
+        println(REWARD_RESULT)
+        println(SEPARATOR)
     }
 
     fun printResult(reward: Reward, count: Int) {
-        println("${reward.match}개 일치 (${reward.prize}원) - ${count}개")
+        println(RESULT(reward,count))
     }
 
     fun printBonusResult(reward: Reward, count: Int) {
-        val (match, bonus) = reward.match.split(" ")
-        println("${match}개 일치, ${bonus} 볼 일치 (${reward.prize}원) - ${count}개")
+        println(BONUS_RESULT(reward, count))
     }
 
     fun printProfit(profit: Float) {
-        println("총 수익률은 ${profit}%입니다.")
+        println(PROFIT(profit))
     }
 }

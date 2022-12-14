@@ -1,5 +1,7 @@
 package lotto.model
 
+import lotto.util.Constant.FIFTH_BONUS
+
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6)
@@ -9,7 +11,7 @@ class Lotto(private val numbers: List<Int>) {
         val count = numbers.size - (winningLotto.number - numbers).size
         if (count == 5) {
             if (isBonusCorrect(winningLotto.bonus)) {
-                return "5bonus"
+                return FIFTH_BONUS
             }
         }
         return count.toString()

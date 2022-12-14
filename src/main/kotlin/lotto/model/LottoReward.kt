@@ -1,16 +1,22 @@
 package lotto.model
 
 import lotto.model.Buyer.amount
+import lotto.util.Constant.FIFTH
+import lotto.util.Constant.FIFTH_BONUS
+import lotto.util.Constant.FOURTH
+import lotto.util.Constant.MISS
+import lotto.util.Constant.SIXTH
+import lotto.util.Constant.THIRD
 
 class LottoReward() {
     fun matchReward(count: String): Any {
         return when (count) {
-            "3" -> Reward.FIFTH
-            "4" -> Reward.FOUR
-            "5" -> Reward.THIRD
-            "5bonus" -> Reward.SECOND
-            "6" -> Reward.FIRST
-            else -> "NONE"
+            THIRD -> Reward.FIFTH
+            FOURTH -> Reward.FOURTH
+            FIFTH -> Reward.THIRD
+            FIFTH_BONUS -> Reward.SECOND
+            SIXTH -> Reward.FIRST
+            else -> MISS
         }
     }
 
