@@ -16,9 +16,10 @@ class LottoController {
     val inputView = InputVIew()
     fun startLotto() {
         inputMoney()
-        inputWinningNumber()
         generateLotto()
+        inputWinningNumber()
         compareLotto()
+        printFinalResult()
     }
 
     fun inputMoney(){
@@ -54,7 +55,6 @@ class LottoController {
             val matchCount = lotto.countMatchNumber(winningLotto)
             matchReward(matchCount)
         }
-        println(lottoResult)
     }
 
     fun matchReward(matchCount: String) {
@@ -63,6 +63,16 @@ class LottoController {
         lottoResult.init()
         if (reward != "NONE") {
             lottoResult.add(reward as Reward)
+        }
+    }
+
+    fun printFinalResult() {
+        outputView.printResultTitle()
+        for (result in lottoResult) {
+            when (val reward = result.key) {
+                Reward.SECOND -> outputView.printBonusResult(reward, result.value)
+                else -> outputView.printResult(reward, result.value)
+            }
         }
     }
 

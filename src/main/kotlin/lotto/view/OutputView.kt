@@ -1,5 +1,7 @@
 package lotto.view
 
+import lotto.model.Reward
+
 class OutputView {
     fun requestMoney() {
         println("구입금액을 입력해 주세요.")
@@ -7,7 +9,7 @@ class OutputView {
 
     fun printLottos(count: Int, lottos: List<List<Int>>) {
         println("${count}개를 구매했습니다.")
-        for(lotto in lottos){
+        for (lotto in lottos) {
             println(lotto)
         }
     }
@@ -19,42 +21,59 @@ class OutputView {
     fun requestBonusNumber() {
         println("보너스 번호를 입력해 주세요.")
     }
-/*
-    fun requestMoney() {
-        println(REQUEST_MONEY)
+
+    fun printResultTitle() {
+        println("당첨 통계")
+        println("---")
+    }
+    fun printResult(reward: Reward, count: Int) {
+        println("${reward.match}개 일치 (${reward.prize}원) - ${count}개")
     }
 
-    fun winningLotto(){
-        println(WINNING_LOTTO)
+    fun printBonusResult(reward: Reward, count: Int) {
+        val (match, bonus) = reward.match.split(" ")
+        println("${match}개 일치, ${bonus}볼 일치 (${reward.prize}원) - ${count}개")
     }
+    /*
+        fun printBonusResult(lottoResult: LinkedHashMap<Reward, Int>) {
 
-    fun bonusNumber() {
-        println(BONUS_NUMBER)
-    }
+        }*/
+    /*
+        fun requestMoney() {
+            println(REQUEST_MONEY)
+        }
 
-    fun resultSentence() {
-        println(LOTTO_RESULT)
-    }
+        fun winningLotto(){
+            println(WINNING_LOTTO)
+        }
 
-    fun seperator() {
-        println(SEPERATOR)
-    }
+        fun bonusNumber() {
+            println(BONUS_NUMBER)
+        }
 
-    fun buyLotto(count: Int) {
-        println("${count}${BUY_LOTTO}")
-    }
+        fun resultSentence() {
+            println(LOTTO_RESULT)
+        }
 
-    fun lottoBonusResult(count: String, reward: String, rewardCnt: Int) {
-        println("${count}개 일치, 보너스 볼 일치 (${reward}원) - ${rewardCnt}개")
-    }
+        fun seperator() {
+            println(SEPERATOR)
+        }
 
-    fun lottoResult(count: String, reward: String, rewardCnt: Int) {
-        println("${count}개 일치 (${reward}원) - ${rewardCnt}개")
-    }
+        fun buyLotto(count: Int) {
+            println("${count}${BUY_LOTTO}")
+        }
 
-    fun returnRate(rate: String) {
-        println("총 수익률은 ${rate}%입니다.")
-    }
-*/
+        fun lottoBonusResult(count: String, reward: String, rewardCnt: Int) {
+            println("${count}개 일치, 보너스 볼 일치 (${reward}원) - ${rewardCnt}개")
+        }
+
+        fun lottoResult(count: String, reward: String, rewardCnt: Int) {
+            println("${count}개 일치 (${reward}원) - ${rewardCnt}개")
+        }
+
+        fun returnRate(rate: String) {
+            println("총 수익률은 ${rate}%입니다.")
+        }
+    */
 
 }

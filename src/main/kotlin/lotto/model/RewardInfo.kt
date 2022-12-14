@@ -1,11 +1,11 @@
 package lotto.model
 
-enum class Reward(val prize: String) {
-    FIFTH("5,000"),
-    FOUR("50,000"),
-    THIRD("1,500,000"),
-    SECOND("30,000,000"),
-    FIRST("2,000,000,000"),
+enum class Reward(val prize: String, val match: String) {
+    FIFTH("5,000", "3"),
+    FOUR("50,000", "4"),
+    THIRD("1,500,000", "5"),
+    SECOND("30,000,000", "5 보너스"),
+    FIRST("2,000,000,000", "6"),
 }
 
 object RewardInfo {
