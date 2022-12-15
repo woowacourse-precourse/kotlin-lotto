@@ -9,6 +9,7 @@
   - [x] 사용자가 금액을 제대로 입력했는지 검사한다 - InputCheck#checkInputLotteryPurchase
   - [x] 사용자가 당첨 번호를 제대로 입력했는지 검사한다 - InputCheck#checkInputWinningLottery
   - [x] 사용자가 보너스 번호를 정수로 입력했는지 검사한다 - InputCheck#checkInputBonusInteger
+  - [x] 사용자의 입력이 잘못될 경우 에러를 발생해야 한다. - InputCheck#throwError()
 - [x] 로또 발급을 해주는 역할을 클래스로 의인화한다 - LottoSeller()
     - [x] 사용자가 입력한 금액만큼 로또를 발행해야 함
         - [x] 사용자가 입력한 금액을 보고 몇개를 발급해주는지 알아야 한다 - LottoSeller#sellLottoCount()
@@ -18,11 +19,9 @@
   - [x] 로또 결과에 대해 수익률을 구해줘야 한다 - LottoStatistics#yield()
 - [x] 로또 진행을 위해 메시지 출력을 해주는 역할을 클래스로 의인화 한다 - MessageMaker()
   - [x] 로또 진행을 위해 메시지를 출력해준다 - MessageMake()#printMessage()
-  - [x] 사용자의 입력이 잘못될 경우 에러문구를 출력해줘야 한다 - Person#inputError()
 - [x] 로또 객체는 결과와 자신을 비교해서 결과를 리턴 해줘야 한다  - Lotto#matchResult()
 - [x] 로또 객체는 자신이 보너스에 당첨됐는지 확인해줘야 한다 - Lotto#isMatchBonus()
 - [x] 이 프로그램을 총괄해서 진행할 컨트롤러가 필요하다 - Controller()
-  - [x] 사용자의 입력이 잘못될 경우 에러를 발생해야 한다. - Controller#throwError()
   - [x] 로또 게임을 시작하는 기능 - Controller#run()
     - [x] 로또 게임 진행시 구입 금액 입력 단계를 수행하는 기능 - Controller#purchaseMoneyStep()
     - [x] 로또 게임 진행시 로또를 발행받는 단계를 수행하는 기능 - Controller#issueLotteryStep()

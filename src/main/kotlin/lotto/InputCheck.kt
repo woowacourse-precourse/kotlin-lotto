@@ -4,25 +4,25 @@ class InputCheck {
 
     fun checkInputLotteryPurchase(input: String) {
         val inputTrim = input.trim()
-        if (!checkInputOneInteger(inputTrim)) throwError(MessageMaker.Error.PURCHASE_IS_NOT_ONE_INTEGER)
-        if (!isOneThousandUnit(inputTrim)) throwError(MessageMaker.Error.PURCHASE_MONEY)
+        if (!checkInputOneInteger(inputTrim)) throwError(Error.PURCHASE_IS_NOT_ONE_INTEGER)
+        if (!isOneThousandUnit(inputTrim)) throwError(Error.PURCHASE_MONEY)
     }
 
     fun checkInputWinningLottery(input: String) {
         val inputTrim = input.trim()
-        if (!isConsistAllCommaAndNumber(inputTrim)) throwError(MessageMaker.Error.WINNING_INPUT_COUNT_ERROR)
-        if (!isAlternatingCommaAndNumber(inputTrim)) throwError(MessageMaker.Error.WINNING_INPUT_COUNT_ERROR)
+        if (!isConsistAllCommaAndNumber(inputTrim)) throwError(Error.WINNING_INPUT_COUNT_ERROR)
+        if (!isAlternatingCommaAndNumber(inputTrim)) throwError(Error.WINNING_INPUT_COUNT_ERROR)
         val numbers = convertSeparateComma(inputTrim)
-        numbers.forEach { if (!isLotteryRange(it)) throwError(MessageMaker.Error.LOTTERY_RANGE) }
-        if (numbers.size != 6) throwError(MessageMaker.Error.WINNING_INPUT_COUNT_ERROR)
-        if (numbers.toSet().size != 6) throwError(MessageMaker.Error.WINNING_INPUT_DISTINCT_ERROR)
+        numbers.forEach { if (!isLotteryRange(it)) throwError(Error.LOTTERY_RANGE) }
+        if (numbers.size != 6) throwError(Error.WINNING_INPUT_COUNT_ERROR)
+        if (numbers.toSet().size != 6) throwError(Error.WINNING_INPUT_DISTINCT_ERROR)
     }
 
     fun checkInputBonusInteger(input: String, winningLottery: List<Int>) {
         val inputTrim = input.trim()
-        if (!checkInputOneInteger(inputTrim)) throwError(MessageMaker.Error.BONUS_RANGE)
-        if (!isLotteryRange(inputTrim.toInt())) throwError(MessageMaker.Error.BONUS_RANGE)
-        if (winningLottery.contains(inputTrim.toInt())) throwError(MessageMaker.Error.BONUS_ALREADY_IN_WINNING)
+        if (!checkInputOneInteger(inputTrim)) throwError(Error.BONUS_RANGE)
+        if (!isLotteryRange(inputTrim.toInt())) throwError(Error.BONUS_RANGE)
+        if (winningLottery.contains(inputTrim.toInt())) throwError(Error.BONUS_ALREADY_IN_WINNING)
     }
 
     private fun checkInputOneInteger(input: String): Boolean {
@@ -62,7 +62,17 @@ class InputCheck {
 
     private fun isComma(char: Char): Boolean = char.code == 44
 
-    private fun throwError(errorType: MessageMaker.Error) {
+    private fun throwError(errorType:Error) {
         throw IllegalArgumentException(errorType.error)
+    }
+
+    enum class Error(val error: String) {
+        PURCHASE_IS_NOT_ONE_INTEGER("[ERROR] 구입 금액은 숫자 한개여야 합니다."),
+        PURCHASE_MONEY("[ERROR] 구입 금액은 1000원 단위의 숫자여야 합니다."),
+        LOTTERY_RANGE("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."),
+        WINNING_INPUT_COUNT_ERROR("[ERROR] 로또 당첨 번호를 콤마로 구분해서 1부터 45 사이의 숫자 6개를 입력해주세요."),
+        WINNING_INPUT_DISTINCT_ERROR("[ERROR] 로또 당첨 번호를 중복 없이 입력해주세요."),
+        BONUS_ALREADY_IN_WINNING("[ERROR] 보너스 번호가 이미 당첨 번호에 포함되어 있습니다."),
+        BONUS_RANGE("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다."),
     }
 }
