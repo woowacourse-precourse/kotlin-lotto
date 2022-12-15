@@ -53,11 +53,6 @@ class MessageMaker {
         private const val WINNING_STATISTICS_MESSAGE = "\n당첨 통계\n---"
         private const val ALL_YIELD = "총 수익률은"
         private const val IS = "%입니다."
-
-        lateinit var errorType: Error
-        fun errorMessage() {
-            println(errorType.error)
-        }
     }
 
     enum class MatchMessage(val matchMessage: String, val money: String) {
@@ -76,6 +71,5 @@ class MessageMaker {
         WINNING_INPUT_DISTINCT_ERROR("[ERROR] 로또 당첨 번호를 중복 없이 입력해주세요."),
         BONUS_ALREADY_IN_WINNING("[ERROR] 보너스 번호가 이미 당첨 번호에 포함되어 있습니다."),
         BONUS_RANGE("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다."),
-        NON_ERROR("에러 없음"),
     }
 }

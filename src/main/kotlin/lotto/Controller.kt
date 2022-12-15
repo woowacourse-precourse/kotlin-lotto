@@ -19,8 +19,7 @@ class Controller() {
     private fun purchaseMoneyStep(): Int {
         messageMaker.purchaseInputPleaseMessage()
         val purchaseMoney = person.input()
-        val purchaseInputCheckResult = inputCheck.checkInputLotteryPurchase(purchaseMoney)
-        checkResultCompare(purchaseInputCheckResult)
+        inputCheck.checkInputLotteryPurchase(purchaseMoney)
         return lottoSeller.sellLottoCount(inputConverter.convertToInt(purchaseMoney))
     }
 
@@ -34,16 +33,14 @@ class Controller() {
     private fun winningLotteryStep(): List<Int> {
         messageMaker.winningLotteryInputMessage()
         val winningLottery = person.input()
-        val winningLotteryCheckResult = inputCheck.checkInputWinningLottery(winningLottery)
-        checkResultCompare(winningLotteryCheckResult)
+        inputCheck.checkInputWinningLottery(winningLottery)
         return inputConverter.convertSeparateComma(winningLottery)
     }
 
     private fun bonusStep(winning: List<Int>): Int {
         messageMaker.bonusInputMessage()
         val bonusNumber = person.input()
-        val bonusNumberCheckResult = inputCheck.checkInputBonusInteger(bonusNumber, winning)
-        checkResultCompare(bonusNumberCheckResult)
+        inputCheck.checkInputBonusInteger(bonusNumber, winning)
         return inputConverter.convertToInt(bonusNumber)
     }
 
@@ -54,16 +51,4 @@ class Controller() {
         val yieldResult = lottoStatistics.yield(purchaseCount, lotteryResult)
         messageMaker.statisticsYieldMessage(yieldResult)
     }
-
-    private fun checkResultCompare(errorType: MessageMaker.Error) {
-        if (errorType != MessageMaker.Error.NON_ERROR) {
-            MessageMaker.errorType = errorType
-            throwError()
-        }
-    }
-
-    private fun throwError() {
-        throw IllegalArgumentException()
-    }
-
 }

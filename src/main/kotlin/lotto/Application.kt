@@ -5,6 +5,6 @@ fun main() {
         val controller = Controller()
         controller.run()
     } catch (e: Exception) {
-        MessageMaker.errorMessage()
+        println(e.message)
     }
 }

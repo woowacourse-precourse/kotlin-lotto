@@ -2,30 +2,27 @@ package lotto
 
 class InputCheck {
 
-    fun checkInputLotteryPurchase(input: String): MessageMaker.Error {
+    fun checkInputLotteryPurchase(input: String) {
         val inputTrim = input.trim()
-        if (!checkInputOneInteger(inputTrim)) return MessageMaker.Error.PURCHASE_IS_NOT_ONE_INTEGER
-        if (!isOneThousandUnit(inputTrim)) return MessageMaker.Error.PURCHASE_MONEY
-        return MessageMaker.Error.NON_ERROR
+        if (!checkInputOneInteger(inputTrim)) throwError(MessageMaker.Error.PURCHASE_IS_NOT_ONE_INTEGER)
+        if (!isOneThousandUnit(inputTrim)) throwError(MessageMaker.Error.PURCHASE_MONEY)
     }
 
-    fun checkInputWinningLottery(input: String): MessageMaker.Error {
+    fun checkInputWinningLottery(input: String) {
         val inputTrim = input.trim()
-        if (!isConsistAllCommaAndNumber(inputTrim)) return MessageMaker.Error.WINNING_INPUT_COUNT_ERROR
-        if (!isAlternatingCommaAndNumber(inputTrim)) return MessageMaker.Error.WINNING_INPUT_COUNT_ERROR
+        if (!isConsistAllCommaAndNumber(inputTrim)) throwError(MessageMaker.Error.WINNING_INPUT_COUNT_ERROR)
+        if (!isAlternatingCommaAndNumber(inputTrim)) throwError(MessageMaker.Error.WINNING_INPUT_COUNT_ERROR)
         val numbers = convertSeparateComma(inputTrim)
-        numbers.forEach { if (!isLotteryRange(it)) return MessageMaker.Error.LOTTERY_RANGE }
-        if (numbers.size != 6) return MessageMaker.Error.WINNING_INPUT_COUNT_ERROR
-        if (numbers.toSet().size != 6) return MessageMaker.Error.WINNING_INPUT_DISTINCT_ERROR
-        return MessageMaker.Error.NON_ERROR
+        numbers.forEach { if (!isLotteryRange(it)) throwError(MessageMaker.Error.LOTTERY_RANGE) }
+        if (numbers.size != 6) throwError(MessageMaker.Error.WINNING_INPUT_COUNT_ERROR)
+        if (numbers.toSet().size != 6) throwError(MessageMaker.Error.WINNING_INPUT_DISTINCT_ERROR)
     }
 
-    fun checkInputBonusInteger(input: String, winningLottery: List<Int>): MessageMaker.Error {
+    fun checkInputBonusInteger(input: String, winningLottery: List<Int>) {
         val inputTrim = input.trim()
-        if (!checkInputOneInteger(inputTrim)) return MessageMaker.Error.BONUS_RANGE
-        if (!isLotteryRange(inputTrim.toInt())) return MessageMaker.Error.BONUS_RANGE
-        if (winningLottery.contains(inputTrim.toInt())) return MessageMaker.Error.BONUS_ALREADY_IN_WINNING
-        return MessageMaker.Error.NON_ERROR
+        if (!checkInputOneInteger(inputTrim)) throwError(MessageMaker.Error.BONUS_RANGE)
+        if (!isLotteryRange(inputTrim.toInt())) throwError(MessageMaker.Error.BONUS_RANGE)
+        if (winningLottery.contains(inputTrim.toInt())) throwError(MessageMaker.Error.BONUS_ALREADY_IN_WINNING)
     }
 
     private fun checkInputOneInteger(input: String): Boolean {
@@ -64,4 +61,8 @@ class InputCheck {
     private fun isLotteryRange(num: Int) = num in 1..45
 
     private fun isComma(char: Char): Boolean = char.code == 44
+
+    private fun throwError(errorType: MessageMaker.Error) {
+        throw IllegalArgumentException(errorType.error)
+    }
 }
